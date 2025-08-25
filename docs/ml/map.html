@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. MAP推定と正則化最小二乗法</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
+
+  
+  
+        <script src="../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=4dbe4bdc"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="4. ベイズ推定" href="bayes.html" />
+    <link rel="prev" title="2. 最尤推定と最小二乗法" href="likelihood.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Technical Notes
+          </a>
+              <div class="version">
+                2025.2.22
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../solid/index.html">固体物理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thermo/index.html">熱化学</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ガウス過程回帰</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="problem.html">1. 問題設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="likelihood.html">2. 最尤推定と最小二乗法</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. MAP推定と正則化最小二乗法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bayes.html">4. ベイズ推定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gaussian_process.html">5. ガウス過程回帰</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix/index.html">Appendix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hilbert/index.html">ヒルベルト空間</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Technical Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ガウス過程回帰</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>MAP推定と正則化最小二乗法</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/ml/map.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="map">
+<span id="id1"></span><h1><span class="section-number">3. </span>MAP推定と正則化最小二乗法<a class="headerlink" href="#map" title="Link to this heading"></a></h1>
+<p>MAP は <em>Maximum A Posteriori</em> の頭字語で、日本語では「最大事後確率」と呼ばれる。
+すなわちMAP推定は、実測データが得られた事後の確率分布を考える、<a class="reference internal" href="appendix/bayes_theorem.html#bayes-theorem"><span class="std std-ref">ベイズの定理</span></a>を応用した手法となる。</p>
+<p>いま、回帰関数 <a class="reference internal" href="problem.html#equation-pgp1">(1.8)</a></p>
+<div class="math notranslate nohighlight">
+\[y(\boldsymbol{x},\boldsymbol{w})
+=
+\boldsymbol{w}^\top \boldsymbol{\phi}(\boldsymbol{x})\]</div>
+<p>のパラメータ <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> に関して何らかの事前知識があり、それを確率分布の形で表せるという状況を考える。
+とりあえずの出発点として、<a class="reference internal" href="appendix/gaussian_dist.html#gaussian-dist"><span class="std std-ref">ガウス分布</span></a>に従うとしておくのは一つの常套手段である <a class="footnote-reference brackets" href="#map1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight" id="equation-map1">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-map1" title="Link to this equation"></a></span>\[p(\boldsymbol{w})
+=
+\mathcal{N}(\boldsymbol{w} | \boldsymbol{0}, \sigma_\boldsymbol{w}^2\boldsymbol{I})
+=
+\frac{1}{\sqrt{(2\pi)^M(\sigma_\boldsymbol{w}^2)^M}}
+\exp{\left(-\frac{\boldsymbol{w}^\top\boldsymbol{w}}{2\sigma_\boldsymbol{w}^2}\right)} .\]</div>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span>（と入力<span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span>）が与えられたときに出力
+<span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span> を得る確率のモデル（<a class="reference internal" href="problem.html#likelihood-function"><span class="std std-ref">尤度関数</span></a>）として、式 <a class="reference internal" href="problem.html#equation-ml3">(1.16)</a></p>
+<div class="math notranslate nohighlight">
+\[p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
+=
+\frac{1}{\sqrt{(2\pi)^N(\sigma_\varepsilon^2)^N}}
+\exp{\left(
+-\frac{1}{2\sigma_\varepsilon^2}
+(\boldsymbol{t}-\boldsymbol{\Phi}\boldsymbol{w})^\top (\boldsymbol{t}-\boldsymbol{\Phi}\boldsymbol{w})
+\right)}\]</div>
+<p>を採用する。このとき、 <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> の事後確率分布は<a class="reference internal" href="appendix/bayes_theorem.html#bayes-theorem"><span class="std std-ref">ベイズの定理</span></a>より次のようになる</p>
+<div class="math notranslate nohighlight" id="equation-map2">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-map2" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{t})
+= \frac{
+p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
+p(\boldsymbol{w})
+}{C} ,\]</div>
+<div class="math notranslate nohighlight" id="equation-map3">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-map3" title="Link to this equation"></a></span>\[C
+=
+p(\boldsymbol{t} | \boldsymbol{X})
+=
+\int p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
+p(\boldsymbol{w})d\boldsymbol{w} .\]</div>
+<p>式 <a class="reference internal" href="#equation-map2">(3.2)</a> の対数をとる</p>
+<div class="math notranslate nohighlight" id="equation-map4">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-map4" title="Link to this equation"></a></span>\[\ln{p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{t})}
+=
+- \frac{1}{2\sigma_\varepsilon^2} \sum_{n=1}^N (t_n - y(\boldsymbol{x_n},\boldsymbol{w}) )^2
+- \frac{1}{2\sigma_\boldsymbol{w}^2} \boldsymbol{w}^\top\boldsymbol{w}
+- N\ln2\pi
+- \frac{N\ln\sigma_\varepsilon^2}{2}
+- \frac{N\ln\sigma_\boldsymbol{w}^2}{2}
+- \ln{C} .\]</div>
+<p>上式右辺を最大化するには、次式を <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> について最小化すればよい</p>
+<div class="math notranslate nohighlight" id="equation-map5">
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-map5" title="Link to this equation"></a></span>\[L(\boldsymbol{w})
+=
+\frac{1}{\sigma_\varepsilon^2}
+\left(
+\frac{1}{2} \sum_{n=1}^N (t_n - y(\boldsymbol{x}_n,\boldsymbol{w}) )^2
++ \frac{\lambda}{2} \boldsymbol{w}^\top\boldsymbol{w}
+\right),
+\qquad
+\lambda
+=
+\frac{\sigma_\varepsilon^2}{\sigma_\boldsymbol{w}^2} .\]</div>
+<p>これは、二次正則化項付きの最小二乗法（リッジ回帰）に他ならない。
+また、式 <a class="reference internal" href="#equation-map4">(3.4)</a> に対しても、<a class="reference internal" href="likelihood.html#hyp-opt"><span class="std std-ref">ハイパーパラメータについての最尤推定</span></a>を実行することが可能である。</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="map1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>データ数 <span class="math notranslate nohighlight">\(N\)</span> とパラメータ数 <span class="math notranslate nohighlight">\(M\)</span> の違いに注意する。</p>
+</aside>
+</aside>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="likelihood.html" class="btn btn-neutral float-left" title="2. 最尤推定と最小二乗法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bayes.html" class="btn btn-neutral float-right" title="4. ベイズ推定" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Quemix inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

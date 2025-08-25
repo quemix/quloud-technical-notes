@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>行列および行列式の公式</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/my_theme.css?v=5dafae25" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=855244f2" />
+
+  
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="ベイズの定理" href="bayes_theorem.html" />
+    <link rel="prev" title="ガウス積分" href="gaussian_intg.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Technical Notes
+          </a>
+              <div class="version">
+                2025.2.22
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../solid/index.html">固体物理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thermo/index.html">熱化学</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ガウス過程回帰</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../problem.html">1. 問題設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../likelihood.html">2. 最尤推定と最小二乗法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map.html">3. MAP推定と正則化最小二乗法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayes.html">4. ベイズ推定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gaussian_process.html">5. ガウス過程回帰</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Appendix</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="gaussian_dist.html">ガウス分布関数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gaussian_intg.html">ガウス積分</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">行列および行列式の公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#matform1">逆行列の公式（１）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matform-block">ブロック行列の逆行列 </a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matform-blockdet">ブロック行列の行列式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matform-penrose">一般化逆行列</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bayes_theorem.html">ベイズの定理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hilbert/index.html">ヒルベルト空間</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Technical Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">ガウス過程回帰</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Appendix</a></li>
+      <li class="breadcrumb-item active">行列および行列式の公式</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/ml/appendix/matrix_formula.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="matrix-formula">
+<span id="id1"></span><h1>行列および行列式の公式<a class="headerlink" href="#matrix-formula" title="Link to this heading"></a></h1>
+<section id="matform1">
+<span id="id2"></span><h2>逆行列の公式（１）<a class="headerlink" href="#matform1" title="Link to this heading"></a></h2>
+<div class="math notranslate nohighlight" id="equation-mat1">
+<span class="eqno">(6)<a class="headerlink" href="#equation-mat1" title="Link to this equation"></a></span>\[\boldsymbol{I} - \left( \boldsymbol{A} + \boldsymbol{B} \right)^{-1} \boldsymbol{A}
+=  \left( \boldsymbol{A} + \boldsymbol{B} \right)^{-1}
+\left( \boldsymbol{A} + \boldsymbol{B} - \boldsymbol{A} \right)
+= \left( \boldsymbol{A} + \boldsymbol{B} \right)^{-1} \boldsymbol{B}\]</div>
+</section>
+<section id="matform-block">
+<span id="id4"></span><h2>ブロック行列の逆行列 <a class="footnote-reference brackets" href="#mf1" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#matform-block" title="Link to this heading"></a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+\boldsymbol{A} &amp; \boldsymbol{B} \\
+\boldsymbol{C} &amp; \boldsymbol{D} \\
+\end{pmatrix}^{-1}
+=
+\begin{pmatrix}
+\boldsymbol{M} &amp; -\boldsymbol{MBD}^{-1} \\
+\boldsymbol{-D}^{-1}\boldsymbol{CM} &amp; \boldsymbol{D}^{-1}+\boldsymbol{D}^{-1}\boldsymbol{CMBD}^{-1} \\
+\end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{M}
+=
+\left( \boldsymbol{A} - \boldsymbol{BD}^{-1}\boldsymbol{C}
+\right)^{-1}\]</div>
+<p>上記の公式を用いて、ガウス分布の共分散行列の計算で現れるケースを示しておく</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol{R}
+=
+\begin{pmatrix}
+\boldsymbol{\Lambda} + \boldsymbol{A}^\top \boldsymbol{LA} &amp;
+-\boldsymbol{A}^\top\boldsymbol{L} \\
+\boldsymbol{-LA} &amp;
+\boldsymbol{L}
+\end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\boldsymbol{R}^{-1}
+=
+\begin{pmatrix}
+\boldsymbol{\Lambda}^{-1} &amp;
+\boldsymbol{\Lambda}^{-1} \boldsymbol{A}^\top \\
+\boldsymbol{A}\boldsymbol{\Lambda}^{-1} &amp;
+\boldsymbol{L}^{-1} + \boldsymbol{A} \boldsymbol{\Lambda}^{-1}\boldsymbol{A}^\top \\
+\end{pmatrix}\end{split}\]</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="mf1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<ol class="upperalpha simple" start="3">
+<li><ol class="upperalpha simple" start="13">
+<li><p>ビショップ, パターン認識と機械学習, 丸善出版 2012.</p></li>
+</ol>
+</li>
+</ol>
+</aside>
+</aside>
+</section>
+<section id="matform-blockdet">
+<span id="id5"></span><h2>ブロック行列の行列式<a class="headerlink" href="#matform-blockdet" title="Link to this heading"></a></h2>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{A}, \boldsymbol{D}\)</span> を正方行列とする。このとき、 <span class="math notranslate nohighlight">\(\boldsymbol{A}\)</span>
+が正則であれば</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{vmatrix}
+\boldsymbol{A} &amp; \boldsymbol{B} \\
+\boldsymbol{C} &amp; \boldsymbol{D} \\
+\end{vmatrix}
+=
+\begin{vmatrix}
+\boldsymbol{A}
+\end{vmatrix}
+\begin{vmatrix}
+\boldsymbol{D-CA^{-1}B}
+\end{vmatrix}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{D}\)</span> が正則であれば</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{vmatrix}
+\boldsymbol{A} &amp; \boldsymbol{B} \\
+\boldsymbol{C} &amp; \boldsymbol{D} \\
+\end{vmatrix}
+=
+\begin{vmatrix}
+\boldsymbol{D}
+\end{vmatrix}
+\begin{vmatrix}
+\boldsymbol{A-BD^{-1}C}
+\end{vmatrix}\end{split}\]</div>
+<p>となる。</p>
+<p>ガウス分布の周辺分布の計算で現れる以下のケースを示しておく。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{vmatrix}
+\boldsymbol{S}^{-1}_{1} &amp; -\beta\boldsymbol{\Phi}^\top \\
+-\beta\boldsymbol{\Phi} &amp; \beta\boldsymbol{I} \\
+\end{vmatrix}
+&amp;=
+\begin{vmatrix}
+\boldsymbol{S}^{-1}_{1}
+\end{vmatrix}
+\begin{vmatrix}
+\beta\boldsymbol{I} - \beta^2\boldsymbol{\Phi} \boldsymbol{S}_{1} \boldsymbol{\Phi}^\top
+\end{vmatrix}\\
+&amp;=
+\begin{vmatrix}
+\beta\boldsymbol{I}
+\end{vmatrix}
+\begin{vmatrix}
+\boldsymbol{S}^{-1}_0 + \beta\boldsymbol{\Phi}^\top\boldsymbol{\Phi}
+- \beta\boldsymbol{\Phi}^\top \beta^{-1} \beta\boldsymbol{\Phi}
+\end{vmatrix}
+=
+\beta^N
+\begin{vmatrix}
+\boldsymbol{S}^{-1}_0
+\end{vmatrix}\end{split}\]</div>
+<p>ここで</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{S}^{-1}_{1}
+=
+\boldsymbol{S}^{-1}_0 + \beta\boldsymbol{\Phi}^\top\boldsymbol{\Phi}\]</div>
+<p>である。</p>
+</section>
+<section id="matform-penrose">
+<span id="id6"></span><h2>一般化逆行列<a class="headerlink" href="#matform-penrose" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gaussian_intg.html" class="btn btn-neutral float-left" title="ガウス積分" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bayes_theorem.html" class="btn btn-neutral float-right" title="ベイズの定理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Quemix inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

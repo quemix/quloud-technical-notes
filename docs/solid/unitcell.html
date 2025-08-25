@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. ブラべ格子と結晶系</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
+
+  
+  
+        <script src="../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=4dbe4bdc"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="4. 周期性" href="periodic.html" />
+    <link rel="prev" title="2. 格子座標" href="coordinates.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Technical Notes
+          </a>
+              <div class="version">
+                2025.2.22
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">固体物理</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lattice.html">1. 格子ベクトルと逆格子ベクトル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinates.html">2. 格子座標</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. ブラべ格子と結晶系</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.1. 三斜晶系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">3.2. 単斜晶系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.3. 直方晶系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.4. 正方晶系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.5. 三方晶系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.6. 六方晶系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.7. 立方晶系</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="periodic.html">4. 周期性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html">5. ブロッホの定理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html">6. ブリルアンゾーン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bandstructure.html">7. バンド構造</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tightbinding.html">8. タイト・バインディング近似</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../thermo/index.html">熱化学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/index.html">ガウス過程回帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hilbert/index.html">ヒルベルト空間</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Technical Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">固体物理</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>ブラべ格子と結晶系</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/solid/unitcell.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unitcell">
+<span id="id1"></span><h1><span class="section-number">3. </span>ブラべ格子と結晶系<a class="headerlink" href="#unitcell" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">3.1. </span>三斜晶系<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<div id="triclinic" style="width: 100%; height: 500px; margin-bottom: 20px;"></div>
+<script type="module">
+    "use strict"
+    import triclinic from '../../_static/js/triclinic.js';
+    triclinic();
+</script></section>
+<section id="id3">
+<h2><span class="section-number">3.2. </span>単斜晶系<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>単純単斜格子、底心単斜格子を含む。</p>
+<div id="monoclinic" style="width: 100%; height: 500px; margin-bottom: 20px;"></div>
+<script type="module">
+    "use strict"
+    import monoclinic from '../../_static/js/monoclinic.js';
+    monoclinic();
+</script></section>
+<section id="id4">
+<h2><span class="section-number">3.3. </span>直方晶系<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>斜方晶系と呼ばれることもある。単純直方格子、体心直方格子、面心直方格子、底心直方格子を含む。</p>
+<div id="orthorhombic" style="width: 100%; height: 500px; margin-bottom: 20px;"></div>
+<script type="module">
+    "use strict"
+    import orthorhombic from '../../_static/js/orthorhombic.js';
+    orthorhombic();
+</script></section>
+<section id="id5">
+<h2><span class="section-number">3.4. </span>正方晶系<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>単純正方格子、体心正方格子を含む。</p>
+<div id="tetragonal" style="width: 100%; height: 500px; margin-bottom: 20px;"></div>
+<script type="module">
+    "use strict"
+    import tetragonal from '../../_static/js/tetragonal.js';
+    tetragonal();
+</script></section>
+<section id="id6">
+<h2><span class="section-number">3.5. </span>三方晶系<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>菱面体格子（rhombohedral lattice）を含む。</p>
+<div id="trigonal" style="width: 100%; height: 500px; margin-bottom: 20px;"></div>
+<script type="module">
+    "use strict"
+    import trigonal from '../../_static/js/trigonal.js';
+    trigonal();
+</script></section>
+<section id="id7">
+<h2><span class="section-number">3.6. </span>六方晶系<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<div id="hexagonal" style="width: 100%; height: 500px; margin-bottom: 20px;"></div>
+<script type="module">
+    "use strict"
+    import hexagonal from '../../_static/js/hexagonal.js';
+    hexagonal();
+</script></section>
+<section id="id8">
+<h2><span class="section-number">3.7. </span>立方晶系<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>単純立方格子、体心立方格子、面心立方格子を含む。</p>
+<div id="tetrahedral" style="width: 100%; height: 500px; margin-bottom: 20px;"></div>
+<script type="module">
+    "use strict"
+    import tetrahedral from '../../_static/js/tetrahedral.js';
+    tetrahedral();
+</script></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="coordinates.html" class="btn btn-neutral float-left" title="2. 格子座標" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="periodic.html" class="btn btn-neutral float-right" title="4. 周期性" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Quemix inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. バンド構造</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
+
+  
+  
+        <script src="../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=4dbe4bdc"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="8. タイト・バインディング近似" href="tightbinding.html" />
+    <link rel="prev" title="6. ブリルアンゾーン" href="brillouinzone.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Technical Notes
+          </a>
+              <div class="version">
+                2025.2.22
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">固体物理</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lattice.html">1. 格子ベクトルと逆格子ベクトル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinates.html">2. 格子座標</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unitcell.html">3. ブラべ格子と結晶系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodic.html">4. 周期性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html">5. ブロッホの定理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html">6. ブリルアンゾーン</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7. バンド構造</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.1. 概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.2. 半導体の電気伝導性</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tightbinding.html">8. タイト・バインディング近似</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../thermo/index.html">熱化学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/index.html">ガウス過程回帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hilbert/index.html">ヒルベルト空間</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Technical Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">固体物理</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7. </span>バンド構造</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/solid/bandstructure.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bandstructure">
+<span id="id1"></span><h1><span class="section-number">7. </span>バンド構造<a class="headerlink" href="#bandstructure" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2><span class="section-number">7.1. </span>概要<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>孤立した原子中の電子は、原子軌道の離散的なエネルギーをもつ。しかし２つの原子が近接すると、各々の原子軌道が重なり、電子のエネルギー準位が２つに分裂する。固体中に含まれている原子の数を <span class="math notranslate nohighlight">\(N\)</span> とすると、 <span class="math notranslate nohighlight">\(N\)</span> 個の原子軌道が重なり、電子のエネルギー準位は <span class="math notranslate nohighlight">\(N\)</span> 個に分裂する。 <span class="math notranslate nohighlight">\(N\)</span> は非常に大きな数（ <span class="math notranslate nohighlight">\(N\,\sim\,10^{22}\)</span> ）なので、エネルギー準位の間隔は非常に狭くなる（ <span class="math notranslate nohighlight">\(\sim 10^{-22}\,\mathrm{eV}\)</span> ）。これを連続的な分布と見なしたものがエネルギーバンドである。エネルギーの高い外殻電子は、原子軌道の重なりが大きいため、エネルギーバンドへの寄与が大きい。一方、エネルギーの低い内殻電子は、原子軌道の重なりが小さいため、エネルギーバンドへの寄与が小さい。</p>
+<p>半導体や絶縁体においては、フェルミ準位の下にあるバンドを価電子帯、上にあるバンドを伝導帯と呼び、その間のエネルギー差をバンドギャップと呼ぶ。バンドギャップが小さいほど、電気伝導性が高いと言える。バンドギャップがおよそ <span class="math notranslate nohighlight">\(3\,\mathrm{eV}\)</span> より小さい場合は半導体、それより大きい場合は絶縁体となる。</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.2. </span>半導体の電気伝導性<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>半導体は、熱や光により励起された電子が、価電子帯から伝導帯に移動し、自由電子となることにより導電性を示す。電気伝導率は、価電子帯のキャリア（正孔）と伝導帯のキャリア（自由電子）の電気伝導率の和であり、</p>
+<div class="math notranslate nohighlight" id="equation-conductivity">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-conductivity" title="Link to this equation"></a></span>\[\sigma
+=
+n_{\mathrm{e}}\,e\,\mu_{\mathrm{e}}+n_{\mathrm{h}}\,e\,\mu_{\mathrm{h}}
+=
+e(n_{\mathrm{e}}\,\mu_{\mathrm{e}}+n_{\mathrm{h}}\,\mu_{\mathrm{h}})\]</div>
+<p>と表される。ここで、 <span class="math notranslate nohighlight">\(n_{\mathrm{e}},\,n_{\mathrm{h}}\)</span> はそれぞれ自由電子と正孔の濃度、 <span class="math notranslate nohighlight">\(\mu_{\mathrm{e}},\,\mu_{\mathrm{h}}\)</span> はそれぞれ自由電子と正孔の易動度、 <span class="math notranslate nohighlight">\(e\)</span> は電気素量を表す。</p>
+<p>自由電子が一様な電場 <span class="math notranslate nohighlight">\(E\)</span> の中で運動しているものとし、ドリフト速度を <span class="math notranslate nohighlight">\(v_{\mathrm{de}}\)</span> とすると、</p>
+<div class="math notranslate nohighlight" id="equation-v-de">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-v-de" title="Link to this equation"></a></span>\[v_{\mathrm{de}}
+=
+-\mu_{\mathrm{e}}\,E\]</div>
+<p>の関係が成り立つ。電子の有効質量を <span class="math notranslate nohighlight">\(m^*_{\mathrm{e}}\)</span> とし、原子核による散乱に起因する外力を摩擦力と考えると、電子の運動方程式は</p>
+<div class="math notranslate nohighlight" id="equation-equation-of-motion">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-equation-of-motion" title="Link to this equation"></a></span>\[m^*_{\mathrm{e}}\frac{\mathrm{d}v}{\mathrm{d}t}
+=
+-eE-\frac{m^*_{\mathrm{e}}v}{\tau_{\mathrm{e}}}\]</div>
+<p>となる。ここで、 <span class="math notranslate nohighlight">\(\tau_{\mathrm{e}}\)</span> は電子の速度が十分に減速されるのに必要な時間で、緩和時間と呼ぶ。電子の運動が定常状態に落ち着いたときの速度がドリフト速度 <span class="math notranslate nohighlight">\(v_{\mathrm{de}}\)</span> なので、</p>
+<div class="math notranslate nohighlight" id="equation-v-de-2">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-v-de-2" title="Link to this equation"></a></span>\[v_{\mathrm{de}}
+=
+-\frac{e\,\tau_{\mathrm{e}}}{m^*_{\mathrm{e}}}E\]</div>
+<p>となる。(7.2)式と(7.4)式を比較すると、</p>
+<div class="math notranslate nohighlight" id="equation-mu-e">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-mu-e" title="Link to this equation"></a></span>\[\mu_{\mathrm{e}}
+=
+\frac{e\,\tau_{\mathrm{e}}}{m^*_{\mathrm{e}}}\]</div>
+<p>が得られる。正孔についても同様に、ドリフト速度を</p>
+<div class="math notranslate nohighlight" id="equation-v-dh">
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-v-dh" title="Link to this equation"></a></span>\[v_{\mathrm{dh}}
+=
+\mu_{\mathrm{h}}\,E\]</div>
+<p>とし、有効質量を <span class="math notranslate nohighlight">\(m^*_{\mathrm{h}}\)</span> 、緩和時間を <span class="math notranslate nohighlight">\(\tau_{\mathrm{h}}\)</span> とすると、</p>
+<div class="math notranslate nohighlight" id="equation-mu-h">
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-mu-h" title="Link to this equation"></a></span>\[\mu_{\mathrm{e}}
+=
+\frac{e\,\tau_{\mathrm{h}}}{m^*_{\mathrm{h}}}\]</div>
+<p>が得られる。</p>
+<p>伝導帯の電子の濃度（密度） <span class="math notranslate nohighlight">\(n_{\mathrm{e}}\)</span> は、</p>
+<div class="math notranslate nohighlight" id="equation-n-e">
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-n-e" title="Link to this equation"></a></span>\[n_{\mathrm{e}}
+=
+\int_{E\mathrm{c}}^{\infty}g_{\mathrm{c}}(E)f(E)\mathrm{d}E\]</div>
+<p>と表される。ここで、 <span class="math notranslate nohighlight">\(E_{\mathrm{c}}\)</span> は伝導帯のエネルギーである。 <span class="math notranslate nohighlight">\(g_{\mathrm{c}}(E)\)</span> は伝導帯の状態密度で、</p>
+<div class="math notranslate nohighlight" id="equation-g-c-e">
+<span class="eqno">(7.9)<a class="headerlink" href="#equation-g-c-e" title="Link to this equation"></a></span>\[g_{\mathrm{c}}(E)
+=
+\frac{\sqrt{2}{{m^*_{\mathrm{e}}}^{3/2}}}{\pi^2\hbar^3}(E-E_{\mathrm{c}})^{1/2}\]</div>
+<p>である。 <span class="math notranslate nohighlight">\(\hbar\)</span> は換算プランク定数である。 <span class="math notranslate nohighlight">\(f(E)\)</span> は、エネルギーが <span class="math notranslate nohighlight">\(E\)</span> である準位を占有する電子の個数の統計的期待値の分布を与える関数で、フェルミ・ディラック分布関数</p>
+<div class="math notranslate nohighlight" id="equation-f-e">
+<span class="eqno">(7.10)<a class="headerlink" href="#equation-f-e" title="Link to this equation"></a></span>\[f(E)
+=
+\frac{1}{1+\exp\Big(\displaystyle\frac{E-E_{\mathrm{f}}}{k_{\mathrm{B}}T}\Big)}\]</div>
+<p>で与えられる。ここで、 <span class="math notranslate nohighlight">\(E_{\mathrm{f}}\)</span> はフェルミ準位、 <span class="math notranslate nohighlight">\(k_{\mathrm{B}}\)</span> はボルツマン定数、 <span class="math notranslate nohighlight">\(T\)</span> は温度である。伝導帯のような高エネルギー領域では、 <span class="math notranslate nohighlight">\(E-E_{\mathrm{f}}\,\gg\,k_{\mathrm{B}}T\)</span> と仮定できるため、</p>
+<div class="math notranslate nohighlight" id="equation-f-e-2">
+<span class="eqno">(7.11)<a class="headerlink" href="#equation-f-e-2" title="Link to this equation"></a></span>\[f(E)
+\approx
+\exp\Big(-\displaystyle\frac{E-E_{\mathrm{f}}}{k_{\mathrm{B}}T}\Big)\]</div>
+<p>というボルツマン近似で置き換えられる。伝導帯の電子密度 <span class="math notranslate nohighlight">\(n_{\mathrm{e}}\)</span> は、(7.8)式の積分を実行することにより得られ、</p>
+<div class="math notranslate nohighlight" id="equation-n-e-2">
+<span class="eqno">(7.12)<a class="headerlink" href="#equation-n-e-2" title="Link to this equation"></a></span>\[n_{\mathrm{e}}
+=
+N_{\mathrm{c}}\exp\Big(-\displaystyle\frac{E_{\mathrm{c}}-E_{\mathrm{f}}}{k_{\mathrm{B}}T}\Big)\]</div>
+<p>となる。ここで、 <span class="math notranslate nohighlight">\(N_{\mathrm{c}}=2\Big(\displaystyle\frac{m^*_{\mathrm{e}}k_{\mathrm{B}}T}{2\pi\hbar^2}\Big)^{3/2}\)</span> である。</p>
+<p>次に、価電子帯の正孔密度 <span class="math notranslate nohighlight">\(n_{\mathrm{h}}\)</span> は、</p>
+<div class="math notranslate nohighlight" id="equation-n-h">
+<span class="eqno">(7.13)<a class="headerlink" href="#equation-n-h" title="Link to this equation"></a></span>\[n_{\mathrm{h}}
+=
+\int_{-\infty}^{E\mathrm{v}}g_{\mathrm{v}}(E)(1-f(E))\mathrm{d}E\]</div>
+<p>と表される。ここで、 <span class="math notranslate nohighlight">\(E_{\mathrm{h}}\)</span> は価電子帯のエネルギーである。 <span class="math notranslate nohighlight">\(g_{\mathrm{v}}(E)\)</span> は価電子帯の状態密度で、</p>
+<div class="math notranslate nohighlight" id="equation-g-v-e">
+<span class="eqno">(7.14)<a class="headerlink" href="#equation-g-v-e" title="Link to this equation"></a></span>\[g_{\mathrm{v}}(E)
+=
+\frac{\sqrt{2}{{m^*_{\mathrm{h}}}^{3/2}}}{\pi^2\hbar^3}(E_{\mathrm{v}}-E)^{1/2}\]</div>
+<p>である。また、エネルギーが <span class="math notranslate nohighlight">\(E\)</span> である準位を占有する正孔の個数の統計的期待値の分布は、占有していない電子の期待値分布に等しく、 <span class="math notranslate nohighlight">\(1-f(E)\)</span> となる。価電子帯のような低エネルギー領域では、 <span class="math notranslate nohighlight">\(E-E_{\mathrm{f}}\,\ll\,-k_{\mathrm{B}}T\)</span> と仮定できるため、</p>
+<div class="math notranslate nohighlight" id="equation-f-e-3">
+<span class="eqno">(7.15)<a class="headerlink" href="#equation-f-e-3" title="Link to this equation"></a></span>\[f(E)
+\approx
+1-\exp\Big(-\displaystyle\frac{E_{\mathrm{f}}-E}{k_{\mathrm{B}}T}\Big)\]</div>
+<p>と近似でき、</p>
+<div class="math notranslate nohighlight" id="equation-1-f-e">
+<span class="eqno">(7.16)<a class="headerlink" href="#equation-1-f-e" title="Link to this equation"></a></span>\[1-f(E)
+\approx
+\exp\Big(-\displaystyle\frac{E_{\mathrm{f}}-E}{k_{\mathrm{B}}T}\Big)\]</div>
+<p>となる。価電子帯の正孔密度 <span class="math notranslate nohighlight">\(n_{\mathrm{h}}\)</span> は、(7.13)式の積分を実行することにより得られ、</p>
+<div class="math notranslate nohighlight" id="equation-n-h-2">
+<span class="eqno">(7.17)<a class="headerlink" href="#equation-n-h-2" title="Link to this equation"></a></span>\[n_{\mathrm{h}}
+=
+N_{\mathrm{v}}\exp\Big(-\displaystyle\frac{E_{\mathrm{f}}-E_{\mathrm{v}}}{k_{\mathrm{B}}T}\Big)\]</div>
+<p>となる。ここで、 <span class="math notranslate nohighlight">\(N_{\mathrm{v}}=2\Big(\displaystyle\frac{m^*_{\mathrm{h}}k_{\mathrm{B}}T}{2\pi\hbar^2}\Big)^{3/2}\)</span> である。</p>
+<p>自由電子と正孔の数が等しいとすると、電荷キャリア密度 <span class="math notranslate nohighlight">\(n_{\mathrm{i}}\)</span> は、</p>
+<div class="math notranslate nohighlight" id="equation-n-i">
+<span class="eqno">(7.18)<a class="headerlink" href="#equation-n-i" title="Link to this equation"></a></span>\[n_{\mathrm{i}}
+=
+\sqrt{n_{\mathrm{e}}n_{\mathrm{h}}}
+=
+\sqrt{N_{\mathrm{c}}N_{\mathrm{v}}}\exp\Big(-\displaystyle\frac{E_{\mathrm{c}}-E_{\mathrm{v}}}{2k_{\mathrm{B}}T}\Big)
+=
+\sqrt{N_{\mathrm{c}}N_{\mathrm{v}}}\exp\Big(-\displaystyle\frac{E_{\mathrm{g}}}{2k_{\mathrm{B}}T}\Big)\]</div>
+<p>となる。ここで、 <span class="math notranslate nohighlight">\(E_{\mathrm{g}}=E_{\mathrm{c}}-E_{\mathrm{v}}\)</span> はバンドギャップである。(7.1)式の <span class="math notranslate nohighlight">\(n_{\mathrm{e}},\,n_{\mathrm{h}}\)</span> を <span class="math notranslate nohighlight">\(n_{\mathrm{i}}\)</span> で置き換えることにより、</p>
+<div class="math notranslate nohighlight" id="equation-conductivity-2">
+<span class="eqno">(7.19)<a class="headerlink" href="#equation-conductivity-2" title="Link to this equation"></a></span>\[\sigma
+=
+e\,n_{\mathrm{i}}(\mu_{\mathrm{e}}+\mu_{\mathrm{h}})
+=
+\sqrt{N_{\mathrm{c}}N_{\mathrm{v}}}\,e\,(\mu_{\mathrm{e}}+\mu_{\mathrm{h}})\exp\Big(-\displaystyle\frac{E_{\mathrm{g}}}{2k_{\mathrm{B}}T}\Big)
+=
+2\Big(\displaystyle\frac{k_{\mathrm{B}}T}{2\pi\hbar^2}\Big)^{3/2}\,(m^*_{\mathrm{e}}\,m^*_{\mathrm{h}})^{3/4}\,e\,(\mu_{\mathrm{e}}+\mu_{\mathrm{h}})\exp\Big(-\displaystyle\frac{E_{\mathrm{g}}}{2k_{\mathrm{B}}T}\Big)\]</div>
+<p>となり、さらに(7.5)式と(7.7)式を代入すると、</p>
+<div class="math notranslate nohighlight" id="equation-conductivity-3">
+<span class="eqno">(7.20)<a class="headerlink" href="#equation-conductivity-3" title="Link to this equation"></a></span>\[\sigma
+=
+2\Big(\displaystyle\frac{k_{\mathrm{B}}T}{2\pi\hbar^2}\Big)^{3/2}\,(m^*_{\mathrm{e}}\,m^*_{\mathrm{h}})^{3/4}\,e^2\,\Big(\displaystyle\frac{\tau_{\mathrm{e}}}{m^*_{\mathrm{e}}}+\frac{\tau_{\mathrm{h}}}{m^*_{\mathrm{h}}}\Big)\exp\Big(-\displaystyle\frac{E_{\mathrm{g}}}{2k_{\mathrm{B}}T}\Big)\]</div>
+<p>と導かれる。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="brillouinzone.html" class="btn btn-neutral float-left" title="6. ブリルアンゾーン" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tightbinding.html" class="btn btn-neutral float-right" title="8. タイト・バインディング近似" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Quemix inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

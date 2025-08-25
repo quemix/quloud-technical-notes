@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" data-content_root="./">
 <head>
@@ -7,21 +5,22 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Technical Notes</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/my_theme.css?v=5dafae25" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=855244f2" />
 
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=c033477b"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/translations.js?v=4755f45a"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+        <script src="_static/jquery.js?v=8dae8fb0"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=c033477b"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=4dbe4bdc"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
-    <link rel="next" title="1. 格子ベクトルと逆格子ベクトル" href="lattice.html" /> 
+    <link rel="next" title="固体物理" href="solid/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,6 +34,9 @@
           <a href="#" class="icon icon-home">
             Technical Notes
           </a>
+              <div class="version">
+                2025.2.22
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -44,8 +46,10 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="lattice.html">1. 格子ベクトルと逆格子ベクトル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coordinates.html">2. 格子座標</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solid/index.html">固体物理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermo/index.html">熱化学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ml/index.html">ガウス過程回帰</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hilbert/index.html">ヒルベルト空間</a></li>
 </ul>
 
         </div>
@@ -76,13 +80,36 @@
 <h1>Technical Notes<a class="headerlink" href="#technical-notes" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="lattice.html">1. 格子ベクトルと逆格子ベクトル</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lattice.html#id2">1.1. 定義と性質</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lattice.html#id3">1.2. 格子ベクトルの独立な成分</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solid/index.html">固体物理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="solid/lattice.html">1. 格子ベクトルと逆格子ベクトル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solid/coordinates.html">2. 格子座標</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solid/unitcell.html">3. ブラべ格子と結晶系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solid/periodic.html">4. 周期性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solid/blochstheorem.html">5. ブロッホの定理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solid/brillouinzone.html">6. ブリルアンゾーン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solid/bandstructure.html">7. バンド構造</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solid/tightbinding.html">8. タイト・バインディング近似</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="coordinates.html">2. 格子座標</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="coordinates.html#xyz">2.1. XYZ座標と格子座標</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermo/index.html">熱化学</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="thermo/internal_energy.html">1. 内部エネルギー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thermo/enthalpy.html">2. エンタルピー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thermo/entropy.html">3. エントロピー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thermo/gibbs_energy.html">4. ギブス自由エネルギー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thermo/appendix/index.html">Appendix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ml/index.html">ガウス過程回帰</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ml/problem.html">1. 問題設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/likelihood.html">2. 最尤推定と最小二乗法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/map.html">3. MAP推定と正則化最小二乗法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/bayes.html">4. ベイズ推定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/gaussian_process.html">5. ガウス過程回帰</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/appendix/index.html">Appendix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hilbert/index.html">ヒルベルト空間</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hilbert/rkhs.html">1. 再生核ヒルベルト空間</a></li>
 </ul>
 </li>
 </ul>
@@ -93,7 +120,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="lattice.html" class="btn btn-neutral float-right" title="1. 格子ベクトルと逆格子ベクトル" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="solid/index.html" class="btn btn-neutral float-right" title="固体物理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

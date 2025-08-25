@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ベイズの定理</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/my_theme.css?v=5dafae25" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=855244f2" />
+
+  
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="ヒルベルト空間" href="../../hilbert/index.html" />
+    <link rel="prev" title="行列および行列式の公式" href="matrix_formula.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Technical Notes
+          </a>
+              <div class="version">
+                2025.2.22
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../solid/index.html">固体物理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thermo/index.html">熱化学</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ガウス過程回帰</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../problem.html">1. 問題設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../likelihood.html">2. 最尤推定と最小二乗法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map.html">3. MAP推定と正則化最小二乗法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bayes.html">4. ベイズ推定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gaussian_process.html">5. ガウス過程回帰</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Appendix</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="gaussian_dist.html">ガウス分布関数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gaussian_intg.html">ガウス積分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matrix_formula.html">行列および行列式の公式</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ベイズの定理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hilbert/index.html">ヒルベルト空間</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Technical Notes</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">ガウス過程回帰</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Appendix</a></li>
+      <li class="breadcrumb-item active">ベイズの定理</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/ml/appendix/bayes_theorem.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bayes-theorem">
+<span id="id1"></span><h1>ベイズの定理<a class="headerlink" href="#bayes-theorem" title="Link to this heading"></a></h1>
+<p>説明のために以下のような絵を考える。</p>
+<a class="reference internal image-reference" href="../../_images/bayes1.png"><img alt="../../_images/bayes1.png" class="align-center" src="../../_images/bayes1.png" style="width: 714.3px; height: 524.4px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>上図のマス内にある <span class="math notranslate nohighlight">\(N_{ij}\)</span> は、「<span class="math notranslate nohighlight">\(X=i\)</span> かつ <span class="math notranslate nohighlight">\(Y=j\)</span>」という事象が起きた回数を表すものとする。青く色が付いた部分の和を取れば「<span class="math notranslate nohighlight">\(X=3\)</span>」という事象が起きた回数になり、オレンジ色の部分の和を取れば「<span class="math notranslate nohighlight">\(Y=2\)</span>」という事象が起きた回数となる。いま、全てのマスの総和を <span class="math notranslate nohighlight">\(N\)</span> と表すと、「<span class="math notranslate nohighlight">\(X=i\)</span> かつ <span class="math notranslate nohighlight">\(Y=j\)</span>」という事象が起こる確率は、</p>
+<div class="math notranslate nohighlight">
+\[P(X=i, Y=j) = \frac{N_{ij}}{N}\]</div>
+<p>と計算できる事になる。以上を踏まえ、つぎに条件付き確率を考える。<span class="math notranslate nohighlight">\(X=3\)</span>
+が起こったと知っているとき、<span class="math notranslate nohighlight">\(Y=2\)</span> が起こる条件付き確率 <span class="math notranslate nohighlight">\(P(Y=2|X=3)\)</span> は、上図より</p>
+<div class="math notranslate nohighlight" id="equation-app-bayes1">
+<span class="eqno">(7)<a class="headerlink" href="#equation-app-bayes1" title="Link to this equation"></a></span>\[P(Y=2|X=3) = \frac{N_{32}}{N_{X=3}}\]</div>
+<p>と計算できることがわかる。ここで <span class="math notranslate nohighlight">\(N_{X=3}\)</span> は、上図の青い部分の和</p>
+<div class="math notranslate nohighlight">
+\[N_{X=3} = \sum_{j=1}^4 N_{3j}\]</div>
+<p>である。<a class="reference internal" href="#equation-app-bayes1">(7)</a> を少し変形していく</p>
+<div class="math notranslate nohighlight" id="equation-app-bayes2">
+<span class="eqno">(8)<a class="headerlink" href="#equation-app-bayes2" title="Link to this equation"></a></span>\[P(Y=2|X=3)
+= \frac{N_{32}}{N_{X=3}}
+= \frac{N_{32}/N}{N_{X=3}/N}
+= \frac{P(X=3, Y=2)}{P(X=3)} .\]</div>
+<p>ここで、上図のオレンジ部分の和</p>
+<div class="math notranslate nohighlight">
+\[N_{Y=2} = \sum_{i=1}^6 N_{i2}\]</div>
+<p>を用いて <a class="reference internal" href="#equation-app-bayes2">(8)</a> をさらに変形する。</p>
+<div class="math notranslate nohighlight">
+\[P(Y=2|X=3)
+= \frac{N_{32}/N}{N_{X=3}/N}
+= \frac{(N_{32}/N_{Y=2})(N_{Y=2}/N)}{N_{X=3}/N}
+= \frac{P(X=3|Y=2) P(Y=2)}{P(X=3)}\]</div>
+<p>したがって、</p>
+<div class="math notranslate nohighlight">
+\[P(Y=2|X=3)
+= \frac{P(X=3|Y=2) P(Y=2)}{P(X=3)}\]</div>
+<p>という関係が成り立つことがわかる。これがベイズの定理である。</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="matrix_formula.html" class="btn btn-neutral float-left" title="行列および行列式の公式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../hilbert/index.html" class="btn btn-neutral float-right" title="ヒルベルト空間" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Quemix inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

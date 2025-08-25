@@ -8,8 +8,13 @@ Technical Notes
 
 .. toctree::
    :maxdepth: 2
-   :numbered:
 
-   lattice
-   coordinates
+   solid/index
+   thermo/index
+   ml/index
+   hilbert/index
 
+.. .. toctree::
+..    :maxdepth: 2
+
+..    appendix/index
