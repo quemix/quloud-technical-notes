@@ -18,4 +18,5 @@
    brillouinzone
    bandstructure
    tightbinding
+   tetrahedron
 
