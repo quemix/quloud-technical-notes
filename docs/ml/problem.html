@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" data-content_root="../">
 <head>
@@ -5,19 +7,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1. 問題設定</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
 
   
-  
-        <script src="../_static/jquery.js?v=8dae8fb0"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/jquery.js?v=958b65b0"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -36,9 +37,6 @@
           <a href="../index.html" class="icon icon-home">
             Technical Notes
           </a>
-              <div class="version">
-                2025.2.22
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -98,7 +96,7 @@
 <p><span class="math notranslate nohighlight">\(\{\phi_0(\boldsymbol{x}), \cdots, \phi_{M-1}(\boldsymbol{x})\}\)</span> を与えられた基底関数のセットとして、
 つぎの線形回帰問題を考える</p>
 <div class="math notranslate nohighlight" id="equation-pgp1">
-<span class="eqno">(1.8)<a class="headerlink" href="#equation-pgp1" title="Link to this equation"></a></span>\[y(\boldsymbol{x},\boldsymbol{w})
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-pgp1" title="Link to this equation"></a></span>\[y(\boldsymbol{x},\boldsymbol{w})
 =
 \sum_{i=0}^{M-1} w_i \phi_i(\boldsymbol{x})
 =
@@ -107,23 +105,23 @@
 その値には <span class="math notranslate nohighlight">\(y(\boldsymbol{x},\boldsymbol{w})\)</span> で捉えきれない不確定な要素（ノイズ）があるとして、
 以下の形で問題を考えることにする</p>
 <div class="math notranslate nohighlight" id="equation-pgp2">
-<span class="eqno">(1.9)<a class="headerlink" href="#equation-pgp2" title="Link to this equation"></a></span>\[t
+<span class="eqno">(1.11)<a class="headerlink" href="#equation-pgp2" title="Link to this equation"></a></span>\[t
 =
 y(\boldsymbol{x},\boldsymbol{w}) + \varepsilon .\]</div>
 <p>いま、実測データとして <span class="math notranslate nohighlight">\(N\)</span> 個の入出力セットが得られているとする</p>
 <div class="math notranslate nohighlight" id="equation-pgp3">
-<span class="eqno">(1.10)<a class="headerlink" href="#equation-pgp3" title="Link to this equation"></a></span>\[\boldsymbol{D}
+<span class="eqno">(1.12)<a class="headerlink" href="#equation-pgp3" title="Link to this equation"></a></span>\[\boldsymbol{D}
 \equiv
 \{(\boldsymbol{x}_1, t_1), \; (\boldsymbol{x}_2, t_2),
 \; \dots \; (\boldsymbol{x}_N, t_N) \} .\]</div>
 <p>また入力だけ、出力だけをまとめたものを以下のように表すことにする</p>
 <div class="math notranslate nohighlight" id="equation-pgp4">
-<span class="eqno">(1.11)<a class="headerlink" href="#equation-pgp4" title="Link to this equation"></a></span>\[\boldsymbol{X} \equiv \{\boldsymbol{x}_1, \boldsymbol{x}_2, \dots, \boldsymbol{x}_N\} ,\]</div>
+<span class="eqno">(1.13)<a class="headerlink" href="#equation-pgp4" title="Link to this equation"></a></span>\[\boldsymbol{X} \equiv \{\boldsymbol{x}_1, \boldsymbol{x}_2, \dots, \boldsymbol{x}_N\} ,\]</div>
 <div class="math notranslate nohighlight" id="equation-pgp5">
-<span class="eqno">(1.12)<a class="headerlink" href="#equation-pgp5" title="Link to this equation"></a></span>\[\boldsymbol{t} \equiv \{t_1, t_2, \dots, t_N\} .\]</div>
-<p><a class="reference internal" href="#equation-pgp1">(1.8)</a> についても、 <span class="math notranslate nohighlight">\(N\)</span> データ分まとめたものを以下のように表すことにする</p>
+<span class="eqno">(1.14)<a class="headerlink" href="#equation-pgp5" title="Link to this equation"></a></span>\[\boldsymbol{t} \equiv \{t_1, t_2, \dots, t_N\} .\]</div>
+<p><a class="reference internal" href="#equation-pgp1">(1.10)</a> についても、 <span class="math notranslate nohighlight">\(N\)</span> データ分まとめたものを以下のように表すことにする</p>
 <div class="math notranslate nohighlight" id="equation-pgp6">
-<span class="eqno">(1.13)<a class="headerlink" href="#equation-pgp6" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{y}
+<span class="eqno">(1.15)<a class="headerlink" href="#equation-pgp6" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{y}
 \equiv
 \begin{pmatrix}
 y_1 \\
@@ -149,9 +147,9 @@ w_{M-1}
 </section>
 <section id="likelihood-function">
 <span id="id3"></span><h2><span class="section-number">1.2. </span>データ分布のモデル：尤度関数<a class="headerlink" href="#likelihood-function" title="Link to this heading"></a></h2>
-<p>式 <a class="reference internal" href="#equation-pgp2">(1.9)</a> のノイズ <span class="math notranslate nohighlight">\(\varepsilon\)</span> が次の<a class="reference internal" href="appendix/gaussian_dist.html#gaussian-dist"><span class="std std-ref">ガウス分布</span></a>に従うとしたとき</p>
+<p>式 <a class="reference internal" href="#equation-pgp2">(1.11)</a> のノイズ <span class="math notranslate nohighlight">\(\varepsilon\)</span> が次の<a class="reference internal" href="appendix/gaussian_dist.html#gaussian-dist"><span class="std std-ref">ガウス分布</span></a>に従うとしたとき</p>
 <div class="math notranslate nohighlight" id="equation-ml1">
-<span class="eqno">(1.14)<a class="headerlink" href="#equation-ml1" title="Link to this equation"></a></span>\[p(\varepsilon)
+<span class="eqno">(1.16)<a class="headerlink" href="#equation-ml1" title="Link to this equation"></a></span>\[p(\varepsilon)
 =
 \mathcal{N}(\varepsilon | 0,\sigma_\varepsilon^2)
 =
@@ -161,7 +159,7 @@ w_{M-1}
 \right)}\]</div>
 <p>出力 <span class="math notranslate nohighlight">\(t\)</span> もまた<a class="reference internal" href="appendix/gaussian_dist.html#gaussian-dist"><span class="std std-ref">ガウス分布</span></a>になる</p>
 <div class="math notranslate nohighlight" id="equation-ml2">
-<span class="eqno">(1.15)<a class="headerlink" href="#equation-ml2" title="Link to this equation"></a></span>\[p(t | \boldsymbol{x}, \boldsymbol{w})
+<span class="eqno">(1.17)<a class="headerlink" href="#equation-ml2" title="Link to this equation"></a></span>\[p(t | \boldsymbol{x}, \boldsymbol{w})
 =
 \mathcal{N}(t | y(\boldsymbol{x},\boldsymbol{w}), \sigma_\varepsilon^2)
 =
@@ -173,11 +171,11 @@ t - y(\boldsymbol{x},\boldsymbol{w})
 \right)} .\]</div>
 <p>上記の設定は、 <span class="math notranslate nohighlight">\(t\)</span> というデータの生成機構に対する１つのモデル（仮定）であり、
 実測データに基づいてパラメータ <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> を調整するために使われる。
-式<a class="reference internal" href="#equation-ml2">(1.15)</a> のような確率分布関数において、パラメータ <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> の方を変数とみなす場合、これを尤度関数と呼ぶ。</p>
-<p>複数の <span class="math notranslate nohighlight">\(t\)</span> が、式<a class="reference internal" href="#equation-ml2">(1.15)</a> に従って、互いに独立に得られたとすると、
+式<a class="reference internal" href="#equation-ml2">(1.17)</a> のような確率分布関数において、パラメータ <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> の方を変数とみなす場合、これを尤度関数と呼ぶ。</p>
+<p>複数の <span class="math notranslate nohighlight">\(t\)</span> が、式<a class="reference internal" href="#equation-ml2">(1.17)</a> に従って、互いに独立に得られたとすると、
 その同時分布もやはり<a class="reference internal" href="appendix/gaussian_dist.html#gaussian-dist"><span class="std std-ref">ガウス分布</span></a>となる</p>
 <div class="math notranslate nohighlight" id="equation-ml3">
-<span class="eqno">(1.16)<a class="headerlink" href="#equation-ml3" title="Link to this equation"></a></span>\[\begin{split}p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
+<span class="eqno">(1.18)<a class="headerlink" href="#equation-ml3" title="Link to this equation"></a></span>\[\begin{split}p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
 =
 \prod_{n=1}^N \mathcal{N}(t_n | y(\boldsymbol{x_n},\boldsymbol{w}), \sigma_\varepsilon^2)
 &amp;=
@@ -192,7 +190,7 @@ t - y(\boldsymbol{x},\boldsymbol{w})
 -\frac{1}{2\sigma_\varepsilon^2}
 (\boldsymbol{t}-\boldsymbol{\Phi}\boldsymbol{w})^\top (\boldsymbol{t}-\boldsymbol{\Phi}\boldsymbol{w})
 \right)} .\end{split}\]</div>
-<p>以降の議論においても、多くの場面で、式<a class="reference internal" href="#equation-ml3">(1.16)</a> を尤度関数として採用する。</p>
+<p>以降の議論においても、多くの場面で、式<a class="reference internal" href="#equation-ml3">(1.18)</a> を尤度関数として採用する。</p>
 </section>
 </section>
 

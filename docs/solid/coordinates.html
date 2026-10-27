@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" data-content_root="../">
 <head>
@@ -5,19 +7,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2. 格子座標</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
 
   
-  
-        <script src="../_static/jquery.js?v=8dae8fb0"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/jquery.js?v=958b65b0"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -36,9 +37,6 @@
           <a href="../index.html" class="icon icon-home">
             Technical Notes
           </a>
-              <div class="version">
-                2025.2.22
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -55,11 +53,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unitcell.html">3. ブラべ格子と結晶系</a></li>
-<li class="toctree-l2"><a class="reference internal" href="periodic.html">4. 周期性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html">5. ブロッホの定理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html">6. ブリルアンゾーン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bandstructure.html">7. バンド構造</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tightbinding.html">8. タイト・バインディング近似</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html">4. 格子基底と座標系の変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodic.html">5. 周期性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html">6. ブロッホの定理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html">7. ブリルアンゾーン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bandstructure.html">8. バンド構造</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tightbinding.html">9. タイト・バインディング近似</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferroelectricity.html">10. 強誘電性と結晶構造</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../thermo/index.html">熱化学</a></li>
@@ -117,6 +117,11 @@ z
 <span class="eqno">(2.3)<a class="headerlink" href="#equation-alpha" title="Link to this equation"></a></span>\[0 \leq \alpha_i \leq 1\]</div>
 <p>という範囲の値をとることになる
 （ただし <span class="math notranslate nohighlight">\(\alpha_i = 0\)</span> と <span class="math notranslate nohighlight">\(\alpha_i = 1\)</span> は周期境界条件により等価な点を指すことに注意する）。</p>
+<p>3つの分率座標を列ベクトル <span class="math notranslate nohighlight">\(\boldsymbol{s}=(\alpha_1,\alpha_2,\alpha_3)^\top\)</span> にまとめ、<a class="reference internal" href="lattice.html#lattice"><span class="std std-ref">格子ベクトルと逆格子ベクトル</span></a> で定義した列格子行列を <span class="math notranslate nohighlight">\(A=(\boldsymbol a_1,\boldsymbol a_2,\boldsymbol a_3)\)</span> とすれば、Cartesian位置への変換は</p>
+<div class="math notranslate nohighlight" id="equation-fractional-cartesian-matrix">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-fractional-cartesian-matrix" title="Link to this equation"></a></span>\[\boldsymbol r=A\boldsymbol s,\qquad
+\boldsymbol s=A^{-1}\boldsymbol r.\]</div>
+<p>本章では分率座標を列で表す。この規約では <span class="math notranslate nohighlight">\(A\)</span> の列が格子ベクトルである。格子ベクトルを行に格納するソフトウェアAPIとの対応は <a class="reference internal" href="lattice_transform.html#lattice-transform"><span class="std std-ref">格子基底と座標系の変換</span></a> で扱う。</p>
 </section>
 </section>
 

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" data-content_root="../">
 <head>
@@ -5,19 +7,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5. ガウス過程回帰</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
 
   
-  
-        <script src="../_static/jquery.js?v=8dae8fb0"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/jquery.js?v=958b65b0"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -36,9 +37,6 @@
           <a href="../index.html" class="icon icon-home">
             Technical Notes
           </a>
-              <div class="version">
-                2025.2.22
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -98,10 +96,10 @@
 <span id="id1"></span><h1><span class="section-number">5. </span>ガウス過程回帰<a class="headerlink" href="#gaussian-process" title="Link to this heading"></a></h1>
 <section id="id2">
 <h2><span class="section-number">5.1. </span>動機付け<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>式 <a class="reference internal" href="problem.html#equation-pgp6">(1.13)</a> において、データ数とパラメータ数が等しい、すなわち <span class="math notranslate nohighlight">\(\boldsymbol{\Phi}\)</span>
+<p>式 <a class="reference internal" href="problem.html#equation-pgp6">(1.15)</a> において、データ数とパラメータ数が等しい、すなわち <span class="math notranslate nohighlight">\(\boldsymbol{\Phi}\)</span>
 が正方行列となるケースを考える</p>
 <div class="math notranslate nohighlight" id="equation-gp1">
-<span class="eqno">(5.5)<a class="headerlink" href="#equation-gp1" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{y}
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-gp1" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{y}
 \equiv
 \begin{pmatrix}
 y_1 \\
@@ -126,25 +124,25 @@ w_{N-1}
 \boldsymbol{\Phi}\boldsymbol{w} .\end{split}\]</div>
 <p>さらに <span class="math notranslate nohighlight">\(\boldsymbol{\Phi}\)</span> が正則であるとして、上式を <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> について解く</p>
 <div class="math notranslate nohighlight" id="equation-gp2">
-<span class="eqno">(5.6)<a class="headerlink" href="#equation-gp2" title="Link to this equation"></a></span>\[\boldsymbol{w}
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-gp2" title="Link to this equation"></a></span>\[\boldsymbol{w}
 = \boldsymbol{\Phi}^{-1} \boldsymbol{y} .\]</div>
 <p>パラメータ <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> に対する事前分布として</p>
 <div class="math notranslate nohighlight" id="equation-gp3">
-<span class="eqno">(5.7)<a class="headerlink" href="#equation-gp3" title="Link to this equation"></a></span>\[p(\boldsymbol{w})
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-gp3" title="Link to this equation"></a></span>\[p(\boldsymbol{w})
 \propto
 \exp{\left(-\frac{\beta}{2}\boldsymbol{w}^\top\boldsymbol{w}\right)}\]</div>
-<p>を考え、ここに式 <a class="reference internal" href="#equation-gp2">(5.6)</a> を代入すると次式が得られる</p>
+<p>を考え、ここに式 <a class="reference internal" href="#equation-gp2">(5.3)</a> を代入すると次式が得られる</p>
 <div class="math notranslate nohighlight" id="equation-gp4">
-<span class="eqno">(5.8)<a class="headerlink" href="#equation-gp4" title="Link to this equation"></a></span>\[\exp{\left(-\frac{\beta}{2}\boldsymbol{w}^\top\boldsymbol{w}\right)}
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-gp4" title="Link to this equation"></a></span>\[\exp{\left(-\frac{\beta}{2}\boldsymbol{w}^\top\boldsymbol{w}\right)}
 =
 \exp{\left(-\frac{\beta}{2}\boldsymbol{y}^\top\boldsymbol{\Phi}^{-\top}\boldsymbol{\Phi}^{-1}\boldsymbol{y}\right)}
 =
 \exp{\left(-\frac{\beta}{2}\boldsymbol{y}^\top
 \left(\boldsymbol{\Phi}\boldsymbol{\Phi}^\top\right)^{-1}\boldsymbol{y}\right)} .\]</div>
 <p>上式はパラメータ <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> が消去され、代わりに <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>
-に対する事前分布を与えた式となっている。式 <a class="reference internal" href="#equation-gp1">(5.5)</a> から</p>
+に対する事前分布を与えた式となっている。式 <a class="reference internal" href="#equation-gp1">(5.2)</a> から</p>
 <div class="math notranslate nohighlight" id="equation-gpmp">
-<span class="eqno">(5.9)<a class="headerlink" href="#equation-gpmp" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{\Phi}\boldsymbol{\Phi}^\top
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-gpmp" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{\Phi}\boldsymbol{\Phi}^\top
 =
 \begin{pmatrix}
 \phi_0(\boldsymbol{x}_1) &amp; \phi_1(\boldsymbol{x}_1) &amp; \cdots &amp; \phi_{N-1}(\boldsymbol{x}_1) \\
@@ -160,12 +158,12 @@ w_{N-1}
 \end{pmatrix}\end{split}\]</div>
 <p>であり、</p>
 <div class="math notranslate nohighlight" id="equation-gp-k">
-<span class="eqno">(5.10)<a class="headerlink" href="#equation-gp-k" title="Link to this equation"></a></span>\[k(\boldsymbol{x}_i, \boldsymbol{x}_j)
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-gp-k" title="Link to this equation"></a></span>\[k(\boldsymbol{x}_i, \boldsymbol{x}_j)
 \equiv
 \sum_{n=0}^{N-1} \phi_n(\boldsymbol{x}_i) \phi_n(\boldsymbol{x}_j)\]</div>
 <p>という関数を定義して、これを要素とする行列を</p>
 <div class="math notranslate nohighlight" id="equation-gp-kmat">
-<span class="eqno">(5.11)<a class="headerlink" href="#equation-gp-kmat" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{K}
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-gp-kmat" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{K}
 \equiv
 \begin{pmatrix}
 k(\boldsymbol{x}_1, \boldsymbol{x}_1) &amp; k(\boldsymbol{x}_1, \boldsymbol{x}_2) &amp; \cdots &amp; k(\boldsymbol{x}_1, \boldsymbol{x}_N) \\
@@ -175,7 +173,7 @@ k(\boldsymbol{x}_N, \boldsymbol{x}_1) &amp; k(\boldsymbol{x}_N, \boldsymbol{x}_2
 \end{pmatrix}\end{split}\]</div>
 <p>と置くと、<span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> の事前分布は次のように書ける</p>
 <div class="math notranslate nohighlight" id="equation-gp5">
-<span class="eqno">(5.12)<a class="headerlink" href="#equation-gp5" title="Link to this equation"></a></span>\[p(\boldsymbol{y})
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-gp5" title="Link to this equation"></a></span>\[p(\boldsymbol{y})
 =
 \frac{1}{\sqrt{(2\pi)^N\left| K \right|}}
 \exp{\left(
@@ -189,18 +187,18 @@ k(\boldsymbol{x}_N, \boldsymbol{x}_1) &amp; k(\boldsymbol{x}_N, \boldsymbol{x}_2
 <h2><span class="section-number">5.2. </span>ガウス過程との関係<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <p>いま、多数の（あるいは連続的な）データから、任意に <span class="math notranslate nohighlight">\(N\)</span> 個のデータを取り出すことを考える</p>
 <div class="math notranslate nohighlight" id="equation-gp-ndat">
-<span class="eqno">(5.13)<a class="headerlink" href="#equation-gp-ndat" title="Link to this equation"></a></span>\[\{y_1, y_2, \dots, y_N\} .\]</div>
-<p>この<span class="math notranslate nohighlight">\(N\)</span> 個のデータの同時分布が、式 <a class="reference internal" href="#equation-gp5">(5.12)</a> のような多変量ガウス分布であるとき、これは「ガウス過程」と呼ばれる確率過程の定義そのものになっている。もちろん今はデータのラベルに時間の意味はないが、この対応から、式 <a class="reference internal" href="#equation-gp5">(5.12)</a>
+<span class="eqno">(5.10)<a class="headerlink" href="#equation-gp-ndat" title="Link to this equation"></a></span>\[\{y_1, y_2, \dots, y_N\} .\]</div>
+<p>この<span class="math notranslate nohighlight">\(N\)</span> 個のデータの同時分布が、式 <a class="reference internal" href="#equation-gp5">(5.9)</a> のような多変量ガウス分布であるとき、これは「ガウス過程」と呼ばれる確率過程の定義そのものになっている。もちろん今はデータのラベルに時間の意味はないが、この対応から、式 <a class="reference internal" href="#equation-gp5">(5.9)</a>
 の確率分布を利用した回帰は「ガウス過程回帰」と呼ばれる。</p>
 </section>
 <section id="id4">
 <h2><span class="section-number">5.3. </span>出力にノイズがある場合<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>出力データにノイズがあり、次のような形でデータが生成される場合を考える</p>
 <div class="math notranslate nohighlight" id="equation-gp-t">
-<span class="eqno">(5.14)<a class="headerlink" href="#equation-gp-t" title="Link to this equation"></a></span>\[\boldsymbol{t} = \boldsymbol{y} + \boldsymbol{\varepsilon} .\]</div>
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-gp-t" title="Link to this equation"></a></span>\[\boldsymbol{t} = \boldsymbol{y} + \boldsymbol{\varepsilon} .\]</div>
 <p><span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> が与えられた時の <span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span> の分布を</p>
 <div class="math notranslate nohighlight" id="equation-gp6">
-<span class="eqno">(5.15)<a class="headerlink" href="#equation-gp6" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{y})
+<span class="eqno">(5.12)<a class="headerlink" href="#equation-gp6" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{y})
 =
 \frac{1}{\sqrt{(2\pi)^N(\sigma_\varepsilon^2)^N}}
 \exp{\left(
@@ -209,15 +207,15 @@ k(\boldsymbol{x}_N, \boldsymbol{x}_1) &amp; k(\boldsymbol{x}_N, \boldsymbol{x}_2
 \right)}\]</div>
 <p>でモデル化するとき、<span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span> の周辺分布は</p>
 <div class="math notranslate nohighlight" id="equation-gp-merge">
-<span class="eqno">(5.16)<a class="headerlink" href="#equation-gp-merge" title="Link to this equation"></a></span>\[p(\boldsymbol{t})
+<span class="eqno">(5.13)<a class="headerlink" href="#equation-gp-merge" title="Link to this equation"></a></span>\[p(\boldsymbol{t})
 =
 \int
 p(\boldsymbol{t} | \boldsymbol{y})
 p(\boldsymbol{y})
 d\boldsymbol{y}\]</div>
-<p>と計算される。これを <a class="reference internal" href="#equation-gp5">(5.12)</a> および <a class="reference internal" href="#equation-gp6">(5.15)</a> を用いて計算すると</p>
+<p>と計算される。これを <a class="reference internal" href="#equation-gp5">(5.9)</a> および <a class="reference internal" href="#equation-gp6">(5.12)</a> を用いて計算すると</p>
 <div class="math notranslate nohighlight" id="equation-gp-pt">
-<span class="eqno">(5.17)<a class="headerlink" href="#equation-gp-pt" title="Link to this equation"></a></span>\[p(\boldsymbol{t})
+<span class="eqno">(5.14)<a class="headerlink" href="#equation-gp-pt" title="Link to this equation"></a></span>\[p(\boldsymbol{t})
 =
 \frac{1}{\sqrt{(2\pi)^N\left| \boldsymbol{K} + \beta^{-1}\boldsymbol{I} \right|}}
 \exp{\left(
@@ -228,14 +226,14 @@ d\boldsymbol{y}\]</div>
 \right)}\]</div>
 <p>が得られる。これは、共分散行列を</p>
 <div class="math notranslate nohighlight" id="equation-gp-kmat2">
-<span class="eqno">(5.18)<a class="headerlink" href="#equation-gp-kmat2" title="Link to this equation"></a></span>\[\boldsymbol{K} \longrightarrow \boldsymbol{K} + \beta^{-1}\boldsymbol{I}\]</div>
-<p>と置き換えれば <a class="reference internal" href="#equation-gp5">(5.12)</a> と本質的には同じものであることがわかる。</p>
+<span class="eqno">(5.15)<a class="headerlink" href="#equation-gp-kmat2" title="Link to this equation"></a></span>\[\boldsymbol{K} \longrightarrow \boldsymbol{K} + \beta^{-1}\boldsymbol{I}\]</div>
+<p>と置き換えれば <a class="reference internal" href="#equation-gp5">(5.9)</a> と本質的には同じものであることがわかる。</p>
 </section>
 <section id="id5">
 <h2><span class="section-number">5.4. </span>予測分布<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <p>いま、<span class="math notranslate nohighlight">\(N_1\)</span> 個の入出力データのセットがあるとして、新たな <span class="math notranslate nohighlight">\(N\)</span> 個の入力と対応する出力を</p>
 <div class="math notranslate nohighlight" id="equation-gp-x">
-<span class="eqno">(5.19)<a class="headerlink" href="#equation-gp-x" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{X}
+<span class="eqno">(5.16)<a class="headerlink" href="#equation-gp-x" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{X}
 &amp;\equiv
 \{\boldsymbol{x}_{1}, \boldsymbol{x}_{2}, \dots, \boldsymbol{x}_{N}\} ,\\\\
 \boldsymbol{t}
@@ -243,7 +241,7 @@ d\boldsymbol{y}\]</div>
 \{t_{1}, t_{2}, \dots, t_{N}\}\end{split}\]</div>
 <p>と表し、入出力がそろっている <span class="math notranslate nohighlight">\(N_1\)</span> 個の（既知の）データを</p>
 <div class="math notranslate nohighlight" id="equation-gp-t1">
-<span class="eqno">(5.20)<a class="headerlink" href="#equation-gp-t1" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{X}_{N_1}
+<span class="eqno">(5.17)<a class="headerlink" href="#equation-gp-t1" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{X}_{N_1}
 &amp;\equiv
 \{\boldsymbol{x}_{N+1}, \boldsymbol{x}_{N+2}, \dots, \boldsymbol{x}_{N+N_1}\} ,\\\\
 \boldsymbol{t}_{N_1}
@@ -252,7 +250,7 @@ d\boldsymbol{y}\]</div>
 <p>と表すことにする。関数 <span class="math notranslate nohighlight">\(k(\boldsymbol{x}, \boldsymbol{x}')\)</span> の形も与えられているとして、
 共分散行列をブロック行列の形で以下のように定義する</p>
 <div class="math notranslate nohighlight" id="equation-gp-kblock">
-<span class="eqno">(5.21)<a class="headerlink" href="#equation-gp-kblock" title="Link to this equation"></a></span>\[\begin{split}\begin{pmatrix}
+<span class="eqno">(5.18)<a class="headerlink" href="#equation-gp-kblock" title="Link to this equation"></a></span>\[\begin{split}\begin{pmatrix}
 \boldsymbol{K}_{NN} &amp; \boldsymbol{K}_{NN_1} \\
 \boldsymbol{K}_{N_1N} &amp; \boldsymbol{K}_{N_1N_1} \\
 \end{pmatrix}
@@ -266,7 +264,7 @@ k(\boldsymbol{x}_{N+N_1}, \boldsymbol{x}_1) &amp; \cdots &amp; k(\boldsymbol{x}_
 \end{pmatrix} .\end{split}\]</div>
 <p>ここで <span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span> と <span class="math notranslate nohighlight">\(\boldsymbol{t_{N_1}}\)</span> の同時分布を考える。指数部の中身だけ書き出すと</p>
 <div class="math notranslate nohighlight" id="equation-gp-exp1">
-<span class="eqno">(5.22)<a class="headerlink" href="#equation-gp-exp1" title="Link to this equation"></a></span>\[\begin{split}-\frac{1}{2}
+<span class="eqno">(5.19)<a class="headerlink" href="#equation-gp-exp1" title="Link to this equation"></a></span>\[\begin{split}-\frac{1}{2}
 \left(
 \boldsymbol{t}^\top \;\;
 \boldsymbol{t}_{N_1}^\top
@@ -327,7 +325,7 @@ k(\boldsymbol{x}_{N+N_1}, \boldsymbol{x}_1) &amp; \cdots &amp; k(\boldsymbol{x}_
 \right)^{-1}
 \boldsymbol{K}_{NN_1}
 \boldsymbol{K}^{-1}_{N_1N_1}\end{split}\]</div>
-<p>となる。これらを用いて <a class="reference internal" href="#equation-gp-exp1">(5.22)</a> は次のように書ける</p>
+<p>となる。これらを用いて <a class="reference internal" href="#equation-gp-exp1">(5.19)</a> は次のように書ける</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}-\frac{1}{2}
 \left(
@@ -382,7 +380,7 @@ k(\boldsymbol{x}_{N+N_1}, \boldsymbol{x}_1) &amp; \cdots &amp; k(\boldsymbol{x}_
 \boldsymbol{K}^{-1}_{N_1N_1} .\\\end{split}\]</div>
 <p>以上をまとめると</p>
 <div class="math notranslate nohighlight" id="equation-gp-merge2">
-<span class="eqno">(5.23)<a class="headerlink" href="#equation-gp-merge2" title="Link to this equation"></a></span>\[\begin{split}-\frac{1}{2}
+<span class="eqno">(5.20)<a class="headerlink" href="#equation-gp-merge2" title="Link to this equation"></a></span>\[\begin{split}-\frac{1}{2}
 \left(
 \boldsymbol{t}^\top \;\;
 \boldsymbol{t}_{N_1}^\top
@@ -410,12 +408,12 @@ k(\boldsymbol{x}_{N+N_1}, \boldsymbol{x}_1) &amp; \cdots &amp; k(\boldsymbol{x}_
 \boldsymbol{t}_{N_1}\end{split}\]</div>
 <p>となる。確率の同時分布と条件付き分布の関係式</p>
 <div class="math notranslate nohighlight" id="equation-gp-merge-cond">
-<span class="eqno">(5.24)<a class="headerlink" href="#equation-gp-merge-cond" title="Link to this equation"></a></span>\[p(\boldsymbol{t}, \boldsymbol{t}_{N_1})
+<span class="eqno">(5.21)<a class="headerlink" href="#equation-gp-merge-cond" title="Link to this equation"></a></span>\[p(\boldsymbol{t}, \boldsymbol{t}_{N_1})
 =
 p(\boldsymbol{t} | \boldsymbol{t}_{N_1}) p(\boldsymbol{t}_{N_1})\]</div>
 <p>より、</p>
 <div class="math notranslate nohighlight" id="equation-gp-t-t1">
-<span class="eqno">(5.25)<a class="headerlink" href="#equation-gp-t-t1" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{t}_{N_1})
+<span class="eqno">(5.22)<a class="headerlink" href="#equation-gp-t-t1" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{t}_{N_1})
 \propto
 \exp{
 \left(
@@ -434,14 +432,14 @@ p(\boldsymbol{t} | \boldsymbol{t}_{N_1}) p(\boldsymbol{t}_{N_1})\]</div>
 </section>
 <section id="id6">
 <h2><span class="section-number">5.5. </span>予測関数<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
-<p>式 <a class="reference internal" href="#equation-gp-t-t1">(5.25)</a> より、平均</p>
+<p>式 <a class="reference internal" href="#equation-gp-t-t1">(5.22)</a> より、平均</p>
 <div class="math notranslate nohighlight" id="equation-gp-ave">
-<span class="eqno">(5.26)<a class="headerlink" href="#equation-gp-ave" title="Link to this equation"></a></span>\[\boldsymbol{m}
+<span class="eqno">(5.23)<a class="headerlink" href="#equation-gp-ave" title="Link to this equation"></a></span>\[\boldsymbol{m}
 \equiv
 \boldsymbol{K}_{NN_1} \boldsymbol{K}^{-1}_{N_1N_1} \boldsymbol{t}_{N_1}\]</div>
-<p>が、<a class="reference internal" href="#equation-gp-x">(5.19)</a> の入力に対する出力の予測となり、<a class="reference internal" href="#equation-gp-t-t1">(5.25)</a> は、その誤差を与える事になる。式 <a class="reference internal" href="#equation-gp-ave">(5.26)</a> を書き下すと次のようになる</p>
+<p>が、<a class="reference internal" href="#equation-gp-x">(5.16)</a> の入力に対する出力の予測となり、<a class="reference internal" href="#equation-gp-t-t1">(5.22)</a> は、その誤差を与える事になる。式 <a class="reference internal" href="#equation-gp-ave">(5.23)</a> を書き下すと次のようになる</p>
 <div class="math notranslate nohighlight" id="equation-gp-ave-mat">
-<span class="eqno">(5.27)<a class="headerlink" href="#equation-gp-ave-mat" title="Link to this equation"></a></span>\[\begin{split}\begin{pmatrix}
+<span class="eqno">(5.24)<a class="headerlink" href="#equation-gp-ave-mat" title="Link to this equation"></a></span>\[\begin{split}\begin{pmatrix}
 m(\boldsymbol{x}_{1}) \\
 m(\boldsymbol{x}_{2}) \\
 \vdots \\
@@ -459,13 +457,13 @@ k(\boldsymbol{x}_{N}, \boldsymbol{x}_i) k^{-1}(\boldsymbol{x}_i, \boldsymbol{x}_
 \end{pmatrix}\end{split}\]</div>
 <p>となる。これは「平均」として得られる関数の予測が</p>
 <div class="math notranslate nohighlight" id="equation-gp-m">
-<span class="eqno">(5.28)<a class="headerlink" href="#equation-gp-m" title="Link to this equation"></a></span>\[m(\boldsymbol{x}) = \sum_{i=1}^{N_1} c_i k(\boldsymbol{x}, \boldsymbol{x}_i)\]</div>
+<span class="eqno">(5.25)<a class="headerlink" href="#equation-gp-m" title="Link to this equation"></a></span>\[m(\boldsymbol{x}) = \sum_{i=1}^{N_1} c_i k(\boldsymbol{x}, \boldsymbol{x}_i)\]</div>
 <p>という形で表せることを示している。ここで</p>
 <div class="math notranslate nohighlight" id="equation-gp-c">
-<span class="eqno">(5.29)<a class="headerlink" href="#equation-gp-c" title="Link to this equation"></a></span>\[c_i
+<span class="eqno">(5.26)<a class="headerlink" href="#equation-gp-c" title="Link to this equation"></a></span>\[c_i
 \equiv
 \sum_{j=1}^{N_1} k^{-1}(\boldsymbol{x}_i, \boldsymbol{x}_j) t(\boldsymbol{x}_j)\]</div>
-<p>とおき、また既知データの添え字を <span class="math notranslate nohighlight">\(1, 2, \dots, N_1\)</span> と振り直した。式 <a class="reference internal" href="#equation-gp-m">(5.28)</a> は「<a class="reference internal" href="../hilbert/rkhs.html#rkhs"><span class="std std-ref">再生核ヒルベルト空間</span></a>」というものと密接な関係がある。
+<p>とおき、また既知データの添え字を <span class="math notranslate nohighlight">\(1, 2, \dots, N_1\)</span> と振り直した。式 <a class="reference internal" href="#equation-gp-m">(5.25)</a> は「<a class="reference internal" href="../hilbert/rkhs.html#rkhs"><span class="std std-ref">再生核ヒルベルト空間</span></a>」というものと密接な関係がある。
 詳細は<a class="reference internal" href="../hilbert/index.html#hilbert"><span class="std std-ref">ヒルベルト空間</span></a>の項に譲り、ここでは主要な結果を列挙するだけにとどめる。</p>
 <div class="admonition- admonition">
 <p class="admonition-title">再生核（定義）</p>

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" data-content_root="../">
 <head>
@@ -5,19 +7,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2. 最尤推定と最小二乗法</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
 
   
-  
-        <script src="../_static/jquery.js?v=8dae8fb0"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/jquery.js?v=958b65b0"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -36,9 +37,6 @@
           <a href="../index.html" class="icon icon-home">
             Technical Notes
           </a>
-              <div class="version">
-                2025.2.22
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -95,7 +93,7 @@
 <span id="id1"></span><h1><span class="section-number">2. </span>最尤推定と最小二乗法<a class="headerlink" href="#likelihood" title="Link to this heading"></a></h1>
 <section id="id2">
 <h2><span class="section-number">2.1. </span>最尤推定法と最小二乗法の等価性<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>出力データの生成モデル（<a class="reference internal" href="problem.html#likelihood-function"><span class="std std-ref">尤度関数</span></a>）として、式 <a class="reference internal" href="problem.html#equation-ml3">(1.16)</a></p>
+<p>出力データの生成モデル（<a class="reference internal" href="problem.html#likelihood-function"><span class="std std-ref">尤度関数</span></a>）として、式 <a class="reference internal" href="problem.html#equation-ml3">(1.18)</a></p>
 <div class="math notranslate nohighlight">
 \[p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
 =
@@ -107,24 +105,24 @@
 <p>を採用し、実測データの発生確率を上げるように分布関数の未知パラメータを決める最尤推定を実行しよう。
 上式の対数をとる</p>
 <div class="math notranslate nohighlight" id="equation-ml4">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-ml4" title="Link to this equation"></a></span>\[\ln{p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})}
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-ml4" title="Link to this equation"></a></span>\[\ln{p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})}
 =
 - \frac{N\ln2\pi}{2} - \frac{N\ln\sigma_\varepsilon^2}{2}
 - \frac{1}{2\sigma_\varepsilon^2} \sum_{n=1}^N (t_n - y(\boldsymbol{x_n},\boldsymbol{w}) )^2 .\]</div>
 <p>これを最大化するには、次式を <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> について最小化すればよい</p>
 <div class="math notranslate nohighlight" id="equation-lsq">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-lsq" title="Link to this equation"></a></span>\[L(\boldsymbol{w}) = \frac{1}{2} \sum_{n=1}^N (t_n - y(\boldsymbol{x_n},\boldsymbol{w}) )^2 .\]</div>
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-lsq" title="Link to this equation"></a></span>\[L(\boldsymbol{w}) = \frac{1}{2} \sum_{n=1}^N (t_n - y(\boldsymbol{x_n},\boldsymbol{w}) )^2 .\]</div>
 <p>これは最小二乗問題に他ならない。</p>
 </section>
 <section id="hyp-opt">
 <span id="id3"></span><h2><span class="section-number">2.2. </span>ハイパーパラメータについての最尤推定<a class="headerlink" href="#hyp-opt" title="Link to this heading"></a></h2>
-<p>式 <a class="reference internal" href="#equation-ml4">(2.4)</a> において、 <span class="math notranslate nohighlight">\(\sigma_\varepsilon^2\)</span> についての最大化を考えることもできる。微分してゼロとおくと</p>
+<p>式 <a class="reference internal" href="#equation-ml4">(2.5)</a> において、 <span class="math notranslate nohighlight">\(\sigma_\varepsilon^2\)</span> についての最大化を考えることもできる。微分してゼロとおくと</p>
 <div class="math notranslate nohighlight">
 \[- \frac{N}{2\sigma_\varepsilon^2}
 + \frac{1}{\left(\sigma_\varepsilon^2\right)^2} L(\boldsymbol{w})
 = 0\]</div>
 <div class="math notranslate nohighlight" id="equation-ml5">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-ml5" title="Link to this equation"></a></span>\[\therefore
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-ml5" title="Link to this equation"></a></span>\[\therefore
 \sigma_\varepsilon^2
 =
 \frac{2 L(\boldsymbol{w})}{N}\]</div>

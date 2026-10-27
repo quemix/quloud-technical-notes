@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" data-content_root="../">
 <head>
@@ -5,19 +7,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3. MAP推定と正則化最小二乗法</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
 
   
-  
-        <script src="../_static/jquery.js?v=8dae8fb0"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/jquery.js?v=958b65b0"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -36,9 +37,6 @@
           <a href="../index.html" class="icon icon-home">
             Technical Notes
           </a>
-              <div class="version">
-                2025.2.22
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -91,7 +89,7 @@
 <span id="id1"></span><h1><span class="section-number">3. </span>MAP推定と正則化最小二乗法<a class="headerlink" href="#map" title="Link to this heading"></a></h1>
 <p>MAP は <em>Maximum A Posteriori</em> の頭字語で、日本語では「最大事後確率」と呼ばれる。
 すなわちMAP推定は、実測データが得られた事後の確率分布を考える、<a class="reference internal" href="appendix/bayes_theorem.html#bayes-theorem"><span class="std std-ref">ベイズの定理</span></a>を応用した手法となる。</p>
-<p>いま、回帰関数 <a class="reference internal" href="problem.html#equation-pgp1">(1.8)</a></p>
+<p>いま、回帰関数 <a class="reference internal" href="problem.html#equation-pgp1">(1.10)</a></p>
 <div class="math notranslate nohighlight">
 \[y(\boldsymbol{x},\boldsymbol{w})
 =
@@ -106,7 +104,7 @@
 \frac{1}{\sqrt{(2\pi)^M(\sigma_\boldsymbol{w}^2)^M}}
 \exp{\left(-\frac{\boldsymbol{w}^\top\boldsymbol{w}}{2\sigma_\boldsymbol{w}^2}\right)} .\]</div>
 <p><span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span>（と入力<span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span>）が与えられたときに出力
-<span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span> を得る確率のモデル（<a class="reference internal" href="problem.html#likelihood-function"><span class="std std-ref">尤度関数</span></a>）として、式 <a class="reference internal" href="problem.html#equation-ml3">(1.16)</a></p>
+<span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span> を得る確率のモデル（<a class="reference internal" href="problem.html#likelihood-function"><span class="std std-ref">尤度関数</span></a>）として、式 <a class="reference internal" href="problem.html#equation-ml3">(1.18)</a></p>
 <div class="math notranslate nohighlight">
 \[p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
 =

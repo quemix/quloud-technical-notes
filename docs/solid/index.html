@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" data-content_root="../">
 <head>
@@ -5,18 +7,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>固体物理</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
 
   
-  
-        <script src="../_static/jquery.js?v=8dae8fb0"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
+      <script src="../_static/jquery.js?v=958b65b0"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -35,9 +37,6 @@
           <a href="../index.html" class="icon icon-home">
             Technical Notes
           </a>
-              <div class="version">
-                2025.2.22
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -51,11 +50,13 @@
 <li class="toctree-l2"><a class="reference internal" href="lattice.html">1. 格子ベクトルと逆格子ベクトル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinates.html">2. 格子座標</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unitcell.html">3. ブラべ格子と結晶系</a></li>
-<li class="toctree-l2"><a class="reference internal" href="periodic.html">4. 周期性</a></li>
-<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html">5. ブロッホの定理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html">6. ブリルアンゾーン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bandstructure.html">7. バンド構造</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tightbinding.html">8. タイト・バインディング近似</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html">4. 格子基底と座標系の変換</a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodic.html">5. 周期性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html">6. ブロッホの定理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html">7. ブリルアンゾーン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bandstructure.html">8. バンド構造</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tightbinding.html">9. タイト・バインディング近似</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferroelectricity.html">10. 強誘電性と結晶構造</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../thermo/index.html">熱化学</a></li>
@@ -93,7 +94,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="lattice.html">1. 格子ベクトルと逆格子ベクトル</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="lattice.html#id2">1.1. 定義と性質</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lattice.html#id3">1.2. 格子ベクトルの独立な成分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice.html#id3">1.2. 並進格子と計量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice.html#lattice-dof">1.3. 格子ベクトルの独立な成分</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="coordinates.html">2. 格子座標</a><ul>
@@ -101,35 +103,53 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unitcell.html">3. ブラべ格子と結晶系</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="unitcell.html#id2">3.1. 三斜晶系</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unitcell.html#id3">3.2. 単斜晶系</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unitcell.html#id4">3.3. 直方晶系</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unitcell.html#id5">3.4. 正方晶系</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unitcell.html#id6">3.5. 三方晶系</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unitcell.html#id7">3.6. 六方晶系</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unitcell.html#id8">3.7. 立方晶系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unitcell.html#id2">3.1. 単位胞、原始胞、慣用胞</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="periodic.html">4. 周期性</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="periodic.html#id2">4.1. フーリエ級数表示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lattice_transform.html">4. 格子基底と座標系の変換</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id2">4.1. 原始基底の変更</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#fcc">4.2. FCCの慣用胞と原始胞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id3">4.3. 超胞（スーパーセル）と周期像</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#bravais">4.4. 特殊な単位胞表現とBravais格子型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#cartesian">4.5. Cartesian座標の回転</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id8">4.6. 原点移動と原子座標</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id9">4.7. 逆格子、方向、面指数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id10">4.8. 格子還元と結晶学的標準化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id11">4.9. 計算ソフトと構造ファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#lt-array-conventions">4.10. 実装上の配列規約</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id13">4.11. 数値検証</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id14">4.12. よくある誤り</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id15">4.13. 関連ノート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html#id16">4.14. 参考資料</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="blochstheorem.html">5. ブロッホの定理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html#id2">5.1. ブロッホの定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="periodic.html">5. 周期性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="periodic.html#id2">5.1. フーリエ級数表示</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="brillouinzone.html">6. ブリルアンゾーン</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html#id2">6.1. 逆空間とブリルアンゾーン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html#id3">6.2. ブリルアンゾーン内での積分</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blochstheorem.html">6. ブロッホの定理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html#id2">6.1. ブロッホの定理</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bandstructure.html">7. バンド構造</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bandstructure.html#id2">7.1. 概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bandstructure.html#id3">7.2. 半導体の電気伝導性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brillouinzone.html">7. ブリルアンゾーン</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html#id2">7.1. 逆空間とブリルアンゾーン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html#id3">7.2. ブリルアンゾーン内での積分</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tightbinding.html">8. タイト・バインディング近似</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tightbinding.html#id2">8.1. 概要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bandstructure.html">8. バンド構造</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bandstructure.html#id2">8.1. 概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bandstructure.html#id3">8.2. 半導体の電気伝導性</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tightbinding.html">9. タイト・バインディング近似</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tightbinding.html#id2">9.1. 概要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ferroelectricity.html">10. 強誘電性と結晶構造</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ferroelectricity.html#id2">10.1. 自発分極と強誘電性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferroelectricity.html#batio-3">10.2. BaTiO<span class="math notranslate nohighlight">\(_3\)</span>の立方晶相と正方晶相</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferroelectricity.html#id6">10.3. 構造最適化の結果を読むとき</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferroelectricity.html#id7">10.4. 関連項目</a></li>
 </ul>
 </li>
 </ul>

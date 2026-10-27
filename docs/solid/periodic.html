@@ -1,28 +1,29 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. 周期性</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+  <title>5. 周期性</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
 
   
-  
-        <script src="../_static/jquery.js?v=8dae8fb0"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/jquery.js?v=958b65b0"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="5. ブロッホの定理" href="blochstheorem.html" />
-    <link rel="prev" title="3. ブラべ格子と結晶系" href="unitcell.html" /> 
+    <link rel="next" title="6. ブロッホの定理" href="blochstheorem.html" />
+    <link rel="prev" title="4. 格子基底と座標系の変換" href="lattice_transform.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,9 +37,6 @@
           <a href="../index.html" class="icon icon-home">
             Technical Notes
           </a>
-              <div class="version">
-                2025.2.22
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -52,14 +50,16 @@
 <li class="toctree-l2"><a class="reference internal" href="lattice.html">1. 格子ベクトルと逆格子ベクトル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinates.html">2. 格子座標</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unitcell.html">3. ブラべ格子と結晶系</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4. 周期性</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">4.1. フーリエ級数表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lattice_transform.html">4. 格子基底と座標系の変換</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. 周期性</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.1. フーリエ級数表示</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html">5. ブロッホの定理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html">6. ブリルアンゾーン</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bandstructure.html">7. バンド構造</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tightbinding.html">8. タイト・バインディング近似</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blochstheorem.html">6. ブロッホの定理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brillouinzone.html">7. ブリルアンゾーン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bandstructure.html">8. バンド構造</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tightbinding.html">9. タイト・バインディング近似</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ferroelectricity.html">10. 強誘電性と結晶構造</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../thermo/index.html">熱化学</a></li>
@@ -82,7 +82,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">固体物理</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">4. </span>周期性</li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>周期性</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/solid/periodic.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -93,7 +93,7 @@
            <div itemprop="articleBody">
              
   <section id="periodic">
-<span id="id1"></span><h1><span class="section-number">4. </span>周期性<a class="headerlink" href="#periodic" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1><span class="section-number">5. </span>周期性<a class="headerlink" href="#periodic" title="Link to this heading"></a></h1>
 <p>関数 <span class="math notranslate nohighlight">\(f(x)\)</span> が次の関係を満たすとき</p>
 <div class="math notranslate nohighlight">
 \[f(x + a) = f(x)\]</div>
@@ -103,15 +103,15 @@
 \[\boldsymbol{R} \equiv n_1 \boldsymbol{a}_1 + n_2 \boldsymbol{a}_2 + n_3 \boldsymbol{a}_3\]</div>
 <p>に対して</p>
 <div class="math notranslate nohighlight" id="equation-periodic0">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-periodic0" title="Link to this equation"></a></span>\[\rho(\boldsymbol{r} + \boldsymbol{R}) = \rho(\boldsymbol{r})\]</div>
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-periodic0" title="Link to this equation"></a></span>\[\rho(\boldsymbol{r} + \boldsymbol{R}) = \rho(\boldsymbol{r})\]</div>
 <p>が成り立っていると考えられる。</p>
 <section id="id2">
-<h2><span class="section-number">4.1. </span>フーリエ級数表示<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>一般に、<a class="reference internal" href="#equation-periodic0">(4.1)</a> のような周期関数は以下のフーリエ級数表示</p>
+<h2><span class="section-number">5.1. </span>フーリエ級数表示<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>一般に、<a class="reference internal" href="#equation-periodic0">(5.1)</a> のような周期関数は以下のフーリエ級数表示</p>
 <div class="math notranslate nohighlight">
 \[\rho(\boldsymbol{r}) = \sum_{\boldsymbol{G}} \rho(\boldsymbol{G})
 \exp\left( {i\boldsymbol{G}\! \cdot\! \boldsymbol{r}} \right)\]</div>
-<p>が可能である。<a class="reference internal" href="#equation-periodic0">(4.1)</a> を確かめると</p>
+<p>が可能である。<a class="reference internal" href="#equation-periodic0">(5.1)</a> を確かめると</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\rho(\boldsymbol{r} + \boldsymbol{R})
 &amp;= \sum_{\boldsymbol{G}} \rho(\boldsymbol{G})
@@ -127,8 +127,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="unitcell.html" class="btn btn-neutral float-left" title="3. ブラべ格子と結晶系" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="blochstheorem.html" class="btn btn-neutral float-right" title="5. ブロッホの定理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="lattice_transform.html" class="btn btn-neutral float-left" title="4. 格子基底と座標系の変換" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="blochstheorem.html" class="btn btn-neutral float-right" title="6. ブロッホの定理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

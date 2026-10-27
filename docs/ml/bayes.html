@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" data-content_root="../">
 <head>
@@ -5,19 +7,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4. ベイズ推定</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css?v=5dafae25" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=855244f2" />
 
   
-  
-        <script src="../_static/jquery.js?v=8dae8fb0"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../_static/jquery.js?v=958b65b0"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
@@ -36,9 +37,6 @@
           <a href="../index.html" class="icon icon-home">
             Technical Notes
           </a>
-              <div class="version">
-                2025.2.22
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -99,7 +97,7 @@
 <h2><span class="section-number">4.1. </span>パラメータの事後分布<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p>パラメータに対する事前分布として、つぎの<a class="reference internal" href="appendix/gaussian_dist.html#gaussian-dist"><span class="std std-ref">ガウス分布</span></a>を考える</p>
 <div class="math notranslate nohighlight" id="equation-bayes1">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-bayes1" title="Link to this equation"></a></span>\[p(\boldsymbol{w})
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-bayes1" title="Link to this equation"></a></span>\[p(\boldsymbol{w})
 =
 \mathcal{N}(\boldsymbol{w} | \boldsymbol{m}_0, \boldsymbol{S}_0)
 =
@@ -111,7 +109,7 @@
 (\boldsymbol{w}-\boldsymbol{m}_0)
 \right)} .\]</div>
 <p><span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span>（と入力<span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span>）が与えられたときの
-<span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span> の分布（<a class="reference internal" href="problem.html#likelihood-function"><span class="std std-ref">尤度関数</span></a>）は、式 <a class="reference internal" href="problem.html#equation-ml3">(1.16)</a></p>
+<span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span> の分布（<a class="reference internal" href="problem.html#likelihood-function"><span class="std std-ref">尤度関数</span></a>）は、式 <a class="reference internal" href="problem.html#equation-ml3">(1.18)</a></p>
 <div class="math notranslate nohighlight">
 \[p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
 =
@@ -123,20 +121,20 @@
 \right)}\]</div>
 <p>でモデル化する。このときの <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> の事後分布を計算する</p>
 <div class="math notranslate nohighlight" id="equation-bayes2">
-<span class="eqno">(4.3)<a class="headerlink" href="#equation-bayes2" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{t})
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-bayes2" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{t})
 = \frac{
 p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
 p(\boldsymbol{w})
 }{p(\boldsymbol{t} | \boldsymbol{X})} ,\]</div>
 <div class="math notranslate nohighlight" id="equation-bayes3">
-<span class="eqno">(4.4)<a class="headerlink" href="#equation-bayes3" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{X})
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-bayes3" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{X})
 =
 \int p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
 p(\boldsymbol{w})d\boldsymbol{w} .\]</div>
-<p>式 <a class="reference internal" href="#equation-bayes2">(4.3)</a> の分子を書き下すと次のようになる
+<p>式 <a class="reference internal" href="#equation-bayes2">(4.2)</a> の分子を書き下すと次のようになる
 （<span class="math notranslate nohighlight">\(\beta \equiv \sigma^{-2}_\varepsilon\)</span> とおく）</p>
 <div class="math notranslate nohighlight" id="equation-bayes4">
-<span class="eqno">(4.5)<a class="headerlink" href="#equation-bayes4" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-bayes4" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
 p(\boldsymbol{w})
 =
 \frac{1}{
@@ -153,7 +151,7 @@ p(\boldsymbol{w})
 \right)} .\]</div>
 <p>これを <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> について整理する</p>
 <div class="math notranslate nohighlight" id="equation-bayes5">
-<span class="eqno">(4.6)<a class="headerlink" href="#equation-bayes5" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-bayes5" title="Link to this equation"></a></span>\[p(\boldsymbol{t} | \boldsymbol{X}, \boldsymbol{w})
 p(\boldsymbol{w})
 \propto
 \exp{\left(
@@ -164,13 +162,13 @@ p(\boldsymbol{w})
 \right)} .\]</div>
 <p>ここで、</p>
 <div class="math notranslate nohighlight" id="equation-bayes6">
-<span class="eqno">(4.7)<a class="headerlink" href="#equation-bayes6" title="Link to this equation"></a></span>\[\boldsymbol{S}_1^{-1}
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-bayes6" title="Link to this equation"></a></span>\[\boldsymbol{S}_1^{-1}
 \equiv
 \boldsymbol{S}_0^{-1}
 +
 \beta \boldsymbol{\Phi}^\top \boldsymbol{\Phi} ,\]</div>
 <div class="math notranslate nohighlight" id="equation-bayes7">
-<span class="eqno">(4.8)<a class="headerlink" href="#equation-bayes7" title="Link to this equation"></a></span>\[\boldsymbol{m}_1
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-bayes7" title="Link to this equation"></a></span>\[\boldsymbol{m}_1
 \equiv
 \boldsymbol{S}_1
 \left(
@@ -178,9 +176,9 @@ p(\boldsymbol{w})
 + \beta \boldsymbol{\Phi}^\top \boldsymbol{t}
 \right)\]</div>
 <p>とおいた。係数や<span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> を含まない項は分母と打ち消し合うので、
-結局 <a class="reference internal" href="#equation-bayes2">(4.3)</a> は、つぎの<a class="reference internal" href="appendix/gaussian_dist.html#gaussian-dist"><span class="std std-ref">ガウス分布</span></a>となる</p>
+結局 <a class="reference internal" href="#equation-bayes2">(4.2)</a> は、つぎの<a class="reference internal" href="appendix/gaussian_dist.html#gaussian-dist"><span class="std std-ref">ガウス分布</span></a>となる</p>
 <div class="math notranslate nohighlight" id="equation-bayes8">
-<span class="eqno">(4.9)<a class="headerlink" href="#equation-bayes8" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{t})
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-bayes8" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{t})
 =
 \frac{1}{
 \sqrt{(2\pi)^{M} \left|\boldsymbol{S}_1\right|}
@@ -194,14 +192,14 @@ p(\boldsymbol{w})
 </section>
 <section id="id3">
 <h2><span class="section-number">4.2. </span>逐次学習<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
-<p>式 <a class="reference internal" href="problem.html#equation-pgp3">(1.10)</a> の <span class="math notranslate nohighlight">\(N\)</span> 個のデータに加え、新たに <span class="math notranslate nohighlight">\(N_2\)</span>
+<p>式 <a class="reference internal" href="problem.html#equation-pgp3">(1.12)</a> の <span class="math notranslate nohighlight">\(N\)</span> 個のデータに加え、新たに <span class="math notranslate nohighlight">\(N_2\)</span>
 個のデータを得たという状況を考える</p>
 <div class="math notranslate nohighlight" id="equation-bayes9">
-<span class="eqno">(4.10)<a class="headerlink" href="#equation-bayes9" title="Link to this equation"></a></span>\[\boldsymbol{D}_2
+<span class="eqno">(4.9)<a class="headerlink" href="#equation-bayes9" title="Link to this equation"></a></span>\[\boldsymbol{D}_2
 \equiv
 \{(\boldsymbol{x}_{N+1}, t_{N+1}), \; (\boldsymbol{x}_{N+2}, t_{N+2}),
 \; \dots \; (\boldsymbol{x}_{N+N_2}, t_{N+N_2}) \} .\]</div>
-<p>また、式 <a class="reference internal" href="problem.html#equation-pgp6">(1.13)</a> に対応する次式を定義しておく</p>
+<p>また、式 <a class="reference internal" href="problem.html#equation-pgp6">(1.15)</a> に対応する次式を定義しておく</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\boldsymbol{\Phi}_2
 \equiv
@@ -211,33 +209,33 @@ p(\boldsymbol{w})
 \vdots &amp; \cdots &amp; \vdots \\
 \phi_0(\boldsymbol{x}_{N+N_2}) &amp; \cdots &amp; \phi_{M-1}(\boldsymbol{x}_{N+N_2}) \\
 \end{pmatrix} .\end{split}\]</div>
-<p>この状況で、今度は <a class="reference internal" href="#equation-bayes8">(4.9)</a> を事前分布として、
+<p>この状況で、今度は <a class="reference internal" href="#equation-bayes8">(4.8)</a> を事前分布として、
 パラメータ <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> の事後分布を考える</p>
 <div class="math notranslate nohighlight" id="equation-bayes10">
-<span class="eqno">(4.11)<a class="headerlink" href="#equation-bayes10" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}_2, \boldsymbol{t}_2, \boldsymbol{X}, \boldsymbol{t})
+<span class="eqno">(4.10)<a class="headerlink" href="#equation-bayes10" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}_2, \boldsymbol{t}_2, \boldsymbol{X}, \boldsymbol{t})
 = \frac{
 p(\boldsymbol{t}_2 | \boldsymbol{X}_2, \boldsymbol{w})
 p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{t})
 }{p(\boldsymbol{t}_2 | \boldsymbol{X}_2, \boldsymbol{X}, \boldsymbol{t})} .\]</div>
-<p><span class="math notranslate nohighlight">\(p(\boldsymbol{t}_2 | \boldsymbol{X}_2, \boldsymbol{w})\)</span> として再び <a class="reference internal" href="problem.html#equation-ml3">(1.16)</a> を用いるならば、
-この事後分布の計算は、 <a class="reference internal" href="#equation-bayes8">(4.9)</a> を求めたときと全く同じになる。すなわち</p>
+<p><span class="math notranslate nohighlight">\(p(\boldsymbol{t}_2 | \boldsymbol{X}_2, \boldsymbol{w})\)</span> として再び <a class="reference internal" href="problem.html#equation-ml3">(1.18)</a> を用いるならば、
+この事後分布の計算は、 <a class="reference internal" href="#equation-bayes8">(4.8)</a> を求めたときと全く同じになる。すなわち</p>
 <div class="math notranslate nohighlight" id="equation-bayes11">
-<span class="eqno">(4.12)<a class="headerlink" href="#equation-bayes11" title="Link to this equation"></a></span>\[\boldsymbol{S}_2^{-1}
+<span class="eqno">(4.11)<a class="headerlink" href="#equation-bayes11" title="Link to this equation"></a></span>\[\boldsymbol{S}_2^{-1}
 \equiv
 \boldsymbol{S}_1^{-1}
 +
 \beta \boldsymbol{\Phi}_2^\top \boldsymbol{\Phi}_2 ,\]</div>
 <div class="math notranslate nohighlight" id="equation-bayes12">
-<span class="eqno">(4.13)<a class="headerlink" href="#equation-bayes12" title="Link to this equation"></a></span>\[\boldsymbol{m}_2
+<span class="eqno">(4.12)<a class="headerlink" href="#equation-bayes12" title="Link to this equation"></a></span>\[\boldsymbol{m}_2
 \equiv
 \boldsymbol{S}_2
 \left(
 \boldsymbol{S}_1^{-1} \boldsymbol{m}_1
 + \beta \boldsymbol{\Phi}_2^\top \boldsymbol{t}_2
 \right) .\]</div>
-<p>を定義すれば、 <a class="reference internal" href="#equation-bayes10">(4.11)</a> は以下のように書ける</p>
+<p>を定義すれば、 <a class="reference internal" href="#equation-bayes10">(4.10)</a> は以下のように書ける</p>
 <div class="math notranslate nohighlight" id="equation-bayes13">
-<span class="eqno">(4.14)<a class="headerlink" href="#equation-bayes13" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}_2, \boldsymbol{t}_2, \boldsymbol{X}, \boldsymbol{t})
+<span class="eqno">(4.13)<a class="headerlink" href="#equation-bayes13" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}_2, \boldsymbol{t}_2, \boldsymbol{X}, \boldsymbol{t})
 =
 \frac{1}{
 \sqrt{(2\pi)^{M} \left|\boldsymbol{S}_2\right|}
@@ -253,17 +251,17 @@ p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{t})
 </section>
 <section id="id4">
 <h2><span class="section-number">4.3. </span>逐次学習とバッチ学習の等価性<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
-<p>今度は <span class="math notranslate nohighlight">\(N+N_2\)</span> 個のデータが最初からあるという状況で、 <a class="reference internal" href="#equation-bayes1">(4.2)</a>
+<p>今度は <span class="math notranslate nohighlight">\(N+N_2\)</span> 個のデータが最初からあるという状況で、 <a class="reference internal" href="#equation-bayes1">(4.1)</a>
 の事前分布に戻ってパラメータ <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> の事後分布</p>
 <div class="math notranslate nohighlight" id="equation-bayes14">
-<span class="eqno">(4.15)<a class="headerlink" href="#equation-bayes14" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{X}_2, \boldsymbol{t}, \boldsymbol{t}_2)
+<span class="eqno">(4.14)<a class="headerlink" href="#equation-bayes14" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}, \boldsymbol{X}_2, \boldsymbol{t}, \boldsymbol{t}_2)
 = \frac{
 p(\boldsymbol{t}, \boldsymbol{t}_2 | \boldsymbol{X}, \boldsymbol{X}_2, \boldsymbol{w})
 p(\boldsymbol{w})
 }{p(\boldsymbol{t}, \boldsymbol{t}_2 | \boldsymbol{X}, \boldsymbol{X}_2)}\]</div>
-<p>の計算を行う。<a class="reference internal" href="#equation-bayes6">(4.7)</a> および <a class="reference internal" href="#equation-bayes7">(4.8)</a> に対応する式は、</p>
+<p>の計算を行う。<a class="reference internal" href="#equation-bayes6">(4.6)</a> および <a class="reference internal" href="#equation-bayes7">(4.7)</a> に対応する式は、</p>
 <div class="math notranslate nohighlight" id="equation-bayes6b">
-<span class="eqno">(4.16)<a class="headerlink" href="#equation-bayes6b" title="Link to this equation"></a></span>\[\tilde{\boldsymbol{S}}_1^{-1}
+<span class="eqno">(4.15)<a class="headerlink" href="#equation-bayes6b" title="Link to this equation"></a></span>\[\tilde{\boldsymbol{S}}_1^{-1}
 \equiv
 \boldsymbol{S}_0^{-1}
 +
@@ -277,7 +275,7 @@ p(\boldsymbol{w})
 =
 \boldsymbol{S}_2^{-1}\]</div>
 <div class="math notranslate nohighlight" id="equation-bayes7b">
-<span class="eqno">(4.17)<a class="headerlink" href="#equation-bayes7b" title="Link to this equation"></a></span>\[\tilde{\boldsymbol{m}}_1
+<span class="eqno">(4.16)<a class="headerlink" href="#equation-bayes7b" title="Link to this equation"></a></span>\[\tilde{\boldsymbol{m}}_1
 \equiv
 \tilde{\boldsymbol{S}}_1
 \left(
@@ -293,12 +291,12 @@ p(\boldsymbol{w})
 \right)
 =
 \boldsymbol{m}_2\]</div>
-<p>となるので、事後分布は <a class="reference internal" href="#equation-bayes13">(4.14)</a> と全く同じものになることがわかる。このことは、
+<p>となるので、事後分布は <a class="reference internal" href="#equation-bayes13">(4.13)</a> と全く同じものになることがわかる。このことは、
 データを大量に用意して一度に学習させても（バッチ学習）、
 小分けにして少しずつ学習させても（逐次学習）、結果は変わらないことを示している。
 そこまでの学習の成果は次式に集約されることになる</p>
 <div class="math notranslate nohighlight" id="equation-bayes15">
-<span class="eqno">(4.18)<a class="headerlink" href="#equation-bayes15" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}_N, \boldsymbol{t}_N)
+<span class="eqno">(4.17)<a class="headerlink" href="#equation-bayes15" title="Link to this equation"></a></span>\[p(\boldsymbol{w} | \boldsymbol{X}_N, \boldsymbol{t}_N)
 =
 \frac{1}{
 \sqrt{(2\pi)^{M} \left|\boldsymbol{S}_N\right|}
@@ -312,14 +310,14 @@ p(\boldsymbol{w})
 </section>
 <section id="id5">
 <h2><span class="section-number">4.4. </span>出力データの予測分布<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
-<p>パラメータの事前分布として式 <a class="reference internal" href="#equation-bayes15">(4.18)</a> が得られているという状況で、新たな入力 <span class="math notranslate nohighlight">\(\boldsymbol{X}_{\rm new}\)</span>
+<p>パラメータの事前分布として式 <a class="reference internal" href="#equation-bayes15">(4.17)</a> が得られているという状況で、新たな入力 <span class="math notranslate nohighlight">\(\boldsymbol{X}_{\rm new}\)</span>
 に対する <span class="math notranslate nohighlight">\(\boldsymbol{t}_{\rm new}\)</span> の予測分布を考える。これは次式で計算される</p>
 <div class="math notranslate nohighlight" id="equation-bayes16">
-<span class="eqno">(4.19)<a class="headerlink" href="#equation-bayes16" title="Link to this equation"></a></span>\[p(\boldsymbol{t}_{\rm new} | \boldsymbol{X}_{\rm new}, \boldsymbol{X}_N, \boldsymbol{t}_N)
+<span class="eqno">(4.18)<a class="headerlink" href="#equation-bayes16" title="Link to this equation"></a></span>\[p(\boldsymbol{t}_{\rm new} | \boldsymbol{X}_{\rm new}, \boldsymbol{X}_N, \boldsymbol{t}_N)
 =
 \int p(\boldsymbol{t}_{\rm new} | \boldsymbol{X}_{\rm new}, \boldsymbol{w})
 p(\boldsymbol{w} |  \boldsymbol{X}_N, \boldsymbol{t}_N) d\boldsymbol{w} .\]</div>
-<p>上式の被積分関数は <a class="reference internal" href="#equation-bayes4">(4.5)</a> と同じ形</p>
+<p>上式の被積分関数は <a class="reference internal" href="#equation-bayes4">(4.4)</a> と同じ形</p>
 <div class="math notranslate nohighlight">
 \[\exp{\left(
 -\frac{\beta}{2}
@@ -353,7 +351,7 @@ p(\boldsymbol{w} |  \boldsymbol{X}_N, \boldsymbol{t}_N) d\boldsymbol{w} .\]</div
 -\frac{1}{2}
 \boldsymbol{m}_N^\top\boldsymbol{S}_N^{-1}\boldsymbol{m}_N\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-bayes18">
-<span class="eqno">(4.20)<a class="headerlink" href="#equation-bayes18" title="Link to this equation"></a></span>\[\begin{split}= -\frac{1}{2}
+<span class="eqno">(4.19)<a class="headerlink" href="#equation-bayes18" title="Link to this equation"></a></span>\[\begin{split}= -\frac{1}{2}
 \left[
 \left( \boldsymbol{w}^\top \;\; \boldsymbol{t}_{\rm new}^\top \right)
 -\left( \boldsymbol{m}_N^\top\boldsymbol{S}_N^{-1} \;\; \boldsymbol{0} \right)
@@ -382,7 +380,7 @@ p(\boldsymbol{w} |  \boldsymbol{X}_N, \boldsymbol{t}_N) d\boldsymbol{w} .\]</div
 \boldsymbol{m}_N^\top\boldsymbol{S}_N^{-1}\boldsymbol{m}_N .\end{split}\]</div>
 <p>ここで、</p>
 <div class="math notranslate nohighlight" id="equation-bayes19">
-<span class="eqno">(4.21)<a class="headerlink" href="#equation-bayes19" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{R}^{-1}
+<span class="eqno">(4.20)<a class="headerlink" href="#equation-bayes19" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{R}^{-1}
 \equiv
 \begin{pmatrix}
 \boldsymbol{S}_N^{-1} + \beta\boldsymbol{\Phi}_{\rm new}^\top\boldsymbol{\Phi}_{\rm new} &amp;
@@ -392,7 +390,7 @@ p(\boldsymbol{w} |  \boldsymbol{X}_N, \boldsymbol{t}_N) d\boldsymbol{w} .\]</div
 \end{pmatrix}\end{split}\]</div>
 <p>とおいた。<span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span> は<a class="reference internal" href="appendix/matrix_formula.html#matform-block"><span class="std std-ref">ブロック行列の逆行列の公式</span></a>より</p>
 <div class="math notranslate nohighlight" id="equation-bayes20">
-<span class="eqno">(4.22)<a class="headerlink" href="#equation-bayes20" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{R}
+<span class="eqno">(4.21)<a class="headerlink" href="#equation-bayes20" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{R}
 =
 \begin{pmatrix}
 \boldsymbol{S}_N &amp;
@@ -402,7 +400,7 @@ p(\boldsymbol{w} |  \boldsymbol{X}_N, \boldsymbol{t}_N) d\boldsymbol{w} .\]</div
 \end{pmatrix}\end{split}\]</div>
 <p>となる。これから、</p>
 <div class="math notranslate nohighlight" id="equation-bayes21">
-<span class="eqno">(4.23)<a class="headerlink" href="#equation-bayes21" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{R}
+<span class="eqno">(4.22)<a class="headerlink" href="#equation-bayes21" title="Link to this equation"></a></span>\[\begin{split}\boldsymbol{R}
 \begin{pmatrix}
 \boldsymbol{S}_N^{-1}\boldsymbol{m}_N \\
 \boldsymbol{0} \\
@@ -412,7 +410,7 @@ p(\boldsymbol{w} |  \boldsymbol{X}_N, \boldsymbol{t}_N) d\boldsymbol{w} .\]</div
 \boldsymbol{m}_N \\
 \boldsymbol{\Phi}_{\rm new}\boldsymbol{m}_N \\
 \end{pmatrix}\end{split}\]</div>
-<p>と計算されるので、 <a class="reference internal" href="#equation-bayes18">(4.20)</a> は、右辺第2項と第3項が打ち消し合い、最終的に次のようになる</p>
+<p>と計算されるので、 <a class="reference internal" href="#equation-bayes18">(4.19)</a> は、右辺第2項と第3項が打ち消し合い、最終的に次のようになる</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}-\frac{1}{2}
 \begin{pmatrix}
@@ -425,7 +423,7 @@ p(\boldsymbol{w} |  \boldsymbol{X}_N, \boldsymbol{t}_N) d\boldsymbol{w} .\]</div
 \boldsymbol{t}_{\rm new} - \boldsymbol{\Phi}_{\rm new}\boldsymbol{m}_N \\
 \end{pmatrix} \\\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-bayes22">
-<span class="eqno">(4.24)<a class="headerlink" href="#equation-bayes22" title="Link to this equation"></a></span>\[=
+<span class="eqno">(4.23)<a class="headerlink" href="#equation-bayes22" title="Link to this equation"></a></span>\[=
 -\frac{1}{2}
 \left( \boldsymbol{w} - \boldsymbol{m}_N - \boldsymbol{S}_{N+1}\boldsymbol{m}^{\prime}_{N+1} \right)^\top
 \boldsymbol{S}^{-1}_{N+1}
@@ -446,30 +444,30 @@ p(\boldsymbol{w} |  \boldsymbol{X}_N, \boldsymbol{t}_N) d\boldsymbol{w} .\]</div
 \left( \boldsymbol{t}_{\rm new} - \boldsymbol{\Phi}_{\rm new}\boldsymbol{m}_N \right)\]</div>
 <p>ここで</p>
 <div class="math notranslate nohighlight" id="equation-bayes23">
-<span class="eqno">(4.25)<a class="headerlink" href="#equation-bayes23" title="Link to this equation"></a></span>\[\boldsymbol{S}_{N+1}^{-1}
+<span class="eqno">(4.24)<a class="headerlink" href="#equation-bayes23" title="Link to this equation"></a></span>\[\boldsymbol{S}_{N+1}^{-1}
 \equiv
 \boldsymbol{S}_N^{-1} + \beta\boldsymbol{\Phi}_{\rm new}^\top\boldsymbol{\Phi}_{\rm new} ,\]</div>
 <div class="math notranslate nohighlight" id="equation-bayes24">
-<span class="eqno">(4.26)<a class="headerlink" href="#equation-bayes24" title="Link to this equation"></a></span>\[\boldsymbol{A}_{N+1}^{-1}
+<span class="eqno">(4.25)<a class="headerlink" href="#equation-bayes24" title="Link to this equation"></a></span>\[\boldsymbol{A}_{N+1}^{-1}
 \equiv
 \beta\boldsymbol{I} - \beta^2\boldsymbol{\Phi}_{\rm new}  \boldsymbol{S}_{N+1} \boldsymbol{\Phi}^\top_{\rm new} ,\]</div>
 <div class="math notranslate nohighlight" id="equation-bayes25">
-<span class="eqno">(4.27)<a class="headerlink" href="#equation-bayes25" title="Link to this equation"></a></span>\[\boldsymbol{m}^{\prime}_{N+1}
+<span class="eqno">(4.26)<a class="headerlink" href="#equation-bayes25" title="Link to this equation"></a></span>\[\boldsymbol{m}^{\prime}_{N+1}
 \equiv
 \beta\boldsymbol{\Phi}_{\rm new}^\top
 \left(
 \boldsymbol{t}_{\rm new} - \boldsymbol{\Phi}_{\rm new} \boldsymbol{m}_{N}
 \right) ,\]</div>
 <div class="math notranslate nohighlight" id="equation-bayes26">
-<span class="eqno">(4.28)<a class="headerlink" href="#equation-bayes26" title="Link to this equation"></a></span>\[\boldsymbol{m}_{N+1}
+<span class="eqno">(4.27)<a class="headerlink" href="#equation-bayes26" title="Link to this equation"></a></span>\[\boldsymbol{m}_{N+1}
 \equiv
 \boldsymbol{S}_{N+1}
 \left(
 \boldsymbol{S}_N^{-1} \boldsymbol{m}_N
 + \beta \boldsymbol{\Phi}^\top_{\rm new} \boldsymbol{t}_{\rm new}
 \right) ,\]</div>
-<p>とおいた。式 <a class="reference internal" href="#equation-bayes22">(4.24)</a> の最後の等式は、<a class="reference internal" href="appendix/matrix_formula.html#matform1"><span class="std std-ref">逆行列の公式（１）</span></a>を用いて導ける。
-<a class="reference internal" href="#equation-bayes16">(4.19)</a> に戻って、 <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> についての<a class="reference internal" href="appendix/gaussian_intg.html#gaussian-intg"><span class="std std-ref">ガウス積分</span></a>を実行すると</p>
+<p>とおいた。式 <a class="reference internal" href="#equation-bayes22">(4.23)</a> の最後の等式は、<a class="reference internal" href="appendix/matrix_formula.html#matform1"><span class="std std-ref">逆行列の公式（１）</span></a>を用いて導ける。
+<a class="reference internal" href="#equation-bayes16">(4.18)</a> に戻って、 <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> についての<a class="reference internal" href="appendix/gaussian_intg.html#gaussian-intg"><span class="std std-ref">ガウス積分</span></a>を実行すると</p>
 <div class="math notranslate nohighlight">
 \[\int d\boldsymbol{w}
 \exp{\left(
@@ -495,7 +493,7 @@ p(\boldsymbol{w} |  \boldsymbol{X}_N, \boldsymbol{t}_N) d\boldsymbol{w} .\]</div
 <p>となるが、<a class="reference internal" href="appendix/matrix_formula.html#matform-blockdet"><span class="std std-ref">行列式の公式</span></a>を用いて係数を整理すると、
 最終的に出力データの予測分布は以下のようになる</p>
 <div class="math notranslate nohighlight" id="equation-bayes30">
-<span class="eqno">(4.29)<a class="headerlink" href="#equation-bayes30" title="Link to this equation"></a></span>\[p(\boldsymbol{t}_{\rm new} | \boldsymbol{X}_{\rm new}, \boldsymbol{X}_N, \boldsymbol{t}_N)
+<span class="eqno">(4.28)<a class="headerlink" href="#equation-bayes30" title="Link to this equation"></a></span>\[p(\boldsymbol{t}_{\rm new} | \boldsymbol{X}_{\rm new}, \boldsymbol{X}_N, \boldsymbol{t}_N)
 =
 \frac{1}{\sqrt{(2\pi)^N \left| \boldsymbol{A}_{N+1} \right|}}
 \exp{\left(
