@@ -18,7 +18,8 @@ extensions = ['sphinx.ext.mathjax', 'sphinx.ext.githubpages']
 # extensions = ['sphinx.ext.mathjax', 'sphinx_rtd_theme']
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+# Sphinx does not use .gitignore; keep the private meta checkout out of the document scan.
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'meta/**']
 
 language = 'ja'
 

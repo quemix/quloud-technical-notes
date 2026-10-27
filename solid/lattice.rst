@@ -99,6 +99,26 @@
   B^{-1} = \frac{1}{2\pi}A^\top
   :label: inverse
 
+------------------------------------
+並進格子と計量
+------------------------------------
+
+上記の行列 :math:`A` を用いて、格子点の全体（並進格子）は次のように表せる
+
+.. math::
+  \Lambda(A)=\{A\boldsymbol n\mid\boldsymbol n\in\mathbb Z^3\}.
+  :label: translation-lattice
+
+慣用胞のように中心並進を含む場合、3本の胞辺だけでは格子点全体を生成せず、中心並進も含めて考える（:ref:`unitcell`）。格子ベクトルの長さと角度をまとめる計量行列、および胞体積は
+
+.. math::
+  G=A^\top A,\qquad G_{ij}=\boldsymbol a_i\cdot\boldsymbol a_j,
+  \qquad V=|\det A|.
+  :label: lattice-metric-volume
+
+である。:math:`G` は選んだ基底の計量を表し、格子基底を変えれば成分行列も変わる。
+
+.. _lattice-dof:
 
 ------------------------------------
 格子ベクトルの独立な成分

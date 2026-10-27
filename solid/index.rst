@@ -13,6 +13,7 @@
    lattice
    coordinates
    unitcell
+   lattice_transform
    periodic
    blochstheorem
    brillouinzone

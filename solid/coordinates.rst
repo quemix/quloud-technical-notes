@@ -39,6 +39,15 @@ XYZ座標と格子座標
 という範囲の値をとることになる
 （ただし :math:`\alpha_i = 0` と :math:`\alpha_i = 1` は周期境界条件により等価な点を指すことに注意する）。
 
+3つの分率座標を列ベクトル :math:`\boldsymbol{s}=(\alpha_1,\alpha_2,\alpha_3)^\top` にまとめ、:ref:`格子ベクトルと逆格子ベクトル<lattice>` で定義した列格子行列を :math:`A=(\boldsymbol a_1,\boldsymbol a_2,\boldsymbol a_3)` とすれば、Cartesian位置への変換は
+
+.. math::
+  \boldsymbol r=A\boldsymbol s,\qquad
+  \boldsymbol s=A^{-1}\boldsymbol r.
+  :label: fractional-cartesian-matrix
+
+本章では分率座標を列で表す。この規約では :math:`A` の列が格子ベクトルである。格子ベクトルを行に格納するソフトウェアAPIとの対応は :ref:`lattice-transform` で扱う。
+
 .. .. math::
 ..   \begin{pmatrix}
 ..   x_1 \\

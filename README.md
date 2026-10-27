@@ -7,8 +7,12 @@ Quloudの具体的な計算事例は[`quloud-examples`](https://github.com/quemi
 ## ビルド
 
 ```bash
-sphinx-build -b html -d /tmp/quloud-technical-notes-doctrees . /tmp/quloud-technical-notes-html
+sphinx-build -b html -E -W -d /tmp/quloud-technical-notes-doctrees . /tmp/quloud-technical-notes-html
 ```
+
+`-E`でSphinxの保存済み環境を使わずに再読込し、`-W`で警告をビルド失敗として扱います。
+Sphinxは`.gitignore`を入力除外として扱わないため、ローカルに非公開の`meta/`チェックアウトがある場合は、
+`conf.py`の`exclude_patterns`にも`meta/**`を含めてください。
 
 ## 内部の作業方針とエージェント設定
 
