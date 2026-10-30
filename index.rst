@@ -10,6 +10,7 @@ Technical Notes
    :maxdepth: 2
 
    solid/index
+   electronic/index
    thermo/index
    ml/index
    hilbert/index
