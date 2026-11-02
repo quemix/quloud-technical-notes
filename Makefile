@@ -22,7 +22,12 @@ agent-link:
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help agent-link serve Makefile
+.PHONY: help html agent-link serve Makefile
+
+# Always rebuild every page (-E). An incremental build rewrites only the pages whose
+# source changed, so after the toctree changes the sidebar of the other pages stays stale.
+html:
+	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" -E $(SPHINXOPTS) $(O)
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
