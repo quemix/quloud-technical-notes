@@ -17,6 +17,8 @@
    periodic
    blochstheorem
    brillouinzone
+   periodic_boundary
+   kpoint_sampling
    bandstructure
    tightbinding
    ferroelectricity

@@ -47,3 +47,5 @@
   :label: rho(E)
 
 と表される。ここで、:math:`\delta(E-E(\boldsymbol{k}))` はディラックのデルタ関数である。
+
+実際の計算でこれらの積分を有限個のk点の和で近似する方法は、:ref:`kpoint_sampling` で説明する。
