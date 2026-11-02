@@ -14,7 +14,13 @@ version = '2025.8.25'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.mathjax', 'sphinx.ext.githubpages']
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath('_ext'))
+
+# cjk_linebreak: 日本語の文の途中で改行した原稿で、表示に空白が入らないようにする。
+extensions = ['sphinx.ext.mathjax', 'sphinx.ext.githubpages', 'cjk_linebreak']
 # extensions = ['sphinx.ext.mathjax', 'sphinx_rtd_theme']
 
 templates_path = ['_templates']
