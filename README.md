@@ -4,7 +4,13 @@
 Quloudの具体的な計算事例は[`quloud-examples`](https://github.com/quemix/quloud-examples)、
 画面操作はQuloudオンラインマニュアルに置きます。
 
-## ビルド
+## ビルドと公開
+
+`technical-notes`ブランチへpushすると、GitHub Actions（`.github/workflows/pages.yml`）が
+`requirements.txt`の版のSphinxでビルドし、GitHub Pagesへ公開します。生成したHTMLはコミットしません。
+
+手元で確認するときは、`make html`で`_build/html`に出力し、`make serve`で
+http://localhost:8001 を開きます。警告を漏らさず確かめるときは次のようにします。
 
 ```bash
 sphinx-build -b html -E -W -d /tmp/quloud-technical-notes-doctrees . /tmp/quloud-technical-notes-html

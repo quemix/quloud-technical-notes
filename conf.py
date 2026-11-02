@@ -19,7 +19,7 @@ extensions = ['sphinx.ext.mathjax', 'sphinx.ext.githubpages']
 
 templates_path = ['_templates']
 # Sphinx does not use .gitignore; keep the private meta checkout out of the document scan.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'meta/**']
+exclude_patterns = ['_build', 'docs', 'meta/**', '.claude', 'Thumbs.db', '.DS_Store']
 
 language = 'ja'
 
@@ -34,6 +34,8 @@ numfig_secnum_depth = 1
 
 import sphinx_rtd_theme
 html_theme = 'sphinx_rtd_theme'
+# sphinx.ext.githubpages writes CNAME from this URL; without it the build deletes CNAME.
+html_baseurl = 'https://technical-notes.quemix.com/'
 # html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_static_path = ['_static']
 # html_js_files = ['three.min.js']

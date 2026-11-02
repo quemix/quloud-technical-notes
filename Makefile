@@ -6,11 +6,11 @@
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
-BUILDDIR      = docs
-#BUILDDIR      = _build
+BUILDDIR      = _build
 
-html:
-	@$(SPHINXBUILD) -b html "$(SOURCEDIR)" "$(BUILDDIR)"
+# 手元での確認用。公開はtechnical-notesブランチへのpushでGitHub Actionsが行う。
+serve:
+	python3 -m http.server -d "$(BUILDDIR)/html" 8001
 
 # meta/codex/AGENTS.md にある非公開の作業ルールを参照するリンクを張る。
 agent-link:
@@ -22,7 +22,7 @@ agent-link:
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help agent-link Makefile
+.PHONY: help agent-link serve Makefile
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
