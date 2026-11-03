@@ -1,52 +1,13 @@
-.. _coordinates:
+:orphan:
+
+.. meta::
+   :http-equiv=refresh: 0; url=lattice.html#coordinates
 
 ==============================
 格子座標
 ==============================
 
-------------------------------------
-XYZ座標と格子座標
-------------------------------------
-
-格子座標は、\ :ref:`格子ベクトル<lattice>`\ を基底にとった位置の指定の仕方である。カルテシアン座標（デカルト座標またはXYZ座標）で
-
-.. math::
-  \boldsymbol{r}
-  =
-  \begin{pmatrix}
-  x \\
-  y \\
-  z
-  \end{pmatrix}
-  :label: rpos
-
-と表される位置は、格子座標では
-
-.. math::
-  \boldsymbol{r}
-  =
-  \alpha_1 \boldsymbol{a}_1 +
-  \alpha_2 \boldsymbol{a}_2 +
-  \alpha_3 \boldsymbol{a}_3
-  :label: rlat
-
-と表される。 :math:`\boldsymbol{r}` が単位胞内の点であれば、\ :math:`\alpha_i` は
-
-.. math::
-  0 \leq \alpha_i \leq 1
-  :label: alpha
-
-という範囲の値をとることになる
-（ただし :math:`\alpha_i = 0` と :math:`\alpha_i = 1` は周期境界条件により等価な点を指すことに注意する）。
-
-3つの分率座標を列ベクトル :math:`\boldsymbol{s}=(\alpha_1,\alpha_2,\alpha_3)^\top` にまとめ、:ref:`格子ベクトルと逆格子ベクトル<lattice>` で定義した列格子行列を :math:`A=(\boldsymbol a_1,\boldsymbol a_2,\boldsymbol a_3)` とすれば、Cartesian位置への変換は
-
-.. math::
-  \boldsymbol r=A\boldsymbol s,\qquad
-  \boldsymbol s=A^{-1}\boldsymbol r.
-  :label: fractional-cartesian-matrix
-
-本章では分率座標を列で表す。この規約では :math:`A` の列が格子ベクトルである。格子ベクトルを行に格納するソフトウェアAPIとの対応は :ref:`lattice-transform` で扱う。
+格子座標（分率座標）の説明は、「:ref:`lattice`」の節「:ref:`coordinates`」へ移した。
 
 .. .. math::
 ..   \begin{pmatrix}
@@ -61,9 +22,9 @@ XYZ座標と格子座標
 ..   a_{31} & a_{32} & a_{33} \\
 ..   \end{pmatrix}
 ..   \begin{pmatrix}
-..   \alpha_1  \\
-..   \alpha_2 \\
-..   \alpha_3
+..   s_1  \\
+..   s_2 \\
+..   s_3
 ..   \end{pmatrix}
 
 .. 座標変換の行列 :math:`A` は、格子ベクトルのxyz成分
@@ -158,29 +119,29 @@ XYZ座標と格子座標
 
 .. .. math::
 ..   \frac{\partial f}{\partial x_i}
-..   = \sum_{j=1}^3 \frac{\partial f}{\partial \alpha_j}\frac{\partial \alpha_j}{\partial x_i}
-..   = \sum_{j=1}^3 \frac{\partial f}{\partial \alpha_j} \frac{b_{ij}}{2\pi}
+..   = \sum_{j=1}^3 \frac{\partial f}{\partial s_j}\frac{\partial s_j}{\partial x_i}
+..   = \sum_{j=1}^3 \frac{\partial f}{\partial s_j} \frac{b_{ij}}{2\pi}
 
-.. を行なった後 :math:`\frac{\partial f}{\partial \alpha_i}` 等に対して差分化を行う。２階微分は
+.. を行なった後 :math:`\frac{\partial f}{\partial s_i}` 等に対して差分化を行う。２階微分は
 
 .. .. math::
 ..   \frac{\partial^2 f}{\partial x_i^2}
 ..   &=
 ..   \frac{\partial}{\partial x_i}
 ..   \left(
-..   \sum_{j=1}^3 \frac{\partial f}{\partial \alpha_j} \frac{b_{ij}}{2\pi}
+..   \sum_{j=1}^3 \frac{\partial f}{\partial s_j} \frac{b_{ij}}{2\pi}
 ..   \right) \\
 ..   &=
-..   \sum_{k=1}^3 \frac{\partial}{\partial \alpha_k}
+..   \sum_{k=1}^3 \frac{\partial}{\partial s_k}
 ..   \left(
-..   \sum_{j=1}^3 \frac{\partial f}{\partial \alpha_j} \frac{b_{ij}}{2\pi}
+..   \sum_{j=1}^3 \frac{\partial f}{\partial s_j} \frac{b_{ij}}{2\pi}
 ..   \right)
 ..   \frac{b_{ik}}{2\pi} \\
 ..   &=
 ..   \sum_{k=1}^3
-..   \sum_{j=1}^3 \frac{\partial^2 f}{\partial \alpha_j \partial \alpha_k} \frac{b_{ij}}{2\pi}
+..   \sum_{j=1}^3 \frac{\partial^2 f}{\partial s_j \partial s_k} \frac{b_{ij}}{2\pi}
 ..   \frac{b_{ik}}{2\pi} \\
 
 .. となり、格子座標が斜交座標の場合クロスターム
-.. （ :math:`\frac{\partial^2 f}{\partial \alpha_1 \partial \alpha_2}`
+.. （ :math:`\frac{\partial^2 f}{\partial s_1 \partial s_2}`
 .. 等 ）が現れる。

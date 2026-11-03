@@ -11,7 +11,6 @@
    :numbered:
 
    lattice
-   coordinates
    unitcell
    lattice_transform
    periodic
