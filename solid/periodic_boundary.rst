@@ -26,11 +26,12 @@
 :math:`\boldsymbol R` の並進に対して位相 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}`
 だけ変化する（\ :ref:`ブロッホの定理<blochstheorem>`\ ）。この波数ベクトル :math:`\boldsymbol k` は、バンドの番号 :math:`j` とともに状態を
 指定する量子数となる（並進対称性の群の既約表現に対応する）。ここで扱う位相は、単位胞から単位胞へ移ったときの位相の変化を表すもので、
-結晶中の電子の波動関数そのものが単純な正弦波であるという意味ではない（正弦波に単位胞内で生じる変調を乗せたものが実際の波動関数になる）。
+結晶中の電子の波動関数そのものが単純な正弦波であるという意味ではない
+（\ :numref:`fig-pbc-allowed`\ 左図のような正弦波に各格子点に共通の「変調」を乗せたものが実際の波動関数になる）。
 
 :ref:`基本格子ベクトル<lattice>` :math:`\boldsymbol a_i` の方向に単位胞を :math:`N_i` 個並べた有限の結晶を考え、
-その両端をつなぐ周期境界条件（Born–von Kármánの境界条件）
-:math:`\psi(\boldsymbol r+N_i\boldsymbol a_i)=\psi(\boldsymbol r)` を考える。\ :ref:`ブロッホの定理<blochstheorem>`\ と
+その両端をつなぐ周期境界条件
+:math:`\psi(\boldsymbol r+N_i\boldsymbol a_i)=\psi(\boldsymbol r)` を考える（Born–von Kármánの境界条件）。\ :ref:`ブロッホの定理<blochstheorem>`\ と
 合わせると :math:`e^{iN_i\boldsymbol k\cdot\boldsymbol a_i}=1` という要請を課すことと等価である。
 :math:`\boldsymbol k` を\ :ref:`基本逆格子ベクトル<lattice>` :math:`\boldsymbol b_j` を基底として表すことにすれば
 （\ :math:`\boldsymbol a_i\cdot\boldsymbol b_j=2\pi\delta_{ij}` なので）、
