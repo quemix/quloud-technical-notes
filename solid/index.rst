@@ -18,6 +18,7 @@
    brillouinzone
    periodic_boundary
    kpoint_sampling
+   irreducible_kpoints
    bandstructure
    tightbinding
    ferroelectricity
