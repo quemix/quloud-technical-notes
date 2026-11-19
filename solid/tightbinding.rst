@@ -74,20 +74,21 @@ Schrödinger方程式 :math:`\hat H|\psi\rangle=E|\psi\rangle` は係数に対�
 
    E(k)=\varepsilon_0-2t\cos(ka)
 
-となる。:math:`k` は第1ブリルアンゾーン :math:`-\pi/a<k\le\pi/a` にとれば
-十分である。:math:`N` 個の原子軌道から :math:`N` 個の状態ができ、そのエネルギーは
-:math:`\varepsilon_0-2t` から :math:`\varepsilon_0+2t` の範囲に分布する。
-この幅 :math:`W=4t` がバンド幅であり、ホッピングが大きいほどバンドは広がる。
-:math:`k=0` の状態はすべての軌道が同位相で重なる結合的な組み合わせ、
-:math:`k=\pi/a` の状態は隣どうしが逆位相の反結合的な組み合わせである。
+となる。有限の周期鎖では、:math:`N` 個の原子軌道から :math:`N` 個の状態ができる。
+各状態の波数は :eq:`tb-bloch-sum` の離散値をとり、代表点を第1ブリルアンゾーン
+:math:`-\pi/a<k\le\pi/a` から選べる。
 
-1原子あたり1電子をもつ鎖では、:math:`N` 個の電子がエネルギーの低い状態から
-2個ずつ入り、:math:`N/2` 個の状態が占有される。これを **半充填** という
-（:ref:`fermi-level-and-occupation`）。
-占有状態は :math:`\cos(ka)>0`、すなわち :math:`|k|<\pi/(2a)` であり、
-フェルミ準位は :math:`E_{\mathrm F}=\varepsilon_0`、フェルミ波数は
-:math:`k_{\mathrm F}=\pi/(2a)` である。占有状態と空状態の間にエネルギーの
-隙間がないので、この模型の半充填状態は金属的である。
+:math:`N\to\infty` の極限では、離散的な準位がバンドを連続的に埋める。
+:math:`k=0` ではすべての軌道が同位相で重なり、エネルギーは下端
+:math:`\varepsilon_0-2t` になる。:math:`k=\pi/a` では隣どうしが逆位相になり、
+エネルギーは上端 :math:`\varepsilon_0+2t` になる。この差 :math:`W=4t` がバンド幅である。
+
+:math:`N` 個の波数それぞれに、スピンを含めて電子が2個まで入るので、バンドの定員は
+:math:`2N` 個である。1原子あたり1電子の鎖では :math:`N` 個の電子が入り、定員の半分を占める。
+これを :ref:`半充填<fermi-level-and-occupation>` と呼ぶ。
+無限鎖の半充填では、絶対零度で :math:`|k|<\pi/(2a)` の状態が占有され、
+フェルミ準位は :math:`E_{\mathrm F}=\varepsilon_0`、フェルミ波数は :math:`k_{\mathrm F}=\pi/(2a)` になる。
+バンドがこの準位を横切るので、この模型の無限鎖は金属的である。
 
 有限鎖の固有状態と擬似波数
 --------------------------
@@ -137,14 +138,15 @@ Schrödinger方程式 :math:`\hat H|\psi\rangle=E|\psi\rangle` は係数に対�
 :math:`k_j` は :math:`0<ka<\pi` を細かく埋め、準位の集合は周期鎖のバンドに
 近づく。
 
-定在波は :math:`+k` と :math:`-k` の進行波の重ね合わせなので、擬似波数は
-:math:`0` から :math:`\pi/a` の範囲だけを動く。周期鎖で縮退していた
-:math:`\pm k` の組が、有限鎖では1つの定在波に対応する。
+定在波は :math:`+k` と :math:`-k` の進行波を重ねた形をしている。
+:math:`k_j` の符号を反転すると定在波全体の符号が変わるので、独立な状態には
+正の擬似波数だけを割り当てればよい。開放端で許される擬似波数は
+:math:`j=1,\ldots,N` に対応するため、固有状態の数は周期鎖と同じ :math:`N` 個である。
 
 有限鎖のHOMO–LUMOギャップ
 -------------------------
 
-偶数 :math:`N` の鎖が半充填のとき、:math:`j=1,\ldots,N/2` の準位が占有される。
+開放端の鎖で :math:`N` が偶数、半充填のとき、:math:`j=1,\ldots,N/2` の準位が占有される。
 最高被占有軌道（HOMO）は :math:`j=N/2`、最低空軌道（LUMO）は :math:`j=N/2+1`
 なので、その差は
 
@@ -162,16 +164,26 @@ Schrödinger方程式 :math:`\hat H|\psi\rangle=E|\psi\rangle` は係数に対�
    \Delta_N=4t\sin\left(\frac{\pi}{2(N+1)}\right)
    \simeq\frac{2\pi t}{N+1}\qquad(N\gg1)
 
-を得る。周期鎖ではギャップが0であるのに対し、有限鎖では準位が離散的なため、
-HOMOとLUMOの間に :math:`1/N` に比例する隙間が残る。これは鎖が有限であることだけに
-よる **有限サイズギャップ** であり、:math:`N\to\infty` で0になる。原子数を増やしても
-ギャップが :math:`1/N` で閉じない場合は、この模型に含まれない機構を考える必要がある
-（:ref:`tb-ssh` を参照）。
+を得る。開放端の等間隔鎖では、有限の長さで準位が離散的になるため、HOMOとLUMOの間に
+隙間が生じる。この **有限サイズギャップ** は大きな :math:`N` でおよそ :math:`1/N` に比例し、
+無限鎖の極限でゼロになる。
 
-同様に、両端の準位の差は :math:`E_N-E_1=4t\cos\bigl(\pi/(N+1)\bigr)` であり、
+開放端の鎖の準位全体の幅は :math:`E_N-E_1=4t\cos\bigl(\pi/(N+1)\bigr)` であり、
 :math:`N\to\infty` でバンド幅 :math:`4t` に近づく。:eq:`tb-finite-gap` と
 準位の幅は、計算で得た有限鎖の準位から有効的なホッピング :math:`t` を
 見積もる手がかりになる。
+
+半充填の有限周期鎖では、:math:`N` を4で割った余りによってギャップが変わる。
+:math:`N=4n+2` の場合、無限鎖の正のフェルミ波数 :math:`\pi/(2a)` の両隣の波数は
+:math:`\pi/(2a)\pm\pi/(Na)` である。式 :eq:`tb-band` に代入すると、
+最高被占有準位と最低空準位の差は :math:`\Delta_N=4t\sin(\pi/N)` となる。
+例えば :math:`N=6` で :math:`2t` になる。大きな :math:`N` では
+:math:`\Delta_N\simeq4\pi t/N` で、同じ原子数の開放端のギャップの約2倍である。
+
+:math:`N=4n` の場合は :math:`k=\pm\pi/(2a)` が許される。この二つの縮退した準位には、
+スピンを含む4状態のうち2個分だけ電子が入るため、同じエネルギーに空状態が残り、
+ギャップはゼロである。このように、ギャップの大きさから :math:`t` を見積もる式は
+境界条件と原子数によって変わる。無限鎖でもギャップが残る仕組みの一例は :ref:`tb-ssh` で扱う。
 
 第2近接ホッピング
 -----------------
@@ -222,7 +234,7 @@ HOMOとLUMOの間に :math:`1/N` に比例する隙間が残る。これは鎖�
 ホッピングが交替する鎖（SSH模型）
 ----------------------------------
 
-隣接原子間のホッピングが1本おきに :math:`t_1`、:math:`t_2` と交替する鎖を考える。
+隣接原子間のホッピングの大きさが1本おきに :math:`t_1>0`、:math:`t_2>0` と交替する鎖を考える。
 Su、Schrieffer、Heegerがポリアセチレンの結合交替を記述するために用いた模型で、
 SSH模型と呼ばれる [SSH1979]_。元の模型ではホッピングの交替は原子の変位から
 生じるが、ここではホッピングが交替するという結果だけを扱う。
@@ -286,9 +298,12 @@ Bと :math:`-t_2` で結ばれているので、
 交替は金属的だった鎖を絶縁体的にする。ギャップが開く :math:`k=\pm\pi/(2a)` は
 元の鎖のフェルミ波数 :math:`k_{\mathrm F}` であり、周期の倍化によって
 :math:`k_{\mathrm F}` がちょうど新しいゾーン境界になったことに対応する。
-有限鎖の準位を擬似波数に対して並べると、このギャップは半充填位置
-:math:`ka=\pi/2` での段差として現れる。:eq:`tb-finite-gap` のギャップが
-:math:`N` とともに0に近づくのに対し、:eq:`tb-ssh-gap` は :math:`N` によらず残る。
+
+開放端の等間隔鎖の有限サイズギャップ（式 :eq:`tb-finite-gap`）は鎖を長くするとゼロに
+近づくが、結合が交替する鎖のバルクのギャップ（式 :eq:`tb-ssh-gap`）は無限鎖でも残る。
+一方、開放端で両端の結合が弱いほうのホッピングで終わる場合、十分に長い鎖では
+バルクギャップの中央 :math:`\varepsilon_0` 付近に、両端に局在する二つの準位が現れる。
+半充填でのHOMO–LUMOギャップはこの二準位の間隔であり、鎖を長くするとゼロに近づく。
 
 .. 旧版の節と文献へのリンクを、移転先の案内に残す。
 
@@ -347,6 +362,7 @@ STO-3G基底（水素1原子あたり1個の1s型基底関数）で計算して�
 * `N. Manini: The tight-binding model for electronic band structure <https://materia.fisica.unimi.it/manini/dida/tight.binding.notes.html>`_
 * N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and
   Winston, 1976), Chap. 10.
+* J. K. Asbóth, L. Oroszlány, and A. Pályi, `A Short Course on Topological Insulators <https://arxiv.org/abs/1509.02295>`_, Section 1.3.
 
 .. [McKinnon1995] B. A. McKinnon and T. C. Choy, “Significance of nonorthogonality in
    tight-binding models,” *Physical Review B* **52**, 14531 (1995),

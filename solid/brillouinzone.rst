@@ -10,12 +10,13 @@
 第1ブリルアンゾーンとウィグナー・ザイツ胞
 ------------------------------------------------
 
-:ref:`periodic_boundary` で見るように、逆格子ベクトル :math:`\boldsymbol G`
-だけ異なる波数 :math:`\boldsymbol k` と :math:`\boldsymbol k+\boldsymbol G`
-は格子並進に対して同じ位相を与える。そこで、逆格子並進で等価な波数の組から
-一つずつ代表を取れる領域を選ぶ。
+式 :eq:`Bloch` によると、格子並進 :math:`\boldsymbol R` で波動関数に掛かる位相因子は
+:math:`e^{i\boldsymbol k\cdot\boldsymbol R}` である。逆格子ベクトル
+:math:`\boldsymbol G` に対して :math:`e^{i\boldsymbol G\cdot\boldsymbol R}=1` なので、
+:math:`\boldsymbol k` と :math:`\boldsymbol k+\boldsymbol G` は同じ位相因子を与える。
+そこで、逆格子並進で等価な波数の組から一つずつ代表を取れる領域を選ぶ。
 
-第1ブリルアンゾーンは、逆空間で原点の逆格子点に最も近い点を集めた領域である。
+第1ブリルアンゾーンは、他のどの逆格子点よりも原点に近い波数と、その境界からなる領域である。
 これは逆格子のウィグナー・ザイツ胞（Wigner–Seitz cell）にあたり、
 
 .. math::
@@ -74,10 +75,14 @@
    =\frac{1}{\Omega_{\mathrm{BZ}}}
     \int_{\mathrm{BZ}}\delta(E-\varepsilon(\boldsymbol k))\,\mathrm d\boldsymbol k
 
-ここで :math:`\delta` はディラックのデルタ関数である。全体の状態密度は対象とする
-バンドとスピンの寄与を足す。電子の占有数まで求めるときは、この状態密度に
-:ref:`fermi-level-and-occupation` で導入する分布を掛ける。BZ積分を有限個のk点の
-和で近似する方法は、:ref:`kpoint_sampling` で説明する。
+ここで :math:`\delta` はディラックのデルタ関数である。式 :eq:`rho(E)` の
+:math:`\rho(E)` は1バンド・1スピン・単位胞あたりの状態密度である。
+複数のバンドやスピンを扱うときは、それぞれの寄与を足す。
+
+:ref:`fermi-level-and-occupation` の :math:`f(E)` は、エネルギー :math:`E` の
+1状態に電子が入る平均占有数である。:math:`f(E)\rho(E)` は占有された状態の
+エネルギーあたりの密度を与える。これをエネルギーで積分すると、同じ規格化での電子数
+が得られる。BZ積分を有限個のk点の和で近似する方法は :ref:`kpoint_sampling` で説明する。
 
 --------------
 参考資料

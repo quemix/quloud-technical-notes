@@ -30,7 +30,14 @@ spglibは対称性判定結果に基づいて原子順序やCartesianの向き�
 CIF
 ^^^
 
-CIFは通常、セルの長さ・角度と分率座標を記録し、空間群情報や対称操作を含む場合は:ref:`非対称単位から原子を展開できる<asymmetric-unit-and-cif>`。提供された座標がすでに完全な単位胞なのか、非対称単位だけなのかを確認する。部分占有は通常の整数個の原子配置とは異なり、組成や無秩序をどうモデル化するか別途決める。セル定数だけからCartesianの絶対方位は定まらない。慣用単位胞の定義は `IUCr Online Dictionary <https://dictionary.iucr.org/Conventional_cell>`_ を参照。
+CIFは通常、単位胞の辺の長さ・角度と原子の分率座標を記録する。まず、座標が単位胞内の
+全原子を含むか、非対称単位の代表原子だけを記録しているかを確認する。
+空間群情報や対称操作がある場合の展開手順は :ref:`非対称単位と原子座標の展開<asymmetric-unit-and-cif>`
+を参照する。
+
+部分占有があれば、組成や無秩序をどうモデル化するかを決める。セル定数から分かるのは
+単位胞の形と大きさで、Cartesian座標系での置き方は別に選ぶ。慣用単位胞の定義は
+`IUCr Online Dictionary <https://dictionary.iucr.org/Conventional_cell>`_ を参照する。
 
 .. _lt-quantum-espresso:
 

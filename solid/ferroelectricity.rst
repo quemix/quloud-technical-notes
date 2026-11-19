@@ -113,8 +113,9 @@ BaTiO\ :math:`_3`\ は、理想的なペロブスカイト構造をもつ。高�
 * :ref:`格子と格子ベクトル<lattice>`
 * :ref:`ブラベー格子と結晶系<unitcell>`
 
+------------------------------
 参考文献
---------
+------------------------------
 
 .. [Zhong1995] W. Zhong, D. Vanderbilt, and K. M. Rabe, “First-principles theory
    of ferroelectric phase transitions for perovskites: The case of BaTiO\ :math:`_3`\ ,”

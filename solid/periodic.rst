@@ -28,19 +28,24 @@
 フーリエ級数表示
 --------------------------------
 
-一般に、\ :eq:`periodic0` のような周期関数は以下のフーリエ級数表示
+格子と同じ周期をもつ電子密度は、平面波の重ね合わせで表せる。
+各平面波の波数ベクトル :math:`\boldsymbol G` は :ref:`逆格子ベクトル<lattice>` で、
+:math:`\rho_{\boldsymbol G}` はその平面波がどれだけ含まれるかを表すフーリエ係数である。
 
 .. math::
-    \rho(\boldsymbol{r}) = \sum_{\boldsymbol{G}} \rho(\boldsymbol{G})
+    \rho(\boldsymbol{r}) = \sum_{\boldsymbol{G}} \rho_{\boldsymbol G}
     \exp\left( {i\boldsymbol{G}\! \cdot\! \boldsymbol{r}} \right)
 
-が可能である。\ :eq:`periodic0` を確かめると
+格子ベクトル :math:`\boldsymbol R` だけ移動すると、各平面波に
+:math:`e^{i\boldsymbol G\cdot\boldsymbol R}` が掛かる。内積
+:math:`\boldsymbol G\cdot\boldsymbol R` は :math:`2\pi` の整数倍なので、この因子は1である。
+したがって和の各項が元に戻り、式 :eq:`periodic0` が得られる。
 
 .. math::
     \rho(\boldsymbol{r} + \boldsymbol{R})
-    &= \sum_{\boldsymbol{G}} \rho(\boldsymbol{G})
+    &= \sum_{\boldsymbol{G}} \rho_{\boldsymbol G}
     \exp\left( {i\boldsymbol{G}\! \cdot\! \boldsymbol{r}} \right)
     \exp\left( {i\boldsymbol{G}\! \cdot\! \boldsymbol{R}} \right) \\
-    &= \sum_{\boldsymbol{G}} \rho(\boldsymbol{G})
+    &= \sum_{\boldsymbol{G}} \rho_{\boldsymbol G}
     \exp\left( {i\boldsymbol{G}\! \cdot\! \boldsymbol{r}} \right) \\
     &= \rho(\boldsymbol{r})

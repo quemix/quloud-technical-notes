@@ -3,48 +3,32 @@
 周期境界条件とバンドの折り返し
 ==============================
 
-.. :ref:`ブロッホの定理<blochstheorem>` は、結晶中の電子状態を波数ベクトル :math:`\boldsymbol k`
-.. で分類できることを示す。では、有限の大きさの結晶では、どの :math:`\boldsymbol k` が許され、
-.. いくつあるのだろうか。本稿では、結晶の両端をつなぐ **周期境界条件** から許される波数を導き、
-.. その数が単位胞の数に等しいことを確かめる。さらに、同じ結晶を大きなセル（スーパーセル）で
-.. 記述し直すと、波数の数が減るかわりにバンドの本数が増える **バンドの折り返し** が起きることを示す。
-
-.. **前提知識**: :ref:`ブロッホの定理<blochstheorem>`、:ref:`ブリルアンゾーン<brillouinzone>`、
-.. :ref:`超胞（スーパーセル）<lt-supercell>`。
-
-.. **学習目標**:
-
-.. * 周期境界条件から許される波数を導き、波数の数が単位胞の数に等しいことを説明する。
-.. * 逆格子ベクトルだけ異なる波数が同じ状態の分類を与える理由を、単位胞の位置での位相から説明する。
-.. * スーパーセルで記述すると、波数がセルの数で割った数に減り、各波数のバンドが増えることを導く。
-.. * 折り返しは記述の変更にすぎないこと、周期が実際に変わるとギャップが開きうることを区別する。
+単位胞を有限個並べ、両端を周期的につなぐと、電子に許される波数は飛び飛びになる。
+まず、独立な波数の数が単位胞の数に等しいことを導く。次に、同じ結晶を
+:ref:`超胞<lt-supercell>` で表すと、波数の数と各波数でのバンドの本数がどう変わるかを比べる。
 
 周期境界条件と許される波数
 --------------------------
 
-結晶中の電子の固有状態は、格子ベクトル
-:math:`\boldsymbol R` の並進に対して位相 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}`
-だけ変化する（\ :ref:`ブロッホの定理<blochstheorem>`\ ）。この波数ベクトル :math:`\boldsymbol k` は、バンドの番号 :math:`j` とともに状態を
-指定する量子数となる（並進対称性の群の既約表現に対応する）。ここで扱う位相は、単位胞から単位胞へ移ったときの位相の変化を表すもので、
-結晶中の電子の波動関数そのものが単純な正弦波であるという意味ではない
-（\ :numref:`fig-pbc-allowed`\ 左図のような正弦波に各格子点に共通の「変調」を乗せたものが実際の波動関数になる）。
+:ref:`blochstheorem` で選んだブロッホ状態には、格子ベクトル :math:`\boldsymbol R` の
+並進で位相因子 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}` が掛かる。
+波数ベクトル :math:`\boldsymbol k` とバンド番号 :math:`j` で状態を指定できる。
+以下では、端を一周したときの位相から :math:`\boldsymbol k` を絞り込む。
 
-:ref:`基本格子ベクトル<lattice>` :math:`\boldsymbol a_i` の方向に単位胞を :math:`N_i` 個並べた有限の結晶を考え、
-その両端をつなぐ周期境界条件
-:math:`\psi(\boldsymbol r+N_i\boldsymbol a_i)=\psi(\boldsymbol r)` を考える（Born–von Kármánの境界条件）。\ :ref:`ブロッホの定理<blochstheorem>`\ と
-合わせると :math:`e^{iN_i\boldsymbol k\cdot\boldsymbol a_i}=1` という要請を課すことと等価である。
-:math:`\boldsymbol k` を\ :ref:`基本逆格子ベクトル<lattice>` :math:`\boldsymbol b_j` を基底として表すことにすれば
-（\ :math:`\boldsymbol a_i\cdot\boldsymbol b_j=2\pi\delta_{ij}` なので）、
+:ref:`基本並進ベクトル<lattice>` :math:`\boldsymbol a_i` の方向に単位胞を :math:`N_i` 個並べ、
+両端をつないで :math:`\psi(\boldsymbol r+N_i\boldsymbol a_i)=\psi(\boldsymbol r)` を課す。
+これをBorn–von Kármánの周期境界条件と呼ぶ。式 :eq:`Bloch` を使うと、
+一周したときの位相因子は :math:`e^{iN_i\boldsymbol k\cdot\boldsymbol a_i}=1` となる。
 
-.. :math:`\boldsymbol k=\sum_j x_j\boldsymbol b_j` と展開すると
-.. :math:`\boldsymbol k\cdot\boldsymbol a_i=2\pi x_i` なので、条件は :math:`N_ix_i` が整数であること、すなわち
+:math:`\boldsymbol k=\sum_j x_j\boldsymbol b_j` と書くと、実格子と逆格子の関係
+:math:`\boldsymbol a_i\cdot\boldsymbol b_j=2\pi\delta_{ij}` により
+:math:`\boldsymbol k\cdot\boldsymbol a_i=2\pi x_i` である。したがって、各方向で
+:math:`N_ix_i` が整数 :math:`m_i` となる波数が許される。
 
 .. math::
    :label: pbc-allowed
 
    \boldsymbol k=\sum_{i=1}^{3}\frac{m_i}{N_i}\,\boldsymbol b_i\qquad(m_i\ \text{は整数})
-
-と取れば上記の周期境界条件を満たせることがわかる。
 
 .. |independent-wavevectors| replace:: 独立な波数とその個数
 
@@ -54,25 +38,26 @@
 :ref:`逆格子ベクトル<lattice>` :math:`\boldsymbol G` だけ異なる :math:`\boldsymbol k` と
 :math:`\boldsymbol k+\boldsymbol G` は、すべての\ :ref:`格子ベクトル<lattice>`\ に対して同じ位相
 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}` を与える（:math:`e^{i\boldsymbol G\cdot\boldsymbol R}=1`\ ）
-ので、同じ並進の性質を表す。重複を避けて\ :ref:`BZ<brillouinzone>`\ の中から :math:`\boldsymbol k` 選ぶと、
-各 :math:`i` の方向について :math:`m_i=0,1,\ldots,N_i-1` となるので、
-:math:`N=N_1N_2N_3` 個、つまり **単位胞の個数と同じだけ波数がある** ことになる。
-
-.. 各バンドは、1スピンあたり
-.. :math:`N` 個の状態を持つ。許される波数は、\ :ref:`BZ<brillouinzone>`\ の体積 :math:`\Omega_\mathrm{BZ}` を :math:`N`
-.. 等分した体積ごとに1点ずつ、一様に分布する。
+ので、同じ並進の性質を表す。式 :eq:`pbc-allowed` では、:math:`m_i` に
+:math:`N_i` を足すと波数に :math:`\boldsymbol b_i` が加わる。したがって各方向で
+:math:`m_i=0,1,\ldots,N_i-1` を数えれば、独立な波数は全部で
+:math:`N=N_1N_2N_3` 個になる。これは単位胞の数に等しい。各代表点は逆格子ベクトルだけ
+ずらして :ref:`第1ブリルアンゾーン<brillouinzone>` に入れられる。
 
 .. |one-dimensional-wavevectors| replace:: 1次元結晶で許される波数
 
 |one-dimensional-wavevectors|
 -----------------------------
 
-1次元結晶の場合のイメージを :numref:`fig-pbc-allowed` に示す。格子定数 :math:`a` の単位胞を :math:`N` 個並べた結晶を考えると、許される（独立な）波数は
-:math:`k=2\pi m/(Na)` である。 :math:`k=0` は位相が単位胞間で
-変化しない状態で、 :math:`k=\pi/a` は単位胞ごとに符号が反転する状態である。
-また :numref:`fig-pbc-allowed`\ 左 には、\ :ref:`逆格子ベクトル<lattice>` :math:`2\pi/a` だけ異なる波数が、各単位胞の位置で区別できなくなる様子も示されている。
-許される波数の間隔 :math:`2\pi/(Na)` は、 :math:`N` を増やすほど狭くなり、 :math:`N\to\infty`
-の極限では、波数が\ :ref:`BZ<brillouinzone>`\ を連続的に埋めることになる（\ :numref:`fig-pbc-allowed`\ 右）。
+格子定数 :math:`a` の単位胞を :math:`N` 個並べた1次元結晶では、
+:math:`k=2\pi m/(Na)` が許される。:math:`k=0` なら単位胞間で位相は変化しない。
+:math:`k=\pi/a` は :math:`m=N/2` にあたり、:math:`N` が偶数のときに許される。
+この波数では、隣の単位胞に移るたびに波動関数の符号が反転する。
+
+:numref:`fig-pbc-allowed`\ の左では、波数が :math:`2\pi/a` だけ異なる二つの曲線が、
+単位胞の位置では同じ値になることに注目する。曲線は位相因子の実部を表している。
+右では、:math:`N` を増やすと波数の間隔 :math:`2\pi/(Na)` が狭くなる。
+:math:`N\to\infty` の極限で、波数はブリルアンゾーンを連続的に埋める。
 
 .. figure:: images/pbc_allowed_k.svg
    :name: fig-pbc-allowed
@@ -97,14 +82,16 @@
    :label: pbc-folding
 
    K\equiv k\pmod{\frac{2\pi}{Ma}},\qquad
-   k=K+\frac{2\pi}{Ma}\,j\quad(j=0,1,\ldots,M-1)
+   k\equiv K+\frac{2\pi}{Ma}\,j\pmod{\frac{2\pi}{a}}
+   \quad(j=0,1,\ldots,M-1)
 
 で与えられる。スーパーセルの\ :ref:`BZ<brillouinzone>` :math:`-\pi/(Ma)<K\le\pi/(Ma)` は元の\ :ref:`BZ<brillouinzone>`\ の :math:`1/M` の幅となる。
 元の1本のバンド :math:`\varepsilon(k)` は、
 スーパーセルの\ :ref:`BZ<brillouinzone>`\ では :math:`\varepsilon_j(K)=\varepsilon(K+2\pi j/(Ma))` の :math:`M` 本のバンドとして
 現れる。これを\ **バンドの折り返し**\ （フォールディング）という。
 
-:math:`N` 個の単位胞の結晶は :math:`N/M` 個のスーパーセルが並んだ結晶でもあるので、 :eq:`pbc-allowed` 式から
+:math:`N` が :math:`M` の倍数なら、:math:`N` 個の単位胞は :math:`N/M` 個のスーパーセルにまとめられる。
+式 :eq:`pbc-allowed` から
 許される :math:`K` は :math:`N/M` 個である。 :math:`N=12` の結晶を :math:`2a`\ 、 :math:`3a` の
 セルで記述すると、波数は12個から6個、4個に減り、そのかわりに各波数のバンドが2本、3本に増える
 （:numref:`fig-pbc-folding`\ ）。状態の総数（波数の数 × バンドの本数）は12のままである。
