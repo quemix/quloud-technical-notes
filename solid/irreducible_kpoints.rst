@@ -68,6 +68,11 @@
 
 が導かれ、これで演算子 :math:`U_g` の作用が具体的に書き下せた事になる。
 
+.. |symmetry-kpoint-mapping| replace:: 対称操作による波数の変換
+
+|symmetry-kpoint-mapping|
+-------------------------
+
 :math:`g` で移した結晶は元の結晶と同じなので、格子並進も格子並進に移り、
 :math:`Q\boldsymbol L` と :math:`Q^{-1}\boldsymbol L` も格子並進である。
 :eq:`ikp-bloch` を :math:`Q^{-1}\boldsymbol L` に使い、 :math:`Q` の直交性
@@ -127,8 +132,8 @@
 である。ただし、変換後の状態が、 :math:`Q\boldsymbol k` であらかじめ選んだ固有関数と
 等しいとは限らない。位相は任意であり、縮退があると同じエネルギーの状態どうしが混ざり得る。
 
-既約k点と重み
---------------
+等価なk点の組と代表点
+----------------------
 
 メッシュを自分自身に写す対称操作で、 :eq:`ikp-kmap` によって互いに移り合う点を一組にする。
 行先は :math:`\boldsymbol G` を法として考えるので、BZの境界で逆格子ベクトルだけ違う点は1点と数える。
@@ -146,6 +151,11 @@
 
 である。一般の点では :math:`s_i=1` で組は :math:`N_{\rm op}` 点になり、Γ点のような対称性の高い点では
 組が小さい。
+
+.. |irreducible-kpoint-weights| replace:: 既約k点の重みと積分
+
+|irreducible-kpoint-weights|
+----------------------------
 
 等間隔メッシュの全 :math:`N_k` 点が等しい重みを持ち、被積分量 :math:`A(\boldsymbol k)` が
 同じ組で等しいとき、 :eq:`kps-irreducible` の重みは

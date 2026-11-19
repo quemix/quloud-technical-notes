@@ -261,6 +261,11 @@ Bと :math:`-t_2` で結ばれているので、
 
 である。
 
+.. |ssh-band-gap| replace:: 周期の倍化とバンドギャップ
+
+|ssh-band-gap|
+--------------
+
 :math:`t_1=t_2=t` のときは :math:`|h(k)|=2t|\cos(ka)|` となり、:eq:`tb-band` の
 バンドを縮小ゾーンに折り返したものに戻る。2本のバンドは :math:`k=\pm\pi/(2a)` で
 接している。:math:`t_1\neq t_2` になると、:math:`\cos(2ka)=-1` となるこの点で
@@ -279,16 +284,13 @@ Bと :math:`-t_2` で結ばれているので、
 :math:`ka=\pi/2` での段差として現れる。:eq:`tb-finite-gap` のギャップが
 :math:`N` とともに0に近づくのに対し、:eq:`tb-ssh-gap` は :math:`N` によらず残る。
 
-1次元の半充填鎖では、格子が二量化してホッピングが交替するとギャップが開き、
-占有状態のエネルギーが下がる。この電子エネルギーの利得が格子の弾性エネルギーの
-損失を上回るため、原子の変位を許した鎖は自発的に二量化する。これを
-**Peierls不安定性** という [Heeger1988]_。一方、原子核を等間隔に固定したまま、
-電子状態の側で結合の強弱が交替する状態は **結合次数波** （bond-order wave, BOW）と
-呼ばれ、原子変位を伴うPeierls歪みとは区別される。Hartree–Fock法などの平均場計算で
-BOWが現れる場合、隣接原子間の密度行列要素（:ref:`結合次数<bond_order>`）の交替が
-交換項を通じて有効ハミルトニアンの隣接要素の交替を生み、それがまた結合次数の
-交替を支えるという自己無撞着な関係になる。SSH模型はその結果を理解する最小の
-模型であるが、電子間相互作用を含む平均場の有効ハミルトニアンそのものではない。
+.. 旧版の節と文献へのリンクを、移転先の案内に残す。
+
+.. _peierls-and-bond-order-wave:
+.. _heeger1988:
+.. _id8:
+
+格子が自発的に二量化する仕組みは :ref:`peierls-instability` を参照。
 
 説明用の事例：水素原子鎖
 ------------------------
@@ -346,6 +348,3 @@ STO-3G基底（水素1原子あたり1個の1s型基底関数）で計算して�
 .. [SSH1979] W. P. Su, J. R. Schrieffer, and A. J. Heeger, “Solitons in
    Polyacetylene,” *Physical Review Letters* **42**, 1698–1701 (1979),
    `doi:10.1103/PhysRevLett.42.1698 <https://doi.org/10.1103/PhysRevLett.42.1698>`_.
-.. [Heeger1988] A. J. Heeger, S. Kivelson, J. R. Schrieffer, and W.-P. Su,
-   “Solitons in conducting polymers,” *Reviews of Modern Physics* **60**, 781–850 (1988),
-   `doi:10.1103/RevModPhys.60.781 <https://doi.org/10.1103/RevModPhys.60.781>`_.

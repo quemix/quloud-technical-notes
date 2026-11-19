@@ -37,6 +37,12 @@ BaTiO\ :math:`_3`\ は、理想的なペロブスカイト構造をもつ。高�
 長軸方向に極性が生じ、自発分極をもつ。この構造変化が強誘電性の起源を
 理解するための基本例となる [Zhong1995]_ [Bull2021]_。
 
+.. |batio3-experimental-structures| replace:: 実験構造から見る対称性と格子ひずみ
+
+--------------------------------
+|batio3-experimental-structures|
+--------------------------------
+
 .. figure:: images/batio3-cubic.png
    :alt: Quloudで表示したBaTiO3立方晶相の単位胞
    :width: 85%

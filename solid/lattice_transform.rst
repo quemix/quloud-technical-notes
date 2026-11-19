@@ -74,7 +74,14 @@
 
    G'=P^{\mathsf T}GP,\qquad V'=|\det P|V
 
-に変わる。:math:`A` が基本並進ベクトルの組のとき、:math:`A'` も同じ格子の基本並進ベクトルの組となる必要十分条件は、:math:`P` が整数行列で :math:`\det P=\pm1`、すなわちユニモジュラ行列 :math:`P\in GL(3,\mathbb Z)` となっている事である。\ :math:`P` が整数なら :math:`A'` の列は格子ベクトルであり、さらに :math:`P^{-1}` も整数なら :math:`A` の列も :math:`A'` の整数結合で書ける。整数行列の逆行列が整数になるのは :math:`\det P=\pm1` のときに限る。このとき整数の組 :math:`\boldsymbol n` と :math:`P^{-1}\boldsymbol n` が一対一に対応し、物理的な格子と胞体積は変わらない。この条件は両方が基本並進ベクトルの組である場合のものであり、中心並進を持つ慣用単位胞との変換（:ref:`lt-fcc-cell` の :math:`P_{\rm F}`）や超胞化には当てはまらない。
+に変わる。
+
+.. |same-lattice-condition| replace:: 同じ格子を保つ基底変換の条件
+
+|same-lattice-condition|
+------------------------
+
+:math:`A` が基本並進ベクトルの組のとき、:math:`A'` も同じ格子の基本並進ベクトルの組となる必要十分条件は、:math:`P` が整数行列で :math:`\det P=\pm1`、すなわちユニモジュラ行列 :math:`P\in GL(3,\mathbb Z)` となっている事である。\ :math:`P` が整数なら :math:`A'` の列は格子ベクトルであり、さらに :math:`P^{-1}` も整数なら :math:`A` の列も :math:`A'` の整数結合で書ける。整数行列の逆行列が整数になるのは :math:`\det P=\pm1` のときに限る。このとき整数の組 :math:`\boldsymbol n` と :math:`P^{-1}\boldsymbol n` が一対一に対応し、物理的な格子と胞体積は変わらない。この条件は両方が基本並進ベクトルの組である場合のものであり、中心並進を持つ慣用単位胞との変換（:ref:`lt-fcc-cell` の :math:`P_{\rm F}`）や超胞化には当てはまらない。
 
 また :math:`\det P=-1` なら、基底ベクトルの向き（右手系・左手系）は反転する。体積は絶対値で同じだが、右手系を要求する入力形式では、さらに1本の軸の符号を反転するなどして右手系へ戻す。
 
@@ -106,6 +113,11 @@ Cartesian座標の回転
 同じ基底番号を保つなら分率座標は変わらない。直交性 :math:`Q^{\mathsf T}Q=I` により :math:`G'=A'^{\mathsf T}A'=G` で、長さ・角度・体積が保たれる。Cartesian成分で表す磁化、磁場、電場、力、速度などのベクトルも :math:`\boldsymbol v'=Q\boldsymbol v` とする。2階テンソルは座標表現として :math:`T'=QTQ^{\mathsf T}` と変換する。
 
 これは結晶と、全てのベクトル・テンソルを一緒に回して座標軸を取り替える場合である。実験室で、外部磁場を固定したまま結晶だけを回す操作では、相対方向が変わり、同じ物理条件とは見なせなくなる。
+
+.. |cell-parameters-to-cartesian| replace:: 格子定数から格子ベクトルを求める
+
+|cell-parameters-to-cartesian|
+------------------------------
 
 CIFなどに記録された3つの長さと3つの角度は、Cartesian空間での絶対的な向きを定めない（\ :ref:`格子ベクトルの独立な成分<lattice-dof>`\ ）。右手系の一つの配置として :math:`\boldsymbol a` を :math:`x` 軸、:math:`\boldsymbol b` を :math:`xy` 面に置けば
 
@@ -146,7 +158,7 @@ CIFなどに記録された3つの長さと3つの角度は、Cartesian空間で
 
 .. _lt-reciprocal-transform:
 
-逆格子、方向、面指数
+逆格子行列の変換
 ------------------------------
 
 逆格子行列を :math:`B=2\pi A^{-\mathsf T}` とすると :math:`A^{\mathsf T}B=2\pi I`。基底変換 :math:`A'=AP` に対して
@@ -156,6 +168,11 @@ CIFなどに記録された3つの長さと3つの角度は、Cartesian空間で
    B'=B P^{-\mathsf T}.
 
 Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
+
+.. |direction-and-plane-indices| replace:: 結晶方向と面指数の変換
+
+|direction-and-plane-indices|
+-----------------------------
 
 実空間方向を基底ベクトルの係数 :math:`\boldsymbol u` で表すと、同じCartesian方向を保つ係数変換は
 
@@ -172,6 +189,11 @@ Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
 方向は基底ベクトルの係数、面指数は双対基底での係数であり、変換則が逆向きになる。得られた方向や指数を整数表記にする際は、分母の有無や共通因子を別に処理する。
 
 指数の共通因子は、何を保つかで扱いが異なる。方向指数は向きだけを示すなら最大公約数で約分できるが、対応するベクトルの長さは変わる。Miller指数も法線の向きだけなら約分できる一方、面間隔は変わる。回折指数は逆格子ベクトルそのもの :math:`\boldsymbol g=B\boldsymbol h` を指定するので、例えば :math:`(100)` と :math:`(200)` は同じ法線方向でも波数の大きさが異なる。基底変換後に同じ :math:`\boldsymbol g` を表す :math:`\boldsymbol h'=P^{\mathsf T}\boldsymbol h` は、分数成分を含む場合も含めてそのまま保ち、共通因子で約分してはならない。
+
+.. |direction-and-plane-normal| replace:: 結晶方向と面法線が平行になる条件
+
+|direction-and-plane-normal|
+----------------------------
 
 同じ指数 :math:`\boldsymbol u=(u,v,w)^{\mathsf T}` を方向 :math:`[uvw]` と面 :math:`(uvw)` に用いたとき、方向ベクトル :math:`A\boldsymbol u` と面法線 :math:`B\boldsymbol u=2\pi A G^{-1}\boldsymbol u` が平行になる条件は、:math:`\boldsymbol u` が計量行列 :math:`G` の固有ベクトルであること。:math:`G\propto I` なら任意の指数について平行だが、特定の指数では :math:`G\not\propto I` でも平行になりうる。これは晶系名だけでは決まらず、基底と指数の組による。立方晶の直交慣用基底では任意の同じ指数が平行になる一方、:ref:`FCC基本単位胞<lt-fcc-cell>` では例えば :math:`[11\bar{1}]_{\rm p}` と :math:`(11\bar{1})_{\rm p}` の法線は平行でなく、なす角の余弦は約0.905である。
 

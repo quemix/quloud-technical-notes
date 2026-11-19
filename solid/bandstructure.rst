@@ -28,6 +28,12 @@
 
 と表される。ここで、 :math:`n_{\mathrm{e}},\,n_{\mathrm{h}}` はそれぞれ自由電子と正孔の濃度、 :math:`\mu_{\mathrm{e}},\,\mu_{\mathrm{h}}` はそれぞれ自由電子と正孔の易動度、 :math:`e` は電気素量を表す。
 
+.. |carrier-mobility| replace:: 電子と正孔の移動度
+
+------------------
+|carrier-mobility|
+------------------
+
 自由電子が一様な電場 :math:`E` の中で運動しているものとし、ドリフト速度を :math:`v_{\mathrm{de}}` とすると、
 
 .. math::
@@ -52,7 +58,7 @@
   -\frac{e\,\tau_{\mathrm{e}}}{m^*_{\mathrm{e}}}E
   :label: v(de)_2
 
-となる。(7.2)式と(7.4)式を比較すると、
+となる。式 :eq:`v(de)` と式 :eq:`v(de)_2`\ を比較すると、
 
 .. math::
   \mu_{\mathrm{e}}
@@ -77,6 +83,12 @@
   :label: mu(h)
 
 が得られる。
+
+.. |conduction-band-electrons| replace:: 伝導帯の電子密度
+
+---------------------------
+|conduction-band-electrons|
+---------------------------
 
 伝導帯の電子の濃度（密度） :math:`n_{\mathrm{e}}` は、
 
@@ -110,7 +122,7 @@
   \exp\Big(-\displaystyle\frac{E-E_{\mathrm{f}}}{k_{\mathrm{B}}T}\Big)
   :label: f(E)_2
 
-というボルツマン近似で置き換えられる。伝導帯の電子密度 :math:`n_{\mathrm{e}}` は、(7.8)式の積分を実行することにより得られ、
+というボルツマン近似で置き換えられる。伝導帯の電子密度 :math:`n_{\mathrm{e}}` は、式 :eq:`n(e)` の積分を実行することにより得られ、
 
 .. math::
   n_{\mathrm{e}}
@@ -119,6 +131,12 @@
   :label: n(e)_2
 
 となる。ここで、 :math:`N_{\mathrm{c}}=2\Big(\displaystyle\frac{m^*_{\mathrm{e}}k_{\mathrm{B}}T}{2\pi\hbar^2}\Big)^{3/2}` である。
+
+.. |valence-band-holes| replace:: 価電子帯の正孔密度
+
+--------------------
+|valence-band-holes|
+--------------------
 
 次に、価電子帯の正孔密度 :math:`n_{\mathrm{h}}` は、
 
@@ -152,7 +170,7 @@
   \exp\Big(-\displaystyle\frac{E_{\mathrm{f}}-E}{k_{\mathrm{B}}T}\Big)
   :label: 1-f(E)
 
-となる。価電子帯の正孔密度 :math:`n_{\mathrm{h}}` は、(7.13)式の積分を実行することにより得られ、
+となる。価電子帯の正孔密度 :math:`n_{\mathrm{h}}` は、式 :eq:`n(h)` の積分を実行することにより得られ、
 
 .. math::
   n_{\mathrm{h}}
@@ -161,6 +179,12 @@
   :label: n(h)_2
 
 となる。ここで、 :math:`N_{\mathrm{v}}=2\Big(\displaystyle\frac{m^*_{\mathrm{h}}k_{\mathrm{B}}T}{2\pi\hbar^2}\Big)^{3/2}` である。
+
+.. |intrinsic-semiconductor| replace:: 真性半導体のキャリア密度と電気伝導率
+
+-------------------------
+|intrinsic-semiconductor|
+-------------------------
 
 自由電子と正孔の数が等しいとすると、電荷キャリア密度 :math:`n_{\mathrm{i}}` は、
 
@@ -174,7 +198,7 @@
   \sqrt{N_{\mathrm{c}}N_{\mathrm{v}}}\exp\Big(-\displaystyle\frac{E_{\mathrm{g}}}{2k_{\mathrm{B}}T}\Big)
   :label: n(i)
 
-となる。ここで、 :math:`E_{\mathrm{g}}=E_{\mathrm{c}}-E_{\mathrm{v}}` はバンドギャップである。(7.1)式の :math:`n_{\mathrm{e}},\,n_{\mathrm{h}}` を :math:`n_{\mathrm{i}}` で置き換えることにより、
+となる。ここで、 :math:`E_{\mathrm{g}}=E_{\mathrm{c}}-E_{\mathrm{v}}` はバンドギャップである。式 :eq:`conductivity` の :math:`n_{\mathrm{e}},\,n_{\mathrm{h}}` を :math:`n_{\mathrm{i}}` で置き換えることにより、
 
 .. math::
   \sigma
@@ -186,7 +210,7 @@
   2\Big(\displaystyle\frac{k_{\mathrm{B}}T}{2\pi\hbar^2}\Big)^{3/2}\,(m^*_{\mathrm{e}}\,m^*_{\mathrm{h}})^{3/4}\,e\,(\mu_{\mathrm{e}}+\mu_{\mathrm{h}})\exp\Big(-\displaystyle\frac{E_{\mathrm{g}}}{2k_{\mathrm{B}}T}\Big)
   :label: conductivity_2
 
-となり、さらに(7.5)式と(7.7)式を代入すると、
+となり、さらに式 :eq:`mu(e)` と式 :eq:`mu(h)`\ を代入すると、
 
 .. math::
   \sigma

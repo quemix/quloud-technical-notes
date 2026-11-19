@@ -44,7 +44,14 @@
 
    \boldsymbol k=\sum_{i=1}^{3}\frac{m_i}{N_i}\,\boldsymbol b_i\qquad(m_i\ \text{は整数})
 
-と取れば上記の周期境界条件を満たせることがわかる。\ :ref:`逆格子ベクトル<lattice>` :math:`\boldsymbol G` だけ異なる :math:`\boldsymbol k` と
+と取れば上記の周期境界条件を満たせることがわかる。
+
+.. |independent-wavevectors| replace:: 独立な波数とその個数
+
+|independent-wavevectors|
+-------------------------
+
+:ref:`逆格子ベクトル<lattice>` :math:`\boldsymbol G` だけ異なる :math:`\boldsymbol k` と
 :math:`\boldsymbol k+\boldsymbol G` は、すべての\ :ref:`格子ベクトル<lattice>`\ に対して同じ位相
 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}` を与える（:math:`e^{i\boldsymbol G\cdot\boldsymbol R}=1`\ ）
 ので、同じ並進の性質を表す。重複を避けて\ :ref:`BZ<brillouinzone>`\ の中から :math:`\boldsymbol k` 選ぶと、
@@ -54,6 +61,11 @@
 .. 各バンドは、1スピンあたり
 .. :math:`N` 個の状態を持つ。許される波数は、\ :ref:`BZ<brillouinzone>`\ の体積 :math:`\Omega_\mathrm{BZ}` を :math:`N`
 .. 等分した体積ごとに1点ずつ、一様に分布する。
+
+.. |one-dimensional-wavevectors| replace:: 1次元結晶で許される波数
+
+|one-dimensional-wavevectors|
+-----------------------------
 
 1次元結晶の場合のイメージを :numref:`fig-pbc-allowed` に示す。格子定数 :math:`a` の単位胞を :math:`N` 個並べた結晶を考えると、許される（独立な）波数は
 :math:`k=2\pi m/(Na)` である。 :math:`k=0` は位相が単位胞間で
@@ -105,6 +117,11 @@
    スーパーセル（中）、 :math:`3a` のスーパーセル（右）で記述したもの。灰色の曲線は模型の
    バンド :math:`-\cos ka` と、それをセルのBZに折り返したもの。点の数はどれも12個で、BZの境界や
    バンドの交点で重なった点は2つの状態を表す。横軸の幅は、それぞれのセルのBZの幅に比例させた。
+
+.. |three-dimensional-folding| replace:: 3次元のスーパーセルでの折り返し
+
+|three-dimensional-folding|
+---------------------------
 
 3次元では、スーパーセルの\ :ref:`格子ベクトル<lattice>`\ を整数行列 :math:`M` を用いて :math:`A_\mathrm{sup}=AM` と書くことができる
 （:ref:`lt-supercell`\ ）。スーパーセルの体積は :math:`|\det M|` 倍に、
