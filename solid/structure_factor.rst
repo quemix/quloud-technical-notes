@@ -29,6 +29,19 @@ F中心・I中心の反射条件を導く。
 幾何学的な補正などを除いて :math:`|F_{hkl}|^2` に比例する。例えば、散乱因子が
 等しい二つの原子からの波の位相が :math:`\pi` だけずれると、振幅の和はゼロになる。
 
+:numref:`fig-structure-factor-phase-sum`\ では、二つの散乱振幅を矢印として足し、
+同じ大きさでも位相によって和が変わることを示す。F中心の四つの位相因子についても、
+:numref:`fig-f-centering-phase-sum` で同じ考え方を使う。
+
+.. figure:: images/structure_factor_phase_sum.svg
+   :name: fig-structure-factor-phase-sum
+   :alt: 同じ振幅の矢印を同じ向きに足すと2f、逆向きに足すと始点に戻ってゼロになる。
+   :width: 100%
+   :align: center
+
+   二つの矢印は散乱振幅の大きさと位相を表し、見分けやすいよう縦にずらしている。
+   黒丸は和の終点を示す。右では位相差が :math:`\pi` なので、二つ目の矢印が左を向く。
+
 中心並進による打ち消し
 ----------------------
 
@@ -67,6 +80,19 @@ F中心の慣用単位胞では、原点のほかに :math:`(0,1/2,1/2)`、:math
 例えば :math:`(100)` は消滅し、:math:`(200)` はF中心の反射条件を満たす。
 これは :ref:`lt-fcc-reciprocal` で慣用単位胞の指数を基本単位胞の指数へ変換して
 得た条件と一致する。
+
+:numref:`fig-f-centering-phase-sum`\ では、:math:`(200)` の四つの位相因子が強め合い、
+:math:`(100)` では正と負の項が打ち消し合う。
+
+.. figure:: images/f_centering_phase_sum.svg
+   :name: fig-f-centering-phase-sum
+   :alt: 上の(200)では右向きの四本の矢印を足して4になる。下の(100)では右向き二本と左向き二本を足し、0に戻る。
+   :width: 90%
+   :align: center
+
+   矢印は式 :eq:`structure-factor-f-factor` の4項を上から順に表す。右向きが
+   :math:`+1`、左向きが :math:`-1` で、点線で上下を結んで前の矢印の終点から足している。
+   黒丸は和 :math:`S_{\rm F}` の値を示す。
 
 I中心の反射条件
 ----------------

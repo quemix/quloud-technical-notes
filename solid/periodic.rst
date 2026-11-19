@@ -49,3 +49,18 @@
     &= \sum_{\boldsymbol{G}} \rho_{\boldsymbol G}
     \exp\left( {i\boldsymbol{G}\! \cdot\! \boldsymbol{r}} \right) \\
     &= \rho(\boldsymbol{r})
+
+一次元の例を :numref:`fig-periodic-fourier-components` に示す。第2高調波は基本波の
+半分の周期をもつが、どちらも :math:`a` だけ平行移動すると元の値に戻る。
+このため、二つの成分と定数項を足した密度も :math:`a` ごとに繰り返す。
+
+.. figure:: images/periodic_fourier_components.svg
+   :name: fig-periodic-fourier-components
+   :alt: 基本波は距離aで1周期、第2高調波は同じ距離で2周期を描く。二つの波と定数を足した密度も距離aごとに同じ形を繰り返す。
+   :width: 100%
+   :align: center
+
+   上段の :math:`0.35\cos(2\pi x/a)` は :math:`G=\pm2\pi/a`、
+   中段の :math:`0.2\cos(4\pi x/a)` は :math:`G=\pm4\pi/a` の平面波の組に対応する。
+   下段はこの二成分に :math:`G=0` の定数項1を足した密度の模式例。
+   縦の破線が周期一つ分の境界を示す。

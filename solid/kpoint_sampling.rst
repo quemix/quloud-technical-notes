@@ -82,6 +82,18 @@ Monkhorst–Packの方法 [Monkhorst1976]_ では、 :math:`r_i=1,\ldots,n_i` �
 :math:`0,\pm1/4,1/2`、Monkhorst–Packメッシュは :math:`\pm1/8,\pm3/8`
 になる。どちらも間隔は同じで、点の位置が半目盛ずれている。
 
+:numref:`fig-kpoint-gamma-and-monkhorst-pack`\ で、同じ間隔の点列が互いに
+:math:`1/8` だけずれる様子を比べられる。
+
+.. figure:: images/kpoint_gamma_and_monkhorst_pack.svg
+   :name: fig-kpoint-gamma-and-monkhorst-pack
+   :alt: 逆格子の分率座標を4分割した二つの点列。Γ点中心メッシュから右へ1/8ずらすとMonkhorst–Packメッシュになる。
+   :width: 100%
+   :align: center
+
+   丸はΓ点中心、四角はMonkhorst–Packの点。境界の :math:`-1/2` と :math:`1/2` は
+   等価なので、本文と同じく右の :math:`1/2` を数える。左の白抜きの丸は等価な位置を示す。
+
 .. |mesh-fourier-error| replace:: メッシュの誤差とフーリエ成分
 
 |mesh-fourier-error|
@@ -277,6 +289,22 @@ MPやMVの :math:`-\sigma S` は負にも正にもなり、物理的なエント
 抑えられる。残る誤差は線形補間の誤差で、点の間隔の2乗に比例する。 :numref:`fig-kps-model` の
 線形テトラヘドロン法（黄）では、誤差は一定の符号のまま、 :math:`N` を2倍にするごとに約1/4に
 なった（ :math:`N=12` で :math:`7.6\times10^{-3}`\ 、 :math:`N=48` で :math:`4.9\times10^{-4}`\ ）。
+
+:numref:`fig-kpoint-linear-interpolation`\ のように、元の分散が下に凸な区間では、
+線形補間はエネルギーを高めに見積もる。補間した線がフェルミ準位より下にある区間は、
+元の分散で占有される区間より短い。この例では、占有区間の長さの誤差は同じ符号に保たれる。
+交点で分散の傾きがゼロでなく、交点が区間内の同じ相対位置にある場合、点の間隔を
+半分にすると交点のずれはおよそ4分の1になる。
+
+.. figure:: images/kpoint_linear_interpolation.svg
+   :name: fig-kpoint-linear-interpolation
+   :alt: 下に凸な元の分散とフェルミ準位の交点は、二つのk点を結ぶ直線との交点より右にある。両矢印が交点のずれを示し、補間した占有区間は実際より短い。
+   :width: 100%
+   :align: center
+
+   青い丸はメッシュの点、青い実線は線形補間、灰色の点線は元の分散の模式例。
+   フェルミ準位 :math:`\mu` と交わる位置を、補間ではひし形、元の分散では白抜きの丸で示す。
+   両矢印は交点のずれ、薄青の範囲は補間で得た占有区間である。
 
 .. |tetrahedron-corrections| replace:: 補間の改良と適用条件
 

@@ -181,12 +181,19 @@
 90度回転と鏡映の8操作を持つ正方格子の結晶で、Γ点を中心とする :math:`3\times3` メッシュを考える。
 逆格子の基本ベクトルを :math:`\boldsymbol b_1,\boldsymbol b_2` とすると、
 :math:`\boldsymbol k=s_1\boldsymbol b_1+s_2\boldsymbol b_2` の :math:`s_1,s_2` はそれぞれ
-:math:`-1/3,0,1/3` のいずれかである。9点は次の3組に分かれる（横が :math:`\boldsymbol b_1`\ 、
-縦が :math:`\boldsymbol b_2` の方向）。同じ記号は互いに等価な点を示す。 ::
+:math:`-1/3,0,1/3` のいずれかである。:numref:`fig-irreducible-square-mesh`\ では、9点が
+中心、軸上、対角方向の3組に分かれる。回転や鏡映で行き来できる点は同じ記号で示す。
 
-   III    II    III
-    II     I     II
-   III    II    III
+.. figure:: images/irreducible_square_mesh.svg
+   :name: fig-irreducible-square-mesh
+   :alt: 第1ブリルアンゾーンの正方形を薄青、既約な三角形の領域を薄緑で示す。中心、軸上、対角の各組から1点ずつを輪で囲み、重み1/9、4/9、4/9を添える。
+   :width: 95%
+   :align: center
+
+   横軸と縦軸は逆格子の分率座標。薄青の正方形は第1ブリルアンゾーン
+   （:math:`-1/2\le s_i<1/2`）、薄緑の三角形は既約な領域の一例
+   （:math:`0\le s_2\le s_1<1/2`）である。輪で囲んだ3点が各組の代表点で、
+   右にそれぞれの正規化した重みを示す。
 
 Iは中心のΓ点、IIは軸上、IIIは対角方向の点である。Γ点は8操作すべてで自分自身に戻るので
 :math:`m=8/8=1`\ 、軸上の点はその軸に沿う鏡映と恒等操作の2個で戻るので :math:`m=8/2=4`\ 、

@@ -211,6 +211,19 @@ Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
 
 同じ指数 :math:`\boldsymbol u=(u,v,w)^{\mathsf T}` を方向 :math:`[uvw]` と面 :math:`(uvw)` に用いたとき、方向ベクトル :math:`A\boldsymbol u` と面法線 :math:`B\boldsymbol u=2\pi A G^{-1}\boldsymbol u` が平行になる条件は、:math:`\boldsymbol u` が計量行列 :math:`G` の固有ベクトルであること。:math:`G\propto I` なら任意の指数について平行だが、特定の指数では :math:`G\not\propto I` でも平行になりうる。これは晶系名だけでは決まらず、基底と指数の組による。立方晶の直交慣用基底では任意の同じ指数が平行になる一方、:ref:`FCC基本単位胞<lt-fcc-cell>` では例えば :math:`[11\bar{1}]_{\rm p}` と :math:`(11\bar{1})_{\rm p}` の法線は平行でなく、なす角の余弦は約0.905である。
 
+:numref:`fig-crystal-direction-and-plane-normal`\ の二次元の例では、横方向の
+:math:`[10]` を保ったまま基底のもう一方を傾けると、:math:`(10)` の向きとその法線が変わる。
+
+.. figure:: images/crystal_direction_and_plane_normal.svg
+   :name: fig-crystal-direction-and-plane-normal
+   :alt: 正方格子では方向[10]と(10)の法線が平行。斜めの基底では方向[10]は右を向き、法線は斜め下を向く。
+   :width: 100%
+   :align: center
+
+   灰色の破線は :math:`(10)` にあたる線、:math:`\boldsymbol g_{10}` はその法線を表す。
+   :math:`[10]` の矢印は格子ベクトル :math:`\boldsymbol a_1` の全長で描き、
+   法線の長さは模式的に示した。
+
 .. _lt-transform-related:
 
 関連ノート

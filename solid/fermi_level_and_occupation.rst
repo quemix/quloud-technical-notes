@@ -24,6 +24,19 @@
 :ref:`density-of-states` が分かれば、状態の和をエネルギー積分に置き換えられる。
 有限温度で :math:`E=\mu` の状態があれば、その平均占有数は :math:`1/2` である。
 
+:numref:`fig-fermi-occupation-temperature`\ では、温度が高いほど占有数が変わる
+エネルギー範囲が広い。有限温度の曲線はすべて :math:`(E,f)=(\mu,1/2)` を通る。
+
+.. figure:: images/fermi_occupation_temperature.svg
+   :name: fig-fermi-occupation-temperature
+   :alt: 化学ポテンシャルを中心に1から0へ変化する占有数。絶対零度では段差があり、有限温度では温度が高いほど変化がなだらかになる。
+   :width: 100%
+   :align: center
+
+   式 :eq:`f(E)` を、横軸のエネルギーを :math:`k_{\mathrm B}T_1` で割って描いた。
+   実線は温度 :math:`T_1`、一点鎖線は :math:`2.5T_1`、灰色の破線は絶対零度に近づけた極限。
+   黒丸は有限温度での :math:`f(\mu)=1/2` を示す。
+
 絶対零度とフェルミ面
 --------------------
 

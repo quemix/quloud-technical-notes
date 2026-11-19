@@ -185,6 +185,19 @@ Schrödinger方程式 :math:`\hat H|\psi\rangle=E|\psi\rangle` は係数に対�
 ギャップはゼロである。このように、ギャップの大きさから :math:`t` を見積もる式は
 境界条件と原子数によって変わる。無限鎖でもギャップが残る仕組みの一例は :ref:`tb-ssh` で扱う。
 
+:numref:`fig-tightbinding-finite-chain-gaps`\ では、開放端と、周期境界でギャップが開く場合の
+点列がどちらもゼロへ近づく。周期境界では、原子数によってギャップが最初からゼロの点もある。
+
+.. figure:: images/tightbinding_finite_chain_gaps.svg
+   :name: fig-tightbinding-finite-chain-gaps
+   :alt: 原子数に対するギャップのグラフ。開放端とNが4n+2の周期鎖ではギャップが減少し、Nが4nの周期鎖ではすべてゼロ。
+   :width: 100%
+   :align: center
+
+   等間隔・半充填で原子数が偶数の鎖。丸は開放端（式 :eq:`tb-finite-gap`）、四角は
+   :math:`N=4n+2` の周期鎖、三角は :math:`N=4n` の周期鎖を表す。
+   線は同じ条件の点を結ぶ目安で、原子数は離散値を取る。
+
 第2近接ホッピング
 -----------------
 
@@ -298,6 +311,19 @@ Bと :math:`-t_2` で結ばれているので、
 交替は金属的だった鎖を絶縁体的にする。ギャップが開く :math:`k=\pm\pi/(2a)` は
 元の鎖のフェルミ波数 :math:`k_{\mathrm F}` であり、周期の倍化によって
 :math:`k_{\mathrm F}` がちょうど新しいゾーン境界になったことに対応する。
+
+:numref:`fig-tightbinding-ssh-bulk-gap`\ では、ホッピングが交替すると、折り返しだけでは
+接していた二つのバンドがゾーン境界で離れる。
+
+.. figure:: images/tightbinding_ssh_bulk_gap.svg
+   :name: fig-tightbinding-ssh-bulk-gap
+   :alt: 半分の幅のブリルアンゾーンで比較した二つのバンド。等間隔鎖では境界で接し、ホッピングを交替させると上下のバンドの間にギャップが開く。
+   :width: 100%
+   :align: center
+
+   式 :eq:`tb-ssh-band` の上下のバンド。左は :math:`t_1=t_2=t`、右は
+   :math:`t_1=0.8t,\ t_2=1.2t`。両者を同じ縮小ゾーンに描いた。
+   右端の両矢印はバルクのギャップ（式 :eq:`tb-ssh-gap`）を示す。
 
 開放端の等間隔鎖の有限サイズギャップ（式 :eq:`tb-finite-gap`）は鎖を長くするとゼロに
 近づくが、結合が交替する鎖のバルクのギャップ（式 :eq:`tb-ssh-gap`）は無限鎖でも残る。

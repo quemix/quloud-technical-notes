@@ -30,6 +30,18 @@
 :math:`G=\pm 2\pi/a` なので、第1ブリルアンゾーンを :math:`-\pi/a<k\leq\pi/a`
 と取れる。
 
+:numref:`fig-brillouin-zone-bisectors`\ は、二次元で垂直二等分線の原点側を集める例である。
+色のついた領域では、原点までの距離がどの逆格子点までの距離よりも大きくならない。
+
+.. figure:: images/brillouin_zone_bisectors.svg
+   :name: fig-brillouin-zone-bisectors
+   :alt: 原点Γの周りに六つの等距離の逆格子点がある。原点と各点との垂直二等分線が青い六角形の第1ブリルアンゾーンを囲む。
+   :width: 87%
+   :align: center
+
+   三角格子状に並んだ逆格子点について、原点 :math:`\Gamma` に最も近い六点を描いた。
+   破線は垂直二等分線、青い六角形はその原点側が重なる第1ブリルアンゾーンである。
+
 逆格子の基本並進ベクトル :math:`\boldsymbol b_1,\boldsymbol b_2,\boldsymbol b_3`
 で張る平行六面体も逆格子の基本単位胞である。形は一般に第1ブリルアンゾーンと
 異なるが、どちらも逆格子並進で空間を隙間なく埋め、体積は同じである。
@@ -78,6 +90,19 @@
 ここで :math:`\delta` はディラックのデルタ関数である。式 :eq:`rho(E)` の
 :math:`\rho(E)` は1バンド・1スピン・単位胞あたりの状態密度である。
 複数のバンドやスピンを扱うときは、それぞれの寄与を足す。
+
+:numref:`fig-band-state-count-and-dos`\ では、累積状態数の曲線が急なところほど
+状態密度が大きい。バンドの全状態を数え終えると、累積状態数は1になる。
+
+.. figure:: images/band_state_count_and_dos.svg
+   :name: fig-band-state-count-and-dos
+   :alt: 一次元バンドの累積状態数がバンドの下端で0から増え、上端で1に達する。状態密度はバンドの両端の内側で大きく、外ではゼロ。
+   :width: 100%
+   :align: center
+
+   式 :eq:`tb-band` の一次元バンドについて、1スピン・単位胞あたりの累積状態数
+   :math:`n(E)` とその傾き :math:`\rho(E)` を示す。縦の破線はバンド端で、
+   下段の曲線はバンド端へ内側から近づくと発散する。
 
 :ref:`fermi-level-and-occupation` の :math:`f(E)` は、エネルギー :math:`E` の
 1状態に電子が入る平均占有数である。:math:`f(E)\rho(E)` は占有された状態の

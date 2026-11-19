@@ -138,7 +138,7 @@
    g_{\mathrm v}(E)=\frac{\sqrt{2}(m_{\mathrm h}^*)^{3/2}}{\pi^2\hbar^3}
                     \sqrt{E_{\mathrm v}-E}
 
-となる。:math:`\mu-E_{\mathrm v}\gg k_{\mathrm B}T` なら正孔の確率を
+となる。:math:`\mu-E_{\mathrm v}\gg k_{\mathrm B}T` なら状態が空いている確率 :math:`1-f(E)` を
 ボルツマン近似 :eq:`1-f(E)` で置ける。変数を :math:`x=E_{\mathrm v}-E` に
 換えると伝導帯の場合と同じ積分になり、
 
@@ -149,6 +149,23 @@
    \qquad N_{\mathrm v}=2\left(\frac{m_{\mathrm h}^*k_{\mathrm B}T}{2\pi\hbar^2}\right)^{3/2}
 
 を得る。:math:`N_{\mathrm v}` は価電子帯の有効状態密度である。
+
+:numref:`fig-semiconductor-carrier-density`\ の右を見ると、電子と正孔はそれぞれのバンド端から
+:math:`k_{\mathrm B}T` 程度の範囲に多く分布する。バンド端から離れると状態密度は増えるが、
+電子の占有数 :math:`f` や、価電子帯の状態が空いている確率 :math:`1-f` が急速に減るためである。ボルツマン近似では、積分して得られる
+キャリア密度は、化学ポテンシャルからバンド端までの距離に対して指数関数的に変化する。
+
+.. figure:: images/semiconductor_carrier_density.svg
+   :name: fig-semiconductor-carrier-density
+   :alt: 同じエネルギー軸に状態密度、フェルミ分布、キャリアの分布を描く。電子は伝導帯下端のすぐ上、正孔は価電子帯上端のすぐ下に山を持つ。
+   :width: 96%
+   :align: center
+
+   二つの等方的な放物線バンドの模式図。:math:`E_{\mathrm g}=12k_{\mathrm B}T`、
+   :math:`\mu` はギャップの中央とし、電子と正孔の有効質量は等しくした。左は状態密度、
+   中央は電子の占有数、右は両者から求めた式 :eq:`n(e)` と式 :eq:`n(h)` の被積分関数
+   （共通の倍率で拡大）。ボルツマン近似では、右の曲線はそれぞれのバンド端から
+   :math:`k_{\mathrm B}T/2` だけバンド内に入った位置で最大になる。
 
 .. _intrinsic-semiconductor:
 

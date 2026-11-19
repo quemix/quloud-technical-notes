@@ -70,4 +70,22 @@
   =e^{i\boldsymbol k\cdot\boldsymbol r}u_{\boldsymbol k}(\boldsymbol r),\qquad
   u_{\boldsymbol k}(\boldsymbol r+\boldsymbol R)=u_{\boldsymbol k}(\boldsymbol r)
 
-として表せる。どの範囲から独立な波数を選べばよいかは :ref:`brillouinzone` で考える。
+として表せる。
+
+:numref:`fig-bloch-phase-translation`\ の上段では、隣の単位胞の同じ胞内位置へ移るたびに
+位相が同じ角度だけ進む。下段では、実部が胞ごとに異なる形をとる一方、周期関数
+:math:`u_k(x)` と波動関数の大きさは胞ごとに同じ形を繰り返す。
+
+.. figure:: images/bloch_phase_translation.svg
+   :name: fig-bloch-phase-translation
+   :alt: 上段の複素振幅は右の胞へ移るごとに長さを保ってπ/3ずつ回転する。下段では周期関数と波動関数の大きさを重ねた破線が各胞で繰り返し、波動関数の実部を描いた実線は位相とともに変化する。
+   :width: 100%
+   :align: center
+
+   :math:`ka=\pi/3`、
+   :math:`u_k(x)=1+0.3\cos[2\pi(x-x_0)/a]` とした一次元の例。
+   上段の矢印は :math:`\psi_k(x_0+na)/\psi_k(x_0)` を複素平面上に表し、破線は一つ前の胞での
+   向きを示す。下段の縦の点線は胞の境界、丸は上段で位相を比べた位置である。
+   この例の :math:`u_k` は実数かつ正なので、下段では :math:`|\psi_k|` と同じ破線に重なる。
+
+どの範囲から独立な波数を選べばよいかは :ref:`brillouinzone` で考える。

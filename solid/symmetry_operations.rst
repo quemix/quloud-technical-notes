@@ -27,6 +27,19 @@ Cartesian座標では位置 :math:`\boldsymbol r` への操作を
 :math:`\boldsymbol t` が加わる。例えば :math:`\boldsymbol c` を中心とする反転は
 :math:`\boldsymbol r\mapsto 2\boldsymbol c-\boldsymbol r` である。
 
+:numref:`fig-crystal-symmetry-operations`\ では、回転・鏡映・反転で点のどの成分が
+変わるかを座標面への投影で比べる。
+
+.. figure:: images/crystal_symmetry_operations.svg
+   :name: fig-crystal-symmetry-operations
+   :alt: 左の90度回転ではzが変わらず、中央の鏡映ではzだけ符号が変わる。右の原点での反転ではx、y、zの符号がすべて変わり、xz面では右上から左下へ移る。
+   :width: 100%
+   :align: center
+
+   白抜きの丸が変換前、塗りつぶした丸が変換後の点。左は :math:`z` 軸回りの90度回転を
+   :math:`xy` 面に投影した図。中央と右は :math:`xz` 面への投影で、中央の水平の破線は
+   鏡映面との交線である。右の反転では :math:`z` の符号も変わる。
+
 操作の合成と逆操作
 ------------------
 
