@@ -76,7 +76,7 @@
 
 に変わる。
 
-.. |same-lattice-condition| replace:: 同じ格子を保つ基底変換の条件
+.. |same-lattice-condition| replace:: ユニモジュラ変換と格子の保存
 
 |same-lattice-condition|
 ------------------------

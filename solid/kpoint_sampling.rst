@@ -46,13 +46,15 @@ k点サンプリングとブリルアンゾーン積分
 
    \bar A=\frac{1}{\Omega_\mathrm{BZ}}\int_\mathrm{BZ}A(\boldsymbol k)\,\mathrm d\boldsymbol k
 
-となる。:ref:`ブリルアンゾーン<brillouinzone>` の状態数 :math:`n(E)` と状態密度
+となる。:ref:`density-of-states` に出てくる状態数 :math:`n(E)` と状態密度
 :math:`\rho(E)` の式は、 :math:`A(\boldsymbol k)` に階段関数やデルタ関数を選んだ場合にあたる。
 全エネルギーには、このようなバンドごとの和のほかに電子間相互作用の項も含まれるが、
 それらも状態の和から求めた電子密度などを通じてBZ積分に依存する。
 
-等間隔メッシュによる近似
-------------------------
+.. _id1:
+
+Γ点中心メッシュとMonkhorst–Packメッシュ
+----------------------------------------
 
 実際の計算では、 :eq:`kps-integral` を有限個のk点の和で近似する。最も基本的な選び方は、
 BZを各方向に :math:`n_i` 等分した等間隔のメッシュ
@@ -75,7 +77,9 @@ BZが小さくなるので、同じ細かさのメッシュに必要な分割数
 Monkhorst–Packの方法 [Monkhorst1976]_ では、 :math:`r_i=1,\ldots,n_i` として
 :math:`\boldsymbol k=\sum_i\frac{2r_i-n_i-1}{2n_i}\boldsymbol b_i` の点を使う。 :math:`n_i` が奇数なら
 :eq:`kps-mesh` と同じ点の集まりになり、偶数なら点の間隔の半分だけずれてΓ点を含まない。
-このようにずらしたメッシュも広く使われる。
+例えば1方向を4分割すると、逆格子の分率座標でΓ点中心メッシュは
+:math:`0,\pm1/4,1/2`、Monkhorst–Packメッシュは :math:`\pm1/8,\pm3/8`
+になる。どちらも間隔は同じで、点の位置が半目盛ずれている。
 
 .. |mesh-fourier-error| replace:: メッシュの誤差とフーリエ成分
 
@@ -142,7 +146,8 @@ Monkhorst–Packの方法 [Monkhorst1976]_ では、 :math:`r_i=1,\ldots,n_i` �
 金属：フェルミ面と占有数の段差
 ------------------------------
 
-絶対零度でスメアリングを使わない場合、占有数 :math:`f_j(\boldsymbol k)` は、フェルミ準位
+絶対零度でスメアリングを使わない場合、:ref:`fermi-level-and-occupation` で見たように、
+占有数 :math:`f_j(\boldsymbol k)` はフェルミ準位
 :math:`\mu` より低い状態では1、高い状態では0である。金属ではバンドがフェルミ準位を横切るので、
 :math:`\varepsilon_j(\boldsymbol k)=\mu` の等エネルギー面（ **フェルミ面** ）を境に、
 :math:`A(\boldsymbol k)` に段差が生じる。段差のある関数のフーリエ成分は :math:`|l|` に反比例する

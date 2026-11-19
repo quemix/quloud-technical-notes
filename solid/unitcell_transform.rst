@@ -74,8 +74,8 @@ F中心慣用単位胞には、原点に加えて分率座標 :math:`(0,1/2,1/2)
 
 .. _lt-fcc-reciprocal:
 
-FCCの逆格子と反射条件
----------------------
+FCCの構造因子と反射条件
+-----------------------
 
 慣用単位胞の辺ベクトルを双対化した :math:`B_{\rm c}=2\pi A_{\rm c}^{-\mathsf T}` と、結晶全体の真の逆格子点集合は区別が必要である。F中心立方格子では :math:`A_{\rm c}` の辺だけでは全並進を生成しないため、整数の慣用指数 :math:`\boldsymbol h_{\rm c}` に対しても :math:`B_{\rm c}\boldsymbol h_{\rm c}` が必ず逆格子点になるわけではない。基本並進ベクトルの組との関係は
 
@@ -84,13 +84,9 @@ FCCの逆格子と反射条件
    \boldsymbol h_{\rm p}=P_{\rm F}^{\mathsf T}\boldsymbol h_{\rm c},
    \qquad B_{\rm c}\boldsymbol h_{\rm c}=B_{\rm p}\boldsymbol h_{\rm p}.
 
-真の逆格子点となる条件は :math:`\boldsymbol h_{\rm p}` が整数であること、すなわち慣用指数 :math:`(hkl)` がすべて偶数またはすべて奇数であること。このF中心化の反射条件は、格子並進による構造因子の消滅条件でもある（`IUCrの反射条件 <https://dictionary.iucr.org/Reflection_conditions>`_）。4つのF中心並進による寄与は
+真の逆格子点となる条件は :math:`\boldsymbol h_{\rm p}` が整数であること、すなわち慣用指数 :math:`(hkl)` がすべて偶数またはすべて奇数であること。例えば :math:`(100)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1/2,1/2)` で条件を満たさず、:math:`(200)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1,1)` で条件を満たす。
 
-.. math::
-
-   S_{\rm F}(hkl)=1+(-1)^{k+l}+(-1)^{h+l}+(-1)^{h+k}.
-
-例えば :math:`(100)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1/2,1/2)` で逆格子点でなく、:math:`S_{\rm F}=0` となって消滅する。一方 :math:`(200)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1,1)` で逆格子点となり、:math:`S_{\rm F}=4` でF中心化の条件では許される（原子基底による追加の消滅はありうる）。
+同じ条件は、F中心並進で移り合う原子の散乱波を足しても得られる。:ref:`sf-f-centering` では構造因子の位相からこの条件を導く。
 
 .. _lt-supercell:
 
