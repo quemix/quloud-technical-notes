@@ -273,6 +273,6 @@ BCC格子の立方慣用単位胞には、8つの頂点に加えて体心にも�
 .. math::
   \boldsymbol g\cdot\boldsymbol R=\boldsymbol h^\top B^\top A\,\boldsymbol n=2\pi\,\boldsymbol h^\top\boldsymbol n
 
-で :math:`2\pi` の整数倍なので、すべての格子ベクトルについて :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` となる。このため、格子と同じ周期を持つ関数は平面波 :math:`e^{i\boldsymbol g\cdot\boldsymbol r}` の重ね合わせで表せる。慣用単位胞の辺から同じ式で作るベクトルと真の逆格子の違いは :ref:`lattice-transform` を参照。
+で :math:`2\pi` の整数倍なので、すべての格子ベクトルについて :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` となる。このため、格子と同じ周期を持つ関数は平面波 :math:`e^{i\boldsymbol g\cdot\boldsymbol r}` の重ね合わせで表せる。慣用単位胞の辺から同じ式で作るベクトルと真の逆格子の違いは :ref:`lt-fcc-reciprocal` を参照。
 
 関連するノートは :ref:`unitcell`、:ref:`lattice-transform` を参照。

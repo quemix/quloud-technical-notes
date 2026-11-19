@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Technical Notes'
+project = 'Quloud Technical Notes'
 copyright = '2025, Quemix inc'
 author = 'Jun-Ichi Iwata'
 version = '2025.8.25'
@@ -21,7 +21,6 @@ sys.path.insert(0, os.path.abspath('_ext'))
 
 # cjk_linebreak: 日本語の文の途中で改行した原稿で、表示に空白が入らないようにする。
 extensions = ['sphinx.ext.mathjax', 'sphinx.ext.githubpages', 'cjk_linebreak']
-# extensions = ['sphinx.ext.mathjax', 'sphinx_rtd_theme']
 
 templates_path = ['_templates']
 # Sphinx does not use .gitignore; keep the private meta checkout out of the document scan.
@@ -30,7 +29,7 @@ exclude_patterns = ['_build', 'docs', 'meta/**', '.claude', 'Thumbs.db', '.DS_St
 language = 'ja'
 
 numfig = True
-numfig_secnum_depth = 1
+numfig_secnum_depth = 2
 #math_number_all = True
 #math_numfig = True
 #math_eqref_format = "Eq.{number}"
@@ -38,25 +37,16 @@ numfig_secnum_depth = 1
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-import sphinx_rtd_theme
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'pydata_sphinx_theme'
 # sphinx.ext.githubpages writes CNAME from this URL; without it the build deletes CNAME.
 html_baseurl = 'https://technical-notes.quemix.com/'
-# html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_static_path = ['_static']
-# html_js_files = ['three.min.js']
-html_style = 'css/my_theme.css'
 html_css_files = ['custom.css']
-#html_logo = '_static/Quloud_A_color.png'
-html_title = ''
-html_short_title = 'aa'
+html_title = project
+html_sidebars = {'index': []}
 html_theme_options = {
-    # 'logo_only': True,
-    # 'sticky_navigation': True,
-    # 'titles_only': True,
-    # 'display_version': True,
-    # 'flyout_display': 'attached',
-    # 'version_selector': True,
-    # 'language_selector': True,
-    # 'collapse_navigation': True,
+    'navigation_depth': 2,
+    'search_bar_text': '技術ノートを検索',
+    'secondary_sidebar_items': ['page-toc'],
+    'shorten_urls': False,
 }

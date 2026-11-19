@@ -6,10 +6,15 @@ Quloudの具体的な計算事例は[`quloud-examples`](https://github.com/quemi
 
 ## ビルドと公開
 
+分野ごとの `index.rst` を一冊の目次とし、章ページから記事へリンクします。
+記事内の小見出しは各記事の目次に表示されます。既存の記事を別の章に移すときは、
+章ページの `toctree` を変更し、記事のファイルパスは保ちます。
+
 `technical-notes`ブランチへpushすると、GitHub Actions（`.github/workflows/pages.yml`）が
 `requirements.txt`の版のSphinxでビルドし、GitHub Pagesへ公開します。生成したHTMLはコミットしません。
 
-手元で確認するときは、`make html`で`_build/html`に出力し、`make serve`で
+手元で確認するときは、`python -m pip install -r requirements.txt` で依存関係を入れ、
+`make html`で`_build/html`に出力し、`make serve`で
 http://localhost:8001 を開きます。警告を漏らさず確かめるときは次のようにします。
 
 ```bash

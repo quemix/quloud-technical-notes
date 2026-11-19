@@ -10,7 +10,7 @@
 .. 記述し直すと、波数の数が減るかわりにバンドの本数が増える **バンドの折り返し** が起きることを示す。
 
 .. **前提知識**: :ref:`ブロッホの定理<blochstheorem>`、:ref:`ブリルアンゾーン<brillouinzone>`、
-.. :ref:`超胞（スーパーセル）<lattice-transform>`。
+.. :ref:`超胞（スーパーセル）<lt-supercell>`。
 
 .. **学習目標**:
 
@@ -107,7 +107,7 @@
    バンドの交点で重なった点は2つの状態を表す。横軸の幅は、それぞれのセルのBZの幅に比例させた。
 
 3次元では、スーパーセルの\ :ref:`格子ベクトル<lattice>`\ を整数行列 :math:`M` を用いて :math:`A_\mathrm{sup}=AM` と書くことができる
-（:ref:`格子基底と座標系の変換<lattice-transform>`\ ）。スーパーセルの体積は :math:`|\det M|` 倍に、
+（:ref:`lt-supercell`\ ）。スーパーセルの体積は :math:`|\det M|` 倍に、
 :ref:`BZ<brillouinzone>`\ の体積は :math:`1/|\det M|` 倍になり、元の波数 :math:`\boldsymbol k` はスーパーセルの\ :ref:`逆格子ベクトル<lattice>`
 :math:`\boldsymbol G_\mathrm{sup}` だけずらして小さな\ :ref:`BZ<brillouinzone>`\ に折り返される
 （:math:`\boldsymbol K=\boldsymbol k-\boldsymbol G_\mathrm{sup}`\ ）。1つの :math:`\boldsymbol K` に
@@ -136,7 +136,7 @@ BZ積分を行うのに必要な波数の数が減る。この関係は :ref:`kp
 
 * :ref:`blochstheorem`
 * :ref:`brillouinzone`
-* :ref:`lattice-transform`
+* :ref:`lt-cell-transform`
 * :ref:`tightbinding`
 * :ref:`kpoint_sampling`
 

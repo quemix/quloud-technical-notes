@@ -1,25 +1,15 @@
-.. Technical Notes documentation master file, created by
-   sphinx-quickstart on Wed Feb 12 23:22:37 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 固体物理
-===========================================
+========
+
+結晶構造と逆格子を出発点に、周期系の電子状態、エネルギーバンド、k点積分へ進みます。最後に、原子配置と対称性が強誘電性にどう関わるかを見ます。
 
 .. toctree::
    :maxdepth: 2
-   :numbered:
+   :titlesonly:
+   :numbered: 2
 
-   lattice
-   unitcell
-   lattice_transform
-   periodic
-   blochstheorem
-   brillouinzone
-   periodic_boundary
-   kpoint_sampling
-   irreducible_kpoints
-   bandstructure
-   tightbinding
-   ferroelectricity
-
+   crystal_structure
+   periodic_electronic_states
+   energy_bands
+   kspace_integration
+   crystal_properties

@@ -1,16 +1,13 @@
-.. Technical Notes documentation master file, created by
-   sphinx-quickstart on Wed Feb 12 23:22:37 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 .. _hilbert:
 
 ヒルベルト空間
-===========================================
+==============
+
+再生核ヒルベルト空間は、カーネルを用いる手法の数学的な背景です。
+応用とのつながりは :ref:`ガウス過程回帰<gaussian_process>` でも紹介しています。
 
 .. toctree::
-   :maxdepth: 2
-   :numbered:
+   :maxdepth: 1
+   :titlesonly:
 
    rkhs
-

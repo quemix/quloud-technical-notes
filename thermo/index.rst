@@ -1,22 +1,18 @@
-.. Technical Notes documentation master file, created by
-   sphinx-quickstart on Wed Feb 12 23:22:37 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 熱化学
-===========================================
+======
+
+熱力学の状態量から、化学反応のギブス自由エネルギーへ進みます。標準状態と基準状態の定義は付録で確認できます。
 
 .. toctree::
    :maxdepth: 2
-   :numbered:
+   :titlesonly:
+   :numbered: 2
 
-   internal_energy
-   enthalpy
-   entropy
-   gibbs_energy
+   state_functions
+   reaction_thermodynamics
 
 .. toctree::
    :maxdepth: 2
+   :titlesonly:
 
    appendix/index
-

@@ -1,5 +1,27 @@
-/* アイコン（！など）を非表示にする */
-div.admonition > p.admonition-title::before {
-    content: none !important;
+.book-list > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.book-list > ul > li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    border: 1px solid var(--pst-color-border);
+    border-radius: 0.5rem;
+    background: var(--pst-color-surface);
+}
+
+.book-list > ul > li > p {
+    margin: 0;
+}
+
+.book-list > ul > li > p:first-child {
+    font-size: 1.125rem;
+    font-weight: 700;
 }
 

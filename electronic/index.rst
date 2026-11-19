@@ -1,10 +1,12 @@
 電子状態計算
 ============
 
+電子状態計算でのスピンの扱いを学び、得られた密度行列から原子ごとの電子数や結合次数を読み取ります。
+
 .. toctree::
    :maxdepth: 2
-   :numbered:
+   :titlesonly:
+   :numbered: 2
 
-   spin_restriction
-   lowdin
-   bond_order
+   spin_treatment
+   density_matrix_analysis
