@@ -6,5 +6,6 @@
 .. toctree::
    :maxdepth: 2
    :titlesonly:
+   :numbered: 3
 
    /hilbert/index

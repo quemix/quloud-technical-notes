@@ -30,7 +30,9 @@ exclude_patterns = ['_build', 'docs', 'meta/**', '.claude', 'Thumbs.db', '.DS_St
 language = 'ja'
 
 numfig = True
-numfig_secnum_depth = 2
+# 図表と式の番号は記事ごとに数える。機械学習・数学は巻→章→節→記事の3段なので3にする。
+# 2段の巻（固体物理など）は記事の番号が2段なので、番号は変わらない。
+numfig_secnum_depth = 3
 #math_number_all = True
 #math_numfig = True
 #math_eqref_format = "Eq.{number}"

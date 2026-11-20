@@ -6,5 +6,12 @@
 .. toctree::
    :maxdepth: 2
    :titlesonly:
+   :numbered: 3
 
    gaussian_process_regression
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   appendix/index
