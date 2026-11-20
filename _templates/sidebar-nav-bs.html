@@ -1,0 +1,6 @@
+{# Use the theme's sidebar with a shorter Japanese title. #}
+{% set theme_gettext = _ %}
+{% macro _(message) -%}
+  {{- "目次" if language == "ja" and message == "Section Navigation" else theme_gettext(message) -}}
+{%- endmacro %}
+{%- include "!components/sidebar-nav-bs.html" %}

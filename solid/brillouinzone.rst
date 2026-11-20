@@ -11,7 +11,7 @@
 ------------------------------------------------
 
 式 :eq:`Bloch` によると、格子並進 :math:`\boldsymbol R` で波動関数に掛かる位相因子は
-:math:`e^{i\boldsymbol k\cdot\boldsymbol R}` である。逆格子ベクトル
+:math:`e^{i\boldsymbol k\cdot\boldsymbol R}` である。\ :ref:`逆格子ベクトル<reciprocal-lattice>`
 :math:`\boldsymbol G` に対して :math:`e^{i\boldsymbol G\cdot\boldsymbol R}=1` なので、
 :math:`\boldsymbol k` と :math:`\boldsymbol k+\boldsymbol G` は同じ位相因子を与える。
 そこで、逆格子並進で等価な波数の組から一つずつ代表を取れる領域を選ぶ。
@@ -43,7 +43,7 @@
    破線は垂直二等分線、青い六角形はその原点側が重なる第1ブリルアンゾーンである。
 
 逆格子の基本並進ベクトル :math:`\boldsymbol b_1,\boldsymbol b_2,\boldsymbol b_3`
-で張る平行六面体も逆格子の基本単位胞である。形は一般に第1ブリルアンゾーンと
+で張る平行六面体も逆格子の\ :ref:`基本単位胞<lattice-unit-cells>`\ である。形は一般に第1ブリルアンゾーンと
 異なるが、どちらも逆格子並進で空間を隙間なく埋め、体積は同じである。
 実格子の基本単位胞の体積を :math:`\Omega` とすると、
 
@@ -104,10 +104,10 @@
    :math:`n(E)` とその傾き :math:`\rho(E)` を示す。縦の破線はバンド端で、
    下段の曲線はバンド端へ内側から近づくと発散する。
 
-:ref:`fermi-level-and-occupation` の :math:`f(E)` は、エネルギー :math:`E` の
+:ref:`フェルミ–ディラック分布<fermi-dirac-distribution>` :math:`f(E)` は、エネルギー :math:`E` の
 1状態に電子が入る平均占有数である。:math:`f(E)\rho(E)` は占有された状態の
 エネルギーあたりの密度を与える。これをエネルギーで積分すると、同じ規格化での電子数
-が得られる。BZ積分を有限個のk点の和で近似する方法は :ref:`kpoint_sampling` で説明する。
+が得られる。数値計算では、有限個の\ :ref:`k点のメッシュ<kpoint-meshes>`\ を使い、BZ積分を和で近似する。
 
 --------------
 参考資料

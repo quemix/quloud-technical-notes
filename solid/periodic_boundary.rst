@@ -7,15 +7,17 @@
 まず、独立な波数の数が単位胞の数に等しいことを導く。次に、同じ結晶を
 :ref:`超胞<lt-supercell>` で表すと、波数の数と各波数でのバンドの本数がどう変わるかを比べる。
 
+.. _pbc-allowed-wavevectors:
+
 周期境界条件と許される波数
 --------------------------
 
-:ref:`blochstheorem` で選んだブロッホ状態には、格子ベクトル :math:`\boldsymbol R` の
+:ref:`ブロッホ状態<blochstheorem>`\ には、格子ベクトル :math:`\boldsymbol R` の
 並進で位相因子 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}` が掛かる。
 波数ベクトル :math:`\boldsymbol k` とバンド番号 :math:`j` で状態を指定できる。
 以下では、端を一周したときの位相から :math:`\boldsymbol k` を絞り込む。
 
-:ref:`基本並進ベクトル<lattice>` :math:`\boldsymbol a_i` の方向に単位胞を :math:`N_i` 個並べ、
+:ref:`基本並進ベクトル<lattice-translations>` :math:`\boldsymbol a_i` の方向に単位胞を :math:`N_i` 個並べ、
 両端をつないで :math:`\psi(\boldsymbol r+N_i\boldsymbol a_i)=\psi(\boldsymbol r)` を課す。
 これをBorn–von Kármánの周期境界条件と呼ぶ。式 :eq:`Bloch` を使うと、
 一周したときの位相因子は :math:`e^{iN_i\boldsymbol k\cdot\boldsymbol a_i}=1` となる。
@@ -35,14 +37,14 @@
 |independent-wavevectors|
 -------------------------
 
-:ref:`逆格子ベクトル<lattice>` :math:`\boldsymbol G` だけ異なる :math:`\boldsymbol k` と
-:math:`\boldsymbol k+\boldsymbol G` は、すべての\ :ref:`格子ベクトル<lattice>`\ に対して同じ位相
+:ref:`逆格子ベクトル<reciprocal-lattice>` :math:`\boldsymbol G` だけ異なる :math:`\boldsymbol k` と
+:math:`\boldsymbol k+\boldsymbol G` は、すべての格子ベクトルに対して同じ位相
 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}` を与える（:math:`e^{i\boldsymbol G\cdot\boldsymbol R}=1`\ ）
 ので、同じ並進の性質を表す。式 :eq:`pbc-allowed` では、:math:`m_i` に
 :math:`N_i` を足すと波数に :math:`\boldsymbol b_i` が加わる。したがって各方向で
 :math:`m_i=0,1,\ldots,N_i-1` を数えれば、独立な波数は全部で
 :math:`N=N_1N_2N_3` 個になる。これは単位胞の数に等しい。各代表点は逆格子ベクトルだけ
-ずらして :ref:`第1ブリルアンゾーン<brillouinzone>` に入れられる。
+ずらして\ :ref:`第1ブリルアンゾーン<first-brillouin-zone>`\ に入れられる。
 
 .. |one-dimensional-wavevectors| replace:: 1次元結晶で許される波数
 
@@ -70,6 +72,8 @@
    :math:`k`\ 。 :math:`-\pi/a` と :math:`\pi/a` は逆格子ベクトルだけ異なる同じ点なので、
    :math:`\pi/a` だけを描いた。 :math:`N\to\infty` では、許される :math:`k` がBZ全体を埋める。
 
+.. _pbc-band-folding:
+
 スーパーセルとバンドの折り返し
 ------------------------------
 
@@ -85,9 +89,9 @@
    k\equiv K+\frac{2\pi}{Ma}\,j\pmod{\frac{2\pi}{a}}
    \quad(j=0,1,\ldots,M-1)
 
-で与えられる。スーパーセルの\ :ref:`BZ<brillouinzone>` :math:`-\pi/(Ma)<K\le\pi/(Ma)` は元の\ :ref:`BZ<brillouinzone>`\ の :math:`1/M` の幅となる。
+で与えられる。スーパーセルのBZ :math:`-\pi/(Ma)<K\le\pi/(Ma)` は元のBZの :math:`1/M` の幅となる。
 元の1本のバンド :math:`\varepsilon(k)` は、
-スーパーセルの\ :ref:`BZ<brillouinzone>`\ では :math:`\varepsilon_j(K)=\varepsilon(K+2\pi j/(Ma))` の :math:`M` 本のバンドとして
+スーパーセルのBZでは :math:`\varepsilon_j(K)=\varepsilon(K+2\pi j/(Ma))` の :math:`M` 本のバンドとして
 現れる。これを\ **バンドの折り返し**\ （フォールディング）という。
 
 :math:`N` が :math:`M` の倍数なら、:math:`N` 個の単位胞は :math:`N/M` 個のスーパーセルにまとめられる。
@@ -110,10 +114,10 @@
 |three-dimensional-folding|
 ---------------------------
 
-3次元では、スーパーセルの\ :ref:`格子ベクトル<lattice>`\ を整数行列 :math:`M` を用いて :math:`A_\mathrm{sup}=AM` と書くことができる
-（:ref:`lt-supercell`\ ）。スーパーセルの体積は :math:`|\det M|` 倍に、
-:ref:`BZ<brillouinzone>`\ の体積は :math:`1/|\det M|` 倍になり、元の波数 :math:`\boldsymbol k` はスーパーセルの\ :ref:`逆格子ベクトル<lattice>`
-:math:`\boldsymbol G_\mathrm{sup}` だけずらして小さな\ :ref:`BZ<brillouinzone>`\ に折り返される
+3次元では、\ :ref:`スーパーセルの格子行列<lt-supercell>`\ を整数行列 :math:`M` を用いて :math:`A_\mathrm{sup}=AM` と書くことができる。
+スーパーセルの体積は :math:`|\det M|` 倍に、BZの体積は :math:`1/|\det M|` 倍になり、
+元の波数 :math:`\boldsymbol k` はスーパーセルの逆格子ベクトル
+:math:`\boldsymbol G_\mathrm{sup}` だけずらして小さなBZに折り返される
 （:math:`\boldsymbol K=\boldsymbol k-\boldsymbol G_\mathrm{sup}`\ ）。1つの :math:`\boldsymbol K` に
 元の :math:`|\det M|` 個の波数が対応し、バンドの本数は :math:`|\det M|` 倍になる。
 
@@ -121,19 +125,18 @@
 --------------
 
 折り返しは、同じ状態をどの大きさのセルで記述するかの違いであり、それだけでは物理は何も
-変わらない。 :numref:`fig-pbc-folding` の折り返されたバンドは、\ :ref:`BZ<brillouinzone>`\ の境界や内部で交わったり
+変わらない。 :numref:`fig-pbc-folding` の折り返されたバンドは、BZの境界や内部で交わったり
 接したりするが、ギャップは開かない。元の単位胞の周期 :math:`a` があるかぎり、折り返された
 バンドどうしは異なる並進の性質を持ち、混ざらないからである。
 
 一方、原子の変位などで結晶の周期が実際に :math:`Ma` に変わると、元の並進 :math:`a` の対称性が
 失われ、同じ :math:`K` に折り返されたバンドどうしが混ざる。このとき、折り返されたバンドの交点で
-ギャップが開きうる。1次元鎖で隣り合う結合の強さが交互に変わり、周期が :math:`2a` になると、
-:math:`K=\pm\pi/(2a)` でギャップが開く例を、:ref:`タイト・バインディング近似<tightbinding>` の
-ホッピングが交替する鎖（SSH模型）で扱っている。周期の変化が小さいときには、スーパーセルの
+ギャップが開きうる。\ :ref:`SSH模型<tb-ssh>`\ では、1次元鎖の隣り合う結合の強さが交互に変わって
+周期が :math:`2a` になると、:math:`K=\pm\pi/(2a)` でギャップが開く。周期の変化が小さいときには、スーパーセルの
 バンドが元のバンドを折り返した形にどれだけ近いかを調べることで、変化の効果を読み取れる。
 
-計算の上では、スーパーセルのバンドの本数が増えるかわりに、\ :ref:`BZ<brillouinzone>`\ が小さくなるので、同じ細かさで
-BZ積分を行うのに必要な波数の数が減る。この関係は :ref:`kpoint_sampling` で使う。
+計算の上では、スーパーセルのバンドの本数が増えるかわりに、BZが小さくなるので、同じ細かさで
+BZ積分を行うのに必要な\ :ref:`k点メッシュの分割数<kpoint-meshes>`\ が減る。
 
 関連項目
 --------

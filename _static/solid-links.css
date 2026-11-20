@@ -1,0 +1,3 @@
+.bd-article p a.reference.internal:has(> .std-ref):not(:hover, :focus-visible) {
+    text-decoration-line: none;
+}

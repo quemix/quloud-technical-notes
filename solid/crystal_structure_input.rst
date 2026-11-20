@@ -6,8 +6,8 @@
 格子還元・結晶学的標準化で何が変わるかを整理し、構造ファイルや計算ソフトで
 格子ベクトルと原子座標をどう指定するかを確認する。最後に、FCCの変換をNumPyで検算する。
 
-**前提知識**: :ref:`lattice-transform` の基底変換・Cartesian回転と、
-:ref:`lt-cell-transform` の基本単位胞と超胞。
+**前提知識**: :ref:`格子の基底変換<lt-primitive-basis>`、:ref:`Cartesian座標の回転<lt-cartesian-rotation>`、
+:ref:`基本単位胞<lattice-unit-cells>`、:ref:`超胞<lt-supercell>`。
 
 .. _lt-standardize-cell:
 
@@ -30,21 +30,19 @@ spglibは対称性判定結果に基づいて原子順序やCartesianの向き�
 CIF
 ^^^
 
-CIFは通常、単位胞の辺の長さ・角度と原子の分率座標を記録する。まず、座標が単位胞内の
+CIFは通常、単位胞の辺の長さ・角度と原子の\ :ref:`分率座標<coordinates>`\ を記録する。まず、座標が単位胞内の
 全原子を含むか、非対称単位の代表原子だけを記録しているかを確認する。
-空間群情報や対称操作がある場合の展開手順は :ref:`非対称単位と原子座標の展開<asymmetric-unit-and-cif>`
-を参照する。
+代表原子だけのときは、空間群情報や対称操作を使って\ :ref:`非対称単位から原子座標を展開する<asymmetric-unit-and-cif>`。
 
 部分占有があれば、組成や無秩序をどうモデル化するかを決める。セル定数から分かるのは
-単位胞の形と大きさで、Cartesian座標系での置き方は別に選ぶ。慣用単位胞の定義は
-`IUCr Online Dictionary <https://dictionary.iucr.org/Conventional_cell>`_ を参照する。
+単位胞の形と大きさで、\ :ref:`Cartesian座標系での置き方<cell-parameters-cartesian>`\ は別に選ぶ。
 
 .. _lt-quantum-espresso:
 
 Quantum ESPRESSO
 ^^^^^^^^^^^^^^^^^
 
-Quantum ESPRESSO 7.5の公式 `INPUT_PW <https://www.quantum-espresso.org/Doc/INPUT_PW.html>`_ によると、``ibrav=0`` は ``CELL_PARAMETERS`` でセルを与え、``ibrav>0`` はQEが定義するBravais格子のベクトルを使う。``ATOMIC_POSITIONS crystal`` は、``ibrav`` または ``CELL_PARAMETERS`` によって指定された計算セルの3本の格子ベクトルに対する分率座標である。``ibrav=0`` では超胞を直接指定することもできる。例えば ``ibrav=2`` のベクトルは :math:`\frac a2(-1,0,1)`、:math:`\frac a2(0,1,1)`、:math:`\frac a2(-1,1,0)` であり、FCC基本単位胞を使うが、:ref:`lt-fcc-cell` の :math:`P_{\rm F}` の取り方とは軸向きが異なる。引数が負の設定もあり、例えば ``ibrav=-3`` は体心立方格子の別の対称的な軸設定を表す。符号だけからベクトルの向きや原点を推測せず、公式表の定義を使う。計算セルを変更したときは、分率座標や方向指数をそのまま引き継がず、対応する基底変換を行う。格子成分、原子位置の単位、格子定数の単位を明示し、Bohr、Å、``alat`` を混ぜない。
+Quantum ESPRESSO 7.5の公式 `INPUT_PW <https://www.quantum-espresso.org/Doc/INPUT_PW.html>`_ によると、``ibrav=0`` は ``CELL_PARAMETERS`` でセルを与え、``ibrav>0`` はQEが定義するBravais格子のベクトルを使う。``ATOMIC_POSITIONS crystal`` は、``ibrav`` または ``CELL_PARAMETERS`` によって指定された計算セルの3本の格子ベクトルに対する分率座標である。``ibrav=0`` では超胞を直接指定することもできる。例えば ``ibrav=2`` のベクトルは :math:`\frac a2(-1,0,1)`、:math:`\frac a2(0,1,1)`、:math:`\frac a2(-1,1,0)` であり、FCC基本単位胞を使うが、\ :ref:`FCCの基底変換<lt-fcc-cell>`\ に用いる :math:`P_{\rm F}` の取り方とは軸向きが異なる。引数が負の設定もあり、例えば ``ibrav=-3`` は体心立方格子の別の対称的な軸設定を表す。符号だけからベクトルの向きや原点を推測せず、公式表の定義を使う。計算セルを変更したときは、分率座標や方向指数をそのまま引き継がず、対応する基底変換を行う。格子成分、原子位置の単位、格子定数の単位を明示し、Bohr、Å、``alat`` を混ぜない。
 
 .. _lt-spr-kkr:
 
@@ -78,7 +76,7 @@ LAMMPSの `triclinic box documentation <https://docs.lammps.org/Howto_triclinic.
 数値検証
 ------------
 
-次の短いNumPy例は、FCC変換、回転、超胞、逆格子の双対性をまとめて検算する。格子ベクトルは基底変換の式と同様に\ **列**\ で保持し、原子座標も列ベクトルとする。ASEやspglibなど行に格子ベクトルを持つAPIへ渡すときは、:ref:`前節<lt-array-conventions>` のとおり ``A.T`` とする。
+次の短いNumPy例は、FCC変換、回転、超胞、逆格子の双対性をまとめて検算する。格子ベクトルは基底変換の式と同様に\ **列**\ で保持し、原子座標も列ベクトルとする。ASEやspglibなど、\ :ref:`格子ベクトルを行に並べるAPI<lt-array-conventions>`\ へ渡すときは ``A.T`` とする。
 
 .. code-block:: python
 

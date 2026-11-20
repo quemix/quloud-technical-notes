@@ -10,7 +10,7 @@
     f(x + a) = f(x)
 
 \ :math:`f(x)` は周期 :math:`a` を持つという。
-結晶の場合を考えると、例えば電子密度やポテンシャルなどは、任意の格子ベクトル
+結晶の場合を考えると、例えば電子密度やポテンシャルなどは、任意の\ :ref:`格子ベクトル<lattice-translations>`
 
 .. math::
     \boldsymbol{R} \equiv n_1 \boldsymbol{a}_1 + n_2 \boldsymbol{a}_2 + n_3 \boldsymbol{a}_3
@@ -24,12 +24,14 @@
 が成り立っていると考えられる。
 
 
+.. _periodic-fourier-series:
+
 --------------------------------
 フーリエ級数表示
 --------------------------------
 
 格子と同じ周期をもつ電子密度は、平面波の重ね合わせで表せる。
-各平面波の波数ベクトル :math:`\boldsymbol G` は :ref:`逆格子ベクトル<lattice>` で、
+各平面波の波数ベクトル :math:`\boldsymbol G` は\ :ref:`逆格子ベクトル<reciprocal-lattice>`\ で、
 :math:`\rho_{\boldsymbol G}` はその平面波がどれだけ含まれるかを表すフーリエ係数である。
 
 .. math::

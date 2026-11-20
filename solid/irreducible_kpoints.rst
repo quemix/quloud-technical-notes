@@ -8,7 +8,7 @@
 本稿ではブロッホ関数の変換からその理由を導き、代表点の重みを説明する。
 
 **前提知識**: :ref:`ブロッホの定理<blochstheorem>`、
-:ref:`ブリルアンゾーン<brillouinzone>`、:ref:`k点サンプリング<kpoint_sampling>`。
+:ref:`ブリルアンゾーン<first-brillouin-zone>`、:ref:`k点サンプリング<kpoint_sampling>`。
 
 **学習目標**:
 
@@ -18,7 +18,7 @@
 結晶の対称操作
 --------------
 
-:ref:`crystal-symmetry-operations` で導入した表記を使い、操作の線形部分を :math:`Q`、
+:ref:`結晶の対称操作<crystal-symmetry-operations>`\ の線形部分を :math:`Q`、
 並進部分を :math:`\boldsymbol t` とする。まとめて
 
 .. math::
@@ -35,7 +35,7 @@
    g^{-1}\boldsymbol r' = \boldsymbol r = Q^{-1}(\boldsymbol r'-\boldsymbol t)
 
 となる。Cartesian座標で :math:`Q` は直交行列、 :math:`\boldsymbol t` はベクトルである。
-この直交部分の集まりが :ref:`結晶の点群<point-and-space-groups>` である。以下では、原子配置だけでなく、
+この直交部分の集まりが\ :ref:`結晶の点群<crystal-point-group>`\ である。以下では、原子配置だけでなく、
 電子のハミルトニアンも不変に保つ操作を考える。
 
 ブロッホ関数の変換
@@ -71,6 +71,8 @@
 
 .. |symmetry-kpoint-mapping| replace:: 対称操作による波数の変換
 
+.. _kpoint-symmetry-mapping:
+
 |symmetry-kpoint-mapping|
 -------------------------
 
@@ -102,8 +104,8 @@
 
 である。並進部分 :math:`\boldsymbol t` は波数の行先には現れないが、波動関数の形や位相には影響する。
 
-:math:`Q` はCartesian座標の行列である。格子行列 :math:`A` と逆格子行列
-:math:`B=2\pi A^{-\mathsf T}`\ （:ref:`lattice`\ ）を使い、実格子の分率座標で同じ操作を
+:math:`Q` はCartesian座標の行列である。\ :ref:`格子行列<lattice-translations>` :math:`A` と\ :ref:`逆格子行列<reciprocal-lattice>`
+:math:`B=2\pi A^{-\mathsf T}` を使い、実格子の\ :ref:`分率座標<coordinates>`\ で同じ操作を
 :math:`W=A^{-1}QA` と表すと、逆格子の分率座標では
 :math:`B^{-1}QB=A^{\mathsf T}QA^{-\mathsf T}=(W^{-1})^{\mathsf T}` となる。最後の等号には
 :math:`Q^{-\mathsf T}=Q` を使った。一般には :math:`W` をそのままk点の分率座標に掛けられない。
@@ -132,6 +134,8 @@
 
 である。ただし、変換後の状態が、 :math:`Q\boldsymbol k` であらかじめ選んだ固有関数と
 等しいとは限らない。位相は任意であり、縮退があると同じエネルギーの状態どうしが混ざり得る。
+
+.. _irreducible-kpoint-orbits:
 
 等価なk点の組と代表点
 ----------------------

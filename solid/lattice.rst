@@ -4,6 +4,8 @@
 格子と格子ベクトル
 ====================
 
+.. _lattice-points:
+
 格子と格子点
 ------------
 
@@ -33,6 +35,8 @@
    白抜きの丸は、移動後に元の点と重ならない点を表す。
    下段の白抜きのひし形は格子点、青い丸と茶色の四角は原子で、破線の枠は格子点一つと
    その単位構造を囲む。
+
+.. _lattice-translations:
 
 格子並進と基本並進ベクトル
 --------------------------
@@ -83,7 +87,10 @@
 
 と書ける。:math:`A\boldsymbol n` は格子全体を自分自身に重ねる並進も表すので、格子並進ベクトル（単に格子ベクトルとも）と呼ぶ。本ノートでは格子ベクトルを :math:`A` の列に置く規約を用いる。
 
-基本並進ベクトルの選び方は一意ではない。例えば :math:`\boldsymbol a_1,\ \boldsymbol a_1+\boldsymbol a_2,\ \boldsymbol a_3` も同じ格子を生成する（:ref:`lattice-transform`）。
+:ref:`基本並進ベクトルの選び方<lt-primitive-basis>`\ は一意ではない。例えば
+:math:`\boldsymbol a_1,\ \boldsymbol a_1+\boldsymbol a_2,\ \boldsymbol a_3` も同じ格子を生成する。
+
+.. _lattice-unit-cells:
 
 基本単位胞と慣用単位胞
 ----------------------
@@ -91,13 +98,14 @@
 3本の独立な格子ベクトルを辺とする平行六面体は、辺の整数結合だけ平行移動した複製で、空間を隙間も重なりもなく埋める。このように繰り返しの単位となる領域を単位胞（unit cell）と呼ぶ。以下では平行六面体の単位胞を扱う。
 
 基本並進ベクトルを辺とする平行六面体は、格子点を1個だけ含む。頂点の8個の格子点はそれぞれ隣接する8つの胞に共有されるので、:math:`8\times1/8=1` 個と数える。格子点を1個だけ含む単位胞を基本単位胞（primitive cell）と呼ぶ。基本胞、原始胞、原始単位胞ともいう。基本単位胞の体積は単位胞の中で最小である。平行六面体でない基本単位胞もあり、Wigner–Seitz胞がその例である。逆格子に同じ構成を適用したものが
-:ref:`first-brillouin-zone` である。
+:ref:`第1ブリルアンゾーン<first-brillouin-zone>`\ である。
 
 慣用単位胞（conventional cell）は、格子の対称性が分かりやすい軸を辺に選んだ単位胞である。
-単純立方・体心立方（BCC）・面心立方（FCC）では、いずれも立方体を慣用単位胞にとる。
+立方格子系の\ :ref:`ブラベー格子型<bravais-lattice-types>`\ である単純立方・体心立方（BCC）・面心立方（FCC）では、
+いずれも立方体を慣用単位胞にとる。
 含まれる格子点はそれぞれ1個、2個、4個である。単純立方の慣用単位胞は基本単位胞でもあり、
 BCCとFCCの慣用単位胞は基本単位胞のそれぞれ2倍、4倍の体積をもつ。
-立方体の頂点以外の格子点への移動は、後の :ref:`centring-translation` で扱う。
+BCCとFCCでは、立方体の頂点から体心や面心の格子点への移動も\ :ref:`中心並進<centring-translation>`\ として表せる。
 
 :numref:`fig-centred-rectangular-cells`\ の二次元の例では、長方形の慣用単位胞の頂点と
 中心に格子点がある。ひし形の基本単位胞を選ぶと、同じ格子を半分の面積の胞で表せる。
@@ -148,7 +156,7 @@ BCCとFCCの慣用単位胞は基本単位胞のそれぞれ2倍、4倍の体積
   \boldsymbol s=A^{-1}\boldsymbol r
   :label: fractional-cartesian-matrix
 
-である。本ノートでは分率座標を列ベクトルで表す。格子ベクトルを行に格納するソフトウェアAPIとの対応は :ref:`lt-array-conventions` で扱う。
+である。本ノートでは分率座標を列ベクトルで表す。\ :ref:`格子ベクトルを行に格納するAPI<lt-array-conventions>`\ へ渡すときは、格子行列を転置する。
 
 :numref:`fig-lattice-fractional-coordinates`\ では、斜めの基底に沿った二つの成分を
 足して位置を求める。点線はそれぞれの基底ベクトルに平行である。
@@ -193,6 +201,8 @@ BCC格子の立方慣用単位胞には、8つの頂点に加えて体心にも�
 並進を加えると、頂点の並びと中心の並びが互いに入れ替わり、格子全体が重なる。
 
 中心並進は格子点についての性質である。単位胞の中心に原子があるだけでは中心並進にならず、結晶構造全体がその並進で重なる必要がある。例えばCsCl型構造では立方体の頂点にCs、体心にClがあり、体心への並進はCsをClに移すので結晶構造を保たない。この構造の格子は単純立方である。
+
+.. _lattice-metric:
 
 格子定数と計量行列
 ------------------
@@ -259,8 +269,9 @@ BCC格子の立方慣用単位胞には、8つの頂点に加えて体心にも�
   ac\cos\beta & bc\cos\alpha & c^2
   \end{pmatrix}
 
-と決まる。格子全体を直交行列 :math:`Q` で回した :math:`QA` も :math:`(QA)^\top QA=A^\top A=G` を与えるので、:math:`G` からは向きが決まらない。これが除いた3自由度に当たる。直交座標での置き方の一例は :ref:`lattice-transform` で示す。
+と決まる。格子全体を直交行列 :math:`Q` で回した :math:`QA` も :math:`(QA)^\top QA=A^\top A=G` を与えるので、:math:`G` からは向きが決まらない。これが除いた3自由度に当たる。\ :ref:`格子定数から直交座標での格子ベクトルを組み立てる<cell-parameters-cartesian>`\ には、軸の向きを一つ選ぶ。
 
+.. _reciprocal-lattice:
 
 逆格子ベクトル
 --------------
@@ -342,6 +353,4 @@ BCC格子の立方慣用単位胞には、8つの頂点に加えて体心にも�
 .. math::
   \boldsymbol g\cdot\boldsymbol R=\boldsymbol h^\top B^\top A\,\boldsymbol n=2\pi\,\boldsymbol h^\top\boldsymbol n
 
-で :math:`2\pi` の整数倍なので、すべての格子ベクトルについて :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` となる。このため、格子と同じ周期を持つ関数は平面波 :math:`e^{i\boldsymbol g\cdot\boldsymbol r}` の重ね合わせで表せる。慣用単位胞の辺から同じ式で作るベクトルと真の逆格子の違いは :ref:`lt-fcc-reciprocal` を参照。
-
-関連するノートは :ref:`unitcell`、:ref:`lattice-transform` を参照。
+で :math:`2\pi` の整数倍なので、すべての格子ベクトルについて :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` となる。このため、格子と同じ周期を持つ関数は\ :ref:`平面波<periodic-fourier-series>` :math:`e^{i\boldsymbol g\cdot\boldsymbol r}` の重ね合わせで表せる。例えばFCCでは、慣用単位胞の辺から同じ式で作るベクトルのうち、真の逆格子点に対応する指数が\ :ref:`F中心の反射条件<lt-fcc-reciprocal>`\ を満たす。

@@ -51,3 +51,12 @@ html_theme_options = {
     'secondary_sidebar_items': ['page-toc'],
     'shorten_urls': False,
 }
+
+
+def add_solid_styles(app, pagename, _templatename, _context, _doctree):
+    if pagename.startswith('solid/'):
+        app.add_css_file('solid-links.css')
+
+
+def setup(app):
+    app.connect('html-page-context', add_solid_styles)

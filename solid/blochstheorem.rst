@@ -8,8 +8,8 @@
 周期ポテンシャルと波動関数
 ------------------------------------
 
-結晶のポテンシャルが格子と同じ周期をもつとき、一電子状態を波数で分類できる。
-格子ベクトル :math:`\boldsymbol R` は、:ref:`基本並進ベクトル<lattice>`
+結晶のポテンシャルが\ :ref:`格子と同じ周期<periodic>`\ をもつとき、一電子状態を波数で分類できる。
+格子ベクトル :math:`\boldsymbol R` は、:ref:`基本並進ベクトル<lattice-translations>`
 :math:`\boldsymbol a_i` の整数結合 :math:`\boldsymbol R=\sum_i n_i\boldsymbol a_i` である。
 結晶中の一電子ポテンシャルを :math:`V(\boldsymbol r)` とすると、
 
@@ -37,7 +37,7 @@
 
 格子並進の演算子 :math:`T_{\boldsymbol R}` を
 :math:`(T_{\boldsymbol R}\psi)(\boldsymbol r)=\psi(\boldsymbol r+\boldsymbol R)` と定義する。
-後で扱う :ref:`周期境界条件<periodic_boundary>` のもとで考えると、運動エネルギーの微分演算子は
+:ref:`周期境界条件<pbc-allowed-wavevectors>`\ のもとで考えると、運動エネルギーの微分演算子は
 並進で変わらず、ポテンシャルには式 :eq:`V(r+R)` の周期性がある。
 そのため、:math:`H` と :math:`T_{\boldsymbol R}` は可換である。
 格子並進どうしも可換なので、エネルギーと格子並進の共通固有状態を選べる。
@@ -88,4 +88,4 @@
    向きを示す。下段の縦の点線は胞の境界、丸は上段で位相を比べた位置である。
    この例の :math:`u_k` は実数かつ正なので、下段では :math:`|\psi_k|` と同じ破線に重なる。
 
-どの範囲から独立な波数を選べばよいかは :ref:`brillouinzone` で考える。
+逆格子ベクトルだけ異なる波数は同じ並進位相を与える。独立な波数は\ :ref:`第1ブリルアンゾーン<first-brillouin-zone>`\ から選べる。

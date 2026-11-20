@@ -7,7 +7,7 @@
 格子座標
 ==============================
 
-格子座標（分率座標）の説明は、「:ref:`lattice`」の節「:ref:`coordinates`」へ移した。
+:ref:`格子座標（分率座標）<coordinates>`\ の説明へ移動する。
 
 .. .. math::
 ..   \begin{pmatrix}

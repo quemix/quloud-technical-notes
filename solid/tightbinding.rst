@@ -51,7 +51,7 @@ Schrödinger方程式 :math:`\hat H|\psi\rangle=E|\psi\rangle` は係数に対�
 周期鎖のバンド分散
 ------------------
 
-:math:`N` 個の原子を間隔 :math:`a` で並べ、周期境界条件 :math:`c_{n+N}=c_n`
+:math:`N` 個の原子を間隔 :math:`a` で並べ、\ :ref:`周期境界条件<pbc-allowed-wavevectors>` :math:`c_{n+N}=c_n`
 を課す。:ref:`ブロッホの定理<blochstheorem>` より、並進 :math:`n\to n+1` に
 対して位相 :math:`e^{ika}` だけ変わる解を探せばよい。そこで **ブロッホ和**
 
@@ -85,7 +85,7 @@ Schrödinger方程式 :math:`\hat H|\psi\rangle=E|\psi\rangle` は係数に対�
 
 :math:`N` 個の波数それぞれに、スピンを含めて電子が2個まで入るので、バンドの定員は
 :math:`2N` 個である。1原子あたり1電子の鎖では :math:`N` 個の電子が入り、定員の半分を占める。
-これを :ref:`半充填<fermi-level-and-occupation>` と呼ぶ。
+これを\ :ref:`半充填<fermi-surface>`\ と呼ぶ。
 無限鎖の半充填では、絶対零度で :math:`|k|<\pi/(2a)` の状態が占有され、
 フェルミ準位は :math:`E_{\mathrm F}=\varepsilon_0`、フェルミ波数は :math:`k_{\mathrm F}=\pi/(2a)` になる。
 バンドがこの準位を横切るので、この模型の無限鎖は金属的である。
@@ -183,7 +183,7 @@ Schrödinger方程式 :math:`\hat H|\psi\rangle=E|\psi\rangle` は係数に対�
 :math:`N=4n` の場合は :math:`k=\pm\pi/(2a)` が許される。この二つの縮退した準位には、
 スピンを含む4状態のうち2個分だけ電子が入るため、同じエネルギーに空状態が残り、
 ギャップはゼロである。このように、ギャップの大きさから :math:`t` を見積もる式は
-境界条件と原子数によって変わる。無限鎖でもギャップが残る仕組みの一例は :ref:`tb-ssh` で扱う。
+境界条件と原子数によって変わる。\ :ref:`SSH模型<tb-ssh>`\ のように隣接する結合の強さが交替すると、無限鎖でもバンドギャップが残る。
 
 :numref:`fig-tightbinding-finite-chain-gaps`\ では、開放端と、周期境界でギャップが開く場合の
 点列がどちらもゼロへ近づく。周期境界では、原子数によってギャップが最初からゼロの点もある。
@@ -337,7 +337,7 @@ Bと :math:`-t_2` で結ばれているので、
 .. _heeger1988:
 .. _id8:
 
-格子が自発的に二量化する仕組みは :ref:`peierls-instability` を参照。
+格子が自発的に二量化してバンドギャップが開く現象を\ :ref:`Peierls不安定性<peierls-instability>`\ という。
 
 説明用の事例：水素原子鎖
 ------------------------
