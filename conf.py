@@ -50,6 +50,12 @@ html_theme_options = {
     'search_bar_text': '技術ノートを検索',
     'secondary_sidebar_items': ['page-toc'],
     'shorten_urls': False,
+    # Link to the sister site; quloud-examples links back with 「技術ノート」.
+    'external_links': [
+        {'name': '計算事例', 'url': 'https://example.quloud-platform.quemix.com/'},
+    ],
+    # Five volumes plus the external link; the default (5) would hide one under "More".
+    'header_links_before_dropdown': 6,
 }
 
 
