@@ -20,7 +20,8 @@ import sys
 sys.path.insert(0, os.path.abspath('_ext'))
 
 # cjk_linebreak: 日本語の文の途中で改行した原稿で、表示に空白が入らないようにする。
-extensions = ['sphinx.ext.mathjax', 'sphinx.ext.githubpages', 'cjk_linebreak']
+# volume_numbering: 図表と式の番号を巻ごとに数え直す（巻をまたいで通し番号にならないようにする）。
+extensions = ['sphinx.ext.mathjax', 'sphinx.ext.githubpages', 'cjk_linebreak', 'volume_numbering']
 
 templates_path = ['_templates']
 # Sphinx does not use .gitignore; keep the private meta checkout out of the document scan.
