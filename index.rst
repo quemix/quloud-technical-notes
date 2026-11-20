@@ -23,7 +23,7 @@ Quloud Technical Notes
 
      線形回帰、最尤推定、ベイズ推定からガウス過程による予測まで
 
-   * :doc:`hilbert/index`
+   * :doc:`math/index`
 
      カーネル法と関わりの深い再生核ヒルベルト空間
 
@@ -36,4 +36,4 @@ Quloud Technical Notes
    electronic/index
    thermo/index
    ml/index
-   hilbert/index
+   math/index
