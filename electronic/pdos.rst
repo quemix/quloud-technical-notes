@@ -213,7 +213,7 @@ Mulliken型の重みは、符号が負にもなりうる重なりの項 :math:`\
 :math:`\mu` について足すと実数の1になるが、各項は虚部をもちうるので、実部を重みとする。本稿の模型のように係数が実数なら、
 :eq:`pd-mulliken-lowdin` は :math:`C_{\mu i}(SC)_{\mu i}` と :math:`\bigl((S^{1/2}C)_{\mu i}\bigr)^2` に戻る。
 
-平面波基底の計算では、Kohn–Sham軌道を原子軌道の組へ射影してPDOSを作る。原子軌道の組は
+:ref:`平面波基底<basis-set-cutoff>`\ の計算では、Kohn–Sham軌道を原子軌道の組へ射影してPDOSを作る。原子軌道の組は
 軌道の空間を完全には張らないので :math:`\sum_\mu w_{\mu i}<1` となり、PDOSの和は状態密度に
 届かない。射影から漏れた割合 :math:`1-\sum_\mu w_{\mu i}` を状態について平均した量はspilling parameterと呼ばれ、射影の質の目安に使われる [PdosSanchezPortal1995]_。
 
@@ -288,7 +288,7 @@ Mulliken型の重みは、符号が負にもなりうる重なりの項 :math:`\
 揃えた図の重心の移動は、全エネルギーの分解としても読めない。理由は2つある。
 第1に、占有された固有値の和 :math:`\sum_in_i\varepsilon_i` を :math:`E_{\mathrm v}` から測ると
 :math:`\sum_in_i(\varepsilon_i-E_{\mathrm v})=\sum_in_i\varepsilon_i-NE_{\mathrm v}` となり、
-:math:`E_{\mathrm v}` が構造ごとに違えば、電子数 :math:`N` 倍の差が混じる。第2に、Kohn–Sham法の
+:math:`E_{\mathrm v}` が構造ごとに違えば、電子数 :math:`N` 倍の差が混じる。第2に、\ :ref:`Kohn–Sham法<kohn-sham-dft>`\ の
 全エネルギーは固有値の和ではなく、電子間相互作用の二重計上を差し引く項を含む
 （参考資料のMartinの教科書）。したがって、揃えた図で重心が下がったことから
 全エネルギーが下がったとは結論できない。
