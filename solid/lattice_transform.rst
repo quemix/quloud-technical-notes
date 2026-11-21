@@ -215,7 +215,7 @@ Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
 |equivalent-direction-families|
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ここまでの :math:`[uvw]` は1本の方向、:math:`(hkl)` は1組の平行な格子面を指す。結晶の対称操作で互いに移り合う2つの方向に沿って見ると、原子の並びは同じなので、その方向に沿って測る物性も等しい。例えば立方晶では、:math:`z` 軸まわりの90度回転が :math:`[100]` を :math:`[010]` へ移す。このような方向や面の集まりを族と呼び、ひとまとめにした記号で書く（:numref:`lt-index-brackets`。International Tables for Crystallography, Vol. A (2006), `§1.1.4 <https://it.iucr.org/Ab/ch1o1v0001/sec1o1o4.pdf>`__）。
+ここまでの :math:`[uvw]` は1本の方向、:math:`(hkl)` は1組の平行な格子面を指す。結晶の対称操作で互いに移り合う2つの方向に沿って見ると、原子の並びは同じである。外場や磁気秩序を含めて、測定するときの結晶の状態もその対称操作を保つなら、その方向に沿って測る物性も等しい。例えば立方晶では、:math:`z` 軸まわりの90度回転が :math:`[100]` を :math:`[010]` へ移す。このような方向や面の集まりを族と呼び、ひとまとめにした記号で書く（:numref:`lt-index-brackets`。International Tables for Crystallography, Vol. A (2006), `§1.1.4 <https://it.iucr.org/Ab/ch1o1v0001/sec1o1o4.pdf>`__）。
 
 .. list-table:: 方向と面の指数の括弧
    :name: lt-index-brackets

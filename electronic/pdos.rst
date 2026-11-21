@@ -75,7 +75,7 @@
    :label: pd-population
 
    N_\mu=2\int f(E)\,\rho_\mu(E)\,dE
-   =\sum_in_i\bigl(C^{\mathrm L}_{\mu i}\bigr)^2
+   =\sum_in_i\bigl|C^{\mathrm L}_{\mu i}\bigr|^2
    =P^{\mathrm L}_{\mu\mu}
 
 となる。右辺は :eq:`lw-population` の和を作る対角成分である。つまり、Löwdin基底へ射影したPDOSは、Löwdin電子数をエネルギーごとに分解したものである。電子数は1つの数だが、PDOSはその電子がどのエネルギーの状態に入っているかを示す。
@@ -191,20 +191,27 @@ PDOSの形は、ハミルトニアンの行列要素と直接つながってい�
 
 第一原理計算で使う原子軌道 :math:`\chi_\mu` は一般に直交していない。展開係数を
 :math:`C_{\mu i}`、重なり行列を :math:`S` とすると（記号は :ref:`Löwdin解析<lowdin>` と同じ）、
-軌道 :math:`\psi_i` の規格化は :math:`\sum_{\mu\nu}C_{\mu i}S_{\mu\nu}C_{\nu i}=1` である。
+軌道 :math:`\psi_i` の規格化は、:math:`C` の第 :math:`i` 列を :math:`C_i` として
+:math:`C_i^\dagger SC_i=\sum_{\mu\nu}C_{\mu i}^*S_{\mu\nu}C_{\nu i}=1` である。
 この和を基底関数ごとに分ける方法が2通りある。
 
 .. math::
    :label: pd-mulliken-lowdin
 
-   w^{\mathrm M}_{\mu i}=C_{\mu i}\,(SC)_{\mu i},\qquad
-   w^{\mathrm L}_{\mu i}=\bigl((S^{1/2}C)_{\mu i}\bigr)^2
+   w^{\mathrm M}_{\mu i}=\operatorname{Re}\bigl[C_{\mu i}^*\,(SC)_{\mu i}\bigr],\qquad
+   w^{\mathrm L}_{\mu i}=\bigl|(S^{1/2}C)_{\mu i}\bigr|^2
 
 前者がMulliken型 [Mulliken1955]_、後者が対称直交化した基底 [Lowdin1950]_ への射影である。
 どちらも :math:`\mu` について足すと1になり、:eq:`pd-sum-rule` の第1式を満たす。
-占有状態について足すと、それぞれMulliken電子数とLöwdin電子数になる。Mulliken型の重みは、
-符号が負にもなりうる重なりの項 :math:`C_{\mu i}S_{\mu\nu}C_{\nu i}` を2つの基底関数に半分ずつ
-割り当てたものなので、負になることがある。Löwdin型の重みは2乗なので負にならない。
+占有状態について足すと、それぞれMulliken電子数とLöwdin電子数になる。
+Mulliken型の重みは、符号が負にもなりうる重なりの項 :math:`\operatorname{Re}[C_{\mu i}^*S_{\mu\nu}C_{\nu i}]` を2つの基底関数に半分ずつ
+割り当てたものなので、負になることがある。Löwdin型の重みは絶対値の2乗なので負にならない。
+
+:eq:`pd-mulliken-lowdin` に複素共役、実部、絶対値が入るのは、周期系のBloch軌道では係数が一般に複素数だからである。
+係数をすべて :math:`i` 倍しても状態は同じなので、重みはこの位相によってはいけない。複素共役を付けない
+:math:`C_{\mu i}(SC)_{\mu i}` は、:math:`i` 倍で符号が変わってしまう。:math:`C_{\mu i}^*(SC)_{\mu i}` は位相によらず、
+:math:`\mu` について足すと実数の1になるが、各項は虚部をもちうるので、実部を重みとする。本稿の模型のように係数が実数なら、
+:eq:`pd-mulliken-lowdin` は :math:`C_{\mu i}(SC)_{\mu i}` と :math:`\bigl((S^{1/2}C)_{\mu i}\bigr)^2` に戻る。
 
 平面波基底の計算では、Kohn–Sham軌道を原子軌道の組へ射影してPDOSを作る。原子軌道の組は
 軌道の空間を完全には張らないので :math:`\sum_\mu w_{\mu i}<1` となり、PDOSの和は状態密度に
@@ -415,6 +422,10 @@ PDOSの形は、ハミルトニアンの行列要素と直接つながってい�
      - 1.000
      - 1.000
      - —
+   * - 0.1
+     - 0.919
+     - 0.950
+     - 400
    * - 1
      - 0.563
      - 0.553
@@ -433,19 +444,25 @@ PDOSの形は、ハミルトニアンの行列要素と直接つながってい�
      - 0.0625
 
 :math:`\Delta=0` では電子がAとBに1個ずつ分かれ、:math:`\Delta` が大きいほど電子はAに移る。
-同じ :math:`\Delta` で比べると、交替鎖の :math:`N_B` は2準位模型より大きい。各Aが2つのBと
-結合しており、:eq:`pd-moment` の広がり :math:`\langle|h(k)|^2\rangle=2t^2` が2準位模型の2倍
+:math:`\Delta/t\ge1` の範囲で同じ :math:`\Delta` で比べると、交替鎖の :math:`N_B` は2準位模型より大きい。:math:`\Delta\gg t` でこうなるのは、
+各Aが2つのBと結合しており、:eq:`pd-moment` の広がり :math:`\langle|h(k)|^2\rangle=2t^2` が2準位模型の2倍
 だからである。実際、:eq:`pd-ionic-limit` の :math:`t^2` を :math:`2t^2` に置き換えると、
 :math:`\Delta\gg t` での近似 :math:`N_B\simeq4t^2/\Delta^2` が得られ、:math:`\Delta/t=8` では
 交替鎖の値に近い。
+
+:math:`\Delta` が小さいと、大小は逆になる。:math:`\Delta/t=0.1` では交替鎖の :math:`N_B` が0.919、2準位模型が0.950で、
+両者は :math:`\Delta/t\approx0.88` で等しくなる。交替鎖では、価電子帯の上端 :math:`ka=\pi` の近くで :math:`|h(k)|` が :math:`t` より小さくなり、
+そこの状態のBの重みは2準位模型より小さく、上端ではAだけになる。:math:`\Delta` が小さいと、この上端付近の寄与が、
+平均の広がりが大きいことの効果を上回る。
 
 ぼかした曲線を積分して :math:`N_A` や :math:`N_B` を求めると、積分の上限によって値が変わる。
 :math:`\Delta/t=4` の占有されたAの重みは :math:`N_A=2-N_B=1.835` である。ぼかした
 :math:`2\tilde\rho_A` を :math:`E_{\mathrm v}` まで積分すると、:math:`\sigma=0.1t` で1.665、
 :math:`\sigma=0.4t` で1.456となり、正しい値より小さい。:math:`E_{\mathrm v}` にはAの重みが
 集まっていて、その山の上側の裾が窓の外に出るからである。ギャップの中央まで積分すると、
-どちらの幅でも1.835になる。占有状態での重みの和は、ギャップの中央まで積分するか、
-:eq:`pd-population` のように固有状態の重みを直接足して求める。
+どちらの幅でも小数第3位まで1.835に一致する。ギャップの半分（:math:`2t`）が :math:`\sigma` の5倍以上あり、
+ギャップの中央を越えて出入りする裾が小さいからである。:math:`\sigma=t` では1.817となり、ずれが見えてくる。
+電子数を厳密に求めるには、ぼかす前の固有状態の重みを、:eq:`pd-population` のように占有した状態について直接足す。
 
 同じ読み方は、実際の酸化物の計算にも使える。
 `BaTiO₃の二重井戸ポテンシャル Part 2 <https://example.quloud-platform.quemix.com/BaTiO3/total-energy.html#batio3-mode-dos>`__

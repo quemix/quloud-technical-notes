@@ -7,7 +7,8 @@
 エネルギーを変位の2次まで展開でき、原子の運動は互いに独立な調和振動子の集まりに分けられる。
 この振動の量子を **フォノン** と呼ぶ。本稿では、力定数から動的行列を作り、その固有値として
 振動数の分散を求める手順を、1次元二原子鎖で具体的に追う。固有値が負になる場合の意味
-（虚数振動数と動的安定性）と、2次の展開で表せない効果（非調和性、零点振動、熱膨張）も扱う。
+（虚数振動数と動的安定性）、調和近似に含まれる量子効果である零点振動、2次の展開では表せない効果
+（非調和性と、振動数の体積依存性から生じる熱膨張）も扱う。
 
 **前提知識**: 古典力学の運動方程式と調和振動子、エルミート行列の固有値問題、
 :ref:`ブロッホの定理<blochstheorem>`、:ref:`第1ブリルアンゾーン<first-brillouin-zone>`。
@@ -17,7 +18,7 @@
 * 調和近似のもとで力定数を定義し、結晶の運動方程式から動的行列の固有値問題を導く。
 * 1次元二原子鎖の分散を解き、音響分枝と光学分枝、Γ点とゾーン境界の変位パターンを説明する。
 * 動的行列の負の固有値が、虚数振動数と負のエネルギー曲率を表すことを説明する。
-* 非調和性、零点振動、熱膨張が調和近似のどこを超える効果かを区別する。
+* 零点振動を調和振動子の量子効果として求め、非調和性と熱膨張が調和近似のどこを超える効果かを区別する。
 
 .. _harmonic-approximation:
 
@@ -230,9 +231,12 @@
 :math:`\nu=\omega/2\pi`\ （THz）、波数 :math:`\nu/c`\ （cm\ :sup:`−1`）、エネルギー
 :math:`\hbar\omega`\ （meV）でも表され、1 THzは33.356 cm\ :sup:`−1`、4.1357 meVにあたる。
 
-Γ点のモードでは、すべての単位胞で原子が同じように動くので、変位した後も元の単位胞の
-並進対称性が保たれる。変わるのは胞内の原子配置だけである。ゾーン境界のモードでは隣の胞と
-動きが逆になり、変位した構造の周期が元の格子の整数倍に伸びる。どの波数のモードが
+:eq:`ph-ansatz` のとおり、格子ベクトル :math:`\boldsymbol R` だけ離れた胞の変位には位相因子 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}` が掛かる。
+Γ点のモードではこの因子が1なので、すべての単位胞で原子が同じように動き、変位した後も元の単位胞の
+並進対称性が保たれる。変わるのは胞内の原子配置だけである。:math:`\boldsymbol k\cdot\boldsymbol R` が :math:`\pi` の奇数倍になる並進では
+因子が :math:`-1` になり、その並進で移った胞では動きが逆になる。1次元鎖のゾーン境界 :math:`k=\pi/a` や、立方晶のX・M・R点がこの場合で、
+符号が反転する並進は変位した構造の並進対称性でなくなり、単位胞の体積は元の2倍になる。六方格子のK点のように因子が :math:`e^{\pm2\pi i/3}` になる波数では、
+変位が3胞ごとに繰り返し、単位胞の体積は3倍になる。どの波数のモードが
 構造の変化に関わるかで、新しい構造の単位胞が元の胞と同じか、大きくなるかが決まる。
 
 .. _imaginary-frequency:
@@ -254,11 +258,15 @@
    =\frac12\,\omega_s^2\,Q^2
 
 となる。:math:`\omega_s^2` は、このモードに沿ったエネルギー曲線の曲率である。
-すべての :math:`\boldsymbol k` と :math:`s` で :math:`\omega_s^2(\boldsymbol k)\ge0` なら、どの方向に
-原子を少し動かしてもエネルギーは下がらず、構造は局所的に安定である。この状態を
-**動的に安定** という。Γ点以外の波数では固有ベクトルが複素数になるが、:math:`\boldsymbol k` と
+Γ点以外の波数では固有ベクトルが複素数になるが、:math:`\boldsymbol k` と
 :math:`-\boldsymbol k` のモードを組み合わせると実の変位が作れ、そのエネルギーも同じく
 :math:`\omega_s^2(\boldsymbol k)` に比例する。
+
+力が0の構造で、すべての :math:`\boldsymbol k` と :math:`s` について :math:`\omega_s^2(\boldsymbol k)\ge0` なら、どの方向に
+原子を少し動かしても、2次までのエネルギーは下がらない。この状態を **動的に安定** という。
+これはセルの形と大きさを固定した、調和近似での安定性である。:math:`\omega^2=0` のモードが一様な並進
+（Γ点の音響モード）以外にあれば、その方向のエネルギーは3次以上の項で決まり、2次までの判定では
+安定とも不安定とも言えない。セルも変形できる場合は、ひずみに対する安定性（弾性定数が満たす条件 [MouhatCoudert2014]_）も要る。
 
 ある :math:`\omega_s^2` が負なら、そのモードに沿ってエネルギーが下がる。振動数は
 :math:`\omega_s=i|\omega_s|` と純虚数になり、これを **虚数振動数** と呼ぶ。運動方程式の解は
@@ -269,7 +277,9 @@
 高い対称性をもつ構造では、対称性のために各原子に働く力がちょうど0になることがある。
 そのような構造は :eq:`ph-expansion` の1次の項が消える停留点ではあるが、エネルギーの極小とは
 限らず、虚数振動数をもつ鞍点のこともある。対称性を保ったまま原子位置を最適化すると、
-力が0のまま鞍点にとどまりうる。極小かどうかは、2次の項、つまりフォノンの固有値で判定する。
+力が0のまま鞍点にとどまりうる。極小かどうかは、まず2次の項、つまりフォノンの固有値で判定する。
+虚数振動数があれば極小ではない。一様な並進を除くすべてのモードで :math:`\omega^2>0` なら、
+セルを固定した原子配置について極小である。セルも最適化した構造では、上に述べたひずみに対する安定性も要る。
 
 .. _phonon-force-constant-calculation:
 
@@ -361,7 +371,8 @@
    F(V,T)=U(V)+\sum_{\boldsymbol k,s}\left[\frac12\hbar\omega_s(\boldsymbol k;V)
    +k_{\mathrm B}T\ln\left(1-e^{-\hbar\omega_s(\boldsymbol k;V)/k_{\mathrm B}T}\right)\right]
 
-を体積について最小にすると、温度 :math:`T` での平衡体積が求まる [Baroni2010]_。
+を、外圧が0の場合に体積について最小にすると、温度 :math:`T` での平衡体積が求まる。
+外圧 :math:`P_{\mathrm{ext}}` がかかっている場合は、:math:`F+P_{\mathrm{ext}}V` を最小にする [Baroni2010]_。
 角括弧の中を :math:`\omega` で微分すると :math:`\hbar(n_{\mathrm B}+1/2)=\langle E\rangle/\omega` になるので、
 モードごとの **Grüneisen定数**
 
@@ -394,6 +405,7 @@
 
 立方晶BaTiO\ :sub:`3`\ は、対称性の高い構造が虚数振動数をもつ代表例である。ペロブスカイト型のBaTiO\ :sub:`3`\ は、高温の立方晶相（単位胞に5原子）で15本のフォノン分枝をもつ。Ghosezらは立方晶の実験格子定数（4.00 Å）でDFPTを使って全分枝を計算し、最も不安定なモードが
 Γ点にあり、Tiが周りの酸素に対して逆向きに動くモードであることを示した [Ghosez1999]_。
+BaTiO\ :sub:`3`\ の計算方法と、実験の体積で計算するという選択は、同じグループの1998年の論文 [GhosezGonzeMichenaud1998]_ に従っている。
 このモードが凍結すると、\ :ref:`強誘電相の構造<batio3-four-phases>`\ になる。不安定な分枝はΓ点だけでなく、XやMへ向かう方向に
 平らに広がり、R点へ向かうと急に安定になる。逆格子空間では不安定な領域がΓ点で交わる3枚の
 板状の領域に限られ、実空間ではTiの変位がTi–O–Tiの鎖に沿ってそろう傾向を表す。
@@ -407,7 +419,9 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 
 `計算事例「BaTiO₃の安定性」 <https://example.quloud-platform.quemix.com/BaTiO3/stability.html>`_\ は、
 対称性を保って最適化した4相の0 Kの全エネルギーを、OpenMXとQuantum ESPRESSO（GGA-PBE）と3種類の機械学習原子間ポテンシャルで比べている。全エネルギーの比較は、各構造が局所的な極小で
-あることまでは示さない。極小であることは、その構造のフォノンに虚数振動数がないことで分かる。
+あることまでは示さない。セルを固定した原子配置について極小であることは、その構造のフォノンが、
+一様な並進を除いてすべて正の :math:`\omega^2` をもつことで分かる（\ :ref:`動的安定性<imaginary-frequency>`）。
+セルも最適化した構造が極小であるには、ひずみに対する安定性も要る。
 相どうしのエネルギー差が小さい場合は、零点エネルギー :eq:`ph-zpe` の差も順序に影響しうる。
 事例でも、フォノンによる動的安定性の確認と零点振動の評価を、0 Kの順位の先に残る課題に挙げている。
 
@@ -459,6 +473,9 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
    BaTiO\ :sub:`3`, PbTiO\ :sub:`3`, and PbZrO\ :sub:`3`: A comparative first-principles study,”
    *Physical Review B* **60**, 836–843 (1999),
    `doi:10.1103/PhysRevB.60.836 <https://doi.org/10.1103/PhysRevB.60.836>`_.
+.. [GhosezGonzeMichenaud1998] Ph. Ghosez, X. Gonze, and J.-P. Michenaud, “*Ab initio* phonon dispersion
+   curves and interatomic force constants of barium titanate,” *Ferroelectrics* **206**, 205–217 (1998),
+   `doi:10.1080/00150199808009159 <https://doi.org/10.1080/00150199808009159>`_.
 .. [Cohen1990] R. E. Cohen and H. Krakauer, “Lattice dynamics and origin of ferroelectricity in
    BaTiO\ :sub:`3`: Linearized-augmented-plane-wave total-energy calculations,”
    *Physical Review B* **42**, 6416–6423 (1990),
@@ -479,6 +496,9 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 .. [Zhong1996] W. Zhong and D. Vanderbilt, “Effect of quantum fluctuations on structural phase
    transitions in SrTiO\ :sub:`3` and BaTiO\ :sub:`3`,” *Physical Review B* **53**, 5047–5050 (1996),
    `doi:10.1103/PhysRevB.53.5047 <https://doi.org/10.1103/PhysRevB.53.5047>`_.
+.. [MouhatCoudert2014] F. Mouhat and F.-X. Coudert, “Necessary and sufficient elastic stability conditions
+   in various crystal systems,” *Physical Review B* **90**, 224104 (2014),
+   `doi:10.1103/PhysRevB.90.224104 <https://doi.org/10.1103/PhysRevB.90.224104>`_.
 .. [Baroni2010] S. Baroni, P. Giannozzi, and E. Isaev, “Density-functional perturbation theory for
    quasi-harmonic calculations,” *Reviews in Mineralogy and Geochemistry* **71**, 39–57 (2010),
    `doi:10.2138/rmg.2010.71.3 <https://doi.org/10.2138/rmg.2010.71.3>`_.

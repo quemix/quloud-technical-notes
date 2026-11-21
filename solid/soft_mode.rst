@@ -27,27 +27,35 @@
 --------------------
 
 Cochranは、変位による構造相転移を格子振動の不安定性として説明した [Cochran1959]_ [Cochran1960]_。
-高温相のある振動モードの振動数 :math:`\omega_{\mathrm s}` が、温度 :math:`T` を下げると
-転移温度 :math:`T_{\mathrm c}` に向かって小さくなり、:math:`T_{\mathrm c}` で0に近づく。
-復元力を失ったモードの変位パターンがそのまま凍結し、低温相の構造になる。
-:math:`T_{\mathrm c}` の上で振動数の2乗が
+高温相のある振動モードの振動数 :math:`\omega_{\mathrm s}` が、温度 :math:`T` を下げると小さくなり、
+そのモードの変位パターンが低温相で凍結する。高温相で振動数の2乗が
 
 .. math::
    :label: sm-cochran
 
-   \omega_{\mathrm s}^2\propto T-T_{\mathrm c}
+   \omega_{\mathrm s}^2\propto T-T_0
 
-に従うことを、Cochranの法則と呼ぶ。
-
-0 Kで高温相の構造のフォノンを調和近似で計算すると、ソフトモードは
-:ref:`虚数振動数<imaginary-frequency>`\ として現れる。高温で振動数が実数になるのは、
-大きな振幅の熱振動が\ :ref:`非調和項<anharmonicity>`\ を通じて平均的な復元力を変えるためである。
+に従うことを、Cochranの法則と呼ぶ。:math:`T_0` は、高温相での振動数を低温側へ外挿して0になる温度である。
 ソフトモードの振動数が温度とともに下がる様子は、中性子の非弾性散乱やRaman散乱で
 観測されてきた [Scott1974]_。
 
-ソフトモードの波数によって、低温相の単位胞が決まる。:ref:`Γ点のモード<ph-normal-modes>`\ なら、すべての単位胞で
+:math:`T_0` は転移温度 :math:`T_{\mathrm c}` と同じとは限らない。転移が連続的に起こる理想的な場合（2次転移）は、
+:math:`T_0` で復元力が消え、モードの変位がそこから育つので、:math:`T_{\mathrm c}=T_0` である。
+BaTiO\ :sub:`3`\ の立方晶–正方晶転移 [Merz1953]_ のような1次転移では、温度が :math:`T_0` に下がる前に、
+変位した構造の自由エネルギーが高温相と等しくなる。そのため :math:`T_0<T_{\mathrm c}` で、:math:`\omega_{\mathrm s}` は
+:math:`T_{\mathrm c}` で有限のまま転移が起こる。:math:`T_{\mathrm c}-T_0` は、\ :ref:`常誘電相<paraelectric-phase>`\ の節で自由エネルギーの展開から導く。
+
+0 Kの調和近似で高温相の構造のフォノンを計算したとき、ソフトモードが
+:ref:`虚数振動数<imaginary-frequency>`\ として現れるのは、その計算条件（交換相関汎関数、格子定数など）で
+高温相の構造が不安定な場合である。立方晶BaTiO\ :sub:`3`\ はこの例にあたる [CohenKrakauer1990]_。
+計算条件で高温相が安定なら、ソフトモードも実数の振動数をもつ。0 Kの計算で虚数になるモードが
+高温で実数になるのは、大きな振幅の熱振動が\ :ref:`非調和項<anharmonicity>`\ を通じて平均的な復元力を変えるためである。
+
+ソフトモードの波数 :math:`\boldsymbol k` によって、低温相の単位胞が決まる。格子ベクトル :math:`\boldsymbol R` だけ離れた胞の変位には
+位相因子 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}` が掛かる（\ :ref:`基準振動とフォノン<ph-normal-modes>`）。Γ点のモードなら、すべての単位胞で
 同じ変位が凍結するので、低温相の単位胞は高温相と同じ大きさで、胞内の原子配置だけが変わる。
-ゾーン境界のモードなら、隣の胞と逆向きの変位が凍結し、単位胞が整数倍に大きくなる。1次元鎖の\ :ref:`Peierls不安定性<peierls-instability>`\ も、周期が2倍になる変形という点で同じ形をしている。
+Γ点以外のモードが凍結すると、波数が逆格子ベクトルの有理数倍なら、単位胞が整数倍に大きくなる。:math:`\boldsymbol k\cdot\boldsymbol R` が :math:`\pi` の奇数倍になる並進
+（1次元鎖のゾーン境界、立方晶のX・M・R点）では、その並進で移った胞の変位が逆向きになる。1次元鎖の\ :ref:`Peierls不安定性<peierls-instability>`\ も、周期が2倍になる変形という点で同じ形をしている。
 
 .. _polar-soft-mode:
 
@@ -63,15 +71,27 @@ Cochranは、変位による構造相転移を格子振動の不安定性とし�
 
 と表される（Lyddane–Sachs–Tellerの関係） [LST1941]_。ソフトモードが横波の光学モードなら、
 :math:`\omega_{\mathrm{TO}}\to0` で :math:`\varepsilon(0)` が発散する。:eq:`sm-cochran` を代入すると
-:math:`\varepsilon(0)\propto1/(T-T_{\mathrm c})` となり、強誘電体の誘電率が転移温度の上で従う\ :ref:`Curie–Weissの法則<paraelectric-phase>`\ が導かれる [Cochran1960]_。
+:math:`\varepsilon(0)\propto1/(T-T_0)` となり、強誘電体の誘電率が転移温度の上で従う\ :ref:`Curie–Weissの法則<paraelectric-phase>`\ が導かれる [Cochran1960]_。
+:math:`T_0` は、Curie–Weissの法則 :eq:`fe-curie-weiss` のCurie–Weiss温度にあたる。1次転移では、誘電率も :math:`T_{\mathrm c}` で有限のまま転移する。
 
 .. _sm-landau:
 
 秩序変数としてのモードの振幅
 ----------------------------
 
-ソフトモードの固有ベクトルに沿った変位の振幅を :math:`Q` とする。:math:`Q` は\ :ref:`動的行列<dynamical-matrix>`\ の
-固有ベクトルに質量の平方根を掛けた基準座標で、:eq:`ph-mode-energy` と同じ定義である。
+ソフトモードの振幅を :math:`Q` とする。:eq:`ph-mode-energy` と同じく、:ref:`動的行列<dynamical-matrix>`\ の規格化した実の固有ベクトル
+:math:`\boldsymbol e`\ （:math:`3n` 成分）を使い、胞内の原子の変位を並べたベクトル :math:`\boldsymbol u` と :math:`Q` を
+
+.. math::
+   :label: sm-mode-amplitude
+
+   \boldsymbol u=Q\,M^{-1/2}\boldsymbol e,\qquad Q=\boldsymbol e^{\mathsf T}M^{1/2}\boldsymbol u
+
+で結ぶ。:math:`M` は各原子の質量 :math:`m_\kappa` を対角に並べた :math:`3n\times3n` の行列である。:math:`\boldsymbol e` は質量の平方根で重み付けた
+座標での向きなので、質量の異なる原子では、変位 :math:`\boldsymbol u` の成分の比が :math:`\boldsymbol e` の成分の比と異なる。
+第2式は :math:`M^{1/2}\boldsymbol u` を :math:`\boldsymbol e` へ射影したもので、:math:`\boldsymbol u` がこのモードだけからなるとき第1式の逆になる。
+ゾーン境界のモードでも、:math:`\boldsymbol k` と :math:`-\boldsymbol k` のモードを組み合わせた実のベクトルを使えば同じ形になる。
+
 高温相では :math:`Q=0`、低温相では :math:`Q\ne0` なので、:math:`Q` は相を区別する
 **秩序変数** の役割をもつ。高温相の構造のまわりで単位胞あたりのエネルギーを :math:`Q` で展開すると
 
@@ -106,7 +126,7 @@ Cochranは、変位による構造相転移を格子振動の不安定性とし�
 :math:`\kappa` だけが :math:`\kappa=a(T-T_0)`\ （:math:`a>0`）と温度に比例して変わるとする。
 :math:`T>T_0` では :math:`Q_0=0` で、ソフトモードの振動数は :math:`\omega_{\mathrm s}^2=\kappa=a(T-T_0)` と
 :eq:`sm-cochran` に従って下がる。:math:`T<T_0` では :eq:`sm-q0` から
-:math:`Q_0=\sqrt{a(T_0-T)/\beta}` となり、秩序変数は :math:`T_0` から連続的に育つ。
+:math:`Q_0=\sqrt{a(T_0-T)/\beta}` となり、秩序変数は :math:`T_0` から連続的に育つ。この模型の転移は2次転移で、:math:`T_{\mathrm c}=T_0` である。
 極小のまわりの振動数の2乗は :math:`-2\kappa=2a(T_0-T)` で、:math:`T_0` の下では上の2倍の傾きで再び増える
 （:numref:`fig-soft-mode-double-well`\ の右）。
 
@@ -121,7 +141,8 @@ Cochranは、変位による構造相転移を格子振動の不安定性とし�
    :math:`\Delta E`\ （式 :eq:`sm-depth`）。右：Landau模型で :math:`\kappa=a(T-T_0)` としたときのモードの
    :math:`\omega^2`。:math:`T_0` の上（青）は高温相の :math:`\kappa`、下（赤）は極小のまわりの曲率 :math:`-2\kappa`。
 
-Landau理論は、平均場の近似で相転移の形を表す現象論である。実際の物質では :math:`\beta<0` で6次の項が必要になり、秩序変数が不連続に変わる1次転移になるものもある。BaTiO\ :sub:`3`\ の
+Landau理論は、平均場の近似で相転移の形を表す現象論である。実際の物質では :math:`\beta<0` で6次の項が必要になり、秩序変数が不連続に変わる1次転移になるものもある。
+このとき転移温度 :math:`T_{\mathrm c}` は :math:`T_0` より高く、ソフトモードの振動数は :math:`T_{\mathrm c}` で0にならない（\ :ref:`常誘電相<paraelectric-phase>`\ の導出）。BaTiO\ :sub:`3`\ の
 三つの転移は、いずれも1次転移である [ZhongVanderbiltRabe1995]_。
 
 .. _sm-inversion-equivalence:
@@ -139,12 +160,14 @@ Landau理論は、平均場の近似で相転移の形を表す現象論であ�
 二つの極小は大きさが等しく向きが反対の分極をもつ。結晶の中で異なる極小を選んだ領域（:ref:`分域<ferroelectric-domains>`）が共存しうるのも、
 この等価性による。
 
-ゾーン境界のモードでは、高温相の格子並進が同じ役割をもつ。隣の胞で変位の符号が逆になるので、
-元の格子ベクトル一つ分だけずらした構造は :math:`-Q` の構造になる。:math:`+Q` と :math:`-Q` は、
-原点の取り方だけが違う同じ構造である。
+ゾーン境界のモードでは、高温相の格子並進が同じ役割をもつことがある。格子ベクトル :math:`\boldsymbol R` の並進は変位に位相因子
+:math:`e^{i\boldsymbol k\cdot\boldsymbol R}` を掛けるので、:math:`\boldsymbol k\cdot\boldsymbol R` が :math:`\pi` の奇数倍になる :math:`\boldsymbol R` があれば
+（1次元鎖のゾーン境界、立方晶のX・M・R点）、その並進は各胞の変位の符号を逆にし、ずらした構造は :math:`-Q` の構造になる。
+このとき :math:`+Q` と :math:`-Q` は、原点の取り方だけが違う同じ構造である。六方格子のK点のように、並進で位相が
+:math:`2\pi/3` ずつずれる波数では、並進は :math:`Q` を :math:`-Q` へ写さない。:math:`+Q` と :math:`-Q` が等価かどうかは、並進以外の対称操作で決まる。
 
-:math:`\boldsymbol e\to-\boldsymbol e` に写す操作がないモードでは、3次の項が残り、:math:`+Q` と :math:`-Q` の
-極小は等価でない。
+:math:`\boldsymbol e\to-\boldsymbol e` に写す操作がないモードでは、3次の項は対称性で禁じられず、現れうる。その係数が0でなければ、
+:math:`+Q` と :math:`-Q` の極小は等価でない。
 
 .. _double-well-potential:
 
@@ -207,18 +230,22 @@ Landau理論は、平均場の近似で相転移の形を表す現象論であ�
 手順は次のとおりである。
 
 1. 高温相の構造（例えば立方晶）を用意し、ソフトモードの固有ベクトルを、フォノン計算か文献から得る。
-2. 振幅 :math:`Q` を何点か選び、各原子を固有ベクトルに比例する分だけ動かす。
+2. 振幅 :math:`Q` を何点か選び、各原子 :math:`\kappa` を、固有ベクトルの成分を質量の平方根で割った
+   :math:`\boldsymbol e_\kappa/\sqrt{m_\kappa}` に比例する分だけ動かす（:eq:`sm-mode-amplitude`）。固有ベクトルの成分の比のまま
+   動かすと、質量の異なる原子を含む結晶では、変位が目的のモードから外れる。プログラムが質量で割った後の変位を出力する場合は、
+   その比をそのまま使う。
 3. 各構造で、原子座標とセルを固定したまま全エネルギーを計算する（単点計算）。
    構造を緩和させると、原子は指定した変位から別の方向へ動き、:math:`Q` の値が保てない。
 4. 同じ体積の :math:`Q=0` を基準に :math:`\Delta E(Q)=E(Q)-E(0)` を化学式単位あたりで求め、
    :eq:`sm-landau` のような多項式で当てはめる。
 
-固有ベクトルの比を保てば、どれか一つの原子を固定してもよい。全原子の一様な並進はエネルギーを
+Γ点のモードでは、どれか一つの原子を固定してもよい。:math:`\boldsymbol e_\kappa/\sqrt{m_\kappa}` に比例する変位から、
+固定する原子の変位を全原子について一様に引けばよい。全原子の一様な並進はエネルギーを
 変えないからである（\ :ref:`音響和則<harmonic-approximation>`）。実際の計算では、振幅を一つの原子の
 変位 :math:`x`\ （Å）で測り、他の原子の変位をその比 :math:`r_\kappa` で決めることが多い。ただし、
 曲率 :math:`k_x=d^2E/dx^2` から振動数を求めるときは、パターンから重心の並進を除く必要がある。
 重心の並進を除いた比を :math:`\tilde r_\kappa=r_\kappa-\sum_{\kappa'}m_{\kappa'}r_{\kappa'}/\sum_{\kappa'}m_{\kappa'}` とすると、
-基準座標は :math:`Q=\sqrt{M_{\mathrm{eff}}}\,x`、
+:eq:`sm-mode-amplitude` の第2式から基準座標は :math:`Q=\sqrt{M_{\mathrm{eff}}}\,x`、
 
 .. math::
    :label: sm-effective-mass
@@ -232,6 +259,8 @@ Landau理論は、平均場の近似で相転移の形を表す現象論であ�
 :math:`M_{\mathrm{eff}}` の代わりにAの質量 :math:`m_{\mathrm A}` を使うと :math:`\omega^2=2C/m_{\mathrm A}` と誤る。
 重心を除くと :math:`M_{\mathrm{eff}}=m_{\mathrm A}m_{\mathrm B}/(m_{\mathrm A}+m_{\mathrm B})` となり、
 :eq:`ph-chain-dispersion` のΓ点の値 :math:`2C(1/m_{\mathrm A}+1/m_{\mathrm B})` に一致する。
+:eq:`sm-mode-amplitude` の第2式で :math:`Q` を求めれば、変位に一様な並進が含まれていても値は変わらない。
+光学モードの :math:`\boldsymbol e` は並進の固有ベクトル（成分が :math:`\sqrt{m_\kappa}` に比例）と直交するからである。
 井戸の深さ :math:`\Delta E` は位置エネルギーだけで決まるので、この補正を受けない。
 
 frozen phonon法が調べるのは、配置空間の中の一本の直線の上のエネルギーである。他のモードやひずみを
@@ -339,7 +368,10 @@ BaTiO\ :sub:`3`\ の立方晶相では、Γ点の極性モードがソフトモ�
 述べている。
 
 有限温度の相転移の型については、Zhong、Vanderbilt、Rabeが第一原理計算からパラメータを決めた有効ハミルトニアンを
-モンテカルロ法で解き、BaTiO\ :sub:`3`\ の相の順序と転移温度を再現した [Zhong1994]_ [ZhongVanderbiltRabe1995]_。
+モンテカルロ法で解いた [Zhong1994]_ [ZhongVanderbiltRabe1995]_。立方晶・正方晶・直方晶・菱面体晶の順に現れる相の順序は、
+実験と一致した。LDAの体積の過小評価を補う負の圧力（−4.8 GPa）をかけた計算での転移温度は、立方晶–正方晶が297 K
+（論文に併記された実験値403 K）、正方晶–直方晶が230 K（278 K）、直方晶–菱面体晶が200 K（183 K）で、上の二つの転移は
+実験より低い（同論文の表III、:math:`14\times14\times14` 胞の値）。
 立方晶相の転移温度のすぐ上で、各胞の局所的な変位の分布は弱く二つの山をもち、不安定な揺らぎは
 Γ点からX点への方向にゾーン境界まで広がっていた。彼らは立方晶–正方晶転移を、変位型と秩序–無秩序型の
 中間で、やや秩序–無秩序型に近いと結論した。立方晶の\ :ref:`フォノン分散<phonon-batio3-example>`\ で

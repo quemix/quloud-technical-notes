@@ -124,6 +124,7 @@ CohenとKrakauerは、立方晶BaTiO\ :sub:`3`\ のLAPW法の全エネルギー�
 正方晶BaTiO\ :sub:`3`\ の :math:`c` 軸方向（:math:`\Omega=a^2c`）では :math:`P_{\mathrm q}=e/a^2\simeq1.0\ \mathrm{C/m^2}=100\ \mu\mathrm{C/cm^2}` で、
 自発分極の実験値 :math:`26\ \mu\mathrm{C/cm^2}` [Wieder1955]_ の約4倍である。計算で分極を求めるときは、反転対称な参照構造から
 原子を少しずつ動かして、同じ枝の上で変化を追う。一度に大きく動かすと、値が量子の分だけ別の枝へ跳んでも区別できないからである。
+この経路の途中の構造は、どれもバンドギャップの開いた絶縁体でなければならない（\ :ref:`Berry位相による分極<fo-berry-phase>`）。
 
 .. _fo-born-charge:
 
@@ -137,7 +138,8 @@ Born有効電荷による見積もり
 
    Z^*_{\kappa,\alpha\beta}=\frac{\Omega}{e}\left.\frac{\partial P_\alpha}{\partial u_{\kappa\beta}}\right|_{\boldsymbol E=0}
 
-と書き、\ **Born有効電荷**\ と呼ぶ。動いた原子の電荷だけでなく、変位に伴って流れる電子の寄与も含む。
+と書き、\ **Born有効電荷**\ と呼ぶ。微分は、巨視的な電場を0に保ち、セルの形と大きさを固定して、原子 :math:`\kappa` だけを
+動かしたときのものである [GhosezMichenaudGonze1998]_。動いた原子の電荷だけでなく、変位に伴って流れる電子の寄与も含む。
 :math:`Z^*` が変位によらないとみなせる範囲では、反転対称な参照構造からの変位で分極は
 
 .. math::
@@ -152,7 +154,7 @@ Born有効電荷による見積もり
 変位がTi–O–Tiの鎖に沿う場合（O∥）と垂直な場合（O⊥）の二つの値をもつ。:numref:`tbl-born-charges-batio3` に、
 第一原理計算の値を形式電荷と並べる。
 
-.. list-table:: 立方晶BaTiO\ :sub:`3`\ のBorn有効電荷（LDAの線形応答計算 [GhosezMichenaudGonze1998]_）
+.. list-table:: 立方晶BaTiO\ :sub:`3`\ のBorn有効電荷（LDAの線形応答計算、:math:`a_0=3.94` Å [GhosezMichenaudGonze1998]_）
    :name: tbl-born-charges-batio3
    :header-rows: 1
    :widths: 28 18 18 18 18
@@ -172,6 +174,9 @@ Born有効電荷による見積もり
      - +7.25
      - −2.15
      - −5.71
+
+Born有効電荷の値は、[GhosezMichenaudGonze1998]_ の表VIIのうち、LDAで最適化した格子定数 :math:`a_0=3.94` Å の行である
+（同論文の表IIの値と同じ）。格子定数を変えると値も変わり、例えば :math:`a_0=4.00` Å ではTi :math:`+7.29`、O∥ :math:`-5.75` である。
 
 TiとO∥のBorn有効電荷は、形式電荷のそれぞれ約1.8倍と約2.9倍である。和は :math:`2.77+7.25-2.15\times2-5.71=+0.01` で、
 和則をほぼ満たす。Berry位相の方法による計算でも、Ti :math:`+7.16`、O∥ :math:`-5.69` とほぼ同じ値が得られている
@@ -208,8 +213,8 @@ TiとO∥のBorn有効電荷は、形式電荷のそれぞれ約1.8倍と約2.9�
      - 16.4
 
 Born有効電荷で求めた約 :math:`29\ \mu\mathrm{C/cm^2}` は、実験値 :math:`26.3\ \mu\mathrm{C/cm^2}` [Wieder1955]_ に近く、
-形式電荷では約6割にとどまる。とくにO∥の寄与は、形式電荷では約3分の1になる。この構造のO∥の座標には
-:math:`0.016(5)` の不確かさがあり、O∥の項は約3割変わりうる。Ghosezらは、Born有効電荷が変位とともに変わることを考慮し、
+形式電荷では約6割にとどまる。とくにO∥の寄与は、形式電荷では約3分の1になる。この構造のO∥の :math:`z` 座標は
+分率で0.016、その標準不確かさは0.005なので、O∥の項は約3割変わりうる。Ghosezらは、Born有効電荷が変位とともに変わることを考慮し、
 Hewatの実験の変位から :math:`28.6\ \mu\mathrm{C/cm^2}` を得ている [GhosezMichenaudGonze1998]_。
 
 .. _fo-berry-phase:
@@ -234,7 +239,11 @@ Berry位相による分極（概要）
    \boldsymbol P=\frac{e}{\Omega}\Bigl(\sum_\kappa Z_\kappa^{\mathrm{ion}}\boldsymbol r_\kappa-2\sum_n\bar{\boldsymbol r}_n\Bigr)
 
 と書ける（2はスピンの縮退）\ [VanderbiltKingSmith1993]_ [Resta1994]_。Wannier関数の中心は格子ベクトルの分だけ不定なので、
-:eq:`fo-wannier-polarization` も :eq:`fo-polarization-quantum` の整数倍だけ不定で、1次元の鎖で見た性質と一致する。Born有効電荷は、:eq:`fo-wannier-polarization` を原子の変位で微分したものにあたり、BaTiO\ :sub:`3`\ の大きな値は、上で述べたO 2pのWannier中心の逆向きの移動として読める。
+:eq:`fo-wannier-polarization` も :eq:`fo-polarization-quantum` の整数倍だけ不定で、1次元の鎖で見た性質と一致する。Born有効電荷は、:eq:`fo-wannier-polarization` を、巨視的な電場を0、セルを固定として原子の変位で微分したものにあたり、BaTiO\ :sub:`3`\ の大きな値は、上で述べたO 2pのWannier中心の逆向きの移動として読める。
+
+Berry位相で分極の差を求めるときは、参照構造から目的の構造まで、途中のどの構造でもバンドギャップが開いている経路をとり、
+その上で分極の枝を連続的に追う。:eq:`fo-wannier-center` は占有バンドと非占有バンドがすべての :math:`\boldsymbol k` で分かれていることを前提にしており、
+途中で金属になる経路では占有状態が定まらず、Berry位相が定義できない [KingSmithVanderbilt1993]_ [Spaldin2012]_。
 
 Born有効電荷は、イオン結晶のΓ点で縦波と横波の光学モードの振動数が分かれる\ :ref:`LO–TO分裂<phonon>`\ の大きさも決める。ZhongとKing-Smith、Vanderbiltは、ペロブスカイト型の強誘電体で大きなBorn有効電荷のためにLO–TO分裂が巨大になることを示した
 [ZhongKingSmithVanderbilt1994]_。
