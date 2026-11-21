@@ -13,9 +13,10 @@ Quloudの具体的な計算事例は[`quloud-examples`](https://github.com/quemi
 `technical-notes`ブランチへpushすると、GitHub Actions（`.github/workflows/pages.yml`）が
 `requirements.txt`の版のSphinxでビルドし、GitHub Pagesへ公開します。生成したHTMLはコミットしません。
 
-手元で確認するときは、`python -m pip install -r requirements.txt` で依存関係を入れ、
-`make html`で`_build/html`に出力し、`make serve`で
-http://localhost:8001 を開きます。警告を漏らさず確かめるときは次のようにします。
+手元で確認するときは、`make html`で`_build/html`に出力し、`make serve`で
+http://localhost:8001 を開きます。手元のPythonに`pydata_sphinx_theme`が無ければ、
+`make html`が`requirements.txt`の版を`~/.cache/quloud-technical-notes/pylib`へ入れて使います
+（`requirements.txt`を変えると入れ直します）。警告を漏らさず確かめるときは次のようにします。
 
 ```bash
 sphinx-build -b html -E -W -d /tmp/quloud-technical-notes-doctrees . /tmp/quloud-technical-notes-html
