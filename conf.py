@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Quloud Technical Notes'
-copyright = '2025, Quemix inc'
+copyright = '2026, Quemix inc'
 author = 'Jun-Ichi Iwata'
 version = '2025.8.25'
 
@@ -58,6 +58,9 @@ html_theme_options = {
     ],
     # Five volumes plus the external link; the default (5) would hide one under "More".
     'header_links_before_dropdown': 6,
+    # Same footer as quloud-examples: copyright only, without the Sphinx/theme credits.
+    'footer_start': ['copyright'],
+    'footer_end': [],
 }
 
 
