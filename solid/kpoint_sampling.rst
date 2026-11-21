@@ -207,7 +207,8 @@ Monkhorst–Packの方法 [Monkhorst1976]_ では、 :math:`r_i=1,\ldots,n_i` �
 * **フェルミ–ディラック分布** :math:`f(x)=1/(e^x+1)`\ 。 :math:`\sigma=k_\mathrm BT` とすると、
   有限温度の電子の占有数そのものである。
 * **ガウシアン** :math:`f(x)=\tfrac12\operatorname{erfc}(x)`\ 。段差をガウス関数で
-  ぼかしたもので、裾がフェルミ–ディラック分布より速く減る。
+  ぼかしたもので、裾がフェルミ–ディラック分布より速く減る。\ :ref:`状態密度の図を描くときのぼかし<dos-broadening>`\ とは、
+  同じ記号 :math:`\sigma` でも幅の定義が異なる。
 * **Methfessel–Paxton（MP）** [Methfessel1989]_\ 。ガウシアンにエルミート多項式の補正を加えた
   もので、1次では :math:`f(x)=\tfrac12\operatorname{erfc}(x)-x\,e^{-x^2}/(2\sqrt\pi)`\ 。
   占有数は0〜1の範囲を両側にわずかにはみ出す（1次で −0.036〜1.036）。

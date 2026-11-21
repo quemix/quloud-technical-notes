@@ -135,7 +135,7 @@ Löwdin密度行列と原子の電子数
 
    N_A=\sum_{\mu\in A}P^{\mathrm L}_{\mu\mu}
 
-をその原子に割り当てられる電子数とする。
+をその原子に割り当てられる電子数とする。この電子数を軌道のエネルギーごとに分解したものが\ :ref:`射影状態密度<projected-dos>`\ （PDOS）である。
 
 閉殻の単一行列式では、Löwdin電子数が物理的に妥当な範囲に収まることが保証される。
 分子軌道の正規直交性 :math:`C^{\mathsf T}SC=I` は :math:`C^{\mathrm L\mathsf T}C^{\mathrm L}=I`
@@ -229,6 +229,7 @@ Löwdin解析のほかに、電子密度の空間分割に基づくBader解析�
 
 * :ref:`spin_restriction`
 * :ref:`bond_order`
+* :ref:`projected-dos`
 * `水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
 
 参考資料

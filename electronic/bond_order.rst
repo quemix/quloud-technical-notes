@@ -271,6 +271,7 @@ RKS-PBEで見える交替は有限鎖の端による効果として理解でき�
 --------
 
 * :ref:`lowdin`
+* :ref:`projected-dos`
 * :ref:`tightbinding`
 * :ref:`spin_restriction`
 * `水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
