@@ -289,7 +289,7 @@ PDOSの形は、ハミルトニアンの行列要素と直接つながってい�
 説明用の科学的事例：水素原子鎖の端と中央
 ----------------------------------------
 
-`水素原子を並べると電子バンドは生まれるのか <https://github.com/quemix/quloud-examples/blob/main/hydrogen_chain/band_formation.rst>`_
+`水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
 の有限水素原子鎖（STO-3G基底、原子間隔1.8 Å、Psi4 1.10）では、RKS-PBEのLöwdin結合次数が、
 パラメータを含まない一様な最近接タイト・バインディング模型の値と小数点以下2〜3桁まで
 一致する（:ref:`結合次数<bond_order>`）。そこで、同じ模型で原子ごとのPDOSを計算する。
@@ -448,7 +448,7 @@ PDOSの形は、ハミルトニアンの行列要素と直接つながってい�
 :eq:`pd-population` のように固有状態の重みを直接足して求める。
 
 同じ読み方は、実際の酸化物の計算にも使える。
-`BaTiO₃の二重井戸ポテンシャル Part 2 <https://github.com/quemix/quloud-examples/blob/main/BaTiO3/total-energy.rst>`_
+`BaTiO₃の二重井戸ポテンシャル Part 2 <https://example.quloud-platform.quemix.com/BaTiO3/total-energy.html#batio3-mode-dos>`__
 では、OpenMXのLDA（CA19）と局在基底（PAO）で、5原子の立方晶BaTiO\ :sub:`3`\ と、極性
 ソフトモードに沿って原子をずらした構造のPDOSを、ガウス関数でぼかし、各構造の価電子帯上端を0に揃えて比べている。主にO 2pからなる価電子帯に、Ti 3dの重みが有限に現れる。形式的な
 酸化数ではTi\ :sup:`4+`\ はd電子を持たないが、交替鎖でAに電子が移っても :math:`N_B` が0に
@@ -487,8 +487,8 @@ PDOSは観測量ではなく、基底の取り方に依存する。:ref:`Löwdin
 * :ref:`bandstructure`
 * :ref:`kpoint_sampling`
 * :ref:`tightbinding`
-* `水素原子を並べると電子バンドは生まれるのか <https://github.com/quemix/quloud-examples/blob/main/hydrogen_chain/band_formation.rst>`_
-* `BaTiO₃の二重井戸ポテンシャル Part 2 <https://github.com/quemix/quloud-examples/blob/main/BaTiO3/total-energy.rst>`_
+* `水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
+* `BaTiO₃の二重井戸ポテンシャル Part 2 <https://example.quloud-platform.quemix.com/BaTiO3/total-energy.html>`_
 
 参考資料
 --------
