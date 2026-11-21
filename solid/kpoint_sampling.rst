@@ -240,6 +240,8 @@ Monkhorst–Packの方法 [Monkhorst1976]_ では、 :math:`r_i=1,\ldots,n_i` �
 
 .. |smearing-free-energy| replace:: スメアリングと自由エネルギー
 
+.. _smearing-and-free-energy:
+
 |smearing-free-energy|
 ----------------------
 

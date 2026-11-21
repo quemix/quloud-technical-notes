@@ -23,6 +23,10 @@ Quloud Technical Notes
 
      線形回帰、最尤推定、ベイズ推定からガウス過程による予測まで
 
+   * :doc:`md/index`
+
+     分子動力学、相転移、局所構造、原子間ポテンシャル
+
    * :doc:`math/index`
 
      カーネル法と関わりの深い再生核ヒルベルト空間
@@ -36,4 +40,5 @@ Quloud Technical Notes
    electronic/index
    thermo/index
    ml/index
+   md/index
    math/index

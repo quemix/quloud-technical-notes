@@ -10,3 +10,4 @@
 
    spin_treatment
    density_matrix_analysis
+   dft_settings
