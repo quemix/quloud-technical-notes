@@ -247,7 +247,7 @@ Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
 
 族の要素は、数字の並べ替えと符号の反転とは限らない。立方慣用単位胞の直交基底では :math:`W` が直交行列で :math:`W^{-\mathsf T}=W` なので、:math:`\langle uvw\rangle` と :math:`\{uvw\}` は同じ指数の組を並べる。六方晶の基底（:math:`\gamma=120^\circ`）では、:math:`c` 軸まわりの60度回転が :math:`\boldsymbol a_1` を :math:`\boldsymbol a_1+\boldsymbol a_2` へ移す。点群 :math:`6/mmm` の :math:`\langle100\rangle` は :math:`\pm[100]`、:math:`\pm[010]`、:math:`\pm[110]` の6方向、:math:`\{100\}` は :math:`\pm(100)`、:math:`\pm(010)`、:math:`\pm(1\bar10)` の6組になる。
 
-相転移で対称性が下がった結晶では、高温相の軸で指数を書く慣習がある。ペロブスカイトの\ :ref:`擬立方格子<pseudocubic-cell>`\ で書いた「擬立方の :math:`\langle100\rangle`」は、立方晶の点群 :math:`m\bar3m` で等価だった6方向の名前であり、低温相での等価性を表さない。正方晶相（点群 :math:`4mm`）では、6方向は極性軸の向き :math:`[001]`、その逆向き :math:`[00\bar1]`、残りの4方向という3つの族に分かれる。強誘電体の分極が「擬立方の :math:`\langle100\rangle` を向く」とは、6方向のうち1つが選ばれた状態をいう。分極の向きがそろった領域を分域（ドメイン）といい、隣り合う分域では6方向のうち別の方向が選ばれている。
+相転移で対称性が下がった結晶では、高温相の軸で指数を書く慣習がある。ペロブスカイトの\ :ref:`擬立方格子<pseudocubic-cell>`\ で書いた「擬立方の :math:`\langle100\rangle`」は、立方晶の点群 :math:`m\bar3m` で等価だった6方向の名前であり、低温相での等価性を表さない。正方晶相（点群 :math:`4mm`）では、6方向は極性軸の向き :math:`[001]`、その逆向き :math:`[00\bar1]`、残りの4方向という3つの族に分かれる。強誘電体の分極が「擬立方の :math:`\langle100\rangle` を向く」とは、6方向のうち1つが選ばれた状態をいう。分極の向きがそろった領域を\ :ref:`分域<ferroelectric-domains>`\ （ドメイン）といい、隣り合う分域では6方向のうち別の方向が選ばれている。
 
 .. |direction-and-plane-normal| replace:: 結晶方向と面法線が平行になる条件
 
