@@ -94,7 +94,7 @@
 
 を得る。分極は :math:`T_{\mathrm C}` で0から有限の値へ跳び（1次転移）、常誘電相の :math:`\chi` から
 外挿した :math:`T_0` は :math:`T_{\mathrm C}` より低い。:math:`T_{\mathrm C}` での :math:`P=0` の曲率 :math:`a(T_{\mathrm C}-T_0)` は正なので、
-\ :ref:`ソフトモードの振動数<sm-definition>`\ も :math:`T_{\mathrm C}` で0にならないまま転移が起こる。:math:`T_0<T<T_{\mathrm C}` でも :math:`P=0` は
+:ref:`ソフトモードの振動数<sm-definition>`\ も :math:`T_{\mathrm C}` で0にならないまま転移が起こる。:math:`T_0<T<T_{\mathrm C}` でも :math:`P=0` は
 極小のまま残るので、冷却では :math:`T_0` まで常誘電相が過冷却されうる。加熱では、:math:`P\ne0` の極小が
 :math:`a(T-T_0)+\beta P^2+\gamma P^4=0` の実数解として残る :math:`T_0+\beta^2/(4a\gamma)` まで、分極した状態が残りうる。1次転移の転移温度が加熱と冷却でずれうるのは、このためである。
 
