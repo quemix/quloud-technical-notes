@@ -370,7 +370,7 @@ Comèsらは、Tiの変位が鎖状に相関すると考えると説明できる
 
 .. [Zhong1995] W. Zhong, D. Vanderbilt, and K. M. Rabe, “First-principles theory
    of ferroelectric phase transitions for perovskites: The case of BaTiO\ :sub:`3`,”
-   *Physical Review B* **52**, 6301 (1995),
+   *Physical Review B* **52**, 6301–6312 (1995),
    `doi:10.1103/PhysRevB.52.6301 <https://doi.org/10.1103/PhysRevB.52.6301>`_.
 .. [Bull2021] C. L. Bull, C. J. Ridley, K. S. Knight, N. P. Funnell, and A. S. Gibbs,
    “Comprehensive determination of the high-pressure structural behaviour of
