@@ -304,7 +304,8 @@
 虚数振動数をもつ構造でも、エネルギーが際限なく下がるわけではない。調和近似の
 :math:`\frac12\omega_s^2Q^2` は小さい :math:`Q` での形にすぎず、変位が大きくなると4次などの
 非調和項がエネルギーを押し上げる。曲率が負の原点と、大きい変位での壁の間に、
-エネルギーの極小が現れる。
+エネルギーの極小が現れる。この形を\ :ref:`二重井戸ポテンシャル<double-well-potential>`\ と呼び、虚数振動数をもつモードが
+低温で凍結する\ :ref:`ソフトモード<soft-mode>`\ の考え方につながる。
 
 .. _zero-point-vibration:
 
@@ -326,8 +327,7 @@
 零点エネルギーは構造ごとに異なるので、静止した原子で計算した全エネルギーの差が小さい二つの
 構造では、:eq:`ph-zpe` の差で安定性の順序が変わることがある。原子核の量子揺らぎは、
 相転移の温度も変える。ZhongとVanderbiltは、第一原理計算に基づく有効ハミルトニアンを
-経路積分モンテカルロ法で解いた [Zhong1996]_。SrTiO\ :sub:`3`\ では量子揺らぎが強誘電転移を完全に抑え、
-八面体回転の転移温度を130 Kから110 Kに下げた。BaTiO\ :sub:`3`\ では転移温度が35〜50 K下がった。
+経路積分モンテカルロ法で解いた [Zhong1996]_。SrTiO\ :sub:`3`\ では量子揺らぎが強誘電転移を完全に抑え、:ref:`八面体回転<sm-octahedral-rotation>`\ の転移温度を130 Kから110 Kに下げた。BaTiO\ :sub:`3`\ では転移温度が35〜50 K下がった。
 
 温度 :math:`T` では、振動数 :math:`\omega` のモードの平均エネルギーは、Bose–Einstein分布の
 占有数 :math:`n_{\mathrm B}=1/(e^{\hbar\omega/k_{\mathrm B}T}-1)` を使って
@@ -387,11 +387,12 @@
 準調和近似は振動数の体積依存性だけを取り込み、一定体積でのフォノンどうしの相互作用は
 無視する。温度が高く振幅が大きい場合や、虚数振動数をもつ構造では、この近似は使えない。
 
+.. _phonon-batio3-example:
+
 説明用の科学的事例：立方晶BaTiO\ :sub:`3`\ の不安定なΓ点モード
 ------------------------------------------------------------------
 
-立方晶BaTiO\ :sub:`3`\ は、対称性の高い構造が虚数振動数をもつ代表例である。ペロブスカイト型の
-BaTiO\ :sub:`3`\ は、高温の立方晶相（単位胞に5原子）で15本のフォノン分枝をもつ。Ghosezらは立方晶の実験格子定数（4.00 Å）でDFPTを使って全分枝を計算し、最も不安定なモードが
+立方晶BaTiO\ :sub:`3`\ は、対称性の高い構造が虚数振動数をもつ代表例である。ペロブスカイト型のBaTiO\ :sub:`3`\ は、高温の立方晶相（単位胞に5原子）で15本のフォノン分枝をもつ。Ghosezらは立方晶の実験格子定数（4.00 Å）でDFPTを使って全分枝を計算し、最も不安定なモードが
 Γ点にあり、Tiが周りの酸素に対して逆向きに動くモードであることを示した [Ghosez1999]_。
 このモードが凍結すると、強誘電相の構造になる。不安定な分枝はΓ点だけでなく、XやMへ向かう方向に
 平らに広がり、R点へ向かうと急に安定になる。逆格子空間では不安定な領域がΓ点で交わる3枚の
@@ -400,23 +401,22 @@ BaTiO\ :sub:`3`\ は、高温の立方晶相（単位胞に5原子）で15本の
 
 CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計算で、立方晶BaTiO\ :sub:`3`\ が
 Γ点の極性モードに対して不安定であることを示し、その固有ベクトルを求めた [Cohen1990]_。
-`計算事例「二重井戸ポテンシャル Part 2」 <https://github.com/quemix/quloud-examples/blob/main/BaTiO3/total-energy.rst>`_\ では、
+`計算事例「二重井戸ポテンシャル Part 2」 <https://example.quloud-platform.quemix.com/BaTiO3/total-energy.html>`_\ では、
 この論文の不安定モードを約 :math:`-72\ \mathrm{cm^{-1}}` として引用し、固有ベクトルに沿って
-原子を動かした構造のエネルギーをOpenMX（LDA）で計算している。負の符号は、前節で述べた
-虚数振動数の表し方である。
+原子を動かした構造のエネルギーをOpenMX（LDA）で計算している。負の符号は、\ :ref:`虚数振動数<imaginary-frequency>`\ を表す約束による。
 
-`計算事例「BaTiO₃の安定性」 <https://github.com/quemix/quloud-examples/blob/main/BaTiO3/stability.rst>`_\ は、
+`計算事例「BaTiO₃の安定性」 <https://example.quloud-platform.quemix.com/BaTiO3/stability.html>`_\ は、
 対称性を保って最適化した4相の0 Kの全エネルギーを、OpenMXとQuantum ESPRESSO（GGA-PBE）と3種類の機械学習原子間ポテンシャルで比べている。全エネルギーの比較は、各構造が局所的な極小で
 あることまでは示さない。極小であることは、その構造のフォノンに虚数振動数がないことで分かる。
 相どうしのエネルギー差が小さい場合は、零点エネルギー :eq:`ph-zpe` の差も順序に影響しうる。
 事例でも、フォノンによる動的安定性の確認と零点振動の評価を、0 Kの順位の先に残る課題に挙げている。
 
-`計算事例「格子定数」 <https://github.com/quemix/quloud-examples/blob/main/BaTiO3/lattice-constant.rst>`_\ は、4相の格子定数をDFT（OpenMX、Quantum ESPRESSO）と機械学習原子間ポテンシャルで求め、実験値と
+`計算事例「格子定数」 <https://example.quloud-platform.quemix.com/BaTiO3/lattice-constant.html>`_\ は、4相の格子定数をDFT（OpenMX、Quantum ESPRESSO）と機械学習原子間ポテンシャルで求め、実験値と
 比べている。計算値は静止した原子の0 Kの最適化構造であり、実験値は各相が安定に存在する
 有限温度で測られている。両者の差には、:eq:`ph-thermal-pressure` の熱膨張と零点振動による
 体積の増加が含まれる。立方晶相は0 Kでは不安定モードをもつので、0 Kの立方晶の格子定数は、
 対称性を課して得た鞍点の構造の値である。同じ事例集の
-`「二重井戸ポテンシャル Part 1」 <https://github.com/quemix/quloud-examples/blob/main/BaTiO3/total-energy-DFT-MLIP.rst>`_\ でも、
+`「二重井戸ポテンシャル Part 1」 <https://example.quloud-platform.quemix.com/BaTiO3/total-energy-DFT-MLIP.html>`_\ でも、
 基準の格子定数の立方晶でTiを中心からずらすとエネルギーが下がる（OpenMX）。
 
 解釈と限界
