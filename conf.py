@@ -69,5 +69,22 @@ def add_solid_styles(app, pagename, _templatename, _context, _doctree):
         app.add_css_file('solid-links.css')
 
 
+def add_volume_link(app, pagename, _templatename, context, _doctree):
+    """Give the sidebar the volume (e.g. 固体物理) that the page belongs to."""
+    env = app.env
+    parents = {}
+    for parent, children in env.toctree_includes.items():
+        for child in children:
+            parents.setdefault(child, parent)
+    root = app.config.root_doc
+    doc = pagename
+    while parents.get(doc) not in (None, root):
+        doc = parents[doc]
+    if parents.get(doc) == root and doc in env.titles:
+        context['volume_title'] = env.titles[doc].astext()
+        context['volume_url'] = context['pathto'](doc)
+
+
 def setup(app):
     app.connect('html-page-context', add_solid_styles)
+    app.connect('html-page-context', add_volume_link)

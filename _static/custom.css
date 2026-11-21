@@ -25,3 +25,17 @@
     font-weight: 700;
 }
 
+
+/* Sidebar title (e.g. 固体物理目次) links to the volume's top page.
+   Keep the title's color in every link state; only underline it on hover. */
+nav.bd-links .bd-links__title-link,
+nav.bd-links .bd-links__title-link:visited,
+nav.bd-links .bd-links__title-link:hover,
+nav.bd-links .bd-links__title-link:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav.bd-links .bd-links__title-link:hover {
+    text-decoration: underline;
+}
