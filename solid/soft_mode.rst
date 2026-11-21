@@ -143,7 +143,7 @@ BaTiO\ :sub:`3`\ の立方晶–正方晶転移 [Merz1953]_ のような1次転�
 
 Landau理論は、平均場の近似で相転移の形を表す現象論である。実際の物質では :math:`\beta<0` で6次の項が必要になり、秩序変数が不連続に変わる1次転移になるものもある。
 このとき転移温度 :math:`T_{\mathrm c}` は :math:`T_0` より高く、ソフトモードの振動数は :math:`T_{\mathrm c}` で0にならない（\ :ref:`常誘電相<paraelectric-phase>`\ の導出）。BaTiO\ :sub:`3`\ の
-三つの転移は、いずれも1次転移である [ZhongVanderbiltRabe1995]_。
+三つの転移は、いずれも1次転移である [Zhong1995]_。
 
 .. _sm-inversion-equivalence:
 
@@ -284,14 +284,14 @@ frozen phonon法が調べるのは、配置空間の中の一本の直線の上�
 局所的な変位は残らない。冷やしていくと、隣どうしの強い相互作用のために原子は周りと一緒に
 同じ向きへずれ、平均位置が少しずつ対称な位置から離れていく。ソフトモードの振動数が0に近づき、
 変位が凍結するのがこの型である。不安定な揺らぎは、ブリルアンゾーンのΓ点の近くなど狭い範囲に限られる
-[ZhongVanderbiltRabe1995]_。
+[Zhong1995]_。
 
 **秩序–無秩序型** （:math:`|\Delta E|\gg k_{\mathrm B}T_{\mathrm c}`）では、転移温度より十分に高い温度でも、
 各胞の原子はどちらかの井戸の底にいて、ときどき反対側へ飛び移る。転移温度の上では、どちらの井戸に
 いるかが胞ごとにばらばらなので、平均構造は対称でも各胞には局所的な変位が残っている。
 変位の分布には二つの山がある。転移は、各胞の井戸の選び方がそろうことで起こり、転移のエントロピーは
 主に配置の数から生じる [Dove1997]_。胞ごとにほぼ独立に井戸を選ぶので、揺らぎはブリルアンゾーン全体に
-広がる [ZhongVanderbiltRabe1995]_。
+広がる [Zhong1995]_。
 
 .. figure:: images/soft_mode_displacive_order_disorder.svg
    :name: fig-soft-mode-displacive-order-disorder
@@ -305,7 +305,7 @@ frozen phonon法が調べるのは、配置空間の中の一本の直線の上�
 
 二つの型は極限であり、多くの物質はその間にある。0 Kで計算した井戸の深さだけでは型は決まらず、
 胞どうしの相互作用の強さとの比が型を決める。Zhongらは、計算した揺らぎがブリルアンゾーンのどの範囲まで
-広がっているかを、型を判定する基準に使った [ZhongVanderbiltRabe1995]_。
+広がっているかを、型を判定する基準に使った [Zhong1995]_。
 
 .. _sm-octahedral-rotation:
 
@@ -368,7 +368,7 @@ BaTiO\ :sub:`3`\ の立方晶相では、Γ点の極性モードがソフトモ�
 述べている。
 
 有限温度の相転移の型については、Zhong、Vanderbilt、Rabeが第一原理計算からパラメータを決めた有効ハミルトニアンを
-モンテカルロ法で解いた [Zhong1994]_ [ZhongVanderbiltRabe1995]_。立方晶・正方晶・直方晶・菱面体晶の順に現れる相の順序は、
+モンテカルロ法で解いた [Zhong1994]_ [Zhong1995]_。立方晶・正方晶・直方晶・菱面体晶の順に現れる相の順序は、
 実験と一致した。LDAの体積の過小評価を補う負の圧力（−4.8 GPa）をかけた計算での転移温度は、立方晶–正方晶が297 K
 （論文に併記された実験値403 K）、正方晶–直方晶が230 K（278 K）、直方晶–菱面体晶が200 K（183 K）で、上の二つの転移は
 実験より低い（同論文の表III、:math:`14\times14\times14` 胞の値）。
@@ -448,17 +448,9 @@ BaTiO\ :sub:`3`\ の立方晶相では、Γ点の極性モードがソフトモ�
 .. [Harada1971] J. Harada, J. D. Axe, and G. Shirane, “Neutron-scattering study of soft modes in
    cubic BaTiO\ :sub:`3`,” *Physical Review B* **4**, 155–162 (1971),
    `doi:10.1103/PhysRevB.4.155 <https://doi.org/10.1103/PhysRevB.4.155>`_.
-.. [CohenKrakauer1990] R. E. Cohen and H. Krakauer, “Lattice dynamics and origin of ferroelectricity
-   in BaTiO\ :sub:`3`: Linearized-augmented-plane-wave total-energy calculations,”
-   *Physical Review B* **42**, 6416–6423 (1990),
-   `doi:10.1103/PhysRevB.42.6416 <https://doi.org/10.1103/PhysRevB.42.6416>`_.
 .. [Zhong1994] W. Zhong, D. Vanderbilt, and K. M. Rabe, “Phase transitions in BaTiO\ :sub:`3` from
    first principles,” *Physical Review Letters* **73**, 1861–1864 (1994),
    `doi:10.1103/PhysRevLett.73.1861 <https://doi.org/10.1103/PhysRevLett.73.1861>`_.
-.. [ZhongVanderbiltRabe1995] W. Zhong, D. Vanderbilt, and K. M. Rabe, “First-principles theory of
-   ferroelectric phase transitions for perovskites: The case of BaTiO\ :sub:`3`,”
-   *Physical Review B* **52**, 6301–6312 (1995),
-   `doi:10.1103/PhysRevB.52.6301 <https://doi.org/10.1103/PhysRevB.52.6301>`_.
 .. [Comes1968] R. Comès, M. Lambert, and A. Guinier, “The chain structure of BaTiO\ :sub:`3` and
    KNbO\ :sub:`3`,” *Solid State Communications* **6**, 715–719 (1968),
    `doi:10.1016/0038-1098(68)90571-1 <https://doi.org/10.1016/0038-1098(68)90571-1>`_.

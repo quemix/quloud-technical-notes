@@ -412,7 +412,7 @@ BaTiO\ :sub:`3`\ の計算方法と、実験の体積で計算するという選
 これ以外の分枝はすべて安定である。
 
 CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計算で、立方晶BaTiO\ :sub:`3`\ が
-Γ点の極性モードに対して不安定であることを示し、その固有ベクトルを求めた [Cohen1990]_。
+Γ点の極性モードに対して不安定であることを示し、その固有ベクトルを求めた [CohenKrakauer1990]_。
 `計算事例「二重井戸ポテンシャル Part 2」 <https://example.quloud-platform.quemix.com/BaTiO3/total-energy.html>`_\ では、
 この論文の不安定モードを約 :math:`-72\ \mathrm{cm^{-1}}` として引用し、固有ベクトルに沿って
 原子を動かした構造のエネルギーをOpenMX（LDA）で計算している。負の符号は、\ :ref:`虚数振動数<imaginary-frequency>`\ を表す約束による。
@@ -476,7 +476,7 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 .. [GhosezGonzeMichenaud1998] Ph. Ghosez, X. Gonze, and J.-P. Michenaud, “*Ab initio* phonon dispersion
    curves and interatomic force constants of barium titanate,” *Ferroelectrics* **206**, 205–217 (1998),
    `doi:10.1080/00150199808009159 <https://doi.org/10.1080/00150199808009159>`_.
-.. [Cohen1990] R. E. Cohen and H. Krakauer, “Lattice dynamics and origin of ferroelectricity in
+.. [CohenKrakauer1990] R. E. Cohen and H. Krakauer, “Lattice dynamics and origin of ferroelectricity in
    BaTiO\ :sub:`3`: Linearized-augmented-plane-wave total-energy calculations,”
    *Physical Review B* **42**, 6416–6423 (1990),
    `doi:10.1103/PhysRevB.42.6416 <https://doi.org/10.1103/PhysRevB.42.6416>`_.
