@@ -187,6 +187,8 @@ Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
 
 .. |direction-and-plane-indices| replace:: 結晶方向と面指数の変換
 
+.. _lt-index-transform:
+
 |direction-and-plane-indices|
 -----------------------------
 
@@ -205,6 +207,47 @@ Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
 方向は基底ベクトルの係数、面指数は双対基底での係数であり、変換則が逆向きになる。得られた方向や指数を整数表記にする際は、分母の有無や共通因子を別に処理する。
 
 指数の共通因子は、何を保つかで扱いが異なる。方向指数は向きだけを示すなら最大公約数で約分できるが、対応するベクトルの長さは変わる。Miller指数も法線の向きだけなら約分できる一方、面間隔は変わる。回折指数は逆格子ベクトルそのもの :math:`\boldsymbol g=B\boldsymbol h` を指定するので、例えば :math:`(100)` と :math:`(200)` は同じ法線方向でも波数の大きさが異なる。基底変換後に同じ :math:`\boldsymbol g` を表す :math:`\boldsymbol h'=P^{\mathsf T}\boldsymbol h` は、分数成分を含む場合も含めてそのまま保ち、共通因子で約分してはならない。
+
+.. |equivalent-direction-families| replace:: 等価な方向と面の族
+
+.. _equivalent-directions:
+
+|equivalent-direction-families|
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ここまでの :math:`[uvw]` は1本の方向、:math:`(hkl)` は1組の平行な格子面を指す。結晶の対称操作で互いに移り合う2つの方向に沿って見ると、原子の並びは同じなので、その方向に沿って測る物性も等しい。例えば立方晶では、:math:`z` 軸まわりの90度回転が :math:`[100]` を :math:`[010]` へ移す。このような方向や面の集まりを族と呼び、ひとまとめにした記号で書く（:numref:`lt-index-brackets`。International Tables for Crystallography, Vol. A (2006), `§1.1.4 <https://it.iucr.org/Ab/ch1o1v0001/sec1o1o4.pdf>`__）。
+
+.. list-table:: 方向と面の指数の括弧
+   :name: lt-index-brackets
+   :header-rows: 1
+   :widths: 18 82
+
+   * - 表記
+     - 指すもの
+   * - :math:`[uvw]`
+     - 1本の方向。格子ベクトル :math:`A\boldsymbol u` の向き
+   * - :math:`\langle uvw\rangle`
+     - :math:`[uvw]` と対称操作で移り合う方向の集まり
+   * - :math:`(hkl)`
+     - 1組の平行な格子面。法線は逆格子ベクトル :math:`B\boldsymbol h`
+   * - :math:`\{hkl\}`
+     - :math:`(hkl)` と対称操作で移り合う面の集まり
+
+どの方向が等価かは、結晶の\ :ref:`点群<crystal-point-group>`\ で決まる。対称操作 :math:`\{Q\mid\boldsymbol t\}` の線形部分を格子基底で表した行列を :math:`W=A^{-1}QA`\ （:eq:`crystal-symmetry-fractional`）とする。方向と面法線は2点の差で決まるベクトルなので、並進 :math:`\boldsymbol t` は作用しない。方向は :math:`QA\boldsymbol u=A(W\boldsymbol u)` に移る。:math:`Q` は直交行列なので :math:`Q=Q^{-\mathsf T}=A^{-\mathsf T}W^{-\mathsf T}A^{\mathsf T}` と書ける。これを使うと、面法線は :math:`QB\boldsymbol h=2\pi A^{-\mathsf T}W^{-\mathsf T}\boldsymbol h=B(W^{-\mathsf T}\boldsymbol h)` に移る。点群の操作の行列の集合を :math:`\mathcal P` と書けば、
+
+.. math::
+   :label: equivalent-direction-family
+
+   \langle uvw\rangle=\{\,W\boldsymbol u\mid W\in\mathcal P\,\},\qquad
+   \{hkl\}=\{\,W^{-\mathsf T}\boldsymbol h\mid W\in\mathcal P\,\}.
+
+方向に :math:`W`、面指数に :math:`W^{-\mathsf T}` が掛かる形は、基底変換と同じである。基底変換の :math:`\boldsymbol u'=P^{-1}\boldsymbol u` と :math:`\boldsymbol h'=P^{\mathsf T}\boldsymbol h` も、:math:`M=P^{-1}` と置けば :math:`\boldsymbol u'=M\boldsymbol u`、:math:`\boldsymbol h'=M^{-\mathsf T}\boldsymbol h` と書ける。ただし基底変換は同じベクトルを別の基底で書き直す操作で、:math:`W` は同じ基底のまま別の方向へ移す操作である。また並進部分は方向に作用しないので、らせん軸や映進面は、対応する回転や鏡映と同じ族を作る。
+
+族に含まれる方向の数は点群によって変わる。立方晶の点群 :math:`m\bar3m`\ （48個の操作）は、立方慣用単位胞の基底で、成分の並べ替えと符号の反転をすべて含む。このため :math:`\langle100\rangle` は :math:`\pm[100]`、:math:`\pm[010]`、:math:`\pm[001]` の6方向、:math:`\langle110\rangle` は12方向、:math:`\langle111\rangle` は8方向になる。正方晶の点群 :math:`4/mmm`\ （16個）には :math:`c` 軸を :math:`a` 軸へ移す操作が無い。:math:`\langle100\rangle` は :math:`\pm[100]` と :math:`\pm[010]` の4方向だけで、:math:`\pm[001]` は別の族 :math:`\langle001\rangle` になる。極性の点群 :math:`4mm`\ （8個）には :math:`c` 軸を反転する操作も無く、:math:`[001]` と :math:`[00\bar1]` は等価でない。:math:`[uvw]` と :math:`[\bar u\bar v\bar w]` が同じ族に入るのは、反転のように :math:`\boldsymbol u` を :math:`-\boldsymbol u` へ移す操作が点群にあるときに限る（\ :ref:`反転対称性と自発分極<inversion-and-polarization>`\ ）。
+
+族の要素は、数字の並べ替えと符号の反転とは限らない。立方慣用単位胞の直交基底では :math:`W` が直交行列で :math:`W^{-\mathsf T}=W` なので、:math:`\langle uvw\rangle` と :math:`\{uvw\}` は同じ指数の組を並べる。六方晶の基底（:math:`\gamma=120^\circ`）では、:math:`c` 軸まわりの60度回転が :math:`\boldsymbol a_1` を :math:`\boldsymbol a_1+\boldsymbol a_2` へ移す。点群 :math:`6/mmm` の :math:`\langle100\rangle` は :math:`\pm[100]`、:math:`\pm[010]`、:math:`\pm[110]` の6方向、:math:`\{100\}` は :math:`\pm(100)`、:math:`\pm(010)`、:math:`\pm(1\bar10)` の6組になる。
+
+相転移で対称性が下がった結晶では、高温相の軸で指数を書く慣習がある。ペロブスカイトの\ :ref:`擬立方格子<pseudocubic-cell>`\ で書いた「擬立方の :math:`\langle100\rangle`」は、立方晶の点群 :math:`m\bar3m` で等価だった6方向の名前であり、低温相での等価性を表さない。正方晶相（点群 :math:`4mm`）では、6方向は極性軸の向き :math:`[001]`、その逆向き :math:`[00\bar1]`、残りの4方向という3つの族に分かれる。強誘電体の分極が「擬立方の :math:`\langle100\rangle` を向く」とは、6方向のうち1つが選ばれた状態をいう。分極の向きがそろった領域を分域（ドメイン）といい、隣り合う分域では6方向のうち別の方向が選ばれている。
 
 .. |direction-and-plane-normal| replace:: 結晶方向と面法線が平行になる条件
 
