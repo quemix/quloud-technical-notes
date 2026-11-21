@@ -7,7 +7,7 @@
 時間変化を求める方法である。固定体積の気体の圧力を測る場合と、結晶が温度と
 ともに形を変える様子を追う場合では、一定に保つ量が異なる。
 
-古典力学の運動方程式と :ref:`運動エネルギーと温度<temperature>` を前提に、
+古典力学の運動方程式と\ :ref:`運動エネルギーと温度<temperature>`\ を前提に、
 力から軌跡を求める方法、NVE・NVT・NPTで固定する量、平衡化後の測定区間の
 見分け方を学ぶ。
 
@@ -26,7 +26,7 @@
    m_i\dot{\boldsymbol v}_i=\boldsymbol F_i,\qquad
    \dot{\boldsymbol r}_i=\boldsymbol v_i.
 
-初期の位置と速度を指定し、時間刻み :math:`\Delta t` ごとに :eq:`md-newton` を
+初期の位置と速度を指定し、時間刻み :math:`\Delta t` ごとに\ :eq:`md-newton`\ を
 近似的に解く。速度Verlet法では、現在の力で速度を半ステップ進め、その速度で
 位置を更新する。新しい配置で力を評価した後、速度の残り半分を進める [MdSwope1982]_。
 
@@ -81,7 +81,7 @@ NVE・NVT・NPTで固定する量
 
 NVEでは、運動エネルギー :math:`K` とポテンシャルエネルギー :math:`U` が
 互いに変換されても、その和は連続時間の運動方程式で保存される。
-:eq:`md-newton` を使うと、一方が増える速さと他方が減る速さが等しいと分かる。
+:eq:`md-newton`\ を使うと、一方が増える速さと他方が減る速さが等しいと分かる。
 
 .. math::
    :label: md-energy-conservation
@@ -168,7 +168,7 @@ Nosé–Hoover法は補助変数を使う決定論的な方法で、
 
 時間刻みを選ぶ目安は、追いたい最速の振動を1周期あたり何回更新できるかである。
 1次元調和振動子 :math:`m\ddot x=-m\omega^2x` を、初期変位 :math:`x_0`、
-初速度ゼロから :eq:`md-velocity-verlet` で進める。厳密な周期を
+初速度ゼロから\ :eq:`md-velocity-verlet`\ で進める。厳密な周期を
 :math:`\tau_{\rm osc}=2\pi/\omega` とする。
 
 :math:`h=\omega\Delta t`、:math:`X=x/x_0`、:math:`W=v/(\omega x_0)`
@@ -206,7 +206,7 @@ Nosé–Hoover法は補助変数を使う決定論的な方法で、
      - 0.9831
 
 この振動子では1周期を20分割しても、エネルギーは最大約2.5%ずれる。
-:numref:`fig-md-verlet-step` では、刻みが粗いと変動幅が広がる。
+:numref:`fig-md-verlet-step`\ では、刻みが粗いと変動幅が広がる。
 数値的な周期も短くなるため、変動幅に加えて、観測したい振動数の変化も
 刻み選びの手がかりになる。
 
@@ -226,7 +226,7 @@ Nosé–Hoover法は補助変数を使う決定論的な方法で、
 正準分布では、温度制御が適切でも、小さい系ほど瞬間の温度が大きく揺らぐ。
 独立な二次形式の運動自由度が :math:`f` 個あるとき、各項の平均は
 :math:`k_{\rm B}T/2`、分散は :math:`(k_{\rm B}T)^2/2` である。
-分散を足し、:eq:`md-kinetic-temperature` で温度に換算してから平均で割る。
+分散を足し、:eq:`md-kinetic-temperature`\ で温度に換算してから平均で割る。
 
 .. math::
    :label: md-temperature-relative-fluctuation
@@ -237,7 +237,7 @@ Nosé–Hoover法は補助変数を使う決定論的な方法で、
 
 3次元で重心運動だけを除くなら :math:`f=3N-3` となる。:math:`N=32,256,2048`
 に対する相対標準偏差は、順に14.66%、5.11%、1.80%である。
-全自由度を数える場合の導出は :ref:`温度の計算<temperature>` にある。
+全自由度を数える場合の導出は\ :ref:`温度の計算<temperature>`\ にある。
 軌跡の平均温度の標準誤差には、瞬間値の揺らぎに加えて時刻間の相関も効く。
 
 .. _md-interpretation-limits:

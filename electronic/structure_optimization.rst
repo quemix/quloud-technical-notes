@@ -8,8 +8,8 @@
 手がかりになり、セルに生じる応力は格子の形や体積を変える手がかりになる。
 どの自由度を動かすかによって、得られる構造の意味が変わる。
 
-前提は :ref:`格子ベクトルの独立な成分<lattice-dof>` と
-:ref:`構造ごとの電子状態計算<kohn-sham-dft>` である。
+前提は\ :ref:`格子ベクトルの独立な成分<lattice-dof>`\ と
+:ref:`構造ごとの電子状態計算<kohn-sham-dft>`\ である。
 単点計算、固定セル緩和、可変セル最適化を使い分け、結果の収束を判断する。
 
 単点計算と固定セル緩和
@@ -39,7 +39,7 @@
 まだ変わることを示す。
 
 スメアリングを使う電子状態計算では、
-:ref:`力と応力に対応する自由エネルギー<smearing-and-free-energy>` を
+:ref:`力と応力に対応する自由エネルギー<smearing-and-free-energy>`\ を
 最小化する。以降の :math:`E` は、最適化に用いるエネルギーを表す。
 
 .. _variable-cell-optimization:
@@ -65,7 +65,7 @@
 セルを変形する行列の行列式の変化が対角成分の和になることから得られる。
 
 一定の静水圧 :math:`P_{\rm ext}` のもとでは、:math:`H=E+P_{\rm ext}V`
-を最小化する。:eq:`structure-stress-variation` の二式を代入すると、
+を最小化する。:eq:`structure-stress-variation`\ の二式を代入すると、
 セル変形に対する :math:`H` の変化は
 
 .. math::
@@ -139,7 +139,7 @@ BFGSなどの準Newton法では、位置を動かしたときの勾配の変化�
 原子緩和は、動かせる方向の残留力が設定した許容値に入ったかで判断する。
 可変セルでは、許された変形に対応する応力と外圧の差も見る。
 エネルギーの変化が小さくても、更新幅が小さいだけなら力や応力は残る。
-電子状態の収束誤差や :ref:`基底の打ち切り<basis-set-cutoff>` でも
+電子状態の収束誤差や\ :ref:`基底の打ち切り<basis-set-cutoff>`\ でも
 力や応力は変わりうるため、比較に必要な精度まで数値条件を収束させる。
 
 力が消えた構造は、指定した自由度についての停留点である。
@@ -168,12 +168,12 @@ BFGSなどの準Newton法では、位置を動かしたときの勾配の変化�
 :math:`\lambda` は体積の変化と原子位置を結びつける係数、
 :math:`\eta_0` はエネルギーが最小になる体積変化である。
 
-:math:`V=V_0` に固定すると :eq:`structure-force-variation` から
+:math:`V=V_0` に固定すると\ :eq:`structure-force-variation`\ から
 :math:`F=-k(x-x_0)` なので、緩和後は :math:`x=x_0` となる。
-この点では :eq:`structure-coupled-cell-model` の第1項はゼロになる。
+この点では\ :eq:`structure-coupled-cell-model`\ の第1項はゼロになる。
 第2項を :math:`V` で微分すると、:math:`d\eta/dV=1/V_0` なので
 :math:`dE/dV=B(\eta-\eta_0)` となる。等方変形では
-:eq:`structure-stress-variation` の2式から、:math:`dE/dV` は
+:eq:`structure-stress-variation`\ の2式から、:math:`dE/dV` は
 引張を正とした各対角応力に等しい。固定セルの緩和後に残る対角応力は
 :math:`-B\eta_0` である。
 
@@ -200,7 +200,7 @@ BFGSなどの準Newton法では、位置を動かしたときの勾配の変化�
 表では :math:`V_0=100\,\text{Å}^3`、:math:`B=1\,\mathrm{eV}/\text{Å}^3`、
 :math:`k=2\,\mathrm{eV}/\text{Å}^2`、:math:`x_0=0.10\,\text{Å}`、
 :math:`\lambda=1.0\,\text{Å}`、:math:`\eta_0=0.02` とした。
-外圧ゼロでは :eq:`structure-enthalpy-variation` により応力ゼロが
+外圧ゼロでは\ :eq:`structure-enthalpy-variation`\ により応力ゼロが
 体積が自由な場合の条件となる。:math:`\eta=\eta_0` まで変形させれば、
 原子の平衡位置も :math:`x_0+\lambda\eta_0=0.12\,\text{Å}` に変わる。
 

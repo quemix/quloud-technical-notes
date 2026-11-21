@@ -7,8 +7,8 @@
 追うことができる。軌跡から読み取る転移温度は、熱力学的に二相がつり合う温度と
 ずれることがある。どの量で相を見分け、温度のずれがどこから生じるかを考える。
 
-前提は :ref:`統計アンサンブル<statistical-ensembles>` と
-:ref:`平衡化<equilibration>` である。この記事では、構造から相を判定し、
+前提は\ :ref:`統計アンサンブル<statistical-ensembles>`\ と
+:ref:`平衡化<equilibration>`\ である。この記事では、構造から相を判定し、
 昇温速度、保持時間、セルサイズが転移の見え方にどう影響するかを学ぶ。
 
 .. _heating-phase-indicators:
@@ -101,7 +101,7 @@
 参照計算の条件や昇温の設定をそろえる必要がある。
 
 融解では、結晶に特徴的な原子の周期配列が失われる。
-近接原子の並び方を表す :ref:`結合配向秩序パラメータ<bond-orientational-order>`
+近接原子の並び方を表す\ :ref:`結合配向秩序パラメータ<bond-orientational-order>`
 の急な低下が、融解の目印になる。拡散や長距離の構造秩序も調べると、
 高温で揺らいでいる結晶と、流動する液体を見分ける根拠が増える [HeatChen2025]_。
 急速な加熱や周期境界のもとでは結晶が過熱する場合があるため、
@@ -114,7 +114,7 @@
 
 `BaTiO₃の昇温計算 <https://example.quloud-platform.quemix.com/BaTiO3/phase_transition.html>`__
 では、QuloudのGPUでCHGNetを使い、外圧を制御したNPTで10 K/psの速さで昇温した。
-:eq:`heating-dwell-time` にこの速度を入れると、10 Kの範囲は1 ps、20 Kは2 ps、
+:eq:`heating-dwell-time`\ にこの速度を入れると、10 Kの範囲は1 ps、20 Kは2 ps、
 50 Kは5 psで通過する。仮に構造が反応するのに4 ps程度かかる場合、20 K幅では
 その半分しか時間がない。ここでの4 psは比較のための仮定である。
 
@@ -170,7 +170,7 @@ CHGNetで、BaTiO₃の基本の5原子セルを各軸に5回または8回並べ
 :math:`\tau\ln 2=2.773\,\mathrm{ps}` となる。
 
 加熱・冷却の速さをともに10 K/psとすると、温度のずれは片側で約27.7 Kである。
-:numref:`fig-heat-order-lag` の丸印では、加熱で427.7 K、冷却で372.3 Kになる。
+:numref:`fig-heat-order-lag`\ の丸印では、加熱で427.7 K、冷却で372.3 Kになる。
 この模型のヒステリシス幅は丸め前の値から求めると55.5 Kである。
 
 .. figure:: images/thermal-lag.svg
