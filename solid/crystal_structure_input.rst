@@ -4,7 +4,7 @@
 ======================
 
 格子還元・結晶学的標準化で何が変わるかを整理し、構造ファイルや計算ソフトで
-格子ベクトルと原子座標をどう指定するかを確認する。最後に、FCCの変換をNumPyで検算する。
+格子ベクトルと原子座標をどう指定するかを確認する。
 
 **前提知識**: :ref:`格子の基底変換<lt-primitive-basis>`、:ref:`Cartesian座標の回転<lt-cartesian-rotation>`、
 :ref:`基本単位胞<lattice-unit-cells>`、:ref:`超胞<lt-supercell>`。
@@ -18,7 +18,7 @@ Niggli還元は格子の計量に基づき、同じ格子を簡潔な基底で�
 
 spglibの `standardize_cell <https://spglib.readthedocs.io/en/stable/api/autodoc/spglib.cell.html#spglib.cell.standardize_cell>`_ は ``to_primitive=True`` で基本単位胞、``to_primitive=False``\ （既定値）で標準慣用単位胞を返す。``no_idealize=False``\ （既定値）では、対称性に合わせて格子定数や原子位置が調整されることがある。歪みや緩和後の数値を保持したい場合は ``no_idealize=True`` を検討する。ただしこの指定は理想化を止めるもので、対称性探索を止めるものではない。入力構造に対して ``symprec`` と ``angle_tolerance`` が適切か、許容差を変えたときに検出対称性が安定するかも確認する。
 
-spglibは対称性判定結果に基づいて原子順序やCartesianの向きを変える場合があり、標準化結果だけで物理的同一性を完全に判定できるわけではない。spglibのPython APIは格子ベクトルを\ **行**\ として受け取るため、列ベクトル規約との対応を明示する。
+spglibは対称性判定結果に基づいて原子順序やCartesianの向きを変える場合があり、標準化結果だけで物理的同一性を完全に判定できるわけではない。spglibのPython APIは格子ベクトルを\ **行**\ として受け取る（\ :ref:`配列規約<lt-array-conventions>`）。
 
 .. _lt-input-formats:
 
@@ -71,64 +71,6 @@ LAMMPSの `triclinic box documentation <https://docs.lammps.org/Howto_triclinic.
 
 列形式の式をNumPyの行配列へ移すときは転置も式の一部として扱う。格子行配列 :math:`L=A^{\mathsf T}` の基底変更は :math:`L'=P^{\mathsf T}L`、分率座標の行配列は :math:`S'=SP^{-\mathsf T}` となる。配列のshapeだけを見て乗算順を推測しない。
 
-.. _lt-numerical-check:
-
-数値検証
-------------
-
-次の短いNumPy例は、FCC変換、回転、超胞、逆格子の双対性をまとめて検算する。格子ベクトルは基底変換の式と同様に\ **列**\ で保持し、原子座標も列ベクトルとする。ASEやspglibなど、\ :ref:`格子ベクトルを行に並べるAPI<lt-array-conventions>`\ へ渡すときは ``A.T`` とする。
-
-.. code-block:: python
-
-   from itertools import product
-   import numpy as np
-
-   a = 4.0  # Angstrom
-   A = a * np.eye(3)
-   P = 0.5 * np.array([[0, 1, 1], [1, 0, 1], [1, 1, 0]])
-   Ap = A @ P
-   assert np.isclose(np.linalg.det(A), 64.0)
-   assert np.isclose(abs(np.linalg.det(Ap)), 16.0)
-
-   # 基本並進ベクトルの長さと相互の角度
-   G = Ap.T @ Ap
-   assert np.allclose(np.sqrt(np.diag(G)), 2 * np.sqrt(2))
-   assert np.isclose(np.degrees(np.arccos(G[0, 1] / G[0, 0])), 60.0)
-
-   # 面心位置と方向の基本並進ベクトルの組表示
-   s_primitive = np.linalg.solve(P, np.array([0.0, 0.5, 0.5]))
-   u_primitive = np.linalg.solve(P, np.array([0.0, 0.0, 1.0]))
-   assert np.allclose(s_primitive, [1, 0, 0])
-   assert np.allclose(u_primitive, [1, 1, -1])
-
-   # 逆格子
-   Bp = 2 * np.pi * np.linalg.inv(Ap).T
-   assert np.allclose(Ap.T @ Bp, 2 * np.pi * np.eye(3))
-
-   # z軸まわりの任意角の回転
-   theta = 0.37
-   Q = np.array([[np.cos(theta), -np.sin(theta), 0],
-                 [np.sin(theta),  np.cos(theta), 0],
-                 [0, 0, 1]])
-   assert np.allclose(Q.T @ Q, np.eye(3))
-   assert np.allclose((Q @ Ap).T @ (Q @ Ap), G)
-
-   # 超胞: 12個の周期像と、周期境界込みの最短原子間距離
-   M = np.diag([2, 3, 2])
-   As = Ap @ M
-   assert np.isclose(abs(np.linalg.det(As)), 12 * 16.0)
-   S = [np.linalg.solve(M, n) for n in product(range(2), range(3), range(2))]
-   assert len(S) == 12
-   d_min = min(np.linalg.norm(As @ (sj - si + np.array(n)))
-               for i, si in enumerate(S) for j, sj in enumerate(S)
-               for n in product(range(-1, 2), repeat=3)
-               if not (i == j and n == (0, 0, 0)))
-   assert np.isclose(d_min, 2 * np.sqrt(2))
-
-行列式から慣用単位胞 :math:`64\,\mathrm{\mathring{A}}^3`、基本単位胞 :math:`16\,\mathrm{\mathring{A}}^3`、超胞 :math:`192\,\mathrm{\mathring{A}}^3` を得る。FCC基本並進ベクトル長は :math:`4/\sqrt2=2\sqrt2\,\mathrm{\mathring{A}}`、相互の角度は :math:`60^\circ`、面心点は基本単位胞の分率座標 :math:`(1,0,0)`、方向は :math:`(1,1,-1)` となる。任意角（例では :math:`\theta=0.37` rad）の回転で計量行列は変わらず、逆格子は :math:`A_{\rm p}^{\mathsf T}B_{\rm p}=2\pi I` を満たす。12個の周期像を作ると原子数が12倍になり、超胞周期境界も含めた最短原子間距離は :math:`2\sqrt2\,\mathrm{\mathring{A}}` で元のFCC最近接距離と一致する。
-
-この例は代数恒等式を検算するものであり、特定の計算コードのファイル読込や、任意の非対角超胞での周期像列挙までは検証しない。実計算に接続するときは、原子種・占有率・単位・境界条件も含む構造全体で照合する。
-
 .. _lt-common-mistakes:
 
 よくある誤り
@@ -142,6 +84,8 @@ LAMMPSの `triclinic box documentation <https://docs.lammps.org/Howto_triclinic.
 * 対称性標準化による理想化を、緩和後構造を保つ単なる基底変更とみなす。
 * 行ベクトルAPIへ列行列をそのまま渡す、あるいはÅ・Bohr・``alat`` を混同する。
 
+.. _lt-input-references:
+
 参考資料
 ------------
 
@@ -151,3 +95,7 @@ LAMMPSの `triclinic box documentation <https://docs.lammps.org/Howto_triclinic.
 * Quantum ESPRESSO 7.5, `pw.x input description <https://www.quantum-espresso.org/Doc/INPUT_PW.html>`_.
 * LAMMPS, `Triclinic simulation boxes <https://docs.lammps.org/Howto_triclinic.html>`_.
 * SPR-KKR, `User Guide (19 October 2023) <https://sprkkr.org/?download_id=3257&sdm_process_download=1>`_. 入力仕様はファイル種別と版に依存する。
+
+.. raw:: html
+
+   <script src="../_static/js/legacy-anchors.js" defer></script>

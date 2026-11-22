@@ -7,15 +7,16 @@
 どの原子を置くかで、同じ格子でも反射の強度が変わる。ここでは
 :ref:`分率座標<coordinates>`\ と\ :ref:`逆格子<reciprocal-lattice>`\ を使って散乱波の和を表し、
 :ref:`中心並進<centring-translation>`\ から
-F中心・I中心の反射条件を導く。
+F中心・I中心の反射条件を導く。この条件は、\ :ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`\ で
+逆格子ベクトルになる指数の条件と一致する。
 
 .. _scattering-structure-factor:
 
 原子ごとの散乱波と構造因子
 --------------------------
 
-単位胞の格子行列を :math:`A`、逆格子行列を :math:`B=2\pi A^{-\mathsf T}` とする。
-反射指数 :math:`\boldsymbol h=(h,k,l)^{\mathsf T}` の散乱ベクトルを
+単位胞の格子行列を :math:`A`、その辺の双対行列を :math:`B=2\pi A^{-\mathsf T}` とする。:math:`A` が基本単位胞なら :math:`B` は逆格子の基本並進ベクトルの組である。中心並進のある慣用単位胞では、:math:`B` の整数結合のうち一部だけが逆格子ベクトルになる（\ :ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`）。
+反射指数 :math:`\boldsymbol h=(h,k,l)^{\mathsf T}`\ （\ :ref:`共通因子で約分しない<index-common-factor>`）の散乱ベクトルを
 :math:`\boldsymbol g=B\boldsymbol h` とし、原子 :math:`j` の分率座標を
 :math:`\boldsymbol s_j` とする。原点と比べた散乱波の位相は
 :math:`\boldsymbol g\cdot A\boldsymbol s_j=2\pi\boldsymbol h^{\mathsf T}\boldsymbol s_j`
@@ -45,6 +46,8 @@ F中心・I中心の反射条件を導く。
    二つの矢印は散乱振幅の大きさと位相を表し、見分けやすいよう縦にずらしている。
    黒丸は和の終点を示す。右では位相差が :math:`\pi` なので、二つ目の矢印が左を向く。
 
+.. _sf-centring-extinction:
+
 中心並進による打ち消し
 ----------------------
 
@@ -60,6 +63,15 @@ F中心・I中心の反射条件を導く。
    F_{hkl}=S_T(hkl)F^{\rm motif}_{hkl},\qquad
    S_T(hkl)=\sum_{\boldsymbol t\in T}
    e^{2\pi i\,\boldsymbol h^{\mathsf T}\boldsymbol t}
+
+中心並進どうしを足すと、整数の差を除いてまた :math:`T` の要素になる。そのため、ある
+:math:`\boldsymbol t_0\in T` を各 :math:`\boldsymbol t` に足しても :math:`T` の要素が並べ替わるだけで、
+:math:`S_T(hkl)\,e^{2\pi i\,\boldsymbol h^{\mathsf T}\boldsymbol t_0}=S_T(hkl)` が成り立つ。
+:math:`\boldsymbol h^{\mathsf T}\boldsymbol t_0` が整数でない :math:`\boldsymbol t_0` が一つでもあれば
+位相因子は1でないので :math:`S_T=0`、すべての :math:`\boldsymbol t` で整数なら :math:`S_T` は
+:math:`T` の要素数に等しい。後者は、\ :ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`\ の条件
+:eq:`centred-reciprocal-condition` そのものである。逆格子の側から見ると、条件を満たさない指数は逆格子ベクトルに
+対応せず、散乱波の側から見ると、中心並進で移り合う原子の散乱波が打ち消し合う。
 
 :math:`S_T=0` なら、単位構造によらず反射が消える。これを中心並進による
 系統消滅と呼ぶ。:math:`S_T\ne 0` の指数でも、:math:`F^{\rm motif}_{hkl}` が
@@ -81,7 +93,7 @@ F中心の慣用単位胞では、原点のほかに :math:`(0,1/2,1/2)`、:math
 となる。:math:`h,k,l` がすべて偶数かすべて奇数なら4項とも正で、:math:`S_{\rm F}=4`
 になる。奇数と偶数が混ざると正と負が2項ずつになり、:math:`S_{\rm F}=0` になる。
 例えば :math:`(100)` は消滅し、:math:`(200)` はF中心の反射条件を満たす。
-この条件は、慣用単位胞から基本単位胞への\ :ref:`FCCの反射指数の変換<lt-fcc-reciprocal>`\ からも得られる。
+これは条件 :eq:`centred-reciprocal-condition` をF中心の :math:`T` に当てはめた結果と同じである。
 
 :numref:`fig-f-centering-phase-sum`\ では、:math:`(200)` の四つの位相因子が強め合い、
 :math:`(100)` では正と負の項が打ち消し合う。

@@ -3,6 +3,7 @@
 
 回転・鏡映・反転・並進を座標で表し、原子配置を保つ操作を調べます。
 操作の線形部分を集めた\ :ref:`点群<crystal-point-group>`\ と、並進まで含めた\ :ref:`空間群<crystal-space-group>`\ の関係を学びます。
+点群で移り合う結晶方向と格子面を、\ :ref:`等価な方向と面の族<equivalent-directions>`\ としてまとめます。
 
 .. toctree::
    :maxdepth: 1

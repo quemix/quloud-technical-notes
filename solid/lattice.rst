@@ -1,8 +1,12 @@
 .. _lattice:
 
-====================
-格子と格子ベクトル
-====================
+==============
+格子と単位胞
+==============
+
+結晶を格子と単位構造に分けて表し、格子を基本並進ベクトルで記述する。続いて、繰り返しの単位となる
+単位胞の選び方と、単位胞の中の位置を表す分率座標を導入する。最後に、慣用単位胞で必要になる
+中心並進を扱う。
 
 .. _lattice-points:
 
@@ -202,155 +206,6 @@ BCC格子の立方慣用単位胞には、8つの頂点に加えて体心にも�
 
 中心並進は格子点についての性質である。単位胞の中心に原子があるだけでは中心並進にならず、結晶構造全体がその並進で重なる必要がある。例えばCsCl型構造では立方体の頂点にCs、体心にClがあり、体心への並進はCsをClに移すので結晶構造を保たない。この構造の格子は単純立方である。
 
-.. _lattice-metric:
+.. raw:: html
 
-格子定数と計量行列
-------------------
-
-単位胞の辺の長さ :math:`a,b,c` と辺のなす角 :math:`\alpha,\beta,\gamma` を格子定数と呼ぶ。角は :math:`\alpha=\angle(\boldsymbol a_2,\boldsymbol a_3)`、:math:`\beta=\angle(\boldsymbol a_3,\boldsymbol a_1)`、:math:`\gamma=\angle(\boldsymbol a_1,\boldsymbol a_2)` と定める。
-
-原子の位置を分率座標で表したとき、2点の分率座標の差 :math:`\Delta\boldsymbol s` から距離 :math:`d` を求めると
-
-.. math::
-  d^2=|A\Delta\boldsymbol s|^2=\Delta\boldsymbol s^\top A^\top A\,\Delta\boldsymbol s
-  =\Delta\boldsymbol s^\top G\,\Delta\boldsymbol s
-
-となり、格子ベクトルどうしの内積を並べた行列
-
-.. math::
-  G=A^\top A,\qquad G_{ij}=\boldsymbol a_i\cdot\boldsymbol a_j,
-  \qquad V=|\det A|=\sqrt{\det G}
-  :label: lattice-metric-volume
-
-だけで決まる。この :math:`G` を計量行列（metric tensor）と呼ぶ。対角成分は辺の長さの2乗、非対角成分は辺どうしの角度を表し、単位胞の体積 :math:`V` も :math:`G` から求まる。:math:`A` に慣用単位胞の辺を使えば、:math:`V` は慣用単位胞の体積であり、基本単位胞の体積ではない。
-
-.. _lattice-dof:
-
-------------------------------------
-格子ベクトルの独立な成分
-------------------------------------
-
-式 :eq:`avec` は9つの成分を持っているが、単位胞の形と大きさを指定するだけなら6つの値で足りる。残りの3つは、格子全体を空間でどの向きに置くかという回転の自由度である。原点の移動は格子ベクトルの成分を変えないので、自由度を減らさない。
-例えば結晶構造データの国際的なフォーマットであるCIF（Crystallographic Information File）では
-
-.. code-block::
-
-  _cell_length_a   3.84928
-  _cell_length_b   3.84928
-  _cell_length_c   3.84928
-  _cell_angle_alpha   60.00000
-  _cell_angle_beta    60.00000
-  _cell_angle_gamma   60.00000
-
-のように、格子ベクトルの長さと、それぞれのベクトルのなす角度、という情報だけが記録されている。式 :eq:`avec` との対応を明示すれば
-
-.. math::
-  a = \|\boldsymbol{a}_1\|
-  , \quad
-  b = \|\boldsymbol{a}_2\|
-  , \quad
-  c = \|\boldsymbol{a}_3\|
-
-.. math::
-  \alpha = \arccos\left(\frac{\boldsymbol{a}_2\cdot\boldsymbol{a}_3}{\|\boldsymbol{a}_2\|\|\boldsymbol{a}_3\|}\right)
-  , \quad
-  \beta = \arccos\left(\frac{\boldsymbol{a}_3\cdot\boldsymbol{a}_1}{\|\boldsymbol{a}_3\|\|\boldsymbol{a}_1\|}\right)
-  , \quad
-  \gamma = \arccos\left(\frac{\boldsymbol{a}_1\cdot\boldsymbol{a}_2}{\|\boldsymbol{a}_1\|\|\boldsymbol{a}_2\|}\right)
-  :label: len_and_ang
-
-となる。逆に6つの格子定数から、計量行列 :eq:`lattice-metric-volume` は
-
-.. math::
-  G=
-  \begin{pmatrix}
-  a^2 & ab\cos\gamma & ac\cos\beta \\
-  ab\cos\gamma & b^2 & bc\cos\alpha \\
-  ac\cos\beta & bc\cos\alpha & c^2
-  \end{pmatrix}
-
-と決まる。格子全体を直交行列 :math:`Q` で回した :math:`QA` も :math:`(QA)^\top QA=A^\top A=G` を与えるので、:math:`G` からは向きが決まらない。これが除いた3自由度に当たる。\ :ref:`格子定数から直交座標での格子ベクトルを組み立てる<cell-parameters-cartesian>`\ には、軸の向きを一つ選ぶ。
-
-.. _reciprocal-lattice:
-
-逆格子ベクトル
---------------
-
-結晶中の波や回折を扱うときには、実空間の格子に対応する逆格子（reciprocal lattice）を使う。基本並進ベクトルに対し、逆格子の基本並進ベクトルを次の外積で定める。本ノートでは固体物理で一般的な :math:`2\pi` を含む規約を使う（結晶学では :math:`2\pi` を含めない定義も使われる）。
-
-.. math::
-  \boldsymbol{b}_1 = 2\pi\frac{\boldsymbol{a}_2\times\boldsymbol{a}_3}
-  {\boldsymbol{a}_1\cdot \left(\boldsymbol{a}_2\times\boldsymbol{a}_3\right)}
-  , \quad
-  \boldsymbol{b}_2 = 2\pi\frac{\boldsymbol{a}_3\times\boldsymbol{a}_1}
-  {\boldsymbol{a}_1\cdot \left(\boldsymbol{a}_2\times\boldsymbol{a}_3\right)}
-  , \quad
-  \boldsymbol{b}_3 = 2\pi\frac{\boldsymbol{a}_1\times\boldsymbol{a}_2}
-  {\boldsymbol{a}_1\cdot \left(\boldsymbol{a}_2\times\boldsymbol{a}_3\right)}
-  :label: bvec
-
-格子ベクトルと逆格子ベクトルは、次の直交関係を満たす。
-
-.. math::
-  \boldsymbol{a}_i \cdot \boldsymbol{b}_j = 2\pi\delta_{ij}
-  :label: ortho
-
-:numref:`fig-lattice-reciprocal-vectors`\ の二次元の例では、:math:`\boldsymbol b_1` は
-:math:`\boldsymbol a_2` に垂直である。隣り合う平行線の間で :math:`\boldsymbol b_1\cdot\boldsymbol r`
-は :math:`2\pi` ずつ変わる。
-
-.. figure:: images/lattice_reciprocal_vectors.svg
-   :name: fig-lattice-reciprocal-vectors
-   :alt: 斜めの格子点列をa2に平行な線で結んだ図。原点からの逆格子ベクトルb1が各線に垂直である。
-   :width: 90%
-   :align: center
-
-   黒い点は実格子点。灰色の各線上では :math:`\boldsymbol b_1\cdot\boldsymbol r` が一定で、
-   :math:`\boldsymbol a_1` の方向に一つ隣の線へ移ると内積が :math:`2\pi` 増える。
-   逆格子ベクトルの矢印は向きを示す。
-
-逆格子ベクトルも、式 :eq:`amat` の :math:`A` と同じように列に並べて
-
-.. math::
-  B \equiv
-  (\boldsymbol b_1,\boldsymbol b_2,\boldsymbol b_3)
-  =
-  \begin{pmatrix}
-  b_{1}^x & b_{2}^x & b_{3}^x \\
-  b_{1}^y & b_{2}^y & b_{3}^y \\
-  b_{1}^z & b_{2}^z & b_{3}^z
-  \end{pmatrix}
-  :label: bmat
-
-とおく。式 :eq:`ortho` の直交性から、行列の積として
-
-.. math::
-  A^\top B
-  =
-  \begin{pmatrix}
-  a_{1}^x & a_{1}^y & a_{1}^z \\
-  a_{2}^x & a_{2}^y & a_{2}^z \\
-  a_{3}^x & a_{3}^y & a_{3}^z \\
-  \end{pmatrix}
-  \begin{pmatrix}
-  b_{1}^x & b_{2}^x & b_{3}^x \\
-  b_{1}^y & b_{2}^y & b_{3}^y \\
-  b_{1}^z & b_{2}^z & b_{3}^z \\
-  \end{pmatrix}
-  = 2\pi I
-  :label: abortho
-
-となることがわかる。これから、\ :math:`A, B` の逆行列は、互いの転置行列を :math:`2\pi` で割ったものとなることがわかる。
-
-.. math::
-  A^{-1} = \frac{1}{2\pi}B^\top
-  , \quad
-  B^{-1} = \frac{1}{2\pi}A^\top
-  :label: inverse
-
-すなわち :math:`B=2\pi A^{-\top}` である。式 :eq:`fractional-cartesian-matrix` の分率座標も、:math:`\boldsymbol s=A^{-1}\boldsymbol r=B^\top\boldsymbol r/2\pi`、すなわち :math:`s_i=\boldsymbol b_i\cdot\boldsymbol r/2\pi` と逆格子ベクトルから求まる。逆格子の基本並進ベクトルの整数結合 :math:`\boldsymbol g=B\boldsymbol h`\ （:math:`\boldsymbol h\in\mathbb Z^3`）を逆格子ベクトルと呼び、その全体が逆格子である。:math:`\boldsymbol g` と格子ベクトル :math:`\boldsymbol R=A\boldsymbol n` の内積は
-
-.. math::
-  \boldsymbol g\cdot\boldsymbol R=\boldsymbol h^\top B^\top A\,\boldsymbol n=2\pi\,\boldsymbol h^\top\boldsymbol n
-
-で :math:`2\pi` の整数倍なので、すべての格子ベクトルについて :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` となる。このため、格子と同じ周期を持つ関数は\ :ref:`平面波<periodic-fourier-series>` :math:`e^{i\boldsymbol g\cdot\boldsymbol r}` の重ね合わせで表せる。例えばFCCでは、慣用単位胞の辺から同じ式で作るベクトルのうち、真の逆格子点に対応する指数が\ :ref:`F中心の反射条件<lt-fcc-reciprocal>`\ を満たす。
+   <script src="../_static/js/legacy-anchors.js" defer></script>

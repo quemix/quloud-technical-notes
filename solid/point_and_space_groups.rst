@@ -43,6 +43,45 @@
 :ref:`対称操作による波数の変換<kpoint-symmetry-mapping>`\ には線形部分を使い、
 :ref:`構造因子<scattering-structure-factor>`\ には原子の位置に応じた散乱波の位相が入る。
 
+.. |equivalent-direction-families| replace:: 等価な方向と面の族
+
+.. _equivalent-directions:
+
+|equivalent-direction-families|
+-------------------------------
+
+:ref:`方向指数<crystal-direction-index>` :math:`[uvw]` は1本の方向、\ :ref:`Miller指数<lattice-planes-miller>` :math:`(hkl)` は1組の平行な格子面を指す。結晶の対称操作で互いに移り合う2つの方向に沿って見ると、原子の並びは同じである。外場や磁気秩序を含めて、測定するときの結晶の状態もその対称操作を保つなら、その方向に沿って測る物性も等しい。例えば立方晶では、:math:`z` 軸まわりの90度回転が :math:`[100]` を :math:`[010]` へ移す。このような方向や面の集まりを族と呼び、ひとまとめにした記号で書く（:numref:`lt-index-brackets`。International Tables for Crystallography, Vol. A (2006), `§1.1.4 <https://it.iucr.org/Ab/ch1o1v0001/sec1o1o4.pdf>`__）。
+
+.. list-table:: 方向と面の指数の括弧
+   :name: lt-index-brackets
+   :header-rows: 1
+   :widths: 18 82
+
+   * - 表記
+     - 指すもの
+   * - :math:`[uvw]`
+     - 1本の方向。格子ベクトル :math:`A\boldsymbol u` の向き
+   * - :math:`\langle uvw\rangle`
+     - :math:`[uvw]` と対称操作で移り合う方向の集まり
+   * - :math:`(hkl)`
+     - 1組の平行な格子面。法線は逆格子ベクトル :math:`B\boldsymbol h`
+   * - :math:`\{hkl\}`
+     - :math:`(hkl)` と対称操作で移り合う面の集まり
+
+どの方向が等価かは、結晶の点群で決まる。対称操作 :math:`\{Q\mid\boldsymbol t\}` の線形部分を格子基底で表した行列を :math:`W=A^{-1}QA`\ （:eq:`crystal-symmetry-fractional`）とする。方向と面法線は2点の差で決まるベクトルなので、並進 :math:`\boldsymbol t` は作用しない。方向は :math:`QA\boldsymbol u=A(W\boldsymbol u)` に移る。:math:`Q` は直交行列なので :math:`Q=Q^{-\mathsf T}=A^{-\mathsf T}W^{-\mathsf T}A^{\mathsf T}` と書ける。これを使うと、面法線は :math:`QB\boldsymbol h=2\pi A^{-\mathsf T}W^{-\mathsf T}\boldsymbol h=B(W^{-\mathsf T}\boldsymbol h)` に移る。点群 :math:`\mathcal P` の各操作から作る :math:`W` の集合を :math:`\mathcal W` と書けば、
+
+.. math::
+   :label: equivalent-direction-family
+
+   \langle uvw\rangle=\{\,W\boldsymbol u\mid W\in\mathcal W\,\},\qquad
+   \{hkl\}=\{\,W^{-\mathsf T}\boldsymbol h\mid W\in\mathcal W\,\}.
+
+並進が作用しないので、らせん軸や映進面は、対応する回転や鏡映と同じ族を作る。
+
+族に含まれる方向の数は点群によって変わる。立方晶の点群 :math:`m\bar3m`\ （48個の操作）は、立方慣用単位胞の基底で、成分の並べ替えと符号の反転をすべて含む。このため :math:`\langle100\rangle` は :math:`\pm[100]`、:math:`\pm[010]`、:math:`\pm[001]` の6方向、:math:`\langle110\rangle` は12方向、:math:`\langle111\rangle` は8方向になる。正方晶の点群 :math:`4/mmm`\ （16個）には :math:`c` 軸を :math:`a` 軸へ移す操作が無い。:math:`\langle100\rangle` は :math:`\pm[100]` と :math:`\pm[010]` の4方向だけで、:math:`\pm[001]` は別の族 :math:`\langle001\rangle` になる。極性の点群 :math:`4mm`\ （8個）には :math:`c` 軸を反転する操作も無く、:math:`[001]` と :math:`[00\bar1]` は等価でない。:math:`[uvw]` と :math:`[\bar u\bar v\bar w]` が同じ族に入るのは、反転のように :math:`\boldsymbol u` を :math:`-\boldsymbol u` へ移す操作が点群にあるときに限る（\ :ref:`反転対称性と自発分極<inversion-and-polarization>`\ ）。
+
+族の要素は、数字の並べ替えと符号の反転とは限らない。立方慣用単位胞の直交基底では :math:`W` が直交行列で :math:`W^{-\mathsf T}=W` なので、:math:`\langle uvw\rangle` と :math:`\{uvw\}` は同じ指数の組を並べる。六方晶の基底（:math:`\gamma=120^\circ`）では、:math:`c` 軸まわりの60度回転が :math:`\boldsymbol a_1` を :math:`\boldsymbol a_1+\boldsymbol a_2` へ移す。点群 :math:`6/mmm` の :math:`\langle100\rangle` は :math:`\pm[100]`、:math:`\pm[010]`、:math:`\pm[110]` の6方向、:math:`\{100\}` は :math:`\pm(100)`、:math:`\pm(010)`、:math:`\pm(1\bar10)` の6組になる。
+
 .. _asymmetric-unit-and-cif:
 
 非対称単位と原子座標の展開

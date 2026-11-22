@@ -4,20 +4,20 @@
 格子基底と座標系の変換
 ==================================
 
-結晶構造は、並進周期を表す格子と、単位胞内の原子配置で記述される。同じ結晶でも、基本単位胞と慣用単位胞、異なる基底、座標、原点をとれば、格子ベクトルや原子座標の数値は変わる。ここでは、格子基底の変更、Cartesian座標の回転、原点移動を行列で表し、分率座標・逆格子ベクトル・方向と面の指数がどう変わるかを確認する。
+結晶構造は、並進周期を表す格子と、単位胞内の原子配置で記述される。同じ結晶でも、基本単位胞と慣用単位胞、異なる基底、座標、原点をとれば、格子ベクトルや原子座標の数値は変わる。ここでは、格子基底の変更と超胞、Cartesian座標の回転、原点移動を行列で表し、分率座標・逆格子ベクトル・方向と面の指数がどう変わるかを確認する。
 
 **前提知識**: 3次元線形代数、:ref:`格子行列<lattice-translations>` :math:`A`、
 :ref:`逆格子行列<reciprocal-lattice>` :math:`B`、:ref:`分率座標<coordinates>`、
-:ref:`計量行列<lattice-metric>` :math:`G`。
+:ref:`計量行列<lattice-metric>` :math:`G`、:ref:`方向指数とMiller指数<crystal-directions-planes>`。
 
 **学習目標**:
 
-* 同じ格子を保つ基本並進ベクトルの取り直しの条件を導く。
+* 同じ格子を保つ基本並進ベクトルの取り直しの条件を導き、慣用単位胞や超胞への変換と区別する。
 * Cartesian回転や原点移動に伴う座標の変換を求める。
 * 逆格子ベクトル、結晶方向、Miller指数の変換を区別する。
 
 構造の記述を変えるときの主な操作を下表にまとめる。変換した構造を計算に使うときは、
-:ref:`超胞と周期像<lt-supercell>`\ の関係や、入力先の\ :ref:`格子ベクトルの配列規約<lt-array-conventions>`\ が必要になる。
+入力先の\ :ref:`格子ベクトルの配列規約<lt-array-conventions>`\ も必要になる。
 
 .. list-table:: 構造の記述を変えたときの主な量
    :name: lt-transform-summary
@@ -81,7 +81,8 @@
 |same-lattice-condition|
 ------------------------
 
-:math:`A` を基本並進ベクトルの組とする。:math:`A'=AP` も同じ格子の基本並進ベクトルの
+:math:`A` を基本並進ベクトルの組とする。格子ベクトルはすべて :math:`A` の列の整数結合なので、
+新しい胞の辺を格子ベクトルから選ぶ限り :math:`P` は整数行列になる。:math:`A'=AP` も同じ格子の基本並進ベクトルの
 組となるには、:math:`P` が整数行列で :math:`\det P=\pm1` であることが必要十分である。
 このような行列をユニモジュラ行列（:math:`P\in GL(3,\mathbb Z)`）と呼ぶ。
 
@@ -90,12 +91,6 @@
 そのため、:math:`P^{-1}` も整数行列でなければならない。整数行列の逆行列が整数になるのは
 :math:`\det P=\pm1` のときである。このとき整数の組 :math:`\boldsymbol n` と
 :math:`P^{-1}\boldsymbol n` が一対一に対応し、格子点の集合と胞体積が保たれる。
-
-この条件は、変換の前後がともに基本並進ベクトルの組である場合に限る。基本単位胞と
-中心並進を持つ慣用単位胞や超胞を相互に変換すると、胞の体積が変わる。
-:math:`|\det P|` は新しい胞と元の胞の体積の比であり、この場合は1にならない。例えば
-:ref:`FCCの慣用単位胞から基本単位胞への変換<lt-fcc-cell>` :math:`P_{\rm F}` の行列式は
-:math:`1/4` である。
 
 また :math:`\det P=-1` なら、基底ベクトルの向き（右手系・左手系）は反転する。体積は絶対値で同じだが、右手系を要求する入力形式では、さらに1本の軸の符号を反転するなどして右手系へ戻す。
 
@@ -109,7 +104,49 @@
 
    基底を :math:`P=\begin{pmatrix}1&1\\0&1\end{pmatrix}` で変えても、格子点の集合は変わらない。平行四辺形は選んだ基底が囲む胞を示す。
 
-一般の正則行列 :math:`P` は同じ格子を表すとは限らない。整数行列で :math:`|\det P|>1` なら、元の格子の部分格子を生成する\ :ref:`超胞<lt-supercell>`\ になる。
+:math:`P` が整数行列で :math:`|\det P|=N>1` なら、:math:`A'` の列の整数結合は元の格子の一部（部分格子）しか
+生成せず、:math:`A'` の胞は元の格子点を :math:`N` 個含む。この胞で元の結晶を表す方法は二つある。
+一つは、胞内の :math:`N` 個の格子点への並進を\ :ref:`中心並進<centring-translation>`\ として加え、元の格子を
+そのまま表す方法で、慣用単位胞がこれにあたる。例えばFCCの基本単位胞から慣用単位胞へ移る行列
+:math:`P_{\rm F}^{-1}`\ （:ref:`lt-fcc-cell`）は整数行列で、行列式は4である。もう一つは、:math:`A'` の並進だけを
+周期とみなし、胞内の :math:`N` 個の格子点に置いた単位構造の複製を周期像として胞に入れる方法で、
+次節の\ :ref:`超胞<lt-supercell>`\ がこれにあたる。
+
+逆向きに、中心並進をもつ慣用単位胞から出発すると、基本単位胞への :math:`P` は整数行列にならず、
+:math:`|\det P|<1` となる。例えば慣用単位胞から基本単位胞への :math:`P_{\rm F}` は成分に :math:`1/2` を含み、
+:math:`\det P_{\rm F}=1/4` である。どの場合も :math:`|\det P|` は新しい胞と元の胞の体積の比である。
+
+.. |supercell-periodic-images| replace:: 超胞（スーパーセル）と周期像
+
+.. _lt-supercell:
+
+|supercell-periodic-images|
+---------------------------
+
+基本並進ベクトルの組 :math:`A` と整数行列 :math:`M` で
+
+.. math::
+
+   A_{\rm sup}=AM
+
+とすると、:math:`|\det M|=N` の超胞は元の胞の体積の :math:`N` 倍の胞となる。同じ周期構造を表すには、元の胞内の各原子について :math:`\mathbb Z^3/M\mathbb Z^3` の剰余類代表に対応する :math:`N` 個の周期像を作り、超胞へ折り畳む。例えば、対角行列 :math:`M=\mathrm{diag}(2,3,2)` なら :math:`N=12` で、原子数も12倍になる。
+
+超胞は元の格子と同じ周期点集合を持つが、超胞ベクトルが生成する格子点は疎になる（元の格子の部分格子となる）。したがって「結晶の物理的な周期性は同じ」と「選んだ周期境界の並進格子が同じ」は区別する。非対角 :math:`M` でも行列式の絶対値が胞数を与えるが、周期像の列挙は対角ケースの単純な3重ループでは一般に足りない。
+
+:numref:`fig-supercell-periodic-images`\ では、超胞で表し直しても原子の並びが保たれる。
+繰り返す枠を大きくした分だけ、枠の内側に元の胞の周期像を入れている。
+正方格子をもとにした下段の例では、非対角の変換 :math:`M=\bigl(\begin{smallmatrix}1&1\\-1&1\end{smallmatrix}\bigr)`
+で面積が2倍になり、:math:`(0,0)` と :math:`(1,0)` の整数並進に対応する二つの像が入る。
+
+.. figure:: images/supercell_periodic_images.svg
+   :name: fig-supercell-periodic-images
+   :alt: 上段は元の単位胞4個分を含む2×2超胞と隣の周期像。下段は傾けた正方形の超胞で、元の単位胞2個分の原子を含む。
+   :width: 55%
+   :align: center
+
+   上段の点線の小枠が元の単位胞、実線の大枠が :math:`2\times2` の超胞、破線の大枠が隣の周期像。
+   下段では、元の正方形の単位胞に対して超胞の辺は :math:`\sqrt{2}` 倍である。
+   青い丸は原子を表し、下段の座標は原子に加えた元の格子の整数並進を示す。白抜きの丸は原点である。
 
 .. _lt-cartesian-rotation:
 
@@ -124,31 +161,9 @@ Cartesian座標の回転
 
 座標軸のほうを回転 :math:`R` で回すと見るなら成分の変換は :math:`Q=R^{\mathsf T}` で、物体を :math:`R` で回すと見るなら :math:`Q=R` である。どちらの見方でも、以下の関係は成分を変換する行列 :math:`Q` で書ける。
 
-同じ基底番号を保つなら分率座標は変わらない。直交性 :math:`Q^{\mathsf T}Q=I` により :math:`G'=A'^{\mathsf T}A'=G` で、長さ・角度・体積が保たれる。Cartesian成分で表す磁化、磁場、電場、力、速度などのベクトルも :math:`\boldsymbol v'=Q\boldsymbol v` とする。2階テンソルは座標表現として :math:`T'=QTQ^{\mathsf T}` と変換する。
+同じ基底番号を保つなら分率座標は変わらない。直交性 :math:`Q^{\mathsf T}Q=I` により :math:`G'=A'^{\mathsf T}A'=G` で（\ :ref:`格子ベクトルの独立な成分<lattice-dof>`）、長さ・角度・体積が保たれる。Cartesian成分で表す磁化、磁場、電場、力、速度などのベクトルも :math:`\boldsymbol v'=Q\boldsymbol v` とする。2階テンソルは座標表現として :math:`T'=QTQ^{\mathsf T}` と変換する。
 
 これは結晶と、全てのベクトル・テンソルを一緒に回して座標軸を取り替える場合である。実験室で、外部磁場を固定したまま結晶だけを回す操作では、相対方向が変わり、同じ物理条件とは見なせなくなる。
-
-.. |cell-parameters-to-cartesian| replace:: 格子定数から格子ベクトルを求める
-
-.. _cell-parameters-cartesian:
-
-|cell-parameters-to-cartesian|
-------------------------------
-
-CIFなどに記録された3つの長さと3つの角度は、Cartesian空間での絶対的な向きを定めない（\ :ref:`格子ベクトルの独立な成分<lattice-dof>`\ ）。右手系の一つの配置として :math:`\boldsymbol a` を :math:`x` 軸、:math:`\boldsymbol b` を :math:`xy` 面に置けば
-
-.. math::
-
-   \begin{aligned}
-   \boldsymbol a&=(a,0,0),\\
-   \boldsymbol b&=(b\cos\gamma,b\sin\gamma,0),\\
-   c_x&=c\cos\beta,\\
-   c_y&=c\frac{\cos\alpha-\cos\beta\cos\gamma}{\sin\gamma},\\
-   \boldsymbol c&=(c_x,c_y,c_z),\qquad
-   c_z=\sqrt{c^2-c_x^2-c_y^2}>0.
-   \end{aligned}
-
-これは非退化な計量と :math:`\sin\gamma\ne0` を仮定した座標選択であり、測定された絶対方位ではない。
 
 .. _lt-origin-shift:
 
@@ -192,94 +207,41 @@ Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
 |direction-and-plane-indices|
 -----------------------------
 
-実空間方向を基底ベクトルの係数 :math:`\boldsymbol u` で表すと、同じCartesian方向を保つ係数変換は
+:ref:`方向指数<crystal-direction-index>` :math:`\boldsymbol u` は基底ベクトルの係数なので、同じCartesian方向を保つ係数変換は
 
 .. math::
 
    \boldsymbol u'=P^{-1}\boldsymbol u.
 
-一方、逆格子ベクトル（面法線）を :math:`\boldsymbol g=B\boldsymbol h` と書けば、同じ :math:`\boldsymbol g` を保つ指数は
+一方、\ :ref:`Miller指数<lattice-planes-miller>` :math:`\boldsymbol h` は逆格子ベクトル（面法線）\ :math:`\boldsymbol g=B\boldsymbol h` の係数なので、同じ :math:`\boldsymbol g` を保つ指数は
 
 .. math::
 
    \boldsymbol h'=P^{\mathsf T}\boldsymbol h.
 
-方向は基底ベクトルの係数、面指数は双対基底での係数であり、変換則が逆向きになる。得られた方向や指数を整数表記にする際は、分母の有無や共通因子を別に処理する。
+方向は基底ベクトルの係数、面指数は双対基底での係数であり、変換則が逆向きになる。
 
-指数の共通因子は、何を保つかで扱いが異なる。方向指数は向きだけを示すなら最大公約数で約分できるが、対応するベクトルの長さは変わる。Miller指数も法線の向きだけなら約分できる一方、面間隔は変わる。回折指数は逆格子ベクトルそのもの :math:`\boldsymbol g=B\boldsymbol h` を指定するので、例えば :math:`(100)` と :math:`(200)` は同じ法線方向でも波数の大きさが異なる。基底変換後に同じ :math:`\boldsymbol g` を表す :math:`\boldsymbol h'=P^{\mathsf T}\boldsymbol h` は、分数成分を含む場合も含めてそのまま保ち、共通因子で約分してはならない。
+変換後の指数は整数になるとは限らない。方向や面の向きだけを表すなら、分母を払って
+:ref:`互いに素な整数<index-common-factor>`\ にそろえてよい。回折指数のように同じ :math:`\boldsymbol g` を表す
+:math:`\boldsymbol h'=P^{\mathsf T}\boldsymbol h` は、分数成分を含む場合も含めてそのまま保ち、共通因子で約分してはならない。
 
-.. |equivalent-direction-families| replace:: 等価な方向と面の族
-
-.. _equivalent-directions:
-
-|equivalent-direction-families|
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-ここまでの :math:`[uvw]` は1本の方向、:math:`(hkl)` は1組の平行な格子面を指す。結晶の対称操作で互いに移り合う2つの方向に沿って見ると、原子の並びは同じである。外場や磁気秩序を含めて、測定するときの結晶の状態もその対称操作を保つなら、その方向に沿って測る物性も等しい。例えば立方晶では、:math:`z` 軸まわりの90度回転が :math:`[100]` を :math:`[010]` へ移す。このような方向や面の集まりを族と呼び、ひとまとめにした記号で書く（:numref:`lt-index-brackets`。International Tables for Crystallography, Vol. A (2006), `§1.1.4 <https://it.iucr.org/Ab/ch1o1v0001/sec1o1o4.pdf>`__）。
-
-.. list-table:: 方向と面の指数の括弧
-   :name: lt-index-brackets
-   :header-rows: 1
-   :widths: 18 82
-
-   * - 表記
-     - 指すもの
-   * - :math:`[uvw]`
-     - 1本の方向。格子ベクトル :math:`A\boldsymbol u` の向き
-   * - :math:`\langle uvw\rangle`
-     - :math:`[uvw]` と対称操作で移り合う方向の集まり
-   * - :math:`(hkl)`
-     - 1組の平行な格子面。法線は逆格子ベクトル :math:`B\boldsymbol h`
-   * - :math:`\{hkl\}`
-     - :math:`(hkl)` と対称操作で移り合う面の集まり
-
-どの方向が等価かは、結晶の\ :ref:`点群<crystal-point-group>`\ で決まる。対称操作 :math:`\{Q\mid\boldsymbol t\}` の線形部分を格子基底で表した行列を :math:`W=A^{-1}QA`\ （:eq:`crystal-symmetry-fractional`）とする。方向と面法線は2点の差で決まるベクトルなので、並進 :math:`\boldsymbol t` は作用しない。方向は :math:`QA\boldsymbol u=A(W\boldsymbol u)` に移る。:math:`Q` は直交行列なので :math:`Q=Q^{-\mathsf T}=A^{-\mathsf T}W^{-\mathsf T}A^{\mathsf T}` と書ける。これを使うと、面法線は :math:`QB\boldsymbol h=2\pi A^{-\mathsf T}W^{-\mathsf T}\boldsymbol h=B(W^{-\mathsf T}\boldsymbol h)` に移る。点群の操作の行列の集合を :math:`\mathcal P` と書けば、
-
-.. math::
-   :label: equivalent-direction-family
-
-   \langle uvw\rangle=\{\,W\boldsymbol u\mid W\in\mathcal P\,\},\qquad
-   \{hkl\}=\{\,W^{-\mathsf T}\boldsymbol h\mid W\in\mathcal P\,\}.
-
-方向に :math:`W`、面指数に :math:`W^{-\mathsf T}` が掛かる形は、基底変換と同じである。基底変換の :math:`\boldsymbol u'=P^{-1}\boldsymbol u` と :math:`\boldsymbol h'=P^{\mathsf T}\boldsymbol h` も、:math:`M=P^{-1}` と置けば :math:`\boldsymbol u'=M\boldsymbol u`、:math:`\boldsymbol h'=M^{-\mathsf T}\boldsymbol h` と書ける。ただし基底変換は同じベクトルを別の基底で書き直す操作で、:math:`W` は同じ基底のまま別の方向へ移す操作である。また並進部分は方向に作用しないので、らせん軸や映進面は、対応する回転や鏡映と同じ族を作る。
-
-族に含まれる方向の数は点群によって変わる。立方晶の点群 :math:`m\bar3m`\ （48個の操作）は、立方慣用単位胞の基底で、成分の並べ替えと符号の反転をすべて含む。このため :math:`\langle100\rangle` は :math:`\pm[100]`、:math:`\pm[010]`、:math:`\pm[001]` の6方向、:math:`\langle110\rangle` は12方向、:math:`\langle111\rangle` は8方向になる。正方晶の点群 :math:`4/mmm`\ （16個）には :math:`c` 軸を :math:`a` 軸へ移す操作が無い。:math:`\langle100\rangle` は :math:`\pm[100]` と :math:`\pm[010]` の4方向だけで、:math:`\pm[001]` は別の族 :math:`\langle001\rangle` になる。極性の点群 :math:`4mm`\ （8個）には :math:`c` 軸を反転する操作も無く、:math:`[001]` と :math:`[00\bar1]` は等価でない。:math:`[uvw]` と :math:`[\bar u\bar v\bar w]` が同じ族に入るのは、反転のように :math:`\boldsymbol u` を :math:`-\boldsymbol u` へ移す操作が点群にあるときに限る（\ :ref:`反転対称性と自発分極<inversion-and-polarization>`\ ）。
-
-族の要素は、数字の並べ替えと符号の反転とは限らない。立方慣用単位胞の直交基底では :math:`W` が直交行列で :math:`W^{-\mathsf T}=W` なので、:math:`\langle uvw\rangle` と :math:`\{uvw\}` は同じ指数の組を並べる。六方晶の基底（:math:`\gamma=120^\circ`）では、:math:`c` 軸まわりの60度回転が :math:`\boldsymbol a_1` を :math:`\boldsymbol a_1+\boldsymbol a_2` へ移す。点群 :math:`6/mmm` の :math:`\langle100\rangle` は :math:`\pm[100]`、:math:`\pm[010]`、:math:`\pm[110]` の6方向、:math:`\{100\}` は :math:`\pm(100)`、:math:`\pm(010)`、:math:`\pm(1\bar10)` の6組になる。
-
-相転移で対称性が下がった結晶では、高温相の軸で指数を書く慣習がある。ペロブスカイトの\ :ref:`擬立方格子<pseudocubic-cell>`\ で書いた「擬立方の :math:`\langle100\rangle`」は、立方晶の点群 :math:`m\bar3m` で等価だった6方向の名前であり、低温相での等価性を表さない。正方晶相（点群 :math:`4mm`）では、6方向は極性軸の向き :math:`[001]`、その逆向き :math:`[00\bar1]`、残りの4方向という3つの族に分かれる。強誘電体の分極が「擬立方の :math:`\langle100\rangle` を向く」とは、6方向のうち1つが選ばれた状態をいう。分極の向きがそろった領域を\ :ref:`分域<ferroelectric-domains>`\ （ドメイン）といい、隣り合う分域では6方向のうち別の方向が選ばれている。
-
-.. |direction-and-plane-normal| replace:: 結晶方向と面法線が平行になる条件
-
-|direction-and-plane-normal|
-----------------------------
-
-同じ指数 :math:`\boldsymbol u=(u,v,w)^{\mathsf T}` を方向 :math:`[uvw]` と面 :math:`(uvw)` に用いたとき、方向ベクトル :math:`A\boldsymbol u` と面法線 :math:`B\boldsymbol u=2\pi A G^{-1}\boldsymbol u` が平行になる条件は、:math:`\boldsymbol u` が計量行列 :math:`G` の固有ベクトルであること。:math:`G\propto I` なら任意の指数について平行だが、特定の指数では :math:`G\not\propto I` でも平行になりうる。これは晶系名だけでは決まらず、基底と指数の組による。立方晶の直交慣用基底では任意の同じ指数が平行になる一方、:ref:`FCC基本単位胞<lt-fcc-cell>` では例えば :math:`[11\bar{1}]_{\rm p}` と :math:`(11\bar{1})_{\rm p}` の法線は平行でなく、なす角の余弦は約0.905である。
-
-:numref:`fig-crystal-direction-and-plane-normal`\ の二次元の例では、横方向の
-:math:`[10]` を保ったまま基底のもう一方を傾けると、:math:`(10)` の向きとその法線が変わる。
-
-.. figure:: images/crystal_direction_and_plane_normal.svg
-   :name: fig-crystal-direction-and-plane-normal
-   :alt: 正方格子では方向[10]と(10)の法線が平行。斜めの基底では方向[10]は右を向き、法線は斜め下を向く。
-   :width: 100%
-   :align: center
-
-   灰色の破線は :math:`(10)` にあたる線、:math:`\boldsymbol g_{10}` はその法線を表す。
-   :math:`[10]` の矢印は格子ベクトル :math:`\boldsymbol a_1` の全長で描き、
-   法線の長さは模式的に示した。
+この変換則は、\ :ref:`等価な方向と面の族<equivalent-directions>`\ を作る点群の操作と同じ形をしている。
+:math:`U=P^{-1}` と置けば :math:`\boldsymbol u'=U\boldsymbol u`、:math:`\boldsymbol h'=U^{-\mathsf T}\boldsymbol h` と書け、
+点群の操作の :math:`\boldsymbol u\mapsto W\boldsymbol u`、:math:`\boldsymbol h\mapsto W^{-\mathsf T}\boldsymbol h`\ （式 :eq:`equivalent-direction-family`）と
+対応する。ただし基底変換は同じベクトルを別の基底で書き直す操作で、:math:`W` は同じ基底のまま別の方向へ移す操作である。
 
 .. _lt-transform-related:
 
 関連ノート
 ---------------
 
-* :ref:`lattice` — 格子・逆格子ベクトル、分率座標と計量。
-* :ref:`unitcell` — ブラベー（Bravais）格子型と結晶系。
-* :ref:`brillouinzone` — 逆格子とブリルアンゾーン。
-* :ref:`lt-cell-transform` — 慣用単位胞と基本単位胞の変換、超胞、反射条件。
+* :ref:`lattice` — 格子ベクトル、単位胞、分率座標、中心並進。
+* :ref:`lattice-parameters` — 計量行列と、格子定数から格子ベクトルを求める方法。
+* :ref:`crystal-directions-planes` — 方向指数とMiller指数、面間隔。
+* :ref:`lt-cell-transform` — FCCの慣用単位胞と基本単位胞、胞の形とブラベー格子型。
+* :ref:`pseudocubic-cell` — 歪んだ結晶を高対称相の軸で表す。
 * :ref:`lt-structure-input` — 構造の標準化、ファイル形式、配列規約。
 
 .. raw:: html
 
-   <script src="../_static/js/lattice-transform-redirects.js" defer></script>
+   <script src="../_static/js/legacy-anchors.js" defer></script>

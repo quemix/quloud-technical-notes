@@ -1,15 +1,16 @@
 .. _lt-cell-transform:
 
-単位胞の変換と超胞
-==================
+単位胞の取り直しとブラベー格子型
+================================
 
 FCCの慣用単位胞と基本単位胞を例に、単位胞を取り直したときに原子位置、結晶方向、
-回折指数がどう変わるかを確認する。続いて、超胞での周期像の扱いと、
-辺の形が異なる単位胞で同じ並進格子を表す例を見る。
+反射指数がどう変わるかを確認する。続いて、辺の形が異なる単位胞で同じ並進格子を表す例を見て、
+胞の形だけではブラベー格子型が決まらないことを示す。最後に、FCCの変換と超胞をNumPyで検算する。
 
-**前提知識**: :ref:`格子の基底変換<lt-primitive-basis>`、
+**前提知識**: :ref:`格子の基底変換<lt-primitive-basis>`、:ref:`超胞<lt-supercell>`、
 :ref:`逆格子の変換則<lt-reciprocal-transform>`、:ref:`格子系<bravais-lattice-types>`、
-:ref:`中心並進<centring-translation>`。
+:ref:`中心並進<centring-translation>`、:ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`、
+:ref:`方向と格子面<crystal-directions-planes>`。
 
 .. _lt-fcc-cell:
 
@@ -30,7 +31,7 @@ FCCの慣用単位胞と基本単位胞
 
 この列はそれぞれ :math:`\frac a2(0,1,1)`、:math:`\frac a2(1,0,1)`、:math:`\frac a2(1,1,0)` である。:math:`\det P_{\rm F}=1/4` なので :math:`V_{\rm c}=a^3`、:math:`V_{\rm p}=a^3/4`。3本の基本並進ベクトルの長さは :math:`a/\sqrt2`、相互の角度は :math:`60^\circ` である。
 
-F中心慣用単位胞には、原点に加えて分率座標 :math:`(0,1/2,1/2)`、:math:`(1/2,0,1/2)`、:math:`(1/2,1/2,0)` の格子点がある。したがって慣用立方胞の3辺だけを並進ベクトルと見なすと、面心並進を落とす。単原子FCCでは慣用単位胞に4格子点、基本単位胞に1格子点が含まれる。
+F中心慣用単位胞には、原点に加えて分率座標 :math:`(0,1/2,1/2)`、:math:`(1/2,0,1/2)`、:math:`(1/2,1/2,0)` の格子点がある（\ :ref:`中心並進<centring-translation>`）。単原子FCCでは慣用単位胞に4格子点、基本単位胞に1格子点が含まれる。
 
 .. figure:: images/fcc_conventional_primitive.svg
    :name: lt-fcc-cell-figure
@@ -73,51 +74,24 @@ F中心慣用単位胞には、原点に加えて分率座標 :math:`(0,1/2,1/2)
 
    青矢印は :math:`[001]_{\rm c}` で、Cartesian :math:`z` 軸に平行。基本並進ベクトルの組では :math:`\boldsymbol a_1+\boldsymbol a_2-\boldsymbol a_3`\ （灰色の破線）と書けるので :math:`[11\bar{1}]_{\rm p}` である。赤矢印の :math:`[001]_{\rm p}=\boldsymbol a_3=\frac a2(1,1,0)` は別の方向を指す。
 
+同じ指数の方向と面法線は、基底によっては平行にならない（\ :ref:`方向と面法線が平行になる条件<direction-and-plane-normal>`）。
+立方晶の直交慣用基底では、:math:`[001]_{\rm c}` と、FCCの格子面の組 :math:`(002)_{\rm c}`\ （\ :ref:`指数の共通因子<index-common-factor>`）の法線はともに :math:`z` 軸を向く。
+一方、基本並進ベクトルの組では、:math:`[11\bar{1}]_{\rm p}` が :math:`z` 軸を向くのに対し、
+:math:`(11\bar{1})_{\rm p}` の法線は :math:`(-1,-1,3)` の向きで、なす角の余弦は :math:`3/\sqrt{11}\simeq0.905` である。
+
 .. _lt-fcc-reciprocal:
 
-FCCの構造因子と反射条件
------------------------
+FCCの反射指数と基本単位胞
+--------------------------
 
-慣用単位胞の辺ベクトルを双対化した :math:`B_{\rm c}=2\pi A_{\rm c}^{-\mathsf T}` と、結晶全体の真の逆格子点集合は区別が必要である。F中心立方格子では :math:`A_{\rm c}` の辺だけでは全並進を生成しないため、整数の慣用指数 :math:`\boldsymbol h_{\rm c}` に対しても :math:`B_{\rm c}\boldsymbol h_{\rm c}` が必ず逆格子点になるわけではない。基本並進ベクトルの組との関係は
+:ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`\ では、FCCの慣用指数 :math:`\boldsymbol h_{\rm c}` が逆格子ベクトルに対応する条件を、面心並進の分率座標から導いた。基本並進ベクトルの組へ移すと、同じ条件が指数の整数性として現れる。\ :ref:`逆格子の変換則<lt-reciprocal-transform>` :math:`B'=BP^{-\mathsf T}` から
 
 .. math::
 
    \boldsymbol h_{\rm p}=P_{\rm F}^{\mathsf T}\boldsymbol h_{\rm c},
    \qquad B_{\rm c}\boldsymbol h_{\rm c}=B_{\rm p}\boldsymbol h_{\rm p}.
 
-真の逆格子点となる条件は :math:`\boldsymbol h_{\rm p}` が整数であること、すなわち慣用指数 :math:`(hkl)` がすべて偶数またはすべて奇数であること。例えば :math:`(100)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1/2,1/2)` で条件を満たさず、:math:`(200)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1,1)` で条件を満たす。
-
-同じ\ :ref:`F中心の反射条件<sf-f-centering>`\ は、中心並進で移り合う原子の散乱波を位相込みで足しても得られる。
-
-.. _lt-supercell:
-
-超胞（スーパーセル）と周期像
-------------------------------------------
-
-整数行列 :math:`M` で
-
-.. math::
-
-   A_{\rm sup}=AM
-
-とすると、:math:`|\det M|=N` の超胞は元の胞の体積の :math:`N` 倍の胞となる。同じ周期構造を表すには、元の胞内の各原子について :math:`\mathbb Z^3/M\mathbb Z^3` の剰余類代表に対応する :math:`N` 個の周期像を作り、超胞へ折り畳む。例えば、対角行列 :math:`M=\mathrm{diag}(2,3,2)` なら :math:`N=12` で、原子数も12倍になる。
-
-超胞は元の格子と同じ周期点集合を持つが、超胞ベクトルが生成する格子点は疎になる（元の格子の部分格子となる）。したがって「結晶の物理的な周期性は同じ」と「選んだ周期境界の並進格子が同じ」は区別する。非対角 :math:`M` でも行列式の絶対値が胞数を与えるが、周期像の列挙は対角ケースの単純な3重ループでは一般に足りない。
-
-:numref:`fig-supercell-periodic-images`\ では、超胞で表し直しても原子の並びが保たれる。
-繰り返す枠を大きくした分だけ、枠の内側に元の胞の周期像を入れている。
-正方格子をもとにした下段の例では、非対角の変換 :math:`M=\bigl(\begin{smallmatrix}1&1\\-1&1\end{smallmatrix}\bigr)`
-で面積が2倍になり、:math:`(0,0)` と :math:`(1,0)` の整数並進に対応する二つの像が入る。
-
-.. figure:: images/supercell_periodic_images.svg
-   :name: fig-supercell-periodic-images
-   :alt: 上段は元の単位胞4個分を含む2×2超胞と隣の周期像。下段は傾けた正方形の超胞で、元の単位胞2個分の原子を含む。
-   :width: 55%
-   :align: center
-
-   上段の点線の小枠が元の単位胞、実線の大枠が :math:`2\times2` の超胞、破線の大枠が隣の周期像。
-   下段では、元の正方形の単位胞に対して超胞の辺は :math:`\sqrt{2}` 倍である。
-   青い丸は原子を表し、下段の座標は原子に加えた元の格子の整数並進を示す。白抜きの丸は原点である。
+:math:`B_{\rm p}` の整数結合が逆格子なので、:math:`B_{\rm c}\boldsymbol h_{\rm c}` が逆格子ベクトルとなるのは :math:`\boldsymbol h_{\rm p}` が整数のとき、すなわち慣用指数 :math:`(hkl)` がすべて偶数またはすべて奇数のときで、条件 :eq:`centred-reciprocal-condition` と一致する。例えば :math:`(100)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1/2,1/2)` で条件を満たさず、:math:`(200)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1,1)` で条件を満たす。
 
 .. _lt-special-cells:
 
@@ -251,141 +225,76 @@ FCC格子を体心正方胞で表す
 
 以上の例では、胞の形が直交・六方・菱面体・体心正方に見えることだけでBravais格子型は決まらない。中心並進を含む格子点集合を調べ、単位胞の取り直しと計量を変える格子変形を区別する。さらに、原子配置を含む結晶の空間群は格子型だけでは決まらない。
 
-.. |pseudocubic-perovskite| replace:: ペロブスカイトの擬立方格子
+.. |numerical-check| replace:: 数値での確認
 
-.. _pseudocubic-cell:
+.. _lt-numerical-check:
 
-|pseudocubic-perovskite|
-------------------------
+|numerical-check|
+-----------------
 
-前節までは同じ格子を別の胞で表す例を見た。ここでは、少しだけ歪んだ結晶を、歪む前の高対称な結晶の軸で表す方法を扱う。この軸を使うと、相ごとに空間群の胞が違っても、格子定数や方向の指数を共通の軸で比べられる。
+次の短いNumPy例は、FCC変換、回転、超胞、逆格子の双対性をまとめて検算する。格子ベクトルは基底変換の式と同様に\ **列**\ で保持し、原子座標も列ベクトルとする。格子ベクトルを行に並べるAPIへ渡すときは、\ :ref:`配列規約<lt-array-conventions>`\ のとおり転置する。
 
-理想的なペロブスカイト型構造ABO\ :sub:`3`\ は空間群 :math:`Pm\bar3m` をとり、単純立方格子の胞に1化学式単位を含む（BaTiO\ :sub:`3`\ では胞の一辺が約4 Å）。BaTiO\ :sub:`3`\ の正方晶・直方（斜方）晶・菱面体晶の相は、この構造から原子がわずかに変位し、格子が少し歪んだものである [`Kwei 1993 <https://doi.org/10.1021/j100112a043>`__]。空間群の慣用単位胞の軸は相ごとに向きも大きさも異なる。一方、これらの相では原子の変位で並進周期が変わらないので、どの相でも、立方胞の3辺から連続的に変形した3本の格子ベクトルを選べる。この3本を辺とする胞を\ **擬立方胞**\ （pseudocubic cell）と呼び、格子行列を :math:`A_{\rm pc}=(\boldsymbol a_{\rm pc},\boldsymbol b_{\rm pc},\boldsymbol c_{\rm pc})` と書く。添字pcを付けた方向・面の指数は、この胞の基底での係数を表す。各相の胞は、\ :ref:`基底変換<lt-primitive-basis>`\ の行列 :math:`P` を使って
+.. code-block:: python
 
-.. math::
-   :label: pseudocubic-transform
+   from itertools import product
+   import numpy as np
 
-   A=A_{\rm pc}P,\qquad V=|\det P|\,V_{\rm pc}
+   a = 4.0  # Angstrom
+   A = a * np.eye(3)
+   P = 0.5 * np.array([[0, 1, 1], [1, 0, 1], [1, 1, 0]])
+   Ap = A @ P
+   assert np.isclose(np.linalg.det(A), 64.0)
+   assert np.isclose(abs(np.linalg.det(Ap)), 16.0)
 
-と表せる。:numref:`lt-batio3-pseudocubic-table` に各相の胞と擬立方胞の関係をまとめる。分極の向きの列は、等価な方向の族から1つを選んで書いた。
+   # 基本並進ベクトルの長さと相互の角度
+   G = Ap.T @ Ap
+   assert np.allclose(np.sqrt(np.diag(G)), 2 * np.sqrt(2))
+   assert np.isclose(np.degrees(np.arccos(G[0, 1] / G[0, 0])), 60.0)
 
-.. list-table:: BaTiO\ :sub:`3`\ の各相の胞と擬立方胞
-   :name: lt-batio3-pseudocubic-table
-   :header-rows: 1
-   :widths: 14 14 44 10 18
+   # 面心位置と方向の基本並進ベクトルの組表示
+   s_primitive = np.linalg.solve(P, np.array([0.0, 0.5, 0.5]))
+   u_primitive = np.linalg.solve(P, np.array([0.0, 0.0, 1.0]))
+   assert np.allclose(s_primitive, [1, 0, 0])
+   assert np.allclose(u_primitive, [1, 1, -1])
 
-   * - 相
-     - 空間群
-     - 擬立方胞との関係
-     - :math:`|\det P|`
-     - 分極の向き
-   * - 立方晶
-     - :math:`Pm\bar3m`
-     - 同じ胞。:math:`a=b=c`、角は90°
-     - 1
-     - なし
-   * - 正方晶
-     - :math:`P4mm`
-     - 同じ胞。:math:`a=b\ne c`、角は90°
-     - 1
-     - :math:`[001]_{\rm pc}`
-   * - 直方晶
-     - :math:`Amm2`
-     - :math:`\boldsymbol a_{\rm orth}=\boldsymbol a_{\rm pc}`。:math:`\boldsymbol b_{\rm orth}`、:math:`\boldsymbol c_{\rm orth}` は面の対角線（式 :eq:`pseudocubic-orthorhombic`）
-     - 2
-     - :math:`[011]_{\rm pc}`
-   * - 菱面体晶
-     - :math:`R3m`
-     - 菱面体基本単位胞が擬立方胞（角は90°に近い）。慣用単位胞は六方軸の胞
-     - 1（六方軸は3）
-     - :math:`[111]_{\rm pc}`
+   # 逆格子と、同じ指数の方向・面法線のなす角
+   Bp = 2 * np.pi * np.linalg.inv(Ap).T
+   assert np.allclose(Ap.T @ Bp, 2 * np.pi * np.eye(3))
+   d, n = Ap @ [1, 1, -1], Bp @ [1, 1, -1]
+   assert np.isclose(d @ n / np.linalg.norm(d) / np.linalg.norm(n), 3 / np.sqrt(11))
 
-どの相でも擬立方胞は基本単位胞の一つであり、慣用単位胞との違いは中心化と軸の取り方にある。直方晶相ではA中心化胞（:math:`|\det P|=2`）、菱面体晶相では六方軸の胞（:math:`|\det P|=3`）が慣用単位胞になる。後者は\ :ref:`R格子の節<lt-rhombohedral-hexagonal>`\ の :math:`P_{R,H}` で作る。辺の長さは :math:`a_{R,H}\simeq\sqrt2\,a_{\rm pc}`、:math:`c_{R,H}\simeq\sqrt3\,a_{\rm pc}` で、:math:`\boldsymbol c_{R,H}=\boldsymbol a_{\rm pc}+\boldsymbol b_{\rm pc}+\boldsymbol c_{\rm pc}` が極性軸 :math:`[111]_{\rm pc}` に沿う。
+   # z軸まわりの任意角の回転
+   theta = 0.37
+   Q = np.array([[np.cos(theta), -np.sin(theta), 0],
+                 [np.sin(theta),  np.cos(theta), 0],
+                 [0, 0, 1]])
+   assert np.allclose(Q.T @ Q, np.eye(3))
+   assert np.allclose((Q @ Ap).T @ (Q @ Ap), G)
 
-.. |pseudocubic-orthorhombic-cell| replace:: 直方晶のA中心化胞との換算
+   # 超胞: 12個の周期像と、周期境界込みの最短原子間距離
+   M = np.diag([2, 3, 2])
+   As = Ap @ M
+   assert np.isclose(abs(np.linalg.det(As)), 12 * 16.0)
+   S = [np.linalg.solve(M, n) for n in product(range(2), range(3), range(2))]
+   assert len(S) == 12
+   d_min = min(np.linalg.norm(As @ (sj - si + np.array(n)))
+               for i, si in enumerate(S) for j, sj in enumerate(S)
+               for n in product(range(-1, 2), repeat=3)
+               if not (i == j and n == (0, 0, 0)))
+   assert np.isclose(d_min, 2 * np.sqrt(2))
 
-.. _pseudocubic-orthorhombic:
+行列式から慣用単位胞 :math:`64\,\mathrm{\mathring{A}}^3`、基本単位胞 :math:`16\,\mathrm{\mathring{A}}^3`、超胞 :math:`192\,\mathrm{\mathring{A}}^3` を得る。FCC基本並進ベクトル長は :math:`4/\sqrt2=2\sqrt2\,\mathrm{\mathring{A}}`、相互の角度は :math:`60^\circ`、面心点は基本単位胞の分率座標 :math:`(1,0,0)`、方向は :math:`(1,1,-1)` となる。任意角（例では :math:`\theta=0.37` rad）の回転で計量行列は変わらず、逆格子は :math:`A_{\rm p}^{\mathsf T}B_{\rm p}=2\pi I` を満たす。:math:`[11\bar1]_{\rm p}` と :math:`(11\bar1)_{\rm p}` の法線のなす角の余弦は :math:`3/\sqrt{11}` である。12個の周期像を作ると原子数が12倍になり、超胞周期境界も含めた最短原子間距離は :math:`2\sqrt2\,\mathrm{\mathring{A}}` で元のFCC最近接距離と一致する。
 
-|pseudocubic-orthorhombic-cell|
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+この例は代数恒等式を検算するものであり、特定の計算コードのファイル読込や、任意の非対角超胞での周期像列挙までは検証しない。実計算に接続するときは、原子種・占有率・単位・境界条件も含む構造全体で照合する。
 
-空間群 :math:`Amm2` の標準の設定では、2回軸（極性軸）を :math:`c` 軸に取り、胞はA中心並進 :math:`(0,1/2,1/2)` を持つ。BaTiO\ :sub:`3`\ の直方晶相では、2回軸は擬立方胞の面の対角線 :math:`[011]_{\rm pc}` に沿う。そこで
-
-.. math::
-   :label: pseudocubic-orthorhombic
-
-   \begin{aligned}
-   \boldsymbol a_{\rm orth}&=\boldsymbol a_{\rm pc},\\
-   \boldsymbol b_{\rm orth}&=\boldsymbol b_{\rm pc}-\boldsymbol c_{\rm pc},\\
-   \boldsymbol c_{\rm orth}&=\boldsymbol b_{\rm pc}+\boldsymbol c_{\rm pc},
-   \end{aligned}
-   \qquad
-   P_{\rm pc,orth}=\begin{pmatrix}
-   1&0&0\\0&1&1\\0&-1&1
-   \end{pmatrix},\qquad \det P_{\rm pc,orth}=2
-
-と取る（:numref:`fig-pseudocubic-orthorhombic-cell`）。直方晶の胞の体積は擬立方胞の2倍で、格子点を2個含む。A中心並進の分率座標を擬立方胞の基底へ移すと :math:`P_{\rm pc,orth}(0,1/2,1/2)^{\mathsf T}=(0,1,0)^{\mathsf T}` で、:math:`\boldsymbol b_{\rm pc}` という格子並進になる。:ref:`FCCの基本単位胞<lt-fcc-cell>`\ への変換（:math:`\det P_{\rm F}=1/4`）とは逆向きに、基本単位胞から中心化した慣用単位胞へ移る変換である。
-
-.. figure:: images/pseudocubic_orthorhombic_cell.svg
-   :name: fig-pseudocubic-orthorhombic-cell
-   :alt: 格子点の並ぶ面で、青い破線のひし形が擬立方胞、オレンジの長方形が直方晶のA中心化胞。長方形の辺は擬立方胞の2本の辺の差と和で、長方形の中心にも格子点がある。
-   :width: 70%
-   :align: center
-
-   :math:`\boldsymbol a_{\rm pc}` に垂直な面への投影。黒丸は格子点、青い矢印と破線のひし形は擬立方胞の
-   :math:`\boldsymbol b_{\rm pc}`、:math:`\boldsymbol c_{\rm pc}`、オレンジの矢印と長方形は直方晶の胞の
-   :math:`\boldsymbol b_{\rm orth}`、:math:`\boldsymbol c_{\rm orth}` を示す。白抜きの丸はA中心並進による格子点。
-   見やすさのため :math:`\alpha_{\rm pc}` を76°に誇張した（BaTiO\ :sub:`3`\ では約89.9°）。
-
-直方晶の胞の辺は互いに直交するので、計量行列 :math:`G_{\rm orth}=P_{\rm pc,orth}^{\mathsf T}G_{\rm pc}P_{\rm pc,orth}` は対角になる。:math:`G_{\rm pc}=P_{\rm pc,orth}^{-\mathsf T}G_{\rm orth}P_{\rm pc,orth}^{-1}` を計算すると、擬立方胞は :math:`b_{\rm pc}=c_{\rm pc}`、:math:`\beta_{\rm pc}=\gamma_{\rm pc}=90^\circ` で、:math:`\alpha_{\rm pc}` だけが90°からずれる。胞の形は単斜だが、結晶の対称性は直方のままである。このとき
-
-.. math::
-
-   \begin{aligned}
-   b_{\rm orth}^2&=|\boldsymbol b_{\rm pc}-\boldsymbol c_{\rm pc}|^2=2b_{\rm pc}^2(1-\cos\alpha_{\rm pc}),\\
-   c_{\rm orth}^2&=|\boldsymbol b_{\rm pc}+\boldsymbol c_{\rm pc}|^2=2b_{\rm pc}^2(1+\cos\alpha_{\rm pc})
-   \end{aligned}
-
-で、:math:`(\boldsymbol b_{\rm pc}-\boldsymbol c_{\rm pc})\cdot(\boldsymbol b_{\rm pc}+\boldsymbol c_{\rm pc})=b_{\rm pc}^2-c_{\rm pc}^2=0` から2本の対角線は直交する。半角の公式で書き直し、逆に解いた式と並べると
-
-.. math::
-   :label: pseudocubic-orthorhombic-lengths
-
-   \begin{aligned}
-   b_{\rm orth}&=2b_{\rm pc}\sin\frac{\alpha_{\rm pc}}2,&
-   c_{\rm orth}&=2b_{\rm pc}\cos\frac{\alpha_{\rm pc}}2,\\
-   b_{\rm pc}=c_{\rm pc}&=\frac{\sqrt{b_{\rm orth}^2+c_{\rm orth}^2}}2,&
-   \cos\alpha_{\rm pc}&=\frac{c_{\rm orth}^2-b_{\rm orth}^2}{c_{\rm orth}^2+b_{\rm orth}^2}
-   \end{aligned}
-
-:math:`\alpha_{\rm pc}=90^\circ` なら :math:`b_{\rm orth}=c_{\rm orth}=\sqrt2\,b_{\rm pc}` である。擬立方の格子定数を :math:`\sqrt2` 倍して直方晶の胞の :math:`b`、:math:`c` とする換算は、この極限で成り立つ。:math:`b_{\rm orth}` と :math:`c_{\rm orth}` の差は :math:`\alpha_{\rm pc}` の90°からのずれに表れるので、長さを :math:`\sqrt2` 倍するだけでは再現できない。
-
-実測の格子定数で差の大きさを見積もる。Shiraneらの中性子回折による263 Kの構造は :math:`a_{\rm orth}=3.990` Å、:math:`b_{\rm orth}=5.669` Å、:math:`c_{\rm orth}=5.682` Å [`Shirane 1957 <https://doi.org/10.1103/PhysRev.105.856>`__]（値は\ `AFLOWの結晶構造プロトタイプ <https://aflow.org/p/AB3C_oC10_38_a_ae_b-002>`__\ の記録から引用）。式 :eq:`pseudocubic-orthorhombic-lengths` から :math:`a_{\rm pc}=3.990` Å、:math:`b_{\rm pc}=c_{\rm pc}=4.013` Å、:math:`\cos\alpha_{\rm pc}=0.00229`、:math:`\alpha_{\rm pc}=89.87^\circ` を得る。:math:`\sqrt2\,b_{\rm pc}=5.6755` Å は :math:`b_{\rm orth}` より0.0065 Å長く、:math:`c_{\rm orth}` より0.0065 Å短い。擬立方の値 :math:`b_{\rm pc}=c_{\rm pc}` だけを :math:`\sqrt2` 倍して戻すと、約0.2%ある :math:`b` と :math:`c` の差が消える。
-
-方向と面の指数は、:ref:`方向と面の指数の変換則<lt-index-transform>`\ どおり :math:`\boldsymbol u_{\rm orth}=P_{\rm pc,orth}^{-1}\boldsymbol u_{\rm pc}`、:math:`\boldsymbol h_{\rm orth}=P_{\rm pc,orth}^{\mathsf T}\boldsymbol h_{\rm pc}` で移る。極性軸 :math:`[011]_{\rm pc}` は :math:`[001]_{\rm orth}`、:math:`[01\bar1]_{\rm pc}` は :math:`[010]_{\rm orth}` である。面 :math:`(011)_{\rm pc}` は :math:`(002)_{\rm orth}` になり、同じ逆格子ベクトルを表す。逆に :math:`(001)_{\rm orth}` は :math:`\boldsymbol h_{\rm pc}=(0,1/2,1/2)` で整数にならず、逆格子点ではない。これは :math:`k+l` が奇数の反射が消えるA中心の反射条件にあたり、\ :ref:`FCCの反射条件<lt-fcc-reciprocal>`\ と同じ理由で生じる。
-
-.. |pseudocubic-settings| replace:: 空間群の設定による軸の名前の違い
-
-|pseudocubic-settings|
-^^^^^^^^^^^^^^^^^^^^^^
-
-上の :math:`P_{\rm pc,orth}` は :math:`Amm2` の標準の設定を前提にしている。同じ空間群型（No. 38）は、軸の名前の付け方によって :math:`Amm2`、:math:`Bmm2`、:math:`B2mm`、:math:`C2mm`、:math:`Cm2m`、:math:`Am2m` とも書ける（International Tables for Crystallography, Vol. A (2006), `Table 4.3.2.1 <https://it.iucr.org/Ab/ch4o3v0001/table4o3o2o1.pdf>`__）。例えば :math:`C2mm` の設定では極性軸が :math:`a` 軸、擬立方胞の辺と同じ長さの軸が :math:`c` 軸になり、:math:`P` の列が入れ替わる。文献や構造ファイルの「:math:`b`」「:math:`c`」がどの物理的な方向の長さかは設定で変わるので、設定の違う文献の :math:`b` どうしを並べると、別の方向の長さを比べることになる。空間群の記号から擬立方胞との対応 :math:`P` を決めれば、同じ物理的な方向どうしを対応づけられる。
-
-.. |pseudocubic-limits| replace:: 擬立方表記で表せないこと
-
-|pseudocubic-limits|
-^^^^^^^^^^^^^^^^^^^^
-
-擬立方の指数は、歪んだ相の方向を高温相の立方胞の軸で名付ける。:ref:`等価な方向の族<equivalent-directions>`\ は低温相の点群で決まるので、擬立方表記の族は厳密な等価性を表さない。直方晶相（点群 :math:`mm2`）では、立方晶で :math:`\langle110\rangle` だった12方向が5つの族に分かれる。極性軸 :math:`[011]_{\rm pc}` とその逆向き :math:`[0\bar1\bar1]_{\rm pc}` はそれぞれ単独の族で、:math:`\pm[01\bar1]_{\rm pc}` が1つの族、残りの8方向が4方向ずつ2つの族になる。「分極は擬立方の :math:`\langle110\rangle` を向く」は、この12方向のうち1つが極性軸として選ばれたことを表す。
-
-擬立方胞が基本単位胞になるのは、BaTiO\ :sub:`3`\ の各相のように並進周期が立方相と同じ場合に限る。隣り合う酸素八面体が互いに逆向きに回転する相では、並進周期が擬立方胞の辺の2倍になる方向が現れる [`Glazer 1972 <https://doi.org/10.1107/S0567740872007976>`__, `Howard & Stokes 1998 <https://doi.org/10.1107/S0108768198004200>`__]。例えばGdFeO\ :sub:`3`\ 型の :math:`Pnma` の胞は :math:`a\simeq c\simeq\sqrt2\,a_{\rm pc}`、:math:`b\simeq2a_{\rm pc}` で、4化学式単位を含む。このとき擬立方胞の辺は格子並進でなく、擬立方胞は単位胞にならない。擬立方の格子定数は、長さと角度を立方胞の軸で読むための参照として使われる。
+.. _lt-cell-related:
 
 関連ノート
 ----------
 
+* :ref:`pseudocubic-cell` — 歪んだ結晶を高対称相の軸で表す。
 * :ref:`lt-structure-input` — 格子還元と結晶学的標準化。
 * :ref:`periodic_boundary` — 超胞によるブリルアンゾーンとバンドの変化。
-* :ref:`ferroelectricity` — BaTiO\ :sub:`3`\ の相と自発分極。
 
 .. _lt-cell-references:
 
@@ -394,9 +303,8 @@ FCC格子を体心正方胞で表す
 
 * IUCr, `Reflection conditions <https://dictionary.iucr.org/Reflection_conditions>`_.
 * IUCr, *International Tables for Crystallography*, Vol. A, §§1.3.2.4 and 1.3.4.4.3, `Section 1.3.2.4 <https://it.iucr.org/Ac/ch1o3v0001/sec1o3o2o4.pdf>`_, `Section 1.3.4.4.3 <https://it.iucr.org/Ac/ch1o3v0001/sec1o3o4o4o3.pdf>`_.
-* IUCr, *International Tables for Crystallography*, Vol. A (2006), `Table 4.3.2.1 <https://it.iucr.org/Ab/ch4o3v0001/table4o3o2o1.pdf>`__.
-* G\. H. Kwei, A. C. Lawson, S. J. L. Billinge, and S.-W. Cheong, “Structures of the ferroelectric phases of barium titanate,” *Journal of Physical Chemistry* **97**, 2368–2377 (1993), `doi:10.1021/j100112a043 <https://doi.org/10.1021/j100112a043>`__.
-* G\. Shirane, H. Danner, and R. Pepinsky, “Neutron diffraction study of orthorhombic BaTiO\ :sub:`3`,” *Physical Review* **105**, 856–860 (1957), `doi:10.1103/PhysRev.105.856 <https://doi.org/10.1103/PhysRev.105.856>`__. 格子定数は `AFLOW Encyclopedia of Crystallographic Prototypes, AB3C_oC10_38_a_ae_b-002 <https://aflow.org/p/AB3C_oC10_38_a_ae_b-002>`__ の記録による.
-* A\. M. Glazer, “The classification of tilted octahedra in perovskites,” *Acta Crystallographica B* **28**, 3384–3392 (1972), `doi:10.1107/S0567740872007976 <https://doi.org/10.1107/S0567740872007976>`__.
-* C\. J. Howard and H. T. Stokes, “Group-theoretical analysis of octahedral tilting in perovskites,” *Acta Crystallographica B* **54**, 782–789 (1998), `doi:10.1107/S0108768198004200 <https://doi.org/10.1107/S0108768198004200>`__.
 * H\. Grimmer, “Partial order among the 14 Bravais types of lattices: basics and applications,” *Acta Crystallographica A* **71**, 143–149 (2015), `doi:10.1107/S2053273314027351 <https://doi.org/10.1107/S2053273314027351>`_.
+
+.. raw:: html
+
+   <script src="../_static/js/legacy-anchors.js" defer></script>

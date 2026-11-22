@@ -355,7 +355,7 @@ Comèsらは、Tiの変位が鎖状に相関すると考えると説明できる
 関連項目
 ------------------------------
 
-* :ref:`格子と格子ベクトル<lattice>`
+* :ref:`格子と単位胞<lattice>`
 * :ref:`ブラベー格子と結晶系<unitcell>`
 * :ref:`ペロブスカイトの擬立方格子<pseudocubic-cell>`
 * :ref:`soft-mode`
