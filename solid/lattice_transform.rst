@@ -238,7 +238,8 @@ Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
 * :ref:`lattice` — 格子ベクトル、単位胞、分率座標、中心並進。
 * :ref:`lattice-parameters` — 計量行列と、格子定数から格子ベクトルを求める方法。
 * :ref:`crystal-directions-planes` — 方向指数とMiller指数、面間隔。
-* :ref:`lt-cell-transform` — FCCの慣用単位胞と基本単位胞、胞の形とブラベー格子型。
+* :ref:`lt-cell-transform` — FCCの慣用単位胞と基本単位胞の間の変換。
+* :ref:`lt-cell-shape-bravais` — 胞の形だけではブラベー格子型が決まらない例。
 * :ref:`pseudocubic-cell` — 歪んだ結晶を高対称相の軸で表す。
 * :ref:`lt-structure-input` — 構造の標準化、ファイル形式、配列規約。
 

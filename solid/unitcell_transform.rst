@@ -1,21 +1,21 @@
 .. _lt-cell-transform:
 
-単位胞の取り直しとブラベー格子型
-================================
+FCCで見る単位胞の取り直し
+=========================
 
 FCCの慣用単位胞と基本単位胞を例に、単位胞を取り直したときに原子位置、結晶方向、
-反射指数がどう変わるかを確認する。続いて、辺の形が異なる単位胞で同じ並進格子を表す例を見て、
-胞の形だけではブラベー格子型が決まらないことを示す。最後に、FCCの変換と超胞をNumPyで検算する。
+反射指数がどう変わるかを確認し、NumPyで検算する。同じ指数の方向と面法線が基底によっては平行でなくなることも見る。
+胞の形だけではブラベー格子型が決まらない例は、次の「\ :ref:`lt-cell-shape-bravais`\ 」で扱う。
 
 **前提知識**: :ref:`格子の基底変換<lt-primitive-basis>`、:ref:`超胞<lt-supercell>`、
-:ref:`逆格子の変換則<lt-reciprocal-transform>`、:ref:`格子系<bravais-lattice-types>`、
+:ref:`逆格子の変換則<lt-reciprocal-transform>`、
 :ref:`中心並進<centring-translation>`、:ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`、
 :ref:`方向と格子面<crystal-directions-planes>`。
 
 **学習目標**:
 
 * FCCの慣用単位胞と基本単位胞の間で、原子位置・方向指数・反射指数を変換する。
-* 胞の形だけではブラベー格子型が決まらないことを、R格子の六方軸表示、六方P格子の直交C中心化胞、FCC格子の体心正方胞の例で説明する。
+* 同じ指数の方向と面法線が、基底によっては平行にならないことを確かめる。
 * 単位胞の変換と超胞を数値で検算する。
 
 .. _lt-fcc-cell:
@@ -99,137 +99,6 @@ FCCの反射指数と基本単位胞
 
 :math:`B_{\rm p}` の整数結合が逆格子なので、:math:`B_{\rm c}\boldsymbol h_{\rm c}` が逆格子ベクトルとなるのは :math:`\boldsymbol h_{\rm p}` が整数のとき、すなわち慣用指数 :math:`(hkl)` がすべて偶数またはすべて奇数のときで、条件 :eq:`centred-reciprocal-condition` と一致する。例えば :math:`(100)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1/2,1/2)` で条件を満たさず、:math:`(200)_{\rm c}` は :math:`\boldsymbol h_{\rm p}=(0,1,1)` で条件を満たす。
 
-.. _lt-special-cells:
-
-特殊な単位胞表現とBravais格子型
--------------------------------------------
-
-:ref:`基本単位胞や慣用単位胞<lattice-unit-cells>`\ の辺の形と、中心並進を含む格子点集合の\ :ref:`ブラベー格子型<bravais-lattice-types>`\ は区別する。異なる胞でも中心の格子点や周期像を含めれば同じ並進格子を表せる。辺長や角度を特殊な値へ\ **変形**\ すると格子の対称性が高まり、Bravais格子型自体が変わることがある。このような格子型間の特殊関係は `Grimmer (2015) <https://doi.org/10.1107/S2053273314027351>`_ が整理している。
-
-.. _lt-rhombohedral-hexagonal:
-
-R格子の菱面体基本単位胞と六方軸表示
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-三方晶系のR格子は、菱面体基本単位胞を使う表示と、R中心化された六方軸の胞を使う表示の両方がある。六方軸で書いても六方P格子になるわけではない。IUCr International Tables for Crystallography, Volume A はR格子の菱面体基本単位胞と体積が3倍のR中心化六方軸セルを区別し、Bravais格子型を格子系ごとに定義している（`§1.3.2.4 <https://it.iucr.org/Ac/ch1o3v0001/sec1o3o2o4.pdf>`_, `§1.3.4.4.3 <https://it.iucr.org/Ac/ch1o3v0001/sec1o3o4o4o3.pdf>`_）。
-
-菱面体基本単位胞の列格子行列を :math:`A_R=(\boldsymbol a_1,\boldsymbol a_2,\boldsymbol a_3)` とし、各ベクトルの長さを :math:`a_R`、共通角を :math:`\alpha_R` とする。次の軸を選ぶ。
-
-.. math::
-
-   \begin{aligned}
-   \boldsymbol a_{R,H}&=\boldsymbol a_1-\boldsymbol a_2,\\
-   \boldsymbol b_{R,H}&=\boldsymbol a_2-\boldsymbol a_3,\\
-   \boldsymbol c_{R,H}&=\boldsymbol a_1+\boldsymbol a_2+\boldsymbol a_3.
-   \end{aligned}
-
-すると :math:`A_{R,H}=A_RP_{R,H}` で、
-
-.. math::
-
-   P_{R,H}=\begin{pmatrix}
-   1&0&1\\-1&1&1\\0&-1&1
-   \end{pmatrix},\qquad \det P_{R,H}=3.
-
-:math:`q=\cos\alpha_R` とすれば、六方軸胞の格子定数と角度は
-
-.. math::
-
-   a_{R,H}=b_{R,H}=a_R\sqrt{2(1-q)},\qquad
-   c_{R,H}=a_R\sqrt{3(1+2q)},
-
-.. math::
-
-   \alpha_{R,H}=\beta_{R,H}=90^\circ,\qquad \gamma_{R,H}=120^\circ.
-
-この胞の体積は菱面体基本単位胞の3倍で、分率座標 :math:`(0,0,0)` に加えて :math:`(2/3,1/3,1/3)` と :math:`(1/3,2/3,2/3)` にR中心並進による格子点を持つ。したがって、六方軸表示を六方P格子と読み替えると格子点を取り落とす。
-
-:numref:`fig-rhombohedral-hexagonal-layers`\ では、六方軸胞を底面に平行な三つの
-高さで切って、R中心並進による格子点の横方向のずれを示す。
-
-.. figure:: images/rhombohedral_hexagonal_layers.svg
-   :name: fig-rhombohedral-hexagonal-layers
-   :alt: R中心化六方軸胞の高さ0、1/3、2/3の三つの断面で、底面に平行な分率座標がそれぞれ(0,0)、(2/3,1/3)、(1/3,2/3)になる。
-   :width: 100%
-   :align: center
-
-   各パネルの :math:`s_3` は六方軸胞での高さ。丸が格子点、下の座標が底面内の分率座標
-   :math:`(s_1,s_2)` である。整数の並進で移る格子点は省略した。
-
-.. _lt-hexagonal-orthogonal:
-
-六方P格子を直交C中心化胞で表す
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-底面の長さが :math:`a`、角が :math:`120^\circ` の六方P格子の基本並進ベクトルの組 :math:`A_{\rm hexP}` から、次の胞を作る。
-
-.. math::
-
-   \begin{aligned}
-   \boldsymbol a_o&=\boldsymbol a_1+\boldsymbol a_2,\\
-   \boldsymbol b_o&=-\boldsymbol a_1+\boldsymbol a_2,\\
-   \boldsymbol c_o&=\boldsymbol a_3.
-   \end{aligned}
-
-.. math::
-
-   A_o=A_{\rm hexP}M_{\rm hexP},\qquad
-   M_{\rm hexP}=\begin{pmatrix}
-   1&-1&0\\1&1&0\\0&0&1
-   \end{pmatrix},\qquad \det M_{\rm hexP}=2.
-
-ここで :math:`A_{\rm hexP}` は直前のR格子の六方軸セルとは異なり、六方P格子の\ **基本単位胞**\ である。新しい辺は直交し、長さは :math:`a_o=a`、:math:`b_o=\sqrt3a`、:math:`c_o=c`。旧格子ベクトル :math:`\boldsymbol a_2` は新胞の分率座標 :math:`(1/2,1/2,0)` に来るため、この胞はC中心化している。胞の体積は2倍で、中心の格子点と周期像を含めれば六方Pと同じ格子点集合を表す。したがって、直交形状だけを根拠に直交P格子として扱ってはならない。
-
-.. _lt-fcc-tetragonal:
-
-FCC格子を体心正方胞で表す
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-一辺 :math:`a` のFCC慣用単位胞 :math:`A_c=aI` に対し、次の辺を選ぶ。
-
-.. math::
-
-   \begin{aligned}
-   \boldsymbol a_t&=\tfrac a2(1,1,0),\\
-   \boldsymbol b_t&=\tfrac a2(-1,1,0),\\
-   \boldsymbol c_t&=a(0,0,1).
-   \end{aligned}
-
-.. math::
-
-   A_t=A_cP_{F,t},\qquad
-   P_{F,t}=\begin{pmatrix}
-   1/2&-1/2&0\\1/2&1/2&0\\0&0&1
-   \end{pmatrix},\qquad \det P_{F,t}=1/2.
-
-この胞は :math:`a_t=b_t=a/\sqrt2`、:math:`c_t=a`、したがって :math:`c_t/a_t=\sqrt2` の体心正方形状である。FCCの面心並進 :math:`\tfrac a2(0,1,1)` は新しい胞の分率座標 :math:`(1/2,1/2,1/2)_t` に移る。体心点を含めれば、FCC慣用単位胞の半分の体積で同じFCC格子を表せる。この特殊な軸比ではBravais格子型は立方Fである。
-
-一般の体心正方格子では :math:`c_t/a_t=1` が立方I（BCC）、:math:`c_t/a_t=\sqrt2` が立方F（FCC）に対応する。一般の体心正方格子をこれらの比へ\ **変形**\ することは、単位胞の表現を変えるだけではない。
-
-.. _lt-rhombohedral-cubic:
-
-菱面体形状の基本単位胞から立方格子を見分ける
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-等長の3ベクトルが等しい相互角で張る菱面体形状は、三方晶R格子に限らない。角度が特別な値なら、より高い立方対称性を持つ基本単位胞にもなる。
-
-.. list-table:: 菱面体形状の基本単位胞と対応する立方Bravais格子
-   :name: lt-rhombohedral-cubic-table
-   :header-rows: 1
-   :widths: 40 60
-
-   * - 基本並進ベクトル間の角度
-     - Bravais格子型
-   * - :math:`60^\circ`
-     - 立方F（FCC）
-   * - :math:`90^\circ`
-     - 立方P（単純立方）
-   * - :math:`\arccos(-1/3)\simeq109.47^\circ`
-     - 立方I（BCC）
-
-例えば\ :ref:`FCCの基本並進ベクトル<lt-fcc-cell>`\ は互いに :math:`60^\circ` で、菱面体形状を持つが、Bravais格子型は三方Rではなく立方Fである。一般のR格子からこの角度条件へ計量を変える場合は、同一格子の基底変換ではなく格子の特殊化となる。
-
-以上の例では、胞の形が直交・六方・菱面体・体心正方に見えることだけでBravais格子型は決まらない。中心並進を含む格子点集合を調べ、単位胞の取り直しと計量を変える格子変形を区別する。さらに、原子配置を含む結晶の空間群は格子型だけでは決まらない。
 
 .. |numerical-check| replace:: 数値での確認
 
@@ -238,7 +107,7 @@ FCC格子を体心正方胞で表す
 |numerical-check|
 -----------------
 
-次の短いNumPy例は、FCC変換、回転、超胞、逆格子の双対性をまとめて検算する。格子ベクトルは基底変換の式と同様に\ **列**\ で保持し、原子座標も列ベクトルとする。格子ベクトルを行に並べるAPIへ渡すときは、\ :ref:`配列規約<lt-array-conventions>`\ のとおり転置する。
+次の短いNumPy例は、FCC変換、回転、超胞と、逆格子が\ :ref:`双対基底<reciprocal-basis>`\ になっていることをまとめて検算する。格子ベクトルは基底変換の式と同様に\ **列**\ で保持し、原子座標も列ベクトルとする。格子ベクトルを行に並べるAPIへ渡すときは、\ :ref:`配列規約<lt-array-conventions>`\ のとおり転置する。
 
 .. code-block:: python
 
@@ -298,6 +167,7 @@ FCC格子を体心正方胞で表す
 関連資料
 ----------
 
+* :ref:`lt-cell-shape-bravais` — 胞の形だけではブラベー格子型が決まらない例。
 * :ref:`pseudocubic-cell` — 歪んだ結晶を高対称相の軸で表す。
 * :ref:`lt-structure-input` — 格子還元と結晶学的標準化。
 * :ref:`periodic_boundary` — 超胞によるブリルアンゾーンとバンドの変化。
@@ -308,8 +178,6 @@ FCC格子を体心正方胞で表す
 ------------
 
 * IUCr, `Reflection conditions <https://dictionary.iucr.org/Reflection_conditions>`_.
-* IUCr, *International Tables for Crystallography*, Vol. A, §§1.3.2.4 and 1.3.4.4.3, `Section 1.3.2.4 <https://it.iucr.org/Ac/ch1o3v0001/sec1o3o2o4.pdf>`_, `Section 1.3.4.4.3 <https://it.iucr.org/Ac/ch1o3v0001/sec1o3o4o4o3.pdf>`_.
-* H\. Grimmer, “Partial order among the 14 Bravais types of lattices: basics and applications,” *Acta Crystallographica A* **71**, 143–149 (2015), `doi:10.1107/S2053273314027351 <https://doi.org/10.1107/S2053273314027351>`_.
 
 .. raw:: html
 
