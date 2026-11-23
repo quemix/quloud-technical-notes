@@ -43,7 +43,7 @@ Cochranは、変位による構造相転移を格子振動の不安定性とし�
 :math:`T_0` で復元力が消え、モードの変位がそこから育つので、:math:`T_{\mathrm c}=T_0` である。
 BaTiO\ :sub:`3`\ の立方晶–正方晶転移 [Merz1953]_ のような1次転移では、温度が :math:`T_0` に下がる前に、
 変位した構造の自由エネルギーが高温相と等しくなる。そのため :math:`T_0<T_{\mathrm c}` で、:math:`\omega_{\mathrm s}` は
-:math:`T_{\mathrm c}` で有限のまま転移が起こる。:math:`T_{\mathrm c}-T_0` は、\ :ref:`常誘電相<paraelectric-phase>`\ の節で自由エネルギーの展開から導く。
+:math:`T_{\mathrm c}` で有限のまま転移が起こる。:math:`T_{\mathrm c}-T_0` は、\ :ref:`Landau理論<first-order-transition>`\ で自由エネルギーの展開から導く。
 
 0 Kの調和近似で高温相の構造のフォノンを計算したとき、ソフトモードが
 :ref:`虚数振動数<imaginary-frequency>`\ として現れるのは、その計算条件（\ :ref:`交換相関汎関数<exchange-correlation-functional>`、格子定数など）で
@@ -122,27 +122,21 @@ BaTiO\ :sub:`3`\ の立方晶–正方晶転移 [Merz1953]_ のような1次転�
 このモードに沿って安定である。この模型では、低温相でのモードの振動数は
 :math:`\sqrt{-2\kappa}`、つまり高温相の虚数振動数の大きさの :math:`\sqrt2` 倍になる。
 
-温度の効果を最も簡単に取り込むのが **Landau理論** である。:eq:`sm-landau` を自由エネルギーと読み替え、
-:math:`\kappa` だけが :math:`\kappa=a(T-T_0)`\ （:math:`a>0`）と温度に比例して変わるとする。
-:math:`T>T_0` では :math:`Q_0=0` で、ソフトモードの振動数は :math:`\omega_{\mathrm s}^2=\kappa=a(T-T_0)` と
-:eq:`sm-cochran` に従って下がる。:math:`T<T_0` では :eq:`sm-q0` から
-:math:`Q_0=\sqrt{a(T_0-T)/\beta}` となり、秩序変数は :math:`T_0` から連続的に育つ。この模型の転移は2次転移で、:math:`T_{\mathrm c}=T_0` である。
-極小のまわりの振動数の2乗は :math:`-2\kappa=2a(T_0-T)` で、:math:`T_0` の下では上の2倍の傾きで再び増える
-（:numref:`fig-soft-mode-double-well`\ の右）。
+:numref:`fig-soft-mode-double-well` に、この二重井戸と、2次の項だけの放物線を示す。
 
 .. figure:: images/soft_mode_double_well.svg
    :name: fig-soft-mode-double-well
-   :alt: 左は二重井戸のエネルギー曲線と、原点で負の曲率をもつ放物線。極小はマイナスQ0とQ0にあり、深さをΔEで示す。右は温度に対するモードの振動数の2乗で、T0の上でa(T-T0)、下で2a(T0-T)の直線。
-   :width: 100%
+   :alt: 二重井戸のエネルギー曲線と、原点で負の曲率をもつ放物線。極小はマイナスQ0とQ0にあり、深さをΔEで示す。
+   :width: 70%
    :align: center
 
-   左：:math:`\kappa<0`、:math:`\beta>0` の式 :eq:`sm-landau`\ （青の実線）と、その2次の項だけの放物線
+   :math:`\kappa<0`、:math:`\beta>0` の式 :eq:`sm-landau`\ （青の実線）と、その2次の項だけの放物線
    :math:`\kappa Q^2/2`\ （赤の破線）。点は極小 :math:`\pm Q_0`\ （式 :eq:`sm-q0`）、両矢印は深さ
-   :math:`\Delta E`\ （式 :eq:`sm-depth`）。右：Landau模型で :math:`\kappa=a(T-T_0)` としたときのモードの
-   :math:`\omega^2`。:math:`T_0` の上（青）は高温相の :math:`\kappa`、下（赤）は極小のまわりの曲率 :math:`-2\kappa`。
+   :math:`\Delta E`\ （式 :eq:`sm-depth`）。係数は説明用で、特定の物質の値ではない。
 
-Landau理論は、平均場の近似で相転移の形を表す現象論である。実際の物質では :math:`\beta<0` で6次の項が必要になり、秩序変数が不連続に変わる1次転移になるものもある。
-このとき転移温度 :math:`T_{\mathrm c}` は :math:`T_0` より高く、ソフトモードの振動数は :math:`T_{\mathrm c}` で0にならない（\ :ref:`常誘電相<paraelectric-phase>`\ の導出）。BaTiO\ :sub:`3`\ の
+ここまでは0 Kのエネルギーである。温度の効果は、:eq:`sm-landau` を自由エネルギーと読み替え、:math:`\kappa` が
+:math:`\kappa=a(T-T_0)` と温度とともに変わるとする\ :ref:`Landau理論<landau-theory>`\ で取り込む。この仮定から、
+ソフトモードの振動数が :eq:`sm-cochran` に従って下がることと、2次転移と1次転移の違いが導かれる。BaTiO\ :sub:`3`\ の
 三つの転移は、いずれも1次転移である [Zhong1995]_。
 
 .. _sm-inversion-equivalence:
@@ -202,7 +196,7 @@ Landau理論は、平均場の近似で相転移の形を表す現象論であ�
    \beta_{\mathrm{eff}}=\beta-\frac{2\lambda^2}{C_{\mathrm{el}}}
 
 に下がる。ひずみとの結合は壁を低くし、井戸を深くする。:math:`\beta_{\mathrm{eff}}<0` になれば、
-:ref:`秩序変数の節<sm-landau>`\ の終わりに述べた1次転移になる。体積も同じように :math:`\kappa` を変えるので、二重井戸の深さは
+\ :ref:`1次転移<first-order-transition>`\ になる。体積も同じように :math:`\kappa` を変えるので、二重井戸の深さは
 計算に使う格子定数に敏感である。
 
 ソフトモードが縮退している場合、秩序変数はベクトルになる。立方晶の結晶のΓ点の極性モードは、

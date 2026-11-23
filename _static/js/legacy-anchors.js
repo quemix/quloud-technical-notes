@@ -226,6 +226,13 @@
             "#id37": "polarization.html#polarization-references",
             "#id38": "#fo-bibliography",
         },
+        // 2026-11-23 に自由エネルギーの展開を「Landau理論と相転移の次数」へ移す前の ferroelectricity.html
+        // （このページの末尾の独自スクリプトは、2026-11の拡張前の自動アンカーを扱う。キーは重ならない）
+        "ferroelectricity": {
+            "#equation-fe-devonshire": "landau_theory.html#equation-fe-devonshire",
+            "#equation-fe-curie-constant": "landau_theory.html#equation-fe-curie-constant",
+            "#equation-fe-first-order": "landau_theory.html#equation-fe-first-order",
+        },
     };
 
     const page = window.location.pathname.split("/").pop().replace(/\.html$/, "");

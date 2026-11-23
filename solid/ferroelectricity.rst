@@ -55,52 +55,17 @@
 
 に従う。これを\ **Curie–Weissの法則**\ 、:math:`C` をCurie定数、:math:`T_0` をCurie–Weiss温度と呼ぶ。:ref:`極性ソフトモード<polar-soft-mode>`\ の振動数が下がると静的な誘電率が発散するので、
 この法則は格子振動の側からも導ける。その場合の :math:`T_0` は、Cochranの法則 :eq:`sm-cochran` でソフトモードの振動数が0に外挿される温度である。
+分極で展開した自由エネルギーからの導出は\ :ref:`共役な場への応答<landau-curie-weiss>`\ にある。
 
-:math:`T_0` と :math:`T_{\mathrm C}` の関係は、分極で展開した自由エネルギーから分かる [Devonshire1949]_。
-一つの軸の方向に分極する場合を考え、単位体積あたりの自由エネルギーを
-
-.. math::
-   :label: fe-devonshire
-
-   F(P,T)=F_0+\frac12a(T-T_0)P^2+\frac14\beta P^4+\frac16\gamma P^6-EP
-
-と置く（:math:`a>0`、:math:`\gamma>0`）。奇数次の項がないのは、常誘電相の反転対称性で :math:`P` と :math:`-P` が\ :ref:`等価になる<sm-inversion-equivalence>`\ からである。:math:`P=0` のまわりで
-:math:`\partial F/\partial P=0` を :math:`P` の1次まで残して解くと :math:`a(T-T_0)P=E` となり、
-
-.. math::
-   :label: fe-curie-constant
-
-   \chi=\frac{P}{\varepsilon_0E}=\frac{1}{\varepsilon_0a(T-T_0)},\qquad C=\frac{1}{\varepsilon_0a}
-
-を得る。:eq:`fe-devonshire` はCurie–Weissの法則 :eq:`fe-curie-weiss` を含む。
-
-:math:`\beta>0` なら、\ :ref:`ソフトモードの振幅で展開した場合<sm-landau>`\ と同じく、:math:`T_0` で分極が0から連続的に育つ2次転移になり、:math:`T_{\mathrm C}=T_0` である。
-:math:`\beta<0` では、:math:`T` が :math:`T_0` に下がる前に、:math:`P\ne0` の極小のエネルギーが :math:`P=0` と等しくなる。
-その温度が :math:`T_{\mathrm C}` で、:math:`E=0` で :math:`F-F_0=0` と :math:`\partial F/\partial P=0` が同じ :math:`P\ne0` で成り立つ。
-それぞれを :math:`P^2`、:math:`P` で割ると
-
-.. math::
-
-   \frac12a(T_{\mathrm C}-T_0)+\frac14\beta P^2+\frac16\gamma P^4=0,\qquad
-   a(T_{\mathrm C}-T_0)+\beta P^2+\gamma P^4=0
-
-となる。第1式の2倍から第2式を引くと :math:`-\frac12\beta P^2-\frac23\gamma P^4=0`、すなわち :math:`P^2=-3\beta/(4\gamma)` で、これを第2式に戻すと
-
-.. math::
-   :label: fe-first-order
-
-   T_{\mathrm C}-T_0=\frac{3\beta^2}{16a\gamma}>0,\qquad
-   P_{\mathrm s}(T_{\mathrm C})=\sqrt{-\frac{3\beta}{4\gamma}}
-
-を得る。分極は :math:`T_{\mathrm C}` で0から有限の値へ跳び（1次転移）、常誘電相の :math:`\chi` から
-外挿した :math:`T_0` は :math:`T_{\mathrm C}` より低い。:math:`T_{\mathrm C}` での :math:`P=0` の曲率 :math:`a(T_{\mathrm C}-T_0)` は正なので、
-:ref:`ソフトモードの振動数<sm-definition>`\ も :math:`T_{\mathrm C}` で0にならないまま転移が起こる。:math:`T_0<T<T_{\mathrm C}` でも :math:`P=0` は
-極小のまま残るので、冷却では :math:`T_0` まで常誘電相が過冷却されうる。加熱では、:math:`P\ne0` の極小が
-:math:`a(T-T_0)+\beta P^2+\gamma P^4=0` の実数解として残る :math:`T_0+\beta^2/(4a\gamma)` まで、分極した状態が残りうる。1次転移の転移温度が加熱と冷却でずれうるのは、このためである。
+:math:`T_0` と :math:`T_{\mathrm C}` の関係は、分極で展開した自由エネルギーから分かる [Devonshire1949]_。導出は
+「\ :ref:`landau-theory`\ 」で扱い、ここでは結論だけを述べる。分極の4次の係数が正なら、分極は :math:`T_0` から連続的に育つ
+\ :ref:`2次転移<second-order-transition>`\ になり、:math:`T_{\mathrm C}=T_0` である。4次の係数が負なら\ :ref:`1次転移<first-order-transition>`\ になり、
+分極は :math:`T_{\mathrm C}` で有限の値へ跳び、常誘電相の :math:`\chi` から外挿した :math:`T_0` は :math:`T_{\mathrm C}` より低い。1次転移では、
+冷却と加熱で常誘電相と強誘電相がそれぞれ\ :ref:`準安定な状態として残りうる<landau-metastability>`\ ので、転移温度が加熱と冷却でずれうる。
 
 BaTiO\ :sub:`3`\ では、Merzが :math:`T_{\mathrm C}` のすぐ上で、弱い電場では直線、強い電場では両端に
-ヒステリシスが開く分極–電場曲線（二重ヒステリシス）を観測し、:math:`P^4` の係数が負であること、
-つまり立方晶から正方晶への転移が1次であることを示した [Merz1953]_。BaTiO\ :sub:`3`\ の三つの転移は
+ヒステリシスが開く分極–電場曲線（二重ヒステリシス）を観測し、4次の係数が負であること、
+つまり立方晶から正方晶への転移が1次であることを示した [Merz1953]_\ （\ :ref:`読み方<landau-batio3-example>`）。BaTiO\ :sub:`3`\ の三つの転移は
 いずれも1次である [Zhong1995]_。
 
 .. _batio3-crystal-phases:
@@ -429,3 +394,7 @@ Comèsらは、Tiの変位が鎖状に相関すると考えると説明できる
        }
    })();
    </script>
+
+.. raw:: html
+
+   <script src="../_static/js/legacy-anchors.js" defer></script>
