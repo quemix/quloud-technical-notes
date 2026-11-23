@@ -241,6 +241,11 @@
         "polarization": {
             "#id29": "#wieder1955",
         },
+        // 2026-11-23 に節を加える前の peierls_instability.html
+        "peierls_instability": {
+            "#id3": "#peierls-bond-order-wave",
+            "#id4": "#peierls-references",
+        },
     };
 
     const page = window.location.pathname.split("/").pop().replace(/\.html$/, "");
