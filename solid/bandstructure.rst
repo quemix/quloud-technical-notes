@@ -40,7 +40,7 @@
    同じ原子を等間隔に並べ、最近接ホッピング :math:`t` のみを含めた模型。
    横線は開放端の :math:`N` 原子の鎖の準位 :math:`E_j=\varepsilon_0-2t\cos\bigl(j\pi/(N+1)\bigr)`\ （:math:`j=1,\ldots,N`）、
    色をつけた帯は無限鎖の連続バンド :math:`E(k)=\varepsilon_0-2t\cos ka` を表す。
-   どちらの式も「\ :ref:`tightbinding`\ 」で導く（式 :eq:`tb-open-levels`、:eq:`tb-band`）。
+   開放端の鎖の準位は「\ :ref:`finite-chain`\ 」（式 :eq:`tb-open-levels`）、無限鎖のバンドは「\ :ref:`tightbinding`\ 」（式 :eq:`tb-band`）で導く。
 
 軌道間の結びつきが強いほど、準位の広がりは大きくなる。原子の外殻軌道は、
 内殻軌道より隣の原子の軌道と重なりやすい。1次元鎖の\ :ref:`タイト・バインディング模型<tightbinding>`\ では、

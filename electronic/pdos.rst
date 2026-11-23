@@ -13,7 +13,7 @@
 
 **前提知識**: :ref:`状態密度<density-of-states>`、:ref:`Löwdin解析<lowdin>` の密度行列と
 対称直交化、:ref:`タイト・バインディング近似<tightbinding>`、
-:ref:`価電子帯上端<valence-conduction-band-gap>`。
+:ref:`開放端の鎖の固有状態<fc-standing-waves>`、:ref:`価電子帯上端<valence-conduction-band-gap>`。
 
 **学習目標**:
 
@@ -302,7 +302,7 @@ Mulliken型の重みは、符号が負にもなりうる重なりの項 :math:`\
 一致する（:ref:`結合次数<bond_order>`）。そこで、同じ模型で原子ごとのPDOSを計算する。
 以下の値は模型から求めたもので、Psi4の計算結果ではない。
 
-:math:`N` 原子の開放端の鎖の固有状態は、:ref:`タイト・バインディング近似<tightbinding>` で
+:math:`N` 原子の開放端の鎖の固有状態は、:ref:`開放端の鎖の定在波<fc-standing-waves>` で
 求めたとおり :math:`E_j=\varepsilon_0-2t\cos\theta_j`、
 :math:`\phi_j(i)=\sqrt{2/(N+1)}\sin(i\theta_j)`\ （:math:`\theta_j=j\pi/(N+1)`）である。
 原子 :math:`i` への重みは :math:`w_{ij}=\phi_j(i)^2` だから、端の原子（:math:`i=1`）のPDOSは
@@ -365,7 +365,7 @@ Mulliken型の重みは、符号が負にもなりうる重なりの項 :math:`\
 
 2準位模型の議論を周期系に広げるため、単位胞（格子定数 :math:`a`）にAとBの軌道を1つずつ
 交互に並べ、隣り合うAとBの間にだけホッピング :math:`-t` がある鎖を考える。
-:ref:`ブロッホ和<tightbinding>` でハミルトニアンを波数ごとに書くと
+:ref:`ブロッホ和<bloch-sum>` でハミルトニアンを波数ごとに書くと
 
 .. math::
    :label: pd-ab-hk

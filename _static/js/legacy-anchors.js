@@ -246,6 +246,19 @@
             "#id3": "#peierls-bond-order-wave",
             "#id4": "#peierls-references",
         },
+        // 2026-11-23 に有限鎖を finite_chain.html へ分ける前の tightbinding.html
+        // （#id4 は移転先を案内する段落に明示ラベルとして残す）
+        "tightbinding": {
+            "#homolumo": "finite_chain.html#homo-lumo-gap-open-chain",
+            "#equation-tb-open-vec": "finite_chain.html#equation-tb-open-vec",
+            "#equation-tb-open-levels": "finite_chain.html#equation-tb-open-levels",
+            "#equation-tb-finite-gap": "finite_chain.html#equation-tb-finite-gap",
+            "#fig-tightbinding-finite-chain-gaps": "finite_chain.html#fig-tightbinding-finite-chain-gaps",
+            "#id9": "finite_chain.html#fc-hydrogen-chain-example",
+            "#id11": "#tb-interpretation-limits",
+            "#id12": "#tb-related",
+            "#id14": "#tb-references",
+        },
     };
 
     const page = window.location.pathname.split("/").pop().replace(/\.html$/, "");

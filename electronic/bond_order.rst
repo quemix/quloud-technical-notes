@@ -10,7 +10,7 @@
 （Coulson結合次数）とそのエネルギー上の意味、Wiberg・Mayerの結合指数との関係を
 式で追う。
 
-**前提知識**: :ref:`タイト・バインディング近似<tightbinding>`、
+**前提知識**: :ref:`タイト・バインディング近似<tightbinding>`、:ref:`開放端の鎖の固有状態<fc-standing-waves>`、
 :ref:`Löwdin解析<lowdin>` の密度行列。
 
 **学習目標**:
@@ -139,7 +139,7 @@ Hellmann–Feynmanの定理により固有ベクトルの変化はエネルギ�
 この値は :math:`t` によらない。一様な鎖の固有ベクトルは :math:`t` の大きさに
 依存しないからである。
 
-両端が開いた有限鎖では、:ref:`タイト・バインディング近似<tightbinding>` で求めた
+両端が開いた有限鎖では、:ref:`開放端の鎖<fc-standing-waves>` で求めた
 固有ベクトル :math:`\phi_j(i)=\sqrt{2/(N+1)}\sin\bigl(ij\pi/(N+1)\bigr)` を使って
 
 .. math::
