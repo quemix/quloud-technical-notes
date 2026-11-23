@@ -156,6 +156,29 @@
             "#equation-rho-e": "bandstructure.html#equation-rho-e",
             "#fig-band-state-count-and-dos": "bandstructure.html#fig-band-state-count-and-dos",
         },
+        // 2026-11-23 に熱的性質を「格子振動の熱的性質」へ分ける前の phonon.html
+        // （#id14〜#id17 は分割後のページで引用の戻りリンクの行き先なので転送しない）
+        "phonon": {
+            "#anharmonicity": "phonon_thermal.html#anharmonicity",
+            "#zero-point-vibration": "phonon_thermal.html#zero-point-vibration",
+            "#thermal-expansion": "phonon_thermal.html#thermal-expansion",
+            "#equation-ph-zpe": "phonon_thermal.html#equation-ph-zpe",
+            "#equation-ph-mean-energy": "phonon_thermal.html#equation-ph-mean-energy",
+            "#equation-ph-qha-free-energy": "phonon_thermal.html#equation-ph-qha-free-energy",
+            "#equation-ph-gruneisen": "phonon_thermal.html#equation-ph-gruneisen",
+            "#equation-ph-thermal-pressure": "phonon_thermal.html#equation-ph-thermal-pressure",
+            "#zhong1996": "phonon_thermal.html#zhong1996",
+            "#baroni2010": "phonon_thermal.html#baroni2010",
+            "#id18": "phonon_thermal.html#thermal-expansion",
+            "#id19": "#batio3",
+            "#id20": "#batio3",
+            "#id21": "#batio3",
+            "#id24": "#phonon-interpretation-limits",
+            "#id25": "#lo-to-splitting",
+            "#id26": "#phonon-related",
+            "#id27": "#phonon-references",
+            "#id28": "#phonon-bibliography",
+        },
     };
 
     const page = window.location.pathname.split("/").pop().replace(/\.html$/, "");

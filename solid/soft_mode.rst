@@ -10,7 +10,7 @@
 その評価法、相転移の型を導く。例として、極性のソフトモードをもつBaTiO\ :sub:`3`\ と、
 極性をもたない八面体回転のソフトモードをもつSrTiO\ :sub:`3`\ を取り上げる。
 
-**前提知識**: :ref:`調和近似とフォノン<phonon>`\ （とくに\ :ref:`虚数振動数<imaginary-frequency>`\ と\ :ref:`非調和性<anharmonicity>`）、:ref:`反転対称性と自発分極<inversion-and-polarization>`。
+**前提知識**: :ref:`調和近似とフォノン<phonon>`\ （とくに\ :ref:`虚数振動数<imaginary-frequency>`）、:ref:`非調和性<anharmonicity>`、:ref:`反転対称性と自発分極<inversion-and-polarization>`。
 
 **学習目標**:
 

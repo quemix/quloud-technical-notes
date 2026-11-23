@@ -245,7 +245,7 @@ Berry位相で分極の差を求めるときは、参照構造から目的の構
 その上で分極の枝を連続的に追う。:eq:`fo-wannier-center` は占有バンドと非占有バンドがすべての :math:`\boldsymbol k` で分かれていることを前提にしており、
 途中で金属になる経路では占有状態が定まらず、Berry位相が定義できない [KingSmithVanderbilt1993]_ [Spaldin2012]_。
 
-Born有効電荷は、イオン結晶のΓ点で縦波と横波の光学モードの振動数が分かれる\ :ref:`LO–TO分裂<phonon>`\ の大きさも決める。ZhongとKing-Smith、Vanderbiltは、ペロブスカイト型の強誘電体で大きなBorn有効電荷のためにLO–TO分裂が巨大になることを示した
+Born有効電荷は、イオン結晶のΓ点で縦波と横波の光学モードの振動数が分かれる\ :ref:`LO–TO分裂<lo-to-splitting>`\ の大きさも決める。ZhongとKing-Smith、Vanderbiltは、ペロブスカイト型の強誘電体で大きなBorn有効電荷のためにLO–TO分裂が巨大になることを示した
 [ZhongKingSmithVanderbilt1994]_。
 
 解釈と限界

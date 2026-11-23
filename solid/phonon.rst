@@ -7,8 +7,8 @@
 エネルギーを変位の2次まで展開でき、原子の運動は互いに独立な調和振動子の集まりに分けられる。
 この振動の量子を **フォノン** と呼ぶ。本稿では、力定数から動的行列を作り、その固有値として
 振動数の分散を求める手順を、1次元二原子鎖で具体的に追う。固有値が負になる場合の意味
-（虚数振動数と動的安定性）、調和近似に含まれる量子効果である零点振動、2次の展開では表せない効果
-（非調和性と、振動数の体積依存性から生じる熱膨張）も扱う。
+（虚数振動数と動的安定性）と、力定数を第一原理計算で求める方法、イオン結晶のLO–TO分裂も扱う。
+零点振動、比熱、熱膨張など温度に関わる性質は「\ :ref:`phonon-thermal`\ 」で扱う。
 
 **前提知識**: 古典力学の運動方程式と調和振動子、エルミート行列の固有値問題、
 :ref:`ブロッホの定理<blochstheorem>`、:ref:`第1ブリルアンゾーン<first-brillouin-zone>`。
@@ -18,7 +18,7 @@
 * 調和近似のもとで力定数を定義し、結晶の運動方程式から動的行列の固有値問題を導く。
 * 1次元二原子鎖の分散を解き、音響分枝と光学分枝、Γ点とゾーン境界の変位パターンを説明する。
 * 動的行列の負の固有値が、虚数振動数と負のエネルギー曲率を表すことを説明する。
-* 零点振動を調和振動子の量子効果として求め、非調和性と熱膨張が調和近似のどこを超える効果かを区別する。
+* 対称性を課した最適化で力が0になった構造が、極小とは限らず鞍点でありうることを、フォノンの固有値から判定する。
 
 .. _harmonic-approximation:
 
@@ -123,6 +123,13 @@
 に比例するので、重い原子ほど固有ベクトルの成分に比べて変位が小さい。計算プログラムが
 出力するのが質量で割る前の固有ベクトルか、変位かは、結果を読むときに区別する必要がある
 [Ghosez1999]_。
+
+.. _ph-acoustic-optical:
+
+.. |acoustic-optical-branches| replace:: 音響分枝と光学分枝
+
+|acoustic-optical-branches|
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ブリルアンゾーンの中心 :math:`\boldsymbol k=0`\ （\ :ref:`Γ点<gamma-point>`）では、音響和則 :eq:`ph-asr` から、各原子の成分が
 :math:`e_{\kappa\alpha}\propto\sqrt{m_\kappa}\,\delta_{\alpha\gamma}` のベクトル（全原子の一様な並進）が
@@ -301,102 +308,22 @@
 振動数を読む方法もある [Kunc1982]_。この方法は、虚数振動数をもつモードに沿って
 エネルギーがどこまで下がるかを調べるときにも使われる。
 
-.. _anharmonicity:
+.. _lo-to-splitting:
 
-非調和性
---------
+LO–TO分裂
+---------
 
-:eq:`ph-expansion` で無視した3次以上の項を **非調和項** と呼ぶ。非調和項があると
-基準振動 :eq:`ph-normal-modes` は互いに独立でなくなり、フォノンどうしがエネルギーをやり取りする。
-その結果、フォノンは有限の寿命をもち、熱伝導率が有限になる。振動の振幅が温度とともに
-大きくなると、平均的な力定数が変わり、振動数も温度に依存する。
+イオン結晶では、正負のイオンが逆向きに動く光学モードが電気双極子を生む。波数が小さい長波長のモードのうち、
+変位が波数の方向に平行な縦波（longitudinal optical, LO）では、生じた分極が巨視的な電場を伴い、この電場が変位を押し戻す。
+変位が波数に垂直な横波（transverse optical, TO）では、このような電場は生じない。そのため、Γ点に近づく極限で
+LOモードの振動数はTOモードより高くなり、二つが分かれる。これを **LO–TO分裂** と呼ぶ。
+分裂の大きさは、\ :ref:`Born有効電荷<fo-born-charge>`\ と、電子の分極による遮蔽を表す高周波の誘電率で決まる。
+極性モードが一つの場合は、静的な誘電率との比が\ :ref:`Lyddane–Sachs–Tellerの関係<polar-soft-mode>`\ （式 :eq:`sm-lst`）で
+:math:`\omega_{\mathrm{LO}}` と :math:`\omega_{\mathrm{TO}}` に結びつく。
 
-虚数振動数をもつ構造でも、エネルギーが際限なく下がるわけではない。調和近似の
-:math:`\frac12\omega_s^2Q^2` は小さい :math:`Q` での形にすぎず、変位が大きくなると4次などの
-非調和項がエネルギーを押し上げる。曲率が負の原点と、大きい変位での壁の間に、
-エネルギーの極小が現れる。この形を\ :ref:`二重井戸ポテンシャル<double-well-potential>`\ と呼び、虚数振動数をもつモードが
-低温で凍結する\ :ref:`ソフトモード<soft-mode>`\ の考え方につながる。
-
-.. _zero-point-vibration:
-
-零点振動と有限温度の振動エネルギー
-----------------------------------
-
-調和振動子の基底状態のエネルギーは0でなく :math:`\hbar\omega/2` である。結晶全体では
-
-.. math::
-   :label: ph-zpe
-
-   E_{\mathrm{ZP}}=\sum_{\boldsymbol k,s}\frac12\hbar\omega_s(\boldsymbol k)
-
-が絶対零度でも残り、これを **零点エネルギー** と呼ぶ。基底状態の振幅の2乗平均は
-:math:`\langle Q^2\rangle=\hbar/(2\omega)` であり、原子は0 Kでも平衡位置のまわりに広がっている
-（**零点振動** ）。:math:`Q` は質量の平方根を含むので、質量 :math:`m` の原子1個だけが動く
-モードでは変位の2乗平均が :math:`\hbar/(2m\omega)` になり、軽い原子や振動数の低いモードほど大きい。
-
-零点エネルギーは構造ごとに異なるので、静止した原子で計算した全エネルギーの差が小さい二つの
-構造では、:eq:`ph-zpe` の差で安定性の順序が変わることがある。原子核の量子揺らぎは、
-相転移の温度も変える。ZhongとVanderbiltは、第一原理計算に基づく有効ハミルトニアンを
-経路積分モンテカルロ法で解いた [Zhong1996]_。SrTiO\ :sub:`3`\ では量子揺らぎが強誘電転移を完全に抑え、:ref:`八面体回転<sm-octahedral-rotation>`\ の転移温度を130 Kから110 Kに下げた。BaTiO\ :sub:`3`\ では転移温度が35〜50 K下がった。
-
-温度 :math:`T` では、振動数 :math:`\omega` のモードの平均エネルギーは、Bose–Einstein分布の
-占有数 :math:`n_{\mathrm B}=1/(e^{\hbar\omega/k_{\mathrm B}T}-1)` を使って
-
-.. math::
-   :label: ph-mean-energy
-
-   \langle E\rangle=\hbar\omega\left(n_{\mathrm B}+\frac12\right)
-
-となる。:math:`x=\hbar\omega/k_{\mathrm B}T` が小さい高温では
-:math:`1/(e^x-1)=1/x-1/2+x/12+O(x^3)` より :math:`\langle E\rangle=k_{\mathrm B}T+(\hbar\omega)^2/(12k_{\mathrm B}T)+\cdots`
-で、主要項は古典論の\ :ref:`エネルギー等分配<temperature>`\ の値 :math:`k_{\mathrm B}T` に一致する。
-:math:`k_{\mathrm B}T\ll\hbar\omega` の低温では、モードはほぼ基底状態にとどまり、温度を上げても
-エネルギーがほとんど増えない。これが、低温で比熱がDulong–Petitの値より小さくなる理由である。
-
-.. _thermal-expansion:
-
-熱膨張と準調和近似
-------------------
-
-厳密に調和的な結晶は熱膨張しない。力定数が体積によらなければ振動数も体積によらず、
-振動の自由エネルギーは体積の関数にならないので、平衡体積は温度で変わらない。
-原子の平均位置も、放物線のポテンシャルでは平衡位置からずれない。
-
-**準調和近似** では、各体積で調和近似を使い、振動数の体積依存性だけを取り入れる。
-静止した原子の全エネルギー :math:`U(V)` に振動の自由エネルギーを加えた
-
-.. math::
-   :label: ph-qha-free-energy
-
-   F(V,T)=U(V)+\sum_{\boldsymbol k,s}\left[\frac12\hbar\omega_s(\boldsymbol k;V)
-   +k_{\mathrm B}T\ln\left(1-e^{-\hbar\omega_s(\boldsymbol k;V)/k_{\mathrm B}T}\right)\right]
-
-を、外圧が0の場合に体積について最小にすると、温度 :math:`T` での平衡体積が求まる。
-外圧 :math:`P_{\mathrm{ext}}` がかかっている場合は、:math:`F+P_{\mathrm{ext}}V` を最小にする [Baroni2010]_。
-角括弧の中を :math:`\omega` で微分すると :math:`\hbar(n_{\mathrm B}+1/2)=\langle E\rangle/\omega` になるので、
-モードごとの **Grüneisen定数**
-
-.. math::
-   :label: ph-gruneisen
-
-   \gamma_s(\boldsymbol k)=-\frac{\partial\ln\omega_s(\boldsymbol k)}{\partial\ln V}
-
-を使うと、圧力 :math:`P=-\partial F/\partial V` は
-
-.. math::
-   :label: ph-thermal-pressure
-
-   P=-\frac{dU}{dV}+\frac1V\sum_{\boldsymbol k,s}\gamma_s(\boldsymbol k)\,\langle E_s(\boldsymbol k)\rangle
-
-となる。第2項は振動による圧力である。体積を広げると振動数が下がる（:math:`\gamma>0`）通常の固体では
-この項が正で、結晶は外へ押し広げられる。温度が上がると :math:`\langle E\rangle` が増えて体積が
-大きくなる。:math:`\langle E\rangle` には零点エネルギーも含まれるので、0 Kでも平衡体積は
-静止した原子の値より少し大きい。:math:`U(V)` を平衡体積のまわりで体積弾性率 :math:`B` を使って展開し、
-すべてのモードが同じ :math:`\gamma` をもつとすると、熱膨張係数は
-:math:`\alpha\simeq\gamma C_V/(BV)`\ （:math:`C_V` は定積熱容量）となる。これをGrüneisenの関係と呼ぶ。
-
-準調和近似は振動数の体積依存性だけを取り込み、一定体積でのフォノンどうしの相互作用は
-無視する。温度が高く振幅が大きい場合や、虚数振動数をもつ構造では、この近似は使えない。
+この巨視的な電場は、遠くの胞まで :math:`1/R^3` で及ぶ双極子どうしの相互作用から生じる。そのため、短距離の力定数だけで作った
+動的行列 :eq:`ph-dmat` ではLO–TO分裂を表せず、Γ点に近づく向きによって値が変わる補正項を加える必要がある [Baroni2001]_。
+有限変位法で求めた力定数からイオン結晶の分散を描くときは、この補正を入れたかどうかを確かめる。
 
 .. _phonon-batio3-example:
 
@@ -425,13 +352,13 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 相どうしのエネルギー差が小さい場合は、零点エネルギー :eq:`ph-zpe` の差も順序に影響しうる。
 事例でも、フォノンによる動的安定性の確認と零点振動の評価を、0 Kの順位の先に残る課題に挙げている。
 
-`計算事例「格子定数」 <https://example.quloud-platform.quemix.com/BaTiO3/lattice-constant.html>`_\ は、4相の格子定数をDFT（OpenMX、Quantum ESPRESSO）と機械学習原子間ポテンシャルで求め、実験値と
-比べている。計算値は静止した原子の0 Kの最適化構造であり、実験値は各相が安定に存在する
-有限温度で測られている。両者の差には、:eq:`ph-thermal-pressure` の熱膨張と零点振動による
-体積の増加に加えて、\ :ref:`交換相関汎関数<exchange-correlation-functional>`\ の近似によるずれも含まれる。立方晶相は0 Kでは不安定モードをもつので、0 Kの立方晶の格子定数は、
-対称性を課して得た鞍点の構造の値である。同じ事例集の
+同じ事例集の
 `「二重井戸ポテンシャル Part 1」 <https://example.quloud-platform.quemix.com/BaTiO3/total-energy-DFT-MLIP.html>`_\ でも、
-基準の格子定数の立方晶でTiを中心からずらすとエネルギーが下がる（OpenMX）。
+基準の格子定数の立方晶でTiを中心からずらすとエネルギーが下がる（OpenMX）。したがって、対称性を課して最適化した
+0 Kの立方晶は、極性の変位に対して不安定な鞍点の構造である。この構造の格子定数を有限温度の実験値と比べるときの
+注意は、「\ :ref:`phonon-thermal`\ 」の\ :ref:`事例<phonon-thermal-batio3-example>`\ で扱う。
+
+.. _phonon-interpretation-limits:
 
 解釈と限界
 ----------
@@ -443,28 +370,31 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 Γ点付近に小さな虚数振動数が出ることもある。物理的な不安定性かどうかは、計算条件を変えても残るか、固有ベクトルに沿ってエネルギーが
 実際に下がるかで判断できる。
 
-イオン結晶では、長波長の縦波の光学モードが巨視的な電場を伴うため、Γ点で縦波と横波の
-光学モードの振動数が分かれる（LO–TO分裂）。この効果は動的行列 :eq:`ph-dmat` の短距離の力定数
-だけでは表せず、\ :ref:`Born有効電荷<polarization-evaluation>`\ と高周波誘電率を使った補正が要る [Baroni2001]_。
-
 調和近似の振動数は、静止した構造のまわりの小さな振動のものである。不安定なモードをもつ
 高温相（立方晶BaTiO\ :sub:`3`\ など）が有限温度で存在できるのは、大きな振幅の非調和な運動で
 平均構造が対称になるためであり、調和近似の範囲では説明できない。
+
+.. _phonon-related:
 
 関連項目
 --------
 
 * :ref:`blochstheorem`
 * :ref:`periodic_boundary`
-* :ref:`temperature`
+* :ref:`phonon-thermal`
+* :ref:`soft-mode`
 * :ref:`ferroelectricity`
 * :ref:`peierls-instability`
+
+.. _phonon-references:
 
 参考資料
 --------
 
 * N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and
-  Winston, 1976), Chaps. 22, 23, 25.
+  Winston, 1976), Chaps. 22, 23.
+
+.. _phonon-bibliography:
 
 参考文献
 --------
@@ -493,12 +423,10 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 .. [Kunc1982] K. Kunc and R. M. Martin, “*Ab initio* force constants of GaAs: A new approach to
    calculation of phonons and dielectric properties,” *Physical Review Letters* **48**, 406–409 (1982),
    `doi:10.1103/PhysRevLett.48.406 <https://doi.org/10.1103/PhysRevLett.48.406>`_.
-.. [Zhong1996] W. Zhong and D. Vanderbilt, “Effect of quantum fluctuations on structural phase
-   transitions in SrTiO\ :sub:`3` and BaTiO\ :sub:`3`,” *Physical Review B* **53**, 5047–5050 (1996),
-   `doi:10.1103/PhysRevB.53.5047 <https://doi.org/10.1103/PhysRevB.53.5047>`_.
 .. [MouhatCoudert2014] F. Mouhat and F.-X. Coudert, “Necessary and sufficient elastic stability conditions
    in various crystal systems,” *Physical Review B* **90**, 224104 (2014),
    `doi:10.1103/PhysRevB.90.224104 <https://doi.org/10.1103/PhysRevB.90.224104>`_.
-.. [Baroni2010] S. Baroni, P. Giannozzi, and E. Isaev, “Density-functional perturbation theory for
-   quasi-harmonic calculations,” *Reviews in Mineralogy and Geochemistry* **71**, 39–57 (2010),
-   `doi:10.2138/rmg.2010.71.3 <https://doi.org/10.2138/rmg.2010.71.3>`_.
+
+.. raw:: html
+
+   <script src="../_static/js/legacy-anchors.js" defer></script>
