@@ -119,7 +119,7 @@ X線の散漫散乱、二体分布関数（PDF）、X線吸収微細構造（XAF
 
 .. _fo-related:
 
-関連項目
+関連資料
 --------
 
 * :ref:`ferroelectricity`

@@ -170,7 +170,7 @@
 
 .. _phonon-thermal-batio3-example:
 
-説明用の科学的事例：BaTiO\ :sub:`3`\ の格子定数の計算値と実験値
+説明用の事例：BaTiO\ :sub:`3`\ の格子定数の計算値と実験値
 ----------------------------------------------------------------
 
 `計算事例「格子定数」 <https://example.quloud-platform.quemix.com/BaTiO3/lattice-constant.html>`_\ は、4相の格子定数をDFT（OpenMX、Quantum ESPRESSO）と機械学習原子間ポテンシャルで求め、実験値と
@@ -201,7 +201,7 @@
 
 .. _phonon-thermal-related:
 
-関連項目
+関連資料
 --------
 
 * :ref:`phonon`
@@ -211,16 +211,13 @@
 
 .. _phonon-thermal-references:
 
-参考資料
---------
-
-* N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and
-  Winston, 1976), Chaps. 23, 25.
-
 .. _phonon-thermal-bibliography:
 
 参考文献
 --------
+
+* N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and
+  Winston, 1976), Chaps. 23, 25.
 
 .. [Zhong1996] W. Zhong and D. Vanderbilt, “Effect of quantum fluctuations on structural phase
    transitions in SrTiO\ :sub:`3` and BaTiO\ :sub:`3`,” *Physical Review B* **53**, 5047–5050 (1996),
@@ -228,3 +225,7 @@
 .. [Baroni2010] S. Baroni, P. Giannozzi, and E. Isaev, “Density-functional perturbation theory for
    quasi-harmonic calculations,” *Reviews in Mineralogy and Geochemistry* **71**, 39–57 (2010),
    `doi:10.2138/rmg.2010.71.3 <https://doi.org/10.2138/rmg.2010.71.3>`_.
+
+.. raw:: html
+
+   <script src="../_static/js/legacy-anchors.js" defer></script>

@@ -184,7 +184,7 @@ Siの全エネルギーの誤差は、この計算で調べた範囲では、各
 
 .. _kps-related:
 
-関連項目
+関連資料
 --------
 
 * :ref:`blochstheorem`
@@ -195,7 +195,7 @@ Siの全エネルギーの誤差は、この計算で調べた範囲では、各
 
 .. _kps-references:
 
-参考資料
+参考文献
 --------
 
 * N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and

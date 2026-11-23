@@ -178,6 +178,7 @@
             "#id26": "#phonon-related",
             "#id27": "#phonon-references",
             "#id28": "#phonon-bibliography",
+            "#id22": "#phonon-bibliography",
         },
         // 2026-11-23 に分極の評価を「周期結晶の分極」へ分ける前の ferroelectric_origin.html
         // （#id14〜#id17 は分割後のページで引用の戻りリンクの行き先なので転送しない）
@@ -232,6 +233,13 @@
             "#equation-fe-devonshire": "landau_theory.html#equation-fe-devonshire",
             "#equation-fe-curie-constant": "landau_theory.html#equation-fe-curie-constant",
             "#equation-fe-first-order": "landau_theory.html#equation-fe-first-order",
+        },
+        // 2026-11-23 に末尾の「参考資料」と「参考文献」を1つの節にまとめる前の phonon_thermal.html と polarization.html
+        "phonon_thermal": {
+            "#id13": "#phonon-thermal-bibliography",
+        },
+        "polarization": {
+            "#id29": "#wieder1955",
         },
     };
 

@@ -10,6 +10,15 @@
 F中心・I中心の反射条件を導く。この条件は、\ :ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`\ で
 逆格子ベクトルになる指数の条件と一致する。
 
+**前提知識**: :ref:`分率座標<coordinates>`、:ref:`逆格子<reciprocal-lattice>`、:ref:`中心並進<centring-translation>`、
+:ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`、:ref:`指数の共通因子<index-common-factor>`。
+
+**学習目標**:
+
+* 単位胞内の原子からの散乱波を位相込みで足し、構造因子を定義する。
+* 中心並進で移り合う原子の散乱波が打ち消し合う条件から、F中心とI中心の反射条件を導く。
+* 反射条件が、中心並進のある胞で逆格子ベクトルになる指数の条件と一致することを確かめる。
+
 .. _scattering-structure-factor:
 
 原子ごとの散乱波と構造因子
@@ -124,7 +133,7 @@ I中心の慣用単位胞には原点と :math:`(1/2,1/2,1/2)` の二つの位�
 実際に観測される反射の有無や強度を解釈するときは、
 :ref:`らせん・映進操作<screw-and-glide>`\ による反射条件や、単位構造の散乱振幅も考慮する。
 
-参考資料
+参考文献
 --------
 
 * IUCr, `Structure factor <https://dictionary.iucr.org/Structure_factor>`_.

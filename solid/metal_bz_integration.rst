@@ -220,7 +220,7 @@ Blöchl補正と適用条件
 
 .. _metal-related:
 
-関連項目
+関連資料
 --------
 
 * :ref:`kpoint_sampling`
@@ -231,7 +231,7 @@ Blöchl補正と適用条件
 
 .. _metal-references:
 
-参考資料
+参考文献
 --------
 
 * N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and

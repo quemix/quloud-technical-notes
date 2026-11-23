@@ -12,6 +12,12 @@ FCCの慣用単位胞と基本単位胞を例に、単位胞を取り直した�
 :ref:`中心並進<centring-translation>`、:ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`、
 :ref:`方向と格子面<crystal-directions-planes>`。
 
+**学習目標**:
+
+* FCCの慣用単位胞と基本単位胞の間で、原子位置・方向指数・反射指数を変換する。
+* 胞の形だけではブラベー格子型が決まらないことを、R格子の六方軸表示、六方P格子の直交C中心化胞、FCC格子の体心正方胞の例で説明する。
+* 単位胞の変換と超胞を数値で検算する。
+
 .. _lt-fcc-cell:
 
 FCCの慣用単位胞と基本単位胞
@@ -289,7 +295,7 @@ FCC格子を体心正方胞で表す
 
 .. _lt-cell-related:
 
-関連ノート
+関連資料
 ----------
 
 * :ref:`pseudocubic-cell` — 歪んだ結晶を高対称相の軸で表す。
@@ -298,7 +304,7 @@ FCC格子を体心正方胞で表す
 
 .. _lt-cell-references:
 
-参考資料
+参考文献
 ------------
 
 * IUCr, `Reflection conditions <https://dictionary.iucr.org/Reflection_conditions>`_.

@@ -308,7 +308,7 @@ QEの出力の重み ``wk`` は、スピン偏極のない計算ではスピン�
 同じハミルトニアンで :math:`\boldsymbol k` と :math:`-\boldsymbol k` の
 エネルギーが等しいとは限らない。
 
-関連項目
+関連資料
 --------
 
 * :ref:`k点メッシュと積分誤差<kpoint_sampling>`：積分の近似と収束。
@@ -318,7 +318,7 @@ QEの出力の重み ``wk`` は、スピン偏極のない計算ではスピン�
 * `spglibの逆格子メッシュの説明 <https://spglib.readthedocs.io/en/stable/api/autodoc/spglib.kpoints.html>`_：
   メッシュ、シフト、時間反転の扱いと既約点への対応。
 
-参考資料
+参考文献
 --------
 
 * H. J. Monkhorst and J. D. Pack, “Special points for Brillouin-zone integrations,”

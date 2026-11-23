@@ -376,7 +376,7 @@ STO-3G基底（水素1原子あたり1個の1s型基底関数）で計算して�
 （例えばHartree–Fock法とKohn–Sham法）の軌道エネルギーは同じ物理量ではないため、
 フィットした :math:`t` の大小をそのまま比較することはできない。
 
-関連項目
+関連資料
 --------
 
 * :ref:`bandstructure`
@@ -384,7 +384,7 @@ STO-3G基底（水素1原子あたり1個の1s型基底関数）で計算して�
 * :ref:`bond_order`
 * `水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
 
-参考資料
+参考文献
 --------
 
 * `N. Manini: The tight-binding model for electronic band structure <https://materia.fisica.unimi.it/manini/dida/tight.binding.notes.html>`_

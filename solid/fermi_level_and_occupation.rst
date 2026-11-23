@@ -6,6 +6,14 @@
 :ref:`エネルギーバンド<bandstructure>`\ に、電子がどのように入るかを考える。
 電子数と温度から占有数を決め、金属のフェルミ面と半導体のキャリア密度の計算につなげる。
 
+**前提知識**: :ref:`バンド構造と状態密度<bandstructure>`、:ref:`半充填<half-filling>`。
+
+**学習目標**:
+
+* フェルミ–ディラック分布で占有数を表し、電子数から化学ポテンシャルが決まることを説明する。
+* 絶対零度でのフェルミ面と、金属と半導体でのフェルミ準位の意味を説明する。
+* ボルツマン近似が使える条件と、そのときの占有数の形を導く。
+
 .. _fermi-dirac-distribution:
 
 フェルミ–ディラック分布
@@ -90,7 +98,7 @@
 :ref:`価電子帯の正孔密度<valence-band-holes>`\ を求められる。フェルミ準位がバンド端に近づくと近似の条件が
 崩れるので、その場合は式 :eq:`f(E)` を状態密度との積分に使う。
 
-参考資料
+参考文献
 --------
 
 * Jesús A. del Alamo, MIT OpenCourseWare, `Integrated Microelectronic Devices, Lecture 3 <https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/1bccffbfa7b4487be99b8af8b46186ef_lecture3.pdf>`_.

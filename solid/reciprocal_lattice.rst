@@ -12,6 +12,12 @@
 **前提知識**: :ref:`格子行列<lattice-translations>` :math:`A`、:ref:`分率座標<coordinates>`、
 :ref:`中心並進<centring-translation>`。
 
+**学習目標**:
+
+* 逆格子の基本並進ベクトルを定義し、格子行列との関係 :math:`B=2\pi A^{-\mathsf T}` を導く。
+* 格子と同じ周期の関数が、逆格子ベクトルを波数とする平面波だけで展開できることを示す。
+* 中心並進のある慣用単位胞で、整数の指数が逆格子ベクトルになる条件を導く。
+
 .. _reciprocal-basis:
 
 逆格子の基本並進ベクトル
@@ -167,7 +173,7 @@ BCCでは :math:`T=\{(0,0,0),(1/2,1/2,1/2)\}` なので、条件は :math:`h+k+l
 
 条件 :eq:`centred-reciprocal-condition` は、回折で中心並進が許す反射の指数の条件（反射条件）と一致する。中心並進で移り合う原子からの散乱波の位相和から同じ条件を導く過程は、\ :ref:`中心並進による打ち消し<sf-centring-extinction>`\ で示す。
 
-参考資料
+参考文献
 --------
 
 * IUCr, `Reflection conditions <https://dictionary.iucr.org/Reflection_conditions>`_.

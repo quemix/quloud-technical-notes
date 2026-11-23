@@ -7,6 +7,15 @@
 仮定し、両者の移動度とキャリア密度から真性半導体の伝導率を求める。
 キャリア密度の計算には\ :ref:`フェルミ–ディラック分布<fermi-dirac-distribution>`\ を使う。
 
+**前提知識**: :ref:`価電子帯・伝導帯とバンドギャップ<valence-conduction-band-gap>`、:ref:`状態密度<density-of-states>`、
+:ref:`フェルミ–ディラック分布<fermi-dirac-distribution>`\ と\ :ref:`ボルツマン近似<fermi-boltzmann-limit>`。
+
+**学習目標**:
+
+* 電子と正孔の密度と移動度から、電気伝導率を表す。
+* 有効質量と緩和時間から移動度を導く。
+* 放物線バンドとボルツマン近似から伝導帯の電子密度と価電子帯の正孔密度を求め、真性半導体のキャリア密度がバンドギャップで決まることを示す。
+
 .. _semiconductor-conductivity:
 
 電子・正孔と電気伝導率
@@ -211,7 +220,7 @@
 ドーピングがあれば電子と正孔の密度は一般に異なり、複数のバンドや谷が寄与する場合は
 各状態密度を足して計算する。
 
-参考資料
+参考文献
 --------
 
 * Jesús A. del Alamo, MIT OpenCourseWare, `Integrated Microelectronic Devices, Lecture 3 <https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/1bccffbfa7b4487be99b8af8b46186ef_lecture3.pdf>`_.

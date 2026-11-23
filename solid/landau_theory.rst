@@ -162,7 +162,7 @@ Landau理論の仮定は、2次の係数だけが :math:`a(T-T_0)` と温度に�
 
 .. _landau-batio3-example:
 
-説明用の科学的事例：BaTiO\ :sub:`3`\ の立方晶–正方晶転移
+説明用の事例：BaTiO\ :sub:`3`\ の立方晶–正方晶転移
 --------------------------------------------------------
 
 BaTiO\ :sub:`3`\ の立方晶–正方晶転移は1次転移である。Merzは、転移温度のすぐ上で、弱い電場では分極が電場に比例し、
@@ -192,7 +192,7 @@ Landau理論は、秩序変数の空間的な揺らぎを無視し、平均の�
 
 .. _landau-related:
 
-関連項目
+関連資料
 --------
 
 * :ref:`soft-mode`
@@ -201,7 +201,7 @@ Landau理論は、秩序変数の空間的な揺らぎを無視し、平均の�
 
 .. _landau-references:
 
-参考資料
+参考文献
 --------
 
 * L\. D. Landau and E. M. Lifshitz, *Statistical Physics*, Part 1, 3rd ed. (Pergamon, 1980), Chap. XIV.

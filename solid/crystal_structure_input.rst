@@ -9,6 +9,12 @@
 **前提知識**: :ref:`格子の基底変換<lt-primitive-basis>`、:ref:`Cartesian座標の回転<lt-cartesian-rotation>`、
 :ref:`基本単位胞<lattice-unit-cells>`、:ref:`超胞<lt-supercell>`。
 
+**学習目標**:
+
+* 格子還元と結晶学的標準化で、何が変わり何が保たれるかを区別する。
+* CIF、Quantum ESPRESSO、SPR-KKR、LAMMPSで、格子ベクトルと原子座標の指定がどう違うかを確かめる。
+* 格子ベクトルを列と行のどちらに並べるかの違いによる入力の誤りを避ける。
+
 .. _lt-standardize-cell:
 
 格子還元と結晶学的標準化
@@ -86,7 +92,7 @@ LAMMPSの `triclinic box documentation <https://docs.lammps.org/Howto_triclinic.
 
 .. _lt-input-references:
 
-参考資料
+参考文献
 ------------
 
 * IUCr, `Conventional cell <https://dictionary.iucr.org/Conventional_cell>`_.

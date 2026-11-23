@@ -7,6 +7,14 @@
 その変換は結晶の対称操作である。ここでは\ :ref:`格子行列<lattice-translations>` :math:`A`
 と\ :ref:`分率座標<coordinates>`\ を使い、対称操作で原子がどこへ移るかを求める。
 
+**前提知識**: :ref:`格子行列<lattice-translations>` :math:`A`、:ref:`分率座標<coordinates>`、:ref:`計量行列<lattice-metric>`、直交行列。
+
+**学習目標**:
+
+* 回転・鏡映・反転・並進を :math:`\{Q\mid\boldsymbol t\}` で表し、操作の合成と逆操作を求める。
+* Cartesian座標の操作を分率座標の操作に書き直し、格子を保つ操作の線形部分が整数行列になることを示す。
+* 分率座標で原子を移し、周期像まで含めて配置が重なるかで対称操作かどうかを判定する。
+
 回転・鏡映・反転・並進
 ----------------------
 
@@ -81,7 +89,7 @@ Cartesian座標では位置 :math:`\boldsymbol r` への操作を
 :math:`(1/2,1/4,0)` となる。この位置に同じ元素の原子があり、他の原子も同様に対応する
 とき、その回転は原子配置の対称操作である。
 
-参考資料
+参考文献
 --------
 
 * IUCr, `Definition of symmetry elements in space groups and point groups <https://www.iucr.org/who-we-are/commissions/commission-on-crystallographic-nomenclature/published-reports/symel>`_.

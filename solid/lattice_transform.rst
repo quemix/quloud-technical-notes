@@ -232,7 +232,7 @@ Cartesian回転も含めれば :math:`B'=QBP^{-\mathsf T}` である。
 
 .. _lt-transform-related:
 
-関連ノート
+関連資料
 ---------------
 
 * :ref:`lattice` — 格子ベクトル、単位胞、分率座標、中心並進。

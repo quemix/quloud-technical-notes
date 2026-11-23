@@ -85,7 +85,7 @@ BZ積分を行うのに必要な\ :ref:`k点メッシュの分割数<kpoint-mesh
 
 .. _pbc-related:
 
-関連項目
+関連資料
 --------
 
 * :ref:`blochstheorem`
@@ -96,7 +96,7 @@ BZ積分を行うのに必要な\ :ref:`k点メッシュの分割数<kpoint-mesh
 
 .. _pbc-references:
 
-参考資料
+参考文献
 --------
 
 * N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and

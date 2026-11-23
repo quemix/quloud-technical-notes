@@ -147,7 +147,7 @@
 
 .. _bz-references:
 
-参考資料
+参考文献
 --------
 
 * MIT Materials Science, `Lecture 7 <https://wikis.mit.edu/confluence/display/MSEDG/Lecture%2B7>`_.

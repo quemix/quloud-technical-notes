@@ -12,6 +12,12 @@
 **前提知識**: :ref:`格子行列<lattice-translations>` :math:`A`、:ref:`分率座標<coordinates>`、
 :ref:`計量行列<lattice-metric>` :math:`G`、:ref:`逆格子<reciprocal-lattice>` :math:`B`。
 
+**学習目標**:
+
+* 方向指数とMiller指数を定義し、格子面の組の法線が逆格子ベクトルの向きになることを示す。
+* 面間隔を逆格子ベクトルの長さから求め、指数の共通因子が何を表すかを説明する。
+* 同じ指数の方向と面法線が平行になる条件を、計量行列で判定する。
+
 この記事では、断らない限り :math:`A` を基本並進ベクトルの組とする。
 
 .. _crystal-direction-index:
@@ -113,7 +119,7 @@
    :math:`[10]` の矢印は格子ベクトル :math:`\boldsymbol a_1` の全長で描き、
    法線の長さは模式的に示した。
 
-参考資料
+参考文献
 --------
 
 * IUCr, *International Tables for Crystallography*, Vol. A (2006), `§1.1.4 <https://it.iucr.org/Ab/ch1o1v0001/sec1o1o4.pdf>`__.

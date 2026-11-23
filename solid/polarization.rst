@@ -158,7 +158,7 @@ Born有効電荷は、イオン結晶のΓ点で縦波と横波の光学モー�
 
 .. _polarization-batio3-example:
 
-説明用の科学的事例：正方晶BaTiO\ :sub:`3`\ の分極の見積もり
+説明用の事例：正方晶BaTiO\ :sub:`3`\ の分極の見積もり
 --------------------------------------------------------------
 
 :numref:`tbl-born-charges-batio3` の値で、正方晶BaTiO\ :sub:`3`\ の分極を見積もる。ButtnerとMaslenの室温の単結晶X線回折の構造
@@ -211,7 +211,7 @@ Hewatの実験の変位から :math:`28.6\ \mu\mathrm{C/cm^2}` を得ている [
 
 .. _polarization-related:
 
-関連項目
+関連資料
 --------
 
 * :ref:`ferroelectricity`
@@ -222,17 +222,14 @@ Hewatの実験の変位から :math:`28.6\ \mu\mathrm{C/cm^2}` を得ている [
 
 .. _polarization-references:
 
-参考資料
+.. _polarization-bibliography:
+
+参考文献
 --------
 
 * R. Resta and D. Vanderbilt, “Theory of polarization: A modern approach,” in *Physics of Ferroelectrics:
   A Modern Perspective*, Topics in Applied Physics **105** (Springer, 2007), pp. 31–68,
   `doi:10.1007/978-3-540-34591-6_2 <https://doi.org/10.1007/978-3-540-34591-6_2>`_.
-
-.. _polarization-bibliography:
-
-参考文献
---------
 
 .. [GhosezMichenaudGonze1998] Ph. Ghosez, J.-P. Michenaud, and X. Gonze, “Dynamical atomic charges:
    The case of ABO\ :sub:`3` compounds,” *Physical Review B* **58**, 6224–6240 (1998),
@@ -260,3 +257,7 @@ Hewatの実験の変位から :math:`28.6\ \mu\mathrm{C/cm^2}` を得ている [
 .. [Resta1994] R. Resta, “Macroscopic polarization in crystalline dielectrics: the geometric phase
    approach,” *Reviews of Modern Physics* **66**, 899–915 (1994),
    `doi:10.1103/RevModPhys.66.899 <https://doi.org/10.1103/RevModPhys.66.899>`_.
+
+.. raw:: html
+
+   <script src="../_static/js/legacy-anchors.js" defer></script>

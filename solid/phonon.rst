@@ -327,7 +327,7 @@ LOモードの振動数はTOモードより高くなり、二つが分かれる�
 
 .. _phonon-batio3-example:
 
-説明用の科学的事例：立方晶BaTiO\ :sub:`3`\ の不安定なΓ点モード
+説明用の事例：立方晶BaTiO\ :sub:`3`\ の不安定なΓ点モード
 ------------------------------------------------------------------
 
 立方晶BaTiO\ :sub:`3`\ は、対称性の高い構造が虚数振動数をもつ代表例である。ペロブスカイト型のBaTiO\ :sub:`3`\ は、高温の立方晶相（単位胞に5原子）で15本のフォノン分枝をもつ。Ghosezらは立方晶の実験格子定数（4.00 Å）でDFPTを使って全分枝を計算し、最も不安定なモードが
@@ -377,7 +377,7 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 
 .. _phonon-related:
 
-関連項目
+関連資料
 --------
 
 * :ref:`blochstheorem`
@@ -389,16 +389,13 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 
 .. _phonon-references:
 
-参考資料
---------
-
-* N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and
-  Winston, 1976), Chaps. 22, 23.
-
 .. _phonon-bibliography:
 
 参考文献
 --------
+
+* N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and
+  Winston, 1976), Chaps. 22, 23.
 
 .. [Ghosez1999] Ph. Ghosez, E. Cockayne, U. V. Waghmare, and K. M. Rabe, “Lattice dynamics of
    BaTiO\ :sub:`3`, PbTiO\ :sub:`3`, and PbZrO\ :sub:`3`: A comparative first-principles study,”

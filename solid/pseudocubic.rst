@@ -13,6 +13,12 @@
 :ref:`等価な方向と面の族<equivalent-directions>`、:ref:`空間群<crystal-space-group>`、
 :ref:`R格子の六方軸表示<lt-rhombohedral-hexagonal>`。
 
+**学習目標**:
+
+* 擬立方胞と各相の慣用単位胞の関係を、変換行列で表す。
+* 直方晶のA中心化胞の格子定数を、擬立方の格子定数に換算する。
+* 空間群の設定による軸の名前の違いと、擬立方表記で表せないことを説明する。
+
 .. _pseudocubic-phases:
 
 擬立方胞と各相の胞
@@ -138,13 +144,13 @@
 
 擬立方胞が基本単位胞になるのは、BaTiO\ :sub:`3`\ の各相のように並進周期が立方相と同じ場合に限る。隣り合う酸素八面体が互いに逆向きに回転する相では、並進周期が擬立方胞の辺の2倍になる方向が現れる [`Glazer 1972 <https://doi.org/10.1107/S0567740872007976>`__, `Howard & Stokes 1998 <https://doi.org/10.1107/S0108768198004200>`__]。例えばGdFeO\ :sub:`3`\ 型の :math:`Pnma` の胞は :math:`a\simeq c\simeq\sqrt2\,a_{\rm pc}`、:math:`b\simeq2a_{\rm pc}` で、4化学式単位を含む。このとき擬立方胞の辺は格子並進でなく、擬立方胞は単位胞にならない。擬立方の格子定数は、長さと角度を立方胞の軸で読むための参照として使われる。
 
-関連ノート
+関連資料
 ----------
 
 * :ref:`ferroelectricity` — BaTiO\ :sub:`3`\ の相と自発分極。
 * :ref:`lt-cell-transform` — 同じ格子を別の胞で表す例。
 
-参考資料
+参考文献
 --------
 
 * IUCr, *International Tables for Crystallography*, Vol. A (2006), `Table 4.3.2.1 <https://it.iucr.org/Ab/ch4o3v0001/table4o3o2o1.pdf>`__.

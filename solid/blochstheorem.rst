@@ -171,7 +171,7 @@
 
 .. _bloch-related:
 
-関連項目
+関連資料
 --------
 
 * :ref:`brillouinzone`
@@ -180,7 +180,7 @@
 
 .. _bloch-references:
 
-参考資料
+参考文献
 --------
 
 * N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and
