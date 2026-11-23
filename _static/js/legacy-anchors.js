@@ -238,9 +238,16 @@
     const page = window.location.pathname.split("/").pop().replace(/\.html$/, "");
     const destinations = redirects[page] || {};
 
+    // 旧ページの自動ID（#idN）は、後の版で引用の参照箇所（<a id="idN">）に使い回されることがある。
+    // 今のページでそのIDが引用の参照箇所なら、戻りリンクや共有されたURLの行き先として扱い、転送しない。
+    function isCitationReference(hash) {
+        const element = document.getElementById(decodeURIComponent(hash.slice(1)));
+        return element !== null && element.tagName === "A";
+    }
+
     function redirectLegacyAnchor() {
         const destination = destinations[window.location.hash];
-        if (destination) {
+        if (destination && !isCitationReference(window.location.hash)) {
             window.location.replace(destination);
         }
     }

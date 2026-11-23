@@ -379,6 +379,7 @@ Comèsらは、Tiの変位が鎖状に相関すると考えると説明できる
    <script>
    (() => {
        // 2026-11の拡張前に自動で付いていた見出し・図表のアンカーを、新しいラベルへ送る。
+       // 今のページでそのIDが引用の参照箇所（<a>）なら、引用の戻りリンクや共有されたURLの行き先なので転送しない（2026-11-23）。
        const destinations = {
            "#batio-3": "#batio3-crystal-phases",
            "#id6": "#fe-reading-optimization",
@@ -389,7 +390,8 @@ Comèsらは、Tiの変位が鎖状に相関すると考えると説明できる
            "#id11": "#tbl-batio3-cubic-tetragonal",
        };
        const destination = destinations[window.location.hash];
-       if (destination) {
+       const element = document.getElementById(window.location.hash.slice(1));
+       if (destination && !(element && element.tagName === "A")) {
            window.location.replace(destination);
        }
    })();
