@@ -261,7 +261,7 @@ Mulliken型の重みは、符号が負にもなりうる重なりの項 :math:`\
 したがって、価電子帯上端やギャップの値は、ぼかした曲線ではなく固有値から求める。
 
 ぼかしの幅の定義は文献やプログラムによって異なる。
-:ref:`k点のサンプリング<kpoint_sampling>` のガウシアンスメアリング
+:ref:`金属のk点積分<smearing>`\ で使うガウシアンスメアリング
 :math:`f=\tfrac12\operatorname{erfc}\bigl((\varepsilon-\mu)/\sigma\bigr)` では、
 :math:`-df/d\varepsilon=\exp\bigl(-(\varepsilon-\mu)^2/\sigma^2\bigr)/(\sqrt\pi\,\sigma)`
 の標準偏差が :math:`\sigma/\sqrt2` である。同じ記号 :math:`\sigma` が、標準偏差の

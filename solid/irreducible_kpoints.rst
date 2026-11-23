@@ -8,7 +8,7 @@
 本稿ではブロッホ関数の変換からその理由を導き、代表点の重みを説明する。
 
 **前提知識**: :ref:`ブロッホの定理<blochstheorem>`、
-:ref:`ブリルアンゾーン<first-brillouin-zone>`、:ref:`k点サンプリング<kpoint_sampling>`。
+:ref:`ブリルアンゾーン<first-brillouin-zone>`、:ref:`k点メッシュ<kpoint_sampling>`。
 
 **学習目標**:
 
@@ -162,8 +162,16 @@
 |irreducible-kpoint-weights|
 ----------------------------
 
-等間隔メッシュの全 :math:`N_k` 点が等しい重みを持ち、被積分量 :math:`A(\boldsymbol k)` が
-同じ組で等しいとき、 :eq:`kps-irreducible` の重みは
+等間隔メッシュの和を、既約k点 :math:`\boldsymbol k_i` だけの重み付きの和で置き換える。
+
+.. math::
+   :label: kps-irreducible
+
+   \frac{1}{N_k}\sum_{\boldsymbol k\in\text{メッシュ}}A(\boldsymbol k)=\sum_i w_i\,A(\boldsymbol k_i),
+   \qquad\sum_i w_i=1
+
+:math:`N_k=n_1n_2n_3` はメッシュの点の数である。全 :math:`N_k` 点が等しい重みを持ち、被積分量
+:math:`A(\boldsymbol k)` が同じ組で等しいとき、重みは :math:`w_i=m_i/N_k` になり、
 
 .. math::
    :label: ikp-weight
@@ -303,7 +311,8 @@ QEの出力の重み ``wk`` は、スピン偏極のない計算ではスピン�
 関連項目
 --------
 
-* :ref:`k点サンプリングとブリルアンゾーン積分<kpoint_sampling>`：積分の近似と収束。
+* :ref:`k点メッシュと積分誤差<kpoint_sampling>`：積分の近似と収束。
+* :ref:`金属のブリルアンゾーン積分<metal-bz-integration>`：フェルミ面の段差の扱い。
 * :ref:`lattice`：格子行列・逆格子行列と分率座標。
 * `Quloud ExamplesのCuの既約k点 <https://example.quloud-platform.quemix.com/kpoints/kpoint_convergence.html#sec-kp-irreducible>`_
 * `spglibの逆格子メッシュの説明 <https://spglib.readthedocs.io/en/stable/api/autodoc/spglib.kpoints.html>`_：
