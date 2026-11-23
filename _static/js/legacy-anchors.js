@@ -193,6 +193,10 @@
             "#id27": "#phonon-references",
             "#id28": "#phonon-bibliography",
             "#id22": "#phonon-bibliography",
+            // 2026-11-23 のS5の前の節（今は引用の参照箇所のID。ページを開いたときだけ転送する）
+            "#id14": "phonon_thermal.html#anharmonicity",
+            "#id15": "phonon_thermal.html#zero-point-vibration",
+            "#id17": "phonon_thermal.html#thermal-expansion",
         },
         // 2026-11-23 に分極の評価を「周期結晶の分極」へ分ける前の ferroelectric_origin.html
         // （#id14〜#id17 は分割後のページで引用の戻りリンクの行き先なので転送しない）
@@ -218,6 +222,10 @@
             "#kingsmithvanderbilt1993": "polarization.html#kingsmithvanderbilt1993",
             "#vanderbiltkingsmith1993": "polarization.html#vanderbiltkingsmith1993",
             "#resta1994": "polarization.html#resta1994",
+            // 2026-11-23 のS3の前の節（#id2・#id14 は今は引用の参照箇所のID。ページを開いたときだけ転送する）
+            "#id2": "#ferroelectric-instability-origin",
+            "#id14": "polarization.html",
+            "#id15": "polarization.html#fo-polarization-quantum",
             "#id18": "polarization.html#fo-polarization-quantum",
             "#id19": "polarization.html#fo-born-charge",
             "#id20": "polarization.html#fo-born-charge",
@@ -279,19 +287,24 @@
     const destinations = redirects[page] || {};
 
     // 旧ページの自動ID（#idN）は、後の版で引用の参照箇所（<a id="idN">）に使い回されることがある。
-    // 今のページでそのIDが引用の参照箇所なら、戻りリンクや共有されたURLの行き先として扱い、転送しない。
+    // ページを開いたときのURLは旧版へのリンクとして扱い、転送する。ページ内で参考文献の戻りリンクを
+    // たどってハッシュが変わったときは、今のページの引用の参照箇所なので転送しない。
     function isCitationReference(hash) {
         const element = document.getElementById(decodeURIComponent(hash.slice(1)));
         return element !== null && element.tagName === "A";
     }
 
-    function redirectLegacyAnchor() {
+    function redirectLegacyAnchor(fromHashChange) {
         const destination = destinations[window.location.hash];
-        if (destination && !isCitationReference(window.location.hash)) {
-            window.location.replace(destination);
+        if (!destination) {
+            return;
         }
+        if (fromHashChange && isCitationReference(window.location.hash)) {
+            return;
+        }
+        window.location.replace(destination);
     }
 
-    redirectLegacyAnchor();
-    window.addEventListener("hashchange", redirectLegacyAnchor);
+    redirectLegacyAnchor(false);
+    window.addEventListener("hashchange", () => redirectLegacyAnchor(true));
 })();

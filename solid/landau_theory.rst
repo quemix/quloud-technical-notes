@@ -38,7 +38,9 @@ Landau理論の仮定は、2次の係数だけが :math:`a(T-T_0)` と温度に�
 状態を表す。
 
 :math:`\eta` をソフトモードの振幅 :math:`Q` とすると、0 Kのエネルギーの展開 :eq:`sm-landau` の2次の係数 :math:`\kappa` は、
-調和近似でのモードの振動数の2乗 :math:`\omega_{\mathrm s}^2` である。Landau理論はこれを :math:`\kappa=a(T-T_0)` と置き換え、
+調和近似でのモードの振動数の2乗 :math:`\omega_{\mathrm s}^2` である。ただし :eq:`sm-landau` は単位胞あたりのエネルギーで、
+:math:`Q` も単位胞あたりの質量重み付きの振幅なので、単位体積あたりの :math:`F` と比べるときは単位胞の体積 :math:`\Omega` を掛ける。
+体積を固定すると :math:`\omega_{\mathrm s}^2=\Omega\,\partial^2F/\partial Q^2` である。Landau理論は :math:`\kappa=\Omega a(T-T_0)` と置き、
 有限温度の平均的な復元力が温度とともに変わることを表す。:math:`\eta` を分極 :math:`P` とすると、Devonshireが強誘電体に
 用いた展開になる [Devonshire1949]_。
 
@@ -58,19 +60,19 @@ Landau理論の仮定は、2次の係数だけが :math:`a(T-T_0)` と温度に�
 に極小が現れる。秩序変数は :math:`T_0` から :math:`\sqrt{T_0-T}` に比例して連続的に育つ。このように秩序変数が連続的に
 変わる転移を **2次転移**\ （連続転移）と呼び、転移温度は :math:`T_{\mathrm C}=T_0` である。
 
-:math:`\eta=Q` のとき、極小のまわりの曲率はソフトモードの振動数の2乗を与える。:math:`T>T_0` では
-:math:`\omega_{\mathrm s}^2=a(T-T_0)` で、\ :ref:`Cochranの法則<sm-definition>`\ （式 :eq:`sm-cochran`）に従って転移温度に向かって下がる。
-:math:`T<T_0` では :math:`\partial^2F/\partial\eta^2=a(T-T_0)+3\beta\eta_0^2=2a(T_0-T)` で、振動数の2乗は2倍の傾きで
+:math:`\eta=Q` のとき、極小のまわりの曲率に単位胞の体積を掛けた :math:`\Omega\,\partial^2F/\partial Q^2` が、ソフトモードの振動数の2乗を与える。
+:math:`T>T_0` では :math:`\omega_{\mathrm s}^2=\Omega a(T-T_0)` で、\ :ref:`Cochranの法則<sm-definition>`\ （式 :eq:`sm-cochran`）に従って転移温度に向かって下がる。
+:math:`T<T_0` では :math:`\partial^2F/\partial\eta^2=a(T-T_0)+3\beta\eta_0^2=2a(T_0-T)` なので :math:`\omega_{\mathrm s}^2=2\Omega a(T_0-T)` で、振動数の2乗は2倍の傾きで
 再び増える（:numref:`fig-landau-second-order`）。
 
 .. figure:: images/landau_second_order.svg
    :name: fig-landau-second-order
-   :alt: 左は秩序変数の温度変化で、T0より上で0、下でT0から平方根の形で増える。右はモードの振動数の2乗で、T0の上でa(T-T0)、下で2a(T0-T)の直線。
+   :alt: 左は秩序変数の温度変化で、T0より上で0、下でT0から平方根の形で増える。右は単位胞の体積を掛けた曲率で、T0の上でΩa(T-T0)、下で2Ωa(T0-T)の直線。
    :width: 100%
    :align: center
 
-   :math:`\beta>0` の2次転移。左：秩序変数 :math:`\eta_0`\ （式 :eq:`landau-second-order`）。右：極小のまわりの曲率
-   （:math:`\eta=Q` ならソフトモードの :math:`\omega^2`）。:math:`T_0` の上（青）は :math:`a(T-T_0)`、下（赤）は :math:`2a(T_0-T)`。
+   :math:`\beta>0` の2次転移。左：秩序変数 :math:`\eta_0`\ （式 :eq:`landau-second-order`）。右：極小のまわりの曲率に単位胞の体積を掛けた
+   :math:`\Omega\,\partial^2F/\partial\eta^2`\ （:math:`\eta=Q` ならソフトモードの :math:`\omega^2`）。:math:`T_0` の上（青）は :math:`\Omega a(T-T_0)`、下（赤）は :math:`2\Omega a(T_0-T)`。
    係数は説明用で、特定の物質の値ではない。
 
 .. _first-order-transition:

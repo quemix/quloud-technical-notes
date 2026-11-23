@@ -135,7 +135,8 @@ BaTiO\ :sub:`3`\ の立方晶–正方晶転移 [Merz1953]_ のような1次転�
    :math:`\Delta E`\ （式 :eq:`sm-depth`）。係数は説明用で、特定の物質の値ではない。
 
 ここまでは0 Kのエネルギーである。温度の効果は、:eq:`sm-landau` を自由エネルギーと読み替え、:math:`\kappa` が
-:math:`\kappa=a(T-T_0)` と温度とともに変わるとする\ :ref:`Landau理論<landau-theory>`\ で取り込む。この仮定から、
+:math:`\kappa=\Omega a(T-T_0)`\ （:math:`\Omega` は単位胞の体積、:math:`a` は単位体積あたりの自由エネルギーの係数）と
+温度とともに変わるとする\ :ref:`Landau理論<landau-theory>`\ で取り込む。この仮定から、
 ソフトモードの振動数が :eq:`sm-cochran` に従って下がることと、2次転移と1次転移の違いが導かれる。BaTiO\ :sub:`3`\ の
 三つの転移は、いずれも1次転移である [Zhong1995]_。
 

@@ -97,7 +97,9 @@
    F_{\mathrm{vib}}(T)=\sum_{\boldsymbol k,s}\left[\frac12\hbar\omega_s(\boldsymbol k)
    +k_{\mathrm B}T\ln\left(1-e^{-\hbar\omega_s(\boldsymbol k)/k_{\mathrm B}T}\right)\right]
 
-となる。第1項は零点エネルギー :eq:`ph-zpe` で、第2項は負なので、温度が上がると :math:`F_{\mathrm{vib}}` は下がる。
+となる。和は、Γ点の音響分枝の3モードを除いてとる。これらは結晶全体の剛体並進で、安定な結晶でも :math:`\omega=0` であり、
+振動ではない。Γ点を含むk点メッシュでこの3モードを和に入れると、第2項の対数が発散する。
+第1項は零点エネルギー :eq:`ph-zpe` で、第2項は負なので、温度が上がると :math:`F_{\mathrm{vib}}` は下がる。
 振動数の低いモードほど第2項が大きく負になるので、振動数の低いモードを多くもつ構造ほど、温度とともに
 自由エネルギーが相対的に下がる。振動のエントロピーは :math:`S_{\mathrm{vib}}=-\partial F_{\mathrm{vib}}/\partial T` で求まる。
 静止した原子の全エネルギーの差が小さい二つの構造では、この項で有限温度の安定性の順序が入れ替わることがある。
@@ -136,7 +138,7 @@
    F(V,T)=U(V)+\sum_{\boldsymbol k,s}\left[\frac12\hbar\omega_s(\boldsymbol k;V)
    +k_{\mathrm B}T\ln\left(1-e^{-\hbar\omega_s(\boldsymbol k;V)/k_{\mathrm B}T}\right)\right]
 
-を、外圧が0の場合に体積について最小にすると、温度 :math:`T` での平衡体積が求まる。
+を、外圧が0の場合に体積について最小にすると、温度 :math:`T` での平衡体積が求まる。和は式 :eq:`ph-vib-free-energy` と同じく、Γ点の剛体並進の3モードを除いてとる。
 外圧 :math:`P_{\mathrm{ext}}` がかかっている場合は、:math:`F+P_{\mathrm{ext}}V` を最小にする [Baroni2010]_。
 角括弧の中を :math:`\omega` で微分すると :math:`\hbar(n_{\mathrm B}+1/2)=\langle E\rangle/\omega` になるので、モードごとの **Grüneisen定数**
 
@@ -164,8 +166,9 @@
 .. _qha-applicability:
 
 準調和近似は振動数の体積依存性だけを取り込み、一定体積でのフォノンどうしの相互作用は
-無視する。式 :eq:`ph-qha-free-energy` の対数は、すべてのモードで :math:`\omega^2>0` のときにだけ
+無視する。式 :eq:`ph-qha-free-energy` の対数は、Γ点の剛体並進の3モードを除いた残りのすべてのモードで :math:`\omega^2>0` のときにだけ
 定義できるので、この近似を使えるのは、考える体積の範囲で\ :ref:`動的に安定<imaginary-frequency>`\ な構造に限る。
+安定性も、剛体並進を除いた残りのモードで判定する。
 温度が高く振幅が大きい場合や、0 Kの計算で虚数振動数をもつ構造には、そのままでは使えない。
 
 .. _phonon-thermal-batio3-example:
@@ -179,7 +182,7 @@
 体積の増加に加えて、\ :ref:`交換相関汎関数<exchange-correlation-functional>`\ の近似によるずれも含まれる。立方晶相は0 Kでは不安定モードをもつので、0 Kの立方晶の格子定数は、
 対称性を課して得た鞍点の構造の値である（\ :ref:`立方晶BaTiO₃の不安定なΓ点モード<phonon-batio3-example>`）。
 
-この差のうち、熱膨張と零点振動による部分を準調和近似で見積もれるのは、全モードの :math:`\omega^2` が正の構造だけである
+この差のうち、熱膨張と零点振動による部分を準調和近似で見積もれるのは、Γ点の剛体並進を除く全モードの :math:`\omega^2` が正の構造だけである
 （\ :ref:`適用できる条件<qha-applicability>`）。立方晶相は0 Kの計算で虚数振動数をもち、有限温度では大きな振幅の非調和な
 運動で平均構造が立方晶に保たれている（\ :ref:`ソフトモード<soft-mode>`）。そのため、立方晶の構造に式 :eq:`ph-qha-free-energy` を
 そのまま当てはめて、実験の立方晶の格子定数と比べることはできない。そのような相の格子定数の温度変化は、

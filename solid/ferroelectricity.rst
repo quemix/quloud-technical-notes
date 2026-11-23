@@ -10,14 +10,15 @@
 
 ここでは、結晶構造から強誘電性を理解するための基本を扱う。BaTiO\ :sub:`3`\ の
 計算条件やQuloudでの操作手順は扱わない。具体的な計算事例と操作手順は、
-それぞれQuloud Examplesとオンラインマニュアルで扱う。立方晶が極性の変位に対して不安定になる理由と、
-分極の値の求め方は、次の記事「\ :ref:`ferroelectric-origin`\ 」で扱う。
+それぞれQuloud Examplesとオンラインマニュアルで扱う。周期結晶の分極の値の求め方は「\ :ref:`periodic-polarization`\ 」、
+立方晶が極性の変位に対して不安定になる理由は「\ :ref:`ferroelectric-origin`\ 」で扱う。自由エネルギーの展開からの導出は
+「\ :ref:`landau-theory`\ 」にまとめた。
 
-**前提知識**: :ref:`反転対称性と自発分極<inversion-and-polarization>`、:ref:`等価な方向の族<equivalent-directions>`、:ref:`ペロブスカイトの擬立方格子<pseudocubic-cell>`、:ref:`ソフトモードと構造相転移<soft-mode>`\ （とくに\ :ref:`秩序変数としてのモードの振幅<sm-landau>`）。
+**前提知識**: :ref:`反転対称性と自発分極<inversion-and-polarization>`、:ref:`等価な方向の族<equivalent-directions>`、:ref:`ペロブスカイトの擬立方格子<pseudocubic-cell>`、:ref:`ソフトモードと構造相転移<soft-mode>`\ （とくに\ :ref:`秩序変数としてのモードの振幅<sm-landau>`）、:ref:`Landau理論と相転移の次数<landau-theory>`。
 
 **学習目標**:
 
-* 常誘電相の誘電率がCurie–Weissの法則に従うことと、1次転移では転移温度とCurie–Weiss温度がずれることを、自由エネルギーの展開から導く。
+* 常誘電相の誘電率がCurie–Weissの法則に従うことと、1次転移では転移温度とCurie–Weiss温度がずれることを説明し、BaTiO\ :sub:`3`\ の二重ヒステリシスの観測から転移の次数を読む。
 * BaTiO\ :sub:`3`\ の4つの相の空間群と分極の向きを、擬立方格子の方向で説明する。
 * 分極の方位状態の数（分域がとりうる分極の向きの数）を点群の位数から求め、隣り合う分域の分極がなす角を挙げる。
 * 回折で決まる平均構造と、各単位胞の局所的な変位の違いを説明する。
@@ -379,7 +380,8 @@ Comèsらは、Tiの変位が鎖状に相関すると考えると説明できる
    <script>
    (() => {
        // 2026-11の拡張前に自動で付いていた見出し・図表のアンカーを、新しいラベルへ送る。
-       // 今のページでそのIDが引用の参照箇所（<a>）なら、引用の戻りリンクや共有されたURLの行き先なので転送しない（2026-11-23）。
+       // ページを開いたときだけ動くので、今のページでそのIDが引用の参照箇所（<a>）でも旧版へのリンクとして転送する。
+       // ページ内の戻りリンクを押したとき（ハッシュの変化）には動かない（2026-11-23）。
        const destinations = {
            "#batio-3": "#batio3-crystal-phases",
            "#id6": "#fe-reading-optimization",
@@ -390,8 +392,7 @@ Comèsらは、Tiの変位が鎖状に相関すると考えると説明できる
            "#id11": "#tbl-batio3-cubic-tetragonal",
        };
        const destination = destinations[window.location.hash];
-       const element = document.getElementById(window.location.hash.slice(1));
-       if (destination && !(element && element.tagName === "A")) {
+       if (destination) {
            window.location.replace(destination);
        }
    })();
