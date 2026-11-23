@@ -274,7 +274,7 @@ UKSの :math:`\langle\hat S^2\rangle` は、Kohn–Sham軌道の行列式に :eq
 スピン射影や多配置の方法など、より高い水準の方法での確認が必要になる。
 HFとKS-DFTではエネルギー汎関数が異なるので、エネルギーの比較は同じ手法の中で行う。
 
-関連項目
+関連資料
 --------
 
 * :ref:`lowdin`
@@ -282,7 +282,7 @@ HFとKS-DFTではエネルギー汎関数が異なるので、エネルギーの
 * :ref:`tightbinding`
 * `水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
 
-参考資料
+参考文献
 --------
 
 * `PySCF: Self-consistent field (SCF) methods <https://pyscf.org/user/scf>`_

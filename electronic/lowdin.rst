@@ -224,7 +224,7 @@ Löwdin解析のほかに、電子密度の空間分割に基づくBader解析�
 したがって、Löwdin電子数や原子スピン密度は、同じ手法・同じ基底で得た結果を比較し、
 電子状態の傾向を読み取るための指標として扱う。
 
-関連項目
+関連資料
 --------
 
 * :ref:`spin_restriction`
@@ -232,7 +232,7 @@ Löwdin解析のほかに、電子密度の空間分割に基づくBader解析�
 * :ref:`projected-dos`
 * `水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
 
-参考資料
+参考文献
 --------
 
 * `ORCA Manual: Population Analysis <https://orca-manual.mpi-muelheim.mpg.de/contents/spectroscopyproperties/population.html>`_

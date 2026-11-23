@@ -267,7 +267,7 @@ RKS-PBEで見える交替は有限鎖の端による効果として理解でき�
 非直交基底での結合次数は、直交化や分割の方法によって値が変わる。1原子に多くの
 基底関数がある場合や、広がった基底関数を使う場合は特に注意する。
 
-関連項目
+関連資料
 --------
 
 * :ref:`lowdin`
@@ -276,7 +276,7 @@ RKS-PBEで見える交替は有限鎖の端による効果として理解でき�
 * :ref:`spin_restriction`
 * `水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
 
-参考資料
+参考文献
 --------
 
 * `ORCA Manual: Population Analysis <https://orca-manual.mpi-muelheim.mpg.de/contents/spectroscopyproperties/population.html>`_

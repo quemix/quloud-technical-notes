@@ -290,11 +290,11 @@ Mulliken型の重みは、符号が負にもなりうる重なりの項 :math:`\
 :math:`\sum_in_i(\varepsilon_i-E_{\mathrm v})=\sum_in_i\varepsilon_i-NE_{\mathrm v}` となり、
 :math:`E_{\mathrm v}` が構造ごとに違えば、電子数 :math:`N` 倍の差が混じる。第2に、\ :ref:`Kohn–Sham法<kohn-sham-dft>`\ の
 全エネルギーは固有値の和ではなく、電子間相互作用の二重計上を差し引く項を含む
-（参考資料のMartinの教科書）。したがって、揃えた図で重心が下がったことから
+（参考文献のMartinの教科書）。したがって、揃えた図で重心が下がったことから
 全エネルギーが下がったとは結論できない。
 
-説明用の科学的事例：水素原子鎖の端と中央
-----------------------------------------
+説明用の事例：水素原子鎖の端と中央
+----------------------------------
 
 `水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
 の有限水素原子鎖（STO-3G基底、原子間隔1.8 Å、Psi4 1.10）では、RKS-PBEのLöwdin結合次数が、
@@ -360,7 +360,7 @@ Mulliken型の重みは、符号が負にもなりうる重なりの項 :math:`\
 :math:`\pm1.67t` 付近まで内側へ動き、バンドの外（:math:`|E-\varepsilon_0|>2t`）に重みの0.167が
 はみ出す。:math:`\sigma=0.1t` では0.083である。
 
-説明用の科学的事例：AB交替鎖とイオン性
+説明用の事例：AB交替鎖とイオン性
 --------------------------------------
 
 2準位模型の議論を周期系に広げるため、単位胞（格子定数 :math:`a`）にAとBの軌道を1つずつ
@@ -495,7 +495,7 @@ PDOSは観測量ではなく、基底の取り方に依存する。:ref:`Löwdin
 重みの集まるバンド端やピークで大きいので、窓の端がそこにかかると値が大きく変わる。
 数値を示すときは、ぼかしの関数と幅の定義、窓の範囲も併せて書く。
 
-関連項目
+関連資料
 --------
 
 * :ref:`lowdin`
@@ -507,7 +507,7 @@ PDOSは観測量ではなく、基底の取り方に依存する。:ref:`Löwdin
 * `水素原子を並べると電子バンドは生まれるのか <https://example.quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_
 * `BaTiO₃の二重井戸ポテンシャル Part 2 <https://example.quloud-platform.quemix.com/BaTiO3/total-energy.html>`_
 
-参考資料
+参考文献
 --------
 
 * R. M. Martin, *Electronic Structure: Basic Theory and Practical Methods*, 2nd ed.
