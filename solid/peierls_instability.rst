@@ -3,7 +3,7 @@
 Peierls不安定性
 ===============
 
-1次元の\ :ref:`半充填<fermi-surface>`\ の鎖を例に、原子の変位によって\ :ref:`バンドギャップ<valence-conduction-band-gap>`\ が開き、格子が自発的に
+1次元の\ :ref:`半充填<half-filling>`\ の鎖を例に、原子の変位によって\ :ref:`バンドギャップ<valence-conduction-band-gap>`\ が開き、格子が自発的に
 変形する仕組みを見ます。原子核を固定した鎖に現れる結合次数波との違いも扱います。
 
 格子の二量化とバンドギャップ

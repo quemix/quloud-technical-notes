@@ -1,86 +1,29 @@
 .. _periodic_boundary:
 
-周期境界条件とバンドの折り返し
-==============================
+超胞とバンドの折り返し
+======================
 
-単位胞を有限個並べ、両端を周期的につなぐと、電子に許される波数は飛び飛びになる。
-まず、独立な波数の数が単位胞の数に等しいことを導く。次に、同じ結晶を
-:ref:`超胞<lt-supercell>` で表すと、波数の数と各波数でのバンドの本数がどう変わるかを比べる。
+同じ結晶を、単位胞をいくつかまとめた\ :ref:`超胞（スーパーセル）<lt-supercell>`\ の並びとして記述することがある。
+超胞では並進の単位が大きくなるので、ブリルアンゾーン（BZ）が小さくなり、元のバンドがその中に折り返されて
+現れる。本稿では、折り返しで波数の数とバンドの本数がどう変わるかを1次元で導き、3次元へ広げる。
+そのうえで、折り返しだけでは物理が変わらないこと、結晶の周期が実際に変わるとギャップが開きうることを説明する。
 
-.. _pbc-allowed-wavevectors:
+**前提知識**: :ref:`ブロッホの定理と周期境界条件<blochstheorem>`、:ref:`第1ブリルアンゾーン<first-brillouin-zone>`、
+:ref:`超胞<lt-supercell>`。
 
-周期境界条件と許される波数
---------------------------
+**学習目標**:
 
-:ref:`ブロッホ状態<blochstheorem>`\ には、格子ベクトル :math:`\boldsymbol R` の
-並進で位相因子 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}` が掛かる。
-波数ベクトル :math:`\boldsymbol k` とバンド番号 :math:`j` で状態を指定できる。
-以下では、端を一周したときの位相から :math:`\boldsymbol k` を絞り込む。
-
-:ref:`基本並進ベクトル<lattice-translations>` :math:`\boldsymbol a_i` の方向に単位胞を :math:`N_i` 個並べ、
-両端をつないで :math:`\psi(\boldsymbol r+N_i\boldsymbol a_i)=\psi(\boldsymbol r)` を課す。
-これをBorn–von Kármánの周期境界条件と呼ぶ。式 :eq:`Bloch` を使うと、
-一周したときの位相因子は :math:`e^{iN_i\boldsymbol k\cdot\boldsymbol a_i}=1` となる。
-
-:math:`\boldsymbol k=\sum_j x_j\boldsymbol b_j` と書くと、実格子と逆格子の関係
-:math:`\boldsymbol a_i\cdot\boldsymbol b_j=2\pi\delta_{ij}` により
-:math:`\boldsymbol k\cdot\boldsymbol a_i=2\pi x_i` である。したがって、各方向で
-:math:`N_ix_i` が整数 :math:`m_i` となる波数が許される。
-
-.. math::
-   :label: pbc-allowed
-
-   \boldsymbol k=\sum_{i=1}^{3}\frac{m_i}{N_i}\,\boldsymbol b_i\qquad(m_i\ \text{は整数})
-
-.. |independent-wavevectors| replace:: 独立な波数とその個数
-
-|independent-wavevectors|
--------------------------
-
-:ref:`逆格子ベクトル<reciprocal-lattice>` :math:`\boldsymbol G` だけ異なる :math:`\boldsymbol k` と
-:math:`\boldsymbol k+\boldsymbol G` は、すべての格子ベクトルに対して同じ位相
-:math:`e^{i\boldsymbol k\cdot\boldsymbol R}` を与える（:math:`e^{i\boldsymbol G\cdot\boldsymbol R}=1`\ ）
-ので、同じ並進の性質を表す。式 :eq:`pbc-allowed` では、:math:`m_i` に
-:math:`N_i` を足すと波数に :math:`\boldsymbol b_i` が加わる。したがって各方向で
-:math:`m_i=0,1,\ldots,N_i-1` を数えれば、独立な波数は全部で
-:math:`N=N_1N_2N_3` 個になる。これは単位胞の数に等しい。各代表点は逆格子ベクトルだけ
-ずらして\ :ref:`第1ブリルアンゾーン<first-brillouin-zone>`\ に入れられる。
-
-.. |one-dimensional-wavevectors| replace:: 1次元結晶で許される波数
-
-|one-dimensional-wavevectors|
------------------------------
-
-格子定数 :math:`a` の単位胞を :math:`N` 個並べた1次元結晶では、
-:math:`k=2\pi m/(Na)` が許される。:math:`k=0` なら単位胞間で位相は変化しない。
-:math:`k=\pi/a` は :math:`m=N/2` にあたり、:math:`N` が偶数のときに許される。
-この波数では、隣の単位胞に移るたびに波動関数の符号が反転する。
-
-:numref:`fig-pbc-allowed`\ の左では、波数が :math:`2\pi/a` だけ異なる二つの曲線が、
-単位胞の位置では同じ値になることに注目する。曲線は位相因子の実部を表している。
-右では、:math:`N` を増やすと波数の間隔 :math:`2\pi/(Na)` が狭くなる。
-:math:`N\to\infty` の極限で、波数はブリルアンゾーンを連続的に埋める。
-
-.. figure:: images/pbc_allowed_k.svg
-   :name: fig-pbc-allowed
-   :width: 100%
-
-   格子定数 :math:`a` の単位胞 :math:`N` 個を輪につないだ1次元の結晶で許される波数 :math:`k`\ 。
-   左： :math:`N=8` のときの、各単位胞の位置での :math:`\cos kx` （位相因子 :math:`e^{ikx}` の実部、
-   青い点）と、それを結ぶ曲線（灰色）。いちばん下の行の破線は、 :math:`k=2\pi/(8a)` に逆格子ベクトル :math:`2\pi/a` を足した波数の :math:`\cos kx` で、単位胞の位置では実線
-   （:math:`k=2\pi/(8a)`\ ）と同じ値をとる。右： :math:`N` = 4、8、16のときにBZ内で許される
-   :math:`k`\ 。 :math:`-\pi/a` と :math:`\pi/a` は逆格子ベクトルだけ異なる同じ点なので、
-   :math:`\pi/a` だけを描いた。 :math:`N\to\infty` では、許される :math:`k` がBZ全体を埋める。
+* 超胞のブリルアンゾーンに元のバンドを折り返し、波数の数とバンドの本数の関係を示す。
+* 折り返されたバンドの交点でギャップが開かない理由と、周期が実際に変わるとギャップが開きうる理由を説明する。
 
 .. _pbc-band-folding:
 
-スーパーセルとバンドの折り返し
-------------------------------
+1次元の超胞での折り返し
+------------------------
 
-同じ結晶を、よりサイズの大きな単位胞（スーパーセル）の並びとみなすこともできる。
-1次元で、長さ :math:`Ma` のスーパーセルを単位にとると、並進の単位も :math:`Ma` になるので、
+1次元で、長さ :math:`Ma` の超胞を単位にとると、並進の単位も :math:`Ma` になるので、
 状態は並進 :math:`Ma` に対する位相 :math:`e^{iKMa}` で分類されるようになる。元の波数 :math:`k` の状態は、
-並進 :math:`Ma` に対して位相 :math:`e^{ikMa}` だけ変わるので、スーパーセルの波数 :math:`K` は
+並進 :math:`Ma` に対して位相 :math:`e^{ikMa}` だけ変わるので、超胞の波数 :math:`K` は
 
 .. math::
    :label: pbc-folding
@@ -89,12 +32,12 @@
    k\equiv K+\frac{2\pi}{Ma}\,j\pmod{\frac{2\pi}{a}}
    \quad(j=0,1,\ldots,M-1)
 
-で与えられる。スーパーセルのBZ :math:`-\pi/(Ma)<K\le\pi/(Ma)` は元のBZの :math:`1/M` の幅となる。
+で与えられる。超胞のBZ :math:`-\pi/(Ma)<K\le\pi/(Ma)` は元のBZの :math:`1/M` の幅となる。
 元の1本のバンド :math:`\varepsilon(k)` は、
-スーパーセルのBZでは :math:`\varepsilon_j(K)=\varepsilon(K+2\pi j/(Ma))` の :math:`M` 本のバンドとして
+超胞のBZでは :math:`\varepsilon_j(K)=\varepsilon(K+2\pi j/(Ma))` の :math:`M` 本のバンドとして
 現れる。これを\ **バンドの折り返し**\ （フォールディング）という。
 
-:math:`N` が :math:`M` の倍数なら、:math:`N` 個の単位胞は :math:`N/M` 個のスーパーセルにまとめられる。
+:math:`N` が :math:`M` の倍数なら、:math:`N` 個の単位胞は :math:`N/M` 個の超胞にまとめられる。
 式 :eq:`pbc-allowed` から
 許される :math:`K` は :math:`N/M` 個である。 :math:`N=12` の結晶を :math:`2a`\ 、 :math:`3a` の
 セルで記述すると、波数は12個から6個、4個に減り、そのかわりに各波数のバンドが2本、3本に増える
@@ -105,21 +48,23 @@
    :width: 100%
 
    :math:`N=12` の1次元の結晶の状態（青い点）を、単位胞 :math:`a` （左）、 :math:`2a` の
-   スーパーセル（中）、 :math:`3a` のスーパーセル（右）で記述したもの。灰色の曲線は模型の
+   超胞（中）、 :math:`3a` の超胞（右）で記述したもの。灰色の曲線は模型の
    バンド :math:`-\cos ka` と、それをセルのBZに折り返したもの。点の数はどれも12個で、BZの境界や
    バンドの交点で重なった点は2つの状態を表す。横軸の幅は、それぞれのセルのBZの幅に比例させた。
 
-.. |three-dimensional-folding| replace:: 3次元のスーパーセルでの折り返し
+.. |three-dimensional-folding| replace:: 3次元の超胞での折り返し
 
 |three-dimensional-folding|
 ---------------------------
 
-3次元では、\ :ref:`スーパーセルの格子行列<lt-supercell>`\ を整数行列 :math:`M` を用いて :math:`A_\mathrm{sup}=AM` と書くことができる。
-スーパーセルの体積は :math:`|\det M|` 倍に、BZの体積は :math:`1/|\det M|` 倍になり、
-元の波数 :math:`\boldsymbol k` はスーパーセルの逆格子ベクトル
+3次元では、\ :ref:`超胞の格子行列<lt-supercell>`\ を整数行列 :math:`M` を用いて :math:`A_\mathrm{sup}=AM` と書くことができる。
+超胞の体積は :math:`|\det M|` 倍に、BZの体積は :math:`1/|\det M|` 倍になり、
+元の波数 :math:`\boldsymbol k` は超胞の逆格子ベクトル
 :math:`\boldsymbol G_\mathrm{sup}` だけずらして小さなBZに折り返される
 （:math:`\boldsymbol K=\boldsymbol k-\boldsymbol G_\mathrm{sup}`\ ）。1つの :math:`\boldsymbol K` に
 元の :math:`|\det M|` 個の波数が対応し、バンドの本数は :math:`|\det M|` 倍になる。
+
+.. _pbc-folding-meaning:
 
 折り返しの意味
 --------------
@@ -132,11 +77,13 @@
 一方、原子の変位などで結晶の周期が実際に :math:`Ma` に変わると、元の並進 :math:`a` の対称性が
 失われ、同じ :math:`K` に折り返されたバンドどうしが混ざる。このとき、折り返されたバンドの交点で
 ギャップが開きうる。\ :ref:`SSH模型<tb-ssh>`\ では、1次元鎖の隣り合う結合の強さが交互に変わって
-周期が :math:`2a` になると、:math:`K=\pm\pi/(2a)` でギャップが開く。周期の変化が小さいときには、スーパーセルの
+周期が :math:`2a` になると、:math:`K=\pm\pi/(2a)` でギャップが開く。周期の変化が小さいときには、超胞の
 バンドが元のバンドを折り返した形にどれだけ近いかを調べることで、変化の効果を読み取れる。
 
-計算の上では、スーパーセルのバンドの本数が増えるかわりに、BZが小さくなるので、同じ細かさで
+計算の上では、超胞のバンドの本数が増えるかわりに、BZが小さくなるので、同じ細かさで
 BZ積分を行うのに必要な\ :ref:`k点メッシュの分割数<kpoint-meshes>`\ が減る。
+
+.. _pbc-related:
 
 関連項目
 --------
@@ -147,8 +94,14 @@ BZ積分を行うのに必要な\ :ref:`k点メッシュの分割数<kpoint-mesh
 * :ref:`tightbinding`
 * :ref:`kpoint_sampling`
 
+.. _pbc-references:
+
 参考資料
 --------
 
 * N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and
   Winston, 1976), Chap. 8.
+
+.. raw:: html
+
+   <script src="../_static/js/legacy-anchors.js" defer></script>

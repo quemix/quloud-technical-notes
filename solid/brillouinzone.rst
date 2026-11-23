@@ -4,13 +4,26 @@
 ブリルアンゾーン
 ==============================
 
+\ :ref:`ブロッホの定理と周期境界条件<blochstheorem>`\ で、逆格子ベクトルだけ異なる波数が同じ並進の性質を表すことを見た。
+本稿では、等価な波数から代表を一つずつ選ぶ領域として第1ブリルアンゾーンを定め、その中で特別な役割をもつ
+Γ点、ゾーン境界、高対称点を導入する。
+
+**前提知識**: :ref:`ブロッホの定理と周期境界条件<blochstheorem>`、:ref:`逆格子<reciprocal-lattice>`、
+:ref:`基本単位胞<lattice-unit-cells>`。
+
+**学習目標**:
+
+* 第1ブリルアンゾーンを逆格子のウィグナー・ザイツ胞として定め、その体積を実格子の単位胞の体積から求める。
+* Γ点とゾーン境界で、格子並進の位相因子がどうなるかを説明する。
+* 高対称点の記号が、ブリルアンゾーンの形ごとに決まる位置を指すことを説明する。
+
 .. _first-brillouin-zone:
 
 ------------------------------------------------
 第1ブリルアンゾーンとウィグナー・ザイツ胞
 ------------------------------------------------
 
-式 :eq:`Bloch` によると、格子並進 :math:`\boldsymbol R` で波動関数に掛かる位相因子は
+\ :ref:`ブロッホの定理<bloch-theorem>`\ （式 :eq:`Bloch`）によると、格子並進 :math:`\boldsymbol R` で波動関数に掛かる位相因子は
 :math:`e^{i\boldsymbol k\cdot\boldsymbol R}` である。\ :ref:`逆格子ベクトル<reciprocal-lattice>`
 :math:`\boldsymbol G` に対して :math:`e^{i\boldsymbol G\cdot\boldsymbol R}=1` なので、
 :math:`\boldsymbol k` と :math:`\boldsymbol k+\boldsymbol G` は同じ位相因子を与える。
@@ -57,61 +70,94 @@
 となる。逆格子並進に対して周期的な量については、第1ブリルアンゾーンの各部分を
 逆格子並進で移して集めれば平行六面体を構成できるため、どちらで積分しても同じ値になる。
 
-.. _density-of-states:
-.. _id3:
+.. _high-symmetry-points:
 
-------------------------------------
-状態数と状態密度（DOS）
-------------------------------------
+Γ点・ゾーン境界・高対称点
+--------------------------
 
-1バンド・1スピンについて、エネルギー :math:`E` 以下にある状態数を単位胞あたりで
-数える。バンドのエネルギーを :math:`\varepsilon(\boldsymbol k)` とすると、
+.. _gamma-point:
 
-.. math::
-   :label: n(E)
+第1ブリルアンゾーンの中心 :math:`\boldsymbol k=0` を **Γ点** と呼ぶ。Γ点では位相因子
+:math:`e^{i\boldsymbol k\cdot\boldsymbol R}` がすべての格子ベクトルで1になるので、式 :eq:`bloch-periodic-part` の
+波動関数は周期部分 :math:`u_{\boldsymbol 0}` そのものであり、どの単位胞でも同じ形をとる。
 
-   n(E)=\frac{1}{\Omega_{\mathrm{BZ}}}
-        \int_{\mathrm{BZ}}\Theta(E-\varepsilon(\boldsymbol k))\,\mathrm d\boldsymbol k
+.. _zone-boundary:
 
-となる。:math:`\Theta` は単位ステップ関数である。すべての波数で
-:math:`\varepsilon(\boldsymbol k)<E` なら、積分は :math:`\Omega_{\mathrm{BZ}}`
-になり、単位胞あたりの状態数は1になる。
-
-状態密度（density of states, DOS）は、単位エネルギー幅あたりの状態数である。
-上の状態数をエネルギーで微分して求める。
+第1ブリルアンゾーンの境界を **ゾーン境界** と呼ぶ。境界上の波数 :math:`\boldsymbol k` は、ある逆格子ベクトル
+:math:`\boldsymbol G\ne\boldsymbol 0` について :math:`|\boldsymbol k|=|\boldsymbol k-\boldsymbol G|`、すなわち
 
 .. math::
-   :label: rho(E)
+   :label: bz-boundary
 
-   \rho(E)=\frac{\mathrm dn(E)}{\mathrm dE}
-   =\frac{1}{\Omega_{\mathrm{BZ}}}
-    \int_{\mathrm{BZ}}\delta(E-\varepsilon(\boldsymbol k))\,\mathrm d\boldsymbol k
+   \boldsymbol k\cdot\boldsymbol G=\frac{|\boldsymbol G|^2}{2}
 
-ここで :math:`\delta` はディラックのデルタ関数である。式 :eq:`rho(E)` の
-:math:`\rho(E)` は1バンド・1スピン・単位胞あたりの状態密度である。
-複数のバンドやスピンを扱うときは、それぞれの寄与を足す。
+を満たし、:math:`\boldsymbol k` と :math:`\boldsymbol k-\boldsymbol G` は等価な波数である。格子定数 :math:`a` の1次元格子では
+ゾーン境界は :math:`k=\pm\pi/a` で、隣の単位胞に移るたびに位相因子 :math:`e^{ika}=-1` が掛かり、波動関数の符号が
+反転する。:math:`k=\pi/a` と :math:`-\pi/a` は等価なので、右向きと左向きに進む波が同じ状態として扱われる。
+結晶の周期が2倍になると、新しいゾーン境界でバンドの間にギャップが開きうること（\ :ref:`SSH模型<tb-ssh>`）や、
+ゾーン境界のフォノンで隣の胞の原子が逆向きに動くこと（\ :ref:`1次元二原子鎖<ph-diatomic-chain>`）は、この性質による。
 
-:numref:`fig-band-state-count-and-dos`\ では、累積状態数の曲線が急なところほど
-状態密度が大きい。バンドの全状態を数え終えると、累積状態数は1になる。
+.. _high-symmetry-k:
 
-.. figure:: images/band_state_count_and_dos.svg
-   :name: fig-band-state-count-and-dos
-   :alt: 一次元バンドの累積状態数がバンドの下端で0から増え、上端で1に達する。状態密度はバンドの両端の内側で大きく、外ではゼロ。
-   :width: 100%
-   :align: center
+Γ点のほかにも、結晶の点群の多くの操作で、逆格子ベクトルの差を除いて自分自身に移る波数がある。これを
+**高対称点** と呼び、高対称点を結ぶ線のうち同じように対称操作で保たれるものを **対称線** と呼ぶ。
+バンド構造やフォノン分散は、高対称点を結ぶ対称線に沿って描くことが多い（SetyawanとCurtarolo、2010年）。高対称点には、
+ブリルアンゾーンの形ごとに慣用の記号が付いている（Bouckaert、Smoluchowski、Wigner、1936年）。立方晶の単純立方格子と面心立方格子（FCC）の例を
+:numref:`tbl-cubic-high-symmetry-points` に示す。
 
-   式 :eq:`tb-band` の一次元バンドについて、1スピン・単位胞あたりの累積状態数
-   :math:`n(E)` とその傾き :math:`\rho(E)` を示す。縦の破線はバンド端で、
-   下段の曲線はバンド端へ内側から近づくと発散する。
+.. list-table:: 立方晶の高対称点（格子定数 :math:`a` の立方慣用単位胞の軸によるCartesian成分、単位 :math:`2\pi/a`）
+   :name: tbl-cubic-high-symmetry-points
+   :header-rows: 1
+   :widths: 22 13 65
 
-:ref:`フェルミ–ディラック分布<fermi-dirac-distribution>` :math:`f(E)` は、エネルギー :math:`E` の
-1状態に電子が入る平均占有数である。:math:`f(E)\rho(E)` は占有された状態の
-エネルギーあたりの密度を与える。これをエネルギーで積分すると、同じ規格化での電子数
-が得られる。数値計算では、有限個の\ :ref:`k点のメッシュ<kpoint-meshes>`\ を使い、BZ積分を和で近似する。
-状態密度を原子や軌道ごとに分けたものを\ :ref:`射影状態密度<projected-dos>`\ と呼ぶ。
+   * - 格子
+     - 記号
+     - 位置
+   * - 単純立方
+     - Γ
+     - :math:`(0,0,0)`
+   * -
+     - X
+     - :math:`(0,1/2,0)`\ （面の中心）
+   * -
+     - M
+     - :math:`(1/2,1/2,0)`\ （辺の中点）
+   * -
+     - R
+     - :math:`(1/2,1/2,1/2)`\ （頂点）
+   * - 面心立方
+     - Γ
+     - :math:`(0,0,0)`
+   * -
+     - X
+     - :math:`(0,1,0)`\ （正方形の面の中心）
+   * -
+     - L
+     - :math:`(1/2,1/2,1/2)`\ （六角形の面の中心）
+   * -
+     - W
+     - :math:`(1,1/2,0)`\ （頂点）
+   * -
+     - K
+     - :math:`(3/4,3/4,0)`\ （六角形の面どうしが接する辺の中点）
 
---------------
+同じ記号でも、ブリルアンゾーンの形が違えば位置は違う。例えば単純立方格子のX点と面心立方格子のX点は、
+それぞれの格子定数 :math:`a` で :math:`2\pi/a` を単位にした座標が2倍違う。文献や計算プログラムの高対称点を読むときは、どの格子のどの単位胞の
+記号かを確かめる。
+
+.. _bz-references:
+
 参考資料
---------------
+--------
 
 * MIT Materials Science, `Lecture 7 <https://wikis.mit.edu/confluence/display/MSEDG/Lecture%2B7>`_.
+* L. P. Bouckaert, R. Smoluchowski, and E. Wigner,
+  `“Theory of Brillouin Zones and Symmetry Properties of Wave Functions in Crystals” <https://doi.org/10.1103/PhysRev.50.58>`_,
+  *Physical Review* **50**, 58–67 (1936).
+* W. Setyawan and S. Curtarolo,
+  `“High-throughput electronic band structure calculations: Challenges and tools” <https://doi.org/10.1016/j.commatsci.2010.05.010>`_,
+  *Computational Materials Science* **49**, 299–312 (2010).
+
+.. raw:: html
+
+   <script src="../_static/js/legacy-anchors.js" defer></script>

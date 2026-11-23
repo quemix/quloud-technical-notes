@@ -9,7 +9,7 @@
 その違いはRDFの近距離と遠距離に現れる。
 
 前提は\ :ref:`分子動力学の軌跡<molecular-dynamics>`\ と
-:doc:`../solid/periodic_boundary`\ である。
+:ref:`周期境界条件<pbc-allowed-wavevectors>`\ である。
 この記事では、RDFから配位数を求め、距離・方向・多面体のつながりを
 異なる指標で読み解く。
 

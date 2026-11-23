@@ -259,7 +259,7 @@ Nosé–Hoover法は補助変数を使う決定論的な方法で、
 --------
 
 * :ref:`temperature`
-* :doc:`../solid/periodic_boundary`
+* :ref:`周期境界条件<pbc-allowed-wavevectors>`
 
 参考文献
 --------

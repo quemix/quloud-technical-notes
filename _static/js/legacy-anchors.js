@@ -115,6 +115,7 @@
             "#id16": "#kps-related",
             "#id18": "#kps-references",
             "#equation-kps-irreducible": "irreducible_kpoints.html#equation-kps-irreducible",
+            "#equation-kps-integral": "bandstructure.html#equation-kps-integral",
             "#methfessel1989": "metal_bz_integration.html#methfessel1989",
             "#marzari1999": "metal_bz_integration.html#marzari1999",
             "#mermin1965": "metal_bz_integration.html#mermin1965",
@@ -123,6 +124,37 @@
             "#lehmann1972": "metal_bz_integration.html#lehmann1972",
             "#blochl1994": "metal_bz_integration.html#blochl1994",
             "#kawamura2014": "metal_bz_integration.html#kawamura2014",
+        },
+        // 2026-11-23 に逆格子の記事へ統合する前の periodic.html（「周期性」）
+        "periodic": {
+            "#periodic": "reciprocal_lattice.html#periodic",
+            "#id1": "reciprocal_lattice.html#periodic",
+            "#equation-periodic0": "reciprocal_lattice.html#equation-periodic0",
+            "#periodic-fourier-series": "reciprocal_lattice.html#periodic-fourier-series",
+            "#id2": "reciprocal_lattice.html#periodic-fourier-series",
+            "#fig-periodic-fourier-components": "reciprocal_lattice.html#fig-periodic-fourier-components",
+        },
+        // 2026-11-23 の再編前の periodic_boundary.html（「周期境界条件とバンドの折り返し」）
+        "periodic_boundary": {
+            "#pbc-allowed-wavevectors": "blochstheorem.html#pbc-allowed-wavevectors",
+            "#id2": "blochstheorem.html#pbc-allowed-wavevectors",
+            "#equation-pbc-allowed": "blochstheorem.html#equation-pbc-allowed",
+            "#independent-wavevectors": "blochstheorem.html#pbc-wavevector-count",
+            "#one-dimensional-wavevectors": "blochstheorem.html#pbc-wavevector-count",
+            "#fig-pbc-allowed": "blochstheorem.html#fig-pbc-allowed",
+            "#id3": "#pbc-band-folding",
+            "#id4": "#pbc-folding-meaning",
+            "#id5": "#pbc-related",
+            "#id6": "#pbc-references",
+        },
+        // 2026-11-23 の再編前の brillouinzone.html（状態数と状態密度をバンド構造の記事へ移した）
+        "brillouinzone": {
+            "#dos": "bandstructure.html#density-of-states",
+            "#id3": "bandstructure.html#density-of-states",
+            "#density-of-states": "bandstructure.html#density-of-states",
+            "#equation-n-e": "bandstructure.html#equation-state-count",
+            "#equation-rho-e": "bandstructure.html#equation-rho-e",
+            "#fig-band-state-count-and-dos": "bandstructure.html#fig-band-state-count-and-dos",
         },
     };
 

@@ -12,11 +12,11 @@ k点メッシュと積分誤差
 「\ :ref:`metal-bz-integration`\ 」で説明する。
 
 **前提知識**: :ref:`ブリルアンゾーン<first-brillouin-zone>`、
-:ref:`周期境界条件<pbc-allowed-wavevectors>`、:ref:`フーリエ級数<periodic-fourier-series>`。
+:ref:`周期境界条件<pbc-allowed-wavevectors>`、:ref:`状態の和とBZ積分<bz-average>`、:ref:`フーリエ級数<periodic-fourier-series>`。
 
 **学習目標**:
 
-* 状態についての和が、結晶が大きい極限でBZ積分になることを示す。
+* 占有数で重み付けた状態の和を、BZ積分の形に書く。
 * Γ点を含む等間隔メッシュと、単位胞を有限個並べて周期境界条件を課した模型の波数を対応づける。
 * フーリエ係数から積分誤差を導き、被積分関数が解析的な絶縁体では誤差が指数関数的に減る
   理由を説明する。
@@ -36,16 +36,8 @@ k点メッシュと積分誤差
    \bar A=\frac{1}{N}\sum_{\boldsymbol k}A(\boldsymbol k),\qquad
    A(\boldsymbol k)=\sum_j f_j(\boldsymbol k)\,a_j(\boldsymbol k)
 
-である。k点はBZの体積 :math:`\Omega_\mathrm{BZ}` を :math:`N` 等分した
-体積ごとに1点ずつあるので、 :math:`N\to\infty` では和を積分に置き換えられ
-（:math:`\sum_{\boldsymbol k}\to(N/\Omega_\mathrm{BZ})\int_\mathrm{BZ}\mathrm d\boldsymbol k`\ ）、
-
-.. math::
-   :label: kps-integral
-
-   \bar A=\frac{1}{\Omega_\mathrm{BZ}}\int_\mathrm{BZ}A(\boldsymbol k)\,\mathrm d\boldsymbol k
-
-となる。状態数 :math:`n(E)` と\ :ref:`状態密度<density-of-states>` :math:`\rho(E)` の式は、
+である。:math:`N\to\infty` では、波数についての平均は\ :ref:`BZ積分<bz-average>` :eq:`kps-integral` に
+置き換えられる。状態数 :math:`n(E)` と\ :ref:`状態密度<density-of-states>` :math:`\rho(E)` の式は、
 :math:`A(\boldsymbol k)` にそれぞれ階段関数とデルタ関数を選んだ場合にあたる。
 全エネルギーには、このようなバンドごとの和のほかに電子間相互作用の項も含まれるが、
 それらも状態の和から求めた電子密度などを通じてBZ積分に依存する。
@@ -66,7 +58,7 @@ BZを各方向に :math:`n_i` 等分した等間隔のメッシュ
 
 である。これらの波数は、各方向に単位胞を :math:`n_i` 個並べた有限の結晶に周期境界条件を
 課したときの波数に一致する（式 :eq:`pbc-allowed`）。電子密度とポテンシャルが元の単位胞の
-周期を保つ限り、Γ点を含む :math:`n_1\times n_2\times n_3` メッシュでの計算と、
+周期を保つ限り、\ :ref:`Γ点<gamma-point>`\ を含む :math:`n_1\times n_2\times n_3` メッシュでの計算と、
 この有限の周期結晶の計算は、単位胞あたりで同じ結果を与える。メッシュによる積分誤差は、
 周期境界を課した有限の結晶と無限結晶との差にあたる。
 

@@ -124,7 +124,7 @@
 出力するのが質量で割る前の固有ベクトルか、変位かは、結果を読むときに区別する必要がある
 [Ghosez1999]_。
 
-ブリルアンゾーンの中心 :math:`\boldsymbol k=0` を **Γ点** と呼ぶ。Γ点では、音響和則 :eq:`ph-asr` から、各原子の成分が
+ブリルアンゾーンの中心 :math:`\boldsymbol k=0`\ （\ :ref:`Γ点<gamma-point>`）では、音響和則 :eq:`ph-asr` から、各原子の成分が
 :math:`e_{\kappa\alpha}\propto\sqrt{m_\kappa}\,\delta_{\alpha\gamma}` のベクトル（全原子の一様な並進）が
 固有値0の固有ベクトルになる。:math:`\gamma=x,y,z` の3本の分枝は :math:`\boldsymbol k\to0` で
 振動数が0に近づき、長波長の音波を表すので **音響分枝** と呼ぶ。残りの :math:`3n-3` 本は、

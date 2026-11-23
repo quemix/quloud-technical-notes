@@ -102,9 +102,46 @@
 .. math::
   \boldsymbol g\cdot\boldsymbol R=\boldsymbol h^\top B^\top A\,\boldsymbol n=2\pi\,\boldsymbol h^\top\boldsymbol n
 
-で :math:`2\pi` の整数倍なので、すべての格子ベクトルについて :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` となる。このため、格子と同じ周期を持つ関数は\ :ref:`平面波<periodic-fourier-series>` :math:`e^{i\boldsymbol g\cdot\boldsymbol r}` の重ね合わせで表せる。
+で :math:`2\pi` の整数倍なので、すべての格子ベクトルについて :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` となる。
 
-逆に、すべての格子ベクトル :math:`\boldsymbol R` について :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` となる波数ベクトル :math:`\boldsymbol g` は、逆格子ベクトルに限られる。:math:`B` は正則なので、任意の :math:`\boldsymbol g` を実数の成分をもつ :math:`\boldsymbol h` で :math:`\boldsymbol g=B\boldsymbol h` と書ける。:math:`\boldsymbol R=\boldsymbol a_i` を代入すると、式 :eq:`ortho` から :math:`\boldsymbol g\cdot\boldsymbol a_i=2\pi h_i` となり、これが :math:`2\pi` の整数倍であるには :math:`h_i` が整数でなければならない。したがって逆格子は、格子のすべての並進で位相が変わらない平面波の波数の集合である。次節ではこの性質を使う。
+.. _periodic:
+
+結晶の電子密度やポテンシャルは、任意の格子ベクトル :math:`\boldsymbol R` について
+
+.. math::
+   :label: periodic0
+
+   \rho(\boldsymbol r+\boldsymbol R)=\rho(\boldsymbol r)
+
+を満たす、格子と同じ周期の関数である。
+
+.. _periodic-fourier-series:
+
+格子と同じ周期の関数は、逆格子ベクトルを波数とする平面波 :math:`e^{i\boldsymbol g\cdot\boldsymbol r}` の重ね合わせ（フーリエ級数）で表せる。
+
+.. math::
+   :label: periodic-fourier
+
+   \rho(\boldsymbol r)=\sum_{\boldsymbol g}\rho_{\boldsymbol g}\,e^{i\boldsymbol g\cdot\boldsymbol r}
+
+:math:`\rho_{\boldsymbol g}` は、平面波 :math:`e^{i\boldsymbol g\cdot\boldsymbol r}` がどれだけ含まれるかを表すフーリエ係数である。格子ベクトル :math:`\boldsymbol R` だけ移動すると、各平面波に :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` が掛かるので、和の各項が元に戻り、式 :eq:`periodic0` が成り立つ。
+
+一次元の例を :numref:`fig-periodic-fourier-components` に示す。第2高調波は基本波の
+半分の周期をもつが、どちらも :math:`a` だけ平行移動すると元の値に戻る。
+このため、二つの成分と定数項を足した密度も :math:`a` ごとに繰り返す。
+
+.. figure:: images/periodic_fourier_components.svg
+   :name: fig-periodic-fourier-components
+   :alt: 基本波は距離aで1周期、第2高調波は同じ距離で2周期を描く。二つの波と定数を足した密度も距離aごとに同じ形を繰り返す。
+   :width: 100%
+   :align: center
+
+   上段の :math:`0.35\cos(2\pi x/a)` は :math:`g=\pm2\pi/a`、
+   中段の :math:`0.2\cos(4\pi x/a)` は :math:`g=\pm4\pi/a` の平面波の組に対応する。
+   下段はこの二成分に :math:`g=0` の定数項1を足した密度の模式例。
+   縦の破線が周期一つ分の境界を示す。
+
+逆に、すべての格子ベクトル :math:`\boldsymbol R` について :math:`e^{i\boldsymbol g\cdot\boldsymbol R}=1` となる波数ベクトル :math:`\boldsymbol g` は、逆格子ベクトルに限られる。:math:`B` は正則なので、任意の :math:`\boldsymbol g` を実数の成分をもつ :math:`\boldsymbol h` で :math:`\boldsymbol g=B\boldsymbol h` と書ける。:math:`\boldsymbol R=\boldsymbol a_i` を代入すると、式 :eq:`ortho` から :math:`\boldsymbol g\cdot\boldsymbol a_i=2\pi h_i` となり、これが :math:`2\pi` の整数倍であるには :math:`h_i` が整数でなければならない。したがって逆格子は、格子のすべての並進で位相が変わらない平面波の波数の集合である。格子と同じ周期の関数のフーリエ級数 :eq:`periodic-fourier` に、逆格子ベクトル以外の波数の平面波が現れないのもこのためである。次節ではこの性質を使う。
 
 .. _centred-reciprocal-lattice:
 

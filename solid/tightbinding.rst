@@ -83,11 +83,13 @@ Schrödinger方程式 :math:`\hat H|\psi\rangle=E|\psi\rangle` は係数に対�
 :math:`\varepsilon_0-2t` になる。:math:`k=\pi/a` では隣どうしが逆位相になり、
 エネルギーは上端 :math:`\varepsilon_0+2t` になる。この差 :math:`W=4t` がバンド幅である。
 
+.. _half-filling:
+
 :math:`N` 個の波数それぞれに、スピンを含めて電子が2個まで入るので、バンドの定員は
 :math:`2N` 個である。1原子あたり1電子の鎖では :math:`N` 個の電子が入り、定員の半分を占める。
-これを\ :ref:`半充填<fermi-surface>`\ と呼ぶ。
+これを **半充填** と呼ぶ。
 無限鎖の半充填では、絶対零度で :math:`|k|<\pi/(2a)` の状態が占有され、
-フェルミ準位は :math:`E_{\mathrm F}=\varepsilon_0`、フェルミ波数は :math:`k_{\mathrm F}=\pi/(2a)` になる。
+\ :ref:`フェルミ準位<fermi-surface>`\ は :math:`E_{\mathrm F}=\varepsilon_0`、フェルミ波数は :math:`k_{\mathrm F}=\pi/(2a)` になる。
 バンドがこの準位を横切るので、この模型の無限鎖は金属的である。
 
 有限鎖の固有状態と擬似波数
