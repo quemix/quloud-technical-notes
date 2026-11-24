@@ -53,10 +53,21 @@
    G=\sum_i n_i\mu_i
 
 を得る。純物質では :math:`\mu=G/n` で、化学ポテンシャルは1 molあたりのギブス自由エネルギーに等しい。
-反応 :math:`\sum_i\nu_i\mathrm A_i=0`\ （:math:`\nu_i` は生成物で正、反応物で負の化学量論係数）が
-1 molだけ進むときのギブス自由エネルギー変化は :math:`\Delta_r G=\sum_i\nu_i\mu_i` で、
-各成分が\ :ref:`標準状態<standard_state>`\ にあるときの値が標準反応ギブスエネルギー
-:math:`\Delta_r G^o=\sum_i\nu_i\mu_i^o` である。
+**反応ギブスエネルギー。** 反応 :math:`\sum_i\nu_i\mathrm A_i=0`\ （:math:`\nu_i` は生成物で正、反応物で負の
+化学量論係数）の進み具合を反応進行度 :math:`\xi`\ （単位はmol）で表すと、反応が :math:`d\xi` だけ進むとき
+各成分の物質量は :math:`dn_i=\nu_i\,d\xi` だけ変わる。これを\ :eq:`thermo-gibbs-differential`\ に入れると、
+温度と圧力が一定のもとで
+
+.. math::
+   :label: thermo-reaction-gibbs
+
+   \Delta_r G\equiv\left(\frac{\partial G}{\partial\xi}\right)_{T,p}=\sum_i\nu_i\mu_i
+
+を得る。:math:`\Delta_r G` は、その時点の組成で反応を微小に進めたときの :math:`G` の変化率である。
+反応が有限量進むと組成が変わり、各 :math:`\mu_i` も変わるので、:math:`G` の有限の変化は
+:eq:`thermo-reaction-gibbs`\ を :math:`\xi` について積分したものになる。
+各成分が\ :ref:`標準状態<standard_state>`\ にあるときの\ :eq:`thermo-reaction-gibbs`\ の値が、
+前の節の標準反応ギブスエネルギー :math:`\Delta_r G^o=\sum_i\nu_i\mu_i^o` である。
 
 **相平衡の条件。** 同じ温度・圧力の2つの相 :math:`\alpha`、:math:`\beta` の間で、成分 :math:`i` を
 :math:`dn` だけ :math:`\alpha` から :math:`\beta` へ移すと、:eq:`thermo-gibbs-differential`\ から
@@ -110,7 +121,9 @@
 
 同じ定義を電子に使ったものが、フェルミ–ディラック分布に現れる
 :ref:`電子の化学ポテンシャル<fermi-dirac-distribution>`\ である。2つの物質を接触させて電子が行き来できるとき、
-:eq:`thermo-phase-equilibrium`\ と同じ理由で、平衡では両者の電子の化学ポテンシャル（フェルミ準位）がそろう。
+:eq:`thermo-phase-equilibrium`\ と同じ理由で、平衡では両者のフェルミ準位がそろう。
+ただし、そろうのは静電ポテンシャルによるエネルギーを含め、共通のエネルギー基準（例えば真空準位）で測った
+電子の化学ポテンシャル（電気化学ポテンシャル）である。物質ごとに価電子帯上端などから測った値はそろわない。
 
 ------------------------------------
 参考文献

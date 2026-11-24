@@ -54,7 +54,7 @@
 温度と圧力を固定して欠陥を1つ作ると、結晶のギブス自由エネルギーは
 :math:`G[{\rm X}]-G[{\rm bulk}]` だけ変わる。:math:`{\rm X}` は欠陥を含む結晶、
 :math:`{\rm bulk}` は同じ数の単位胞からなる完全結晶である。一方、リザーバーは元素 :math:`i` の原子を
-:math:`n_i` 個失うので、化学ポテンシャルの定義 :eq:`thermo-chemical-potential`\ から
+:math:`n_i` 個失うので、化学ポテンシャルの定義\ :eq:`thermo-chemical-potential`\ から
 そのギブス自由エネルギーは :math:`-\sum_in_i\mu_i` だけ変わる。両者の和が欠陥の形成ギブスエネルギーで、
 
 .. math::
@@ -89,8 +89,9 @@
 
 そこで、元素 :math:`i` の単体（金属Liの結晶、O\ :sub:`2`\ 分子など）の1原子あたりの全エネルギー
 :math:`E_i^{\rm ref}` を同じ条件で計算し、化学ポテンシャルをそこからの差 :math:`\Delta\mu_i` で表す。
-:ref:`化学ポテンシャルの節<chemical-potential>`\ で見たように、単体の固体の化学ポテンシャルは
-1原子あたりの全エネルギーで近似できるので、:math:`\Delta\mu_i=0` はその単体と平衡にある条件を表す。:eq:`defect-formation-neutral`\ は
+:ref:`化学ポテンシャルの節<chemical-potential>`\ で見たように、絶対零度で零点振動と :math:`pV` を無視すると、
+単体の固体の化学ポテンシャルは1原子あたりの全エネルギーで近似できる。この近似のもとで、
+:math:`\Delta\mu_i=0` はその単体と平衡にある条件を表す。:eq:`defect-formation-neutral`\ は
 
 .. math::
    :label: defect-formation-delta-mu
@@ -101,8 +102,13 @@
    -\sum_in_i\Delta\mu_i
    \end{aligned}
 
-と分かれる。:math:`E_{\rm f}^0` は計算する構造だけで決まり、:math:`-\sum_in_i\Delta\mu_i` が
+と分かれる。:math:`E_{\rm f}^0` は計算する構造と計算条件で決まり、:math:`-\sum_in_i\Delta\mu_i` が
 実験の条件（どの相と平衡にあるか、気相の分圧など）による変化を表す。
+
+この分け方は参照の選び方に依存するが、:math:`E_{\rm f}` そのものは依存しない。同じ :math:`\mu_i` を、
+別の参照 :math:`E_i^{\rm ref}` からの差で表し直すと、:math:`E_{\rm f}^0` と :math:`-\sum_in_i\Delta\mu_i` の
+変化は打ち消し合う。:math:`E_{\rm f}` が変わるのは :math:`\mu_i` そのもの、つまりリザーバーの条件が違う場合である。
+共通の :math:`E_i^{\rm ref}` と計算条件のもとで :math:`\Delta\mu_i` だけが違う2つの値は、第2項の差だけずれる。
 
 .. _chemical-potential-limits:
 
@@ -111,22 +117,35 @@
 
 :math:`\Delta\mu_i` は自由に選べるわけではない。母物質が化合物 :math:`{\rm A}_x{\rm B}_y` のとき、
 化合物がリザーバーと平衡に存在するには、化合物1化学式単位を作る反応の平衡条件
-（\ :eq:`thermo-phase-equilibrium`\ と同じ考え方）から
+（反応ギブスエネルギー\ :eq:`thermo-reaction-gibbs`\ が0）が成り立つ。母相の1化学式単位あたりの
+ギブス自由エネルギーを :math:`g[{\rm A}_x{\rm B}_y]`、単体A・Bの1原子あたりのギブス自由エネルギーを
+:math:`g_{\rm A}`、:math:`g_{\rm B}` とすると、一般には
+
+.. math::
+   :label: defect-compound-equilibrium-general
+
+   x\mu_{\rm A}+y\mu_{\rm B}=g[{\rm A}_x{\rm B}_y],
+   \qquad
+   \mu_{\rm A}\le g_{\rm A},\quad\mu_{\rm B}\le g_{\rm B}
+
+である。右の2つの不等式は単体の析出で決まる上限である。:math:`\mu_{\rm A}>g_{\rm A}` なら、
+リザーバーのAの化学ポテンシャルが単体Aより高いので、:eq:`thermo-transfer`\ によりAは単体として析出する。
+
+静的な第一原理計算では、絶対零度で零点振動と :math:`pV` を無視して :math:`g` を全エネルギーで近似する。
+:math:`g[{\rm A}_x{\rm B}_y]\simeq E_{\rm tot}[{\rm A}_x{\rm B}_y]`、:math:`g_i\simeq E_i^{\rm ref}` とおき、
+:eq:`defect-formation-delta-mu`\ の :math:`\Delta\mu_i` で書くと
 
 .. math::
    :label: defect-compound-equilibrium
 
-   x\mu_{\rm A}+y\mu_{\rm B}=E_{\rm tot}[{\rm A}_x{\rm B}_y],
+   x\Delta\mu_{\rm A}+y\Delta\mu_{\rm B}=\Delta H_{\rm f}[{\rm A}_x{\rm B}_y],
    \qquad
-   x\Delta\mu_{\rm A}+y\Delta\mu_{\rm B}=\Delta H_{\rm f}[{\rm A}_x{\rm B}_y]
+   \Delta\mu_{\rm A}\le0,\quad\Delta\mu_{\rm B}\le0
 
-が成り立つ。右の式は左の式に :eq:`defect-formation-delta-mu`\ を代入したもので、
-:math:`\Delta H_{\rm f}=E_{\rm tot}[{\rm A}_x{\rm B}_y]-xE_{\rm A}^{\rm ref}-yE_{\rm B}^{\rm ref}` は
-化学式単位あたりの生成エネルギーである。安定な化合物では :math:`\Delta H_{\rm f}<0` になる。
-
-上限は単体の析出で決まる。:math:`\Delta\mu_{\rm A}>0` なら、Aの化学ポテンシャルが単体Aより高いので、
-:eq:`thermo-transfer`\ によりAは単体として析出する。したがって :math:`\Delta\mu_{\rm A}\le0`、
-:math:`\Delta\mu_{\rm B}\le0` である。これを :eq:`defect-compound-equilibrium`\ と合わせると
+となる。:math:`\Delta H_{\rm f}=E_{\rm tot}[{\rm A}_x{\rm B}_y]-xE_{\rm A}^{\rm ref}-yE_{\rm B}^{\rm ref}` は
+化学式単位あたりの生成エネルギーで、安定な化合物では :math:`\Delta H_{\rm f}<0` になる。
+気相と平衡にある条件を扱うときは、後で述べるように気相の :math:`\mu` の温度と分圧への依存を
+:math:`\Delta\mu` に含める。:eq:`defect-compound-equilibrium`\ の2つの式を合わせると
 
 .. math::
    :label: defect-mu-range
@@ -188,7 +207,9 @@ Li\ :sub:`3`\ PO\ :sub:`4`\ のような3元素の化合物では、
 
    \varepsilon(q/q')=\frac{E_{\rm f}[{\rm X}^q](E_{\rm F}=0)-E_{\rm f}[{\rm X}^{q'}](E_{\rm F}=0)}{q'-q}
 
-となる。フェルミ準位が :math:`\varepsilon(q/q')` を横切ると、熱平衡で最も安定な電荷が入れ替わる。
+となる。ただし、この交点で第3の電荷状態の形成エネルギーがさらに低ければ、そこで最も安定な電荷は入れ替わらない。
+熱力学的な遷移準位は、取りうるフェルミ準位の範囲（バンドギャップ内）で、各電荷の形成エネルギーの
+最小値（下包絡線）をつくる直線が切り替わる交点である。フェルミ準位がこの点を横切ると、熱平衡で最も安定な電荷が入れ替わる。
 フェルミ準位そのものは、欠陥とキャリアの電荷の総和が0になる条件から決まる。
 
 **有限セルの補正。** 周期セルに電荷 :math:`q` を入れると、静電エネルギーが発散しないように
@@ -202,14 +223,17 @@ Makov–Payneの補正の最初の項は
 
    E_{\rm corr}\simeq\frac{q^2e^2\alpha_{\rm M}}{8\pi\varepsilon_0\varepsilon_{\rm r}L}
 
-である [DefMakovPayne1995]_。:math:`\varepsilon_0` は真空の誘電率である。
+である [DefMakovPayne1995]_。:math:`\varepsilon_0` は真空の誘電率である。:math:`\alpha_{\rm M}` は
+セルの形と静電エネルギーの規約で決まる無次元の定数である。ここでは、一様な背景電荷の中にある点電荷の格子の
+エネルギーを孤立した点電荷より :math:`q^2e^2\alpha_{\rm M}/(8\pi\varepsilon_0\varepsilon_{\rm r}L)` だけ低いと書く
+Makov–Payneの規約に従い、単純立方の格子では :math:`\alpha_{\rm M}\simeq2.8373` である。
 欠陥を含むセルと完全結晶とで静電ポテンシャルの基準をそろえる項も要る。これらをまとめて扱う方法に、
 Freysoldtらの方法がある [DefFreysoldt2009]_。補正の詳細は総説 [DefFreysoldt2014]_ にある。
 
 **中性のセルで原子を取り除く場合。** イオン結晶から中性のLi原子を1個取り除いたセルは、
 Li\ :sup:`+`\ が抜けた電荷 :math:`-1` の空孔と、電子が1個足りない状態（価電子帯の正孔、または
 近くの陰イオンに局在した正孔）を同時に含む。中性のセルから求めるのは、この組の形成エネルギーである。
-電荷 :math:`-1` の空孔の形成エネルギーは :eq:`defect-formation-charged`\ によりフェルミ準位とともに変わり、
+電荷 :math:`-1` の空孔の形成エネルギーは\ :eq:`defect-formation-charged`\ によりフェルミ準位とともに変わり、
 中性のセルの値と等しくなるのは :math:`E_{\rm F}=\varepsilon(0/{-1})` のときだけである。
 
 .. _defect-concentration:
@@ -219,8 +243,9 @@ Li\ :sup:`+`\ が抜けた電荷 :math:`-1` の空孔と、電子が1個足り�
 
 形成エネルギーが正でも、有限温度では配置のエントロピーのために欠陥ができる。
 欠陥が入りうるサイトが :math:`N` 個あり、そのうち :math:`n` 個に欠陥があるとする。
-欠陥どうしは相互作用しないとし、欠陥1個あたりの形成ギブスエネルギーを
-:math:`g_{\rm f}=E_{\rm f}-TS_{\rm f}`\ （:math:`S_{\rm f}` は振動のエントロピーの変化）とする。
+欠陥どうしは相互作用しないとし、配置のエントロピーを除いた欠陥1個あたりの形成ギブス自由エネルギーを
+:math:`g_{\rm f}` とする。これは\ :eq:`defect-formation-gibbs`\ の :math:`\Delta G_{\rm f}` で、
+リザーバーの化学ポテンシャル（その温度と分圧への依存も）と振動の寄与を含む。
 :math:`n` 個の欠陥をサイトに配る並べ方は :math:`W=N!/[n!(N-n)!]` 通りなので、配置のエントロピーは
 :math:`k_{\rm B}\ln W` で、欠陥の数による系のギブス自由エネルギーの変化は
 
@@ -238,7 +263,10 @@ Li\ :sup:`+`\ が抜けた電荷 :math:`-1` の空孔と、電子が1個足り�
    \frac{\partial G}{\partial n}=g_{\rm f}+k_{\rm B}T\ln\frac{n}{N-n}
 
 である。熱平衡ではこれが0になるので、:math:`n/(N-n)=\exp(-g_{\rm f}/k_{\rm B}T)` を得る。
-欠陥が少ない :math:`n\ll N` では、欠陥濃度 :math:`c=n/N` は
+欠陥が少ない :math:`n\ll N` では、欠陥濃度 :math:`c=n/N` は :math:`c\simeq\exp(-g_{\rm f}/k_{\rm B}T)` である。
+さらに、静的な第一原理計算の形成エネルギー :math:`E_{\rm f}`\ （リザーバーの条件を :math:`\mu_i` に含めたもの）で
+:math:`g_{\rm f}` を近似し、振動の寄与を形成エントロピー :math:`S_{\rm f}` にまとめて
+:math:`g_{\rm f}\simeq E_{\rm f}-TS_{\rm f}` とおくと
 
 .. math::
    :label: defect-concentration
@@ -246,15 +274,14 @@ Li\ :sup:`+`\ が抜けた電荷 :math:`-1` の空孔と、電子が1個足り�
    c\simeq\exp\!\left(\frac{S_{\rm f}}{k_{\rm B}}\right)\exp\!\left(-\frac{E_{\rm f}}{k_{\rm B}T}\right)
 
 となる。1つのサイトに向きの異なる欠陥がいくつか入りうる場合は、その数を前に掛ける。
-荷電欠陥では、:math:`E_{\rm f}` に :eq:`defect-formation-charged`\ の値を使い、
+荷電欠陥では、:math:`E_{\rm f}` に\ :eq:`defect-formation-charged`\ の値を使い、
 :math:`E_{\rm F}` と濃度を電荷の中性条件と合わせて決める。
 
 この導出は、欠陥の数が熱平衡まで増減できることを前提にしている。欠陥は表面や結晶粒界などで
 生まれ、消える。分子動力学のスーパーセルに空孔を1つだけ入れて計算するモデルでは、
 空孔の数は固定され、:math:`c` は温度によらず「空孔1個÷サイト数」である。
-このモデルで求めた拡散の温度依存性には、空孔ができる難しさ（:math:`E_{\rm f}`）が入らない。
-熱平衡の空孔を介した拡散では、空孔の濃度も :eq:`defect-concentration`\ で温度とともに増えるので、
-拡散の活性化エネルギーには移動障壁に加えて形成エネルギーが入る。
+したがって、このモデルで求めた拡散の温度依存性には、空孔を熱平衡で生成する寄与、つまり
+:eq:`defect-concentration`\ による空孔濃度の温度変化が入らない。
 
 .. _defect-examples:
 
@@ -263,7 +290,7 @@ Li\ :sup:`+`\ が抜けた電荷 :math:`-1` の空孔と、電子が1個足り�
 
 **MgOの化学ポテンシャルの範囲。** MgO（結晶）の298.15 Kでの標準生成エンタルピーは
 −601.60 kJ/mol [DefCODATA1989]_ で、1化学式単位あたり :math:`\Delta H_{\rm f}=-6.235` eVにあたる
-（1 kJ/mol = 0.010364 eV）。第一原理計算では :eq:`defect-compound-equilibrium`\ の
+（1 kJ/mol = 0.010364 eV）。第一原理計算では\ :eq:`defect-compound-equilibrium`\ の
 :math:`\Delta H_{\rm f}` を全エネルギーから求めるが、ここでは範囲の幅の目安として実験値を使う。
 :eq:`defect-mu-range`\ から :math:`-6.235\,{\rm eV}\le\Delta\mu_{\rm O}\le0` で、
 :math:`\Delta\mu_{\rm Mg}=\Delta H_{\rm f}-\Delta\mu_{\rm O}` である。
@@ -304,8 +331,11 @@ O過剰からMg過剰へ条件を移すと、酸素空孔の形成エネルギ�
 同じだけ上がる（:numref:`fig-defect-formation-dependence`\ の左）。同じ構造・同じ計算条件の
 :math:`E_{\rm f}^0` を使っても、化学ポテンシャルの選び方だけで値が eV の単位で変わる。
 一方、2つの空孔の和 :math:`E_{\rm f}[V_{\rm O}]+E_{\rm f}[V_{\rm Mg}]=E_{\rm f}^0[V_{\rm O}]+E_{\rm f}^0[V_{\rm Mg}]+\Delta H_{\rm f}` は
-化学ポテンシャルによらない。陽イオンと陰イオンの空孔を組で作ると（Schottky欠陥）、取り除いた原子が
-化学式単位1つ分になり、その行き先が化合物自身になるからである。
+化学ポテンシャルによらない。2つの空孔で取り除いた原子がMgOの化学量論の比（Mg 1個とO 1個）になり、
+:eq:`defect-compound-equilibrium`\ により :math:`\Delta\mu_{\rm Mg}+\Delta\mu_{\rm O}=\Delta H_{\rm f}` が
+一定だからである。この和は、離れた位置に別々に作った2つの中性の空孔の値を足したものである。
+陽イオンと陰イオンの空孔の組（Schottky欠陥）の実際の形成エネルギーには、各空孔の電荷状態と、
+近くにある空孔どうしの結合が関わるので、この和とは一般に異なる。
 
 **荷電欠陥の模型。** バンドギャップ3.0 eVの物質で、:math:`E_{\rm F}=0` での形成エネルギーが
 電荷 :math:`+1`、0、:math:`-1` に対してそれぞれ1.0、1.8、3.4 eVの欠陥を考える
@@ -320,10 +350,10 @@ O過剰からMg過剰へ条件を移すと、酸素空孔の形成エネルギ�
    :width: 100%
    :alt: 左は酸素の化学ポテンシャルに対して、酸素空孔の形成エネルギーが上がり、Mg空孔の形成エネルギーが下がる2本の直線。右はフェルミ準位に対する3つの電荷状態の形成エネルギーと、その最小値をつないだ折れ線。
 
-   左：MgOの酸素空孔（実線）とMg空孔（破線）の形成エネルギーの変化 :eq:`defect-mgo-vacancies`\ 。
+   左：MgOの酸素空孔（実線）とMg空孔（破線）の形成エネルギーの変化\ :eq:`defect-mgo-vacancies`\ 。
    縦軸は、取り除いた元素の単体と平衡な条件（:math:`\Delta\mu=0`）での値 :math:`E_{\rm f}^0` からの差。
    点線は2つの変化の和で、:math:`\Delta H_{\rm f}=-6.235` eVで一定。
-   右：仮定した荷電欠陥の形成エネルギー :eq:`defect-formation-charged`\ 。細線は電荷 :math:`+1`\ （破線）、
+   右：仮定した荷電欠陥の形成エネルギー\ :eq:`defect-formation-charged`\ 。細線は電荷 :math:`+1`\ （破線）、
    0（一点鎖線）、:math:`-1`\ （点線）、太線は最小値、黒丸は遷移準位。
 
 **欠陥濃度。** :eq:`defect-concentration`\ で :math:`S_{\rm f}=0`、:math:`E_{\rm f}=1.0` eVとすると、
@@ -339,7 +369,9 @@ O過剰からMg過剰へ条件を移すと、酸素空孔の形成エネルギ�
 ----------
 
 * **化学ポテンシャルの基準。** 形成エネルギーの値は、:math:`\mu_i` をどの条件で選んだかと一緒に示して
-  初めて意味をもつ。基準が異なる値どうしは、:eq:`defect-formation-delta-mu`\ の第2項の差だけずれる。例えば\ `Li₃PO₄のLi空孔形成エネルギー <https://example.quloud-platform.quemix.com/li3po4/vacancy-formation.html>`__\ では、
+  初めて意味をもつ。共通の参照 :math:`E_i^{\rm ref}` と計算条件のもとでリザーバーの条件だけが違う値どうしは、
+  :eq:`defect-formation-delta-mu`\ の第2項の差だけずれる。手法が違う値どうしでは、:math:`E_{\rm f}^0` と
+  :math:`\mu_i` の両方が違いうる。例えば\ `Li₃PO₄のLi空孔形成エネルギー <https://example.quloud-platform.quemix.com/li3po4/vacancy-formation.html>`__\ では、
   Li\ :sub:`3`\ PO\ :sub:`4`\ の32原子の不規則構造からLiを1個取り除いた形成エネルギーが、
   文献のDFTでは約5 eV、事例のOpenMXでは約3〜4 eVである。2つの計算は元の原子配置も異なる。この差を手法の精度の差として読むには、
   構造、Liの化学ポテンシャル、緩和の条件をそろえる必要がある。どの要因がどれだけ効いているかは、
@@ -356,9 +388,9 @@ O過剰からMg過剰へ条件を移すと、酸素空孔の形成エネルギ�
   求める場合も、:math:`E_i^{\rm ref}` を同じモデルで求めないと、基準のずれが相殺しない。
 * **有限温度。** :eq:`defect-formation-neutral`\ は絶対零度の全エネルギーで書いた。高温では、
   振動のエントロピー :math:`S_{\rm f}` と、気相などのリザーバーの化学ポテンシャルの温度依存性が効く。
-* **空孔の数を固定したモデル。** 欠陥濃度の節で述べたように、空孔を人為的に入れたモデルの拡散は
-  空孔の移動だけを表す。実験の試料で空孔が熱平衡で生成されるなら、実験の拡散の活性化エネルギーには形成エネルギーが加わり、
-  組成や不純物で空孔の数が決まっているなら加わらない。どちらの場合かで、モデルの値と比べてよい量が変わる。
+* **空孔の数を固定したモデル。** 欠陥濃度の節で述べたように、空孔を人為的に入れたモデルの拡散の温度依存性には、
+  空孔を熱平衡で生成する寄与が入らない。実験の試料で空孔が熱平衡で生成されるなら、実験の拡散の温度依存性には
+  この寄与が含まれ、組成や不純物で空孔の数が決まっているなら含まれない。どちらの場合かで、モデルの値と比べてよい量が変わる。
 
 関連資料
 --------
