@@ -4,7 +4,7 @@
 =========================
 
 固体の中の原子は、安定な位置のまわりで振動しながら、まれに隣の安定な位置へ移る。
-移る途中の原子配置はエネルギーが高く、その最高点と出発点のエネルギー差が移動の障壁になる。
+移る途中の原子配置はエネルギーが高く、途中で最もエネルギーが高い配置と出発点とのエネルギー差が移動の障壁になる。
 この記事では、2つの安定構造を結ぶ経路をイメージ（途中の原子配置）の列で表し、
 各イメージに働く力を組み替えて経路を求めるNEB（nudged elastic band）法を導く。
 経路の最高点を鞍点へ押し上げるclimbing imageと、得られた点が本当に鞍点かを確かめる方法も扱う。
@@ -43,8 +43,8 @@
 :math:`H` の固有値が一様な並進による0を除いてすべて正の点、つまりエネルギーの極小である。
 
 A から別の極小 B へ移る経路を、弧長 :math:`s` を引数とする曲線 :math:`\boldsymbol R(s)` で表し、
-その単位接線を :math:`\hat{\boldsymbol\tau}(s)=d\boldsymbol R/ds` とする。力を接線方向と垂直方向に分けると、
-**最小エネルギー経路**\ （minimum energy path, MEP。最低エネルギー経路とも書く）は、
+その単位接線を :math:`\hat{\boldsymbol\tau}(s)=d\boldsymbol R/ds` とする。各点の力を、接線方向の成分と
+それに垂直な成分に分ける。**最小エネルギー経路**\ （minimum energy path, MEP。最低エネルギー経路とも書く）は、
 経路上のすべての点で力の垂直成分が0になる経路である。
 
 .. math::
@@ -96,7 +96,7 @@ MEPの最高点を :math:`\boldsymbol R_{\rm S}`、両端の極小を :math:`\bo
 
    \Delta E_{\rm A\to B}-\Delta E_{\rm B\to A}=E(\boldsymbol R_{\rm B})-E(\boldsymbol R_{\rm A})
 
-となる。障壁は同じ鞍点を共有しても、出発点を入れ替えると基準のエネルギーが変わる。
+となる。順・逆の障壁は同じ鞍点を共有するが、基準にする出発点のエネルギーが違う。
 両端のエネルギーが等しい結晶中の等価なサイト間の移動では順・逆の障壁は等しいが、
 サイトごとに環境が異なる非晶質では一般に異なる。そのため、経路ごとに両方向の障壁を数える。
 
@@ -160,8 +160,8 @@ A から中間の極小へ、中間の極小から B へ、という2回の素�
 
 となる。ばねは経路を曲率中心の側へ引き、弦を張るように経路をまっすぐにする。
 収束した点では :math:`\boldsymbol F_i^{\perp}=-k(\Delta s)^2\kappa\,\hat{\boldsymbol n}_i\neq\boldsymbol 0` なので、
-イメージはMEPの谷底から外れ、谷の斜面を横切る。斜面上の点は谷底より高いので、
-経路の最高エネルギーは鞍点より高くなる。滑り落ちを防ぐために :math:`k` を大きくするほど、
+イメージはMEPの谷底から外れ、谷の斜面を横切る。斜面上の点は同じ断面の谷底より高いので、
+経路の最高エネルギーは鞍点のエネルギーを表さない（説明用の事例では鞍点より高くなる）。滑り落ちを防ぐために :math:`k` を大きくするほど、
 この角切りは強くなる。:math:`k` の選び方で両方を同時に解消することはできない。
 
 NEB法は、:eq:`neb-plain-band-force`\ の2つの力から、それぞれ必要な成分だけを残す
@@ -207,16 +207,16 @@ NEB向けに調整した準Newton法などで、:math:`\boldsymbol F^{\rm NEB}_i
    \boldsymbol\tau_i=
    \begin{cases}
    \boldsymbol\tau_i^+ & (E_{i+1}>E_i>E_{i-1})\\
-   \boldsymbol\tau_i^- & (E_{i+1}<E_i<E_{i-1})
+   \boldsymbol\tau_i^- & (E_{i+1}<E_i<E_{i-1})\\
+   \boldsymbol\tau_i^+\Delta E_i^{\max}+\boldsymbol\tau_i^-\Delta E_i^{\min} & (\text{それ以外で }E_{i+1}>E_{i-1})\\
+   \boldsymbol\tau_i^+\Delta E_i^{\min}+\boldsymbol\tau_i^-\Delta E_i^{\max} & (\text{それ以外で }E_{i+1}<E_{i-1})
    \end{cases}
 
-とし、:math:`\hat{\boldsymbol\tau}_i=\boldsymbol\tau_i/|\boldsymbol\tau_i|` とする。
-イメージ :math:`i` がエネルギーの極大か極小にあって上のどちらにも当てはまらないときは、
+とし、:math:`\hat{\boldsymbol\tau}_i=\boldsymbol\tau_i/|\boldsymbol\tau_i|` とする。重みは
 :math:`\Delta E_i^{\max}=\max(|E_{i+1}-E_i|,|E_{i-1}-E_i|)`、
-:math:`\Delta E_i^{\min}=\min(|E_{i+1}-E_i|,|E_{i-1}-E_i|)` を重みにした
-:math:`\boldsymbol\tau_i^+\Delta E_i^{\max}+\boldsymbol\tau_i^-\Delta E_i^{\min}`\ （:math:`E_{i+1}>E_{i-1}` のとき）または
-:math:`\boldsymbol\tau_i^+\Delta E_i^{\min}+\boldsymbol\tau_i^-\Delta E_i^{\max}`\ （:math:`E_{i+1}<E_{i-1}` のとき）を使い、
-極値の前後で接線が急に切り替わらないようにする。
+:math:`\Delta E_i^{\min}=\min(|E_{i+1}-E_i|,|E_{i-1}-E_i|)` である。
+下の2つの場合はイメージ :math:`i` がエネルギーの極大か極小にあるときで、両側のベクトルを
+エネルギー差で重み付けして混ぜるので、極値の前後で接線が急に切り替わらない。
 
 .. _climbing-image-neb:
 
@@ -326,7 +326,10 @@ climbing imageの力が許容値まで小さくなっても、その点が1次�
 .. math::
    :label: neb-muller-brown
 
-   E(x,y)=\sum_{m=1}^{4}A_m\exp\!\left[a_m(x-x_m)^2+b_m(x-x_m)(y-y_m)+c_m(y-y_m)^2\right]
+   \begin{aligned}
+   E(x,y)&=\sum_{m=1}^{4}A_m\exp Q_m(x,y),\\
+   Q_m(x,y)&=a_m(x-x_m)^2+b_m(x-x_m)(y-y_m)+c_m(y-y_m)^2
+   \end{aligned}
 
 で、:math:`(A_m)=(-200,-100,-170,15)`、:math:`(a_m)=(-1,-1,-6.5,0.7)`、:math:`(b_m)=(0,0,11,0.6)`、
 :math:`(c_m)=(-10,-10,-6.5,0.7)`、:math:`(x_m)=(1,0,-0.5,-1)`、:math:`(y_m)=(0,0.5,1.5,1)` である。
@@ -401,7 +404,7 @@ climbing imageを使わないNEBの最高エネルギーは、鞍点より2.0〜
 climbing imageの位置はどの :math:`P` でもS1と :math:`2\times10^{-7}` 以内で一致した。
 
 **ばね定数。** 中間イメージ9個のNEBで :math:`k=5,50,500` と変えると、収束した各イメージの位置の差は
-最大 :math:`1.2\times10^{-4}` で、隣り合うイメージの間隔はどれも0.1761にそろった。
+最大 :math:`1.2\times10^{-4}` で、隣り合うイメージの間隔はどれも0.1761〜0.1762にそろった。
 収束までのステップ数は4532、1218、706と変わった。:eq:`neb-force`\ から導いた通り、
 :math:`k` は収束の速さだけを変える。
 
@@ -419,8 +422,6 @@ M3のエネルギーとほぼ同じになった。バンドは障壁について
 経路はM3から0.020の位置にイメージを置いて通り、その前後に−40.67と−72.48の2つの極大が現れる。
 この経路はM1→M3とM3→M2の2回の素過程からなり、M1から経路の最高点までのエネルギー差は
 1回の移動の障壁ではない。
-
-数値と図は ``meta/notes/neb/make_figures.py`` で求めた。
 
 .. _neb-interpretation-limits:
 
