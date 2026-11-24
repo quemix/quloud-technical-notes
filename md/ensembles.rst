@@ -49,6 +49,33 @@
 追えず、振動数や保存量に誤差が現れる。軽い原子を含む硬い結合は速く振動するため、
 その運動を陽に扱う場合は細かい時間刻みを要する。
 
+.. |md-force-heading| replace:: 原子に働く力の求め方
+
+.. _md-force-evaluation:
+
+|md-force-heading|
+------------------
+
+原子配置を更新するたびに、\ :eq:`md-newton`\ の力を新しい配置で評価する。
+力の求め方は、ポテンシャルエネルギーをどう与えるかで決まる。
+
+**経験的ポテンシャル** では、原子間距離や結合角などの関数を定め、パラメータを
+実験値や参照計算に合わせる。関数を評価するだけなので計算量は一般に小さい。
+適用範囲は、関数の形とパラメータを調整した構造や組成で決まる。
+
+**第一原理分子動力学** （AIMD、FPMD）では、電子状態計算から力を求める。
+Born–Oppenheimer MD（BOMD）では、更新した原子核の配置ごとに電子の基底状態を求め、
+そのエネルギーから原子核に働く力を計算する。電子状態を反復計算するため、1ステップの負荷が
+大きい。扱える現象と精度は、基底状態を使う近似と採用する電子状態計算の手法に依存する。
+Car–Parrinello法では、電子の波動関数を仮想質量を持つ自由度として原子核と同時に動かす。
+波動関数が基底状態の近くを保つように進めることで、各ステップで基底状態を解き直さずに
+力を評価する [MdCarParrinello1985]_。
+
+\ :ref:`機械学習原子間ポテンシャル<mlip>`\ （MLIP）では、参照計算のエネルギーや力を
+学習したモデルから力を得る。電子状態の反復計算を学習済みモデルの評価に置き換えることで、
+同じ計算予算でも原子数を増やしたり、軌跡を延ばしたりできる。学習データで十分に表されていない
+原子配置では、予測した力が参照計算からずれることがある。
+
 .. _statistical-ensembles:
 
 NVE・NVT・NPTで固定する量
@@ -148,6 +175,8 @@ Nosé–Hoover法は補助変数を使う決定論的な方法で、
 長さを延ばしながら平均のばらつきを評価すると、時刻間の相関を無視して
 不確かさを小さく見積もることを避けられる [MdFlyvbjerg1989]_。
 
+.. _md-ensemble-examples:
+
 計算事例での使い分け
 --------------------
 
@@ -189,6 +218,7 @@ Nosé–Hoover法は補助変数を使う決定論的な方法で、
 全エネルギーの変動幅は時間刻みの二乗に比例する。
 
 .. list-table:: 厳密な周期を分割して10周期ぶん積分した結果
+   :name: md-oscillator-time-step-table
    :header-rows: 1
    :widths: 33 33 34
 
@@ -255,11 +285,15 @@ Nosé–Hoover法は補助変数を使う決定論的な方法で、
   遅い過程を観測できたかは別に評価する。初期構造を変えた軌跡を比べると、
   一つの構造にとどまったために平均が安定して見える場合を見分けられる。
 
+.. _md-ensemble-related:
+
 関連資料
 --------
 
 * :ref:`temperature`
 * :ref:`周期境界条件<pbc-allowed-wavevectors>`
+
+.. _md-ensemble-references:
 
 参考文献
 --------
@@ -282,3 +316,32 @@ Nosé–Hoover法は補助変数を使う決定論的な方法で、
    7182–7190 (1981). `doi:10.1063/1.328693 <https://doi.org/10.1063/1.328693>`_.
 .. [MdFlyvbjerg1989] H. Flyvbjerg and H. G. Petersen, *J. Chem. Phys.* **91**,
    461–466 (1989). `doi:10.1063/1.457480 <https://doi.org/10.1063/1.457480>`_.
+.. [MdCarParrinello1985] R. Car and M. Parrinello,
+   “Unified Approach for Molecular Dynamics and Density-Functional Theory,”
+   *Phys. Rev. Lett.* **55**, 2471–2474 (1985).
+   `doi:10.1103/PhysRevLett.55.2471 <https://doi.org/10.1103/PhysRevLett.55.2471>`_.
+
+
+.. raw:: html
+
+   <script>
+   (() => {
+       // 引用追加前の見出し・表のURLを、同じ対象の明示ラベルに移す。
+       // ページ内で引用の戻りリンクを使うときは、現在のアンカーに従う。
+       const oldAnchors = {
+           "#id5": "#thermostat-barostat",
+           "#id12": "#equilibration",
+           "#id14": "#md-ensemble-examples",
+           "#id15": "#md-oscillator-example",
+           "#id16": "#md-temperature-example",
+           "#id17": "#md-interpretation-limits",
+           "#id18": "#md-ensemble-related",
+           "#id19": "#md-ensemble-references",
+           "#id20": "#md-oscillator-time-step-table",
+       };
+       const destination = oldAnchors[window.location.hash];
+       if (destination) {
+           window.location.replace(destination);
+       }
+   })();
+   </script>

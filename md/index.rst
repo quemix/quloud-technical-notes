@@ -11,4 +11,6 @@
    ensembles
    heating_simulation
    rdf
+   diffusion
+   thermal_activation
    mlip

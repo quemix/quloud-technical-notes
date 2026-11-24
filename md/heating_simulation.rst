@@ -10,6 +10,7 @@
 前提は\ :ref:`統計アンサンブル<statistical-ensembles>`\ と
 :ref:`平衡化<equilibration>`\ である。この記事では、構造から相を判定し、
 昇温速度、保持時間、セルサイズが転移の見え方にどう影響するかを学ぶ。
+溶融・急冷で非晶質モデルを作るときの冷却速度や保持時間の決め方も扱う。
 
 .. _heating-phase-indicators:
 
@@ -102,10 +103,49 @@
 
 融解では、結晶に特徴的な原子の周期配列が失われる。
 近接原子の並び方を表す\ :ref:`結合配向秩序パラメータ<bond-orientational-order>`
-の急な低下が、融解の目印になる。拡散や長距離の構造秩序も調べると、
+の急な低下が、融解の目印になる。\ :ref:`拡散<mean-squared-displacement>`\ や長距離の構造秩序も調べると、
 高温で揺らいでいる結晶と、流動する液体を見分ける根拠が増える [HeatChen2025]_。
 急速な加熱や周期境界のもとでは結晶が過熱する場合があるため、
 秩序が失われた温度を読むときも昇温速度と保持時間が重要になる。
+
+.. |melt-quench-heading| replace:: 溶融・急冷で非晶質モデルを作る
+
+.. _melt-quench:
+
+|melt-quench-heading|
+---------------------
+
+溶融・急冷では、結晶を溶かしてから短時間で冷却し、原子が規則的な配列を作る前に動きを遅くする。
+分子動力学では、高温で液体になるまで保持した後に冷却し、低温で保持する。
+高温保持中に、\ :ref:`平均二乗変位（MSD）<mean-squared-displacement>`\ が長時間で時間に
+比例して増え、\ :ref:`動径分布関数（RDF）<radial-distribution-function>`\ から結晶に
+特徴的な長距離のピークが消えれば、融解の目安になる。
+冷却後の低温保持では、目標温度のもとで冷却直後の構造がどう緩和するかを追う。
+
+冷却後の配置を静的な計算の出発点にする場合は、座標に残る力が後続の計算に影響する。
+セルの大きさと形を保つ場合は、急冷と低温保持の後に\ :ref:`原子座標を緩和<structure-optimization>`\ して力を下げる。
+
+冷却が速いほど、同じ温度範囲を通過するのにかかる時間は短い（\ :eq:`heating-dwell-time`\ で
+速度の絶対値を使う）。通過時間が構造の緩和時間より短い場合、原子の配列は温度の変化に追いつかない。
+通常の実験に比べてMDが扱える時間は桁違いに短く、同じ温度差を冷却するときの冷却速度も高い。
+急冷後の局所構造や密度には冷却履歴の影響が残る。例えばシリカでは、冷却速度を変えると
+配位数や環の大きさの分布などが変わる [HeatVollmayr1996]_。
+
+小さい周期セルでは、セル内の配置が短い周期で繰り返される。高温での再配列が足りないと、
+その配置に初期の結晶秩序が残ることもある。
+`Li₃PO₄の溶融・急冷後の構造 <https://example.quloud-platform.quemix.com/li3po4/melt-quench-structure.html>`__\
+では、γ相の32原子セルをOpenMXの\ :ref:`第一原理分子動力学<md-force-evaluation>`\ で急冷し、
+セルを固定して原子座標を緩和した。より長く高温保持したLiらの32原子モデルも、緩和後の構造に
+部分的な結晶配列を含んでいた [RdfLiPhosphate]_。
+
+こうした小セルは不規則な局所配置を調べる模型として使える。実験の非晶質を代表するかは、
+急冷後に残る結晶秩序とセルサイズへの依存性で判断する。
+
+同じ作製条件でも、異なる初速度から独立に高温保持と急冷を行うと、異なる構造を得ることがある。
+同じ条件で作った構造間のばらつきが分かれば、冷却速度やセルサイズを変えたときの差が、
+一つの軌跡に特有の違いかどうかを判断できる。急冷後の\ :ref:`動径分布関数<radial-distribution-function>`\ には、
+どの距離に原子対が集まりやすいかが現れる。結晶に特徴的な近接原子の向きが残ったかは、
+\ :ref:`結合配向秩序パラメータ<bond-orientational-order>`\ を使って調べられる。
 
 .. _heating-window-example:
 
@@ -122,6 +162,7 @@
 CHGNetで、BaTiO₃の基本の5原子セルを各軸に5回または8回並べたときの読み取り値である。
 
 .. list-table:: CHGNetの昇温軌跡から読んだ転移温度
+   :name: heating-chgnet-transition-table
    :header-rows: 1
    :widths: 34 33 33
 
@@ -200,13 +241,17 @@ CHGNetで、BaTiO₃の基本の5原子セルを各軸に5回または8回並べ
   複数の軌跡で判定温度の分布を求めれば、そのばらつきとサイズの効果を区別できる。
 * **相の判定と融解。** 多くの分域がある場合、全体の分極が打ち消し合うことがある。
   結晶相を判定するときは変位分布と格子を照合する。融解では結合配向だけでなく
-  拡散も見ると、秩序が弱くなった固体と流動する液体を区別する根拠が増える。
+  :ref:`拡散<mean-squared-displacement>`\ も見ると、秩序が弱くなった固体と流動する液体を区別する根拠が増える。
+
+.. _heating-related:
 
 関連資料
 --------
 
 * :ref:`molecular-dynamics`
 * :ref:`radial-distribution-function`
+
+.. _heating-references:
 
 参考文献
 --------
@@ -219,3 +264,29 @@ CHGNetで、BaTiO₃の基本の5原子セルを各軸に5回または8回並べ
 .. [HeatChen2025] P.-Y. Chen, K. Shibata, and T. Mizoguchi, *APL Mach. Learn.*
    **3**, 036115 (2025).
    `doi:10.1063/5.0268149 <https://doi.org/10.1063/5.0268149>`_.
+.. [HeatVollmayr1996] K. Vollmayr, W. Kob, and K. Binder,
+   “Cooling-rate effects in amorphous silica: A computer-simulation study,”
+   *Phys. Rev. B* **54**, 15808–15827 (1996).
+   `doi:10.1103/PhysRevB.54.15808 <https://doi.org/10.1103/PhysRevB.54.15808>`_.
+
+
+.. raw:: html
+
+   <script>
+   (() => {
+       // 引用追加前の見出し・表のURLを、同じ対象の明示ラベルに移す。
+       // ページ内で引用の戻りリンクを使うときは、現在のアンカーに従う。
+       const oldAnchors = {
+           "#id11": "#heating-window-example",
+           "#id12": "#heating-lag-example",
+           "#id13": "#heating-interpretation-limits",
+           "#id14": "#heating-related",
+           "#id15": "#heating-references",
+           "#id16": "#heating-chgnet-transition-table",
+       };
+       const destination = oldAnchors[window.location.hash];
+       if (destination) {
+           window.location.replace(destination);
+       }
+   })();
+   </script>
