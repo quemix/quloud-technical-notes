@@ -26,42 +26,54 @@
 ----------------
 
 単位胞 :math:`l` の格子ベクトルを :math:`\boldsymbol R_l`、胞内の原子 :math:`\kappa`
-（:math:`\kappa=1,\ldots,n`）の位置を :math:`\boldsymbol\tau_\kappa`、質量を
-:math:`m_\kappa` とする。原子が平衡位置 :math:`\boldsymbol R_l+\boldsymbol\tau_\kappa` から
-:math:`\boldsymbol u_{l\kappa}` だけ変位したときの全エネルギー :math:`E` を、変位の
-デカルト成分 :math:`u_{l\kappa\alpha}`\ （:math:`\alpha=x,y,z`）でTaylor展開すると
+（:math:`\kappa=1,\ldots,n`）の質量を :math:`m_\kappa` とし、変位を測る基準にとる構造（参照構造）での
+原子の位置を :math:`\boldsymbol R_l+\boldsymbol\tau_\kappa` とする。原子 :math:`l\kappa` の変位
+:math:`\boldsymbol u_{l\kappa}` のデカルト成分を :math:`u_{l\kappa\alpha}`\ （:math:`\alpha=x,y,z`）とし、
+全原子の変位をまとめて :math:`\boldsymbol u` と書く。セルの形と大きさを固定したときのポテンシャル
+エネルギーを :math:`E(\boldsymbol u)`、原子に働く力を
+:math:`F_{l\kappa\alpha}(\boldsymbol u)=-\partial E/\partial u_{l\kappa\alpha}` とする。
+:math:`E` を参照構造（:math:`\boldsymbol u=\boldsymbol 0`）のまわりでTaylor展開すると
 
 .. math::
    :label: ph-expansion
 
-   E=E_0+\sum_{l\kappa\alpha}\frac{\partial E}{\partial u_{l\kappa\alpha}}u_{l\kappa\alpha}
-   +\frac12\sum_{l\kappa\alpha}\sum_{l'\kappa'\beta}
-   \Phi_{l\kappa\alpha,l'\kappa'\beta}\,u_{l\kappa\alpha}u_{l'\kappa'\beta}+O(u^3),
+   \begin{aligned}
+   E(\boldsymbol u)&=E_0-\sum_{l\kappa\alpha}F_{l\kappa\alpha}(\boldsymbol 0)\,u_{l\kappa\alpha}\\
+   &\quad+\frac12\sum_{l\kappa\alpha}\sum_{l'\kappa'\beta}
+   \Phi_{l\kappa\alpha,l'\kappa'\beta}\,u_{l\kappa\alpha}u_{l'\kappa'\beta}+O(\|\boldsymbol u\|^3)
+   \end{aligned}
+
+となる。:math:`E_0=E(\boldsymbol 0)` は参照構造のエネルギーで、1次の項の係数は参照構造で
+各原子に働く力の符号を変えたものである。2次の項の係数
 
 .. math::
    :label: ph-force-constants
 
    \Phi_{l\kappa\alpha,l'\kappa'\beta}
-   =\left.\frac{\partial^2E}{\partial u_{l\kappa\alpha}\,\partial u_{l'\kappa'\beta}}\right|_{\boldsymbol u=0}
+   =\left.\frac{\partial^2E}{\partial u_{l\kappa\alpha}\,\partial u_{l'\kappa'\beta}}\right|_{\boldsymbol u=\boldsymbol 0}
 
-となる。:math:`E_0` は平衡構造のエネルギーである。1次の微分は原子に働く力の符号を
-変えたもので、平衡構造ではすべて0になる。:math:`\Phi` を **力定数** と呼ぶ。2次の項までで展開を打ち切る近似を **調和近似** という。このとき原子
-:math:`l\kappa` に働く力は変位の1次式
+を **力定数** と呼ぶ。
+
+フォノンを求めるときは、各原子に働く力がすべて0の構造、つまりエネルギーの **停留点** を
+参照構造にとる。このとき :eq:`ph-expansion` の1次の項は消え、エネルギーの変化は2次の項から始まる。
+さらに3次以上の項を省く近似を **調和近似** という。調和近似では、2次の項を変位で微分して
+符号を変えた力は、変位の1次式になる。
 
 .. math::
    :label: ph-force
 
-   F_{l\kappa\alpha}=-\frac{\partial E}{\partial u_{l\kappa\alpha}}
+   F_{l\kappa\alpha}(\boldsymbol u)
    =-\sum_{l'\kappa'\beta}\Phi_{l\kappa\alpha,l'\kappa'\beta}\,u_{l'\kappa'\beta}
 
-になり、:math:`\Phi_{l\kappa\alpha,l'\kappa'\beta}` は「原子 :math:`l'\kappa'` を
-:math:`\beta` 方向に単位長さだけ動かしたとき、原子 :math:`l\kappa` に働く力の
-:math:`\alpha` 成分」の符号を変えたものと読める。
+したがって :math:`\Phi_{l\kappa\alpha,l'\kappa'\beta}=-\partial F_{l\kappa\alpha}/\partial u_{l'\kappa'\beta}`
+であり、原子 :math:`l'\kappa'` を :math:`\beta` 方向に動かしたとき、原子 :math:`l\kappa` に働く力の
+:math:`\alpha` 成分がどれだけ変わるかを、符号を変えて表す。
 
 力定数は二つの性質をもつ。第一に、結晶は格子並進で不変なので、:math:`\Phi` は
 :math:`l` と :math:`l'` の差 :math:`\boldsymbol R_{l'}-\boldsymbol R_l` だけに依存する。
-第二に、すべての原子を同じだけ動かす剛体並進では力が生じないので、
-:eq:`ph-force` に :math:`u_{l'\kappa'\beta}=\delta_{\beta\gamma}`\ （:math:`\gamma` 方向へ一様に移動）を入れて
+第二に、すべての原子を同じだけ動かす剛体並進では力が生じない。
+:eq:`ph-force` に :math:`u_{l'\kappa'\beta}=\epsilon\,\delta_{\beta\gamma}`\ （:math:`\gamma` 方向へ一様に :math:`\epsilon` だけ移動）を入れて
+力を0とおくと
 
 .. math::
    :label: ph-asr
@@ -364,10 +376,14 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 解釈と限界
 ----------
 
-計算で虚数振動数が出たとき、それが構造の不安定性を表すとは限らない。原子位置が十分に
-緩和されておらず :eq:`ph-expansion` の1次の項が残っている場合、有限変位法の超胞が小さく
-力定数が打ち切られている場合、電子状態計算の収束が不十分な場合にも、小さな虚数振動数が
-現れる。数値計算で得た力定数は音響和則 :eq:`ph-asr` を厳密には満たさないので、音響分枝の
+動的安定性の判定は、力が0の停留点で力定数を求めることを前提とする。緩和が不十分で力が残る構造では
+:eq:`ph-expansion` の1次の項が残り、残った力の向きに原子を少し動かすだけでエネルギーが下がる。
+緩和すれば原子位置が変わり、2次の曲率も変わりうる。したがって、力が残る構造で得た振動数からは、
+緩和後の構造が安定かどうかは判定できない。
+
+力が0の構造でも、計算で虚数振動数が出たとき、それが構造の不安定性を表すとは限らない。
+有限変位法の超胞が小さく力定数が打ち切られている場合や、電子状態計算の収束が不十分な場合は、
+計算上の誤差で小さな虚数振動数が現れることがある。数値計算で得た力定数は音響和則 :eq:`ph-asr` を厳密には満たさないので、音響分枝の
 Γ点付近に小さな虚数振動数が出ることもある。物理的な不安定性かどうかは、計算条件を変えても残るか、固有ベクトルに沿ってエネルギーが
 実際に下がるかで判断できる。
 
