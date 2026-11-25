@@ -25,6 +25,13 @@
     font-weight: 700;
 }
 
+/* Make room for both settings buttons at typical laptop widths. */
+@media (max-width: 1399.98px) {
+    #pst-header .search-button__kbd-shortcut {
+        display: none;
+    }
+}
+
 
 /* Sidebar title (e.g. 固体物理目次) links to the volume's top page.
    Keep the title's color in every link state; only underline it on hover. */

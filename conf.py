@@ -27,7 +27,9 @@ templates_path = ['_templates']
 # Sphinx does not use .gitignore; keep the private meta checkout out of the document scan.
 exclude_patterns = ['_build', 'docs', 'meta/**', '.claude', 'Thumbs.db', '.DS_Store']
 
-language = 'ja'
+language = os.environ.get('QULOUD_DOC_LANGUAGE', 'ja')
+locale_dirs = ['locales/']
+gettext_compact = False
 
 numfig = True
 # 図表と式の番号は記事ごとに数える。機械学習・数学は巻→章→節→記事の3段なので3にする。
@@ -44,17 +46,25 @@ html_theme = 'pydata_sphinx_theme'
 # sphinx.ext.githubpages writes CNAME from this URL; without it the build deletes CNAME.
 html_baseurl = 'https://technical-notes.quemix.com/'
 html_static_path = ['_static']
-html_css_files = ['custom.css']
+html_css_files = ['custom.css', 'language-switcher.css']
+html_js_files = ['js/language-switcher.js'] if language == 'ja' else []
 html_title = project
 html_sidebars = {'index': []}
 html_theme_options = {
+    'navbar_end': (
+        ['theme-switcher', 'language-switcher', 'navbar-icon-links']
+        if language == 'ja' else ['theme-switcher', 'navbar-icon-links']
+    ),
     'navigation_depth': 2,
-    'search_bar_text': '技術ノートを検索',
+    'search_bar_text': 'Search Technical Notes' if language == 'en' else '技術ノートを検索',
     'secondary_sidebar_items': ['page-toc'],
     'shorten_urls': False,
     # Link to the sister site; quloud-examples links back with 「技術ノート」.
     'external_links': [
-        {'name': '計算事例', 'url': 'https://example.quloud-platform.quemix.com/'},
+        {
+            'name': 'Calculation Examples' if language == 'en' else '計算事例',
+            'url': 'https://example.quloud-platform.quemix.com/',
+        },
     ],
     # Five volumes plus the external link; the default (5) would hide one under "More".
     'header_links_before_dropdown': 6,
@@ -62,6 +72,37 @@ html_theme_options = {
     'footer_start': ['copyright'],
     'footer_end': [],
 }
+
+
+def localize_navigation(app, env):
+    """Use fixed labels for links to articles outside the translated catalogs."""
+    if app.config.language != 'en' or app.builder.name != 'html':
+        return
+
+    import json
+    from pathlib import Path
+
+    from docutils import nodes
+
+    label_path = Path(app.confdir) / '_static/translations/en.json'
+    labels = json.loads(label_path.read_text(encoding='utf-8'))
+
+    def localize(node):
+        key = ' '.join(node.astext().split())
+        label = labels.get(key)
+        if label:
+            node[:] = [nodes.Text(label)]
+
+    for docname, title in env.titles.items():
+        # Keep each article's own long title independent of its navigation link.
+        title = title.deepcopy()
+        localize(title)
+        env.titles[docname] = title
+
+    for toc in env.tocs.values():
+        for link in toc.findall(nodes.reference):
+            if not link.get('anchorname'):
+                localize(link)
 
 
 def add_solid_styles(app, pagename, _templatename, _context, _doctree):
@@ -86,5 +127,6 @@ def add_volume_link(app, pagename, _templatename, context, _doctree):
 
 
 def setup(app):
+    app.connect('env-updated', localize_navigation)
     app.connect('html-page-context', add_solid_styles)
     app.connect('html-page-context', add_volume_link)
