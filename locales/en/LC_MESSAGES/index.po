@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../index.rst:4
+msgid "Quloud Technical Notes"
+msgstr "Quloud Technical Notes"
+
+#: ../../index.rst:6
+msgid "分野ごとに、科学の基礎概念から計算手法と結果の読み方までを学べる技術ノートです。"
+msgstr ""
+"These technical notes cover the fundamentals of each field, the methods used in calculations, and"
+" how to interpret the results."
+
+#: ../../index.rst:10
+msgid ":doc:`solid/index`"
+msgstr ":doc:`solid/index`"
+
+#: ../../index.rst:12
+msgid "結晶構造、周期性、エネルギーバンド、k点積分、格子振動、強誘電性"
+msgstr ""
+"Crystal structure, periodicity, energy bands, k-point integration, lattice vibrations, and "
+"ferroelectricity"
+
+#: ../../index.rst:14
+msgid ":doc:`electronic/index`"
+msgstr ":doc:`electronic/index`"
+
+#: ../../index.rst:16
+msgid "スピンの扱い、密度行列から読み解く原子の電子数・結合次数、射影状態密度、DFTの計算条件、点欠陥と移動障壁"
+msgstr ""
+"Treatment of spin, atomic electron populations and bond orders from the density matrix, projected"
+" density of states, DFT calculation conditions, point defects, and migration barriers"
+
+#: ../../index.rst:18
+msgid ":doc:`thermo/index`"
+msgstr ":doc:`thermo/index`"
+
+#: ../../index.rst:20
+msgid "熱力学の状態量、化学ポテンシャル、反応の自由エネルギー、標準状態"
+msgstr "Thermodynamic state functions, chemical potential, free energy of reaction, and standard states"
+
+#: ../../index.rst:22
+msgid ":doc:`ml/index`"
+msgstr ":doc:`ml/index`"
+
+#: ../../index.rst:24
+msgid "線形回帰、最尤推定、ベイズ推定からガウス過程による予測まで"
+msgstr ""
+"Linear regression, maximum likelihood estimation, Bayesian inference, and prediction with "
+"Gaussian processes"
+
+#: ../../index.rst:26
+msgid ":doc:`md/index`"
+msgstr ":doc:`md/index`"
+
+#: ../../index.rst:28
+msgid "分子動力学、相転移、局所構造、拡散と熱活性化、原子間ポテンシャル"
+msgstr ""
+"Molecular dynamics, phase transitions, local structure, diffusion and thermal activation, and "
+"interatomic potentials"
+
+#: ../../index.rst:30
+msgid ":doc:`math/index`"
+msgstr ":doc:`math/index`"
+
+#: ../../index.rst:32
+msgid "カーネル法と関わりの深い再生核ヒルベルト空間"
+msgstr "Reproducing kernel Hilbert spaces and their connection to kernel methods"
+

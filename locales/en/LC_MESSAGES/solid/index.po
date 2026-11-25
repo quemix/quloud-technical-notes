@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../solid/index.rst:2
+msgid "固体物理"
+msgstr "Solid-State Physics"
+
+#: ../../solid/index.rst:4
+msgid ""
+"結晶構造と\\ :ref:`逆格子<reciprocal-"
+"lattice>`、結晶の対称性、単位胞の取り直しを出発点に、周期系の電子状態、エネルギーバンド、k点積分へ進みます。続いて、原子の振動を\\ :ref:`フォノン<phonon>`\\ "
+"として扱い、振動の不安定性から構造の変化を考えます。最後に、格子の変形や対称性が電子状態や\\ :ref:`分極<spontaneous-polarization>`\\ "
+"にどう関わるかを見ます。"
+msgstr ""
+"We start with crystal structure and the \\ :ref:`reciprocal lattice <reciprocal-lattice>`, "
+"crystal symmetry, and the choice of unit cell. We then turn to electronic states in periodic "
+"systems, energy bands, and k-point integration. We describe atomic vibrations in terms of \\ "
+":ref:`phonons <phonon>`\\  and examine how vibrational instabilities can change the structure. "
+"Finally, we look at how lattice deformation and symmetry affect electronic states and \\ "
+":ref:`polarization <spontaneous-polarization>`\\ ."
+

@@ -1,6 +1,6 @@
 {# The theme's sidebar, titled with the page's volume (e.g. 固体物理目次) linking to its top page. #}
 {% set show_nav_level = meta['html_theme.show_nav_level'] if (meta is defined and meta is not none and 'html_theme.show_nav_level' in meta) else theme_show_nav_level %}
-{% set nav_title = (volume_title ~ "目次") if volume_title else "目次" %}
+{% set nav_title = (volume_title ~ " Contents" if volume_title else "Contents") if language == "en" else (volume_title ~ "目次" if volume_title else "目次") %}
 <nav class="bd-docs-nav bd-links"
      aria-label="{{ nav_title }}">
   <p class="bd-links__title" role="heading" aria-level="1">

@@ -5,4 +5,5 @@
 # Sphinx build output. GitHub Actions builds and publishes the site.
 /_build/
 /docs/
+/locales/**/*.mo
 __pycache__/

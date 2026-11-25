@@ -1,0 +1,675 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../solid/polarization.rst:5
+msgid "周期結晶の分極"
+msgstr "Polarization in Periodic Crystals"
+
+#: ../../solid/polarization.rst:7
+msgid ""
+"\\ :ref:`自発分極<spontaneous-polarization>`\\ は単位体積あたりの電気双極子モーメントだが、周期結晶では、単位胞の中の電荷の "
+"双極子を体積で割るだけでは値が一つに決まらない。本稿では、1次元のイオン鎖でこの不定性を確かめ、分極の量子と、 "
+"反転対称な構造の分極を説明する。続いて、原子の変位から分極を見積もるBorn有効電荷と、分極を電子状態から求める Berry位相の方法の概要を扱い、正方晶BaTiO\\ :sub:`3`\\ "
+"の分極を見積もる。"
+msgstr ""
+"\\ :ref:`Spontaneous polarization <spontaneous-polarization>`\\  is the electric dipole moment "
+"per unit volume. In a periodic crystal, the value obtained by dividing the dipole moment of the "
+"charges in a unit cell by its volume depends on the choice of cell. We illustrate this ambiguity "
+"with a one-dimensional ionic chain, then explain the polarization quantum and polarization in "
+"inversion-symmetric structures. We introduce the Born effective charge for estimating "
+"polarization from atomic displacements and the Berry phase method for obtaining it from the "
+"electronic states. We use these ideas to estimate the polarization of tetragonal BaTiO\\ "
+":sub:`3`\\ ."
+
+#: ../../solid/polarization.rst:12
+msgid "本稿で扱うのは、占有バンドと非占有バンドの間にバンドギャップが開いた絶縁体である。金属では伝導電子が電場を遮蔽するので、 巨視的な分極は定義されない。"
+msgstr ""
+"This article concerns insulators with a band gap between the occupied and unoccupied bands. In "
+"metals, conduction electrons screen the electric field, so macroscopic polarization is undefined."
+
+#: ../../solid/polarization.rst:15
+msgid ""
+"**前提知識**: :ref:`自発分極<spontaneous-polarization>`、:ref:`反転対称性と自発分極<inversion-and-polarization>`、 "
+":ref:`ブロッホの定理<bloch-theorem>`、:ref:`第1ブリルアンゾーン<first-brillouin-zone>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Spontaneous Polarization <spontaneous-polarization>`, :ref:`Inversion "
+"Symmetry and Spontaneous Polarization <inversion-and-polarization>`, :ref:`Bloch’s Theorem "
+"<bloch-theorem>`, and :ref:`First Brillouin Zone <first-brillouin-zone>`."
+
+#: ../../solid/polarization.rst:18
+msgid "**学習目標**:"
+msgstr "**Learning Objectives**:"
+
+#: ../../solid/polarization.rst:20
+msgid "周期結晶の分極が分極の量子の整数倍だけ不定であることを1次元の鎖で導き、反転対称な構造の分極が0か分極の量子の半分になることを説明する。"
+msgstr ""
+"Use a one-dimensional chain to derive why polarization in a periodic crystal is defined only up "
+"to an integer multiple of the polarization quantum. Explain why the polarization of an inversion-"
+"symmetric structure is zero or half a polarization quantum modulo that quantum."
+
+#: ../../solid/polarization.rst:21
+msgid "Born有効電荷を定義し、原子の変位から分極を見積もる。形式電荷との違いを数値で示す。"
+msgstr ""
+"Define the Born effective charge and use atomic displacements to estimate polarization. Quantify "
+"the difference from an estimate based on formal charges."
+
+#: ../../solid/polarization.rst:22
+msgid "Berry位相・Wannier中心による分極の表し方の概要と、分極の差を求める経路が絶縁体を保たなければならない理由を説明する。"
+msgstr ""
+"Outline the representation of polarization in terms of the Berry phase and Wannier centers. "
+"Explain why a path used to calculate a polarization difference must remain insulating."
+
+#: ../../solid/polarization.rst:27
+msgid "周期結晶の分極と分極の量子"
+msgstr "Polarization and the Polarization Quantum in Periodic Crystals"
+
+#: ../../solid/polarization.rst:29
+msgid ""
+"有限の分子なら、電気双極子モーメントは電荷と位置の積の和で一意に決まる。周期結晶で同じように 単位胞の中の電荷の双極子を体積で割ると、単位胞の取り方によって値が変わる "
+"[Spaldin2012]_。 電荷 :math:`\\pm e` のイオンが間隔 :math:`a/2` で交互に並ぶ1次元の鎖（格子定数 :math:`a`）で確かめる。 "
+"胞の左端を原点にして、:math:`-e` が :math:`a/4`、:math:`+e` が :math:`3a/4` にある胞を選ぶと、長さあたりの双極子は"
+msgstr ""
+"For a finite molecule, the electric dipole moment is uniquely determined by the sum of the "
+"products of charge and position. Applying the same procedure to a periodic crystal and dividing "
+"by the volume gives a result that depends on the choice of unit cell [Spaldin2012]_. Consider a "
+"one-dimensional chain with ions of alternating charge :math:`\\pm e` spaced at intervals "
+":math:`a/2`, with lattice constant :math:`a`. Choose the left edge as the origin and place "
+":math:`-e` at :math:`a/4` and :math:`+e` at :math:`3a/4`. The dipole moment per unit length is"
+
+#: ../../solid/polarization.rst:34
+#, python-brace-format
+msgid "P=\\frac1a\\left(-e\\cdot\\frac a4+e\\cdot\\frac{3a}4\\right)=\\frac e2"
+msgstr "P=\\frac1a\\left(-e\\cdot\\frac a4+e\\cdot\\frac{3a}4\\right)=\\frac e2"
+
+#: ../../solid/polarization.rst:38
+msgid ""
+"で、:math:`+e` が :math:`a/4`、:math:`-e` が :math:`3a/4` にある胞を選ぶと :math:`P=-e/2` になる。両者の差 :math:`e` "
+"は、 電荷 :math:`e` を1格子定数だけ動かしたときの双極子の変化である。電子を隣の胞の同じ位置へ移しても結晶は変わらないので、 :math:`P` "
+"はこの整数倍だけ不定である。3次元では、格子ベクトル :math:`\\boldsymbol R` と単位胞の体積 :math:`\\Omega` を使って"
+msgstr ""
+"Choosing a cell with :math:`+e` at :math:`a/4` and :math:`-e` at :math:`3a/4` gives "
+":math:`P=-e/2`. The difference :math:`e` is the change in the dipole moment per unit length when "
+"charge :math:`e` moves by one lattice constant. Moving an electron to the equivalent position in "
+"the neighboring cell leaves the crystal unchanged, so :math:`P` is defined only modulo this "
+"difference. In three dimensions, for a lattice vector :math:`\\boldsymbol R` and unit cell volume"
+" :math:`\\Omega`, the corresponding quantity is"
+
+#: ../../solid/polarization.rst:42
+#, python-brace-format
+msgid "\\boldsymbol P_{\\mathrm q}=\\frac{e\\boldsymbol R}{\\Omega}"
+msgstr "\\boldsymbol P_{\\mathrm q}=\\frac{e\\boldsymbol R}{\\Omega}"
+
+#: ../../solid/polarization.rst:47
+#, python-brace-format
+msgid ""
+"を\\ **分極の量子**\\ と呼ぶ（スピンが縮退した系では2倍を単位にすることも多い）。分極の値は :math:`\\boldsymbol P_{\\mathrm q}` の "
+"間隔で並ぶ集合（分極の格子）をなす。"
+msgstr ""
+"This is the \\ **polarization quantum**\\ . For spin-degenerate systems, twice this value is also"
+" commonly used as the unit. The possible polarization values form a lattice with spacing "
+":math:`\\boldsymbol P_{\\mathrm q}`, called the polarization lattice."
+
+#: ../../solid/polarization.rst:50
+#, python-brace-format
+msgid ""
+"一方、陽イオンを陰イオンに対して :math:`d` だけずらしたときの変化は、どちらの胞を選んでも :math:`\\Delta P=ed/a` で同じになる。 "
+"実験で測るのも変化である。分極を電場で :math:`+P_{\\mathrm s}` から :math:`-P_{\\mathrm s}` へ反転させると、 電極の単位面積あたり "
+":math:`2P_{\\mathrm s}` の電荷が外部回路を流れ、報告される自発分極はその半分である [Spaldin2012]_。 正方晶BaTiO\\ :sub:`3`\\ の "
+":math:`c` 軸方向（:math:`\\Omega=a^2c`）では :math:`P_{\\mathrm q}=e/a^2\\simeq1.0\\ "
+"\\mathrm{C/m^2}=100\\ \\mu\\mathrm{C/cm^2}` で、 自発分極の実験値 :math:`26\\ \\mu\\mathrm{C/cm^2}` "
+"[Wieder1955]_ の約4倍である。計算で分極を求めるときは、反転対称な参照構造から "
+"原子を少しずつ動かして、同じ枝の上で変化を追う。一度に大きく動かすと、値が量子の分だけ別の枝へ跳んでも区別できないからである。 "
+"この経路の途中の構造は、どれもバンドギャップの開いた絶縁体でなければならない（\\ :ref:`Berry位相による分極<fo-berry-phase>`）。"
+msgstr ""
+"Displacing the cation relative to the anion by :math:`d` gives the same change :math:`\\Delta "
+"P=ed/a` for either choice of cell. Experiments likewise measure a change. When an electric field "
+"reverses the polarization from :math:`+P_{\\mathrm s}` to :math:`-P_{\\mathrm s}`, a charge "
+":math:`2P_{\\mathrm s}` per unit electrode area flows through the external circuit. The reported "
+"spontaneous polarization is half of this value [Spaldin2012]_. Along the :math:`c` axis of "
+"tetragonal BaTiO\\ :sub:`3`\\  (:math:`\\Omega=a^2c`), :math:`P_{\\mathrm q}=e/a^2\\simeq1.0\\ "
+"\\mathrm{C/m^2}=100\\ \\mu\\mathrm{C/cm^2}`, roughly four times the experimental value of the "
+"spontaneous polarization, :math:`26\\ \\mu\\mathrm{C/cm^2}` [Wieder1955]_. In a calculation, "
+"displace the atoms in small steps from an inversion-symmetric reference structure and track the "
+"change along the same branch. If the atoms are moved too far in one step, a jump of the value by "
+"one quantum onto another branch cannot be detected. Each intermediate structure along the path "
+"must remain insulating with an open band gap (see \\ :ref:`Berry-Phase Polarization <fo-berry-"
+"phase>`)."
+
+#: ../../solid/polarization.rst:61
+msgid "反転対称な構造の分極"
+msgstr "Polarization in Inversion-Symmetric Structures"
+
+#: ../../solid/polarization.rst:63
+#, python-brace-format
+msgid ""
+"反転は分極の向きを逆にするので、反転対称な構造では、分極の格子が反転で自分自身に移る。分極の値は :math:`\\boldsymbol P_{\\mathrm q}` "
+"の整数倍だけ不定なので、条件は :math:`\\boldsymbol P\\equiv-\\boldsymbol P`\\ （:math:`\\boldsymbol P_{\\mathrm "
+"q}` を法として） となり、分極の格子は0か、分極の量子の半分 :math:`\\boldsymbol P_{\\mathrm q}/2` を含む "
+"[VanderbiltKingSmith1993]_。 上の交互イオン鎖は反転対称で、分極の格子は :math:`\\pm e/2,\\ \\pm3e/2,\\ldots`、すなわち量子 "
+":math:`e` の半分の奇数倍である。 どちらの場合も、反転対称な構造は自発分極をもたない。測られる自発分極は、反転対称な参照構造から "
+"極性の構造まで連続的に変形したときの分極の変化だからである。分極の値の不定性は、表面の束縛電荷が 表面の終わり方で変わることに対応する "
+"[VanderbiltKingSmith1993]_。上の鎖では、端を :math:`-e` のイオンで終えるか :math:`+e` のイオンで終えるかで、端に現れる電荷が変わる。"
+msgstr ""
+"Inversion reverses the polarization. In an inversion-symmetric structure, the polarization "
+"lattice must therefore map onto itself under inversion. The polarization is defined modulo "
+"integer multiples of :math:`\\boldsymbol P_{\\mathrm q}`, so :math:`\\boldsymbol "
+"P\\equiv-\\boldsymbol P`\\  (modulo :math:`\\boldsymbol P_{\\mathrm q}`). The lattice thus "
+"contains either zero or half the polarization quantum :math:`\\boldsymbol P_{\\mathrm q}/2` "
+"[VanderbiltKingSmith1993]_. The alternating ionic chain above has inversion symmetry, and its "
+"polarization lattice is :math:`\\pm e/2,\\ \\pm3e/2,\\ldots`, the odd multiples of half the "
+"quantum :math:`e`. Neither type of inversion-symmetric structure has spontaneous polarization. "
+"The measured spontaneous polarization is the change along a continuous deformation from an "
+"inversion-symmetric reference structure to a polar structure. The ambiguity in the polarization "
+"corresponds to a dependence of the bound surface charge on the surface termination "
+"[VanderbiltKingSmith1993]_. In the chain, the charge at the end depends on whether the "
+"terminating ion has charge :math:`-e` or :math:`+e`."
+
+#: ../../solid/polarization.rst:75 ../../solid/polarization.rst:115
+msgid "Born有効電荷"
+msgstr "Born Effective Charge"
+
+#: ../../solid/polarization.rst:77
+#, python-brace-format
+msgid "原子 :math:`\\kappa` を :math:`\\beta` 方向へ :math:`u_{\\kappa\\beta}` だけ動かしたときの分極の変化の割合を"
+msgstr ""
+"The rate of change of polarization when atom :math:`\\kappa` moves by :math:`u_{\\kappa\\beta}` "
+"in direction :math:`\\beta` gives"
+
+#: ../../solid/polarization.rst:79
+msgid ""
+"Z^*_{\\kappa,\\alpha\\beta}=\\frac{\\Omega}{e}\\left.\\frac{\\partial P_\\alpha}{\\partial "
+"u_{\\kappa\\beta}}\\right|_{\\boldsymbol E=0}"
+msgstr ""
+"Z^*_{\\kappa,\\alpha\\beta}=\\frac{\\Omega}{e}\\left.\\frac{\\partial P_\\alpha}{\\partial "
+"u_{\\kappa\\beta}}\\right|_{\\boldsymbol E=0}"
+
+#: ../../solid/polarization.rst:84
+msgid ""
+"と書き、\\ **Born有効電荷**\\ と呼ぶ。微分は、巨視的な電場を0に保ち、セルの形と大きさを固定して、原子 :math:`\\kappa` だけを 動かしたときのものである "
+"[GhosezMichenaudGonze1998]_。動いた原子の電荷だけでなく、変位に伴って流れる電子の寄与も含む。 :math:`Z^*` "
+"が変位によらないとみなせる範囲では、反転対称な参照構造からの変位で分極は"
+msgstr ""
+"This quantity is the \\ **Born effective charge**\\ . The derivative is taken with the "
+"macroscopic electric field set to zero and the cell shape and size fixed, while only atom "
+":math:`\\kappa` moves [GhosezMichenaudGonze1998]_. It includes both the charge on the displaced "
+"atom and the electronic charge that flows in response to the displacement. Over the range in "
+"which :math:`Z^*` can be treated as independent of displacement, the change in polarization from "
+"an inversion-symmetric reference structure is approximately"
+
+#: ../../solid/polarization.rst:88
+#, python-brace-format
+msgid ""
+"\\Delta P_\\alpha\\simeq\\frac{e}{\\Omega}\\sum_\\kappa\\sum_\\beta "
+"Z^*_{\\kappa,\\alpha\\beta}\\,u_{\\kappa\\beta}"
+msgstr ""
+"\\Delta P_\\alpha\\simeq\\frac{e}{\\Omega}\\sum_\\kappa\\sum_\\beta "
+"Z^*_{\\kappa,\\alpha\\beta}\\,u_{\\kappa\\beta}"
+
+#: ../../solid/polarization.rst:93
+#, python-brace-format
+msgid ""
+"と見積もれる [GhosezMichenaudGonze1998]_。全原子を同じだけ動かしても分極は変わらないので、:math:`\\sum_\\kappa "
+"Z^*_{\\kappa,\\alpha\\beta}=0` が成り立つ （電荷中性の和則）。そのため、どの原子を基準に変位を測っても :eq:`fo-linear-polarization` "
+"の値は変わらない。"
+msgstr ""
+"This linear estimate follows [GhosezMichenaudGonze1998]_. A rigid displacement of all atoms "
+"leaves the polarization unchanged, so :math:`\\sum_\\kappa Z^*_{\\kappa,\\alpha\\beta}=0` (the "
+"charge neutrality sum rule). Consequently, the value from Equation :eq:`fo-linear-polarization` "
+"is independent of the atom chosen as the reference for measuring displacements."
+
+#: ../../solid/polarization.rst:96
+msgid ""
+"立方晶BaTiO\\ :sub:`3`\\ では、BaとTiのサイトは立方対称なので :math:`Z^*` はスカラーになる。酸素のサイトは正方対称なので、 "
+"変位がTi–O–Tiの鎖に沿う場合（O∥）と垂直な場合（O⊥）の二つの値をもつ。:numref:`tbl-born-charges-batio3` に、 第一原理計算の値を形式電荷と並べる。"
+msgstr ""
+"In cubic BaTiO\\ :sub:`3`\\ , the Ba and Ti sites have cubic symmetry, so :math:`Z^*` reduces to "
+"a scalar. The oxygen sites have tetragonal symmetry, giving one value for displacements along a "
+"Ti–O–Ti chain (O∥) and another for perpendicular displacements (O⊥). :numref:`tbl-born-charges-"
+"batio3` compares the values from first-principles calculations with the formal charges."
+
+#: ../../solid/polarization.rst:100
+msgid "立方晶BaTiO\\ :sub:`3`\\ のBorn有効電荷（LDAの線形応答計算、:math:`a_0=3.94` Å [GhosezMichenaudGonze1998]_）"
+msgstr ""
+"Born effective charges in cubic BaTiO\\ :sub:`3`\\  (LDA linear response at :math:`a_0=3.94` Å "
+"[GhosezMichenaudGonze1998]_)"
+
+#: ../../solid/polarization.rst:106
+msgid "Ba"
+msgstr "Ba"
+
+#: ../../solid/polarization.rst:107
+msgid "Ti"
+msgstr "Ti"
+
+#: ../../solid/polarization.rst:108
+msgid "O⊥"
+msgstr "O⊥"
+
+#: ../../solid/polarization.rst:109
+msgid "O∥"
+msgstr "O∥"
+
+#: ../../solid/polarization.rst:110
+msgid "形式電荷"
+msgstr "Formal Charge"
+
+#: ../../solid/polarization.rst:111
+msgid "+2"
+msgstr "+2"
+
+#: ../../solid/polarization.rst:112
+msgid "+4"
+msgstr "+4"
+
+#: ../../solid/polarization.rst:113 ../../solid/polarization.rst:114
+msgid "−2"
+msgstr "−2"
+
+#: ../../solid/polarization.rst:116
+msgid "+2.77"
+msgstr "+2.77"
+
+#: ../../solid/polarization.rst:117
+msgid "+7.25"
+msgstr "+7.25"
+
+#: ../../solid/polarization.rst:118
+msgid "−2.15"
+msgstr "−2.15"
+
+#: ../../solid/polarization.rst:119
+msgid "−5.71"
+msgstr "−5.71"
+
+#: ../../solid/polarization.rst:121
+msgid ""
+"Born有効電荷の値は、[GhosezMichenaudGonze1998]_ の表VIIのうち、LDAで最適化した格子定数 :math:`a_0=3.94` Å の行である "
+"（同論文の表IIの値と同じ）。格子定数を変えると値も変わり、例えば :math:`a_0=4.00` Å ではTi :math:`+7.29`、O∥ :math:`-5.75` である。"
+msgstr ""
+"The Born effective charges are from the row of Table VII in [GhosezMichenaudGonze1998]_ for the "
+"LDA-optimized lattice constant :math:`a_0=3.94` Å, which gives the same values as Table II of "
+"that paper. The charges vary with the lattice constant. For example, at :math:`a_0=4.00` Å, they "
+"are :math:`+7.29` for Ti and :math:`-5.75` for O∥."
+
+#: ../../solid/polarization.rst:124
+msgid ""
+"TiとO∥のBorn有効電荷は、形式電荷のそれぞれ約1.8倍と約2.9倍である。和は :math:`2.77+7.25-2.15\\times2-5.71=+0.01` で、 "
+"和則をほぼ満たす。Berry位相の方法による計算でも、Ti :math:`+7.16`、O∥ :math:`-5.69` とほぼ同じ値が得られている "
+"[ZhongKingSmithVanderbilt1994]_。:ref:`Löwdin電子数<lowdin>`\\ "
+"のような静的な電荷は、ある構造で電子を原子に割り当てた量であり、変位に対する応答であるBorn有効電荷とは別の量である [GhosezMichenaudGonze1998]_。"
+msgstr ""
+"The Born effective charges of Ti and O∥ are about 1.8 and 2.9 times their respective formal "
+"charges. The sum over all atoms in the cell (Ba, Ti, two O⊥, and O∥) is "
+":math:`2.77+7.25-2.15\\times2-5.71=+0.01`, close to satisfying the sum rule. Berry phase "
+"calculations give nearly the same values, :math:`+7.16` for Ti and :math:`-5.69` for O∥ "
+"[ZhongKingSmithVanderbilt1994]_. Static charges such as :ref:`Löwdin electron populations "
+"<lowdin>`\\  assign electrons to atoms in a given structure. Born effective charges instead "
+"describe the response to a displacement [GhosezMichenaudGonze1998]_."
+
+#: ../../solid/polarization.rst:131
+msgid "Berry位相による分極（概要）"
+msgstr "Berry-Phase Polarization: An Overview"
+
+#: ../../solid/polarization.rst:133
+#, python-brace-format
+msgid ""
+":eq:`fo-linear-polarization` は変位が小さい範囲の近似で、:math:`Z^*` 自体を求める方法も要る。King-SmithとVanderbiltは、 "
+"分極の電子の寄与を、占有されたBloch関数の周期部分 :math:`u_{n\\boldsymbol k}` の\\ **Berry位相**\\ で表した "
+"[KingSmithVanderbilt1993]_。 同じ量は、占有バンド :math:`n` のWannier関数の中心"
+msgstr ""
+"Equation :eq:`fo-linear-polarization` approximates the response at small displacements. A "
+"separate method is needed to obtain :math:`Z^*`. King-Smith and Vanderbilt expressed the "
+"electronic contribution to polarization through the \\ **Berry phase**\\  of the periodic parts "
+":math:`u_{n\\boldsymbol k}` of the occupied Bloch functions [KingSmithVanderbilt1993]_. The same "
+"contribution can be written in terms of the center of the Wannier function for occupied band "
+":math:`n`,"
+
+#: ../../solid/polarization.rst:137
+msgid ""
+"\\bar{\\boldsymbol r}_n=\\frac{\\Omega}{(2\\pi)^3}\\int_{\\mathrm{BZ}}\\langle u_{n\\boldsymbol "
+"k}|\\,i\\nabla_{\\boldsymbol k}\\,|u_{n\\boldsymbol k}\\rangle\\,d^3k"
+msgstr ""
+"\\bar{\\boldsymbol r}_n=\\frac{\\Omega}{(2\\pi)^3}\\int_{\\mathrm{BZ}}\\langle u_{n\\boldsymbol "
+"k}|\\,i\\nabla_{\\boldsymbol k}\\,|u_{n\\boldsymbol k}\\rangle\\,d^3k"
+
+#: ../../solid/polarization.rst:142
+msgid ""
+"を使って、イオンの芯（価数 :math:`Z_\\kappa^{\\mathrm{ion}}`、位置 :math:`\\boldsymbol "
+"r_\\kappa`）とWannier中心の点電荷の双極子"
+msgstr ""
+"using this center to form the dipole moment of the point charges at the ionic cores (valence "
+":math:`Z_\\kappa^{\\mathrm{ion}}`, position :math:`\\boldsymbol r_\\kappa`) and the Wannier "
+"centers:"
+
+#: ../../solid/polarization.rst:144
+msgid ""
+"\\boldsymbol P=\\frac{e}{\\Omega}\\Bigl(\\sum_\\kappa Z_\\kappa^{\\mathrm{ion}}\\boldsymbol "
+"r_\\kappa-2\\sum_n\\bar{\\boldsymbol r}_n\\Bigr)"
+msgstr ""
+"\\boldsymbol P=\\frac{e}{\\Omega}\\Bigl(\\sum_\\kappa Z_\\kappa^{\\mathrm{ion}}\\boldsymbol "
+"r_\\kappa-2\\sum_n\\bar{\\boldsymbol r}_n\\Bigr)"
+
+#: ../../solid/polarization.rst:149
+msgid ""
+"と書ける（2はスピンの縮退）\\ [VanderbiltKingSmith1993]_ [Resta1994]_。Wannier関数の中心は格子ベクトルの分だけ不定なので、 :eq:`fo-"
+"wannier-polarization` も :eq:`fo-polarization-quantum` の整数倍だけ不定で、1次元の鎖で見た性質と一致する。Born有効電荷は、:eq"
+":`fo-wannier-polarization` を、巨視的な電場を0、セルを固定として原子の変位で微分したものにあたり、BaTiO\\ :sub:`3`\\ の大きな値は、Tiが動くとO "
+"2pのWannier中心が逆向きに動くこととして読める（\\ :ref:`Ti 3d–O 2pの混成の役割<fo-hybridization>`）。"
+msgstr ""
+"Here the factor of 2 accounts for spin degeneracy \\ [VanderbiltKingSmith1993]_ [Resta1994]_. A "
+"Wannier center is defined modulo a lattice vector, making Equation :eq:`fo-wannier-polarization` "
+"ambiguous by integer multiples of Equation :eq:`fo-polarization-quantum`, as in the one-"
+"dimensional chain. The Born effective charge is the derivative of Equation :eq:`fo-wannier-"
+"polarization` with respect to an atomic displacement at zero macroscopic electric field and fixed"
+" cell. Its large values in BaTiO\\ :sub:`3`\\  reflect the motion of the O 2p Wannier centers in "
+"the opposite direction to the Ti displacement (see \\ :ref:`Role of Ti 3d–O 2p Hybridization <fo-"
+"hybridization>`)."
+
+#: ../../solid/polarization.rst:152
+msgid ""
+"Berry位相で分極の差を求めるときは、参照構造から目的の構造まで、途中のどの構造でもバンドギャップが開いている経路をとり、 その上で分極の枝を連続的に追う。:eq:`fo-wannier-"
+"center` は占有バンドと非占有バンドがすべての :math:`\\boldsymbol k` で分かれていることを前提にしており、 "
+"途中で金属になる経路では占有状態が定まらず、Berry位相が定義できない [KingSmithVanderbilt1993]_ [Spaldin2012]_。"
+msgstr ""
+"To compute a polarization difference using the Berry phase, choose a path from the reference "
+"structure to the target structure that maintains an open band gap at every intermediate "
+"structure. Track the polarization continuously along a single branch. Equation :eq:`fo-wannier-"
+"center` assumes that the occupied and unoccupied bands are separated for every "
+":math:`\\boldsymbol k`. If the path passes through a metallic structure, the occupied states are "
+"no longer uniquely determined and the Berry phase is undefined [KingSmithVanderbilt1993]_ "
+"[Spaldin2012]_."
+
+#: ../../solid/polarization.rst:156
+msgid ""
+"Born有効電荷は、イオン結晶のΓ点で縦波と横波の光学モードの振動数が分かれる\\ :ref:`LO–TO分裂<lo-to-splitting>`\\ の大きさも決める。ZhongとKing-"
+"Smith、Vanderbiltは、ペロブスカイト型の強誘電体で大きなBorn有効電荷のためにLO–TO分裂が巨大になることを示した "
+"[ZhongKingSmithVanderbilt1994]_。"
+msgstr ""
+"Born effective charges also determine the magnitude of the \\ :ref:`LO–TO splitting <lo-to-"
+"splitting>`\\ , the difference between longitudinal and transverse optical frequencies at the Γ "
+"point in ionic crystals. Zhong, King-Smith, and Vanderbilt showed that large Born effective "
+"charges in perovskite ferroelectrics produce a giant LO–TO splitting "
+"[ZhongKingSmithVanderbilt1994]_."
+
+#: ../../solid/polarization.rst:162
+msgid "説明用の事例：正方晶BaTiO\\ :sub:`3`\\ の分極の見積もり"
+msgstr "Worked Example: Estimating Polarization in Tetragonal BaTiO\\ :sub:`3`"
+
+#: ../../solid/polarization.rst:164
+msgid ""
+":numref:`tbl-born-charges-batio3` の値で、正方晶BaTiO\\ :sub:`3`\\ の分極を見積もる。ButtnerとMaslenの室温の単結晶X線回折の構造"
+" （:math:`a=3.9998` Å、:math:`c=4.0180` Å）\\ [ButtnerMaslen1992]_ で、Baを基準に中心対称な位置からの :math:`c` "
+"軸方向の変位を 分極の向きを正にとって求め、:eq:`fo-linear-polarization` の各項を計算すると次のようになる。"
+msgstr ""
+"Use the values in :numref:`tbl-born-charges-batio3` to estimate the polarization of tetragonal "
+"BaTiO\\ :sub:`3`\\ . Buttner and Maslen determined the room-temperature structure by single-"
+"crystal X-ray diffraction (:math:`a=3.9998` Å, :math:`c=4.0180` Å) \\ [ButtnerMaslen1992]_. With "
+"Ba as the reference, take the displacements along the :math:`c` axis from the centrosymmetric "
+"positions, choosing the direction of the polarization as positive. The terms in Equation :eq:`fo-"
+"linear-polarization` are then:"
+
+#: ../../solid/polarization.rst:168
+#, python-brace-format
+msgid "正方晶BaTiO\\ :sub:`3`\\ の分極の見積もり（:math:`\\mu\\mathrm{C/cm^2}`）"
+msgstr "Estimated polarization of tetragonal BaTiO\\ :sub:`3`\\  (:math:`\\mu\\mathrm{C/cm^2}`)"
+
+#: ../../solid/polarization.rst:173
+msgid "原子（個数）"
+msgstr "Atom (Count)"
+
+#: ../../solid/polarization.rst:174
+msgid "変位（Å）"
+msgstr "Displacement (Å)"
+
+#: ../../solid/polarization.rst:175
+msgid "Born有効電荷による寄与"
+msgstr "Contribution from Born Effective Charges"
+
+#: ../../solid/polarization.rst:176
+msgid "形式電荷による寄与"
+msgstr "Contribution from Formal Charges"
+
+#: ../../solid/polarization.rst:177
+msgid "Ti（1）"
+msgstr "Ti (1)"
+
+#: ../../solid/polarization.rst:178
+msgid "+0.072"
+msgstr "+0.072"
+
+#: ../../solid/polarization.rst:179
+msgid "13.1"
+msgstr "13.1"
+
+#: ../../solid/polarization.rst:180
+msgid "7.2"
+msgstr "7.2"
+
+#: ../../solid/polarization.rst:181
+msgid "O∥（1）"
+msgstr "O∥ (1)"
+
+#: ../../solid/polarization.rst:182
+msgid "−0.064"
+msgstr "−0.064"
+
+#: ../../solid/polarization.rst:183
+msgid "9.1"
+msgstr "9.1"
+
+#: ../../solid/polarization.rst:184
+msgid "3.2"
+msgstr "3.2"
+
+#: ../../solid/polarization.rst:185
+msgid "O⊥（2）"
+msgstr "O⊥ (2)"
+
+#: ../../solid/polarization.rst:186
+msgid "−0.060"
+msgstr "−0.060"
+
+#: ../../solid/polarization.rst:187
+msgid "6.5"
+msgstr "6.5"
+
+#: ../../solid/polarization.rst:188
+msgid "6.0"
+msgstr "6.0"
+
+#: ../../solid/polarization.rst:189
+msgid "合計"
+msgstr "Total"
+
+#: ../../solid/polarization.rst:191
+msgid "28.7"
+msgstr "28.7"
+
+#: ../../solid/polarization.rst:192
+msgid "16.4"
+msgstr "16.4"
+
+#: ../../solid/polarization.rst:194
+#, python-brace-format
+msgid ""
+"Born有効電荷で求めた約 :math:`29\\ \\mu\\mathrm{C/cm^2}` は、実験値 :math:`26.3\\ \\mu\\mathrm{C/cm^2}` "
+"[Wieder1955]_ に近く、 形式電荷では約6割にとどまる。とくにO∥の寄与は、形式電荷では約3分の1になる。この構造のO∥の :math:`z` 座標は "
+"分率で0.016、その標準不確かさは0.005なので、O∥の項は約3割変わりうる。Ghosezらは、Born有効電荷が変位とともに変わることを考慮し、 Hewatの実験の変位から "
+":math:`28.6\\ \\mu\\mathrm{C/cm^2}` を得ている [GhosezMichenaudGonze1998]_。"
+msgstr ""
+"The estimate using Born effective charges, about :math:`29\\ \\mu\\mathrm{C/cm^2}`, is close to "
+"the experimental value of :math:`26.3\\ \\mu\\mathrm{C/cm^2}` [Wieder1955]_. The formal charges "
+"give only about 60% of the experimental value. In particular, they give about one-third of the O∥"
+" contribution. The fractional :math:`z` coordinate of O∥ in this structure is 0.016 with a "
+"standard uncertainty of 0.005, so its contribution can vary by about 30%. Ghosez and colleagues "
+"accounted for the variation of the Born effective charges with displacement and obtained "
+":math:`28.6\\ \\mu\\mathrm{C/cm^2}` from Hewat’s experimental displacements "
+"[GhosezMichenaudGonze1998]_."
+
+#: ../../solid/polarization.rst:202
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../solid/polarization.rst:204
+msgid ""
+":eq:`fo-linear-polarization` は、:math:`Z^*` が一定とみなせる変位の範囲で使える。BaTiO\\ :sub:`3`\\ ではTiのBorn有効電荷が "
+"変位とともに変わるので [GhosezMichenaudGonze1998]_、精度が要る場合は、参照構造から同じ枝の上でBerry位相の差を求める。 "
+"原子の部分電荷（Löwdin電子数など）と変位の積を足しても、Born有効電荷を使った値にはならない。計算した分極は、計算で得た 変位の大きさを通じて、\\ :ref:`交換相関汎関数"
+"<exchange-correlation-functional>`\\ や格子定数の選び方にも依存する。"
+msgstr ""
+"Equation :eq:`fo-linear-polarization` applies over the range of displacements for which "
+":math:`Z^*` can be treated as constant. In BaTiO\\ :sub:`3`\\ , the Born effective charge of Ti "
+"varies with displacement [GhosezMichenaudGonze1998]_. When accuracy matters, use the Berry phase "
+"to find the difference from the reference structure along the same branch. Summing the products "
+"of atomic partial charges, such as those derived from Löwdin electron populations, and "
+"displacements gives a different quantity from the result using Born effective charges. The "
+"calculated polarization also depends on the choice of \\ :ref:`exchange–correlation functional "
+"<exchange-correlation-functional>`\\  and lattice constants through their effect on the "
+"calculated displacements."
+
+#: ../../solid/polarization.rst:209
+msgid "分極の量子を法とした不定性は、分極の差や、反転対称な参照構造からの変化を求めれば消える。計算プログラムが出力する 分極の値そのものは、どの枝の値かを確かめてから使う。"
+msgstr ""
+"The ambiguity modulo the polarization quantum cancels when calculating differences in "
+"polarization or changes from an inversion-symmetric reference structure. Before using the "
+"absolute polarization reported by a program, identify the branch to which it belongs."
+
+#: ../../solid/polarization.rst:215
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/polarization.rst:217
+msgid ":ref:`ferroelectricity`"
+msgstr ":ref:`Ferroelectricity and Crystal Structure <ferroelectricity>`"
+
+#: ../../solid/polarization.rst:218
+msgid ":ref:`ferroelectric-origin`"
+msgstr ":ref:`Origin of the Ferroelectric Instability of BaTiO₃ <ferroelectric-origin>`"
+
+#: ../../solid/polarization.rst:219
+msgid ":ref:`inversion-and-polarization`"
+msgstr ":ref:`Inversion Symmetry and Spontaneous Polarization <inversion-and-polarization>`"
+
+#: ../../solid/polarization.rst:220
+msgid ":ref:`lo-to-splitting`"
+msgstr ":ref:`LO–TO Splitting <lo-to-splitting>`"
+
+#: ../../solid/polarization.rst:221
+msgid ":ref:`lowdin`"
+msgstr ":ref:`Löwdin Analysis <lowdin>`"
+
+#: ../../solid/polarization.rst:228
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/polarization.rst:230
+msgid ""
+"R. Resta and D. Vanderbilt, “Theory of polarization: A modern approach,” in *Physics of "
+"Ferroelectrics: A Modern Perspective*, Topics in Applied Physics **105** (Springer, 2007), pp. "
+"31–68, `doi:10.1007/978-3-540-34591-6_2 <https://doi.org/10.1007/978-3-540-34591-6_2>`_."
+msgstr ""
+"R. Resta and D. Vanderbilt, “Theory of polarization: A modern approach,” in *Physics of "
+"Ferroelectrics: A Modern Perspective*, Topics in Applied Physics **105** (Springer, 2007), pp. "
+"31–68, `doi:10.1007/978-3-540-34591-6_2 <https://doi.org/10.1007/978-3-540-34591-6_2>`_."
+
+#: ../../solid/polarization.rst:234
+msgid ""
+"Ph. Ghosez, J.-P. Michenaud, and X. Gonze, “Dynamical atomic charges: The case of ABO\\ :sub:`3` "
+"compounds,” *Physical Review B* **58**, 6224–6240 (1998), `doi:10.1103/PhysRevB.58.6224 "
+"<https://doi.org/10.1103/PhysRevB.58.6224>`_."
+msgstr ""
+"Ph. Ghosez, J.-P. Michenaud, and X. Gonze, “Dynamical atomic charges: The case of ABO\\ :sub:`3` "
+"compounds,” *Physical Review B* **58**, 6224–6240 (1998), `doi:10.1103/PhysRevB.58.6224 "
+"<https://doi.org/10.1103/PhysRevB.58.6224>`_."
+
+#: ../../solid/polarization.rst:237
+msgid ""
+"N. A. Spaldin, “A beginner's guide to the modern theory of polarization,” *Journal of Solid State"
+" Chemistry* **195**, 2–10 (2012), `doi:10.1016/j.jssc.2012.05.010 "
+"<https://doi.org/10.1016/j.jssc.2012.05.010>`_."
+msgstr ""
+"N. A. Spaldin, “A beginner's guide to the modern theory of polarization,” *Journal of Solid State"
+" Chemistry* **195**, 2–10 (2012), `doi:10.1016/j.jssc.2012.05.010 "
+"<https://doi.org/10.1016/j.jssc.2012.05.010>`_."
+
+#: ../../solid/polarization.rst:240
+msgid ""
+"W. Zhong, R. D. King-Smith, and D. Vanderbilt, “Giant LO-TO splittings in perovskite "
+"ferroelectrics,” *Physical Review Letters* **72**, 3618–3621 (1994), "
+"`doi:10.1103/PhysRevLett.72.3618 <https://doi.org/10.1103/PhysRevLett.72.3618>`_."
+msgstr ""
+"W. Zhong, R. D. King-Smith, and D. Vanderbilt, “Giant LO-TO splittings in perovskite "
+"ferroelectrics,” *Physical Review Letters* **72**, 3618–3621 (1994), "
+"`doi:10.1103/PhysRevLett.72.3618 <https://doi.org/10.1103/PhysRevLett.72.3618>`_."
+
+#: ../../solid/polarization.rst:243
+msgid ""
+"R. H. Buttner and E. N. Maslen, “Structural parameters and electron difference density in BaTiO\\"
+" :sub:`3`,” *Acta Crystallographica Section B* **48**, 764–769 (1992), "
+"`doi:10.1107/S010876819200510X <https://doi.org/10.1107/S010876819200510X>`_. 座標はCrystallography "
+"Open Database（COD 2100858）の記録による。"
+msgstr ""
+"R\\. H. Buttner and E. N. Maslen, “Structural parameters and electron difference density in "
+"BaTiO\\ :sub:`3`,” *Acta Crystallographica Section B* **48**, 764–769 (1992), "
+"`doi:10.1107/S010876819200510X <https://doi.org/10.1107/S010876819200510X>`_. The coordinates are"
+" from the Crystallography Open Database (COD 2100858)."
+
+#: ../../solid/polarization.rst:247
+msgid ""
+"H. H. Wieder, “Electrical behavior of barium titanate single crystals at low temperatures,” "
+"*Physical Review* **99**, 1161–1165 (1955), `doi:10.1103/PhysRev.99.1161 "
+"<https://doi.org/10.1103/PhysRev.99.1161>`_. 値は [GhosezMichenaudGonze1998]_ のTable Xによる。"
+msgstr ""
+"H\\. H. Wieder, “Electrical behavior of barium titanate single crystals at low temperatures,” "
+"*Physical Review* **99**, 1161–1165 (1955), `doi:10.1103/PhysRev.99.1161 "
+"<https://doi.org/10.1103/PhysRev.99.1161>`_. The value is from Table X of "
+"[GhosezMichenaudGonze1998]_."
+
+#: ../../solid/polarization.rst:251
+msgid ""
+"R. D. King-Smith and D. Vanderbilt, “Theory of polarization of crystalline solids,” *Physical "
+"Review B* **47**, 1651–1654 (1993), `doi:10.1103/PhysRevB.47.1651 "
+"<https://doi.org/10.1103/PhysRevB.47.1651>`_."
+msgstr ""
+"R. D. King-Smith and D. Vanderbilt, “Theory of polarization of crystalline solids,” *Physical "
+"Review B* **47**, 1651–1654 (1993), `doi:10.1103/PhysRevB.47.1651 "
+"<https://doi.org/10.1103/PhysRevB.47.1651>`_."
+
+#: ../../solid/polarization.rst:254
+msgid ""
+"D. Vanderbilt and R. D. King-Smith, “Electric polarization as a bulk quantity and its relation to"
+" surface charge,” *Physical Review B* **48**, 4442–4455 (1993), `doi:10.1103/PhysRevB.48.4442 "
+"<https://doi.org/10.1103/PhysRevB.48.4442>`_."
+msgstr ""
+"D. Vanderbilt and R. D. King-Smith, “Electric polarization as a bulk quantity and its relation to"
+" surface charge,” *Physical Review B* **48**, 4442–4455 (1993), `doi:10.1103/PhysRevB.48.4442 "
+"<https://doi.org/10.1103/PhysRevB.48.4442>`_."
+
+#: ../../solid/polarization.rst:257
+msgid ""
+"R. Resta, “Macroscopic polarization in crystalline dielectrics: the geometric phase approach,” "
+"*Reviews of Modern Physics* **66**, 899–915 (1994), `doi:10.1103/RevModPhys.66.899 "
+"<https://doi.org/10.1103/RevModPhys.66.899>`_."
+msgstr ""
+"R. Resta, “Macroscopic polarization in crystalline dielectrics: the geometric phase approach,” "
+"*Reviews of Modern Physics* **66**, 899–915 (1994), `doi:10.1103/RevModPhys.66.899 "
+"<https://doi.org/10.1103/RevModPhys.66.899>`_."
+

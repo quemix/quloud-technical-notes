@@ -5,8 +5,10 @@
 # from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
+SPHINXINTL    ?= sphinx-intl
 SOURCEDIR     = .
 BUILDDIR      = _build
+EN_DOCS       ?= index solid/index solid/reciprocal_lattice solid/polarization md/thermal_activation
 
 # 手元のPythonにテーマが無ければ（apt版Sphinxなど）、requirements.txt の版を
 # Git管理外の PYLIB に pip で入れて使う。requirements.txt を変えると入れ直す。
@@ -14,6 +16,7 @@ BUILDDIR      = _build
 PYLIB ?= $(or $(XDG_CACHE_HOME),$(HOME)/.cache)/quloud-technical-notes/pylib
 ifneq ($(shell python3 -c "import sphinx, pydata_sphinx_theme" 2>/dev/null && echo ok),ok)
 SPHINXBUILD = PYTHONPATH="$(PYLIB)" python3 -m sphinx
+SPHINXINTL = PYTHONPATH="$(PYLIB)" python3 -m sphinx_intl
 SPHINXDEPS  = $(PYLIB)/requirements.txt
 endif
 
@@ -38,12 +41,27 @@ agent-link:
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help html agent-link serve Makefile
+.PHONY: help html gettext update-po html-en agent-link serve Makefile
 
 # Always rebuild every page (-E). An incremental build rewrites only the pages whose
 # source changed, so after the toctree changes the sidebar of the other pages stays stale.
 html: $(SPHINXDEPS)
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" -E $(SPHINXOPTS) $(O)
+
+gettext: $(SPHINXDEPS)
+	@$(SPHINXBUILD) -b gettext -E -d "$(BUILDDIR)/doctrees-gettext" $(SPHINXOPTS) $(O) "$(SOURCEDIR)" "$(BUILDDIR)/gettext"
+
+# During the prototype, update only the catalogs for the selected articles.
+update-po: gettext
+	@set -e; catalog_dir=$$(mktemp -d "$(BUILDDIR)/gettext-selected.XXXXXX"); \
+	trap 'rm -rf "$$catalog_dir"' EXIT; \
+	for doc in $(EN_DOCS); do \
+		install -D "$(BUILDDIR)/gettext/$$doc.pot" "$$catalog_dir/$$doc.pot"; \
+	done; \
+	$(SPHINXINTL) update -p "$$catalog_dir" -d locales -l en
+
+html-en: $(SPHINXDEPS)
+	@QULOUD_DOC_LANGUAGE=en $(SPHINXBUILD) -b html -E -d "$(BUILDDIR)/doctrees-en" $(SPHINXOPTS) $(O) "$(SOURCEDIR)" "$(BUILDDIR)/html/en"
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

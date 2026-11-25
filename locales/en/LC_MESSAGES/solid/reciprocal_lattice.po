@@ -1,0 +1,478 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../solid/reciprocal_lattice.rst:5
+msgid "逆格子"
+msgstr "Reciprocal Lattice"
+
+#: ../../solid/reciprocal_lattice.rst:7
+msgid ""
+"結晶中の波や回折を扱うときには、実空間の格子に対応する逆格子（reciprocal lattice）を使う。 "
+"ここでは逆格子の基本並進ベクトルを定義し、格子と同じ周期をもつ平面波の波数が逆格子ベクトルに 限られることを示す。最後に、中心並進のある慣用単位胞の辺から作ったベクトルのうち、どれが "
+"逆格子ベクトルになるかの条件を導く。この条件は回折の反射条件になる。"
+msgstr ""
+"The reciprocal lattice is the counterpart of the real-space lattice used to describe waves and "
+"diffraction in crystals. We define its primitive translation vectors and show that a plane wave "
+"with the periodicity of the lattice must have a reciprocal lattice vector as its wave vector. "
+"Finally, for a conventional cell with centering translations, we derive which combinations of the"
+" vectors constructed from the cell edges are reciprocal lattice vectors. This gives the "
+"reflection conditions for diffraction."
+
+#: ../../solid/reciprocal_lattice.rst:12
+msgid ""
+"**前提知識**: :ref:`格子行列<lattice-translations>` :math:`A`、:ref:`分率座標<coordinates>`、 :ref:`中心並進"
+"<centring-translation>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Lattice Matrix <lattice-translations>` :math:`A`, :ref:`Fractional "
+"Coordinates <coordinates>`, and :ref:`Centering Translations <centring-translation>`."
+
+#: ../../solid/reciprocal_lattice.rst:15
+msgid "**学習目標**:"
+msgstr "**Learning Objectives**:"
+
+#: ../../solid/reciprocal_lattice.rst:17
+#, python-brace-format
+msgid "逆格子の基本並進ベクトルを定義し、格子行列との関係 :math:`B=2\\pi A^{-\\mathsf T}` を導く。"
+msgstr ""
+"Define the primitive translation vectors of the reciprocal lattice and derive their relation "
+":math:`B=2\\pi A^{-\\mathsf T}` to the lattice matrix."
+
+#: ../../solid/reciprocal_lattice.rst:18
+msgid "格子と同じ周期の関数が、逆格子ベクトルを波数とする平面波だけで展開できることを示す。"
+msgstr ""
+"Show that a function with the periodicity of the lattice can be expanded using only plane waves "
+"with reciprocal lattice vectors as wave vectors."
+
+#: ../../solid/reciprocal_lattice.rst:19
+msgid "中心並進のある慣用単位胞で、整数の指数が逆格子ベクトルになる条件を導く。"
+msgstr ""
+"Derive the conditions that integer indices must satisfy to give a reciprocal lattice vector for a"
+" conventional cell with centering translations."
+
+#: ../../solid/reciprocal_lattice.rst:24
+msgid "逆格子の基本並進ベクトル"
+msgstr "Primitive Translation Vectors of the Reciprocal Lattice"
+
+#: ../../solid/reciprocal_lattice.rst:26
+msgid ""
+"基本並進ベクトルに対し、逆格子の基本並進ベクトルを次の外積で定める。本ノートでは固体物理で一般的な :math:`2\\pi` を含む規約を使う（結晶学では :math:`2\\pi` "
+"を含めない定義も使われる）。"
+msgstr ""
+"For a given set of primitive translation vectors, define the primitive translation vectors of the"
+" reciprocal lattice using the cross products below. These notes follow the convention common in "
+"solid-state physics, which includes a factor of :math:`2\\pi`. A convention without this factor "
+"of :math:`2\\pi` is also used in crystallography."
+
+#: ../../solid/reciprocal_lattice.rst:28
+msgid ""
+"\\boldsymbol{b}_1 = 2\\pi\\frac{\\boldsymbol{a}_2\\times\\boldsymbol{a}_3}\n"
+"{\\boldsymbol{a}_1\\cdot \\left(\\boldsymbol{a}_2\\times\\boldsymbol{a}_3\\right)}\n"
+", \\quad\n"
+"\\boldsymbol{b}_2 = 2\\pi\\frac{\\boldsymbol{a}_3\\times\\boldsymbol{a}_1}\n"
+"{\\boldsymbol{a}_1\\cdot \\left(\\boldsymbol{a}_2\\times\\boldsymbol{a}_3\\right)}\n"
+", \\quad\n"
+"\\boldsymbol{b}_3 = 2\\pi\\frac{\\boldsymbol{a}_1\\times\\boldsymbol{a}_2}\n"
+"{\\boldsymbol{a}_1\\cdot \\left(\\boldsymbol{a}_2\\times\\boldsymbol{a}_3\\right)}\n"
+"\n"
+msgstr ""
+"\\boldsymbol{b}_1 = 2\\pi\\frac{\\boldsymbol{a}_2\\times\\boldsymbol{a}_3}\n"
+"{\\boldsymbol{a}_1\\cdot \\left(\\boldsymbol{a}_2\\times\\boldsymbol{a}_3\\right)}\n"
+", \\quad\n"
+"\\boldsymbol{b}_2 = 2\\pi\\frac{\\boldsymbol{a}_3\\times\\boldsymbol{a}_1}\n"
+"{\\boldsymbol{a}_1\\cdot \\left(\\boldsymbol{a}_2\\times\\boldsymbol{a}_3\\right)}\n"
+", \\quad\n"
+"\\boldsymbol{b}_3 = 2\\pi\\frac{\\boldsymbol{a}_1\\times\\boldsymbol{a}_2}\n"
+"{\\boldsymbol{a}_1\\cdot \\left(\\boldsymbol{a}_2\\times\\boldsymbol{a}_3\\right)}\n"
+"\n"
+
+#: ../../solid/reciprocal_lattice.rst:39
+msgid "格子ベクトルと逆格子ベクトルは、次の直交関係を満たす。"
+msgstr "The lattice vectors and reciprocal lattice vectors satisfy the following orthogonality relation."
+
+#: ../../solid/reciprocal_lattice.rst:41
+#, python-brace-format
+msgid ""
+"\\boldsymbol{a}_i \\cdot \\boldsymbol{b}_j = 2\\pi\\delta_{ij}\n"
+"\n"
+msgstr ""
+"\\boldsymbol{a}_i \\cdot \\boldsymbol{b}_j = 2\\pi\\delta_{ij}\n"
+"\n"
+
+#: ../../solid/reciprocal_lattice.rst:45
+msgid ""
+":numref:`fig-lattice-reciprocal-vectors`\\ の二次元の例では、:math:`\\boldsymbol b_1` は "
+":math:`\\boldsymbol a_2` に垂直である。隣り合う平行線の間で :math:`\\boldsymbol b_1\\cdot\\boldsymbol r` は "
+":math:`2\\pi` ずつ変わる。この平行線の組は、格子点をすべて含む\\ :ref:`格子面<lattice-planes-miller>`\\ の "
+"二次元版で、逆格子ベクトルが面の法線を向く。"
+msgstr ""
+"In the two-dimensional example in :numref:`fig-lattice-reciprocal-vectors`\\ , "
+":math:`\\boldsymbol b_1` is perpendicular to :math:`\\boldsymbol a_2`. The value of "
+":math:`\\boldsymbol b_1\\cdot\\boldsymbol r` changes by :math:`2\\pi` from one parallel line to "
+"the next. This family of lines is the two-dimensional counterpart of the \\ :ref:`lattice planes "
+"<lattice-planes-miller>`\\  that together contain all lattice points. The reciprocal lattice "
+"vector is normal to the planes."
+
+#: ../../solid/reciprocal_lattice.rst:50
+msgid "斜めの格子点列をa2に平行な線で結んだ図。原点からの逆格子ベクトルb1が各線に垂直である。"
+msgstr ""
+"Oblique rows of lattice points joined by lines parallel to a2. The reciprocal lattice vector b1 "
+"from the origin is perpendicular to the lines."
+
+#: ../../solid/reciprocal_lattice.rst:56
+msgid ""
+"黒い点は実格子点。灰色の各線上では :math:`\\boldsymbol b_1\\cdot\\boldsymbol r` が一定で、 :math:`\\boldsymbol a_1` "
+"の方向に一つ隣の線へ移ると内積が :math:`2\\pi` 増える。 逆格子ベクトルの矢印は向きを示す。"
+msgstr ""
+"The black dots are real-space lattice points. On each gray line, :math:`\\boldsymbol "
+"b_1\\cdot\\boldsymbol r` is constant. Moving to the next line in the direction of "
+":math:`\\boldsymbol a_1` increases the dot product by :math:`2\\pi`. The arrow indicates only the"
+" direction of the reciprocal lattice vector."
+
+#: ../../solid/reciprocal_lattice.rst:60
+msgid "逆格子ベクトルも、式 :eq:`amat` の :math:`A` と同じように列に並べて"
+msgstr ""
+"Arrange the reciprocal lattice vectors as columns, just as for :math:`A` in Equation :eq:`amat`, "
+"and define"
+
+#: ../../solid/reciprocal_lattice.rst:62
+#, python-brace-format
+msgid ""
+"B \\equiv\n"
+"(\\boldsymbol b_1,\\boldsymbol b_2,\\boldsymbol b_3)\n"
+"=\n"
+"\\begin{pmatrix}\n"
+"b_{1}^x & b_{2}^x & b_{3}^x \\\\\n"
+"b_{1}^y & b_{2}^y & b_{3}^y \\\\\n"
+"b_{1}^z & b_{2}^z & b_{3}^z\n"
+"\\end{pmatrix}\n"
+"\n"
+msgstr ""
+"B \\equiv\n"
+"(\\boldsymbol b_1,\\boldsymbol b_2,\\boldsymbol b_3)\n"
+"=\n"
+"\\begin{pmatrix}\n"
+"b_{1}^x & b_{2}^x & b_{3}^x \\\\\n"
+"b_{1}^y & b_{2}^y & b_{3}^y \\\\\n"
+"b_{1}^z & b_{2}^z & b_{3}^z\n"
+"\\end{pmatrix}\n"
+"\n"
+
+#: ../../solid/reciprocal_lattice.rst:73
+msgid "とおく。式 :eq:`ortho` の直交性から、行列の積として"
+msgstr "The orthogonality in Equation :eq:`ortho` gives the matrix product"
+
+#: ../../solid/reciprocal_lattice.rst:75
+#, python-brace-format
+msgid ""
+"A^\\top B\n"
+"=\n"
+"\\begin{pmatrix}\n"
+"a_{1}^x & a_{1}^y & a_{1}^z \\\\\n"
+"a_{2}^x & a_{2}^y & a_{2}^z \\\\\n"
+"a_{3}^x & a_{3}^y & a_{3}^z \\\\\n"
+"\\end{pmatrix}\n"
+"\\begin{pmatrix}\n"
+"b_{1}^x & b_{2}^x & b_{3}^x \\\\\n"
+"b_{1}^y & b_{2}^y & b_{3}^y \\\\\n"
+"b_{1}^z & b_{2}^z & b_{3}^z \\\\\n"
+"\\end{pmatrix}\n"
+"= 2\\pi I\n"
+"\n"
+msgstr ""
+"A^\\top B\n"
+"=\n"
+"\\begin{pmatrix}\n"
+"a_{1}^x & a_{1}^y & a_{1}^z \\\\\n"
+"a_{2}^x & a_{2}^y & a_{2}^z \\\\\n"
+"a_{3}^x & a_{3}^y & a_{3}^z \\\\\n"
+"\\end{pmatrix}\n"
+"\\begin{pmatrix}\n"
+"b_{1}^x & b_{2}^x & b_{3}^x \\\\\n"
+"b_{1}^y & b_{2}^y & b_{3}^y \\\\\n"
+"b_{1}^z & b_{2}^z & b_{3}^z \\\\\n"
+"\\end{pmatrix}\n"
+"= 2\\pi I\n"
+"\n"
+
+#: ../../solid/reciprocal_lattice.rst:91
+msgid "となることがわかる。これから、\\ :math:`A, B` の逆行列は、互いの転置行列を :math:`2\\pi` で割ったものとなることがわかる。"
+msgstr ""
+"It follows that the inverse matrices of \\ :math:`A, B` are the transposes of one another divided"
+" by :math:`2\\pi`."
+
+#: ../../solid/reciprocal_lattice.rst:93
+#, python-brace-format
+msgid ""
+"A^{-1} = \\frac{1}{2\\pi}B^\\top\n"
+", \\quad\n"
+"B^{-1} = \\frac{1}{2\\pi}A^\\top\n"
+"\n"
+msgstr ""
+"A^{-1} = \\frac{1}{2\\pi}B^\\top\n"
+", \\quad\n"
+"B^{-1} = \\frac{1}{2\\pi}A^\\top\n"
+"\n"
+
+#: ../../solid/reciprocal_lattice.rst:99
+#, python-brace-format
+msgid ""
+"すなわち :math:`B=2\\pi A^{-\\top}` である。式 :eq:`fractional-cartesian-matrix` "
+"の分率座標も、:math:`\\boldsymbol s=A^{-1}\\boldsymbol r=B^\\top\\boldsymbol r/2\\pi`、すなわち "
+":math:`s_i=\\boldsymbol b_i\\cdot\\boldsymbol r/2\\pi` と逆格子ベクトルから求まる。"
+msgstr ""
+"Thus :math:`B=2\\pi A^{-\\top}`. The fractional coordinates in Equation :eq:`fractional-"
+"cartesian-matrix` also follow from the reciprocal lattice vectors via :math:`\\boldsymbol "
+"s=A^{-1}\\boldsymbol r=B^\\top\\boldsymbol r/2\\pi`, or component by component as "
+":math:`s_i=\\boldsymbol b_i\\cdot\\boldsymbol r/2\\pi`."
+
+#: ../../solid/reciprocal_lattice.rst:104
+msgid "逆格子ベクトルと周期関数"
+msgstr "Reciprocal Lattice Vectors and Periodic Functions"
+
+#: ../../solid/reciprocal_lattice.rst:106
+msgid ""
+"逆格子の基本並進ベクトルの整数結合 :math:`\\boldsymbol g=B\\boldsymbol h`\\ （:math:`\\boldsymbol h\\in\\mathbb "
+"Z^3`）を逆格子ベクトルと呼び、その全体が逆格子である。:math:`\\boldsymbol g` と格子ベクトル :math:`\\boldsymbol R=A\\boldsymbol "
+"n` の内積は"
+msgstr ""
+"Integer combinations :math:`\\boldsymbol g=B\\boldsymbol h`\\  (:math:`\\boldsymbol h\\in\\mathbb"
+" Z^3`) of the primitive translation vectors of the reciprocal lattice are called reciprocal "
+"lattice vectors. Together they form the reciprocal lattice. The dot product of "
+":math:`\\boldsymbol g` with a lattice vector :math:`\\boldsymbol R=A\\boldsymbol n` is"
+
+#: ../../solid/reciprocal_lattice.rst:108
+msgid ""
+"\\boldsymbol g\\cdot\\boldsymbol R=\\boldsymbol h^\\top B^\\top A\\,\\boldsymbol "
+"n=2\\pi\\,\\boldsymbol h^\\top\\boldsymbol n\n"
+"\n"
+msgstr ""
+"\\boldsymbol g\\cdot\\boldsymbol R=\\boldsymbol h^\\top B^\\top A\\,\\boldsymbol "
+"n=2\\pi\\,\\boldsymbol h^\\top\\boldsymbol n\n"
+"\n"
+
+#: ../../solid/reciprocal_lattice.rst:111
+#, python-brace-format
+msgid "で :math:`2\\pi` の整数倍なので、すべての格子ベクトルについて :math:`e^{i\\boldsymbol g\\cdot\\boldsymbol R}=1` となる。"
+msgstr ""
+"Because this is an integer multiple of :math:`2\\pi`, we have :math:`e^{i\\boldsymbol "
+"g\\cdot\\boldsymbol R}=1` for every lattice vector."
+
+#: ../../solid/reciprocal_lattice.rst:115
+msgid "結晶の電子密度やポテンシャルは、任意の格子ベクトル :math:`\\boldsymbol R` について"
+msgstr ""
+"The electron density and potential of a crystal satisfy the relation below for any lattice vector"
+" :math:`\\boldsymbol R`:"
+
+#: ../../solid/reciprocal_lattice.rst:117
+msgid "\\rho(\\boldsymbol r+\\boldsymbol R)=\\rho(\\boldsymbol r)"
+msgstr "\\rho(\\boldsymbol r+\\boldsymbol R)=\\rho(\\boldsymbol r)"
+
+#: ../../solid/reciprocal_lattice.rst:122
+msgid "を満たす、格子と同じ周期の関数である。"
+msgstr "They are functions with the periodicity of the lattice."
+
+#: ../../solid/reciprocal_lattice.rst:126
+#, python-brace-format
+msgid "格子と同じ周期の関数は、逆格子ベクトルを波数とする平面波 :math:`e^{i\\boldsymbol g\\cdot\\boldsymbol r}` の重ね合わせ（フーリエ級数）で表せる。"
+msgstr ""
+"A function with the periodicity of the lattice can be written as a superposition of plane waves "
+":math:`e^{i\\boldsymbol g\\cdot\\boldsymbol r}` with reciprocal lattice vectors as wave vectors. "
+"This expansion is a Fourier series."
+
+#: ../../solid/reciprocal_lattice.rst:128
+#, python-brace-format
+msgid ""
+"\\rho(\\boldsymbol r)=\\sum_{\\boldsymbol g}\\rho_{\\boldsymbol g}\\,e^{i\\boldsymbol "
+"g\\cdot\\boldsymbol r}"
+msgstr ""
+"\\rho(\\boldsymbol r)=\\sum_{\\boldsymbol g}\\rho_{\\boldsymbol g}\\,e^{i\\boldsymbol "
+"g\\cdot\\boldsymbol r}"
+
+#: ../../solid/reciprocal_lattice.rst:133
+#, python-brace-format
+msgid ""
+":math:`\\rho_{\\boldsymbol g}` は、平面波 :math:`e^{i\\boldsymbol g\\cdot\\boldsymbol r}` "
+"がどれだけ含まれるかを表すフーリエ係数である。格子ベクトル :math:`\\boldsymbol R` だけ移動すると、各平面波に :math:`e^{i\\boldsymbol "
+"g\\cdot\\boldsymbol R}=1` が掛かるので、和の各項が元に戻り、式 :eq:`periodic0` が成り立つ。"
+msgstr ""
+"The Fourier coefficient :math:`\\rho_{\\boldsymbol g}` gives the weight of plane wave "
+":math:`e^{i\\boldsymbol g\\cdot\\boldsymbol r}`. Translation by a lattice vector "
+":math:`\\boldsymbol R` multiplies every plane wave by :math:`e^{i\\boldsymbol g\\cdot\\boldsymbol"
+" R}=1`. Each term is therefore unchanged, so Equation :eq:`periodic0` holds."
+
+#: ../../solid/reciprocal_lattice.rst:135
+msgid ""
+"一次元の例を :numref:`fig-periodic-fourier-components` に示す。第2高調波は基本波の 半分の周期をもつが、どちらも :math:`a` "
+"だけ平行移動すると元の値に戻る。 このため、二つの成分と定数項を足した密度も :math:`a` ごとに繰り返す。"
+msgstr ""
+":numref:`fig-periodic-fourier-components` shows a one-dimensional example. The second harmonic "
+"has half the period of the fundamental. A translation by :math:`a` leaves both unchanged. The "
+"density given by adding these two components and a constant therefore also repeats every "
+":math:`a`."
+
+#: ../../solid/reciprocal_lattice.rst:139
+msgid "基本波は距離aで1周期、第2高調波は同じ距離で2周期を描く。二つの波と定数を足した密度も距離aごとに同じ形を繰り返す。"
+msgstr ""
+"The fundamental completes one cycle over the distance a, while the second harmonic completes two."
+" The density formed from the two waves and a constant also repeats every a."
+
+#: ../../solid/reciprocal_lattice.rst:145
+msgid ""
+"上段の :math:`0.35\\cos(2\\pi x/a)` は :math:`g=\\pm2\\pi/a`、 中段の :math:`0.2\\cos(4\\pi x/a)` は "
+":math:`g=\\pm4\\pi/a` の平面波の組に対応する。 下段はこの二成分に :math:`g=0` の定数項1を足した密度の模式例。 縦の破線が周期一つ分の境界を示す。"
+msgstr ""
+"In the top panel :math:`0.35\\cos(2\\pi x/a)` corresponds to the pair of plane waves "
+":math:`g=\\pm2\\pi/a`. In the middle panel :math:`0.2\\cos(4\\pi x/a)` corresponds to "
+":math:`g=\\pm4\\pi/a`. The bottom panel illustrates a density formed by adding these two "
+"components and a constant term of 1 at :math:`g=0`. The vertical dashed lines mark the boundaries"
+" of one period."
+
+#: ../../solid/reciprocal_lattice.rst:150
+#, python-brace-format
+msgid ""
+"逆に、すべての格子ベクトル :math:`\\boldsymbol R` について :math:`e^{i\\boldsymbol g\\cdot\\boldsymbol R}=1` "
+"となる波数ベクトル :math:`\\boldsymbol g` は、逆格子ベクトルに限られる。:math:`B` は正則なので、任意の :math:`\\boldsymbol g` "
+"を実数の成分をもつ :math:`\\boldsymbol h` で :math:`\\boldsymbol g=B\\boldsymbol h` "
+"と書ける。:math:`\\boldsymbol R=\\boldsymbol a_i` を代入すると、式 :eq:`ortho` から :math:`\\boldsymbol "
+"g\\cdot\\boldsymbol a_i=2\\pi h_i` となり、これが :math:`2\\pi` の整数倍であるには :math:`h_i` "
+"が整数でなければならない。したがって逆格子は、格子のすべての並進で位相が変わらない平面波の波数の集合である。格子と同じ周期の関数のフーリエ級数 :eq:`periodic-fourier` "
+"に、逆格子ベクトル以外の波数の平面波が現れないのもこのためである。次節ではこの性質を使う。"
+msgstr ""
+"Conversely, wave vectors :math:`\\boldsymbol g` for which :math:`e^{i\\boldsymbol "
+"g\\cdot\\boldsymbol R}=1` holds for every lattice vector :math:`\\boldsymbol R` must be "
+"reciprocal lattice vectors. Since :math:`B` is nonsingular, any :math:`\\boldsymbol g` can be "
+"written as :math:`\\boldsymbol g=B\\boldsymbol h` with real components in :math:`\\boldsymbol h`."
+" Setting :math:`\\boldsymbol R=\\boldsymbol a_i` and using Equation :eq:`ortho` gives "
+":math:`\\boldsymbol g\\cdot\\boldsymbol a_i=2\\pi h_i`. For this to be an integer multiple of "
+":math:`2\\pi`, :math:`h_i` must be an integer. The reciprocal lattice therefore consists of the "
+"wave vectors of plane waves whose phase is invariant under every lattice translation. This is "
+"also why the Fourier series in Equation :eq:`periodic-fourier` of a function with lattice "
+"periodicity contains only plane waves with reciprocal lattice vectors as wave vectors. We use "
+"this property in the next section."
+
+#: ../../solid/reciprocal_lattice.rst:155
+msgid "中心並進のある胞の逆格子"
+msgstr "Reciprocal Lattice of a Cell with Centering Translations"
+
+#: ../../solid/reciprocal_lattice.rst:157
+#, python-brace-format
+msgid ""
+"慣用単位胞の辺 :math:`A_{\\rm c}=(\\boldsymbol c_1,\\boldsymbol c_2,\\boldsymbol c_3)` から式 :eq:`bvec` "
+"と同じ外積で作る :math:`B_{\\rm c}=2\\pi A_{\\rm c}^{-\\top}` は、\\ :ref:`中心並進<centring-translation>`\\ "
+"があると逆格子の基本並進ベクトルの組にならない。:math:`A_{\\rm c}` "
+"の辺だけでは格子のすべての並進を生成しないからである。どの指数が逆格子ベクトルに対応するかは、前節の性質で判定できる。"
+msgstr ""
+"Construct :math:`B_{\\rm c}=2\\pi A_{\\rm c}^{-\\top}` from the edges :math:`A_{\\rm "
+"c}=(\\boldsymbol c_1,\\boldsymbol c_2,\\boldsymbol c_3)` of the conventional cell by the same "
+"cross products as in Equation :eq:`bvec`. When there are \\ :ref:`centering translations "
+"<centring-translation>`\\ , these vectors are not a set of primitive translation vectors for the "
+"reciprocal lattice because the edges of :math:`A_{\\rm c}` alone do not generate every "
+"translation of the lattice. The property derived in the previous section tells us which indices "
+"correspond to reciprocal lattice vectors."
+
+#: ../../solid/reciprocal_lattice.rst:159
+#, python-brace-format
+msgid ""
+"格子は式 :eq:`centred-lattice` のとおり :math:`\\boldsymbol R=A_{\\rm c}(\\boldsymbol "
+"n+\\boldsymbol\\tau)`\\ （:math:`\\boldsymbol n\\in\\mathbb Z^3`、:math:`\\boldsymbol\\tau\\in "
+"T`）と書ける。波数を :math:`\\boldsymbol g=B_{\\rm c}\\boldsymbol h_{\\rm c}` と書くと、:math:`A_{\\rm c}^\\top"
+" B_{\\rm c}=2\\pi I` から"
+msgstr ""
+"Equation :eq:`centred-lattice` writes a lattice vector as :math:`\\boldsymbol R=A_{\\rm "
+"c}(\\boldsymbol n+\\boldsymbol\\tau)`\\  (:math:`\\boldsymbol n\\in\\mathbb Z^3`, "
+":math:`\\boldsymbol\\tau\\in T`). Writing the wave vector as :math:`\\boldsymbol g=B_{\\rm "
+"c}\\boldsymbol h_{\\rm c}`, we obtain the following from :math:`A_{\\rm c}^\\top B_{\\rm c}=2\\pi"
+" I`:"
+
+#: ../../solid/reciprocal_lattice.rst:161
+#, python-brace-format
+msgid ""
+"\\boldsymbol g\\cdot\\boldsymbol R=2\\pi\\,\\boldsymbol h_{\\rm c}^\\top(\\boldsymbol "
+"n+\\boldsymbol\\tau)\n"
+"\n"
+msgstr ""
+"\\boldsymbol g\\cdot\\boldsymbol R=2\\pi\\,\\boldsymbol h_{\\rm c}^\\top(\\boldsymbol "
+"n+\\boldsymbol\\tau)\n"
+"\n"
+
+#: ../../solid/reciprocal_lattice.rst:164
+#, python-brace-format
+msgid ""
+"となる。これがすべての :math:`\\boldsymbol n` と :math:`\\boldsymbol\\tau` について :math:`2\\pi` "
+"の整数倍になるのは、:math:`\\boldsymbol h_{\\rm c}` が整数で、かつ"
+msgstr ""
+"This is an integer multiple of :math:`2\\pi` for all :math:`\\boldsymbol n` and "
+":math:`\\boldsymbol\\tau` if and only if :math:`\\boldsymbol h_{\\rm c}` has integer components "
+"and"
+
+#: ../../solid/reciprocal_lattice.rst:166
+#, python-brace-format
+msgid ""
+"\\boldsymbol h_{\\rm c}^\\top\\boldsymbol\\tau\\in\\mathbb Z\\qquad\\text{for all "
+"}\\boldsymbol\\tau\\in T\n"
+"\n"
+msgstr ""
+"\\boldsymbol h_{\\rm c}^\\top\\boldsymbol\\tau\\in\\mathbb Z\\qquad\\text{for all "
+"}\\boldsymbol\\tau\\in T\n"
+"\n"
+
+#: ../../solid/reciprocal_lattice.rst:170
+#, python-brace-format
+msgid ""
+"が成り立つときである。:math:`\\boldsymbol h_{\\rm c}` が整数でも、この条件を満たさなければ :math:`B_{\\rm c}\\boldsymbol "
+"h_{\\rm c}` は逆格子ベクトルではない。"
+msgstr ""
+"Even when the components of :math:`\\boldsymbol h_{\\rm c}` are integers, :math:`B_{\\rm "
+"c}\\boldsymbol h_{\\rm c}` is a reciprocal lattice vector only if this condition holds."
+
+#: ../../solid/reciprocal_lattice.rst:172
+#, python-brace-format
+msgid ""
+"BCCでは :math:`T=\\{(0,0,0),(1/2,1/2,1/2)\\}` なので、条件は :math:`h+k+l` が偶数であること。FCCでは3つの面心並進から "
+":math:`k+l`、:math:`h+l`、:math:`h+k` がすべて偶数、すなわち :math:`h,k,l` がすべて偶数かすべて奇数であることが条件になる。例えばFCCの "
+":math:`B_{\\rm c}(1,0,0)^\\top` は逆格子ベクトルではなく、:math:`B_{\\rm c}(2,0,0)^\\top` と :math:`B_{\\rm "
+"c}(1,1,1)^\\top` は逆格子ベクトルである。"
+msgstr ""
+"For BCC, :math:`T=\\{(0,0,0),(1/2,1/2,1/2)\\}`, so :math:`h+k+l` must be even. For FCC, the three"
+" face-centering translations require :math:`k+l`, :math:`h+l`, and :math:`h+k` all to be even. "
+"Equivalently, :math:`h,k,l` must be all even or all odd. For example, :math:`B_{\\rm "
+"c}(1,0,0)^\\top` is not a reciprocal lattice vector for FCC, but :math:`B_{\\rm c}(2,0,0)^\\top` "
+"and :math:`B_{\\rm c}(1,1,1)^\\top` are."
+
+#: ../../solid/reciprocal_lattice.rst:174
+msgid ""
+"条件 :eq:`centred-reciprocal-condition` "
+"は、回折で中心並進が許す反射の指数の条件（反射条件）と一致する。中心並進で移り合う原子からの散乱波の位相和から同じ条件を導く過程は、\\ :ref:`中心並進による打ち消し<sf-"
+"centring-extinction>`\\ で示す。"
+msgstr ""
+"The condition in Equation :eq:`centred-reciprocal-condition` is the reflection condition on the "
+"indices allowed by the centering translations in diffraction. The section \\ :ref:`Cancellation "
+"by Centering Translations <sf-centring-extinction>`\\  derives the same condition from the sum of"
+" the phases of scattered waves from atoms related by centering translations."
+
+#: ../../solid/reciprocal_lattice.rst:177
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/reciprocal_lattice.rst:179
+msgid "IUCr, `Reflection conditions <https://dictionary.iucr.org/Reflection_conditions>`_."
+msgstr "IUCr, `Reflection conditions <https://dictionary.iucr.org/Reflection_conditions>`_."
+

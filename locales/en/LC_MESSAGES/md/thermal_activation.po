@@ -1,0 +1,685 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../md/thermal_activation.rst:2
+msgid "熱活性化過程とホッピング拡散"
+msgstr "Thermally Activated Processes and Hopping Diffusion"
+
+#: ../../md/thermal_activation.rst:4
+msgid ""
+"粒子が隣のサイトへ移るには、途中にあるエネルギー障壁を越える必要がある。 障壁と試行頻度が一定なら、温度が上がると障壁を越える頻度が増える。離れた場所まで拡散できるかは、 "
+"各ホップの速さに加え、経路のつながり方や空孔の割合で決まる。"
+msgstr ""
+"To move to a neighboring site, a particle must cross the energy barrier between the two sites. "
+"For a fixed barrier and attempt frequency, increasing the temperature makes barrier crossings "
+"more frequent. Long-range diffusion depends on the rates of individual hops, the connectivity of "
+"the paths, and the fraction of vacancies."
+
+#: ../../md/thermal_activation.rst:8
+msgid ""
+"前提は\\ :ref:`平均二乗変位と拡散係数<mean-squared-displacement>`、 :ref:`統計アンサンブル<statistical-ensembles>`、\\ "
+":ref:`調和近似<harmonic-approximation>`\\ である。"
+msgstr ""
+"Prerequisites are \\ :ref:`Mean Squared Displacement and the Diffusion Coefficient <mean-squared-"
+"displacement>`, :ref:`Statistical Ensembles <statistical-ensembles>`, and \\ :ref:`Harmonic "
+"Approximation <harmonic-approximation>`\\ ."
+
+#: ../../md/thermal_activation.rst:12
+msgid "学習目標"
+msgstr "Learning Objectives"
+
+#: ../../md/thermal_activation.rst:14
+msgid "拡散係数の温度依存性から活性化エネルギーを求め、どの温度範囲を表す値かを説明する。"
+msgstr ""
+"Obtain the activation energy from the temperature dependence of the diffusion coefficient and "
+"explain the temperature range it represents."
+
+#: ../../md/thermal_activation.rst:15
+msgid "移動障壁から遷移の速さを求め、ホップをつないで拡散を計算する。"
+msgstr ""
+"Calculate transition rates from migration barriers and combine the hops to obtain the diffusion "
+"coefficient."
+
+#: ../../md/thermal_activation.rst:16
+msgid "空孔の数や経路のつながり方が、拡散の活性化エネルギーに及ぼす影響を判断する。"
+msgstr ""
+"Determine how the number of vacancies and the connectivity of the paths affect the activation "
+"energy for diffusion."
+
+#: ../../md/thermal_activation.rst:21
+msgid "アレニウス式とプロットの傾き"
+msgstr "Arrhenius Equation and the Slope of the Plot"
+
+#: ../../md/thermal_activation.rst:23
+#, python-brace-format
+msgid ""
+"絶対温度\\ :math:`T`\\ における拡散係数\\ :math:`D(T)`\\ が、温度によらない **前指数因子**\\ :math:`D_0`\\ と\\ "
+"**活性化エネルギー**\\ :math:`E_{\\mathrm a}`\\ で表せるとき、 この温度依存性を\\ **アレニウス式**\\ で書ける。:math:`k_{\\mathrm "
+"B}`\\ はボルツマン定数である。"
+msgstr ""
+"Suppose the diffusion coefficient \\ :math:`D(T)`\\  at absolute temperature \\ :math:`T`\\  can "
+"be expressed in terms of a temperature-independent **pre-exponential factor** \\ :math:`D_0`\\  "
+"and an \\ **activation energy** \\ :math:`E_{\\mathrm a}`\\ . The \\ **Arrhenius equation**\\  "
+"describes this temperature dependence. Here :math:`k_{\\mathrm B}`\\  is the Boltzmann constant."
+
+#: ../../md/thermal_activation.rst:27
+msgid ""
+"\\begin{aligned}\n"
+"D(T)&=D_0\\exp\\!\\left(-\\frac{E_{\\mathrm a}}{k_{\\mathrm B}T}\\right),\\\\\n"
+"\\ln\\frac{D}{D_{\\mathrm{ref}}}\n"
+"&=\\ln\\frac{D_0}{D_{\\mathrm{ref}}}-\\frac{E_{\\mathrm a}}{k_{\\mathrm B}}\\frac{1}{T} .\n"
+"\\end{aligned}"
+msgstr ""
+"\\begin{aligned}\n"
+"D(T)&=D_0\\exp\\!\\left(-\\frac{E_{\\mathrm a}}{k_{\\mathrm B}T}\\right),\\\\\n"
+"\\ln\\frac{D}{D_{\\mathrm{ref}}}\n"
+"&=\\ln\\frac{D_0}{D_{\\mathrm{ref}}}-\\frac{E_{\\mathrm a}}{k_{\\mathrm B}}\\frac{1}{T} .\n"
+"\\end{aligned}"
+
+#: ../../md/thermal_activation.rst:36
+msgid ""
+":math:`D_{\\mathrm{ref}}`\\ は対数の中身を無次元にするための定数で、例えば 1 Å²/ps を使う。横軸を\\ :math:`1/T`、縦軸を\\ "
+":math:`\\ln(D/D_{\\mathrm{ref}})`\\ とすると、 直線の傾きに\\ :math:`-k_{\\mathrm B}`\\ を掛けて活性化エネルギーが得られる。 "
+"横軸が\\ :math:`1000/T`\\ なら傾きに\\ :math:`-1000k_{\\mathrm B}`\\ を掛ける。 縦軸が常用対数の場合は、これらにさらに\\ "
+":math:`\\ln 10`\\ を掛ける。"
+msgstr ""
+"The constant :math:`D_{\\mathrm{ref}}`\\  makes the argument of the logarithm dimensionless. One "
+"possible value is 1 Å²/ps. With \\ :math:`1/T` on the horizontal axis and \\ "
+":math:`\\ln(D/D_{\\mathrm{ref}})`\\  on the vertical axis, multiply the slope of the line by \\ "
+":math:`-k_{\\mathrm B}`\\  to obtain the activation energy. If the horizontal axis is \\ "
+":math:`1000/T`\\ , multiply the slope by \\ :math:`-1000k_{\\mathrm B}`\\ . If the vertical axis "
+"uses the base-10 logarithm, multiply these factors by an additional \\ :math:`\\ln 10`\\ ."
+
+#: ../../md/thermal_activation.rst:42
+msgid ""
+"直線の傾きは、採用した温度範囲で拡散係数がどれだけ温度に敏感かを表す。 各温度での拡散係数には、有限な軌跡から傾きを取る際の\\ :ref:`不確かさ<msd-interpretation-"
+"limits>`\\ がある。 直線近似の残差から求めた傾きの標準誤差は、採用した点と直線近似を前提とした値である。 各点の拡散係数の推定誤差も伝えるには、その不確かさを回帰に反映する。 "
+"曲がりのあるデータに直線を当てはめると、温度範囲によって傾きが変わる。"
+msgstr ""
+"The slope measures how sensitive the diffusion coefficient is to temperature over the range used "
+"in the fit. Each diffusion coefficient carries \\ :ref:`uncertainty <msd-interpretation-"
+"limits>`\\  from estimating a slope from a finite trajectory. The standard error calculated from "
+"the residuals of the linear fit is conditional on the points used and the linear model. Account "
+"for the uncertainty of each diffusion coefficient in the regression to propagate its estimation "
+"error. For curved data, the fitted slope depends on the chosen temperature range."
+
+#: ../../md/thermal_activation.rst:51
+msgid "遷移状態理論と移動障壁"
+msgstr "Transition State Theory and Migration Barriers"
+
+#: ../../md/thermal_activation.rst:53
+msgid ""
+"ホップの前後で原子配置がそれぞれポテンシャルエネルギーの極小にあるとする。 始状態\\ :math:`i`\\ のエネルギーを\\ :math:`E_i`、終状態\\ :math:`j`\\ "
+"のエネルギーを\\ :math:`E_j`\\ とする。 両者を結ぶ\\ :ref:`最小エネルギー経路<minimum-energy-path>`\\ "
+"が一つの一次の鞍点を通る場合を考え、そのエネルギーを :math:`E^\\ddagger`\\ と書く。鞍点では経路に沿ってどちらへ進んでもエネルギーが下がり、 "
+"経路に垂直な安定方向では上がる。ここを通って移動する際は、出発した極小から 鞍点までのエネルギー差が\\ **移動障壁**\\ になる（求め方は\\ :ref:`NEB法<neb>`\\ "
+"の記事にある）。"
+msgstr ""
+"Assume the atomic configurations before and after a hop are at potential-energy minima. Let the "
+"energy of the initial state \\ :math:`i`\\  be \\ :math:`E_i` and that of the final state \\ "
+":math:`j`\\  be \\ :math:`E_j`\\ . Consider a \\ :ref:`minimum energy path <minimum-energy-"
+"path>`\\  between the minima that passes through one first-order saddle point, with energy "
+":math:`E^\\ddagger`\\ . At the saddle point, the energy decreases in either direction along the "
+"path and increases along the stable directions perpendicular to it. The energy difference from "
+"the starting minimum to the saddle point is the \\ **migration barrier**\\  (see \\ :ref:`Nudged "
+"Elastic Band Method <neb>`\\  for how to obtain it)."
+
+#: ../../md/thermal_activation.rst:60
+#, python-brace-format
+msgid "E_{\\mathrm m,ij}=E^\\ddagger-E_i,\\qquad E_{\\mathrm m,ji}=E^\\ddagger-E_j ."
+msgstr "E_{\\mathrm m,ij}=E^\\ddagger-E_i,\\qquad E_{\\mathrm m,ji}=E^\\ddagger-E_j ."
+
+#: ../../md/thermal_activation.rst:65
+msgid ""
+"**遷移状態理論**\\ は、始状態の内部で熱平衡が保たれ、鞍点を通る境界面を正方向に横切った軌跡が 終状態へ進むと仮定する。横切った後で引き返す軌跡が多いと、通過数は実際の遷移数を上回る。 "
+"この近似では、境界面を通過する平衡時の流束を始状態の占有で割ると、一つの経路の遷移速度が得られる [HopVoter2007]_。鞍点までのエネルギー差はボルツマン因子として現れる。"
+msgstr ""
+"**Transition state theory**\\  assumes thermal equilibrium within the initial state and that "
+"trajectories crossing the dividing surface through the saddle point in the forward direction "
+"continue to the final state. When many trajectories recross the surface, the number of crossings "
+"exceeds the number of actual transitions. In this approximation, the transition rate along a path"
+" is the equilibrium flux through the surface divided by the occupation of the initial state "
+"[HopVoter2007]_. The energy difference to the saddle point appears in a Boltzmann factor."
+
+#: ../../md/thermal_activation.rst:73
+msgid "調和近似と試行頻度"
+msgstr "Harmonic Approximation and Attempt Frequency"
+
+#: ../../md/thermal_activation.rst:75
+#, python-brace-format
+msgid ""
+"始状態の極小と鞍点の近くでポテンシャルを二次まで展開する。 剛体並進などの零モードを両側で同じように除き、始状態に\\ :math:`d`\\ 個の振動モードがあるとする。 "
+"各モードの振動数を\\ :math:`f_{i,r}`\\ と書く。鞍点では不安定な方向を境界面の法線とし、 面内の安定な\\ :math:`d-1`\\ 個の振動数を\\ "
+":math:`f_{\\ddagger,r}`\\ と書く。"
+msgstr ""
+"Expand the potential to second order near the initial minimum and the saddle point. Remove zero "
+"modes, such as rigid translations, consistently at both points. Suppose the initial state has \\ "
+":math:`d`\\  vibrational modes with frequencies \\ :math:`f_{i,r}`\\ . At the saddle point, take "
+"the dividing surface to be normal to the unstable direction. Denote the \\ :math:`d-1`\\  stable "
+"in-plane frequencies by \\ :math:`f_{\\ddagger,r}`\\ ."
+
+#: ../../md/thermal_activation.rst:80
+#, python-brace-format
+msgid ""
+"古典調和振動子1個の分配関数は\\ :math:`k_{\\mathrm B}T/(hf)`\\ である。:math:`h`\\ は プランク定数、:math:`f`\\ "
+"はそのモードの振動数である。これを極小・鞍点についてそれぞれ 安定な振動モードの分だけ掛け合わせ、平衡分布での重み\\ :math:`Z_i`\\ と\\ :math:`Z_\\ddagger`"
+" を得る。それぞれの点のポテンシャルエネルギーを基準にした、振動の分配関数である。"
+msgstr ""
+"The partition function of one classical harmonic oscillator is \\ :math:`k_{\\mathrm B}T/(hf)`\\ "
+". Here :math:`h`\\  is the Planck constant and :math:`f`\\  is the mode frequency. Multiplying "
+"the factors for the stable vibrational modes at the minimum and at the saddle point gives their "
+"equilibrium weights \\ :math:`Z_i`\\  and \\ :math:`Z_\\ddagger`. These are vibrational partition"
+" functions with energy measured relative to the potential energy at each point."
+
+#: ../../md/thermal_activation.rst:85
+msgid ""
+"Z_i=\\prod_{r=1}^{d}\\frac{k_{\\mathrm B}T}{h f_{i,r}},\n"
+"\\qquad\n"
+"Z_\\ddagger=\\prod_{r=1}^{d-1}\\frac{k_{\\mathrm B}T}{h f_{\\ddagger,r}} ."
+msgstr ""
+"Z_i=\\prod_{r=1}^{d}\\frac{k_{\\mathrm B}T}{h f_{i,r}},\n"
+"\\qquad\n"
+"Z_\\ddagger=\\prod_{r=1}^{d-1}\\frac{k_{\\mathrm B}T}{h f_{\\ddagger,r}} ."
+
+#: ../../md/thermal_activation.rst:92
+msgid ""
+"面に垂直な運動を、運動量\\ :math:`p_\\perp`\\ と質量\\ :math:`m_\\perp`\\ で表す。 正方向への平衡流束は、正の運動量だけを取り、その速度\\ "
+":math:`p_\\perp/m_\\perp`\\ で ボルツマン重みを掛けて積分する。"
+msgstr ""
+"Write the motion normal to the surface in terms of momentum \\ :math:`p_\\perp`\\  and mass \\ "
+":math:`m_\\perp`\\ . The equilibrium flux in the forward direction comes from integrating over "
+"positive momenta, weighting the Boltzmann distribution by the velocity \\ "
+":math:`p_\\perp/m_\\perp`\\ ."
+
+#: ../../md/thermal_activation.rst:96
+msgid ""
+"\\frac{1}{h}\\int_0^\\infty\\frac{p_\\perp}{m_\\perp}\n"
+"    \\exp\\!\\left(-\\frac{p_\\perp^2}{2m_\\perp k_{\\mathrm B}T}\\right)\\mathrm d p_\\perp\n"
+"    =\\frac{k_{\\mathrm B}T}{h} ."
+msgstr ""
+"\\frac{1}{h}\\int_0^\\infty\\frac{p_\\perp}{m_\\perp}\n"
+"    \\exp\\!\\left(-\\frac{p_\\perp^2}{2m_\\perp k_{\\mathrm B}T}\\right)\\mathrm d p_\\perp\n"
+"    =\\frac{k_{\\mathrm B}T}{h} ."
+
+#: ../../md/thermal_activation.rst:103
+#, python-brace-format
+msgid ""
+"この因子に振動分配関数の比\\ :math:`Z_\\ddagger/Z_i`\\ を掛けると温度の因子が消え、 振動数の積の比が残る。これが\\ **Vineyardの式**\\ であり、 "
+":math:`\\nu_{ij}`\\ をその遷移の\\ **試行頻度**\\ と呼ぶ [HopVineyard1957]_。"
+msgstr ""
+"Multiplying this factor by the ratio of vibrational partition functions \\ "
+":math:`Z_\\ddagger/Z_i`\\  cancels the temperature factors and leaves a ratio of products of "
+"frequencies. This is \\ **Vineyard’s formula**\\ . We call :math:`\\nu_{ij}`\\  the \\ **attempt "
+"frequency**\\  for the transition [HopVineyard1957]_."
+
+#: ../../md/thermal_activation.rst:107
+msgid ""
+"\\begin{aligned}\n"
+"k_{ij}&=\\frac{k_{\\mathrm B}T}{h}\\frac{Z_\\ddagger}{Z_i}\n"
+"   \\exp\\!\\left(-\\frac{E_{\\mathrm m,ij}}{k_{\\mathrm B}T}\\right)\n"
+"   =\\nu_{ij}\\exp\\!\\left(-\\frac{E_{\\mathrm m,ij}}{k_{\\mathrm B}T}\\right),\\\\\n"
+"\\nu_{ij}&=\\frac{\\prod_{r=1}^{d}f_{i,r}}{\\prod_{r=1}^{d-1}f_{\\ddagger,r}} .\n"
+"\\end{aligned}"
+msgstr ""
+"\\begin{aligned}\n"
+"k_{ij}&=\\frac{k_{\\mathrm B}T}{h}\\frac{Z_\\ddagger}{Z_i}\n"
+"   \\exp\\!\\left(-\\frac{E_{\\mathrm m,ij}}{k_{\\mathrm B}T}\\right)\n"
+"   =\\nu_{ij}\\exp\\!\\left(-\\frac{E_{\\mathrm m,ij}}{k_{\\mathrm B}T}\\right),\\\\\n"
+"\\nu_{ij}&=\\frac{\\prod_{r=1}^{d}f_{i,r}}{\\prod_{r=1}^{d-1}f_{\\ddagger,r}} .\n"
+"\\end{aligned}"
+
+#: ../../md/thermal_activation.rst:117
+#, python-brace-format
+msgid ""
+":math:`k_{ij}`\\ と\\ :math:`\\nu_{ij}`\\ の単位はいずれも時間の逆数である。 等価な隣接サイトが\\ :math:`z`\\ 個あり、同じ障壁\\ "
+":math:`E_{\\mathrm m}`\\ と試行頻度 :math:`\\nu`\\ を持つとき、粒子1個の全方向へのホップ頻度は\\ :math:`\\Gamma=z k_{ij}`\\"
+" である。 三次元でホップの向きが互いに独立、跳躍距離が\\ :math:`a`\\ なら、\\ :eq:`diffusion-random-walk-d`\\ を使って"
+msgstr ""
+"Both :math:`k_{ij}`\\  and \\ :math:`\\nu_{ij}`\\  have units of inverse time. If there are \\ "
+":math:`z`\\  equivalent neighboring sites with the same barrier \\ :math:`E_{\\mathrm m}`\\  and "
+"attempt frequency :math:`\\nu`\\ , the total hopping rate of one particle is \\ :math:`\\Gamma=z "
+"k_{ij}`\\ . In three dimensions, if successive hop directions are independent and the jump length"
+" is \\ :math:`a`\\ , Equation \\ :eq:`diffusion-random-walk-d`\\  gives"
+
+#: ../../md/thermal_activation.rst:122
+msgid ""
+"D=\\frac{\\Gamma a^2}{6}\n"
+" =\\frac{z\\nu a^2}{6}\\exp\\!\\left(-\\frac{E_{\\mathrm m}}{k_{\\mathrm B}T}\\right) ."
+msgstr ""
+"D=\\frac{\\Gamma a^2}{6}\n"
+" =\\frac{z\\nu a^2}{6}\\exp\\!\\left(-\\frac{E_{\\mathrm m}}{k_{\\mathrm B}T}\\right) ."
+
+#: ../../md/thermal_activation.rst:128
+#, python-brace-format
+msgid "この模型では\\ :math:`D_0=z\\nu a^2/6`、:math:`E_{\\mathrm a}=E_{\\mathrm m}`\\ である。"
+msgstr "In this model, \\ :math:`D_0=z\\nu a^2/6` and :math:`E_{\\mathrm a}=E_{\\mathrm m}`\\ ."
+
+#: ../../md/thermal_activation.rst:133
+msgid "順方向・逆方向の障壁と詳細つり合い"
+msgstr "Forward and Reverse Barriers and Detailed Balance"
+
+#: ../../md/thermal_activation.rst:135
+#, python-brace-format
+msgid ""
+"同じ鞍点を通る場合、順方向と逆方向の障壁の差は、\\ :eq:`thermal-forward-backward-barriers`\\ から :math:`E_{\\mathrm "
+"m,ij}-E_{\\mathrm m,ji}=E_j-E_i`\\ となる。例えば終状態が高エネルギーなら、 "
+"そこへ上る順方向の障壁のほうが大きい。遷移の頻度を比べる際は、各状態に滞在する確率も要る。"
+msgstr ""
+"For transitions through the same saddle point, Equation \\ :eq:`thermal-forward-backward-"
+"barriers`\\  gives the difference between the forward and reverse barriers as :math:`E_{\\mathrm "
+"m,ij}-E_{\\mathrm m,ji}=E_j-E_i`\\ . For example, if the final state is higher in energy, the "
+"forward barrier is higher. To compare how often the transitions occur, we also need the "
+"probability of occupying each state."
+
+#: ../../md/thermal_activation.rst:139
+#, python-brace-format
+msgid ""
+"熱平衡で状態\\ :math:`i`\\ にいる確率\\ :math:`\\pi_i`\\ は、調和近似で :math:`Z_i\\exp[-E_i/(k_{\\mathrm B}T)]`\\ "
+"に比例する。 これと\\ :eq:`thermal-vineyard-rate`\\ を組み合わせると、次の関係が得られる。"
+msgstr ""
+"In thermal equilibrium, the probability \\ :math:`\\pi_i`\\  of occupying state \\ :math:`i`\\  "
+"is proportional to :math:`Z_i\\exp[-E_i/(k_{\\mathrm B}T)]`\\  in the harmonic approximation. "
+"Combining this with Equation \\ :eq:`thermal-vineyard-rate`\\  gives"
+
+#: ../../md/thermal_activation.rst:143
+msgid ""
+"\\pi_i k_{ij}=\\pi_j k_{ji},\n"
+"\\qquad \\frac{k_{ij}}{k_{ji}}\n"
+"   =\\frac{Z_j}{Z_i}\\exp\\!\\left(-\\frac{E_j-E_i}{k_{\\mathrm B}T}\\right) ."
+msgstr ""
+"\\pi_i k_{ij}=\\pi_j k_{ji},\n"
+"\\qquad \\frac{k_{ij}}{k_{ji}}\n"
+"   =\\frac{Z_j}{Z_i}\\exp\\!\\left(-\\frac{E_j-E_i}{k_{\\mathrm B}T}\\right) ."
+
+#: ../../md/thermal_activation.rst:150
+#, python-brace-format
+msgid ""
+"左の等式を\\ **詳細つり合い**\\ と呼ぶ。両辺の振動とエネルギーの因子は、同じ鞍点の :math:`Z_\\ddagger\\exp[-E^\\ddagger/(k_{\\mathrm "
+"B}T)]`\\ に帰着する。 このため、平衡では各経路の順方向と逆方向の平均遷移数が等しい。 各状態の振動分配関数の違いを無視する模型では、全遷移に共通の試行頻度を置いても "
+"エネルギーのボルツマン重みとつり合う。ただし、サイトごとの振動を扱う模型では 試行頻度の違いも速度比に効く [HopVoter2007]_。"
+msgstr ""
+"The equality on the left expresses \\ **detailed balance**\\ . On both sides, the vibrational and"
+" energetic factors reduce to the same saddle-point factor "
+":math:`Z_\\ddagger\\exp[-E^\\ddagger/(k_{\\mathrm B}T)]`\\ . At equilibrium, the mean numbers of "
+"forward and reverse transitions along each path are therefore equal. A model that neglects "
+"differences in the vibrational partition functions can use a common attempt frequency for all "
+"transitions and still satisfy detailed balance with the Boltzmann weights of the energies. In a "
+"model with site-dependent vibrations, differences in attempt frequencies also affect the rate "
+"ratio [HopVoter2007]_."
+
+#: ../../md/thermal_activation.rst:160
+msgid "速度論的モンテカルロ（KMC）"
+msgstr "Kinetic Monte Carlo (KMC)"
+
+#: ../../md/thermal_activation.rst:162
+#, python-brace-format
+msgid ""
+"各経路の遷移速度が分かれば、**速度論的モンテカルロ**\\ （kinetic Monte Carlo, KMC）で "
+"サイト間を移る軌跡を作れる。ここでは、各状態に滞在している間に内部が平衡化し、次の遷移は 現在の状態だけで決まると仮定する。状態\\ :math:`i`\\ "
+"から出る全遷移の速度を足し合わせた値を :math:`K_i=\\sum_j k_{ij}`\\ とする。時刻\\ :math:`t`\\ まで滞在している確率\\ :math:`S(t)`\\"
+" は、 短い時間\\ :math:`\\mathrm dt`\\ の間に\\ :math:`K_i S(t)\\,\\mathrm dt`\\ だけ減る。"
+msgstr ""
+"Given the transition rates along each path, **kinetic Monte Carlo**\\  (KMC) generates a "
+"trajectory of hops between sites. We assume that internal equilibration takes place in each state"
+" during its residence time and that the next transition depends only on the current state. Let "
+":math:`K_i=\\sum_j k_{ij}`\\  be the sum of the rates of all transitions out of state \\ "
+":math:`i`\\ . The probability \\ :math:`S(t)`\\  of remaining there until time \\ :math:`t`\\  "
+"decreases by \\ :math:`K_i S(t)\\,\\mathrm dt`\\  over a short interval \\ :math:`\\mathrm dt`\\ "
+"."
+
+#: ../../md/thermal_activation.rst:168
+#, python-brace-format
+msgid ""
+"\\frac{\\mathrm d S}{\\mathrm dt}=-K_i S,\\qquad\n"
+"S(0)=1,\\qquad S(t)=\\exp(-K_i t) ."
+msgstr ""
+"\\frac{\\mathrm d S}{\\mathrm dt}=-K_i S,\\qquad\n"
+"S(0)=1,\\qquad S(t)=\\exp(-K_i t) ."
+
+#: ../../md/thermal_activation.rst:174
+#, python-brace-format
+msgid ""
+"したがって、次の遷移先の確率\\ :math:`P_{ij}`\\ と、次の遷移までの待ち時間\\ :math:`\\Delta t` を次のように求める。:math:`u`\\ "
+"は0と1の間の一様乱数である。"
+msgstr ""
+"The probability \\ :math:`P_{ij}`\\  of choosing the next state and the waiting time \\ "
+":math:`\\Delta t` to the next transition follow as shown below. Here :math:`u`\\  is a uniform "
+"random number between 0 and 1."
+
+#: ../../md/thermal_activation.rst:177
+msgid "P_{ij}=\\frac{k_{ij}}{K_i},\\qquad \\Delta t=-\\frac{\\ln u}{K_i} ."
+msgstr "P_{ij}=\\frac{k_{ij}}{K_i},\\qquad \\Delta t=-\\frac{\\ln u}{K_i} ."
+
+#: ../../md/thermal_activation.rst:182
+#, python-brace-format
+msgid "現在の状態から可能な遷移について、障壁と試行頻度から遷移速度\\ :math:`k_{ij}`\\ を求める。"
+msgstr ""
+"Calculate the transition rates \\ :math:`k_{ij}`\\  from the barriers and attempt frequencies for"
+" the allowed transitions out of the current state."
+
+#: ../../md/thermal_activation.rst:183
+msgid "一様乱数を使い、累積確率が乱数を初めて上回る遷移を選ぶ。"
+msgstr ""
+"Draw a uniform random number and choose the first transition whose cumulative probability exceeds"
+" it."
+
+#: ../../md/thermal_activation.rst:184
+msgid "独立な一様乱数から待ち時間を得て時刻に加え、次の状態で遷移候補と遷移速度を更新する。"
+msgstr ""
+"Draw the waiting time using an independent uniform random number and advance the clock. Update "
+"the possible transitions and their rates for the new state."
+
+#: ../../md/thermal_activation.rst:186
+msgid ""
+"時間を進める手順は、待ち時間を遷移速度から得る KMC の滞在時間法である [HopBortz1975]_ [HopVoter2007]_。これを繰り返すと、障壁付近の短い運動を積分せずに "
+"ホップ後の位置と経過時間が得られる。追跡する粒子の変位を集計し、 \\ :ref:`Einstein関係<einstein-relation>`\\ から拡散係数に換算できる。"
+msgstr ""
+"This procedure is the residence-time method of KMC, which obtains the waiting time from the "
+"transition rates [HopBortz1975]_ [HopVoter2007]_. Repeating it gives the position after each hop "
+"and the elapsed time without integrating the short motion near each barrier. The displacements of"
+" the tracked particles can be converted to a diffusion coefficient using the \\ :ref:`Einstein "
+"relation <einstein-relation>`\\ ."
+
+#: ../../md/thermal_activation.rst:194
+msgid "空孔機構の拡散と活性化エネルギー"
+msgstr "Diffusion via the Vacancy Mechanism and Activation Energy"
+
+#: ../../md/thermal_activation.rst:196
+msgid ""
+"隣接した原子が空孔へ移ると、原子がいた位置に空孔ができる。したがって、空孔は原子と逆向きに 1サイト移る。この機構で原子が動く頻度は、空孔が隣にある確率と、空孔へ向かう遷移速度で "
+"決まる。直前の移動で生じた空孔は元の位置にあるので、同じ原子は逆向きに戻りやすい。 このような相関が拡散係数をどれだけ変えるかを表すのが\\ **相関因子**\\ :math:`f`\\ "
+"である。 トレーサー拡散係数を、ホップの頻度と距離をそろえ、向きの相関を無視した場合の 拡散係数で割った比として定義する [HopMehrer2007]_。"
+msgstr ""
+"When a neighboring atom jumps into a vacancy, it leaves a vacancy at its former site. The vacancy"
+" therefore moves by one site in the opposite direction to the atom. The frequency of atomic "
+"motion by this vacancy mechanism depends on the probability of finding a neighboring vacancy and "
+"the transition rate into it. The vacancy produced by the last hop is at the atom’s original site,"
+" which makes a return hop more likely. The \\ **correlation factor** \\ :math:`f`\\  measures how"
+" these correlations change the diffusion coefficient. It is the tracer diffusion coefficient "
+"divided by the diffusion coefficient for the same hop frequency and length with directional "
+"correlations neglected [HopMehrer2007]_."
+
+#: ../../md/thermal_activation.rst:203
+#, python-brace-format
+msgid ""
+"等価な格子位置を持つ三次元系で、空孔の割合\\ :math:`c_{\\mathrm v}`\\ が小さく、空孔どうしの相互作用を 無視できるとする。跳躍距離が\\ "
+":math:`a`、等価な隣接サイトが\\ :math:`z`\\ 個なら、各隣接サイトが 空いている確率を\\ :math:`c_{\\mathrm v}`\\ "
+"とみなせる。したがって、原子1個の総ホップ頻度は :math:`zc_{\\mathrm v}\\nu\\exp[-E_{\\mathrm m}/(k_{\\mathrm B}T)]`\\ "
+"であり、 \\ :eq:`diffusion-random-walk-d`\\ の結果を相関因子で補正すると"
+msgstr ""
+"Consider a three-dimensional system with equivalent lattice sites and a small vacancy fraction \\"
+" :math:`c_{\\mathrm v}`\\ , and assume that interactions between vacancies are negligible. If the"
+" jump length is \\ :math:`a` and there are \\ :math:`z`\\  equivalent neighbors, each neighboring"
+" site can be treated as vacant with probability \\ :math:`c_{\\mathrm v}`\\ . The total hopping "
+"rate of one atom is then :math:`zc_{\\mathrm v}\\nu\\exp[-E_{\\mathrm m}/(k_{\\mathrm B}T)]`\\ . "
+"Correcting the result in Equation \\ :eq:`diffusion-random-walk-d`\\  by the correlation factor "
+"gives"
+
+#: ../../md/thermal_activation.rst:209
+msgid ""
+"D^*\\simeq f\\frac{za^2}{6}\\,c_{\\mathrm v}\\nu\n"
+"                  \\exp\\!\\left(-\\frac{E_{\\mathrm m}}{k_{\\mathrm B}T}\\right) ."
+msgstr ""
+"D^*\\simeq f\\frac{za^2}{6}\\,c_{\\mathrm v}\\nu\n"
+"                  \\exp\\!\\left(-\\frac{E_{\\mathrm m}}{k_{\\mathrm B}T}\\right) ."
+
+#: ../../md/thermal_activation.rst:215
+#, python-brace-format
+msgid ""
+":math:`D^*`\\ は原子のトレーサー拡散係数である。この希薄空孔と等価な移動障壁の模型で、 空孔の割合を固定し、:math:`f`\\ と\\ :math:`\\nu`\\ "
+"の温度依存性が小さければ、 活性化エネルギーはほぼ移動障壁になる。 一方、\\ :ref:`熱平衡で生じる<defect-concentration>`\\ "
+"希薄な空孔では、空孔の形成ギブス自由エネルギーを :math:`\\Delta G_{\\mathrm f}=\\Delta H_{\\mathrm f}-T\\Delta "
+"S_{\\mathrm f}`\\ として、 :math:`c_{\\mathrm v}\\simeq\\exp[-\\Delta G_{\\mathrm f}/(k_{\\mathrm "
+"B}T)]`\\ となる。 :math:`\\Delta H_{\\mathrm f}`\\ と\\ :math:`\\Delta S_{\\mathrm f}`\\ "
+"は空孔1個の形成エンタルピーと 形成エントロピーである。一定圧力でそれらの温度変化を無視すると、 \\ :eq:`thermal-vacancy-diffusion`\\ に代入して"
+msgstr ""
+"Here :math:`D^*`\\  is the tracer diffusion coefficient of the atom. In this dilute-vacancy model"
+" with equivalent migration barriers, fixing the vacancy fraction and assuming that :math:`f`\\  "
+"and \\ :math:`\\nu`\\  depend only weakly on temperature makes the activation energy "
+"approximately equal to the migration barrier. For dilute vacancies that \\ :ref:`form at thermal "
+"equilibrium <defect-concentration>`\\ , the Gibbs free energy of vacancy formation is "
+":math:`\\Delta G_{\\mathrm f}=\\Delta H_{\\mathrm f}-T\\Delta S_{\\mathrm f}`\\  and the vacancy "
+"fraction is :math:`c_{\\mathrm v}\\simeq\\exp[-\\Delta G_{\\mathrm f}/(k_{\\mathrm B}T)]`\\ . The"
+" quantities :math:`\\Delta H_{\\mathrm f}`\\  and \\ :math:`\\Delta S_{\\mathrm f}`\\  are the "
+"enthalpy and entropy of formation of one vacancy. At constant pressure, neglecting their "
+"temperature dependence and substituting into Equation \\ :eq:`thermal-vacancy-diffusion`\\  gives"
+
+#: ../../md/thermal_activation.rst:225
+msgid ""
+"D^*\\simeq f\\frac{za^2\\nu}{6}\\exp\\!\\left(\\frac{\\Delta S_{\\mathrm f}}{k_{\\mathrm "
+"B}}\\right)\n"
+"           \\exp\\!\\left(-\\frac{E_{\\mathrm m}+\\Delta H_{\\mathrm f}}{k_{\\mathrm B}T}\\right)"
+" ."
+msgstr ""
+"D^*\\simeq f\\frac{za^2\\nu}{6}\\exp\\!\\left(\\frac{\\Delta S_{\\mathrm f}}{k_{\\mathrm "
+"B}}\\right)\n"
+"           \\exp\\!\\left(-\\frac{E_{\\mathrm m}+\\Delta H_{\\mathrm f}}{k_{\\mathrm B}T}\\right)"
+" ."
+
+#: ../../md/thermal_activation.rst:231
+#, python-brace-format
+msgid ""
+"相関因子、試行頻度、跳躍距離の温度依存性が小さければ、この式から得る活性化エネルギーに 空孔の形成エンタルピーが加わる。 "
+"圧力による仕事や振動の寄与による違いが小さいとき、:math:`\\Delta H_{\\mathrm f}`\\ は 静的な\\ :ref:`空孔形成エネルギー<defect-"
+"formation-energy>`\\ :math:`E_{\\mathrm f}`\\ で近似できる。"
+msgstr ""
+"If the correlation factor, attempt frequency, and jump length vary little with temperature, the "
+"activation energy obtained from this expression includes the enthalpy of vacancy formation. When "
+"differences due to pressure work and vibrational contributions are small, :math:`\\Delta "
+"H_{\\mathrm f}`\\  can be approximated by the static \\ :ref:`vacancy formation energy <defect-"
+"formation-energy>` \\ :math:`E_{\\mathrm f}`\\ ."
+
+#: ../../md/thermal_activation.rst:237
+msgid "説明用の事例：交互に異なる障壁が並ぶ格子"
+msgstr "Worked Example: A Lattice with Alternating Barriers"
+
+#: ../../md/thermal_activation.rst:239
+msgid ""
+"格子間隔\\ :math:`a`\\ が3 Åの一次元格子で、同じエネルギーのサイトを、0.20 eV と0.60 eVの障壁が 交互に結ぶとする。各遷移の試行頻度を10 "
+"ps⁻¹と置き、低い障壁と高い障壁を越える遷移速度を それぞれ\\ :math:`k_{\\mathrm{lo}}`、:math:`k_{\\mathrm{hi}}`\\ "
+"とする。粒子は低い障壁を何度も 往復できるが、格子全体を移動するには高い障壁も越える必要がある。"
+msgstr ""
+"Consider a one-dimensional lattice of spacing \\ :math:`a`\\  equal to 3 Å, with sites of equal "
+"energy connected by alternating barriers of 0.20 eV and 0.60 eV. Use an attempt frequency of 10 "
+"ps⁻¹ for each transition, and denote the rates across the low and high barriers by \\ "
+":math:`k_{\\mathrm{lo}}` and :math:`k_{\\mathrm{hi}}`\\ , respectively. A particle can hop back "
+"and forth many times across a low barrier, but moving through the lattice also requires crossing "
+"a high barrier."
+
+#: ../../md/thermal_activation.rst:244
+msgid ""
+"各サイトからの二つの遷移の確率を\\ :math:`P_{\\mathrm{lo}}`、:math:`P_{\\mathrm{hi}}`\\ とする。 "
+"低い障壁が右側にあるサイトでの1ホップの変位は\\ :math:`+a`\\ または\\ :math:`-a`\\ なので、 変位の平均は\\ "
+":math:`a(P_{\\mathrm{lo}}-P_{\\mathrm{hi}})`\\ である。次のサイトでは低い障壁が "
+"左側にあるため、平均の符号が反転する。どちらのサイトでも1ホップの変位の分散は :math:`4a^2P_{\\mathrm{lo}}P_{\\mathrm{hi}}`\\ になる。"
+msgstr ""
+"Let \\ :math:`P_{\\mathrm{lo}}` and :math:`P_{\\mathrm{hi}}`\\  be the probabilities of the two "
+"possible transitions from a site. At a site with the low barrier to the right, a hop displaces "
+"the particle by \\ :math:`+a`\\  or \\ :math:`-a`\\ , so the mean displacement is \\ "
+":math:`a(P_{\\mathrm{lo}}-P_{\\mathrm{hi}})`\\ . At the next site the low barrier is to the left,"
+" so the sign of the mean reverses. At either site the variance of the one-hop displacement is "
+":math:`4a^2P_{\\mathrm{lo}}P_{\\mathrm{hi}}`\\ ."
+
+#: ../../md/thermal_activation.rst:250
+msgid ""
+"左右の配置は一歩ごとに入れ替わり、各歩で独立に乱数を引く。偶数回の遷移を重ねると 平均変位は相殺し、MSDは1ホップの分散とホップ数の積になる。どのサイトでも遷移速度の合計が "
+"同じなので、平均経過時間も平均待ち時間\\ :math:`1/(k_{\\mathrm{lo}}+k_{\\mathrm{hi}})`\\ と "
+"ホップ数の積になる。平均経過時間当たりのMSDをさらに一次元の係数2で割ると、 長時間の拡散係数が求まる。"
+msgstr ""
+"The left-right arrangement alternates on every step, and each step uses an independent random "
+"draw. After an even number of transitions, the mean displacements cancel and the mean squared "
+"displacement (MSD) is the one-hop variance times the number of hops. The total transition rate is"
+" the same at every site, so the mean elapsed time is the mean waiting time \\ "
+":math:`1/(k_{\\mathrm{lo}}+k_{\\mathrm{hi}})`\\  times the number of hops. Dividing the MSD per "
+"mean elapsed time by the one-dimensional factor of 2 gives the long-time diffusion coefficient."
+
+#: ../../md/thermal_activation.rst:256
+msgid ""
+"D_{\\mathrm{1D}}=2a^2\\frac{k_{\\mathrm{lo}} k_{\\mathrm{hi}}}{k_{\\mathrm{lo}}+k_{\\mathrm{hi}}}"
+" ."
+msgstr ""
+"D_{\\mathrm{1D}}=2a^2\\frac{k_{\\mathrm{lo}} k_{\\mathrm{hi}}}{k_{\\mathrm{lo}}+k_{\\mathrm{hi}}}"
+" ."
+
+#: ../../md/thermal_activation.rst:261
+msgid ""
+"低温で\\ :math:`k_{\\mathrm{hi}}\\ll k_{\\mathrm{lo}}`\\ なら、:math:`D_{\\mathrm{1D}}\\simeq 2a^2 "
+"k_{\\mathrm{hi}}` となる。拡散係数の温度依存性は、高い障壁を越える遷移速度でほぼ決まる。"
+msgstr ""
+"At low temperature, \\ :math:`k_{\\mathrm{hi}}\\ll k_{\\mathrm{lo}}`\\ , so "
+":math:`D_{\\mathrm{1D}}\\simeq 2a^2 k_{\\mathrm{hi}}`. The rate of crossing the high barrier "
+"largely determines the temperature dependence of the diffusion coefficient."
+
+#: ../../md/thermal_activation.rst:264
+msgid ""
+"500、600、750、900、1100 Kで、各温度につき8192本の独立な軌跡をKMCで計算した。 各軌跡を4096ホップまで追い、軌跡の平均二乗変位を平均経過時間の2倍で割った。 \\ "
+":numref:`thermal-kmc-figure`\\ の右の傾きから、活性化エネルギーは0.5992 eVとなり、 \\ :eq:`thermal-alternating-"
+"exact-d`\\ の値を同じ温度点で近似した0.5990 eVと一致した。 この値は、高いほうの障壁0.60 eVに近い。障壁を0.40 eVと平均した場合の傾きは図の破線である。"
+msgstr ""
+"We computed 8192 independent KMC trajectories at each of 500, 600, 750, 900, and 1100 K. Each "
+"trajectory ran for 4096 hops. We divided the mean squared displacement by twice the mean elapsed "
+"time. The slope in the right panel of \\ :numref:`thermal-kmc-figure`\\  gives an activation "
+"energy of 0.5992 eV, in agreement with the 0.5990 eV obtained by fitting Equation \\ :eq"
+":`thermal-alternating-exact-d`\\  at the same temperatures. Both are close to the higher barrier "
+"of 0.60 eV. The dashed line shows the slope for the averaged barrier of 0.40 eV."
+
+#: ../../md/thermal_activation.rst:272
+msgid "低い障壁と高い障壁が交互に並ぶ模型と、KMCで得た拡散係数のアレニウスプロット"
+msgstr ""
+"Model with alternating low and high barriers and Arrhenius plot of the diffusion coefficient from"
+" KMC"
+
+#: ../../md/thermal_activation.rst:277
+msgid ""
+"\\(a) サイト（丸印）と交互に並ぶ障壁の模式図。横軸は格子間隔を単位とする位置。 (b) KMCの拡散係数（丸印）と直線近似（実線）。破線の傾きは障壁の算術平均0.40 eVに "
+"対応し、高温端で直線近似に重ねた。縦軸の基準\\ :math:`D_{\\mathrm{ref}}`\\ は1 Å²/ps。"
+msgstr ""
+"\\(a) Schematic of sites (circles) and alternating barriers. Position on the horizontal axis is "
+"in units of the lattice spacing. (b) KMC diffusion coefficients (circles) and linear fit (solid "
+"line). The dashed line uses the slope for the arithmetic mean barrier, 0.40 eV, and is drawn to "
+"meet the linear fit at the high-temperature end. The vertical-axis reference \\ "
+":math:`D_{\\mathrm{ref}}`\\  is 1 Å²/ps."
+
+#: ../../md/thermal_activation.rst:284
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../md/thermal_activation.rst:286
+msgid ""
+"**障壁の分布と経路のつながり。**\\ 非晶質では、サイトの安定性も移動障壁も場所によって変わる。 "
+"低い障壁を持つ経路だけで遠くまで移動できる場合も、高い障壁を途中で越える必要がある場合もある。 \\ :numref:`thermal-kmc-figure`\\ "
+"の格子では、低い障壁を往復する区間から抜ける速さが 長距離の拡散を決めた。一つの経路の障壁は一回の移動の量であり、拡散の活性化エネルギーは "
+"多数回の移動を含む拡散係数の温度依存性を表す。Li₃PO₄事例の `Li空孔移動障壁 <https://example.quloud-platform.quemix.com/li3po4"
+"/vacancy-barriers.html>`__ と `拡散係数の温度依存性 <https://example.quloud-platform.quemix.com/li3po4"
+"/diffusivity-temperature.html>`__ でも、この二つの量をそれぞれ求めている。"
+msgstr ""
+"**Barrier distributions and path connectivity.**\\  In an amorphous structure, both site "
+"stability and migration barriers vary from place to place. Some pathways allow long-range motion "
+"using only low barriers, whereas others require a high-barrier crossing. In the lattice in \\ "
+":numref:`thermal-kmc-figure`\\ , the rate of escape from regions where the particle hops "
+"repeatedly across low barriers controls long-range diffusion. A barrier along one path "
+"characterizes a single event. The activation energy for diffusion characterizes the temperature "
+"dependence of the diffusion coefficient across many events. The Li₃PO₄ calculation example "
+"calculates the two quantities separately in `Li Vacancy Migration Barrier <https://example"
+".quloud-platform.quemix.com/li3po4/vacancy-barriers.html>`__ and `Temperature Dependence of the "
+"Diffusion Coefficient <https://example.quloud-platform.quemix.com/li3po4/diffusivity-"
+"temperature.html>`__."
+
+#: ../../md/thermal_activation.rst:295
+msgid ""
+"**試行頻度と温度範囲。** LiらのKMCでは全遷移に共通の試行頻度を置いた [RdfLiPhosphate]_。 "
+"共通の試行頻度を全温度で同じ倍率だけ変えると、各遷移の選択確率は保たれ、待ち時間は その倍率の逆数になる。拡散係数は全温度で同じ倍率で変わるため、アレニウスプロットの "
+"傾きと、そこから求める活性化エネルギーは変わらない。したがって、KMCとMDを比較する 際に、共通の試行頻度の値は主に拡散係数の絶対値に効く。経路ごとに試行頻度が異なる "
+"場合は、選択確率も変わり、拡散係数の温度依存性を通じて傾きにも影響しうる。 高温と低温で移動機構や空孔の割合が変わる系では、高温で得たアレニウス直線を低温へ "
+"延ばすと、拡散係数を誤って見積もることがある。"
+msgstr ""
+"**Attempt frequency and temperature range.** Li and colleagues used a common attempt frequency "
+"for all transitions in their KMC calculations [RdfLiPhosphate]_. Multiplying that frequency by "
+"the same factor at all temperatures leaves the transition probabilities unchanged and divides the"
+" waiting times by that factor. The diffusion coefficient changes by the same factor at all "
+"temperatures, so the slope of the Arrhenius plot and its activation energy are unchanged. When "
+"comparing KMC with MD, the common attempt frequency therefore mainly affects the magnitude of the"
+" diffusion coefficient. If it varies by path, the transition probabilities also change, which can"
+" affect the temperature dependence of the diffusion coefficient and hence the slope. If the "
+"migration mechanism or vacancy fraction changes between high and low temperatures, extrapolating "
+"the high-temperature Arrhenius line can give an incorrect low-temperature diffusion coefficient."
+
+#: ../../md/thermal_activation.rst:305
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../md/thermal_activation.rst:307
+msgid ":ref:`平均二乗変位<mean-squared-displacement>`\\ から、物理時間を持つ軌跡の拡散係数を求める。"
+msgstr ""
+"Use the :ref:`mean squared displacement <mean-squared-displacement>`\\  to obtain the diffusion "
+"coefficient from trajectories with a physical time scale."
+
+#: ../../md/thermal_activation.rst:308
+msgid ""
+"`大規模モデルのLi拡散係数 <https://example.quloud-platform.quemix.com/li3po4/large-model-"
+"diffusivity.html>`__ は、縦軸に拡散係数の常用対数を使い、薄膜実験の活性化エネルギーと比較する。"
+msgstr ""
+"`Li Diffusion Coefficient in the Large Model <https://example.quloud-platform.quemix.com/li3po4"
+"/large-model-diffusivity.html>`__ uses the base-10 logarithm of the diffusion coefficient on the "
+"vertical axis and compares the activation energy with thin-film experiments."
+
+#: ../../md/thermal_activation.rst:312
+msgid "参考文献"
+msgstr "References"
+
+#: ../../md/thermal_activation.rst:314
+msgid ""
+"G. H. Vineyard, “Frequency factors and isotope effects in solid state rate processes,” *J. Phys. "
+"Chem. Solids* **3**, 121–127 (1957). `doi:10.1016/0022-3697(57)90059-8 "
+"<https://doi.org/10.1016/0022-3697(57)90059-8>`__."
+msgstr ""
+"G. H. Vineyard, “Frequency factors and isotope effects in solid state rate processes,” *J. Phys. "
+"Chem. Solids* **3**, 121–127 (1957). `doi:10.1016/0022-3697(57)90059-8 "
+"<https://doi.org/10.1016/0022-3697(57)90059-8>`__."
+
+#: ../../md/thermal_activation.rst:317
+msgid ""
+"A. B. Bortz, M. H. Kalos, and J. L. Lebowitz, “A New Algorithm for Monte Carlo Simulation of "
+"Ising Spin Systems,” *J. Comput. Phys.* **17**, 10–18 (1975). `doi:10.1016/0021-9991(75)90060-1 "
+"<https://doi.org/10.1016/0021-9991(75)90060-1>`__."
+msgstr ""
+"A. B. Bortz, M. H. Kalos, and J. L. Lebowitz, “A New Algorithm for Monte Carlo Simulation of "
+"Ising Spin Systems,” *J. Comput. Phys.* **17**, 10–18 (1975). `doi:10.1016/0021-9991(75)90060-1 "
+"<https://doi.org/10.1016/0021-9991(75)90060-1>`__."
+
+#: ../../md/thermal_activation.rst:321
+msgid ""
+"A. F. Voter, “Introduction to the Kinetic Monte Carlo Method,” *Radiation Effects in Solids*, "
+"Springer, 1–23 (2007). `doi:10.1007/978-1-4020-5295-8_1 "
+"<https://doi.org/10.1007/978-1-4020-5295-8_1>`__."
+msgstr ""
+"A. F. Voter, “Introduction to the Kinetic Monte Carlo Method,” *Radiation Effects in Solids*, "
+"Springer, 1–23 (2007). `doi:10.1007/978-1-4020-5295-8_1 "
+"<https://doi.org/10.1007/978-1-4020-5295-8_1>`__."
+
+#: ../../md/thermal_activation.rst:324
+msgid ""
+"H. Mehrer, *Diffusion in Solids*, Springer (2007), §4.1.4, Eq. (4.28). "
+"`doi:10.1007/978-3-540-71488-0 <https://doi.org/10.1007/978-3-540-71488-0>`__."
+msgstr ""
+"H. Mehrer, *Diffusion in Solids*, Springer (2007), §4.1.4, Eq. (4.28). "
+"`doi:10.1007/978-3-540-71488-0 <https://doi.org/10.1007/978-3-540-71488-0>`__."
+
