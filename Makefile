@@ -8,7 +8,9 @@ SPHINXBUILD   ?= sphinx-build
 SPHINXINTL    ?= sphinx-intl
 SOURCEDIR     = .
 BUILDDIR      = _build
-EN_DOCS       ?= index solid/index solid/reciprocal_lattice solid/polarization md/thermal_activation
+# update-po で翻訳カタログ（.po）を更新する記事。既定は .po のある記事すべて。
+# 新しく訳す記事は make update-po EN_DOCS="thermo/index thermo/..." で .po を作る。
+EN_DOCS       ?= $(patsubst locales/en/LC_MESSAGES/%.po,%,$(shell find locales/en/LC_MESSAGES -name '*.po' | sort))
 
 # 手元のPythonにテーマが無ければ（apt版Sphinxなど）、requirements.txt の版を
 # Git管理外の PYLIB に pip で入れて使う。requirements.txt を変えると入れ直す。
@@ -51,7 +53,7 @@ html: $(SPHINXDEPS)
 gettext: $(SPHINXDEPS)
 	@$(SPHINXBUILD) -b gettext -E -d "$(BUILDDIR)/doctrees-gettext" $(SPHINXOPTS) $(O) "$(SOURCEDIR)" "$(BUILDDIR)/gettext"
 
-# During the prototype, update only the catalogs for the selected articles.
+# Update only the catalogs of EN_DOCS; the other articles have no English translation yet.
 update-po: gettext
 	@set -e; catalog_dir=$$(mktemp -d "$(BUILDDIR)/gettext-selected.XXXXXX"); \
 	trap 'rm -rf "$$catalog_dir"' EXIT; \

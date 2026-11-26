@@ -21,7 +21,11 @@ sys.path.insert(0, os.path.abspath('_ext'))
 
 # cjk_linebreak: 日本語の文の途中で改行した原稿で、表示に空白が入らないようにする。
 # volume_numbering: 図表と式の番号を巻ごとに数え直す（巻をまたいで通し番号にならないようにする）。
-extensions = ['sphinx.ext.mathjax', 'sphinx.ext.githubpages', 'cjk_linebreak', 'volume_numbering']
+# english_edition: 英語版（locales/en/published.txt の記事）と日本語版を相互にリンクし、未訳の記事は原文への案内にする。
+extensions = [
+    'sphinx.ext.mathjax', 'sphinx.ext.githubpages', 'cjk_linebreak', 'volume_numbering',
+    'english_edition',
+]
 
 templates_path = ['_templates']
 # Sphinx does not use .gitignore; keep the private meta checkout out of the document scan.
@@ -30,6 +34,9 @@ exclude_patterns = ['_build', 'docs', 'meta/**', '.claude', 'Thumbs.db', '.DS_St
 language = os.environ.get('QULOUD_DOC_LANGUAGE', 'ja')
 locale_dirs = ['locales/']
 gettext_compact = False
+# 日本語の原文が少し変わった文は、訳し直すまで前の英訳を出す（英語のページに日本語の段落を混ぜない）。
+# 古い訳の残るページには english_edition が注記を出し、ビルドで警告する。
+gettext_allow_fuzzy_translations = True
 
 numfig = True
 # 図表と式の番号は記事ごとに数える。機械学習・数学は巻→章→節→記事の3段なので3にする。
@@ -44,17 +51,17 @@ numfig_secnum_depth = 3
 
 html_theme = 'pydata_sphinx_theme'
 # sphinx.ext.githubpages writes CNAME from this URL; without it the build deletes CNAME.
-html_baseurl = 'https://technical-notes.quemix.com/'
+quloud_japanese_baseurl = 'https://technical-notes.quemix.com/'
+quloud_english_baseurl = quloud_japanese_baseurl + 'en/'
+# canonical のURLもここから作るので、英語版は /en/ を指す。
+html_baseurl = quloud_english_baseurl if language == 'en' else quloud_japanese_baseurl
 html_static_path = ['_static']
 html_css_files = ['custom.css', 'language-switcher.css']
-html_js_files = ['js/language-switcher.js'] if language == 'ja' else []
+html_js_files = ['js/language-switcher.js']
 html_title = project
 html_sidebars = {'index': []}
 html_theme_options = {
-    'navbar_end': (
-        ['theme-switcher', 'language-switcher', 'navbar-icon-links']
-        if language == 'ja' else ['theme-switcher', 'navbar-icon-links']
-    ),
+    'navbar_end': ['theme-switcher', 'language-switcher', 'navbar-icon-links'],
     'navigation_depth': 2,
     'search_bar_text': 'Search Technical Notes' if language == 'en' else '技術ノートを検索',
     'secondary_sidebar_items': ['page-toc'],

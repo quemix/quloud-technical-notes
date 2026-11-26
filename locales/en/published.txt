@@ -1,0 +1,8 @@
+# 英語版で公開する記事（docname を1行に1つ）。
+# 載せる条件: その記事の .po に未訳・fuzzy が無く、check_po.py が0で、図の英語版がそろい、訳のレビューを済ませた。
+# ここに無い記事も英語版にページとして出るが、本文は日本語の原文への案内に置き換わる（_ext/english_edition.py）。
+index
+solid/index
+solid/reciprocal_lattice
+solid/polarization
+md/thermal_activation
