@@ -1,0 +1,308 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../thermo/gibbs_energy.rst:5
+msgid "ギブス自由エネルギー"
+msgstr "Gibbs Free Energy"
+
+#: ../../thermo/gibbs_energy.rst:10
+msgid "標準反応ギブスエネルギー"
+msgstr "Standard Reaction Gibbs Energy"
+
+#: ../../thermo/gibbs_energy.rst:12
+msgid ""
+"\\Delta_r G^o = \\Delta_r H^o - T \\Delta_r S^o\n"
+"\n"
+msgstr ""
+"\\Delta_r G^o = \\Delta_r H^o - T \\Delta_r S^o\n"
+"\n"
+
+#: ../../thermo/gibbs_energy.rst:18
+msgid "標準生成ギブスエネルギー"
+msgstr "Standard Gibbs Energy of Formation"
+
+#: ../../thermo/gibbs_energy.rst:25
+msgid "化学ポテンシャル"
+msgstr "Chemical Potential"
+
+#: ../../thermo/gibbs_energy.rst:27
+msgid ""
+"物質が相の間を移るか、反応がどちらへ進むかは、成分ごとの化学ポテンシャルで決まる。 温度 :math:`T`、圧力 :math:`p` と、各成分"
+" :math:`i` の物質量 :math:`n_i` を変数として ギブス自由エネルギー "
+":math:`G(T,p,n_1,\\ldots,n_k)` をみると、その微小変化は"
+msgstr ""
+"The chemical potential of each component determines whether it transfers "
+"between phases and in which direction a reaction proceeds. Taking "
+"temperature :math:`T`, pressure :math:`p`, and, for each component "
+":math:`i`, its amount of substance :math:`n_i` as variables, we can write"
+" the differential of the Gibbs free energy :math:`G(T,p,n_1,\\ldots,n_k)`"
+" as"
+
+#: ../../thermo/gibbs_energy.rst:31
+msgid "dG=-S\\,dT+V\\,dp+\\sum_i\\mu_i\\,dn_i"
+msgstr "dG=-S\\,dT+V\\,dp+\\sum_i\\mu_i\\,dn_i"
+
+#: ../../thermo/gibbs_energy.rst:36
+msgid "と書ける [ThermoCallen1985]_。:math:`S` はエントロピー、:math:`V` は体積である。係数"
+msgstr ""
+"This is the form given in [ThermoCallen1985]_. Here :math:`S` is the "
+"entropy and :math:`V` is the volume. The coefficient"
+
+#: ../../thermo/gibbs_energy.rst:38
+msgid ""
+"\\mu_i=\\left(\\frac{\\partial G}{\\partial n_i}\\right)_{T,p,n_{j\\neq "
+"i}}"
+msgstr ""
+"\\mu_i=\\left(\\frac{\\partial G}{\\partial n_i}\\right)_{T,p,n_{j\\neq "
+"i}}"
+
+#: ../../thermo/gibbs_energy.rst:43
+msgid ""
+"を成分 :math:`i` の **化学ポテンシャル** と呼ぶ。温度・圧力とほかの成分の量を固定して、 成分 :math:`i` "
+"を少し加えたときの :math:`G` の増え方である。単位はJ/molである。"
+msgstr ""
+"for component :math:`i` is called its **chemical potential**. When a "
+"small amount of component :math:`i` is added at fixed temperature and "
+"pressure and with the amounts of the other components held fixed, this "
+"coefficient gives the rate of change of :math:`G`. Its unit is J/mol."
+
+#: ../../thermo/gibbs_energy.rst:46
+msgid ""
+"**ギブス自由エネルギーとの関係。** 温度と圧力を固定して系の全成分を :math:`\\lambda` 倍すると、 :math:`G` も "
+":math:`\\lambda` 倍になる。:math:`G(T,p,\\lambda n_1,\\ldots,\\lambda "
+"n_k)=\\lambda G(T,p,n_1,\\ldots,n_k)` の両辺を :math:`\\lambda` で微分して "
+":math:`\\lambda=1` とおくと、:eq:`thermo-chemical-potential`\\ から"
+msgstr ""
+"**Relation to Gibbs free energy.** At fixed temperature and pressure, "
+"multiplying the amounts of all components by :math:`\\lambda` also "
+"multiplies :math:`G` by :math:`\\lambda`. Differentiating both sides of "
+":math:`G(T,p,\\lambda n_1,\\ldots,\\lambda n_k)=\\lambda "
+"G(T,p,n_1,\\ldots,n_k)` with respect to :math:`\\lambda` and setting "
+":math:`\\lambda=1` gives, by Equation :eq:`thermo-chemical-potential`\\ ,"
+
+#: ../../thermo/gibbs_energy.rst:50
+msgid "G=\\sum_i n_i\\mu_i"
+msgstr "G=\\sum_i n_i\\mu_i"
+
+#: ../../thermo/gibbs_energy.rst:55
+msgid ""
+"を得る。純物質では :math:`\\mu=G/n` で、化学ポテンシャルは1 molあたりのギブス自由エネルギーに等しい。 "
+"**反応ギブスエネルギー。** 反応 :math:`\\sum_i\\nu_i\\mathrm A_i=0`\\ （:math:`\\nu_i` "
+"は生成物で正、反応物で負の 化学量論係数）の進み具合を反応進行度 :math:`\\xi`\\ （単位はmol）で表すと、反応が "
+":math:`d\\xi` だけ進むとき 各成分の物質量は :math:`dn_i=\\nu_i\\,d\\xi` だけ変わる。これを\\ :eq"
+":`thermo-gibbs-differential`\\ に入れると、 温度と圧力が一定のもとで"
+msgstr ""
+"For a pure substance, :math:`\\mu=G/n`, so the chemical potential equals "
+"the Gibbs free energy per mole. **Reaction Gibbs energy.** For a reaction"
+" :math:`\\sum_i\\nu_i\\mathrm A_i=0`\\  (where :math:`\\nu_i` is the "
+"stoichiometric coefficient, positive for products and negative for "
+"reactants), let the extent of reaction :math:`\\xi`\\  (in mol) describe "
+"how far the reaction has proceeded. When the reaction advances by "
+":math:`d\\xi`, the amount of substance of each component changes by "
+":math:`dn_i=\\nu_i\\,d\\xi`. Substituting this into Equation \\ :eq"
+":`thermo-gibbs-differential`\\  at fixed temperature and pressure gives"
+
+#: ../../thermo/gibbs_energy.rst:61
+#, python-brace-format
+msgid ""
+"\\Delta_r G\\equiv\\left(\\frac{\\partial "
+"G}{\\partial\\xi}\\right)_{T,p}=\\sum_i\\nu_i\\mu_i"
+msgstr ""
+"\\Delta_r G\\equiv\\left(\\frac{\\partial "
+"G}{\\partial\\xi}\\right)_{T,p}=\\sum_i\\nu_i\\mu_i"
+
+#: ../../thermo/gibbs_energy.rst:66
+msgid ""
+"を得る。:math:`\\Delta_r G` は、その時点の組成で反応を微小に進めたときの :math:`G` の変化率である。 "
+"反応が有限量進むと組成が変わり、各 :math:`\\mu_i` も変わるので、:math:`G` の有限の変化は :eq:`thermo-"
+"reaction-gibbs`\\ を :math:`\\xi` について積分したものになる。 各成分が\\ "
+":ref:`標準状態<standard_state>`\\ にあるときの\\ :eq:`thermo-reaction-gibbs`\\ の値が、"
+" 前の節の標準反応ギブスエネルギー :math:`\\Delta_r G^o=\\sum_i\\nu_i\\mu_i^o` である。"
+msgstr ""
+"At the current composition, :math:`\\Delta_r G` is the rate of change of "
+":math:`G` for an infinitesimal advance of the reaction. Over a finite "
+"advance, the composition changes and so does each :math:`\\mu_i`. The "
+"finite change in :math:`G` is therefore the integral of Equation :eq"
+":`thermo-reaction-gibbs`\\  with respect to :math:`\\xi`. When each "
+"component is in its \\ :ref:`standard state <standard_state>`\\ , "
+"Equation \\ :eq:`thermo-reaction-gibbs`\\  gives the standard reaction "
+"Gibbs energy introduced in the previous section, :math:`\\Delta_r "
+"G^o=\\sum_i\\nu_i\\mu_i^o`."
+
+#: ../../thermo/gibbs_energy.rst:72
+msgid ""
+"**相平衡の条件。** 同じ温度・圧力の2つの相 :math:`\\alpha`、:math:`\\beta` の間で、成分 :math:`i` "
+"を :math:`dn` だけ :math:`\\alpha` から :math:`\\beta` へ移すと、:eq:`thermo-gibbs-"
+"differential`\\ から"
+msgstr ""
+"**Condition for phase equilibrium.** Consider two phases, :math:`\\alpha`"
+" and :math:`\\beta`, at the same temperature and pressure. If component "
+":math:`i` is transferred in an amount :math:`dn` from :math:`\\alpha` to "
+":math:`\\beta`, Equation :eq:`thermo-gibbs-differential`\\  gives"
+
+#: ../../thermo/gibbs_energy.rst:75
+msgid "dG=\\left(\\mu_i^\\beta-\\mu_i^\\alpha\\right)dn"
+msgstr "dG=\\left(\\mu_i^\\beta-\\mu_i^\\alpha\\right)dn"
+
+#: ../../thermo/gibbs_energy.rst:80
+msgid ""
+"となる。温度と圧力が一定のとき、自発的な変化は :math:`G` を下げる向きに進むので、 "
+"成分は化学ポテンシャルの高い相から低い相へ移る。平衡では :math:`dn` の正負どちらに対しても :math:`dG=0` なので、"
+msgstr ""
+"At fixed temperature and pressure, spontaneous changes lower :math:`G`, "
+"so the component moves from the phase with higher chemical potential to "
+"the phase with lower chemical potential. At equilibrium, for either sign "
+"of :math:`dn` we have :math:`dG=0`, so"
+
+#: ../../thermo/gibbs_energy.rst:84
+msgid "\\mu_i^\\alpha=\\mu_i^\\beta"
+msgstr "\\mu_i^\\alpha=\\mu_i^\\beta"
+
+#: ../../thermo/gibbs_energy.rst:89
+#, python-brace-format
+msgid ""
+"が成り立つ。反応についても同じ考え方で、平衡では :math:`\\sum_i\\nu_i\\mu_i=0` になる。 "
+"例えば酸素分子と酸素原子の平衡 :math:`\\mathrm O_2\\rightleftharpoons2\\mathrm O` からは "
+":math:`\\mu_{\\mathrm O}=\\mu_{\\mathrm O_2}/2` が従う。"
+msgstr ""
+"The same reasoning applies to reactions. At equilibrium, "
+":math:`\\sum_i\\nu_i\\mu_i=0`. For example, the equilibrium between "
+"molecular and atomic oxygen, :math:`\\mathrm "
+"O_2\\rightleftharpoons2\\mathrm O`, implies :math:`\\mu_{\\mathrm "
+"O}=\\mu_{\\mathrm O_2}/2`."
+
+#: ../../thermo/gibbs_energy.rst:93
+#, python-brace-format
+msgid ""
+"**理想気体の圧力依存性。** :eq:`thermo-gibbs-differential`\\ で :math:`G` "
+"の2階微分の順序を入れ替えると :math:`(\\partial\\mu_i/\\partial p)_{T,n}=(\\partial "
+"V/\\partial n_i)_{T,p}` で、純物質の右辺は1 molあたりの体積 :math:`V_{\\rm m}` "
+"である。理想気体では :math:`V_{\\rm m}=RT/p`\\ （:math:`R` は気体定数）なので、 標準圧力 "
+":math:`p^o=1\\,\\mathrm{bar}` から :math:`p` まで積分すると"
+msgstr ""
+"**Pressure dependence for an ideal gas.** Using Equation :eq:`thermo-"
+"gibbs-differential`\\ , we reverse the order of differentiation in the "
+"mixed second derivative of :math:`G` and obtain "
+":math:`(\\partial\\mu_i/\\partial p)_{T,n}=(\\partial V/\\partial "
+"n_i)_{T,p}`. For a pure substance, the right-hand side is the volume per "
+"mole, :math:`V_{\\rm m}`. For an ideal gas, :math:`V_{\\rm m}=RT/p`\\  "
+"(where :math:`R` is the gas constant). Integrating from the standard "
+"pressure :math:`p^o=1\\,\\mathrm{bar}` to :math:`p` therefore gives"
+
+#: ../../thermo/gibbs_energy.rst:98
+#, python-brace-format
+msgid "\\mu(T,p)=\\mu^o(T)+RT\\ln\\frac{p}{p^o}"
+msgstr "\\mu(T,p)=\\mu^o(T)+RT\\ln\\frac{p}{p^o}"
+
+#: ../../thermo/gibbs_energy.rst:103
+msgid ""
+"となる。:math:`\\mu^o(T)` は温度 :math:`T` の標準状態での値である。理想気体の混合物では、 :math:`p` "
+"を成分の分圧に置き換える。"
+msgstr ""
+"Here :math:`\\mu^o(T)` is the value in the standard state at temperature "
+":math:`T`. For a mixture of ideal gases, replace :math:`p` with the "
+"partial pressure of the component."
+
+#: ../../thermo/gibbs_energy.rst:106
+#, python-brace-format
+msgid ""
+"**1粒子あたりの値。** 第一原理計算や統計力学では、化学ポテンシャルを1粒子（1原子や1分子） あたりのエネルギーで表すことが多い。1 "
+"molあたりの値をアボガドロ定数 :math:`N_{\\rm A}` で割ると 1粒子あたりの値になり、:math:`R/N_{\\rm "
+"A}=k_{\\rm B}`\\ （ボルツマン定数）なので、 :eq:`thermo-ideal-gas-mu`\\ の第2項は "
+":math:`k_{\\rm B}T\\ln(p/p^o)` になる。 1 eV/粒子は96.485 "
+"kJ/molにあたる。分圧を10倍にすると化学ポテンシャルは :math:`k_{\\rm B}T\\ln10` だけ上がり、 300 "
+"Kで0.0595 eV（5.74 kJ/mol）、1100 °C（1373 K）で0.272 eVである。 "
+"高温の気相と原子をやりとりする表面では、分圧を1けた変えるだけで0.1 eVを超える差が生じる。"
+msgstr ""
+"**Value per particle.** In first-principles calculations and statistical "
+"mechanics, the chemical potential is often expressed as an energy per "
+"particle (an atom or a molecule). Dividing the value per mole by the "
+"Avogadro constant :math:`N_{\\rm A}` gives the value per particle. Since "
+":math:`R/N_{\\rm A}=k_{\\rm B}`\\  (the Boltzmann constant), the second "
+"term in Equation :eq:`thermo-ideal-gas-mu`\\  becomes :math:`k_{\\rm "
+"B}T\\ln(p/p^o)`. An energy of 1 eV per particle corresponds to 96.485 "
+"kJ/mol. Increasing the partial pressure by a factor of 10 raises the "
+"chemical potential by :math:`k_{\\rm B}T\\ln10`. The increase is 0.0595 "
+"eV (5.74 kJ/mol) at 300 K and 0.272 eV at 1100 °C (1373 K). For a surface"
+" exchanging atoms with a high-temperature gas phase, changing the partial"
+" pressure by just one order of magnitude shifts the chemical potential by"
+" more than 0.1 eV."
+
+#: ../../thermo/gibbs_energy.rst:114
+#, python-brace-format
+msgid ""
+"**固体の化学ポテンシャルと全エネルギー。** 単体の固体では、:eq:`thermo-gibbs-euler`\\ から "
+":math:`\\mu=G/N=(E+pV-TS)/N`\\ （:math:`N` は原子数、:math:`E` は内部エネルギー）である。 1 "
+"barでの :math:`pV` は1原子あたりの体積を20 Å\\ :sup:`3`\\ としても約 "
+":math:`1\\times10^{-5}` eVで、 無視できる。絶対零度で零点振動も無視すると、:math:`\\mu` "
+"は1原子あたりの全エネルギーで近似できる。 第一原理計算で原子の出入りを含むエネルギーを比べるとき、単体の固体や孤立分子の全エネルギーを "
+"化学ポテンシャルの基準に使うのはこのためである。気相では、全エネルギーに 温度と分圧に依存する部分を加える（`GaN表面の相図 "
+"<https://example.quloud-"
+"platform.quemix.com/gan_surface/phase_diagram.html>`__\\ の気相の化学ポテンシャル）。"
+msgstr ""
+"**Chemical potential and total energy of a solid.** For an elemental "
+"solid, Equation :eq:`thermo-gibbs-euler`\\  gives :math:`\\mu=G/N=(E+pV-"
+"TS)/N`\\  (where :math:`N` is the number of atoms and :math:`E` is the "
+"internal energy). At 1 bar, the :math:`pV` contribution for a volume per "
+"atom of even 20 Å\\ :sup:`3`\\  is about :math:`1\\times10^{-5}` eV and "
+"can be neglected. At absolute zero, if zero-point vibration is also "
+"neglected, :math:`\\mu` can be approximated by the total energy per atom."
+" This is why first-principles calculations use the total energy of an "
+"elemental solid or an isolated molecule as a reference for the chemical "
+"potential when comparing energies that involve adding or removing atoms. "
+"For the gas phase, add a contribution that depends on temperature and "
+"partial pressure to the total energy (see the gas-phase chemical "
+"potential in the `GaN surface phase diagram calculation example "
+"<https://example.quloud-"
+"platform.quemix.com/gan_surface/phase_diagram.html>`__\\ )."
+
+#: ../../thermo/gibbs_energy.rst:122
+msgid ""
+"同じ定義を電子に使ったものが、フェルミ–ディラック分布に現れる :ref:`電子の化学ポテンシャル<fermi-dirac-"
+"distribution>`\\ である。2つの物質を接触させて電子が行き来できるとき、 :eq:`thermo-phase-"
+"equilibrium`\\ と同じ理由で、平衡では両者のフェルミ準位がそろう。 "
+"ただし、そろうのは静電ポテンシャルによるエネルギーを含め、共通のエネルギー基準（例えば真空準位）で測った "
+"電子の化学ポテンシャル（電気化学ポテンシャル）である。物質ごとに価電子帯上端などから測った値はそろわない。"
+msgstr ""
+"Applying the same definition to electrons gives the :ref:`electron "
+"chemical potential <fermi-dirac-distribution>`\\  that appears in the "
+"Fermi–Dirac distribution. When two materials come into contact and "
+"electrons can move between them, their Fermi levels align at equilibrium "
+"for the same reason as in Equation :eq:`thermo-phase-equilibrium`\\ . The"
+" quantities that align are the electron chemical potentials "
+"(electrochemical potentials), including the energy due to the "
+"electrostatic potential and measured relative to a common energy "
+"reference, such as the vacuum level. Values measured relative to a "
+"separate reference in each material, such as its valence band maximum, do"
+" not align."
+
+#: ../../thermo/gibbs_energy.rst:130
+msgid "参考文献"
+msgstr "References"
+
+#: ../../thermo/gibbs_energy.rst:132
+msgid ""
+"H. B. Callen, *Thermodynamics and an Introduction to Thermostatistics*, "
+"2nd ed., Wiley (1985)."
+msgstr ""
+"H. B. Callen, *Thermodynamics and an Introduction to Thermostatistics*, "
+"2nd ed., Wiley (1985)."
+

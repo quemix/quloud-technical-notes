@@ -1,0 +1,377 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../thermo/temperature.rst:5
+msgid "温度の計算"
+msgstr "Calculating Temperature"
+
+#: ../../thermo/temperature.rst:9
+msgid "運動エネルギー"
+msgstr "Kinetic Energy"
+
+#: ../../thermo/temperature.rst:11
+msgid ":math:`N` 個の粒子からなる系を考える。運動エネルギーを"
+msgstr "Consider a system of :math:`N` particles. Take the kinetic energy to be"
+
+#: ../../thermo/temperature.rst:13
+msgid ""
+"T_{\\rm kin} \\equiv \\sum_{i=1}^{N} \\frac{\\boldsymbol{p}^2_i}{2m_i}\n"
+"\n"
+msgstr ""
+"T_{\\rm kin} \\equiv \\sum_{i=1}^{N} \\frac{\\boldsymbol{p}^2_i}{2m_i}\n"
+"\n"
+
+#: ../../thermo/temperature.rst:17
+msgid "とする。ポテンシャルエネルギーは具体的な形は考えず、\\ ただ座標のみに依存するものとしておく。\\ このときハミルトニアン（全エネルギー）は"
+msgstr ""
+"We leave the form of the potential energy unspecified\\  and assume only "
+"that it depends on the coordinates.\\  The Hamiltonian (total energy) is "
+"then"
+
+#: ../../thermo/temperature.rst:21
+#, python-brace-format
+msgid ""
+"H = T_{\\rm kin}\n"
+"+ V_{\\rm pot}\\left(\n"
+"\\boldsymbol{r}_1, \\boldsymbol{r}_2, \\cdots, \\boldsymbol{r}_N\n"
+"\\right)\n"
+"\n"
+msgstr ""
+"H = T_{\\rm kin}\n"
+"+ V_{\\rm pot}\\left(\n"
+"\\boldsymbol{r}_1, \\boldsymbol{r}_2, \\cdots, \\boldsymbol{r}_N\n"
+"\\right)\n"
+"\n"
+
+#: ../../thermo/temperature.rst:28
+msgid "であり、これを用いて（古典的）分配関数は次式で与えられる（\\ :math:`\\beta\\equiv1/kT`\\ ）。"
+msgstr ""
+"The resulting classical partition function is given below (\\ "
+":math:`\\beta\\equiv1/kT`\\ )."
+
+#: ../../thermo/temperature.rst:30
+#, python-brace-format
+msgid ""
+"Z\n"
+"=\n"
+"\\int \\prod_{i=1}^N d\\boldsymbol{r}_i\n"
+"\\int \\prod_{i=1}^N d\\boldsymbol{p}_i\n"
+"\\exp{\\left(-\\beta H\\right)} .\n"
+"\n"
+msgstr ""
+"Z\n"
+"=\n"
+"\\int \\prod_{i=1}^N d\\boldsymbol{r}_i\n"
+"\\int \\prod_{i=1}^N d\\boldsymbol{p}_i\n"
+"\\exp{\\left(-\\beta H\\right)} .\n"
+"\n"
+
+#: ../../thermo/temperature.rst:38
+msgid "運動エネルギーの平均値を計算する。"
+msgstr "We now calculate the mean kinetic energy."
+
+#: ../../thermo/temperature.rst:40
+msgid ""
+"\\left< T_{\\rm kin} \\right>\n"
+"=\n"
+"\\frac{\n"
+"\\int \\prod_{i=1}^N d\\boldsymbol{r}_i\n"
+"\\int \\prod_{i=1}^N d\\boldsymbol{p}_i\n"
+"\\left( \\sum_{j=1}^{N} \\frac{\\boldsymbol{p}^2_j}{2m_j} \\right)\n"
+"\\exp{\\left(-\\beta H\\right)}\n"
+"}{Z}\n"
+"=\n"
+"\\sum_{j=1}^{N}\n"
+"\\frac{\n"
+"\\int d\\boldsymbol{p}_j\n"
+"\\frac{\\boldsymbol{p}^2_j}{2m_j}\n"
+"\\exp{\\left(-\\beta \\frac{\\boldsymbol{p}^2_j}{2m_j} \\right)}\n"
+"}{\\int d\\boldsymbol{p}_j\\exp{\\left(-\\beta "
+"\\frac{\\boldsymbol{p}^2_j}{2m_j} \\right)}}\n"
+"\\equiv\n"
+"\\sum_{j=1}^{N}\n"
+"\\left< t_{j} \\right> .\n"
+"\n"
+msgstr ""
+"\\left< T_{\\rm kin} \\right>\n"
+"=\n"
+"\\frac{\n"
+"\\int \\prod_{i=1}^N d\\boldsymbol{r}_i\n"
+"\\int \\prod_{i=1}^N d\\boldsymbol{p}_i\n"
+"\\left( \\sum_{j=1}^{N} \\frac{\\boldsymbol{p}^2_j}{2m_j} \\right)\n"
+"\\exp{\\left(-\\beta H\\right)}\n"
+"}{Z}\n"
+"=\n"
+"\\sum_{j=1}^{N}\n"
+"\\frac{\n"
+"\\int d\\boldsymbol{p}_j\n"
+"\\frac{\\boldsymbol{p}^2_j}{2m_j}\n"
+"\\exp{\\left(-\\beta \\frac{\\boldsymbol{p}^2_j}{2m_j} \\right)}\n"
+"}{\\int d\\boldsymbol{p}_j\\exp{\\left(-\\beta "
+"\\frac{\\boldsymbol{p}^2_j}{2m_j} \\right)}}\n"
+"\\equiv\n"
+"\\sum_{j=1}^{N}\n"
+"\\left< t_{j} \\right> .\n"
+"\n"
+
+#: ../../thermo/temperature.rst:61
+msgid "ここで、\\ :math:`j`\\ 番目の粒子の運動エネルギーの平均値を"
+msgstr "Here we define the mean kinetic energy of particle \\ :math:`j`\\  as"
+
+#: ../../thermo/temperature.rst:63
+msgid ""
+"\\left< t_{j} \\right>\n"
+"=\n"
+"\\left< \\frac{\\boldsymbol{p}^2_j}{2m_j} \\right>\n"
+"\n"
+msgstr ""
+"\\left< t_{j} \\right>\n"
+"=\n"
+"\\left< \\frac{\\boldsymbol{p}^2_j}{2m_j} \\right>\n"
+"\n"
+
+#: ../../thermo/temperature.rst:68
+msgid "とおいた。\\ :ref:`ガウス積分<gaussian_intg>`\\ の公式より"
+msgstr "The formula for the \\ :ref:`Gaussian integral <gaussian_intg>`\\  gives"
+
+#: ../../thermo/temperature.rst:70
+msgid ""
+"\\int d\\boldsymbol{p} \\exp{\\left(-\\beta \\frac{\\boldsymbol{p}^2}{2m}"
+" \\right)}\n"
+"=\n"
+"\\left( \\frac{2m\\pi}{\\beta} \\right)^{3/2}\n"
+"\n"
+msgstr ""
+"\\int d\\boldsymbol{p} \\exp{\\left(-\\beta \\frac{\\boldsymbol{p}^2}{2m}"
+" \\right)}\n"
+"=\n"
+"\\left( \\frac{2m\\pi}{\\beta} \\right)^{3/2}\n"
+"\n"
+
+#: ../../thermo/temperature.rst:75
+msgid "が求まり、さらにこれを利用して"
+msgstr "This result in turn gives"
+
+#: ../../thermo/temperature.rst:77
+msgid ""
+"\\int d\\boldsymbol{p} \\frac{\\boldsymbol{p}^2}{2m} \\exp{\\left(-\\beta"
+" \\frac{\\boldsymbol{p}^2}{2m} \\right)}\n"
+"=\n"
+"-\\frac{\\partial}{\\partial\\beta}\n"
+"\\int d\\boldsymbol{p} \\exp{\\left(-\\beta \\frac{\\boldsymbol{p}^2}{2m}"
+" \\right)}\n"
+"=\n"
+"\\frac{3}{2}\\left( \\frac{2m\\pi}{\\beta} \\right)^{3/2} "
+"\\frac{1}{\\beta}\n"
+"\n"
+msgstr ""
+"\\int d\\boldsymbol{p} \\frac{\\boldsymbol{p}^2}{2m} \\exp{\\left(-\\beta"
+" \\frac{\\boldsymbol{p}^2}{2m} \\right)}\n"
+"=\n"
+"-\\frac{\\partial}{\\partial\\beta}\n"
+"\\int d\\boldsymbol{p} \\exp{\\left(-\\beta \\frac{\\boldsymbol{p}^2}{2m}"
+" \\right)}\n"
+"=\n"
+"\\frac{3}{2}\\left( \\frac{2m\\pi}{\\beta} \\right)^{3/2} "
+"\\frac{1}{\\beta}\n"
+"\n"
+
+#: ../../thermo/temperature.rst:85
+msgid "と計算できるので、粒子１個の運動エネルギーの平均値は\\ :math:`j`\\ によらず"
+msgstr ""
+"It follows that the mean kinetic energy per particle, independent of \\ "
+":math:`j`\\ , is"
+
+#: ../../thermo/temperature.rst:87
+#, python-brace-format
+msgid ""
+"\\left< t_{j} \\right>\n"
+"=\n"
+"\\frac{3}{2} kT\n"
+"\n"
+msgstr ""
+"\\left< t_{j} \\right>\n"
+"=\n"
+"\\frac{3}{2} kT\n"
+"\n"
+
+#: ../../thermo/temperature.rst:92
+msgid "となる。最終結果は次のようになる。"
+msgstr "The final result for the system is"
+
+#: ../../thermo/temperature.rst:94
+#, python-brace-format
+msgid ""
+"\\left< T_{\\rm kin} \\right> = \\frac{3N}{2} \\frac{1}{\\beta} = "
+"\\frac{3N}{2} kT .\n"
+"\n"
+msgstr ""
+"\\left< T_{\\rm kin} \\right> = \\frac{3N}{2} \\frac{1}{\\beta} = "
+"\\frac{3N}{2} kT .\n"
+"\n"
+
+#: ../../thermo/temperature.rst:98
+msgid "この式を温度 :math:`T` について解けば、"
+msgstr "Solving this equation for the temperature :math:`T` gives"
+
+#: ../../thermo/temperature.rst:100
+msgid ""
+"T = \\frac{2}{3k} \\frac{\\left< T_{\\rm kin} \\right>}{N}\n"
+"\n"
+msgstr ""
+"T = \\frac{2}{3k} \\frac{\\left< T_{\\rm kin} \\right>}{N}\n"
+"\n"
+
+#: ../../thermo/temperature.rst:104
+msgid "が得られるので、これから、粒子１個あたりの運動エネルギーの平均値を計算すれば、\\ 系の温度が得られる事が分かる。また、平均の記号を外して"
+msgstr ""
+"The temperature of the system can thus be obtained by calculating the "
+"mean kinetic energy per particle.\\  Dropping the averaging brackets, we "
+"define"
+
+#: ../../thermo/temperature.rst:107
+msgid ""
+"T(t) \\equiv \\frac{2}{3k} \\frac{T_{\\rm kin}(t)}{N}\n"
+"\n"
+msgstr ""
+"T(t) \\equiv \\frac{2}{3k} \\frac{T_{\\rm kin}(t)}{N}\n"
+"\n"
+
+#: ../../thermo/temperature.rst:111
+msgid ""
+"という量を定義すると、これは各時刻 :math:`t` における「瞬間の温度」とでも呼ぶべき量となっており、\\ "
+"MDシミュレーションなどでは、これを使って系の温度を一定に保つといった制御を行っている。"
+msgstr ""
+"This quantity can be called the instantaneous temperature at time "
+":math:`t`.\\  It is used in molecular dynamics (MD) simulations, for "
+"example, to keep the system at a constant temperature."
+
+#: ../../thermo/temperature.rst:119
+msgid "Fe原子432個からなる系で温度一定（300K）のMDを行った場合"
+msgstr "Constant-temperature MD simulation at 300 K for a system of 432 Fe atoms."
+
+#: ../../thermo/temperature.rst:123
+msgid "温度の揺らぎ"
+msgstr "Temperature Fluctuations"
+
+#: ../../thermo/temperature.rst:125
+msgid ""
+":eq:`temp6` 式の導出から明らかなように、どれか一個の粒子の運動エネルギーを追うだけでも\\ "
+"温度がわかることになる。原理的にはその通りなのだが、実際は、粒子数が少ないと揺らぎが大きくなりすぎて\\ "
+"実用的な温度の指標としては使いにくいものになる。\\ :numref:`tempfig2`\\ に少数原子系の例を示す。"
+msgstr ""
+"As the derivation of Equation :eq:`temp6` shows, even tracking the "
+"kinetic energy of just one particle can in principle give the "
+"temperature.\\  In practice, with few particles the fluctuations become "
+"so large\\  that this is difficult to use as a temperature indicator. \\ "
+":numref:`tempfig2`\\  shows an example with only a few atoms."
+
+#: ../../thermo/temperature.rst:134
+msgid "Fe原子16個からなる系で温度一定（300K）のMDを行った場合"
+msgstr "Constant-temperature MD simulation at 300 K for a system of 16 Fe atoms."
+
+#: ../../thermo/temperature.rst:136
+#, python-brace-format
+msgid ""
+"粒子数が多い場合、揺らぎが小さくなって、統計的な量であってもほとんど確定値が得られる。\\ :eq:`temp5` "
+"の導出と同じく、運動エネルギーは :math:`3N` 個の独立な2乗の項の和であり、\\ 1項あたりの分散は :math:`(kT)^2/2` "
+"なので、:math:`T_{\\rm kin}` の分散は :math:`3N(kT)^2/2` となる。\\ 分散の平方根を平均値 "
+":eq:`temp6` で割ると、瞬間の温度 :eq:`temp7` の相対的な揺らぎ（標準偏差/平均値）は"
+msgstr ""
+"With many particles, fluctuations are small, so even a statistical "
+"quantity has an almost definite value. As in the derivation of Equation "
+"\\ :eq:`temp5`, the kinetic energy is a sum of :math:`3N` independent "
+"squared terms.\\  Each term has variance :math:`(kT)^2/2`, so the "
+"variance of :math:`T_{\\rm kin}` is :math:`3N(kT)^2/2`.\\  Dividing the "
+"square root of the variance by the mean in Equation :eq:`temp6` gives the"
+" relative fluctuation (standard deviation divided by mean) in the "
+"instantaneous temperature of Equation :eq:`temp7`,"
+
+#: ../../thermo/temperature.rst:141
+msgid ""
+"\\frac{\\sqrt{\\left< T_{\\rm kin}^2 \\right> - \\left< T_{\\rm kin} "
+"\\right>^2}}{\\left< T_{\\rm kin} \\right>}\n"
+"=\n"
+"\\sqrt{\\frac{2}{3N}}\n"
+"\n"
+msgstr ""
+"\\frac{\\sqrt{\\left< T_{\\rm kin}^2 \\right> - \\left< T_{\\rm kin} "
+"\\right>^2}}{\\left< T_{\\rm kin} \\right>}\n"
+"=\n"
+"\\sqrt{\\frac{2}{3N}}\n"
+"\n"
+
+#: ../../thermo/temperature.rst:147
+msgid ""
+"となり、粒子数の平方根に反比例して小さくなる。 重心運動の自由度を除いた場合の粒子数ごとの値は、\\ :ref:`分子動力学法の事例<md-"
+"temperature-example>`\\ にある。"
+msgstr ""
+"which decreases in inverse proportion to the square root of the number of"
+" particles. Values for different particle counts with the center-of-mass "
+"degrees of freedom removed are given in the \\ :ref:`molecular dynamics "
+"calculation example <md-temperature-example>`\\ ."
+
+#: ../../thermo/temperature.rst:153
+msgid "エネルギー等分配の法則"
+msgstr "Equipartition Theorem"
+
+#: ../../thermo/temperature.rst:155
+msgid ""
+":eq:`temp6` 式の導出の仕方から明らかなように、ハミルトニアンの中に自由度の2乗で表される項があると、\\ その項の平均値は "
+":math:`kT/2` となる。極端な場合は調和振動子系で、\\ このときはポテンシャルエネルギーも座標の2乗になるので、"
+msgstr ""
+"The derivation of Equation :eq:`temp6` shows that when the Hamiltonian "
+"contains a term proportional to the square of a degree of freedom,\\  the"
+" mean value of that term is :math:`kT/2`. An extreme case is a system of "
+"harmonic oscillators.\\  Its potential energy is also quadratic in the "
+"coordinates, so"
+
+#: ../../thermo/temperature.rst:159
+#, python-brace-format
+msgid ""
+"\\left< T_{\\rm kin} + V_{\\rm Harm}\\right> = \\left< H \\right> = 3NkT\n"
+"\n"
+msgstr ""
+"\\left< T_{\\rm kin} + V_{\\rm Harm}\\right> = \\left< H \\right> = 3NkT\n"
+"\n"
+
+#: ../../thermo/temperature.rst:163
+msgid ""
+"となり、個々の調和振動子のエネルギーの平均値が、いずれも :math:`kT` になるという、\\ いわゆるエネルギー等分配の法則が得られる。\\"
+" 格子振動を調和振動子の集まりと考えて計算した比熱（上式の :math:`T` 微分）が定数\\ になることは Dulong-Petit "
+"の法則として知られており、\\ 低温で古典論が破綻する例として教科書にもよく取り上げられている。"
+msgstr ""
+"The mean energy of every harmonic oscillator is thus :math:`kT`;\\  this "
+"is the result known as the equipartition theorem.\\  Treating lattice "
+"vibrations as a collection of harmonic oscillators gives a heat capacity "
+"(the derivative of the expression above with respect to :math:`T`)\\  "
+"that is constant. This result is known as the Dulong–Petit law.\\  "
+"Textbooks often discuss it as an example of where the classical theory "
+"breaks down at low temperatures."
+
+#: ../../thermo/temperature.rst:171
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../thermo/temperature.rst:173
+msgid ":ref:`分子動力学法の温度制御<thermostat-barostat>`"
+msgstr ":ref:`Temperature Control in Molecular Dynamics <thermostat-barostat>`"
+

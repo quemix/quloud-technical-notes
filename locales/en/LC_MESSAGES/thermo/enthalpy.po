@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../thermo/enthalpy.rst:5
+msgid "エンタルピー"
+msgstr "Enthalpy"
+
+#: ../../thermo/enthalpy.rst:9
+msgid "定義"
+msgstr "Definition"
+
+#: ../../thermo/enthalpy.rst:11
+msgid ""
+"H = U + pV\n"
+"\n"
+msgstr ""
+"H = U + pV\n"
+"\n"
+
+#: ../../thermo/enthalpy.rst:17
+msgid "標準エンタルピー変化"
+msgstr "Standard Enthalpy Change"
+
+#: ../../thermo/enthalpy.rst:19
+msgid "始めと終わりの物質が、それぞれの\\ :ref:`標準状態<standard_state>`\\ にあるような過程におけるエンタルピーの変化。"
+msgstr ""
+"The change in enthalpy for a process in which the initial and final "
+"substances are in their respective \\ :ref:`standard states "
+"<standard_state>`\\ ."
+
+#: ../../thermo/enthalpy.rst:24
+msgid "標準反応エンタルピー"
+msgstr "Standard Reaction Enthalpy"
+
+#: ../../thermo/enthalpy.rst:29
+msgid "標準生成エンタルピー"
+msgstr "Standard Enthalpy of Formation"
+
+#: ../../thermo/enthalpy.rst:31
+msgid "化合物が\\ :ref:`基準状態<reference_state>`\\ にある構成元素から生成するときの標準反応エンタルピー。"
+msgstr ""
+"The standard reaction enthalpy for forming a compound from its "
+"constituent elements in their \\ :ref:`reference states "
+"<reference_state>`\\ ."
+
