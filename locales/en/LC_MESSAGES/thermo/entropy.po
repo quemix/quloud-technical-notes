@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"POT-Creation-Date: 2026-11-26 15:41+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -27,7 +27,61 @@ msgstr "Entropy"
 msgid "標準エントロピー"
 msgstr "Standard Entropy"
 
-#: ../../thermo/entropy.rst:15
+#: ../../thermo/entropy.rst:12
+msgid ""
+"\\ :ref:`標準状態<standard_state>`\\ にある物質1 molのエントロピー :math:`S_{\\rm m}^o`。 "
+"エンタルピーと違ってエントロピーは絶対値が決まり、熱力学第三法則により0 Kの完全結晶のエントロピーを0とおく。 定圧の1 molあたりの熱容量 "
+":math:`C_{p,{\\rm m}}^o` を0 Kから積分し、途中の相転移では転移エンタルピー :math:`\\Delta_{\\rm "
+"trs}H` を転移温度 :math:`T_{\\rm trs}` で割った量を加えて、"
+msgstr ""
+"The entropy :math:`S_{\\rm m}^o` of 1 mol of a substance in its \\ "
+":ref:`standard state <standard_state>`\\ . Unlike enthalpy, entropy has a"
+" definite absolute value: the third law of thermodynamics sets the "
+"entropy of a perfect crystal at 0 K to zero. The standard entropy is "
+"obtained by integrating the molar heat capacity at constant pressure, "
+":math:`C_{p,{\\rm m}}^o`, from 0 K and, at each phase transition along "
+"the way, adding the transition enthalpy :math:`\\Delta_{\\rm trs}H` "
+"divided by the transition temperature :math:`T_{\\rm trs}`, which gives"
+
+#: ../../thermo/entropy.rst:17
+msgid ""
+"S_{\\rm m}^o(T)=\\int_0^T\\frac{C_{p,{\\rm "
+"m}}^o(T')}{T'}\\,dT'+\\sum_{\\rm trs}\\frac{\\Delta_{\\rm trs}H}{T_{\\rm "
+"trs}}"
+msgstr ""
+"S_{\\rm m}^o(T)=\\int_0^T\\frac{C_{p,{\\rm "
+"m}}^o(T')}{T'}\\,dT'+\\sum_{\\rm trs}\\frac{\\Delta_{\\rm trs}H}{T_{\\rm "
+"trs}}"
+
+#: ../../thermo/entropy.rst:22
+msgid "と求める。このため熱力学の表には、標準生成エンタルピーと並んで、標準生成エントロピーではなく標準エントロピーが載る。"
+msgstr ""
+"This is why thermodynamic tables list the standard entropy, rather than a"
+" standard entropy of formation, alongside the standard enthalpy of "
+"formation."
+
+#: ../../thermo/entropy.rst:27
 msgid "標準反応エントロピー"
 msgstr "Standard Reaction Entropy"
+
+#: ../../thermo/entropy.rst:29
+msgid ""
+"反応物と生成物がすべて標準状態にあるとき、反応が反応式どおりに1 mol進む間のエントロピー変化。 :eq:`thermo-standard-"
+"reaction-enthalpy`\\ と同じ化学量論係数 :math:`\\nu_i` を使って、"
+msgstr ""
+"The entropy change when the reaction proceeds by 1 mol as written, with "
+"all reactants and products in their standard states. With the same "
+"stoichiometric coefficients :math:`\\nu_i` as in Equation :eq:`thermo-"
+"standard-reaction-enthalpy`\\ , it is"
+
+#: ../../thermo/entropy.rst:32
+msgid "\\Delta_r S^o=\\sum_i\\nu_i S_{{\\rm m},i}^o"
+msgstr "\\Delta_r S^o=\\sum_i\\nu_i S_{{\\rm m},i}^o"
+
+#: ../../thermo/entropy.rst:37
+msgid "と、各成分の標準エントロピーから直接求まる。標準エントロピーは絶対値なので、元素の項も0にならない。"
+msgstr ""
+"which is obtained directly from the standard entropy of each component. "
+"Because standard entropies are absolute values, the terms for elements do"
+" not vanish either."
 

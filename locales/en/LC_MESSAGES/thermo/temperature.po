@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"POT-Creation-Date: 2026-11-26 15:41+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -335,16 +335,28 @@ msgstr "Equipartition Theorem"
 
 #: ../../thermo/temperature.rst:155
 msgid ""
-":eq:`temp6` 式の導出の仕方から明らかなように、ハミルトニアンの中に自由度の2乗で表される項があると、\\ その項の平均値は "
-":math:`kT/2` となる。極端な場合は調和振動子系で、\\ このときはポテンシャルエネルギーも座標の2乗になるので、"
+":eq:`temp6` 式の導出の仕方から明らかなように、ハミルトニアンの中に、ある自由度（座標や運動量の1成分）\\ :math:`x` "
+"の2乗に比例する項 :math:`ax^2` があり、:math:`x` がほかの項に現れなければ、\\ :math:`x` "
+"についての積分は運動エネルギーのときと同じガウス積分になり、その項の平均値は :math:`kT/2` となる。\\ "
+"すべての項が2乗になる例が調和振動子系である。各粒子が平衡位置のまわりで調和振動すると、\\ "
+"ポテンシャルエネルギーも変位の2乗の和になる（粒子どうしが結合していても、基準座標に変換すれば\\ "
+"独立な2乗の項の和になる）。運動エネルギーとポテンシャルエネルギーの :math:`3N` 個ずつの項がそれぞれ :math:`kT/2` "
+"を持つので、"
 msgstr ""
-"The derivation of Equation :eq:`temp6` shows that when the Hamiltonian "
-"contains a term proportional to the square of a degree of freedom,\\  the"
-" mean value of that term is :math:`kT/2`. An extreme case is a system of "
-"harmonic oscillators.\\  Its potential energy is also quadratic in the "
-"coordinates, so"
+"As the derivation of Equation :eq:`temp6` shows, if the Hamiltonian "
+"contains a term :math:`ax^2` proportional to the square of a degree of "
+"freedom (one component of a coordinate or momentum)\\  :math:`x`, and "
+":math:`x` appears in no other term, then the integral over\\  :math:`x` "
+"is the same Gaussian integral as for the kinetic energy, and the mean "
+"value of that term is :math:`kT/2`.\\  A system of harmonic oscillators "
+"is an example in which every term is quadratic. When each particle "
+"vibrates harmonically about its equilibrium position,\\  the potential "
+"energy is also a sum of squared displacements (even if the particles are "
+"coupled, transforming to normal coordinates\\  makes it a sum of "
+"independent squared terms). Each of the :math:`3N` kinetic terms and the "
+"same number of potential terms contributes :math:`kT/2`, so"
 
-#: ../../thermo/temperature.rst:159
+#: ../../thermo/temperature.rst:162
 #, python-brace-format
 msgid ""
 "\\left< T_{\\rm kin} + V_{\\rm Harm}\\right> = \\left< H \\right> = 3NkT\n"
@@ -353,7 +365,7 @@ msgstr ""
 "\\left< T_{\\rm kin} + V_{\\rm Harm}\\right> = \\left< H \\right> = 3NkT\n"
 "\n"
 
-#: ../../thermo/temperature.rst:163
+#: ../../thermo/temperature.rst:166
 msgid ""
 "となり、個々の調和振動子のエネルギーの平均値が、いずれも :math:`kT` になるという、\\ いわゆるエネルギー等分配の法則が得られる。\\"
 " 格子振動を調和振動子の集まりと考えて計算した比熱（上式の :math:`T` 微分）が定数\\ になることは Dulong-Petit "
@@ -367,11 +379,11 @@ msgstr ""
 "Textbooks often discuss it as an example of where the classical theory "
 "breaks down at low temperatures."
 
-#: ../../thermo/temperature.rst:171
+#: ../../thermo/temperature.rst:174
 msgid "関連資料"
 msgstr "Related Materials"
 
-#: ../../thermo/temperature.rst:173
+#: ../../thermo/temperature.rst:176
 msgid ":ref:`分子動力学法の温度制御<thermostat-barostat>`"
 msgstr ":ref:`Temperature Control in Molecular Dynamics <thermostat-barostat>`"
 

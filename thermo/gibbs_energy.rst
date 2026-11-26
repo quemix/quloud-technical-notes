@@ -17,6 +17,19 @@
 標準生成ギブスエネルギー
 ------------------------------------
 
+化合物1 molが、\ :ref:`基準状態<reference_state>`\ にある構成元素から生成する反応の標準反応ギブスエネルギーを、
+標準生成ギブスエネルギー :math:`\Delta_f G^o` と呼ぶ。標準生成エンタルピーと同じく基準状態の元素では0で、
+任意の反応の標準反応ギブスエネルギーは
+
+.. math::
+   :label: thermo-reaction-gibbs-formation
+
+   \Delta_r G^o=\sum_i\nu_i\Delta_f G_i^o
+
+で求まる。生成反応に前の節の式を当てはめると :math:`\Delta_f G^o=\Delta_f H^o-T\Delta_f S^o` で、
+:math:`\Delta_f S^o` は生成反応の標準反応エントロピーである。元素の標準エントロピーは0でないので、
+:math:`\Delta_f S^o` には元素の項が残る。
+
 
 .. _chemical-potential:
 
@@ -67,7 +80,7 @@
 反応が有限量進むと組成が変わり、各 :math:`\mu_i` も変わるので、:math:`G` の有限の変化は
 :eq:`thermo-reaction-gibbs`\ を :math:`\xi` について積分したものになる。
 各成分が\ :ref:`標準状態<standard_state>`\ にあるときの\ :eq:`thermo-reaction-gibbs`\ の値が、
-前の節の標準反応ギブスエネルギー :math:`\Delta_r G^o=\sum_i\nu_i\mu_i^o` である。
+この記事の最初の節の標準反応ギブスエネルギー :math:`\Delta_r G^o=\sum_i\nu_i\mu_i^o` である。
 
 **相平衡の条件。** 同じ温度・圧力の2つの相 :math:`\alpha`、:math:`\beta` の間で、成分 :math:`i` を
 :math:`dn` だけ :math:`\alpha` から :math:`\beta` へ移すと、:eq:`thermo-gibbs-differential`\ から
@@ -113,8 +126,8 @@
 
 **固体の化学ポテンシャルと全エネルギー。** 単体の固体では、:eq:`thermo-gibbs-euler`\ から
 :math:`\mu=G/N=(E+pV-TS)/N`\ （:math:`N` は原子数、:math:`E` は内部エネルギー）である。
-1 barでの :math:`pV` は1原子あたりの体積を20 Å\ :sup:`3`\ としても約 :math:`1\times10^{-5}` eVで、
-無視できる。絶対零度で零点振動も無視すると、:math:`\mu` は1原子あたりの全エネルギーで近似できる。
+1 barでの1原子あたりの :math:`pV/N` は、1原子あたりの体積 :math:`V/N` を20 Å\ :sup:`3`\ としても
+約 :math:`1\times10^{-5}` eVで、無視できる。絶対零度で零点振動も無視すると、:math:`\mu` は1原子あたりの全エネルギーで近似できる。
 第一原理計算で原子の出入りを含むエネルギーを比べるとき、単体の固体や孤立分子の全エネルギーを
 化学ポテンシャルの基準に使うのはこのためである。気相では、全エネルギーに
 温度と分圧に依存する部分を加える（`GaN表面の相図 <https://example.quloud-platform.quemix.com/gan_surface/phase_diagram.html>`__\ の気相の化学ポテンシャル）。

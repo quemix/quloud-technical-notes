@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"POT-Creation-Date: 2026-11-26 15:41+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -50,14 +50,72 @@ msgstr ""
 msgid "標準反応エンタルピー"
 msgstr "Standard Reaction Enthalpy"
 
-#: ../../thermo/enthalpy.rst:29
+#: ../../thermo/enthalpy.rst:26
+msgid ""
+"反応物と生成物がすべて標準状態にあるとき、反応が反応式どおりに1 mol進む間のエンタルピー変化。 反応式を "
+":math:`\\sum_i\\nu_i\\mathrm A_i=0`\\ （:math:`\\nu_i` "
+"は生成物で正、反応物で負の化学量論係数）と書き、 成分 :math:`i` の標準状態での1 molあたりのエンタルピーを "
+":math:`H_{{\\rm m},i}^o` とすると、"
+msgstr ""
+"The enthalpy change when the reaction proceeds by 1 mol as written, with "
+"all reactants and products in their standard states. Writing the reaction"
+" as :math:`\\sum_i\\nu_i\\mathrm A_i=0`\\  (where :math:`\\nu_i` is the "
+"stoichiometric coefficient, positive for products and negative for "
+"reactants) and denoting the molar enthalpy of component :math:`i` in its "
+"standard state by :math:`H_{{\\rm m},i}^o`, we have"
+
+#: ../../thermo/enthalpy.rst:30
+msgid "\\Delta_r H^o=\\sum_i\\nu_i H_{{\\rm m},i}^o"
+msgstr "\\Delta_r H^o=\\sum_i\\nu_i H_{{\\rm m},i}^o"
+
+#: ../../thermo/enthalpy.rst:35
+msgid ""
+"である。単位は kJ/mol で、「mol」は反応式1回分を指す。エンタルピーの絶対値は決まらないので、 "
+"実際には次の標準生成エンタルピーから求める。"
+msgstr ""
+"The unit is kJ/mol, where “per mol” means per mole of reaction as "
+"written. Because absolute values of enthalpy cannot be determined, the "
+"standard reaction enthalpy is obtained in practice from the standard "
+"enthalpy of formation of each component, described next."
+
+#: ../../thermo/enthalpy.rst:41
 msgid "標準生成エンタルピー"
 msgstr "Standard Enthalpy of Formation"
 
-#: ../../thermo/enthalpy.rst:31
-msgid "化合物が\\ :ref:`基準状態<reference_state>`\\ にある構成元素から生成するときの標準反応エンタルピー。"
+#: ../../thermo/enthalpy.rst:43
+msgid ""
+"化合物1 molが、\\ :ref:`基準状態<reference_state>`\\ にある構成元素から生成するときの標準反応エンタルピー "
+":math:`\\Delta_f H^o`。生成反応は化合物の化学量論係数を1として書く。例えば液体の水では :math:`\\mathrm "
+"H_2(\\mathrm g)+\\tfrac12\\mathrm O_2(\\mathrm g)\\to\\mathrm H_2\\mathrm"
+" O(\\mathrm l)` の 標準反応エンタルピーで、298.15 Kで :math:`-285.83` "
+"kJ/molである。定義から、基準状態の元素の :math:`\\Delta_f H^o` は0である。"
 msgstr ""
-"The standard reaction enthalpy for forming a compound from its "
-"constituent elements in their \\ :ref:`reference states "
-"<reference_state>`\\ ."
+"The standard reaction enthalpy :math:`\\Delta_f H^o` for forming 1 mol of"
+" a compound from its constituent elements in their \\ :ref:`reference "
+"states <reference_state>`\\ . The formation reaction is written with a "
+"stoichiometric coefficient of 1 for the compound. For liquid water, for "
+"example, it is the standard reaction enthalpy of :math:`\\mathrm "
+"H_2(\\mathrm g)+\\tfrac12\\mathrm O_2(\\mathrm g)\\to\\mathrm H_2\\mathrm"
+" O(\\mathrm l)`, which is :math:`-285.83` kJ/mol at 298.15 K. By "
+"definition, :math:`\\Delta_f H^o` is zero for an element in its reference"
+" state."
+
+#: ../../thermo/enthalpy.rst:48
+msgid ""
+"エンタルピーは状態量なので、反応の始めと終わりの間を、基準状態の元素を経由する経路で置き換えてもエンタルピー変化は変わらない（Hessの法則）。 "
+"このため任意の反応の標準反応エンタルピーは"
+msgstr ""
+"Because enthalpy is a state function, replacing the path between the "
+"initial and final states of a reaction with one that passes through the "
+"elements in their reference states does not change the enthalpy change "
+"(Hess's law). The standard reaction enthalpy of any reaction is therefore"
+" given by"
+
+#: ../../thermo/enthalpy.rst:51
+msgid "\\Delta_r H^o=\\sum_i\\nu_i\\Delta_f H_i^o"
+msgstr "\\Delta_r H^o=\\sum_i\\nu_i\\Delta_f H_i^o"
+
+#: ../../thermo/enthalpy.rst:56
+msgid "と、各成分の標準生成エンタルピーから求まる。"
+msgstr "in terms of the standard enthalpy of formation of each component."
 
