@@ -1,0 +1,686 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/structure_optimization.rst:4
+msgid "構造最適化"
+msgstr "Structure Optimization"
+
+#: ../../electronic/structure_optimization.rst:6
+msgid ""
+"構造最適化は、原子の位置やセルを動かし、指定した条件のもとで エネルギーが低くなる構造を求める計算である。原子に働く力は位置を動かす "
+"手がかりになり、セルに生じる応力は格子の形や体積を変える手がかりになる。 どの自由度を動かすかによって、得られる構造の意味が変わる。"
+msgstr ""
+"Structure optimization finds a lower-energy structure under specified "
+"conditions by moving atoms, changing the cell, or both. The forces on the"
+" atoms tell us how to move them, and the stress in the cell tells us how "
+"to change the shape or volume of the lattice. The meaning of the "
+"resulting structure depends on which degrees of freedom are allowed to "
+"change."
+
+#: ../../electronic/structure_optimization.rst:11
+msgid ""
+"前提は\\ :ref:`格子ベクトルの独立な成分<lattice-dof>`\\ と :ref:`構造ごとの電子状態計算<kohn-sham-"
+"dft>`\\ である。 単点計算、固定セル緩和、可変セル最適化を使い分け、結果の収束を判断する。"
+msgstr ""
+"This article assumes familiarity with the \\ :ref:`independent components"
+" of lattice vectors <lattice-dof>`\\  and with :ref:`electronic structure"
+" calculations for a given structure <kohn-sham-dft>`\\ . It explains when"
+" to use single-point calculations, fixed-cell relaxation, or variable-"
+"cell optimization, and how to judge convergence."
+
+#: ../../electronic/structure_optimization.rst:16
+msgid "単点計算と固定セル緩和"
+msgstr "Single-Point Calculations and Fixed-Cell Relaxation"
+
+#: ../../electronic/structure_optimization.rst:18
+msgid ""
+"**単点計算** では、セルも原子座標も固定し、その構造でエネルギーや力などを 求める。特定の原子を少しずつずらしてエネルギー曲線を作る場合、 "
+"各点の変位を保つために単点計算を使う。変位させるたびに同じ極小へ緩和すると、 指定した変位におけるエネルギーが得られなくなる。"
+msgstr ""
+"A **single-point calculation** keeps the cell and atomic coordinates "
+"fixed and evaluates quantities such as the energy and forces at that "
+"structure. To construct an energy curve by moving selected atoms in small"
+" increments, use a single-point calculation to preserve the displacement "
+"at each point. If each displaced structure relaxes to the same minimum, "
+"the energies at the specified displacements are lost."
+
+#: ../../electronic/structure_optimization.rst:23
+msgid ""
+"**固定セル緩和** では、セルの大きさと形を固定し、原子位置を動かす。 原子配置のエネルギーを :math:`E`、原子 :math:`i` "
+"の位置を :math:`\\boldsymbol r_i`、セルを表す格子行列を :math:`A` とする。 力 "
+":math:`\\boldsymbol F_i` と位置の微小変化 :math:`\\delta\\boldsymbol r_i` "
+"に対するエネルギー変化は"
+msgstr ""
+"In **fixed-cell relaxation**, the size and shape of the cell stay fixed "
+"while the atomic positions can change. Let :math:`E` be the energy of the"
+" atomic configuration, :math:`i` the atom index, :math:`\\boldsymbol r_i`"
+" its position, and :math:`A` the lattice matrix specifying the cell. The "
+"force :math:`\\boldsymbol F_i` and the energy change for a small "
+"displacement :math:`\\delta\\boldsymbol r_i` are given by"
+
+#: ../../electronic/structure_optimization.rst:29
+#, python-brace-format
+msgid ""
+"\\boldsymbol F_i=-\\left.\\frac{\\partial E}{\\partial\\boldsymbol "
+"r_i}\\right|_A,\n"
+"\\qquad\n"
+"\\delta E=-\\sum_i\\boldsymbol F_i\\cdot\\delta\\boldsymbol r_i"
+msgstr ""
+"\\boldsymbol F_i=-\\left.\\frac{\\partial E}{\\partial\\boldsymbol "
+"r_i}\\right|_A,\n"
+"\\qquad\n"
+"\\delta E=-\\sum_i\\boldsymbol F_i\\cdot\\delta\\boldsymbol r_i"
+
+#: ../../electronic/structure_optimization.rst:36
+msgid ""
+"となる。力の方向へ十分小さく動かすと、一次のエネルギー変化は負になる。 指定した方向だけを動かすときは、その方向への力の成分を用いる。 "
+"緩和後に応力が残っていれば、固定したセルを変えたときにエネルギーが まだ変わることを示す。"
+msgstr ""
+"A sufficiently small displacement along the force gives a negative first-"
+"order energy change. If motion is allowed only in a specified direction, "
+"use the component of the force along that direction. Residual stress "
+"after relaxation shows that the energy still changes if the fixed cell is"
+" allowed to change."
+
+#: ../../electronic/structure_optimization.rst:41
+msgid ""
+"スメアリングを使う電子状態計算では、 :ref:`力と応力に対応する自由エネルギー<smearing-and-free-energy>`\\ を "
+"最小化する。以降の :math:`E` は、最適化に用いるエネルギーを表す。"
+msgstr ""
+"Electronic structure calculations with smearing minimize the :ref:`free "
+"energy associated with the forces and stress <smearing-and-free-"
+"energy>`\\ . Hereafter :math:`E` denotes the energy used in the "
+"optimization."
+
+#: ../../electronic/structure_optimization.rst:48
+msgid "可変セル最適化と外圧"
+msgstr "Variable-Cell Optimization and External Pressure"
+
+#: ../../electronic/structure_optimization.rst:50
+#, python-brace-format
+msgid ""
+"**可変セル最適化** では、セルの形や大きさを変える。内部座標も自由に した場合は、セルの変形に伴って原子位置も緩和する。体積を "
+":math:`V`、 セルの微小な対称ひずみを :math:`\\delta\\varepsilon_{ab}` とする。 "
+"原子の分率座標を固定したセル変形でのエネルギー変化を、引張を正とした 応力 :math:`\\sigma_{ab}` を用いて書くと "
+"[OptNielsenMartin1985]_、"
+msgstr ""
+"**Variable-cell optimization** varies the shape or size of the cell. If "
+"the internal coordinates are also free, the atomic positions relax as the"
+" cell deforms. Let :math:`V` be the volume and "
+":math:`\\delta\\varepsilon_{ab}` an infinitesimal symmetric strain of the"
+" cell. With the fractional coordinates of the atoms held fixed and "
+"tensile stress taken as positive, the stress :math:`\\sigma_{ab}` gives "
+"the energy change for a cell deformation as follows "
+"[OptNielsenMartin1985]_"
+
+#: ../../electronic/structure_optimization.rst:56
+#, python-brace-format
+msgid ""
+"\\delta E=V\\sum_{a,b}\\sigma_{ab}\\,\\delta\\varepsilon_{ab},\n"
+"\\qquad\n"
+"\\delta V=V\\sum_a\\delta\\varepsilon_{aa}"
+msgstr ""
+"\\delta E=V\\sum_{a,b}\\sigma_{ab}\\,\\delta\\varepsilon_{ab},\n"
+"\\qquad\n"
+"\\delta V=V\\sum_a\\delta\\varepsilon_{aa}"
+
+#: ../../electronic/structure_optimization.rst:63
+msgid ""
+"となる。ここで :math:`a,b` は直交座標の成分で、対称なテンソルの 両方の添字について和を取る。体積の式は、ひずみの一次では "
+"セルを変形する行列の行列式の変化が対角成分の和になることから得られる。"
+msgstr ""
+"Here :math:`a,b` index Cartesian components, and the sum runs over both "
+"indices of the symmetric tensors. The volume expression follows because, "
+"to first order in strain, the change in the determinant of the matrix "
+"that deforms the cell equals the sum of the diagonal strain components."
+
+#: ../../electronic/structure_optimization.rst:67
+#, python-brace-format
+msgid ""
+"一定の静水圧 :math:`P_{\\rm ext}` のもとでは、:math:`H=E+P_{\\rm ext}V` を最小化する。:eq"
+":`structure-stress-variation`\\ の二式を代入すると、 セル変形に対する :math:`H` の変化は"
+msgstr ""
+"At constant hydrostatic pressure :math:`P_{\\rm ext}`, minimize "
+":math:`H=E+P_{\\rm ext}V`. Substituting the two expressions from Equation"
+" :eq:`structure-stress-variation`\\  gives the change in :math:`H` under "
+"cell deformation,"
+
+#: ../../electronic/structure_optimization.rst:71
+#, python-brace-format
+msgid ""
+"\\delta H\n"
+"  = V\\sum_{a,b}(\\sigma_{ab}+P_{\\rm ext}\\delta_{ab})\\,\n"
+"     \\delta\\varepsilon_{ab}"
+msgstr ""
+"\\delta H\n"
+"  = V\\sum_{a,b}(\\sigma_{ab}+P_{\\rm ext}\\delta_{ab})\\,\n"
+"     \\delta\\varepsilon_{ab}"
+
+#: ../../electronic/structure_optimization.rst:78
+#, python-brace-format
+msgid ""
+"となる。:math:`\\delta_{ab}` は :math:`a=b` で1、それ以外で0である。 "
+"セルのひずみがすべて自由なら、収束時の内部応力は外圧とつり合い、 :math:`\\sigma_{ab}=-P_{\\rm "
+"ext}\\delta_{ab}` になる。 許すセル変形を限定すると、その変形方向の成分だけが収束の判定に入る。 圧縮を正とした内部圧力は "
+":math:`P=-\\operatorname{tr}(\\sigma)/3` である。 "
+"プログラムが圧縮を正とする符号で応力成分を出す場合、ここで使う 引張を正とした成分とは符号が逆になる。外圧との差を調べる前に、 "
+"出力の対角成分と圧力の符号をこの関係でそろえる。"
+msgstr ""
+"Here :math:`\\delta_{ab}` is 1 if :math:`a=b` and 0 otherwise. If all "
+"cell strains are free, the internal stress balances the external pressure"
+" at convergence, giving :math:`\\sigma_{ab}=-P_{\\rm ext}\\delta_{ab}`. "
+"If cell deformation is restricted, only the components along the allowed "
+"deformation directions enter the convergence criterion. With compression "
+"taken as positive, the internal pressure is "
+":math:`P=-\\operatorname{tr}(\\sigma)/3`. If a program reports stress "
+"components with compression positive, their signs are opposite to the "
+"tension-positive components used here. Use this relationship to put the "
+"reported diagonal components and the pressure in a consistent sign "
+"convention before comparing with the external pressure."
+
+#: ../../electronic/structure_optimization.rst:90
+msgid "対称性を保つ格子と原子座標の拘束"
+msgstr "Symmetry-Preserving Constraints on the Lattice and Atomic Coordinates"
+
+#: ../../electronic/structure_optimization.rst:92
+msgid ""
+"各相を同じ条件で比較したいときは、想定する相の格子を保つように セルの自由度を選ぶ。次の表は、辺の長さ :math:`a,b,c` と格子角 "
+":math:`\\alpha,\\beta,\\gamma` を使った典型的な設定である。菱面体格子は 菱面体軸を選んだ場合を示す。"
+msgstr ""
+"To compare phases under the same conditions, choose cell degrees of "
+"freedom that preserve the lattice shape of each phase under "
+"consideration. The table shows typical constraints in terms of the edge "
+"lengths :math:`a,b,c` and lattice angles :math:`\\alpha,\\beta,\\gamma`. "
+"The rhombohedral case uses rhombohedral axes."
+
+#: ../../electronic/structure_optimization.rst:101
+msgid "格子の形"
+msgstr "Lattice shape"
+
+#: ../../electronic/structure_optimization.rst:102
+msgid "保つ関係"
+msgstr "Constraints"
+
+#: ../../electronic/structure_optimization.rst:103
+msgid "独立な量"
+msgstr "Independent quantities"
+
+#: ../../electronic/structure_optimization.rst:104
+msgid "立方"
+msgstr "Cubic"
+
+#: ../../electronic/structure_optimization.rst:105
+msgid ":math:`a=b=c`、格子角はすべて90°"
+msgstr ":math:`a=b=c`, all lattice angles 90°"
+
+#: ../../electronic/structure_optimization.rst:106
+msgid "共通の辺長"
+msgstr "Common edge length"
+
+#: ../../electronic/structure_optimization.rst:107
+msgid "正方"
+msgstr "Tetragonal"
+
+#: ../../electronic/structure_optimization.rst:108
+msgid ":math:`a=b`、格子角はすべて90°"
+msgstr ":math:`a=b`, all lattice angles 90°"
+
+#: ../../electronic/structure_optimization.rst:109
+msgid ":math:`a,c`"
+msgstr ":math:`a,c`"
+
+#: ../../electronic/structure_optimization.rst:110
+msgid "直方（斜方）"
+msgstr "Orthorhombic"
+
+#: ../../electronic/structure_optimization.rst:111
+msgid "格子角はすべて90°"
+msgstr "All lattice angles 90°"
+
+#: ../../electronic/structure_optimization.rst:112
+msgid ":math:`a,b,c`"
+msgstr ":math:`a,b,c`"
+
+#: ../../electronic/structure_optimization.rst:113
+msgid "菱面体"
+msgstr "Rhombohedral"
+
+#: ../../electronic/structure_optimization.rst:114
+msgid ":math:`a=b=c`、:math:`\\alpha=\\beta=\\gamma`"
+msgstr ":math:`a=b=c`, :math:`\\alpha=\\beta=\\gamma`"
+
+#: ../../electronic/structure_optimization.rst:115
+msgid "共通の辺長と角度"
+msgstr "Common edge length and angle"
+
+#: ../../electronic/structure_optimization.rst:117
+msgid ""
+"格子の条件はセルの形を定める。結晶全体の対称性は原子配置にも依存するので、 相の対称性を保つには、等価な原子同士の関係が保たれるように内部座標の "
+"自由度も選ぶ。分率座標を固定してセルを変える場合、原子の絶対位置は セルとともに動く。こうした計算は、格子の変化と内部座標の緩和の影響を "
+"切り分けるときに使える。"
+msgstr ""
+"Lattice constraints determine the cell shape. Because the symmetry of the"
+" crystal as a whole also depends on the atomic configuration, choose the "
+"internal degrees of freedom so that the relations between equivalent "
+"atoms are preserved. When the cell changes at fixed fractional "
+"coordinates, the absolute atomic positions move with the cell. Such "
+"calculations can isolate the effect of changing the lattice from the "
+"effect of relaxing the internal coordinates."
+
+#: ../../electronic/structure_optimization.rst:123
+msgid ""
+"`BaTiO₃の格子定数 <https://example.quloud-platform.quemix.com/BaTiO3/lattice-"
+"constant.html>`__ と `安定基底状態 <https://example.quloud-"
+"platform.quemix.com/BaTiO3/stability.html>`__ "
+"では、相ごとの格子を求めた後、その格子を固定して原子座標を緩和している。 この順序で計算すると、指定した格子上での相対エネルギーを比較できる。 "
+"セルと原子座標の変化が強く結び付く場合は、両方の自由度を許したときに 結果がどう変わるかも調べられる。"
+msgstr ""
+"In the calculation examples `Lattice Constants of BaTiO₃ <https://example"
+".quloud-platform.quemix.com/BaTiO3/lattice-constant.html>`__ and `Stable "
+"Ground State of BaTiO₃ <https://example.quloud-"
+"platform.quemix.com/BaTiO3/stability.html>`__, the lattice of each phase "
+"is determined first and its atomic coordinates are then relaxed with that"
+" lattice held fixed. This sequence permits comparing relative energies at"
+" the specified lattices. When changes in the cell and atomic coordinates "
+"are strongly coupled, one can also examine how the results change when "
+"both sets of degrees of freedom are allowed to vary."
+
+#: ../../electronic/structure_optimization.rst:131
+msgid "最適化アルゴリズムと収束判定"
+msgstr "Optimization Algorithms and Convergence Criteria"
+
+#: ../../electronic/structure_optimization.rst:133
+msgid ""
+"最適化アルゴリズムは、エネルギーとその勾配をもとに次の構造を選ぶ。 BFGSなどの準Newton法では、位置を動かしたときの勾配の変化を使って、 "
+"エネルギーの曲率を表す行列やその逆行列の近似を更新する。 曲率が大きい方向と小さい方向で変位の大きさを変えられるため、 "
+"全方向に同じ尺度で進むより効率よく極小に近づける場合がある [OptFletcher1970]_。"
+msgstr ""
+"An optimization algorithm uses the energy and its gradient to select the "
+"next structure. Quasi-Newton methods such as BFGS use the change in the "
+"gradient after a displacement to update an approximation to the energy "
+"curvature matrix or the inverse of that matrix. Since step sizes can "
+"differ between directions of high and low curvature, these methods can "
+"reach a minimum more efficiently than using the same scale in all "
+"directions [OptFletcher1970]_."
+
+#: ../../electronic/structure_optimization.rst:139
+msgid ""
+"原子緩和は、動かせる方向の残留力が設定した許容値に入ったかで判断する。 可変セルでは、許された変形に対応する応力と外圧の差も見る。 "
+"エネルギーの変化が小さくても、更新幅が小さいだけなら力や応力は残る。 電子状態の収束誤差や\\ :ref:`基底の打ち切り<basis-set-"
+"cutoff>`\\ でも 力や応力は変わりうるため、比較に必要な精度まで数値条件を収束させる。"
+msgstr ""
+"Judge atomic relaxation by whether residual forces along the allowed "
+"directions fall within the specified tolerance. For variable-cell "
+"optimization, also check the mismatch between the stress corresponding to"
+" the allowed deformations and the external pressure. Even if the energy "
+"change is small, forces or stress remain if the change is small only "
+"because the step is small. Incomplete convergence of the electronic "
+"structure and \\ :ref:`basis-set truncation <basis-set-cutoff>`\\  can "
+"also change the forces and stress, so converge the numerical settings to "
+"the accuracy needed for the comparison."
+
+#: ../../electronic/structure_optimization.rst:145
+msgid ""
+"力が消えた構造は、指定した自由度についての停留点である。 拘束を解くと、元の計算では動かせなかった方向にエネルギーが下がることがある。 "
+"高対称構造では力が対称性で打ち消し合うこともあるため、\\ :ref:`動的安定性<imaginary-frequency>`\\ "
+"まで調べるには、 原子変位に対するエネルギー曲率をフォノンなどで調べる。"
+msgstr ""
+"A structure with vanishing forces is a stationary point with respect to "
+"the specified degrees of freedom. Lifting a constraint can reveal an "
+"energy decrease along a direction that was fixed in the original "
+"calculation. In high-symmetry structures, symmetry can cancel the forces,"
+" so to assess \\ :ref:`dynamical stability <imaginary-frequency>`\\  as "
+"well, examine the energy curvature with respect to atomic displacements, "
+"for example using phonons."
+
+#: ../../electronic/structure_optimization.rst:153
+msgid "説明用の事例：力が消えてもセルに応力が残る場合"
+msgstr "Worked Example: Residual Cell Stress at Zero Force"
+
+#: ../../electronic/structure_optimization.rst:155
+msgid ""
+"固定セルで原子に働く力が消えても、セルを動かす余地は残る。 変位を :math:`x`、基準体積を :math:`V_0`、相対的な体積変化を "
+":math:`\\eta=(V-V_0)/V_0` とする。体積を変えると 原子が落ち着く位置もずれる模型を考える。"
+msgstr ""
+"Even when the forces on the atoms vanish in a fixed cell, further cell "
+"relaxation is still possible. Let :math:`x` be the displacement, "
+":math:`V_0` the reference volume, and :math:`\\eta=(V-V_0)/V_0` the "
+"relative volume change. Consider a model in which changing the volume "
+"shifts the equilibrium position of the atom."
+
+#: ../../electronic/structure_optimization.rst:160
+#, python-brace-format
+msgid ""
+"E(x,\\eta)=\\frac{k}{2}(x-x_0-\\lambda\\eta)^2\n"
+"    +\\frac{BV_0}{2}(\\eta-\\eta_0)^2."
+msgstr ""
+"E(x,\\eta)=\\frac{k}{2}(x-x_0-\\lambda\\eta)^2\n"
+"    +\\frac{BV_0}{2}(\\eta-\\eta_0)^2."
+
+#: ../../electronic/structure_optimization.rst:166
+msgid ""
+":math:`k` は原子変位の曲率、:math:`B` は体積変化に対する剛性を表す パラメータである。:math:`x_0` "
+"は基準体積での平衡位置、 :math:`\\lambda` は体積の変化と原子位置を結びつける係数、 :math:`\\eta_0` "
+"はエネルギーが最小になる体積変化である。"
+msgstr ""
+"The parameters :math:`k` and :math:`B` represent the curvature with "
+"respect to atomic displacement and the stiffness against volume changes, "
+"respectively. The parameter :math:`x_0` is the equilibrium position at "
+"the reference volume, :math:`\\lambda` couples the volume change to the "
+"atomic position, and :math:`\\eta_0` is the volume change that minimizes "
+"the energy."
+
+#: ../../electronic/structure_optimization.rst:171
+msgid ""
+":math:`V=V_0` に固定すると\\ :eq:`structure-force-variation`\\ から "
+":math:`F=-k(x-x_0)` なので、緩和後は :math:`x=x_0` となる。 この点では\\ :eq:`structure-"
+"coupled-cell-model`\\ の第1項はゼロになる。 第2項を :math:`V` "
+"で微分すると、:math:`d\\eta/dV=1/V_0` なので :math:`dE/dV=B(\\eta-\\eta_0)` "
+"となる。等方変形では :eq:`structure-stress-variation`\\ の2式から、:math:`dE/dV` は "
+"引張を正とした各対角応力に等しい。固定セルの緩和後に残る対角応力は :math:`-B\\eta_0` である。"
+msgstr ""
+"At fixed :math:`V=V_0`, Equation \\ :eq:`structure-force-variation`\\  "
+"gives :math:`F=-k(x-x_0)`, so relaxation gives :math:`x=x_0`. The first "
+"term in Equation \\ :eq:`structure-coupled-cell-model`\\  vanishes there."
+" Differentiating the second term with respect to :math:`V` and using "
+":math:`d\\eta/dV=1/V_0` gives :math:`dE/dV=B(\\eta-\\eta_0)`. For an "
+"isotropic deformation, the two expressions in Equation :eq:`structure-"
+"stress-variation`\\  show that :math:`dE/dV` equals each diagonal stress "
+"component in the tension-positive convention. The diagonal stress "
+"remaining after fixed-cell relaxation is :math:`-B\\eta_0`."
+
+#: ../../electronic/structure_optimization.rst:180
+msgid "外圧ゼロで固定セルと可変セルを比べる例"
+msgstr "Example comparing fixed and variable cells at zero external pressure"
+
+#: ../../electronic/structure_optimization.rst:184
+msgid "条件"
+msgstr "Condition"
+
+#: ../../electronic/structure_optimization.rst:185
+msgid "原子位置 (Å)"
+msgstr "Atomic position (Å)"
+
+#: ../../electronic/structure_optimization.rst:186
+msgid "体積 (Å³)"
+msgstr "Volume (Å³)"
+
+#: ../../electronic/structure_optimization.rst:187
+msgid "エネルギー (eV)"
+msgstr "Energy (eV)"
+
+#: ../../electronic/structure_optimization.rst:188
+msgid "対角応力 (eV/Å³)"
+msgstr "Diagonal stress (eV/Å³)"
+
+#: ../../electronic/structure_optimization.rst:189
+msgid "固定セル"
+msgstr "Fixed cell"
+
+#: ../../electronic/structure_optimization.rst:190
+msgid "0.10"
+msgstr "0.10"
+
+#: ../../electronic/structure_optimization.rst:191
+msgid "100"
+msgstr "100"
+
+#: ../../electronic/structure_optimization.rst:192
+msgid "0.020"
+msgstr "0.020"
+
+#: ../../electronic/structure_optimization.rst:193
+msgid "−0.020"
+msgstr "−0.020"
+
+#: ../../electronic/structure_optimization.rst:194
+msgid "可変セル"
+msgstr "Variable cell"
+
+#: ../../electronic/structure_optimization.rst:195
+msgid "0.12"
+msgstr "0.12"
+
+#: ../../electronic/structure_optimization.rst:196
+msgid "102"
+msgstr "102"
+
+#: ../../electronic/structure_optimization.rst:197
+#: ../../electronic/structure_optimization.rst:198
+msgid "0"
+msgstr "0"
+
+#: ../../electronic/structure_optimization.rst:200
+#, python-brace-format
+msgid ""
+"表では :math:`V_0=100\\,\\text{Å}^3`、:math:`B=1\\,\\mathrm{eV}/\\text{Å}^3`、"
+" :math:`k=2\\,\\mathrm{eV}/\\text{Å}^2`、:math:`x_0=0.10\\,\\text{Å}`、 "
+":math:`\\lambda=1.0\\,\\text{Å}`、:math:`\\eta_0=0.02` とした。 外圧ゼロでは\\ :eq"
+":`structure-enthalpy-variation`\\ により応力ゼロが "
+"体積が自由な場合の条件となる。:math:`\\eta=\\eta_0` まで変形させれば、 原子の平衡位置も "
+":math:`x_0+\\lambda\\eta_0=0.12\\,\\text{Å}` に変わる。"
+msgstr ""
+"The table uses :math:`V_0=100\\,\\text{Å}^3`, "
+":math:`B=1\\,\\mathrm{eV}/\\text{Å}^3`, "
+":math:`k=2\\,\\mathrm{eV}/\\text{Å}^2`, :math:`x_0=0.10\\,\\text{Å}`, "
+":math:`\\lambda=1.0\\,\\text{Å}`, and :math:`\\eta_0=0.02`. At zero "
+"external pressure, Equation \\ :eq:`structure-enthalpy-variation`\\  "
+"gives zero stress as the condition when the volume is free. Allowing the "
+"cell to deform to :math:`\\eta=\\eta_0` also shifts the equilibrium "
+"atomic position to :math:`x_0+\\lambda\\eta_0=0.12\\,\\text{Å}`."
+
+#: ../../electronic/structure_optimization.rst:210
+msgid "説明用の事例：曲率の違いと最適化の進み方"
+msgstr "Worked Example: How Curvature Affects Optimization"
+
+#: ../../electronic/structure_optimization.rst:212
+msgid "曲率が方向によって大きく異なると、最急降下法は狭い谷をジグザグに横切る。 二つの無次元座標を :math:`p,q` とし、無次元のエネルギーを"
+msgstr ""
+"When the curvature differs greatly by direction, steepest descent zigzags"
+" across a narrow valley. Let the two dimensionless coordinates be "
+":math:`p,q` and the dimensionless energy be given by"
+
+#: ../../electronic/structure_optimization.rst:215
+#, python-brace-format
+msgid "e(p,q)=\\frac{p^2+100q^2}{2}"
+msgstr "e(p,q)=\\frac{p^2+100q^2}{2}"
+
+#: ../../electronic/structure_optimization.rst:220
+msgid ""
+"とする。初期点 :math:`(1,0.01)` では、勾配 :math:`\\boldsymbol g=(p,100q)` "
+"の2成分は同じ1である。最急降下法では :math:`-\\boldsymbol g` 方向に進み、その直線上の極小を選ぶ。 座標を "
+":math:`\\boldsymbol x=(p,q)` とする。方向 :math:`\\boldsymbol d` に進むときのステップは、 "
+":math:`e(\\boldsymbol x+\\alpha\\boldsymbol d)` を :math:`\\alpha` "
+"で微分してゼロとおくと得られる。"
+msgstr ""
+"At the starting point :math:`(1,0.01)`, both components of the gradient "
+":math:`\\boldsymbol g=(p,100q)` equal 1. Steepest descent moves in the "
+"direction :math:`-\\boldsymbol g` and selects the minimum on that line. "
+"Write the coordinates as :math:`\\boldsymbol x=(p,q)`. For a step in "
+"direction :math:`\\boldsymbol d`, differentiate :math:`e(\\boldsymbol "
+"x+\\alpha\\boldsymbol d)` with respect to :math:`\\alpha` and set the "
+"derivative to zero to obtain the step length,"
+
+#: ../../electronic/structure_optimization.rst:227
+msgid ""
+"\\alpha=-\\frac{\\boldsymbol g^{\\mathsf T}\\boldsymbol d}\n"
+"              {\\boldsymbol d^{\\mathsf T} A_{\\mathrm H}\\boldsymbol d},"
+"\n"
+"\\qquad A_{\\mathrm H}=\\operatorname{diag}(1,100)."
+msgstr ""
+"\\alpha=-\\frac{\\boldsymbol g^{\\mathsf T}\\boldsymbol d}\n"
+"              {\\boldsymbol d^{\\mathsf T} A_{\\mathrm H}\\boldsymbol d},"
+"\n"
+"\\qquad A_{\\mathrm H}=\\operatorname{diag}(1,100)."
+
+#: ../../electronic/structure_optimization.rst:234
+msgid ""
+"BFGSでも直線上の極小を求める。最初は逆Hessianの近似に単位行列を使うため、 "
+"最初の方向は最急降下法と一致する。BFGSは1ステップでの位置の変化と勾配の "
+"変化を使い、逆Hessianの近似を更新する。これにより2回目の探索の方向が 最急降下法と異なり、この二次形式では極小に届く。"
+msgstr ""
+"BFGS also finds the minimum along a line. Since it starts with the "
+"identity matrix as the approximation to the inverse Hessian, its first "
+"direction agrees with steepest descent. BFGS then uses the changes in "
+"position and gradient over one step to update the inverse Hessian "
+"approximation. The second search therefore takes a different direction "
+"from steepest descent and reaches the minimum for this quadratic form."
+
+#: ../../electronic/structure_optimization.rst:239
+msgid "初期エネルギーで割った値の比較"
+msgstr "Comparison of energies divided by the initial energy"
+
+#: ../../electronic/structure_optimization.rst:243
+msgid "更新回数"
+msgstr "Number of steps"
+
+#: ../../electronic/structure_optimization.rst:244
+msgid "最急降下法"
+msgstr "Steepest descent"
+
+#: ../../electronic/structure_optimization.rst:245
+msgid "BFGS"
+msgstr "BFGS"
+
+#: ../../electronic/structure_optimization.rst:246
+msgid "1"
+msgstr "1"
+
+#: ../../electronic/structure_optimization.rst:247
+#: ../../electronic/structure_optimization.rst:248
+msgid "0.96079"
+msgstr "0.96079"
+
+#: ../../electronic/structure_optimization.rst:249
+msgid "2"
+msgstr "2"
+
+#: ../../electronic/structure_optimization.rst:250
+msgid "0.92311"
+msgstr "0.92311"
+
+#: ../../electronic/structure_optimization.rst:251
+msgid "ほぼ0"
+msgstr "Nearly 0"
+
+#: ../../electronic/structure_optimization.rst:252
+msgid "10"
+msgstr "10"
+
+#: ../../electronic/structure_optimization.rst:253
+msgid "0.67031"
+msgstr "0.67031"
+
+#: ../../electronic/structure_optimization.rst:254
+msgid "収束済み"
+msgstr "Converged"
+
+#: ../../electronic/structure_optimization.rst:256
+msgid ""
+"初回は値が同じなので、違いは直線探索の精度から生じたものではない。 "
+"この比較ではBFGSが1回目に得た曲率の情報を使うことで、2回目の更新から差が出る。"
+msgstr ""
+"The values agree on the first step, so the difference does not come from "
+"the accuracy of the line search. BFGS uses curvature information from the"
+" first step, and the results diverge from the second step onward."
+
+#: ../../electronic/structure_optimization.rst:262
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../electronic/structure_optimization.rst:264
+msgid ""
+"**収束の対象。** 固定セルの力の収束は、そのセルで原子配置が停留点に 達したことを示す。可変セルで同じ判断をするには、許されたセル変形に "
+"対する残留応力も判定する。対称性で拘束した方向の安定性には別の評価が要る。"
+msgstr ""
+"**What converges.** Force convergence in a fixed cell shows that the "
+"atomic configuration has reached a stationary point for that cell. To "
+"make the corresponding judgment for a variable cell, also check the "
+"residual stress in the allowed deformation directions. Stability in "
+"directions constrained by symmetry requires a separate assessment."
+
+#: ../../electronic/structure_optimization.rst:267
+msgid ""
+"**反復回数。** 上の比較は、二次形式で直線上の極小を毎回正確に 求めた場合の値である。実材料では曲率が途中で変わり、エネルギーや "
+"勾配にも数値誤差がある。反復回数だけで手法を比べず、最後の力や応力と 目的の構造量が一致するかを比べる。"
+msgstr ""
+"**Iteration count.** The comparison above uses a quadratic form and finds"
+" the exact minimum along the search line at every step. In real "
+"materials, the curvature changes during optimization, and the energies "
+"and gradients have numerical errors. When comparing methods, look beyond "
+"the iteration count and check whether the final forces or stresses and "
+"the structural quantities of interest agree."
+
+#: ../../electronic/structure_optimization.rst:271
+msgid ""
+"**局所構造と相安定性。** 異なる初期構造が異なる極小に落ちる材料では、 一つの最適化で見つけた構造だけから全体の最安定相は決まらない。 "
+"複数の相を比較するときは、拘束、外圧、エネルギーの基準をそろえる。 有限温度の相安定性を求めるには、熱による自由エネルギーの寄与も要る。"
+msgstr ""
+"**Local structure and phase stability.** If different starting structures"
+" lead to different minima, the structure found by a single optimization "
+"does not identify the most stable phase overall. Compare phases using the"
+" same constraints, external pressure, and energy reference. Assessing "
+"phase stability at finite temperature also requires thermal contributions"
+" to the free energy."
+
+#: ../../electronic/structure_optimization.rst:277
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../electronic/structure_optimization.rst:279
+msgid ":ref:`lattice-dof`"
+msgstr ":ref:`Independent Components of the Lattice Vectors <lattice-dof>`"
+
+#: ../../electronic/structure_optimization.rst:280
+msgid ":ref:`energy-reference`"
+msgstr ":ref:`Relative Energy per Formula Unit <energy-reference>`"
+
+#: ../../electronic/structure_optimization.rst:281
+msgid ""
+"`BaTiO₃の二重井戸ポテンシャルの単点計算 <https://example.quloud-"
+"platform.quemix.com/BaTiO3/total-energy-DFT-MLIP.html>`__"
+msgstr ""
+"`Single-Point Calculations for the BaTiO₃ Double-Well Potential "
+"<https://example.quloud-platform.quemix.com/BaTiO3/total-energy-DFT-"
+"MLIP.html>`__"
+
+#: ../../electronic/structure_optimization.rst:284
+msgid "参考文献"
+msgstr "References"
+
+#: ../../electronic/structure_optimization.rst:286
+msgid ""
+"O. H. Nielsen and R. M. Martin, *Phys. Rev. B* **32**, 3780–3791 (1985). "
+"`doi:10.1103/PhysRevB.32.3780 "
+"<https://doi.org/10.1103/PhysRevB.32.3780>`_."
+msgstr ""
+"O. H. Nielsen and R. M. Martin, *Phys. Rev. B* **32**, 3780–3791 (1985). "
+"`doi:10.1103/PhysRevB.32.3780 "
+"<https://doi.org/10.1103/PhysRevB.32.3780>`_."
+
+#: ../../electronic/structure_optimization.rst:288
+msgid ""
+"R. Fletcher, *Comput. J.* **13**, 317–322 (1970). "
+"`doi:10.1093/comjnl/13.3.317 <https://doi.org/10.1093/comjnl/13.3.317>`_."
+msgstr ""
+"R. Fletcher, *Comput. J.* **13**, 317–322 (1970). "
+"`doi:10.1093/comjnl/13.3.317 <https://doi.org/10.1093/comjnl/13.3.317>`_."
+

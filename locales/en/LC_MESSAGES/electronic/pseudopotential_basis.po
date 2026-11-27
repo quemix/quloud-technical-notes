@@ -1,0 +1,575 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/pseudopotential_basis.rst:4
+msgid "擬ポテンシャルと基底関数"
+msgstr "Pseudopotentials and Basis Functions"
+
+#: ../../electronic/pseudopotential_basis.rst:6
+msgid ""
+"電子状態計算では、原子核近くの内殻電子をどう扱うかと、一電子軌道を どの関数で展開するかを決める。前者が擬ポテンシャルやPAWの選択、 "
+"後者が平面波や局在基底の選択である。どちらも計算の精度や費用に影響する。"
+msgstr ""
+"An electronic structure calculation requires two choices: how to treat "
+"the core electrons near atomic nuclei and which functions to use to "
+"expand the one-electron orbitals. The first choice concerns "
+"pseudopotentials or PAW, and the second concerns bases such as plane "
+"waves or localized bases. Both choices affect accuracy and computational "
+"cost."
+
+#: ../../electronic/pseudopotential_basis.rst:10
+msgid ""
+"前提は\\ :ref:`Kohn–Sham法<kohn-sham-dft>`\\ と :ref:`逆格子<reciprocal-"
+"lattice>`\\ である。この記事では基底の大きさを 決める条件を読み、異なる計算で得たエネルギーを比較する方法を学ぶ。"
+msgstr ""
+"This article assumes familiarity with the \\ :ref:`Kohn–Sham method "
+"<kohn-sham-dft>`\\  and the :ref:`reciprocal lattice <reciprocal-"
+"lattice>`\\ . It explains how to interpret the settings that determine "
+"basis size and how to compare energies from different calculations."
+
+#: ../../electronic/pseudopotential_basis.rst:15
+msgid "内殻をまとめて価電子を解く"
+msgstr "Solving for Valence Electrons with an Effective Core"
+
+#: ../../electronic/pseudopotential_basis.rst:17
+msgid ""
+"原子核近くでは電子の波動関数が急に変化する。全電子の状態をそのまま表すには、 "
+"核近くの細かい構造を記述できる基底が必要になる。擬ポテンシャル法では、 化学結合に伴う変化が小さい内殻をまとめて扱い、残した価電子に対する "
+"有効な相互作用を作る。核周辺では滑らかな擬波動関数を使い、 核から離れた領域で価電子の状態を再現する。"
+msgstr ""
+"Electron wave functions vary rapidly near atomic nuclei. An explicit all-"
+"electron description requires a basis that can resolve this fine "
+"structure. The pseudopotential method replaces an explicit treatment of "
+"the core electrons, since they change little upon chemical bonding, and "
+"constructs an effective interaction for the remaining valence electrons. "
+"It uses smooth pseudo-wave functions near the nucleus and reproduces the "
+"valence states farther away."
+
+#: ../../electronic/pseudopotential_basis.rst:23
+msgid ""
+"原子に対して作った擬ポテンシャルを分子や固体にも使えるかは、含めた 価電子や想定する環境による。たとえば高圧や酸化状態の変化を扱うときは、 "
+"浅い内殻状態を価電子に含めたデータセットとの比較で、その影響を調べられる。 擬ポテンシャルを生成するときの内殻の扱いは、その "
+":ref:`交換相関汎関数<exchange-correlation-functional>`\\ で解いた参照原子に基づく。 "
+"価電子の計算で別の汎関数を使うと、内殻による有効ポテンシャルと価電子の 交換相関の扱いが一貫しなくなる。この不整合が比較に入らないよう、 "
+"通常は生成時と計算時の汎関数をそろえる。"
+msgstr ""
+"Whether a pseudopotential generated for an atom transfers to a molecule "
+"or solid depends on which electrons are included in the valence and on "
+"the environment under consideration. For example, to assess the effect of"
+" the core treatment under high pressure or across oxidation states, "
+"compare with a dataset that includes shallow core states in the valence. "
+"Pseudopotential generation bases the core treatment on a reference atomic"
+" calculation with the specified :ref:`exchange-correlation functional "
+"<exchange-correlation-functional>`\\ . Using a different functional for "
+"the valence calculation leads to inconsistent treatments of the effective"
+" potential from the core and exchange and correlation in the valence. To "
+"keep this inconsistency out of comparisons, normally use the same "
+"functional to generate the pseudopotential and to run the calculation."
+
+#: ../../electronic/pseudopotential_basis.rst:36
+msgid "方法"
+msgstr "Method"
+
+#: ../../electronic/pseudopotential_basis.rst:37
+msgid "内殻付近の扱い"
+msgstr "Treatment near the core"
+
+#: ../../electronic/pseudopotential_basis.rst:38
+msgid "ノルム保存型"
+msgstr "Norm-conserving"
+
+#: ../../electronic/pseudopotential_basis.rst:39
+msgid ""
+"指定した原子の参照状態について、ある半径の外側で擬波動関数を全電子の 波動関数につなぎ、内側での二乗積分を一致させる "
+"[BasisHamann1979]_。"
+msgstr ""
+"For a specified atomic reference state, match the pseudo-wave function to"
+" the all-electron wave function outside a chosen radius and match the "
+"integrated squared magnitudes inside that radius [BasisHamann1979]_."
+
+#: ../../electronic/pseudopotential_basis.rst:41
+msgid "ウルトラソフト型"
+msgstr "Ultrasoft"
+
+#: ../../electronic/pseudopotential_basis.rst:42
+msgid ""
+"内側でのノルム保存条件を緩めて擬波動関数を滑らかにし、電荷密度の補正項と 重なり演算子を使って密度と規格化を補う "
+"[BasisVanderbilt1990]_。"
+msgstr ""
+"Relax the norm-conservation condition inside the radius to obtain "
+"smoother pseudo-wave functions. Augment the density and recover "
+"normalization using charge-density correction terms and an overlap "
+"operator [BasisVanderbilt1990]_."
+
+#: ../../electronic/pseudopotential_basis.rst:44
+msgid "PAW"
+msgstr "PAW"
+
+#: ../../electronic/pseudopotential_basis.rst:45
+msgid ""
+"滑らかな補助波動関数を使い、原子近傍で部分波と射影子から 全電子型の波動関数を再構成する。通常は凍結内殻近似を使う "
+"[BasisBlochl1994]_。"
+msgstr ""
+"Use smooth auxiliary wave functions and reconstruct all-electron-like "
+"wave functions near each atom from partial waves and projectors. This "
+"usually uses the frozen-core approximation [BasisBlochl1994]_."
+
+#: ../../electronic/pseudopotential_basis.rst:48
+msgid ""
+"ウルトラソフト型やPAWでは、補助波動関数と補正を含む電子密度とで 必要な細かさが違う場合がある。波動関数の基底を減らせる場合でも、 "
+"密度やポテンシャルを表す数値格子については別に収束を確かめる。"
+msgstr ""
+"With ultrasoft pseudopotentials or PAW, the auxiliary wave functions and "
+"the electron density including corrections can require different "
+"resolutions. Even if a smaller basis suffices for the wave functions, "
+"check convergence separately with respect to the numerical grid that "
+"represents the density and potential."
+
+#: ../../electronic/pseudopotential_basis.rst:55
+msgid "平面波基底と運動エネルギーカットオフ"
+msgstr "Plane-Wave Basis and Kinetic Energy Cutoff"
+
+#: ../../electronic/pseudopotential_basis.rst:57
+#, python-brace-format
+msgid ""
+"周期結晶の一電子軌道を :math:`\\psi_{n\\boldsymbol k}` と書く。 :math:`n` "
+"はバンド番号、:math:`\\boldsymbol k` は波数ベクトルである。 波数 :math:`\\boldsymbol "
+"k+\\boldsymbol G` の平面波を使うと、 :math:`\\boldsymbol G` が逆格子ベクトルなので、重ね合わせは "
+":ref:`Blochの定理<blochstheorem>`\\ に従う。"
+msgstr ""
+"Write a one-electron orbital in a periodic crystal as "
+":math:`\\psi_{n\\boldsymbol k}`, where :math:`n` is the band index and "
+":math:`\\boldsymbol k` is the wave vector. In a superposition of plane "
+"waves with wave vectors :math:`\\boldsymbol k+\\boldsymbol G`, "
+":math:`\\boldsymbol G` is a reciprocal lattice vector, so the "
+"superposition obeys :ref:`Bloch’s theorem <blochstheorem>`\\ ."
+
+#: ../../electronic/pseudopotential_basis.rst:63
+msgid ""
+"セル体積を :math:`\\Omega`、平面波の係数を :math:`c_{n\\boldsymbol k}(\\boldsymbol G)`"
+" とする。各平面波の運動 エネルギーは、運動エネルギー演算子を指数関数に作用させると得られる。 この値が "
+":math:`E_{\\mathrm{cut}}` 以内の平面波に限って展開する。"
+msgstr ""
+"Let :math:`\\Omega` be the cell volume and :math:`c_{n\\boldsymbol "
+"k}(\\boldsymbol G)` the plane-wave coefficients. Apply the kinetic-energy"
+" operator to the exponential to obtain the kinetic energy of each plane "
+"wave. Include only plane waves with kinetic energies at or below "
+":math:`E_{\\mathrm{cut}}`."
+
+#: ../../electronic/pseudopotential_basis.rst:68
+msgid ""
+"\\begin{gathered}\n"
+"\\psi_{n\\boldsymbol k}(\\boldsymbol r)=\\frac{1}{\\sqrt{\\Omega}}\n"
+"  \\sum_{\\boldsymbol G} c_{n\\boldsymbol k}(\\boldsymbol G)\\,\n"
+"    e^{i(\\boldsymbol k+\\boldsymbol G)\\cdot\\boldsymbol r},\\\\\n"
+"\\frac{\\hbar^2|\\boldsymbol k+\\boldsymbol G|^2}{2m_{\\rm e}}\n"
+"  \\le E_{\\rm cut}.\n"
+"\\end{gathered}"
+msgstr ""
+"\\begin{gathered}\n"
+"\\psi_{n\\boldsymbol k}(\\boldsymbol r)=\\frac{1}{\\sqrt{\\Omega}}\n"
+"  \\sum_{\\boldsymbol G} c_{n\\boldsymbol k}(\\boldsymbol G)\\,\n"
+"    e^{i(\\boldsymbol k+\\boldsymbol G)\\cdot\\boldsymbol r},\\\\\n"
+"\\frac{\\hbar^2|\\boldsymbol k+\\boldsymbol G|^2}{2m_{\\rm e}}\n"
+"  \\le E_{\\rm cut}.\n"
+"\\end{gathered}"
+
+#: ../../electronic/pseudopotential_basis.rst:79
+#, python-brace-format
+msgid ""
+":math:`m_{\\rm e}` は電子質量、:math:`\\hbar` は換算Planck定数である。 "
+"カットオフを上げると、より短い波長の平面波が加わり、細かな空間変化を 表せる。必要な値は擬ポテンシャルに依存する。セルを変えると同じ "
+"カットオフでも平面波の集合が変わるため、セルの応力や平衡体積は エネルギー差と同様に、基底の大きさに対して収束を調べる。"
+msgstr ""
+"Here :math:`m_{\\rm e}` is the electron mass and :math:`\\hbar` is the "
+"reduced Planck constant. Raising the cutoff adds shorter-wavelength plane"
+" waves, allowing the basis to represent finer spatial variations. The "
+"required cutoff depends on the pseudopotential. Changing the cell changes"
+" the set of plane waves even at the same cutoff, so check convergence "
+"with basis size for cell stress and equilibrium volume as well as for "
+"energy differences."
+
+#: ../../electronic/pseudopotential_basis.rst:85
+msgid ""
+"Quantum ESPRESSOの平面波計算では、波動関数と、電子密度・ポテンシャルに 別々のカットオフがある "
+"[BasisQeInput]_。その一例が `銅の格子定数 <https://example.quloud-"
+"platform.quemix.com/cu_lattice/lattice_constant.html>`__ の計算である。"
+msgstr ""
+"Quantum ESPRESSO plane-wave calculations use separate cutoffs for the "
+"wave functions and for the electron density and potential "
+"[BasisQeInput]_. The calculation example `Lattice Constant of Copper "
+"<https://example.quloud-"
+"platform.quemix.com/cu_lattice/lattice_constant.html>`__ illustrates this"
+" use of separate cutoffs."
+
+#: ../../electronic/pseudopotential_basis.rst:91
+msgid "原子を中心とする局在基底"
+msgstr "Atom-Centered Localized Basis"
+
+#: ../../electronic/pseudopotential_basis.rst:93
+msgid ""
+"擬原子軌道（pseudo-atomic orbital, PAO）は、原子を中心に置く局在基底の "
+"一例である。電子状態を表す軌道は、それぞれの原子の近くに置いた基底関数の 線形結合で表す "
+"[BasisOzaki2003]_。基底の質は、各角運動量の動径関数の数、 より高い角運動量をもつ分極関数、関数が広がる半径などに依存する。"
+msgstr ""
+"Pseudo-atomic orbitals (PAOs) are an example of an atom-centered "
+"localized basis. The orbitals describing the electronic states are linear"
+" combinations of basis functions placed near the individual atoms "
+"[BasisOzaki2003]_. The quality of the basis depends on factors such as "
+"the number of radial functions for each angular momentum, the "
+"polarization functions with higher angular momenta, and the radial extent"
+" of the functions."
+
+#: ../../electronic/pseudopotential_basis.rst:98
+msgid ""
+"原子が動くと局在基底も動く。力には、エネルギーの微分の際に基底の 位置依存性から生じる項も入る。このため、力や小さな相対エネルギー差を "
+"比べるときは、基底を増やして目的の量の変化を見る。 OpenMXのPAO計算で「カットオフ」と呼ぶ値の一つは、実空間積分格子の "
+"細かさを決める。平面波基底の波動関数カットオフと同じ単位で表されても、 制御している対象が異なる [BasisOpenmxGrid]_。"
+msgstr ""
+"A localized basis moves with the atoms. The forces therefore include "
+"terms from differentiating the energy through the position dependence of "
+"the basis. When comparing forces or small relative energy differences, "
+"enlarge the basis and see how the quantity of interest changes. One of "
+"the settings OpenMX calls a cutoff in PAO calculations sets the "
+"resolution of the real-space integration grid. It has the same units as "
+"the wave-function cutoff for a plane-wave basis but controls a different "
+"quantity [BasisOpenmxGrid]_."
+
+#: ../../electronic/pseudopotential_basis.rst:108
+msgid "化学式単位あたりの相対エネルギー"
+msgstr "Relative Energy per Formula Unit"
+
+#: ../../electronic/pseudopotential_basis.rst:110
+msgid ""
+"コードが出力する全エネルギーは、その計算の内殻の扱いやエネルギー基準に 従う。擬ポテンシャルや学習済みポテンシャルをまたいで表示値を引くと、 "
+"構造による違いに基準の違いが混ざる。さらに、汎関数や基底が異なると、 構造に依存して変わるエネルギー成分にも違いが生じる。"
+msgstr ""
+"The total energy reported by a code follows the core treatment and energy"
+" reference used in that calculation. Subtracting reported values across "
+"pseudopotentials or trained potentials mixes differences due to the "
+"structures with differences due to the reference. Different functionals "
+"or bases also affect energy contributions that vary with structure."
+
+#: ../../electronic/pseudopotential_basis.rst:115
+msgid ""
+"同じ組成の二つの相を比べる場合、まず同じ手法と条件で各相を計算する。 セルの全エネルギー :math:`E_A,E_B` "
+"を、各セルに含まれる化学式単位数 :math:`Z_A,Z_B` でそれぞれ割り、同じ量の物質に換算して差を取る。"
+msgstr ""
+"To compare two phases of the same composition, first calculate both "
+"phases using the same method and settings. Divide the cell total energies"
+" :math:`E_A,E_B` by their respective numbers of formula units "
+":math:`Z_A,Z_B` to put them on the same material basis before taking the "
+"difference."
+
+#: ../../electronic/pseudopotential_basis.rst:119
+#, python-brace-format
+msgid "\\Delta e_{B-A}=\\frac{E_B}{Z_B}-\\frac{E_A}{Z_A}."
+msgstr "\\Delta e_{B-A}=\\frac{E_B}{Z_B}-\\frac{E_A}{Z_A}."
+
+#: ../../electronic/pseudopotential_basis.rst:124
+msgid ""
+"たとえばBaTiO₃なら、Ba・Ti・Oが1:1:3の組1つを1化学式単位と数える。 `BaTiO₃の安定基底状態 "
+"<https://example.quloud-platform.quemix.com/BaTiO3/stability.html>`__ "
+"では、各手法で同じ相を基準にして相対エネルギーを求めている。 基準の一定のずれは相殺され、各手法が与える相の順序や差の大きさを比較できる。 "
+"組成が異なる場合は、元素ごとの基準が相殺されるように、反応全体の化学量論と 参照状態を設定する。"
+msgstr ""
+"For BaTiO₃, for example, one formula unit contains Ba, Ti, and O in a "
+"1:1:3 ratio. The calculation example `Stable Ground State of BaTiO₃ "
+"<https://example.quloud-platform.quemix.com/BaTiO3/stability.html>`__ "
+"uses the same phase as the reference to calculate relative energies for "
+"each method. Any constant offset in the reference cancels, so the phase "
+"ordering and the size of the differences obtained by each method can be "
+"compared. For different compositions, set the stoichiometry of the "
+"overall reaction and the reference states so that the reference "
+"contributions of each element cancel."
+
+#: ../../electronic/pseudopotential_basis.rst:134
+msgid "説明用の事例：平面波で表す幅の異なるピーク"
+msgstr "Worked Example: Representing Peaks of Different Widths with Plane Waves"
+
+#: ../../electronic/pseudopotential_basis.rst:136
+msgid ""
+"狭いピークを表すには、同じ精度でも広いピークより多くの平面波が要る。 1次元の周期座標 :math:`x` を :math:`2\\pi` "
+"周期の無次元量とし、 標準偏差 :math:`s` のガウス関数を周期的に並べた関数 :math:`f_s(x)` を例にする。展開係数 "
+":math:`c_j` は整数 :math:`j` に 対応する。一周期で係数を積分すると、隣の周期のガウス関数の寄与を "
+"すべて足すことになる。積分範囲を全実数へ広げ、通常のガウス積分で計算できる。"
+msgstr ""
+"A narrow peak needs more plane waves than a broad peak for the same "
+"accuracy. Take a dimensionless one-dimensional periodic coordinate "
+":math:`x` with period :math:`2\\pi`. Periodically repeat a Gaussian with "
+"standard deviation :math:`s` to form the example function :math:`f_s(x)`."
+" Each expansion coefficient :math:`c_j` corresponds to an integer "
+":math:`j`. Integrating over one period adds the contributions from the "
+"Gaussians in all neighboring periods. Extending the integration range to "
+"the whole real line reduces the calculation to an ordinary Gaussian "
+"integral."
+
+#: ../../electronic/pseudopotential_basis.rst:143
+msgid ""
+"\\begin{gathered}\n"
+"f_s(x)=\\sum_{p\\in\\mathbb Z}\\exp\\!\\left[-\\frac{(x-2\\pi "
+"p)^2}{2s^2}\\right],\\\\\n"
+"c_j=\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} f_s(x)e^{-ijx}\\,dx\n"
+"    =\\frac{s}{\\sqrt{2\\pi}}\\exp[-s^2 j^2/2].\n"
+"\\end{gathered}"
+msgstr ""
+"\\begin{gathered}\n"
+"f_s(x)=\\sum_{p\\in\\mathbb Z}\\exp\\!\\left[-\\frac{(x-2\\pi "
+"p)^2}{2s^2}\\right],\\\\\n"
+"c_j=\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi} f_s(x)e^{-ijx}\\,dx\n"
+"    =\\frac{s}{\\sqrt{2\\pi}}\\exp[-s^2 j^2/2].\n"
+"\\end{gathered}"
+
+#: ../../electronic/pseudopotential_basis.rst:152
+msgid ""
+"狭いピークほど :math:`s` が小さく、係数の大きさが :math:`|j|` とともに 減る速度が遅い。模型で残す最大の波数を "
+":math:`M` とする。 :eq:`basis-plane-wave-cutoff`\\ と同様に運動エネルギーは波数の二乗に比例する。 "
+"運動エネルギーの比例係数を単位に取ると、カットオフは :math:`M^2` である。"
+msgstr ""
+"The narrower the peak, the smaller :math:`s` is and the more slowly the "
+"magnitude of the coefficients decreases with :math:`|j|`. Let :math:`M` "
+"be the largest wave number retained in the model. As in Equation :eq"
+":`basis-plane-wave-cutoff`\\ , the kinetic energy is proportional to the "
+"square of the wave number. Taking the proportionality coefficient as the "
+"energy unit, the cutoff is :math:`M^2`."
+
+#: ../../electronic/pseudopotential_basis.rst:157
+msgid ""
+"平面波は直交するので、省いた波の二乗ノルムは、対応する係数の絶対値の 二乗を足したものに比例する。全ノルムで割った打ち切り誤差 "
+":math:`e_M` は"
+msgstr ""
+"Since the plane waves are orthogonal, the squared norm of the omitted "
+"waves is proportional to the sum of the squared magnitudes of their "
+"coefficients. Dividing the norm of the omitted waves by the total norm "
+"gives the truncation error :math:`e_M`,"
+
+#: ../../electronic/pseudopotential_basis.rst:161
+msgid ""
+"e_M =\n"
+" \\left(\\frac{\\sum_{|j|>M}|c_j|^2}\n"
+"            {\\sum_{j\\in\\mathbb Z}|c_j|^2}\\right)^{1/2}."
+msgstr ""
+"e_M =\n"
+" \\left(\\frac{\\sum_{|j|>M}|c_j|^2}\n"
+"            {\\sum_{j\\in\\mathbb Z}|c_j|^2}\\right)^{1/2}."
+
+#: ../../electronic/pseudopotential_basis.rst:168
+msgid ""
+"分子と分母で係数の共通因子は相殺される。以下では :math:`|c_j|^2` に比例する :math:`\\exp(-s^2j^2)` "
+"を足し、 分子には打ち切った波の分だけを入れた。"
+msgstr ""
+"The common factor in the coefficients cancels between the numerator and "
+"denominator. In the calculation below we sum the weights for "
+":math:`|c_j|^2`, which are proportional to :math:`\\exp(-s^2j^2)`, "
+"including only the omitted waves in the numerator."
+
+#: ../../electronic/pseudopotential_basis.rst:172
+msgid "周期ガウス関数の相対ノルム誤差"
+msgstr "Relative norm error for a periodic Gaussian"
+
+#: ../../electronic/pseudopotential_basis.rst:176
+msgid "最大波数"
+msgstr "Maximum wave number"
+
+#: ../../electronic/pseudopotential_basis.rst:177
+msgid "カットオフ（模型の単位）"
+msgstr "Cutoff (model units)"
+
+#: ../../electronic/pseudopotential_basis.rst:178
+msgid "広いピーク（幅0.40）"
+msgstr "Broad peak (width 0.40)"
+
+#: ../../electronic/pseudopotential_basis.rst:179
+msgid "狭いピーク（幅0.15）"
+msgstr "Narrow peak (width 0.15)"
+
+#: ../../electronic/pseudopotential_basis.rst:180
+msgid "4"
+msgstr "4"
+
+#: ../../electronic/pseudopotential_basis.rst:181
+#: ../../electronic/pseudopotential_basis.rst:188
+msgid "16"
+msgstr "16"
+
+#: ../../electronic/pseudopotential_basis.rst:182
+msgid "9.94%"
+msgstr "9.94%"
+
+#: ../../electronic/pseudopotential_basis.rst:183
+msgid "58.2%"
+msgstr "58.2%"
+
+#: ../../electronic/pseudopotential_basis.rst:184
+msgid "8"
+msgstr "8"
+
+#: ../../electronic/pseudopotential_basis.rst:185
+msgid "64"
+msgstr "64"
+
+#: ../../electronic/pseudopotential_basis.rst:186
+msgid "0.106%"
+msgstr "0.106%"
+
+#: ../../electronic/pseudopotential_basis.rst:187
+msgid "26.6%"
+msgstr "26.6%"
+
+#: ../../electronic/pseudopotential_basis.rst:189
+msgid "256"
+msgstr "256"
+
+#: ../../electronic/pseudopotential_basis.rst:190
+msgid "約6.13 × 10⁻⁹%"
+msgstr "About 6.13 × 10⁻⁹%"
+
+#: ../../electronic/pseudopotential_basis.rst:191
+msgid "2.13%"
+msgstr "2.13%"
+
+#: ../../electronic/pseudopotential_basis.rst:193
+msgid ""
+"カットオフ64では、広いピークの誤差は約0.1%まで下がる。 同じ設定では狭いピークの誤差が26.6%残る。波動関数を滑らかにした "
+"擬ポテンシャルが計算量を抑えられる理由は、この模型と同じく、 短い波長をもつ成分を少なくできることにある。"
+msgstr ""
+"At a cutoff of 64, the error for the broad peak falls to about 0.1%, but "
+"the error for the narrow peak at the same cutoff is still 26.6%. "
+"Pseudopotentials with smoother wave functions reduce computational cost "
+"for the same reason illustrated by this model: they need fewer short-"
+"wavelength components."
+
+#: ../../electronic/pseudopotential_basis.rst:201
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../electronic/pseudopotential_basis.rst:203
+msgid ""
+"**模型の誤差と計算結果の誤差。** 表の割合は、与えた関数のうち基底で 表せなかった成分の大きさである。自己無撞着に求める全エネルギー、 "
+"力、応力、格子定数について、同じ割合の誤差を保証する指標にはならない。"
+msgstr ""
+"**Error in the model and error in calculated results.** The percentages "
+"in the table measure the magnitude of the part of the specified function "
+"that the basis cannot represent. They do not guarantee the same "
+"percentage error in self-consistently calculated total energies, forces, "
+"stresses, or lattice constants."
+
+#: ../../electronic/pseudopotential_basis.rst:206
+msgid ""
+"**基底を増やすときの比較。** 同じ構造・擬ポテンシャル・k点で波動関数と 電子密度のカットオフを変えると、基底や積分格子の影響を取り出せる。 "
+"相の順位が目的なら全エネルギー差を、セルの緩和が目的なら応力や最適化後の 格子を比較する。セルを変えるとカットオフ内の平面波が入れ替わり、 "
+"エネルギー差が小さくても応力に基底の影響が残る場合がある。"
+msgstr ""
+"**Comparing results as the basis grows.** Vary the wave-function and "
+"electron-density cutoffs at the same structure, pseudopotential, and "
+"k-points to isolate the effects of the basis and integration grid. "
+"Compare total-energy differences if the aim is to rank phases, or compare"
+" stresses and the optimized lattice if the aim is to relax the cell. "
+"Changing the cell changes which plane waves lie within the cutoff, so "
+"basis effects can remain in the stress even when energy differences are "
+"small."
+
+#: ../../electronic/pseudopotential_basis.rst:211
+msgid ""
+"**擬ポテンシャルの選択。** カットオフに対して収束しても、その 擬ポテンシャルで内殻を固定してよかったかは別に評価する。圧縮や異なる "
+"酸化状態まで調べるなら、浅い内殻を価電子に含むデータと比べることで、 基底の誤差と内殻近似の影響を区別できる。"
+msgstr ""
+"**Choosing a pseudopotential.** Even after reaching cutoff convergence, "
+"assess separately whether freezing the core is appropriate for the chosen"
+" pseudopotential. When studying compression or different oxidation "
+"states, compare with a dataset that treats shallow core states as valence"
+" electrons to distinguish the effects of basis error from those of the "
+"core approximation."
+
+#: ../../electronic/pseudopotential_basis.rst:217
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../electronic/pseudopotential_basis.rst:219
+msgid ":ref:`kpoint_sampling`"
+msgstr ":ref:`k-Point Meshes and Integration Error <kpoint_sampling>`"
+
+#: ../../electronic/pseudopotential_basis.rst:220
+msgid ":ref:`mlip`"
+msgstr ":ref:`Machine-Learning Interatomic Potentials <mlip>`"
+
+#: ../../electronic/pseudopotential_basis.rst:223
+msgid "参考文献"
+msgstr "References"
+
+#: ../../electronic/pseudopotential_basis.rst:225
+msgid ""
+"D. R. Hamann, M. Schlüter, and C. Chiang, *Phys. Rev. Lett.* **43**, "
+"1494–1497 (1979). `doi:10.1103/PhysRevLett.43.1494 "
+"<https://doi.org/10.1103/PhysRevLett.43.1494>`_."
+msgstr ""
+"D. R. Hamann, M. Schlüter, and C. Chiang, *Phys. Rev. Lett.* **43**, "
+"1494–1497 (1979). `doi:10.1103/PhysRevLett.43.1494 "
+"<https://doi.org/10.1103/PhysRevLett.43.1494>`_."
+
+#: ../../electronic/pseudopotential_basis.rst:228
+msgid ""
+"D. Vanderbilt, *Phys. Rev. B* **41**, 7892–7895 (1990). "
+"`doi:10.1103/PhysRevB.41.7892 "
+"<https://doi.org/10.1103/PhysRevB.41.7892>`_."
+msgstr ""
+"D. Vanderbilt, *Phys. Rev. B* **41**, 7892–7895 (1990). "
+"`doi:10.1103/PhysRevB.41.7892 "
+"<https://doi.org/10.1103/PhysRevB.41.7892>`_."
+
+#: ../../electronic/pseudopotential_basis.rst:230
+msgid ""
+"P. E. Blöchl, *Phys. Rev. B* **50**, 17953–17979 (1994). "
+"`doi:10.1103/PhysRevB.50.17953 "
+"<https://doi.org/10.1103/PhysRevB.50.17953>`_."
+msgstr ""
+"P. E. Blöchl, *Phys. Rev. B* **50**, 17953–17979 (1994). "
+"`doi:10.1103/PhysRevB.50.17953 "
+"<https://doi.org/10.1103/PhysRevB.50.17953>`_."
+
+#: ../../electronic/pseudopotential_basis.rst:232
+msgid ""
+"T. Ozaki, *Phys. Rev. B* **67**, 155108 (2003). "
+"`doi:10.1103/PhysRevB.67.155108 "
+"<https://doi.org/10.1103/PhysRevB.67.155108>`_."
+msgstr ""
+"T. Ozaki, *Phys. Rev. B* **67**, 155108 (2003). "
+"`doi:10.1103/PhysRevB.67.155108 "
+"<https://doi.org/10.1103/PhysRevB.67.155108>`_."
+
+#: ../../electronic/pseudopotential_basis.rst:234
+msgid ""
+"Quantum ESPRESSO, `pw.x input description <https://www.quantum-"
+"espresso.org/Doc/INPUT_PW.html>`_."
+msgstr ""
+"Quantum ESPRESSO, `pw.x input description <https://www.quantum-"
+"espresso.org/Doc/INPUT_PW.html>`_."
+
+#: ../../electronic/pseudopotential_basis.rst:235
+msgid ""
+"OpenMX 4.0 manual, `Fixing the Relative Position of the Structural "
+"Lattice <https://openmx-square.org/openmx_man4.0/s14_3_fix-lattice-"
+"pos.html>`_."
+msgstr ""
+"OpenMX 4.0 manual, `Fixing the Relative Position of the Structural "
+"Lattice <https://openmx-square.org/openmx_man4.0/s14_3_fix-lattice-"
+"pos.html>`_."
+

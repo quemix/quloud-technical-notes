@@ -44,3 +44,10 @@ electronic/density_matrix_analysis
 electronic/lowdin
 electronic/pdos
 electronic/bond_order
+electronic/dft_settings
+electronic/exchange_correlation
+electronic/pseudopotential_basis
+electronic/structure_optimization
+electronic/defects_migration
+electronic/defect_formation
+electronic/neb

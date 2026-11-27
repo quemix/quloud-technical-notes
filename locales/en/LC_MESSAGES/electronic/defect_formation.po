@@ -1,0 +1,1161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 01:16+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/defect_formation.rst:4
+msgid "点欠陥の形成エネルギー"
+msgstr "Formation Energies of Point Defects"
+
+#: ../../electronic/defect_formation.rst:6
+msgid ""
+"結晶や非晶質の固体には、原子が抜けた位置（空孔）や、本来の位置の間に入り込んだ原子などの "
+"点欠陥がある。点欠陥がどれだけできやすいかは、欠陥を作るのに要るエネルギーで決まる。 "
+"ただしこのエネルギーは、欠陥を含む構造と含まない構造の全エネルギー差だけでは決まらない。 "
+"出入りした原子がどこから来てどこへ行くか、つまり原子のやりとりの相手の化学ポテンシャルと、 "
+"欠陥が電荷をもつ場合は電子のやりとりの相手（フェルミ準位）にも依存する。 "
+"この記事では、形成エネルギーを全エネルギーと化学ポテンシャルから導き、その値が条件によって どう変わるか、熱平衡の欠陥濃度とどう結びつくかを扱う。"
+msgstr ""
+"Crystalline and amorphous solids contain point defects, such as vacancies"
+" where atoms are missing and atoms that occupy sites between regular "
+"positions. The ease of forming a point defect is determined by the energy"
+" it takes to create it. But this energy is not determined by the total "
+"energy difference between the structures with and without the defect "
+"alone. It also depends on where the added or removed atoms come from or "
+"go, through the chemical potentials of the reservoirs with which they are"
+" exchanged. If the defect is charged, it also depends on the reservoir "
+"with which electrons are exchanged, through the Fermi level. This article"
+" derives the formation energy from total energies and chemical "
+"potentials, explains how it varies with conditions, and connects it to "
+"the defect concentration at thermal equilibrium."
+
+#: ../../electronic/defect_formation.rst:14
+msgid ""
+"**前提知識**: :ref:`化学ポテンシャル<chemical-potential>`、 :ref:`化学式単位あたりの相対エネルギー"
+"<energy-reference>`\\ （全エネルギーの基準）、 :ref:`構造最適化<structure-optimization>`\\"
+" （固定セル緩和）。"
+msgstr ""
+"**Prerequisites**: :ref:`chemical potential <chemical-potential>`, "
+":ref:`relative energy per formula unit <energy-reference>`\\  (total "
+"energy reference), and :ref:`structure optimization <structure-"
+"optimization>`\\  (fixed-cell relaxation)."
+
+#: ../../electronic/defect_formation.rst:18
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../electronic/defect_formation.rst:20
+msgid "点欠陥の形成エネルギーを、欠陥を含むセルと完全結晶の全エネルギー、出入りした原子の化学ポテンシャルから導く。"
+msgstr ""
+"Derive the formation energy of a point defect from the total energies of "
+"the defective cell and the perfect crystal and the chemical potentials of"
+" the atoms added or removed."
+
+#: ../../electronic/defect_formation.rst:21
+msgid "化合物が安定に存在する条件から化学ポテンシャルの取りうる範囲を求め、形成エネルギーが条件によって eV の単位で変わることを示す。"
+msgstr ""
+"Use the stability conditions of the compound to find the allowed range of"
+" chemical potentials and show that formation energies can change by "
+"several eV with conditions."
+
+#: ../../electronic/defect_formation.rst:22
+msgid "荷電欠陥の形成エネルギーがフェルミ準位に依存することと、遷移準位の意味を説明する。"
+msgstr ""
+"Explain why the formation energy of a charged defect depends on the Fermi"
+" level and what the transition levels mean."
+
+#: ../../electronic/defect_formation.rst:23
+msgid "配置エントロピーを含むギブス自由エネルギーの最小化から熱平衡の欠陥濃度を導き、空孔を人為的に入れたモデルとの違いを判断する。"
+msgstr ""
+"Derive the defect concentration at thermal equilibrium by minimizing the "
+"Gibbs free energy including configurational entropy, and distinguish it "
+"from the concentration in a model where vacancies are inserted by hand."
+
+#: ../../electronic/defect_formation.rst:28
+msgid "点欠陥とスーパーセル"
+msgstr "Point Defects and Supercells"
+
+#: ../../electronic/defect_formation.rst:30
+#, python-brace-format
+msgid ""
+"原子1個程度の範囲に限られた乱れを **点欠陥** と呼ぶ。主な種類は次の3つである。 化合物ABでは、Aの位置が空いた **空孔**\\ "
+":math:`V_{\\rm A}`、原子の間の位置に入った **格子間原子**\\ :math:`{\\rm A}_i`、Aの位置をBが占めた "
+"**置換**\\ :math:`{\\rm B}_{\\rm A}` がある。 欠陥が電荷 :math:`q`\\ （電気素量 :math:`e`"
+" を単位とし、電子を1個取り去ると :math:`+1`）をもつときは、 :math:`V_{\\rm A}^{q}` のように右上に書く。"
+msgstr ""
+"A disturbance confined to a region about the size of one atom is called a"
+" **point defect**. There are three main types. In a compound AB, a "
+"**vacancy** \\ :math:`V_{\\rm A}` leaves an A site empty, an "
+"**interstitial atom** \\ :math:`{\\rm A}_i` occupies a site between "
+"regular atomic positions, and a **substitution** \\ :math:`{\\rm B}_{\\rm"
+" A}` places a B atom on an A site. If a defect carries charge :math:`q`\\"
+"  (in units of the elementary charge :math:`e`, so removing one electron "
+"gives :math:`+1`), write it as a superscript, as in :math:`V_{\\rm "
+"A}^{q}`."
+
+#: ../../electronic/defect_formation.rst:36
+msgid ""
+"第一原理計算では、完全結晶の単位胞を何個か並べた **スーパーセル** に欠陥を1つ入れ、 "
+"周期境界条件で計算する。これは、欠陥がスーパーセルの周期で並んだ結晶の計算である。 "
+"欠陥どうしの距離を十分に離せば、孤立した欠陥の性質に近づく。欠陥のまわりの原子は欠陥に応じて動くので、 "
+"原子の位置を緩和する。このときセルの形と大きさは完全結晶の値に固定する（\\ :ref:`固定セル緩和<structure-"
+"optimization>`）。 セルを完全結晶の格子定数に保つのは、少数の欠陥が結晶全体の格子定数をほとんど変えない "
+"希薄な極限を表すためである。非晶質では、溶融・急冷などで作った不規則な構造そのものを "
+"スーパーセルとして使い、どのサイトの原子を取り除くかによって形成エネルギーが変わる。"
+msgstr ""
+"In a first-principles calculation, place one defect in a **supercell** "
+"made by repeating the unit cell of the perfect crystal and use periodic "
+"boundary conditions. This models a crystal with defects repeated at the "
+"supercell periodicity. At sufficiently large separations between defects,"
+" the results approach the properties of an isolated defect. Since atoms "
+"around the defect move in response to it, relax their positions. Keep the"
+" cell shape and size fixed at the values for the perfect crystal (\\ :ref"
+":`fixed-cell relaxation <structure-optimization>`). Keeping the lattice "
+"constants of the perfect crystal represents the dilute limit, in which a "
+"small number of defects hardly changes the lattice constants of the "
+"crystal as a whole. For an amorphous solid, use the disordered structure "
+"itself as the supercell, for example one prepared by melting and "
+"quenching. The formation energy depends on which site the atom is removed"
+" from."
+
+#: ../../electronic/defect_formation.rst:47
+msgid "形成エネルギーの定義"
+msgstr "Definition of Formation Energy"
+
+#: ../../electronic/defect_formation.rst:49
+#, python-brace-format
+msgid ""
+"欠陥を含む結晶を、元素ごとの原子のやりとりの相手（**リザーバー**）と接した系として考える。 元素 :math:`i` "
+"のリザーバーの化学ポテンシャルを、1原子あたりで :math:`\\mu_i` とする。 欠陥を作るときに結晶へ加わった元素 :math:`i` "
+"の原子の数を :math:`n_i` とし、取り除いた場合は :math:`n_i<0` とする。例えば空孔 :math:`V_{\\rm "
+"Li}` では :math:`n_{\\rm Li}=-1` である。"
+msgstr ""
+"Treat the defective crystal as a system in contact with a **reservoir** "
+"for exchanging atoms of each element. Let the reservoir for element "
+":math:`i` have chemical potential :math:`\\mu_i` per atom. For defect "
+"formation, count the atoms of element :math:`i` added to the crystal "
+"using the signed number :math:`n_i`, with :math:`n_i<0` for removal. For "
+"example, a vacancy :math:`V_{\\rm Li}` has :math:`n_{\\rm Li}=-1`."
+
+#: ../../electronic/defect_formation.rst:54
+#, python-brace-format
+msgid ""
+"温度と圧力を固定して欠陥を1つ作ると、結晶のギブス自由エネルギーは :math:`G[{\\rm X}]-G[{\\rm bulk}]` "
+"だけ変わる。:math:`{\\rm X}` は欠陥を含む結晶、 :math:`{\\rm bulk}` "
+"は同じ数の単位胞からなる完全結晶である。一方、リザーバーは元素 :math:`i` の原子を :math:`n_i` "
+"個失うので、化学ポテンシャルの定義\\ :eq:`thermo-chemical-potential`\\ から そのギブス自由エネルギーは "
+":math:`-\\sum_in_i\\mu_i` だけ変わる。両者の和が欠陥の形成ギブスエネルギーで、"
+msgstr ""
+"Forming one defect at fixed temperature and pressure changes the "
+"crystal's Gibbs free energy by :math:`G[{\\rm X}]-G[{\\rm bulk}]`, where "
+":math:`{\\rm X}` denotes the defective crystal and :math:`{\\rm bulk}` "
+"the perfect crystal with the same number of unit cells. The reservoir, on"
+" the other hand, loses atoms of element :math:`i` in the signed amount "
+":math:`n_i`, so by the definition of chemical potential in Equation \\ "
+":eq:`thermo-chemical-potential`\\  its Gibbs free energy changes by "
+":math:`-\\sum_in_i\\mu_i`. The sum of the two changes is the defect's "
+"Gibbs energy of formation,"
+
+#: ../../electronic/defect_formation.rst:60
+#, python-brace-format
+msgid "\\Delta G_{\\rm f}[{\\rm X}]=G[{\\rm X}]-G[{\\rm bulk}]-\\sum_in_i\\mu_i"
+msgstr "\\Delta G_{\\rm f}[{\\rm X}]=G[{\\rm X}]-G[{\\rm bulk}]-\\sum_in_i\\mu_i"
+
+#: ../../electronic/defect_formation.rst:65
+#, python-brace-format
+msgid ""
+"となる。絶対零度で原子の振動と :math:`pV` を無視すると、:math:`G` を全エネルギー :math:`E_{\\rm tot}` "
+"で置き換えられ、中性の欠陥の **形成エネルギー**"
+msgstr ""
+"At absolute zero, neglecting atomic vibrations and :math:`pV`, replace "
+":math:`G` with the total energy :math:`E_{\\rm tot}` to obtain the "
+"**formation energy** of a neutral defect,"
+
+#: ../../electronic/defect_formation.rst:68
+#, python-brace-format
+msgid ""
+"E_{\\rm f}[{\\rm X}]=E_{\\rm tot}[{\\rm X}]-E_{\\rm tot}[{\\rm "
+"bulk}]-\\sum_in_i\\mu_i"
+msgstr ""
+"E_{\\rm f}[{\\rm X}]=E_{\\rm tot}[{\\rm X}]-E_{\\rm tot}[{\\rm "
+"bulk}]-\\sum_in_i\\mu_i"
+
+#: ../../electronic/defect_formation.rst:73
+msgid "を得る [DefZhangNorthrup1991]_ [DefFreysoldt2014]_。Liの空孔なら"
+msgstr ""
+"as in [DefZhangNorthrup1991]_ [DefFreysoldt2014]_. For a Li vacancy this "
+"gives"
+
+#: ../../electronic/defect_formation.rst:75
+#, python-brace-format
+msgid ""
+"E_{\\rm f}[V_{\\rm Li}]=E_{\\rm tot}[V_{\\rm Li}]-E_{\\rm tot}[{\\rm "
+"bulk}]+\\mu_{\\rm Li}"
+msgstr ""
+"E_{\\rm f}[V_{\\rm Li}]=E_{\\rm tot}[V_{\\rm Li}]-E_{\\rm tot}[{\\rm "
+"bulk}]+\\mu_{\\rm Li}"
+
+#: ../../electronic/defect_formation.rst:80
+#, python-brace-format
+msgid ""
+"で、Liを1個取り除いたセルと元のセルのエネルギー差に、取り除いたLiの化学ポテンシャルを足した量になる。 "
+"取り除いたLiはどこかへ行かなければならず、その行き先で1原子あたり :math:`\\mu_{\\rm Li}` のエネルギーをもつ。"
+msgstr ""
+"This is the energy of the cell with one Li atom removed minus the energy "
+"of the original cell, plus the chemical potential of the removed Li. The "
+"removed atom has to go somewhere, and at its destination its energy per "
+"atom is :math:`\\mu_{\\rm Li}`."
+
+#: ../../electronic/defect_formation.rst:83
+#, python-brace-format
+msgid ""
+"**エネルギーの基準の相殺。** :ref:`全エネルギーの基準<energy-reference>`\\ は擬ポテンシャルなどの "
+"計算条件で変わる。元素 :math:`i` の原子1個あたりの基準のずれを :math:`\\epsilon_i` とすると、 "
+":math:`E_{\\rm tot}[{\\rm X}]-E_{\\rm tot}[{\\rm bulk}]` には "
+":math:`\\sum_in_i\\epsilon_i` が含まれる。 :math:`\\mu_i` を同じ計算条件で求めれば "
+":math:`\\mu_i` にも :math:`\\epsilon_i` が入り、 :eq:`defect-formation-"
+"neutral`\\ の中で打ち消し合う。化学ポテンシャルを別の手法や文献の値から取ると、 この相殺が成り立たない。"
+msgstr ""
+"**Cancellation of energy references.** The :ref:`total energy reference "
+"<energy-reference>`\\  varies with computational settings such as the "
+"pseudopotential. If the reference offset per atom of element :math:`i` is"
+" :math:`\\epsilon_i`, the difference :math:`E_{\\rm tot}[{\\rm "
+"X}]-E_{\\rm tot}[{\\rm bulk}]` includes :math:`\\sum_in_i\\epsilon_i`. If"
+" :math:`\\mu_i` is obtained with the same computational settings, then "
+":math:`\\mu_i` also includes :math:`\\epsilon_i`, and the offsets cancel "
+"in Equation :eq:`defect-formation-neutral`\\ . This cancellation does not"
+" hold if the chemical potentials come from another method or from "
+"literature values."
+
+#: ../../electronic/defect_formation.rst:90
+#, python-brace-format
+msgid ""
+"そこで、元素 :math:`i` の単体（金属Liの結晶、O\\ :sub:`2`\\ 分子など）の1原子あたりの全エネルギー "
+":math:`E_i^{\\rm ref}` を同じ条件で計算し、化学ポテンシャルをそこからの差 :math:`\\Delta\\mu_i` "
+"で表す。 :ref:`化学ポテンシャルの節<chemical-potential>`\\ で見たように、絶対零度で零点振動と :math:`pV`"
+" を無視すると、 単体の固体の化学ポテンシャルは1原子あたりの全エネルギーで近似できる。この近似のもとで、 "
+":math:`\\Delta\\mu_i=0` はその単体と平衡にある条件を表す。:eq:`defect-formation-neutral`\\"
+" は"
+msgstr ""
+"Using the same settings, calculate for element :math:`i` the total energy"
+" per atom of its elemental reference (for example, crystalline Li metal "
+"or O\\ :sub:`2`\\  molecules), denoted by :math:`E_i^{\\rm ref}`, and "
+"express its chemical potential as an offset :math:`\\Delta\\mu_i` from "
+"that reference. As discussed in the section on :ref:`chemical potential "
+"<chemical-potential>`\\ , at absolute zero the chemical potential of an "
+"elemental solid can be approximated by its total energy per atom if zero-"
+"point vibrations and :math:`pV` are neglected. Under this approximation, "
+":math:`\\Delta\\mu_i=0` describes equilibrium with the elemental "
+"reference. Equation :eq:`defect-formation-neutral`\\  then separates into"
+
+#: ../../electronic/defect_formation.rst:96
+msgid ""
+"\\begin{aligned}\n"
+"\\mu_i&=E_i^{\\rm ref}+\\Delta\\mu_i,\\\\\n"
+"E_{\\rm f}[{\\rm X}]&=\\underbrace{E_{\\rm tot}[{\\rm X}]-E_{\\rm "
+"tot}[{\\rm bulk}]-\\sum_in_iE_i^{\\rm ref}}_{E_{\\rm f}^0[{\\rm X}]}\n"
+"-\\sum_in_i\\Delta\\mu_i\n"
+"\\end{aligned}"
+msgstr ""
+"\\begin{aligned}\n"
+"\\mu_i&=E_i^{\\rm ref}+\\Delta\\mu_i,\\\\\n"
+"E_{\\rm f}[{\\rm X}]&=\\underbrace{E_{\\rm tot}[{\\rm X}]-E_{\\rm "
+"tot}[{\\rm bulk}]-\\sum_in_iE_i^{\\rm ref}}_{E_{\\rm f}^0[{\\rm X}]}\n"
+"-\\sum_in_i\\Delta\\mu_i\n"
+"\\end{aligned}"
+
+#: ../../electronic/defect_formation.rst:105
+#, python-brace-format
+msgid ""
+"と分かれる。:math:`E_{\\rm f}^0` "
+"は計算する構造と計算条件で決まり、:math:`-\\sum_in_i\\Delta\\mu_i` が "
+"実験の条件（どの相と平衡にあるか、気相の分圧など）による変化を表す。"
+msgstr ""
+"The term :math:`E_{\\rm f}^0` is determined by the structures and "
+"calculation settings, and :math:`-\\sum_in_i\\Delta\\mu_i` accounts for "
+"changes due to experimental conditions such as the phases in equilibrium "
+"and the partial pressures in the gas phase."
+
+#: ../../electronic/defect_formation.rst:108
+#, python-brace-format
+msgid ""
+"この分け方は参照の選び方に依存するが、:math:`E_{\\rm f}` そのものは依存しない。同じ :math:`\\mu_i` を、 "
+"別の参照 :math:`E_i^{\\rm ref}` からの差で表し直すと、:math:`E_{\\rm f}^0` と "
+":math:`-\\sum_in_i\\Delta\\mu_i` の 変化は打ち消し合う。:math:`E_{\\rm f}` が変わるのは "
+":math:`\\mu_i` そのもの、つまりリザーバーの条件が違う場合である。 共通の :math:`E_i^{\\rm ref}` "
+"と計算条件のもとで :math:`\\Delta\\mu_i` だけが違う2つの値は、第2項の差だけずれる。"
+msgstr ""
+"This decomposition depends on the choice of reference, but :math:`E_{\\rm"
+" f}` itself does not. Reexpressing the same :math:`\\mu_i` as an offset "
+"from a different reference :math:`E_i^{\\rm ref}` produces canceling "
+"changes in :math:`E_{\\rm f}^0` and :math:`-\\sum_in_i\\Delta\\mu_i`. For"
+" :math:`E_{\\rm f}` to change, :math:`\\mu_i` itself must change, which "
+"means changing the reservoir conditions. With common references "
+":math:`E_i^{\\rm ref}` and calculation settings, two values that differ "
+"only in :math:`\\Delta\\mu_i` differ by the change in the second term "
+"alone."
+
+#: ../../electronic/defect_formation.rst:116
+msgid "化学ポテンシャルの取りうる範囲"
+msgstr "Allowed Range of Chemical Potentials"
+
+#: ../../electronic/defect_formation.rst:118
+#, python-brace-format
+msgid ""
+":math:`\\Delta\\mu_i` は自由に選べるわけではない。母物質が化合物 :math:`{\\rm A}_x{\\rm B}_y` "
+"のとき、 化合物がリザーバーと平衡に存在するには、化合物1化学式単位を作る反応の平衡条件 （反応ギブスエネルギー\\ :eq:`thermo-"
+"reaction-gibbs`\\ が0）が成り立つ。母相の1化学式単位あたりの ギブス自由エネルギーを :math:`g[{\\rm "
+"A}_x{\\rm B}_y]`、単体A・Bの1原子あたりのギブス自由エネルギーを :math:`g_{\\rm "
+"A}`、:math:`g_{\\rm B}` とすると、一般には"
+msgstr ""
+"The offsets :math:`\\Delta\\mu_i` cannot be chosen freely. If the host "
+"material is the compound :math:`{\\rm A}_x{\\rm B}_y`, it can coexist in "
+"equilibrium with the reservoirs only if the reaction that forms one "
+"formula unit of the compound is at equilibrium, so that the Gibbs energy "
+"of reaction in Equation \\ :eq:`thermo-reaction-gibbs`\\  is zero. Let "
+"the Gibbs free energy per formula unit of the host phase be "
+":math:`g[{\\rm A}_x{\\rm B}_y]` and those per atom of the elemental "
+"phases A and B be :math:`g_{\\rm A}` and :math:`g_{\\rm B}`. In general,"
+
+#: ../../electronic/defect_formation.rst:124
+#, python-brace-format
+msgid ""
+"x\\mu_{\\rm A}+y\\mu_{\\rm B}=g[{\\rm A}_x{\\rm B}_y],\n"
+"\\qquad\n"
+"\\mu_{\\rm A}\\le g_{\\rm A},\\quad\\mu_{\\rm B}\\le g_{\\rm B}"
+msgstr ""
+"x\\mu_{\\rm A}+y\\mu_{\\rm B}=g[{\\rm A}_x{\\rm B}_y],\n"
+"\\qquad\n"
+"\\mu_{\\rm A}\\le g_{\\rm A},\\quad\\mu_{\\rm B}\\le g_{\\rm B}"
+
+#: ../../electronic/defect_formation.rst:131
+#, python-brace-format
+msgid ""
+"である。右の2つの不等式は単体の析出で決まる上限である。:math:`\\mu_{\\rm A}>g_{\\rm A}` なら、 "
+"リザーバーのAの化学ポテンシャルが単体Aより高いので、:eq:`thermo-transfer`\\ によりAは単体として析出する。"
+msgstr ""
+"The two inequalities on the right give the upper bounds set by "
+"precipitation of the elemental phases. If :math:`\\mu_{\\rm A}>g_{\\rm "
+"A}`, the chemical potential of A in the reservoir exceeds that of "
+"elemental A, so A precipitates as the elemental phase according to "
+"Equation :eq:`thermo-transfer`\\ ."
+
+#: ../../electronic/defect_formation.rst:134
+#, python-brace-format
+msgid ""
+"静的な第一原理計算では、絶対零度で零点振動と :math:`pV` を無視して :math:`g` を全エネルギーで近似する。 "
+":math:`g[{\\rm A}_x{\\rm B}_y]\\simeq E_{\\rm tot}[{\\rm A}_x{\\rm "
+"B}_y]`、:math:`g_i\\simeq E_i^{\\rm ref}` とおき、 :eq:`defect-formation-"
+"delta-mu`\\ の :math:`\\Delta\\mu_i` で書くと"
+msgstr ""
+"Static first-principles calculations neglect zero-point vibrations and "
+":math:`pV` at absolute zero and approximate :math:`g` by the total "
+"energy. Setting :math:`g[{\\rm A}_x{\\rm B}_y]\\simeq E_{\\rm tot}[{\\rm "
+"A}_x{\\rm B}_y]` and :math:`g_i\\simeq E_i^{\\rm ref}` and expressing the"
+" conditions in terms of the offsets in Equation :eq:`defect-formation-"
+"delta-mu`\\ , :math:`\\Delta\\mu_i`, gives"
+
+#: ../../electronic/defect_formation.rst:138
+#, python-brace-format
+msgid ""
+"x\\Delta\\mu_{\\rm A}+y\\Delta\\mu_{\\rm B}=\\Delta H_{\\rm f}[{\\rm "
+"A}_x{\\rm B}_y],\n"
+"\\qquad\n"
+"\\Delta\\mu_{\\rm A}\\le0,\\quad\\Delta\\mu_{\\rm B}\\le0"
+msgstr ""
+"x\\Delta\\mu_{\\rm A}+y\\Delta\\mu_{\\rm B}=\\Delta H_{\\rm f}[{\\rm "
+"A}_x{\\rm B}_y],\n"
+"\\qquad\n"
+"\\Delta\\mu_{\\rm A}\\le0,\\quad\\Delta\\mu_{\\rm B}\\le0"
+
+#: ../../electronic/defect_formation.rst:145
+#, python-brace-format
+msgid ""
+"となる。:math:`\\Delta H_{\\rm f}=E_{\\rm tot}[{\\rm A}_x{\\rm B}_y]-xE_{\\rm"
+" A}^{\\rm ref}-yE_{\\rm B}^{\\rm ref}` は 化学式単位あたりの生成エネルギーで、安定な化合物では "
+":math:`\\Delta H_{\\rm f}<0` になる。 気相と平衡にある条件を扱うときは、後で述べるように気相の "
+":math:`\\mu` の温度と分圧への依存を :math:`\\Delta\\mu` に含める。:eq:`defect-compound-"
+"equilibrium`\\ の2つの式を合わせると"
+msgstr ""
+"Here :math:`\\Delta H_{\\rm f}=E_{\\rm tot}[{\\rm A}_x{\\rm "
+"B}_y]-xE_{\\rm A}^{\\rm ref}-yE_{\\rm B}^{\\rm ref}` is the formation "
+"energy per formula unit, and :math:`\\Delta H_{\\rm f}<0` for a stable "
+"compound. For equilibrium with a gas phase, include the dependence of the"
+" gas-phase :math:`\\mu` on temperature and partial pressure in "
+":math:`\\Delta\\mu`, as described below. Combining the two expressions in"
+" Equation :eq:`defect-compound-equilibrium`\\  gives"
+
+#: ../../electronic/defect_formation.rst:150
+msgid "\\frac{\\Delta H_{\\rm f}}{x}\\le\\Delta\\mu_{\\rm A}\\le0"
+msgstr "\\frac{\\Delta H_{\\rm f}}{x}\\le\\Delta\\mu_{\\rm A}\\le0"
+
+#: ../../electronic/defect_formation.rst:155
+#, python-brace-format
+msgid ""
+"となる。:math:`\\Delta\\mu_{\\rm A}=0` の端を「A過剰」、:math:`\\Delta\\mu_{\\rm "
+"A}=\\Delta H_{\\rm f}/x`\\ （このとき :math:`\\Delta\\mu_{\\rm "
+"B}=0`）の端を「B過剰」の条件と呼ぶ。同じ元素からなる別の化合物 :math:`{\\rm A}_m{\\rm B}_l` "
+"があれば、それが析出しない条件 :math:`m\\Delta\\mu_{\\rm A}+l\\Delta\\mu_{\\rm "
+"B}\\le\\Delta H_{\\rm f}[{\\rm A}_m{\\rm B}_l]` が範囲をさらに狭める。"
+msgstr ""
+"The endpoint :math:`\\Delta\\mu_{\\rm A}=0` is called A-rich, and the "
+"endpoint :math:`\\Delta\\mu_{\\rm A}=\\Delta H_{\\rm f}/x`\\  (where "
+":math:`\\Delta\\mu_{\\rm B}=0`) is called B-rich. If another compound "
+":math:`{\\rm A}_m{\\rm B}_l` consists of the same elements, the condition"
+" :math:`m\\Delta\\mu_{\\rm A}+l\\Delta\\mu_{\\rm B}\\le\\Delta H_{\\rm "
+"f}[{\\rm A}_m{\\rm B}_l]` that prevents it from precipitating narrows the"
+" range further."
+
+#: ../../electronic/defect_formation.rst:160
+#, python-brace-format
+msgid ""
+"Li\\ :sub:`3`\\ PO\\ :sub:`4`\\ のような3元素の化合物では、 :math:`3\\Delta\\mu_{\\rm "
+"Li}+\\Delta\\mu_{\\rm P}+4\\Delta\\mu_{\\rm O}=\\Delta H_{\\rm f}[{\\rm "
+"Li_3PO_4}]` から 独立な変数は2つになり、Li\\ :sub:`2`\\ OやLi\\ :sub:`4`\\ P\\ "
+":sub:`2`\\ O\\ :sub:`7`\\ などの 他の化合物と単体の析出条件が、2次元の多角形の範囲を作る。Li空孔の形成エネルギーは "
+":eq:`defect-formation-delta-mu`\\ により :math:`\\Delta\\mu_{\\rm Li}` "
+"だけずれるので、この範囲のどこを選ぶかで変わる。"
+msgstr ""
+"For a three-element compound such as Li\\ :sub:`3`\\ PO\\ :sub:`4`\\ , "
+"the relation :math:`3\\Delta\\mu_{\\rm Li}+\\Delta\\mu_{\\rm "
+"P}+4\\Delta\\mu_{\\rm O}=\\Delta H_{\\rm f}[{\\rm Li_3PO_4}]` leaves two "
+"independent variables. The conditions against precipitation of other "
+"compounds such as Li\\ :sub:`2`\\ O and Li\\ :sub:`4`\\ P\\ :sub:`2`\\ "
+"O\\ :sub:`7`\\  and of the elemental phases define a two-dimensional "
+"polygonal region. Equation :eq:`defect-formation-delta-mu`\\  gives a "
+"shift of :math:`\\Delta\\mu_{\\rm Li}` in the Li vacancy formation "
+"energy, so the energy depends on where in that region the conditions lie."
+
+#: ../../electronic/defect_formation.rst:166
+#, python-brace-format
+msgid ""
+"リザーバーが気相のときは、:math:`\\Delta\\mu` を温度と分圧で決められる。例えば酸素では、 "
+":ref:`理想気体の化学ポテンシャル<chemical-potential>`\\ :eq:`thermo-ideal-gas-mu`\\ と "
+":math:`\\mu_{\\rm O}=\\mu_{\\rm O_2}/2` から"
+msgstr ""
+"For a gas-phase reservoir, determine :math:`\\Delta\\mu` from the "
+"temperature and partial pressure. For oxygen, combining the "
+":ref:`chemical potential of an ideal gas <chemical-potential>`\\  in "
+"Equation \\ :eq:`thermo-ideal-gas-mu`\\  with :math:`\\mu_{\\rm "
+"O}=\\mu_{\\rm O_2}/2` gives"
+
+#: ../../electronic/defect_formation.rst:170
+msgid ""
+"\\Delta\\mu_{\\rm O}(T,p_{\\rm O_2})\n"
+"=\\frac12\\left[\\mu_{\\rm O_2}^{o}(T)-E_{\\rm tot}[{\\rm O_2}]\\right]\n"
+"+\\frac12k_{\\rm B}T\\ln\\frac{p_{\\rm O_2}}{p^{o}}"
+msgstr ""
+"\\Delta\\mu_{\\rm O}(T,p_{\\rm O_2})\n"
+"=\\frac12\\left[\\mu_{\\rm O_2}^{o}(T)-E_{\\rm tot}[{\\rm O_2}]\\right]\n"
+"+\\frac12k_{\\rm B}T\\ln\\frac{p_{\\rm O_2}}{p^{o}}"
+
+#: ../../electronic/defect_formation.rst:177
+#, python-brace-format
+msgid ""
+"となる。:math:`\\mu^{o}_{\\rm O_2}(T)` は1分子あたりの標準化学ポテンシャルで、全エネルギーを "
+"基準にした温度依存の部分は統計力学か熱化学の表から求める。同じ考え方で表面の安定性を気相の条件に 結びつけた例が、`GaN表面の相図 "
+"<https://example.quloud-"
+"platform.quemix.com/gan_surface/phase_diagram.html>`__\\ である。"
+msgstr ""
+"Here :math:`\\mu^{o}_{\\rm O_2}(T)` is the standard chemical potential "
+"per molecule. Obtain its temperature-dependent part relative to the total"
+" energy from statistical mechanics or thermochemistry tables. The "
+"calculation example `Phase Diagram of the GaN Surface <https://example"
+".quloud-platform.quemix.com/gan_surface/phase_diagram.html>`__\\  uses "
+"the same reasoning to relate surface stability to gas-phase conditions."
+
+#: ../../electronic/defect_formation.rst:184
+msgid "荷電欠陥とフェルミ準位"
+msgstr "Charged Defects and the Fermi Level"
+
+#: ../../electronic/defect_formation.rst:186
+#, python-brace-format
+msgid ""
+"イオン結晶や半導体の欠陥は、電子を受け取ったり放したりして電荷をもつことが多い。 電荷 :math:`q` の欠陥を作ると、結晶から "
+":math:`q` 個の電子が電子のリザーバーへ移る。 電子のリザーバーの化学ポテンシャルは\\ :ref:`フェルミ準位<fermi-"
+"dirac-distribution>`\\ で、 これを価電子帯上端 :math:`E_{\\rm VBM}` から測った "
+":math:`E_{\\rm F}` で表すと :math:`E_{\\rm VBM}+E_{\\rm F}` である。:eq:`defect-"
+"formation-neutral`\\ と同じ数え方で"
+msgstr ""
+"Defects in ionic crystals and semiconductors often gain or lose electrons"
+" and become charged. Forming a defect of charge :math:`q` transfers "
+":math:`q` electrons from the crystal to the electron reservoir. The "
+"chemical potential of this reservoir is the \\ :ref:`Fermi level <fermi-"
+"dirac-distribution>`\\ . With the valence band maximum :math:`E_{\\rm "
+"VBM}` as the reference for :math:`E_{\\rm F}`, that chemical potential is"
+" :math:`E_{\\rm VBM}+E_{\\rm F}`. Following the same accounting as in "
+"Equation :eq:`defect-formation-neutral`\\  gives"
+
+#: ../../electronic/defect_formation.rst:192
+#, python-brace-format
+msgid ""
+"E_{\\rm f}[{\\rm X}^q](E_{\\rm F})=E_{\\rm tot}[{\\rm X}^q]-E_{\\rm "
+"tot}[{\\rm bulk}]\n"
+"-\\sum_in_i\\mu_i+q\\,(E_{\\rm VBM}+E_{\\rm F})+E_{\\rm corr}"
+msgstr ""
+"E_{\\rm f}[{\\rm X}^q](E_{\\rm F})=E_{\\rm tot}[{\\rm X}^q]-E_{\\rm "
+"tot}[{\\rm bulk}]\n"
+"-\\sum_in_i\\mu_i+q\\,(E_{\\rm VBM}+E_{\\rm F})+E_{\\rm corr}"
+
+#: ../../electronic/defect_formation.rst:198
+#, python-brace-format
+msgid ""
+"となる [DefFreysoldt2014]_。:math:`E_{\\rm corr}` は次に述べる有限セルの補正である。 形成エネルギーは "
+":math:`E_{\\rm F}` に対して傾き :math:`q` の直線である。正に帯電した欠陥の形成エネルギーは "
+"フェルミ準位が低い（p型の）条件ほど低く、負に帯電した欠陥では逆にフェルミ準位が高い（n型の）条件ほど低い。"
+msgstr ""
+"as in [DefFreysoldt2014]_. The term :math:`E_{\\rm corr}` is the finite-"
+"cell correction described next. The formation energy is linear in "
+":math:`E_{\\rm F}` with slope :math:`q`. Positively charged defects have "
+"lower formation energies at lower Fermi levels (p-type conditions), "
+"whereas negatively charged defects have lower formation energies at "
+"higher Fermi levels (n-type conditions)."
+
+#: ../../electronic/defect_formation.rst:202
+msgid ""
+"2つの電荷 :math:`q`、:math:`q'` の形成エネルギーが等しくなるフェルミ準位を **遷移準位** "
+":math:`\\varepsilon(q/q')` と呼ぶ。:eq:`defect-formation-charged`\\ "
+"で両者を等しいとおくと"
+msgstr ""
+"The Fermi level at which the formation energies for charges :math:`q` and"
+" :math:`q'` are equal is called the **transition level** "
+":math:`\\varepsilon(q/q')`. Equating the two formation energies in "
+"Equation :eq:`defect-formation-charged`\\  gives"
+
+#: ../../electronic/defect_formation.rst:205
+msgid ""
+"\\varepsilon(q/q')=\\frac{E_{\\rm f}[{\\rm X}^q](E_{\\rm F}=0)-E_{\\rm "
+"f}[{\\rm X}^{q'}](E_{\\rm F}=0)}{q'-q}"
+msgstr ""
+"\\varepsilon(q/q')=\\frac{E_{\\rm f}[{\\rm X}^q](E_{\\rm F}=0)-E_{\\rm "
+"f}[{\\rm X}^{q'}](E_{\\rm F}=0)}{q'-q}"
+
+#: ../../electronic/defect_formation.rst:210
+msgid ""
+"となる。ただし、この交点で第3の電荷状態の形成エネルギーがさらに低ければ、そこで最も安定な電荷は入れ替わらない。 "
+"熱力学的な遷移準位は、取りうるフェルミ準位の範囲（バンドギャップ内）で、各電荷の形成エネルギーの "
+"最小値（下包絡線）をつくる直線が切り替わる交点である。フェルミ準位がこの点を横切ると、熱平衡で最も安定な電荷が入れ替わる。 "
+"フェルミ準位そのものは、欠陥とキャリアの電荷の総和が0になる条件から決まる。"
+msgstr ""
+"However, if a third charge state has an even lower formation energy at "
+"that intersection, the most stable charge state does not change there. A "
+"thermodynamic transition level is an intersection within the allowed "
+"range of Fermi levels (the band gap) where the lower envelope, which "
+"gives the minimum formation energy across all charge states, switches "
+"from one line to another. As the Fermi level crosses this point, the most"
+" stable charge state at thermal equilibrium changes. The Fermi level "
+"itself is set by the condition that the charges of defects and carriers "
+"sum to zero."
+
+#: ../../electronic/defect_formation.rst:215
+#, python-brace-format
+msgid ""
+"**有限セルの補正。** 周期セルに電荷 :math:`q` を入れると、静電エネルギーが発散しないように "
+"一様な逆符号の背景電荷を加えて計算する。すると欠陥の電荷は、その周期像と背景電荷とも相互作用する。 立方セルの一辺を "
+":math:`L`、比誘電率を :math:`\\varepsilon_{\\rm r}`、点電荷の格子のマーデルング定数を "
+":math:`\\alpha_{\\rm M}` とすると、この相互作用の主な項は :math:`L` に反比例し、 "
+"Makov–Payneの補正の最初の項は"
+msgstr ""
+"**Finite-cell correction.** When a charge :math:`q` is added to a "
+"periodic cell, a uniform background charge of opposite sign is added to "
+"prevent the electrostatic energy from diverging. The defect charge then "
+"interacts with both its periodic images and the background. Let :math:`L`"
+" be the edge length of the cubic cell, :math:`\\varepsilon_{\\rm r}` the "
+"relative permittivity, and :math:`\\alpha_{\\rm M}` the Madelung constant"
+" of the point-charge lattice. The leading term of this interaction is "
+"inversely proportional to :math:`L`, and the leading term of the "
+"Makov–Payne correction is"
+
+#: ../../electronic/defect_formation.rst:221
+msgid ""
+"E_{\\rm corr}\\simeq\\frac{q^2e^2\\alpha_{\\rm "
+"M}}{8\\pi\\varepsilon_0\\varepsilon_{\\rm r}L}"
+msgstr ""
+"E_{\\rm corr}\\simeq\\frac{q^2e^2\\alpha_{\\rm "
+"M}}{8\\pi\\varepsilon_0\\varepsilon_{\\rm r}L}"
+
+#: ../../electronic/defect_formation.rst:226
+#, python-brace-format
+msgid ""
+"である [DefMakovPayne1995]_。:math:`\\varepsilon_0` "
+"は真空の誘電率である。:math:`\\alpha_{\\rm M}` は "
+"セルの形と静電エネルギーの規約で決まる無次元の定数である。ここでは、一様な背景電荷の中にある点電荷の格子の エネルギーを孤立した点電荷より "
+":math:`q^2e^2\\alpha_{\\rm M}/(8\\pi\\varepsilon_0\\varepsilon_{\\rm "
+"r}L)` だけ低いと書く Makov–Payneの規約に従い、単純立方の格子では :math:`\\alpha_{\\rm "
+"M}\\simeq2.8373` である。 欠陥を含むセルと完全結晶とで静電ポテンシャルの基準をそろえる項も要る。これらをまとめて扱う方法に、 "
+"Freysoldtらの方法がある [DefFreysoldt2009]_。補正の詳細は総説 [DefFreysoldt2014]_ にある。"
+msgstr ""
+"as in [DefMakovPayne1995]_. Here :math:`\\varepsilon_0` is the vacuum "
+"permittivity. The dimensionless constant :math:`\\alpha_{\\rm M}` depends"
+" on the cell shape and the convention for the electrostatic energy. We "
+"follow the Makov–Payne convention, in which the energy of a lattice of "
+"point charges in a uniform compensating background is lower than the "
+"energy of the isolated point charge by :math:`q^2e^2\\alpha_{\\rm "
+"M}/(8\\pi\\varepsilon_0\\varepsilon_{\\rm r}L)`. For a simple cubic "
+"lattice, :math:`\\alpha_{\\rm M}\\simeq2.8373`. A term aligning the "
+"electrostatic potential references between the defective cell and the "
+"perfect crystal is also needed. The method of Freysoldt and coauthors "
+"treats these corrections together [DefFreysoldt2009]_. See the review "
+"[DefFreysoldt2014]_ for details."
+
+#: ../../electronic/defect_formation.rst:233
+#, python-brace-format
+msgid ""
+"**中性のセルで原子を取り除く場合。** イオン結晶から中性のLi原子を1個取り除いたセルは、 Li\\ :sup:`+`\\ が抜けた電荷 "
+":math:`-1` の空孔と、電子が1個足りない状態（価電子帯の正孔、または "
+"近くの陰イオンに局在した正孔）を同時に含む。中性のセルから求めるのは、この組の形成エネルギーである。 電荷 :math:`-1` "
+"の空孔の形成エネルギーは\\ :eq:`defect-formation-charged`\\ によりフェルミ準位とともに変わり、 "
+"中性のセルの値と等しくなるのは :math:`E_{\\rm F}=\\varepsilon(0/{-1})` のときだけである。"
+msgstr ""
+"**Removing an atom in a neutral cell.** Removing a neutral Li atom from "
+"an ionic crystal leaves an empty Li\\ :sup:`+`\\  site (a vacancy with "
+"charge :math:`-1`) together with one missing electron (a hole in the "
+"valence band or a hole localized on a nearby anion). The formation energy"
+" obtained from the neutral cell is for this pair. The formation energy of"
+" the vacancy with charge :math:`-1` varies with the Fermi level according"
+" to Equation \\ :eq:`defect-formation-charged`\\  and equals the value "
+"from the neutral cell only when :math:`E_{\\rm F}=\\varepsilon(0/{-1})`."
+
+#: ../../electronic/defect_formation.rst:242
+msgid "欠陥濃度"
+msgstr "Defect Concentration"
+
+#: ../../electronic/defect_formation.rst:244
+#, python-brace-format
+msgid ""
+"形成エネルギーが正でも、有限温度では配置のエントロピーのために欠陥ができる。 欠陥が入りうるサイトが :math:`N` 個あり、そのうち "
+":math:`n` 個に欠陥があるとする。 欠陥どうしは相互作用しないとし、配置のエントロピーを除いた欠陥1個あたりの形成ギブス自由エネルギーを "
+":math:`g_{\\rm f}` とする。これは\\ :eq:`defect-formation-gibbs`\\ の "
+":math:`\\Delta G_{\\rm f}` で、 リザーバーの化学ポテンシャル（その温度と分圧への依存も）と振動の寄与を含む。 "
+":math:`n` 個の欠陥をサイトに配る並べ方は :math:`W=N!/[n!(N-n)!]` 通りなので、配置のエントロピーは "
+":math:`k_{\\rm B}\\ln W` で、欠陥の数による系のギブス自由エネルギーの変化は"
+msgstr ""
+"Even with a positive formation energy, defects form at finite temperature"
+" because of configurational entropy. Suppose there are :math:`N` possible"
+" defect sites, of which :math:`n` are occupied by defects. Assume the "
+"defects do not interact and let :math:`g_{\\rm f}` be the Gibbs free "
+"energy of formation per defect excluding configurational entropy. In "
+"Equation \\ :eq:`defect-formation-gibbs`\\ , this is :math:`\\Delta "
+"G_{\\rm f}`. It includes the reservoir chemical potentials, with their "
+"dependence on temperature and partial pressure, and the vibrational "
+"contribution. The number of ways to distribute :math:`n` defects among "
+"the sites is :math:`W=N!/[n!(N-n)!]`, so the configurational entropy is "
+":math:`k_{\\rm B}\\ln W` and the dependence of the system's Gibbs free "
+"energy on the number of defects is"
+
+#: ../../electronic/defect_formation.rst:252
+msgid "G(n)=G_0+ng_{\\rm f}-k_{\\rm B}T\\ln\\frac{N!}{n!\\,(N-n)!}"
+msgstr "G(n)=G_0+ng_{\\rm f}-k_{\\rm B}T\\ln\\frac{N!}{n!\\,(N-n)!}"
+
+#: ../../electronic/defect_formation.rst:257
+msgid ""
+"となる。Stirlingの近似 :math:`\\ln m!\\simeq m\\ln m-m` を使うと、 :math:`\\ln "
+"W\\simeq N\\ln N-n\\ln n-(N-n)\\ln(N-n)` なので"
+msgstr ""
+"Using Stirling’s approximation :math:`\\ln m!\\simeq m\\ln m-m` gives "
+":math:`\\ln W\\simeq N\\ln N-n\\ln n-(N-n)\\ln(N-n)`, so"
+
+#: ../../electronic/defect_formation.rst:260
+#, python-brace-format
+msgid "\\frac{\\partial G}{\\partial n}=g_{\\rm f}+k_{\\rm B}T\\ln\\frac{n}{N-n}"
+msgstr "\\frac{\\partial G}{\\partial n}=g_{\\rm f}+k_{\\rm B}T\\ln\\frac{n}{N-n}"
+
+#: ../../electronic/defect_formation.rst:265
+#, python-brace-format
+msgid ""
+"である。熱平衡ではこれが0になるので、:math:`n/(N-n)=\\exp(-g_{\\rm f}/k_{\\rm B}T)` を得る。 "
+"欠陥が少ない :math:`n\\ll N` では、欠陥濃度 :math:`c=n/N` は "
+":math:`c\\simeq\\exp(-g_{\\rm f}/k_{\\rm B}T)` である。 さらに、静的な第一原理計算の形成エネルギー"
+" :math:`E_{\\rm f}`\\ （リザーバーの条件を :math:`\\mu_i` に含めたもの）で :math:`g_{\\rm "
+"f}` を近似し、振動の寄与を形成エントロピー :math:`S_{\\rm f}` にまとめて :math:`g_{\\rm f}\\simeq"
+" E_{\\rm f}-TS_{\\rm f}` とおくと"
+msgstr ""
+"At thermal equilibrium this derivative is zero, giving "
+":math:`n/(N-n)=\\exp(-g_{\\rm f}/k_{\\rm B}T)`. In the dilute limit "
+":math:`n\\ll N`, the defect concentration :math:`c=n/N` is "
+":math:`c\\simeq\\exp(-g_{\\rm f}/k_{\\rm B}T)`. Using the static first-"
+"principles formation energy :math:`E_{\\rm f}`\\  (with reservoir "
+"conditions included in :math:`\\mu_i`) to approximate :math:`g_{\\rm f}`,"
+" and collecting the vibrational contribution in the formation entropy "
+":math:`S_{\\rm f}`, we set :math:`g_{\\rm f}\\simeq E_{\\rm f}-TS_{\\rm "
+"f}` and obtain"
+
+#: ../../electronic/defect_formation.rst:271
+msgid ""
+"c\\simeq\\exp\\!\\left(\\frac{S_{\\rm f}}{k_{\\rm "
+"B}}\\right)\\exp\\!\\left(-\\frac{E_{\\rm f}}{k_{\\rm B}T}\\right)"
+msgstr ""
+"c\\simeq\\exp\\!\\left(\\frac{S_{\\rm f}}{k_{\\rm "
+"B}}\\right)\\exp\\!\\left(-\\frac{E_{\\rm f}}{k_{\\rm B}T}\\right)"
+
+#: ../../electronic/defect_formation.rst:276
+#, python-brace-format
+msgid ""
+"となる。1つのサイトに向きの異なる欠陥がいくつか入りうる場合は、その数を前に掛ける。 荷電欠陥では、:math:`E_{\\rm f}` に\\ "
+":eq:`defect-formation-charged`\\ の値を使い、 :math:`E_{\\rm F}` "
+"と濃度を電荷の中性条件と合わせて決める。"
+msgstr ""
+"If a site can host a defect in several orientations, multiply the "
+"concentration by the number of orientations. For charged defects, use for"
+" :math:`E_{\\rm f}` the value from Equation \\ :eq:`defect-formation-"
+"charged`\\  and determine :math:`E_{\\rm F}` and the concentrations "
+"subject to charge neutrality."
+
+#: ../../electronic/defect_formation.rst:280
+msgid ""
+"この導出は、欠陥の数が熱平衡まで増減できることを前提にしている。欠陥は表面や結晶粒界などで "
+"生まれ、消える。分子動力学のスーパーセルに空孔を1つだけ入れて計算するモデルでは、 空孔の数は固定され、:math:`c` "
+"は温度によらず「空孔1個÷サイト数」である。 したがって、このモデルで求めた拡散の温度依存性には、空孔を熱平衡で生成する寄与、つまり :eq"
+":`defect-concentration`\\ による空孔濃度の温度変化が入らない。熱平衡の空孔を介した拡散で、 "
+"活性化エネルギーに形成エンタルピーが加わる条件は、\\ :ref:`空孔機構の拡散<activation-energy-and-"
+"barriers>`\\ で導く。"
+msgstr ""
+"This derivation assumes that the number of defects can increase or "
+"decrease until thermal equilibrium is reached. Defects form and disappear"
+" at places such as surfaces and grain boundaries. In a molecular dynamics"
+" model with one deliberately inserted vacancy in the supercell, the "
+"number of vacancies is fixed, and :math:`c` is one vacancy divided by the"
+" number of sites at every temperature. The temperature dependence of "
+"diffusion obtained from this model therefore excludes vacancy formation "
+"at thermal equilibrium, meaning the temperature-dependent vacancy "
+"concentration in Equation :eq:`defect-concentration`\\ . The section on "
+"\\ :ref:`diffusion by the vacancy mechanism <activation-energy-and-"
+"barriers>`\\  derives the conditions under which the formation enthalpy "
+"contributes to the activation energy for diffusion mediated by vacancies "
+"at thermal equilibrium."
+
+#: ../../electronic/defect_formation.rst:290
+msgid "説明用の事例：化学ポテンシャルと荷電状態による変化"
+msgstr "Worked Example: Effects of Chemical Potential and Charge State"
+
+#: ../../electronic/defect_formation.rst:292
+#, python-brace-format
+msgid ""
+"**MgOの化学ポテンシャルの範囲。** MgO（結晶）の298.15 Kでの標準生成エンタルピーは −601.60 kJ/mol "
+"[DefCODATA1989]_ で、1化学式単位あたり :math:`\\Delta H_{\\rm f}=-6.235` eVにあたる （1 "
+"kJ/mol = 0.010364 eV）。第一原理計算では\\ :eq:`defect-compound-equilibrium`\\ の "
+":math:`\\Delta H_{\\rm f}` を全エネルギーから求めるが、ここでは範囲の幅の目安として実験値を使う。 :eq"
+":`defect-mu-range`\\ から :math:`-6.235\\,{\\rm eV}\\le\\Delta\\mu_{\\rm "
+"O}\\le0` で、 :math:`\\Delta\\mu_{\\rm Mg}=\\Delta H_{\\rm "
+"f}-\\Delta\\mu_{\\rm O}` である。"
+msgstr ""
+"**Chemical potential range for MgO.** The standard enthalpy of formation "
+"of crystalline MgO at 298.15 K is −601.60 kJ/mol [DefCODATA1989]_, "
+"corresponding to :math:`\\Delta H_{\\rm f}=-6.235` eV per formula unit (1"
+" kJ/mol = 0.010364 eV). Equation \\ :eq:`defect-compound-equilibrium`\\  "
+"uses :math:`\\Delta H_{\\rm f}`, which first-principles calculations "
+"obtain from total energies, but here we use the experimental value only "
+"to estimate the width of the range. Equation :eq:`defect-mu-range`\\  "
+"gives :math:`-6.235\\,{\\rm eV}\\le\\Delta\\mu_{\\rm O}\\le0`, with "
+":math:`\\Delta\\mu_{\\rm Mg}=\\Delta H_{\\rm f}-\\Delta\\mu_{\\rm O}`."
+
+#: ../../electronic/defect_formation.rst:299
+#, python-brace-format
+msgid ""
+"中性の酸素空孔 :math:`V_{\\rm O}`\\ （:math:`n_{\\rm O}=-1`）とMg空孔 :math:`V_{\\rm "
+"Mg}`\\ （:math:`n_{\\rm Mg}=-1`）の形成エネルギーは、 :eq:`defect-formation-delta-"
+"mu`\\ から"
+msgstr ""
+"For a neutral oxygen vacancy :math:`V_{\\rm O}`\\  (:math:`n_{\\rm "
+"O}=-1`) and a neutral Mg vacancy :math:`V_{\\rm Mg}`\\  (:math:`n_{\\rm "
+"Mg}=-1`), the formation energy expression in Equation :eq:`defect-"
+"formation-delta-mu`\\  gives"
+
+#: ../../electronic/defect_formation.rst:302
+#, python-brace-format
+msgid ""
+"E_{\\rm f}[V_{\\rm O}]=E_{\\rm f}^0[V_{\\rm O}]+\\Delta\\mu_{\\rm O},\n"
+"\\qquad\n"
+"E_{\\rm f}[V_{\\rm Mg}]=E_{\\rm f}^0[V_{\\rm Mg}]+\\Delta H_{\\rm "
+"f}-\\Delta\\mu_{\\rm O}"
+msgstr ""
+"E_{\\rm f}[V_{\\rm O}]=E_{\\rm f}^0[V_{\\rm O}]+\\Delta\\mu_{\\rm O},\n"
+"\\qquad\n"
+"E_{\\rm f}[V_{\\rm Mg}]=E_{\\rm f}^0[V_{\\rm Mg}]+\\Delta H_{\\rm "
+"f}-\\Delta\\mu_{\\rm O}"
+
+#: ../../electronic/defect_formation.rst:309
+msgid "となる。"
+msgstr "for the two vacancies, respectively."
+
+#: ../../electronic/defect_formation.rst:311
+msgid "MgOの両極限での化学ポテンシャルと空孔の形成エネルギーの変化（eV）"
+msgstr ""
+"Chemical potentials and changes in vacancy formation energies at the two "
+"limits for MgO (eV)"
+
+#: ../../electronic/defect_formation.rst:315
+msgid "条件"
+msgstr "Condition"
+
+#: ../../electronic/defect_formation.rst:316
+#, python-brace-format
+msgid ":math:`\\Delta\\mu_{\\rm O}`"
+msgstr ":math:`\\Delta\\mu_{\\rm O}`"
+
+#: ../../electronic/defect_formation.rst:317
+#, python-brace-format
+msgid ":math:`\\Delta\\mu_{\\rm Mg}`"
+msgstr ":math:`\\Delta\\mu_{\\rm Mg}`"
+
+#: ../../electronic/defect_formation.rst:318
+#, python-brace-format
+msgid ":math:`E_{\\rm f}[V_{\\rm O}]-E_{\\rm f}^0[V_{\\rm O}]`"
+msgstr ":math:`E_{\\rm f}[V_{\\rm O}]-E_{\\rm f}^0[V_{\\rm O}]`"
+
+#: ../../electronic/defect_formation.rst:319
+#, python-brace-format
+msgid ":math:`E_{\\rm f}[V_{\\rm Mg}]-E_{\\rm f}^0[V_{\\rm Mg}]`"
+msgstr ":math:`E_{\\rm f}[V_{\\rm Mg}]-E_{\\rm f}^0[V_{\\rm Mg}]`"
+
+#: ../../electronic/defect_formation.rst:320
+msgid "O過剰"
+msgstr "O-rich"
+
+#: ../../electronic/defect_formation.rst:321
+#: ../../electronic/defect_formation.rst:323
+#: ../../electronic/defect_formation.rst:327
+#: ../../electronic/defect_formation.rst:329
+msgid "0"
+msgstr "0"
+
+#: ../../electronic/defect_formation.rst:322
+#: ../../electronic/defect_formation.rst:324
+#: ../../electronic/defect_formation.rst:326
+#: ../../electronic/defect_formation.rst:328
+msgid "−6.235"
+msgstr "−6.235"
+
+#: ../../electronic/defect_formation.rst:325
+msgid "Mg過剰"
+msgstr "Mg-rich"
+
+#: ../../electronic/defect_formation.rst:331
+#, python-brace-format
+msgid ""
+"O過剰からMg過剰へ条件を移すと、酸素空孔の形成エネルギーは6.2 eV下がり、Mg空孔の形成エネルギーは 同じだけ上がる（:numref"
+":`fig-defect-formation-dependence`\\ の左）。同じ構造・同じ計算条件の :math:`E_{\\rm "
+"f}^0` を使っても、化学ポテンシャルの選び方だけで値が eV の単位で変わる。 一方、2つの空孔の和 :math:`E_{\\rm "
+"f}[V_{\\rm O}]+E_{\\rm f}[V_{\\rm Mg}]=E_{\\rm f}^0[V_{\\rm O}]+E_{\\rm "
+"f}^0[V_{\\rm Mg}]+\\Delta H_{\\rm f}` は "
+"化学ポテンシャルによらない。2つの空孔で取り除いた原子がMgOの化学量論の比（Mg 1個とO 1個）になり、 :eq:`defect-"
+"compound-equilibrium`\\ により :math:`\\Delta\\mu_{\\rm "
+"Mg}+\\Delta\\mu_{\\rm O}=\\Delta H_{\\rm f}` が "
+"一定だからである。この和は、離れた位置に別々に作った2つの中性の空孔の値を足したものである。 "
+"陽イオンと陰イオンの空孔の組（Schottky欠陥）の実際の形成エネルギーには、各空孔の電荷状態と、 "
+"近くにある空孔どうしの結合が関わるので、この和とは一般に異なる。"
+msgstr ""
+"Moving from O-rich to Mg-rich conditions lowers the oxygen vacancy "
+"formation energy by 6.2 eV and raises the Mg vacancy formation energy by "
+"the same amount (left panel of :numref:`fig-defect-formation-"
+"dependence`\\ ). Even using :math:`E_{\\rm f}^0` for the same structure "
+"and calculation settings, changing the chemical potentials alone shifts "
+"the values by several eV. By contrast, the sum for the two vacancies, "
+":math:`E_{\\rm f}[V_{\\rm O}]+E_{\\rm f}[V_{\\rm Mg}]=E_{\\rm "
+"f}^0[V_{\\rm O}]+E_{\\rm f}^0[V_{\\rm Mg}]+\\Delta H_{\\rm f}`, is "
+"independent of the chemical potentials. The removed atoms are in the "
+"stoichiometric ratio of MgO (one Mg and one O), so Equation :eq:`defect-"
+"compound-equilibrium`\\  fixes :math:`\\Delta\\mu_{\\rm "
+"Mg}+\\Delta\\mu_{\\rm O}=\\Delta H_{\\rm f}`. This sum is for two neutral"
+" vacancies formed separately at sites far apart. The actual formation "
+"energy of a cation–anion vacancy pair (Schottky defect) depends on the "
+"charge states of the vacancies and on their binding at short separation, "
+"so it generally differs from this sum."
+
+#: ../../electronic/defect_formation.rst:341
+#, python-brace-format
+msgid ""
+"**荷電欠陥の模型。** バンドギャップ3.0 eVの物質で、:math:`E_{\\rm F}=0` での形成エネルギーが 電荷 "
+":math:`+1`、0、:math:`-1` に対してそれぞれ1.0、1.8、3.4 eVの欠陥を考える （値は説明のための仮定）。:eq"
+":`defect-transition-level`\\ から "
+":math:`\\varepsilon(+1/0)=(1.0-1.8)/(0-1)=0.8` "
+"eV、:math:`\\varepsilon(0/{-1})=(1.8-3.4)/(-1-0)=1.6` eVである。 :numref:`fig-"
+"defect-formation-dependence`\\ の右で、太線は各フェルミ準位で最も低い形成エネルギーを つないだもので、0.8 "
+"eVより下では電荷 :math:`+1`、0.8〜1.6 eVでは中性、1.6 eVより上では 電荷 :math:`-1` が安定である。"
+msgstr ""
+"**Charged-defect model.** Consider a defect in a material with a band gap"
+" of 3.0 eV. At :math:`E_{\\rm F}=0`, assume formation energies of 1.0, "
+"1.8, and 3.4 eV for charges :math:`+1`, 0, and :math:`-1`, respectively, "
+"for illustration. Equation :eq:`defect-transition-level`\\  gives "
+":math:`\\varepsilon(+1/0)=(1.0-1.8)/(0-1)=0.8` eV and "
+":math:`\\varepsilon(0/{-1})=(1.8-3.4)/(-1-0)=1.6` eV. In the right panel "
+"of :numref:`fig-defect-formation-dependence`\\ , the thick line connects "
+"the minimum formation energies at each Fermi level. The stable charge "
+"state is :math:`+1` below 0.8 eV, neutral from 0.8 to 1.6 eV, and "
+":math:`-1` above 1.6 eV."
+
+#: ../../electronic/defect_formation.rst:349
+msgid "左は酸素の化学ポテンシャルに対して、酸素空孔の形成エネルギーが上がり、Mg空孔の形成エネルギーが下がる2本の直線。右はフェルミ準位に対する3つの電荷状態の形成エネルギーと、その最小値をつないだ折れ線。"
+msgstr ""
+"The left panel shows two lines. As the oxygen chemical potential "
+"increases, the oxygen vacancy formation energy rises and the Mg vacancy "
+"formation energy falls. The right panel shows the formation energies for "
+"three charge states versus the Fermi level, with a piecewise linear curve"
+" tracing their minimum."
+
+#: ../../electronic/defect_formation.rst:354
+#, python-brace-format
+msgid ""
+"左：MgOの酸素空孔（実線）とMg空孔（破線）の形成エネルギーの変化\\ :eq:`defect-mgo-vacancies`\\ 。 "
+"縦軸は、取り除いた元素の単体と平衡な条件（:math:`\\Delta\\mu=0`）での値 :math:`E_{\\rm f}^0` からの差。"
+" 点線は2つの変化の和で、:math:`\\Delta H_{\\rm f}=-6.235` eVで一定。 "
+"右：仮定した荷電欠陥の形成エネルギー\\ :eq:`defect-formation-charged`\\ 。細線は電荷 :math:`+1`\\"
+" （破線）、 0（一点鎖線）、:math:`-1`\\ （点線）、太線は最小値、黒丸は遷移準位。"
+msgstr ""
+"The left panel shows the change in formation energy for an oxygen vacancy"
+" (solid line) and an Mg vacancy (dashed line) in MgO, from Equation \\ "
+":eq:`defect-mgo-vacancies`\\ . The vertical axis shows the difference "
+"from the value at equilibrium with the elemental phase of the removed "
+"element (:math:`\\Delta\\mu=0`). That value is :math:`E_{\\rm f}^0`. The "
+"dotted line is the sum of the two changes and is constant at "
+":math:`\\Delta H_{\\rm f}=-6.235` eV. The right panel shows the formation"
+" energies in the charged-defect model, from Equation \\ :eq:`defect-"
+"formation-charged`\\ . Thin lines show charge :math:`+1`\\  (dashed), "
+"charge 0 (dash-dotted), and charge :math:`-1`\\  (dotted). The thick line"
+" shows the minimum formation energy, and the black dots mark the "
+"transition levels."
+
+#: ../../electronic/defect_formation.rst:360
+#, python-brace-format
+msgid ""
+"**欠陥濃度。** :eq:`defect-concentration`\\ で :math:`S_{\\rm "
+"f}=0`、:math:`E_{\\rm f}=1.0` eVとすると、 濃度は300 Kで "
+":math:`1.6\\times10^{-17}`、600 Kで :math:`4.0\\times10^{-9}`、1000 Kで "
+":math:`9.1\\times10^{-6}` である。 :eq:`defect-gibbs-derivative`\\ から得た "
+":math:`n/(N-n)=\\exp(-E_{\\rm f}/k_{\\rm B}T)` を厳密に :math:`n/N` "
+"へ直しても、この3つの値は表示した桁では変わらない。300 Kでは形成エネルギーが0.1 eV下がるだけで "
+"濃度が約48倍になる。上のMgOのように化学ポテンシャルで形成エネルギーが数eV変わると、 濃度は何十けたも変わりうる。"
+msgstr ""
+"**Defect concentration.** Equation :eq:`defect-concentration`\\  with "
+":math:`S_{\\rm f}=0` and :math:`E_{\\rm f}=1.0` eV gives concentrations "
+"of :math:`1.6\\times10^{-17}` at 300 K, :math:`4.0\\times10^{-9}` at 600 "
+"K, and :math:`9.1\\times10^{-6}` at 1000 K. Even converting the ratio "
+"from Equation :eq:`defect-gibbs-derivative`\\ , "
+":math:`n/(N-n)=\\exp(-E_{\\rm f}/k_{\\rm B}T)`, to the exact fraction "
+":math:`n/N` leaves these three values unchanged at the displayed "
+"precision. At 300 K, a drop in formation energy of just 0.1 eV increases "
+"the concentration by about a factor of 48. If the chemical potentials "
+"change the formation energy by several eV, as in the MgO example, the "
+"concentration can change by tens of orders of magnitude."
+
+#: ../../electronic/defect_formation.rst:370
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../electronic/defect_formation.rst:372
+#, python-brace-format
+msgid ""
+"**化学ポテンシャルの基準。** 形成エネルギーの値は、:math:`\\mu_i` をどの条件で選んだかと一緒に示して "
+"初めて意味をもつ。共通の参照 :math:`E_i^{\\rm ref}` と計算条件のもとでリザーバーの条件だけが違う値どうしは、 :eq"
+":`defect-formation-delta-mu`\\ の第2項の差だけずれる。手法が違う値どうしでは、:math:`E_{\\rm "
+"f}^0` と :math:`\\mu_i` の両方が違いうる。例えば\\ `Li₃PO₄のLi空孔形成エネルギー "
+"<https://example.quloud-platform.quemix.com/li3po4/vacancy-"
+"formation.html>`__\\ では、 Li\\ :sub:`3`\\ PO\\ :sub:`4`\\ "
+"の32原子の不規則構造からLiを1個取り除いた形成エネルギーが、 文献のDFTでは約5 eV、事例のOpenMXでは約3〜4 "
+"eVである。2つの計算は元の原子配置も異なる。この差を手法の精度の差として読むには、 "
+"構造、Liの化学ポテンシャル、緩和の条件をそろえる必要がある。どの要因がどれだけ効いているかは、 条件をそろえた計算なしには決められない。"
+msgstr ""
+"**Chemical potential references.** A formation energy is meaningful only "
+"when reported together with the conditions used to choose :math:`\\mu_i`."
+" With a common reference :math:`E_i^{\\rm ref}` and the same calculation "
+"settings, formation energies that differ only in reservoir conditions "
+"differ by the change in the second term of Equation :eq:`defect-"
+"formation-delta-mu`\\ . When the methods differ, both :math:`E_{\\rm "
+"f}^0` and :math:`\\mu_i` can differ. The calculation example \\ `Li "
+"Vacancy Formation Energy in Li₃PO₄ <https://example.quloud-"
+"platform.quemix.com/li3po4/vacancy-formation.html>`__\\  discusses "
+"removal of one Li atom from a 32-atom disordered Li\\ :sub:`3`\\ PO\\ "
+":sub:`4`\\  structure. The formation energy is about 5 eV in the "
+"published DFT calculation and about 3–4 eV in the OpenMX example. The two"
+" calculations also start from different atomic configurations. To "
+"interpret the difference as a difference in method accuracy, use the same"
+" structure, Li chemical potential, and relaxation conditions. Without "
+"calculations under matching conditions, the contribution of each factor "
+"cannot be determined."
+
+#: ../../electronic/defect_formation.rst:380
+msgid ""
+"**スーパーセルの大きさ。** 欠陥はその周期像と、ひずみ場（距離の3乗に反比例して弱まる）や、 荷電欠陥では静電相互作用（:eq"
+":`defect-makov-payne`\\ のように距離に反比例）を通じて相互作用する。 "
+"セルを大きくして形成エネルギーの変化を調べると、孤立した欠陥の値にどれだけ近いかが分かる。"
+msgstr ""
+"**Supercell size.** A defect interacts with its periodic images through "
+"strain fields, which decay as the inverse cube of the distance, and for "
+"charged defects through electrostatic interactions, which decay inversely"
+" with distance as in Equation :eq:`defect-makov-payne`\\ . Increasing the"
+" cell size and checking the change in formation energy shows how close it"
+" is to the isolated-defect value."
+
+#: ../../electronic/defect_formation.rst:383
+msgid ""
+"**緩和と構造。** 欠陥のまわりの緩和には複数の極小がありうる。初期構造によって異なる極小に "
+"落ちると、同じ欠陥でも形成エネルギーが変わる。非晶質では、取り除くサイトごとに環境が違うので、 形成エネルギーは1つの値ではなく分布になる。"
+msgstr ""
+"**Relaxation and structure.** Relaxation around a defect can lead to more"
+" than one minimum. If the starting structures relax to different minima, "
+"the formation energy can differ even for the same defect. In amorphous "
+"solids, the local environment differs with the site from which the atom "
+"is removed, so the formation energy has a distribution rather than a "
+"single value."
+
+#: ../../electronic/defect_formation.rst:386
+#, python-brace-format
+msgid ""
+"**エネルギーの精度。** GGAなどの近似汎関数はO\\ :sub:`2`\\ 分子の結合を過大に見積もり、 "
+"酸化物の生成エネルギーに系統的な誤差を生む [DefWang2006]_。バンドギャップを小さく見積もると、 "
+"荷電欠陥でフェルミ準位を動かせる範囲と遷移準位の位置も変わる。機械学習ポテンシャルで形成エネルギーを "
+"求める場合も、:math:`E_i^{\\rm ref}` を同じモデルで求めないと、基準のずれが相殺しない。"
+msgstr ""
+"**Energy accuracy.** Approximate functionals such as GGA overestimate "
+"binding in O\\ :sub:`2`\\  molecules, introducing systematic errors in "
+"oxide formation energies [DefWang2006]_. Underestimating the band gap "
+"also changes the range over which the Fermi level can vary for charged "
+"defects and the positions of the transition levels. When a machine "
+"learning potential is used to calculate formation energies, use the same "
+"model to obtain :math:`E_i^{\\rm ref}` so that the reference offsets "
+"cancel."
+
+#: ../../electronic/defect_formation.rst:390
+#, python-brace-format
+msgid ""
+"**有限温度。** :eq:`defect-formation-neutral`\\ は絶対零度の全エネルギーで書いた。高温では、 "
+"振動のエントロピー :math:`S_{\\rm f}` と、気相などのリザーバーの化学ポテンシャルの温度依存性が効く。"
+msgstr ""
+"**Finite temperature.** Equation :eq:`defect-formation-neutral`\\  uses "
+"total energies at absolute zero. At high temperatures, the vibrational "
+"entropy :math:`S_{\\rm f}` and the temperature dependence of the chemical"
+" potentials of reservoirs such as gases affect the result."
+
+#: ../../electronic/defect_formation.rst:392
+msgid ""
+"**空孔の数を固定したモデル。** 欠陥濃度の節で述べたように、空孔を人為的に入れたモデルの拡散の温度依存性には、 "
+"空孔を熱平衡で生成する寄与が入らない。実験の試料で空孔が熱平衡で生成されるなら、実験の拡散の温度依存性には "
+"この寄与が含まれ、組成や不純物で空孔の数が決まっているなら含まれない。どちらの場合かで、モデルの値と比べてよい量が変わる。空孔の割合が拡散係数の値そのものに効くことは、"
+" \\ :ref:`平均二乗変位と拡散係数の解釈と限界<msd-interpretation-limits>`\\ で述べる。"
+msgstr ""
+"**Models with a fixed number of vacancies.** As described in the section "
+"on defect concentration, the temperature dependence of diffusion in a "
+"model with manually inserted vacancies excludes vacancy formation at "
+"thermal equilibrium. If vacancies form at thermal equilibrium in the "
+"experimental sample, the temperature dependence of diffusion in that "
+"sample includes this contribution. If the number of vacancies is set by "
+"the composition or impurities, it does not. Which case applies determines"
+" the quantity that can be compared with the model. The section on \\ "
+":ref:`interpretation and limitations of the mean squared displacement and"
+" diffusion coefficient <msd-interpretation-limits>`\\  explains how the "
+"vacancy fraction affects the value of the diffusion coefficient itself."
+
+#: ../../electronic/defect_formation.rst:398
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../electronic/defect_formation.rst:400
+msgid ":ref:`chemical-potential`"
+msgstr ":ref:`chemical-potential`"
+
+#: ../../electronic/defect_formation.rst:401
+msgid ":ref:`energy-reference`"
+msgstr ":ref:`energy-reference`"
+
+#: ../../electronic/defect_formation.rst:402
+msgid ":ref:`fermi-dirac-distribution`"
+msgstr ":ref:`Fermi–Dirac Distribution <fermi-dirac-distribution>`"
+
+#: ../../electronic/defect_formation.rst:403
+msgid ""
+"`Li₃PO₄のLi空孔形成エネルギー <https://example.quloud-platform.quemix.com/li3po4"
+"/vacancy-formation.html>`__"
+msgstr ""
+"`Li Vacancy Formation Energy in Li₃PO₄ <https://example.quloud-"
+"platform.quemix.com/li3po4/vacancy-formation.html>`__"
+
+#: ../../electronic/defect_formation.rst:404
+msgid ""
+"`GaN(0001)の表面相図 <https://example.quloud-"
+"platform.quemix.com/gan_surface/phase_diagram.html>`__"
+msgstr ""
+"`Surface Phase Diagram of GaN(0001) <https://example.quloud-"
+"platform.quemix.com/gan_surface/phase_diagram.html>`__"
+
+#: ../../electronic/defect_formation.rst:407
+msgid "参考文献"
+msgstr "References"
+
+#: ../../electronic/defect_formation.rst:409
+msgid ""
+"S. B. Zhang and J. E. Northrup, *Phys. Rev. Lett.* **67**, 2339–2342 "
+"(1991). `doi:10.1103/PhysRevLett.67.2339 "
+"<https://doi.org/10.1103/PhysRevLett.67.2339>`_."
+msgstr ""
+"S. B. Zhang and J. E. Northrup, *Phys. Rev. Lett.* **67**, 2339–2342 "
+"(1991). `doi:10.1103/PhysRevLett.67.2339 "
+"<https://doi.org/10.1103/PhysRevLett.67.2339>`_."
+
+#: ../../electronic/defect_formation.rst:411
+msgid ""
+"C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G. Kresse, A. "
+"Janotti, and C. G. Van de Walle, *Rev. Mod. Phys.* **86**, 253–305 "
+"(2014). `doi:10.1103/RevModPhys.86.253 "
+"<https://doi.org/10.1103/RevModPhys.86.253>`_."
+msgstr ""
+"C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G. Kresse, A. "
+"Janotti, and C. G. Van de Walle, *Rev. Mod. Phys.* **86**, 253–305 "
+"(2014). `doi:10.1103/RevModPhys.86.253 "
+"<https://doi.org/10.1103/RevModPhys.86.253>`_."
+
+#: ../../electronic/defect_formation.rst:414
+msgid ""
+"G. Makov and M. C. Payne, *Phys. Rev. B* **51**, 4014–4022 (1995). "
+"`doi:10.1103/PhysRevB.51.4014 "
+"<https://doi.org/10.1103/PhysRevB.51.4014>`_."
+msgstr ""
+"G. Makov and M. C. Payne, *Phys. Rev. B* **51**, 4014–4022 (1995). "
+"`doi:10.1103/PhysRevB.51.4014 "
+"<https://doi.org/10.1103/PhysRevB.51.4014>`_."
+
+#: ../../electronic/defect_formation.rst:416
+msgid ""
+"C. Freysoldt, J. Neugebauer, and C. G. Van de Walle, *Phys. Rev. Lett.* "
+"**102**, 016402 (2009). `doi:10.1103/PhysRevLett.102.016402 "
+"<https://doi.org/10.1103/PhysRevLett.102.016402>`_."
+msgstr ""
+"C. Freysoldt, J. Neugebauer, and C. G. Van de Walle, *Phys. Rev. Lett.* "
+"**102**, 016402 (2009). `doi:10.1103/PhysRevLett.102.016402 "
+"<https://doi.org/10.1103/PhysRevLett.102.016402>`_."
+
+#: ../../electronic/defect_formation.rst:418
+msgid ""
+"L. Wang, T. Maxisch, and G. Ceder, *Phys. Rev. B* **73**, 195107 (2006). "
+"`doi:10.1103/PhysRevB.73.195107 "
+"<https://doi.org/10.1103/PhysRevB.73.195107>`_."
+msgstr ""
+"L. Wang, T. Maxisch, and G. Ceder, *Phys. Rev. B* **73**, 195107 (2006). "
+"`doi:10.1103/PhysRevB.73.195107 "
+"<https://doi.org/10.1103/PhysRevB.73.195107>`_."
+
+#: ../../electronic/defect_formation.rst:420
+msgid ""
+"J. D. Cox, D. D. Wagman, and V. A. Medvedev, *CODATA Key Values for "
+"Thermodynamics*, Hemisphere (1989). `CODATAの表 "
+"<https://www.codata.info/resources/databases/key1.html>`_."
+msgstr ""
+"J\\. D. Cox, D. D. Wagman, and V. A. Medvedev, *CODATA Key Values for "
+"Thermodynamics*, Hemisphere (1989). `CODATA table "
+"<https://www.codata.info/resources/databases/key1.html>`_."
+

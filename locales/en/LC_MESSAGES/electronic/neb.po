@@ -1,0 +1,1382 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 01:16+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/neb.rst:4
+msgid "最小エネルギー経路とNEB法"
+msgstr "Minimum Energy Path and the Nudged Elastic Band Method"
+
+#: ../../electronic/neb.rst:6
+msgid ""
+"固体の中の原子は、安定な位置のまわりで振動しながら、まれに隣の安定な位置へ移る。 "
+"移る途中の原子配置はエネルギーが高く、途中で最もエネルギーが高い配置と出発点とのエネルギー差が移動の障壁になる。 "
+"この記事では、2つの安定構造を結ぶ経路をイメージ（途中の原子配置）の列で表し、 各イメージに働く力を組み替えて経路を求めるNEB（nudged "
+"elastic band）法を導く。 経路の最高点を鞍点へ押し上げるclimbing imageと、得られた点が本当に鞍点かを確かめる方法も扱う。"
+msgstr ""
+"Atoms in a solid vibrate around stable positions and occasionally move to"
+" a neighboring stable position. The atomic configurations along the way "
+"have higher energies. The difference between the highest energy along the"
+" path and the energy at the starting point is the migration barrier. This"
+" article represents a path between two stable structures as a sequence of"
+" images (intermediate atomic configurations) and derives the nudged "
+"elastic band (NEB) method, which finds the path by recombining the forces"
+" on each image. It also explains how a climbing image drives the highest-"
+"energy image to the saddle point and how to check whether the resulting "
+"point is a saddle point."
+
+#: ../../electronic/neb.rst:12
+msgid ""
+"**前提知識**: :ref:`点欠陥の形成エネルギー<defect-formation>`\\ （空孔）、 :ref:`構造最適化"
+"<structure-optimization>`\\ （力と停留点）、 :ref:`虚数振動数と動的安定性<imaginary-"
+"frequency>`\\ （ヘッセ行列の固有値と曲率）。"
+msgstr ""
+"**Prerequisites**: :ref:`formation energies of point defects <defect-"
+"formation>`\\  (vacancies), :ref:`structure optimization <structure-"
+"optimization>`\\  (forces and stationary points), and :ref:`imaginary "
+"frequencies and dynamical stability <imaginary-frequency>`\\  (Hessian "
+"eigenvalues and curvature)."
+
+#: ../../electronic/neb.rst:16
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../electronic/neb.rst:18
+msgid "最小エネルギー経路と1次の鞍点を力とヘッセ行列で定義し、順方向・逆方向の移動障壁を区別する。"
+msgstr ""
+"Define the minimum energy path and a first-order saddle point using "
+"forces and the Hessian, and distinguish forward and reverse migration "
+"barriers."
+
+#: ../../electronic/neb.rst:19
+msgid "ばねでつないだイメージの列から、射影しないと経路が角を切ることと、イメージが極小へ滑り落ちることを導き、NEBの力がこの2つをどう取り除くかを説明する。"
+msgstr ""
+"Starting from a sequence of images connected by springs, show why "
+"omitting projection causes the path to cut corners and the images to "
+"slide toward the minima. Explain how NEB forces remove both problems."
+
+#: ../../electronic/neb.rst:20
+msgid "climbing imageの力が鞍点で0になる理由を示し、得られた点が1次の鞍点かをヘッセ行列の固有値から判定する。"
+msgstr ""
+"Show why the climbing-image force vanishes at the saddle point and "
+"determine from the Hessian eigenvalues whether the resulting point is a "
+"first-order saddle point."
+
+#: ../../electronic/neb.rst:21
+msgid "空孔を介した原子の移動で、端点・経路の候補・イメージの数の選び方が結果にどう効くかを判断する。"
+msgstr ""
+"For an atom moving via a vacancy, assess how the choice of endpoints, "
+"candidate paths, and image count affects the results."
+
+#: ../../electronic/neb.rst:26
+msgid "ポテンシャルエネルギー面と最小エネルギー経路"
+msgstr "Potential Energy Surface and Minimum Energy Path"
+
+#: ../../electronic/neb.rst:28
+msgid ""
+":math:`N` 個の原子の座標をまとめた :math:`3N` 次元のベクトルを :math:`\\boldsymbol R`、 "
+"その配置のエネルギーを :math:`E(\\boldsymbol R)` とする。電子状態計算では、各配置で電子の基底状態を "
+"求めた全エネルギーが :math:`E` になる。:math:`E(\\boldsymbol R)` を配置の関数とみたものを "
+"**ポテンシャルエネルギー面** と呼ぶ。原子に働く力と、エネルギーの2階微分を並べた ヘッセ行列 :math:`H` は"
+msgstr ""
+"Collect the coordinates of :math:`N` atoms in a :math:`3N`-dimensional "
+"vector :math:`\\boldsymbol R`, and denote the energy of that "
+"configuration by :math:`E(\\boldsymbol R)`. In electronic structure "
+"calculations, :math:`E` is the total energy obtained from the electronic "
+"ground state at each configuration. Viewed as a function of the "
+"configuration, :math:`E(\\boldsymbol R)` defines the **potential energy "
+"surface**. The forces on the atoms and the Hessian matrix :math:`H`, "
+"whose entries are second derivatives of the energy, are"
+
+#: ../../electronic/neb.rst:34
+#, python-brace-format
+msgid ""
+"\\boldsymbol F(\\boldsymbol R)=-\\nabla E(\\boldsymbol R),\n"
+"\\qquad\n"
+"H_{ab}(\\boldsymbol R)=\\frac{\\partial^2E}{\\partial R_a\\,\\partial R_b}"
+msgstr ""
+"\\boldsymbol F(\\boldsymbol R)=-\\nabla E(\\boldsymbol R),\n"
+"\\qquad\n"
+"H_{ab}(\\boldsymbol R)=\\frac{\\partial^2E}{\\partial R_a\\,\\partial R_b}"
+
+#: ../../electronic/neb.rst:41
+msgid ""
+"である。:math:`a,b` は :math:`3N` 個の座標成分を表す。:math:`H` は\\ :ref:`力定数<harmonic-"
+"approximation>`\\ を 並べた行列と同じものである。安定構造 A は :math:`\\boldsymbol "
+"F=\\boldsymbol 0` で、 :math:`H` の固有値が一様な並進による0を除いてすべて正の点、つまりエネルギーの極小である。"
+msgstr ""
+"Here :math:`a,b` index the :math:`3N` coordinate components. The Hessian "
+":math:`H` is the matrix of \\ :ref:`force constants <harmonic-"
+"approximation>`\\ . A stable structure A has :math:`\\boldsymbol "
+"F=\\boldsymbol 0`, and all eigenvalues of :math:`H` are positive except "
+"for the zeros due to uniform translation. It is therefore an energy "
+"minimum."
+
+#: ../../electronic/neb.rst:45
+#, python-brace-format
+msgid ""
+"A から別の極小 B へ移る経路を、弧長 :math:`s` を引数とする曲線 :math:`\\boldsymbol R(s)` で表し、 "
+"その単位接線を :math:`\\hat{\\boldsymbol\\tau}(s)=d\\boldsymbol R/ds` "
+"とする。各点の力を、接線方向の成分と それに垂直な成分に分ける。**最小エネルギー経路**\\ （minimum energy path, "
+"MEP。最低エネルギー経路とも書く）は、 経路上のすべての点で力の垂直成分が0になる経路である。"
+msgstr ""
+"Represent the path from A to another minimum B by a curve parameterized "
+"by arc length :math:`s`, written :math:`\\boldsymbol R(s)`, with unit "
+"tangent :math:`\\hat{\\boldsymbol\\tau}(s)=d\\boldsymbol R/ds`. Resolve "
+"the force at each point into components along and perpendicular to the "
+"tangent. A **minimum energy path**\\ (MEP, also rendered as “lowest-"
+"energy path”) has zero perpendicular force at every point along the path."
+
+#: ../../electronic/neb.rst:50
+#, python-brace-format
+msgid ""
+"\\boldsymbol F^{\\perp}(\\boldsymbol R(s))\n"
+"\\equiv\\boldsymbol F-(\\boldsymbol "
+"F\\cdot\\hat{\\boldsymbol\\tau})\\,\\hat{\\boldsymbol\\tau}\n"
+"=\\boldsymbol 0 ."
+msgstr ""
+"\\boldsymbol F^{\\perp}(\\boldsymbol R(s))\n"
+"\\equiv\\boldsymbol F-(\\boldsymbol "
+"F\\cdot\\hat{\\boldsymbol\\tau})\\,\\hat{\\boldsymbol\\tau}\n"
+"=\\boldsymbol 0 ."
+
+#: ../../electronic/neb.rst:57
+msgid ""
+"垂直成分が残る点では、経路を力の向きへ少しずらすとエネルギーが1次で下がる。 :eq:`neb-mep-condition`\\ "
+"はその1次の変化が無いこと、つまり各点が経路に垂直な方向について "
+"停留していることを表す。停留点が谷底（垂直方向の極小）か尾根（垂直方向の極大）かは、 垂直方向のエネルギーの2階微分で決まり、:eq:`neb-"
+"mep-condition`\\ だけでは区別できない。 2つの極小を結ぶ谷を通る経路では各点が垂直方向の谷底にあり、谷に沿った力だけが残る。"
+msgstr ""
+"Where the perpendicular component is nonzero, shifting the path slightly "
+"in the direction of the force lowers the energy to first order. Equation "
+":eq:`neb-mep-condition`\\  expresses the absence of a first-order change,"
+" so each point is stationary with respect to motion perpendicular to the "
+"path. Whether a stationary point lies at the valley floor (a "
+"perpendicular minimum) or on a ridge (a perpendicular maximum) depends on"
+" the second derivative of the energy in the perpendicular direction. "
+"Equation :eq:`neb-mep-condition`\\  alone cannot distinguish the two. If "
+"the path follows a valley connecting two minima, each point lies at a "
+"perpendicular minimum and only the force along the valley remains."
+
+#: ../../electronic/neb.rst:63
+msgid "経路に沿ったエネルギーの変化は、:eq:`neb-force-hessian`\\ の力を使うと"
+msgstr ""
+"With the force from Equation :eq:`neb-force-hessian`\\ , the energy "
+"change along the path is given by"
+
+#: ../../electronic/neb.rst:65
+#, python-brace-format
+msgid ""
+"\\frac{dE}{ds}=\\nabla E\\cdot\\frac{d\\boldsymbol R}{ds}\n"
+"=-\\boldsymbol F\\cdot\\hat{\\boldsymbol\\tau}"
+msgstr ""
+"\\frac{dE}{ds}=\\nabla E\\cdot\\frac{d\\boldsymbol R}{ds}\n"
+"=-\\boldsymbol F\\cdot\\hat{\\boldsymbol\\tau}"
+
+#: ../../electronic/neb.rst:71
+#, python-brace-format
+msgid ""
+"となる。MEP上でエネルギーが最大になる点では :math:`dE/ds=0` なので :math:`\\boldsymbol "
+"F\\cdot\\hat{\\boldsymbol\\tau}=0` であり、:eq:`neb-mep-condition`\\ と合わせると "
+":math:`\\boldsymbol F=\\boldsymbol 0` になる。この点は力が消える停留点で、経路に沿った方向には "
+"エネルギーの極大である。:math:`H` の固有値のうち負のものがちょうど1つある停留点を **1次の鞍点** "
+"と呼ぶ。谷を通るMEPの最高点は垂直方向には極小なので、この1次の鞍点になる。 経路は、負の固有値の固有ベクトルの向きに鞍点を出入りする。"
+msgstr ""
+"At the energy maximum on the MEP, :math:`dE/ds=0`, so :math:`\\boldsymbol"
+" F\\cdot\\hat{\\boldsymbol\\tau}=0`. Together with Equation :eq:`neb-mep-"
+"condition`\\ , this gives :math:`\\boldsymbol F=\\boldsymbol 0`. This is "
+"a stationary point with vanishing force and an energy maximum along the "
+"path. A stationary point with exactly one negative eigenvalue of "
+":math:`H` is called a **first-order saddle point**. The highest point on "
+"an MEP that follows a valley is a minimum in the perpendicular "
+"directions, so it is a first-order saddle point. The path enters and "
+"leaves the saddle point along the eigenvector for the negative "
+"eigenvalue."
+
+#: ../../electronic/neb.rst:81
+msgid "移動障壁の順方向と逆方向"
+msgstr "Forward and Reverse Migration Barriers"
+
+#: ../../electronic/neb.rst:83
+#, python-brace-format
+msgid ""
+"MEPの最高点を :math:`\\boldsymbol R_{\\rm S}`、両端の極小を :math:`\\boldsymbol "
+"R_{\\rm A}`、 :math:`\\boldsymbol R_{\\rm B}` とする。A から B へ移るときに越える "
+"**移動障壁** と、 逆向きの障壁は"
+msgstr ""
+"Let :math:`\\boldsymbol R_{\\rm S}` be the highest point on the MEP and "
+":math:`\\boldsymbol R_{\\rm A}` and :math:`\\boldsymbol R_{\\rm B}` its "
+"endpoint minima. The **migration barrier** from A to B and the barrier in"
+" the reverse direction are"
+
+#: ../../electronic/neb.rst:87
+#, python-brace-format
+msgid ""
+"\\Delta E_{\\rm A\\to B}=E(\\boldsymbol R_{\\rm S})-E(\\boldsymbol "
+"R_{\\rm A}),\n"
+"\\qquad\n"
+"\\Delta E_{\\rm B\\to A}=E(\\boldsymbol R_{\\rm S})-E(\\boldsymbol "
+"R_{\\rm B})"
+msgstr ""
+"\\Delta E_{\\rm A\\to B}=E(\\boldsymbol R_{\\rm S})-E(\\boldsymbol "
+"R_{\\rm A}),\n"
+"\\qquad\n"
+"\\Delta E_{\\rm B\\to A}=E(\\boldsymbol R_{\\rm S})-E(\\boldsymbol "
+"R_{\\rm B})"
+
+#: ../../electronic/neb.rst:94
+msgid "である。2つの差をとると鞍点のエネルギーが消え、"
+msgstr "Subtracting the two barriers cancels the saddle-point energy and gives"
+
+#: ../../electronic/neb.rst:96
+#, python-brace-format
+msgid ""
+"\\Delta E_{\\rm A\\to B}-\\Delta E_{\\rm B\\to A}=E(\\boldsymbol R_{\\rm "
+"B})-E(\\boldsymbol R_{\\rm A})"
+msgstr ""
+"\\Delta E_{\\rm A\\to B}-\\Delta E_{\\rm B\\to A}=E(\\boldsymbol R_{\\rm "
+"B})-E(\\boldsymbol R_{\\rm A})"
+
+#: ../../electronic/neb.rst:101
+msgid ""
+"となる。順・逆の障壁は同じ鞍点を共有するが、基準にする出発点のエネルギーが違う。 "
+"両端のエネルギーが等しい結晶中の等価なサイト間の移動では順・逆の障壁は等しいが、 "
+"サイトごとに環境が異なる非晶質では一般に異なる。そのため、経路ごとに両方向の障壁を数える。両者の差は、\\ :ref:`詳細つり合い"
+"<detailed-balance-barriers>`\\ を通じて順・逆の遷移速度の比を決める。"
+msgstr ""
+"The forward and reverse barriers share the same saddle point, but are "
+"measured from different starting energies. For migration between "
+"equivalent sites in a crystal, the endpoints have equal energies and the "
+"forward and reverse barriers are equal. But the barriers generally differ"
+" in an amorphous material, where each site has a different environment. "
+"Thus, account for the barriers in both directions for each path. Through "
+"\\ :ref:`detailed balance <detailed-balance-barriers>`\\ , their "
+"difference determines the ratio of the forward and reverse transition "
+"rates."
+
+#: ../../electronic/neb.rst:105
+msgid ""
+"MEPの途中にエネルギーの極小がある場合は、その極小を中間の安定構造とみなし、 A から中間の極小へ、中間の極小から B "
+"へ、という2回の素過程に分ける。 それぞれの素過程に\\ :eq:`neb-barriers`\\ を使う。経路全体の最高点と A "
+"のエネルギー差を、 A から B への1回の移動の障壁として扱うことはできない。"
+msgstr ""
+"If the MEP contains an energy minimum between its endpoints, treat that "
+"minimum as a stable intermediate structure and divide the path into two "
+"elementary steps, one from A to the intermediate minimum and one from "
+"that minimum to B. Use Equation \\ :eq:`neb-barriers`\\  for each "
+"elementary step. The energy difference between A and the highest point on"
+" the whole path cannot be treated as the barrier for a single hop from A "
+"to B."
+
+#: ../../electronic/neb.rst:113
+msgid "弾性バンドとNEBの力"
+msgstr "Elastic Band and NEB Forces"
+
+#: ../../electronic/neb.rst:115
+#, python-brace-format
+msgid ""
+"連続な経路をそのまま扱う代わりに、経路を :math:`P+2` 個の原子配置 :math:`\\boldsymbol "
+"R_0,\\boldsymbol R_1,\\ldots,\\boldsymbol R_{P+1}` で表す。 これらを **イメージ** "
+"と呼び、両端は構造最適化した極小 :math:`\\boldsymbol R_0=\\boldsymbol R_{\\rm "
+"A}`、:math:`\\boldsymbol R_{P+1}=\\boldsymbol R_{\\rm B}` に固定する。 中間の "
+":math:`P` 個のイメージを動かして、:eq:`neb-mep-condition`\\ を満たす点の列に近づける。"
+msgstr ""
+"Represent the continuous path by :math:`P+2` atomic configurations "
+":math:`\\boldsymbol R_0,\\boldsymbol R_1,\\ldots,\\boldsymbol R_{P+1}`. "
+"These are called **images**. Fix the endpoints at the minima obtained by "
+"structure optimization :math:`\\boldsymbol R_0=\\boldsymbol R_{\\rm A}` "
+"and :math:`\\boldsymbol R_{P+1}=\\boldsymbol R_{\\rm B}`. Move the "
+":math:`P` intermediate images toward a sequence of points satisfying "
+"Equation :eq:`neb-mep-condition`\\ ."
+
+#: ../../electronic/neb.rst:121
+msgid "素朴な方法は、隣り合うイメージをばね定数 :math:`k` のばねでつなぎ、"
+msgstr ""
+"A simple approach connects neighboring images with springs of spring "
+"constant :math:`k` and minimizes the objective function"
+
+#: ../../electronic/neb.rst:123
+#, python-brace-format
+msgid ""
+"S(\\boldsymbol R_1,\\ldots,\\boldsymbol R_P)\n"
+"=\\sum_{i=1}^{P}E(\\boldsymbol R_i)\n"
+"+\\sum_{i=0}^{P}\\frac{k}{2}\\,|\\boldsymbol R_{i+1}-\\boldsymbol R_i|^2"
+msgstr ""
+"S(\\boldsymbol R_1,\\ldots,\\boldsymbol R_P)\n"
+"=\\sum_{i=1}^{P}E(\\boldsymbol R_i)\n"
+"+\\sum_{i=0}^{P}\\frac{k}{2}\\,|\\boldsymbol R_{i+1}-\\boldsymbol R_i|^2"
+
+#: ../../electronic/neb.rst:130
+msgid ""
+"を最小化することである。これを射影なしの弾性バンドと呼ぶことにする。イメージ :math:`i` に働く力は :math:`-\\partial "
+"S/\\partial\\boldsymbol R_i` で、"
+msgstr ""
+"We call this the plain elastic band (without projection). The force on "
+"image :math:`i` is :math:`-\\partial S/\\partial\\boldsymbol R_i`, given "
+"by"
+
+#: ../../electronic/neb.rst:133
+#, python-brace-format
+msgid ""
+"-\\frac{\\partial S}{\\partial\\boldsymbol R_i}\n"
+"=\\boldsymbol F_i+\\boldsymbol F^{\\rm s}_i,\n"
+"\\qquad\n"
+"\\boldsymbol F^{\\rm s}_i=k(\\boldsymbol R_{i+1}-\\boldsymbol "
+"R_i)-k(\\boldsymbol R_i-\\boldsymbol R_{i-1})"
+msgstr ""
+"-\\frac{\\partial S}{\\partial\\boldsymbol R_i}\n"
+"=\\boldsymbol F_i+\\boldsymbol F^{\\rm s}_i,\n"
+"\\qquad\n"
+"\\boldsymbol F^{\\rm s}_i=k(\\boldsymbol R_{i+1}-\\boldsymbol "
+"R_i)-k(\\boldsymbol R_i-\\boldsymbol R_{i-1})"
+
+#: ../../electronic/neb.rst:141
+#, python-brace-format
+msgid ""
+"となる。:math:`\\boldsymbol F_i=\\boldsymbol F(\\boldsymbol R_i)` "
+"はポテンシャルによる力、 :math:`\\boldsymbol F^{\\rm s}_i` はばねの力である。イメージ :math:`i` "
+"での経路の単位接線を :math:`\\hat{\\boldsymbol\\tau}_i` "
+"とし（求め方は次節）、どちらの力も接線成分と垂直成分に分けると、 最小化には2つの問題が生じる [NebJonsson1998]_。"
+msgstr ""
+"Here :math:`\\boldsymbol F_i=\\boldsymbol F(\\boldsymbol R_i)` is the "
+"force from the potential and :math:`\\boldsymbol F^{\\rm s}_i` is the "
+"spring force. At image :math:`i`, let the unit tangent to the path be "
+":math:`\\hat{\\boldsymbol\\tau}_i`, as defined in the next section. "
+"Resolving both forces into tangential and perpendicular components "
+"reveals two problems with this minimization [NebJonsson1998]_."
+
+#: ../../electronic/neb.rst:146
+#, python-brace-format
+msgid ""
+"**滑り落ち。** ポテンシャルの力の接線成分 :math:`(\\boldsymbol "
+"F_i\\cdot\\hat{\\boldsymbol\\tau}_i)\\hat{\\boldsymbol\\tau}_i` は、 :eq"
+":`neb-energy-along-path`\\ によりイメージを経路に沿ってエネルギーの低い側へ押す。 "
+"これに逆らうのはばねの接線成分だけなので、:math:`k` が小さいとイメージは両端の極小へ滑り落ち、 障壁の近くにイメージが残らない。"
+msgstr ""
+"**Sliding down.** The tangential component of the force from the "
+"potential, :math:`(\\boldsymbol "
+"F_i\\cdot\\hat{\\boldsymbol\\tau}_i)\\hat{\\boldsymbol\\tau}_i`, pushes "
+"the images along the path toward lower energy, as follows from Equation "
+":eq:`neb-energy-along-path`\\ . Only the tangential component of the "
+"spring force opposes it, so if :math:`k` is small, the images slide "
+"toward the endpoint minima and leave none near the barrier."
+
+#: ../../electronic/neb.rst:151
+#, python-brace-format
+msgid ""
+"**角を切る。** 経路が曲がっていると、ばねの力に垂直成分が生じる。経路が滑らかで イメージがほぼ等間隔 :math:`\\Delta s` "
+"に並ぶとき、曲率を :math:`\\kappa`、曲率中心の向きの単位法線を :math:`\\hat{\\boldsymbol n}` として"
+" :math:`\\boldsymbol R_{i\\pm1}` を :math:`\\boldsymbol R_i` のまわりで展開すると"
+msgstr ""
+"**Corner cutting.** If the path curves, the spring force has a "
+"perpendicular component. For a smooth path with images spaced at "
+"approximately equal arc length intervals :math:`\\Delta s`, let "
+":math:`\\kappa` be the curvature and :math:`\\hat{\\boldsymbol n}` the "
+"unit normal toward the center of curvature. Expanding :math:`\\boldsymbol"
+" R_{i\\pm1}` about :math:`\\boldsymbol R_i` gives"
+
+#: ../../electronic/neb.rst:155
+#, python-brace-format
+msgid ""
+"\\boldsymbol R_{i\\pm1}\\simeq\\boldsymbol R_i\\pm\\Delta "
+"s\\,\\hat{\\boldsymbol\\tau}_i\n"
+"+\\frac{(\\Delta s)^2}{2}\\,\\kappa\\,\\hat{\\boldsymbol n}_i,\n"
+"\\qquad\n"
+"\\boldsymbol F^{\\rm s}_i\\simeq k(\\Delta "
+"s)^2\\kappa\\,\\hat{\\boldsymbol n}_i"
+msgstr ""
+"\\boldsymbol R_{i\\pm1}\\simeq\\boldsymbol R_i\\pm\\Delta "
+"s\\,\\hat{\\boldsymbol\\tau}_i\n"
+"+\\frac{(\\Delta s)^2}{2}\\,\\kappa\\,\\hat{\\boldsymbol n}_i,\n"
+"\\qquad\n"
+"\\boldsymbol F^{\\rm s}_i\\simeq k(\\Delta "
+"s)^2\\kappa\\,\\hat{\\boldsymbol n}_i"
+
+#: ../../electronic/neb.rst:163
+#, python-brace-format
+msgid ""
+"となる。ばねは経路を曲率中心の側へ引き、弦を張るように経路をまっすぐにする。 収束した点では :math:`\\boldsymbol "
+"F_i^{\\perp}=-k(\\Delta s)^2\\kappa\\,\\hat{\\boldsymbol "
+"n}_i\\neq\\boldsymbol 0` なので、 "
+"イメージはMEPの谷底から外れ、谷の斜面を横切る。斜面上の点は同じ断面の谷底より高いので、 "
+"経路の最高エネルギーは鞍点のエネルギーを表さない（説明用の事例では鞍点より高くなる）。滑り落ちを防ぐために :math:`k` を大きくするほど、"
+" この角切りは強くなる。:math:`k` の選び方で両方を同時に解消することはできない。"
+msgstr ""
+"The springs pull toward the center of curvature and straighten the path "
+"like a taut chord. At convergence, :math:`\\boldsymbol "
+"F_i^{\\perp}=-k(\\Delta s)^2\\kappa\\,\\hat{\\boldsymbol "
+"n}_i\\neq\\boldsymbol 0`, so the images leave the MEP at the valley floor"
+" and cross the valley slope. A point on the slope lies higher in energy "
+"than the valley floor at the same cross section, so the maximum energy of"
+" the path does not give the saddle-point energy (it overestimates it in "
+"the worked example). The larger :math:`k` is made to prevent sliding "
+"down, the worse the corner cutting becomes. No choice of :math:`k` can "
+"eliminate both problems at once."
+
+#: ../../electronic/neb.rst:169
+msgid ""
+"NEB法は、:eq:`neb-plain-band-force`\\ の2つの力から、それぞれ必要な成分だけを残す "
+"[NebJonsson1998]_ [NebHenkelmanJonsson2000]_。"
+msgstr ""
+"From the two forces in Equation :eq:`neb-plain-band-force`\\ , the NEB "
+"method keeps only the required component of each force [NebJonsson1998]_ "
+"[NebHenkelmanJonsson2000]_."
+
+#: ../../electronic/neb.rst:172
+msgid ""
+"\\boldsymbol F^{\\rm NEB}_i\n"
+"=\\underbrace{\\boldsymbol F_i-(\\boldsymbol "
+"F_i\\cdot\\hat{\\boldsymbol\\tau}_i)\\,\\hat{\\boldsymbol\\tau}_i}_{\\boldsymbol"
+" F_i^{\\perp}}\n"
+"+\\underbrace{k\\left(|\\boldsymbol R_{i+1}-\\boldsymbol "
+"R_i|-|\\boldsymbol R_i-\\boldsymbol "
+"R_{i-1}|\\right)\\hat{\\boldsymbol\\tau}_i}_{\\boldsymbol F_i^{{\\rm "
+"s}\\parallel}} ."
+msgstr ""
+"\\boldsymbol F^{\\rm NEB}_i\n"
+"=\\underbrace{\\boldsymbol F_i-(\\boldsymbol "
+"F_i\\cdot\\hat{\\boldsymbol\\tau}_i)\\,\\hat{\\boldsymbol\\tau}_i}_{\\boldsymbol"
+" F_i^{\\perp}}\n"
+"+\\underbrace{k\\left(|\\boldsymbol R_{i+1}-\\boldsymbol "
+"R_i|-|\\boldsymbol R_i-\\boldsymbol "
+"R_{i-1}|\\right)\\hat{\\boldsymbol\\tau}_i}_{\\boldsymbol F_i^{{\\rm "
+"s}\\parallel}} ."
+
+#: ../../electronic/neb.rst:179
+#, python-brace-format
+msgid ""
+"ポテンシャルの力からは垂直成分だけを、ばねの力からは接線成分だけを取る。 "
+"この「力の一部を押しやる（nudge）」操作が名前の由来である。2つの項は互いに直交するので、 :math:`\\boldsymbol "
+"F^{\\rm NEB}_i=\\boldsymbol 0` は両方が別々に0になることを意味する。"
+msgstr ""
+"Keep only the perpendicular component of the force from the potential and"
+" only the tangential component of the spring force. Removing parts of the"
+" forces in this way is the “nudge” that gives the method its name. The "
+"two terms are orthogonal, so :math:`\\boldsymbol F^{\\rm "
+"NEB}_i=\\boldsymbol 0` means that each is separately zero."
+
+#: ../../electronic/neb.rst:183
+#, python-brace-format
+msgid ""
+":math:`\\boldsymbol F_i^{\\perp}=\\boldsymbol 0` は\\ :eq:`neb-mep-"
+"condition`\\ を各イメージで満たすことである。 ばねの垂直成分を捨てたので角切りは起きない。ただし接線 "
+":math:`\\hat{\\boldsymbol\\tau}_i` は隣のイメージから "
+"推定するので（次節）、収束したイメージの列は連続なMEPをイメージの位置で近似したものであり、 イメージの間隔を細かくするほどその近似がよくなる。"
+msgstr ""
+"The condition :math:`\\boldsymbol F_i^{\\perp}=\\boldsymbol 0` means that"
+" each image satisfies Equation \\ :eq:`neb-mep-condition`\\ . Corner "
+"cutting disappears because the perpendicular spring force is discarded. "
+"But because the tangent :math:`\\hat{\\boldsymbol\\tau}_i` is estimated "
+"from neighboring images, as described in the next section, the converged "
+"sequence approximates the continuous MEP at the image positions. Closer "
+"spacing improves the approximation."
+
+#: ../../electronic/neb.rst:187
+msgid ""
+":math:`\\boldsymbol F_i^{{\\rm s}\\parallel}=\\boldsymbol 0` は "
+":math:`|\\boldsymbol R_{i+1}-\\boldsymbol R_i|=|\\boldsymbol "
+"R_i-\\boldsymbol R_{i-1}|` "
+"で、イメージは経路に沿って等間隔に並ぶ。ポテンシャルの接線成分を捨てたので滑り落ちも起きない。"
+msgstr ""
+"The condition :math:`\\boldsymbol F_i^{{\\rm s}\\parallel}=\\boldsymbol "
+"0` gives :math:`|\\boldsymbol R_{i+1}-\\boldsymbol R_i|=|\\boldsymbol "
+"R_i-\\boldsymbol R_{i-1}|`, so the images are equally spaced along the "
+"path. Discarding the tangential force from the potential also eliminates "
+"sliding down."
+
+#: ../../electronic/neb.rst:190
+#, python-brace-format
+msgid ""
+"収束した経路と間隔は :math:`k` に依存しない。:math:`k` が変えるのは、そこへ近づく速さだけである。 NEBの力は\\ :eq"
+":`neb-elastic-band-objective`\\ のような1つの関数の勾配ではないので、 "
+"エネルギーの減少で歩幅を決める直線探索はそのままでは使えない。速度を使うquick-minやFIRE、 "
+"NEB向けに調整した準Newton法などで、:math:`\\boldsymbol F^{\\rm NEB}_i` が許容値より小さくなるまで "
+"イメージを動かす [NebSheppard2008]_。"
+msgstr ""
+"The converged path and spacing are independent of :math:`k`. The spring "
+"constant :math:`k` changes only the rate of convergence. The NEB force is"
+" not the gradient of a single function like the one in Equation \\ :eq"
+":`neb-elastic-band-objective`\\ , so a line search that chooses the step "
+"size by energy decrease cannot be used directly. Use a velocity-based "
+"method such as quick-min or FIRE, or a quasi-Newton method adapted to "
+"NEB, to move the images until :math:`\\boldsymbol F^{\\rm NEB}_i` falls "
+"below the tolerance [NebSheppard2008]_."
+
+#: ../../electronic/neb.rst:199
+msgid "接線の取り方"
+msgstr "Selecting the Tangent"
+
+#: ../../electronic/neb.rst:201
+#, python-brace-format
+msgid ""
+":eq:`neb-force`\\ の射影は接線 :math:`\\hat{\\boldsymbol\\tau}_i` に依存する。両隣を結ぶ "
+":math:`\\boldsymbol R_{i+1}-\\boldsymbol R_{i-1}` "
+"を規格化した接線は簡単だが、垂直方向の力に比べて "
+"経路に沿ったエネルギーの変化が大きい区間では、イメージの列にねじれ（kink）が生じて収束しにくい "
+"[NebHenkelmanJonsson2000]_。HenkelmanとJónssonは、両隣のうちエネルギーの高い側へのベクトルを使う "
+"接線を提案した。:math:`\\boldsymbol\\tau_i^+=\\boldsymbol R_{i+1}-\\boldsymbol "
+"R_i`、 :math:`\\boldsymbol\\tau_i^-=\\boldsymbol R_i-\\boldsymbol "
+"R_{i-1}`、:math:`E_i=E(\\boldsymbol R_i)` として"
+msgstr ""
+"The projection in Equation :eq:`neb-force`\\  depends on the tangent "
+":math:`\\hat{\\boldsymbol\\tau}_i`. Normalizing the vector "
+":math:`\\boldsymbol R_{i+1}-\\boldsymbol R_{i-1}` joining the two "
+"neighboring images is simple, but where the energy varies strongly along "
+"the path compared with the perpendicular force, the sequence of images "
+"can develop kinks that impede convergence [NebHenkelmanJonsson2000]_. "
+"Henkelman and Jónsson proposed a tangent based on the vector toward the "
+"higher-energy neighbor. Define :math:`\\boldsymbol\\tau_i^+=\\boldsymbol "
+"R_{i+1}-\\boldsymbol R_i`, :math:`\\boldsymbol\\tau_i^-=\\boldsymbol "
+"R_i-\\boldsymbol R_{i-1}`, and :math:`E_i=E(\\boldsymbol R_i)`, and set"
+
+#: ../../electronic/neb.rst:208
+#, python-brace-format
+msgid ""
+"\\boldsymbol\\tau_i=\n"
+"\\begin{cases}\n"
+"\\boldsymbol\\tau_i^+ & (E_{i+1}>E_i>E_{i-1})\\\\\n"
+"\\boldsymbol\\tau_i^- & (E_{i+1}<E_i<E_{i-1})\\\\\n"
+"\\boldsymbol R_{i+1}-\\boldsymbol R_{i-1} & (E_{i+1}=E_i=E_{i-1})\\\\\n"
+"\\boldsymbol\\tau_i^+\\Delta E_i^{\\max}+\\boldsymbol\\tau_i^-\\Delta "
+"E_i^{\\min} & (\\text{それ以外で }E_{i+1}\\ge E_{i-1})\\\\\n"
+"\\boldsymbol\\tau_i^+\\Delta E_i^{\\min}+\\boldsymbol\\tau_i^-\\Delta "
+"E_i^{\\max} & (\\text{それ以外で }E_{i+1}<E_{i-1})\n"
+"\\end{cases}"
+msgstr ""
+"\\boldsymbol\\tau_i=\n"
+"\\begin{cases}\n"
+"\\boldsymbol\\tau_i^+ & (E_{i+1}>E_i>E_{i-1})\\\\\n"
+"\\boldsymbol\\tau_i^- & (E_{i+1}<E_i<E_{i-1})\\\\\n"
+"\\boldsymbol R_{i+1}-\\boldsymbol R_{i-1} & (E_{i+1}=E_i=E_{i-1})\\\\\n"
+"\\boldsymbol\\tau_i^+\\Delta E_i^{\\max}+\\boldsymbol\\tau_i^-\\Delta "
+"E_i^{\\min} & (\\text{otherwise, }E_{i+1}\\ge E_{i-1})\\\\\n"
+"\\boldsymbol\\tau_i^+\\Delta E_i^{\\min}+\\boldsymbol\\tau_i^-\\Delta "
+"E_i^{\\max} & (\\text{otherwise, }E_{i+1}<E_{i-1})\n"
+"\\end{cases}"
+
+#: ../../electronic/neb.rst:220
+#, python-brace-format
+msgid ""
+"とし、:math:`\\hat{\\boldsymbol\\tau}_i=\\boldsymbol\\tau_i/|\\boldsymbol\\tau_i|`"
+" とする。重みは :math:`\\Delta E_i^{\\max}=\\max(|E_{i+1}-E_i|,|E_{i-1}-E_i|)`、 "
+":math:`\\Delta E_i^{\\min}=\\min(|E_{i+1}-E_i|,|E_{i-1}-E_i|)` である。 "
+"最後の2つの場合はイメージ :math:`i` がエネルギーの極大か極小にあるとき（両隣のエネルギーが等しいときを含む）で、 "
+"両側のベクトルをエネルギー差で重み付けして混ぜるので、極値の前後で接線が急に切り替わらない。 "
+"3点のエネルギーがすべて等しいと、この重みが両方0になってベクトルが0になるので、3番目の場合として 両隣を結ぶ接線を使う。"
+msgstr ""
+"and then normalize it to give "
+":math:`\\hat{\\boldsymbol\\tau}_i=\\boldsymbol\\tau_i/|\\boldsymbol\\tau_i|`."
+" The weights are :math:`\\Delta "
+"E_i^{\\max}=\\max(|E_{i+1}-E_i|,|E_{i-1}-E_i|)` and :math:`\\Delta "
+"E_i^{\\min}=\\min(|E_{i+1}-E_i|,|E_{i-1}-E_i|)`. The last two cases apply"
+" when image :math:`i` is at an energy maximum or minimum, including when "
+"the two neighbors have equal energies. The tangent combines both vectors "
+"with weights set by the energy differences, so it does not jump abruptly "
+"across the extremum. If all three energies are equal, both weights are "
+"zero and the vector would vanish. The third case therefore uses the "
+"tangent connecting the two neighbors."
+
+#: ../../electronic/neb.rst:231
+msgid "climbing image"
+msgstr "Climbing Image"
+
+#: ../../electronic/neb.rst:233
+#, python-brace-format
+msgid ""
+"NEBの収束後、イメージはMEPの上に等間隔で並ぶが、鞍点に置かれるとは限らない。 "
+"最高エネルギーのイメージでも、鞍点の手前や先にあれば鞍点より低い。イメージを細かくすると鞍点の "
+"近くを捉えやすくなるが、最高イメージのエネルギーは単調には鞍点に近づかない（説明用の事例）。 "
+"しかも計算量はイメージの数に比例して増える。**climbing image NEB**\\ （CI-NEB）は、最高エネルギーのイメージ "
+":math:`i_{\\max}` だけ、ばねを外し、ポテンシャルの力の接線成分の符号を反転させる "
+"[NebHenkelmanUberuagaJonsson2000]_。"
+msgstr ""
+"After NEB converges, the images lie at equal intervals on the MEP, but an"
+" image need not lie at the saddle point. Even the highest-energy image "
+"lies below the saddle in energy if it lies before or after it on the "
+"path. Closer image spacing makes it easier to sample near the saddle, but"
+" the energy of the highest image does not approach the saddle-point "
+"energy monotonically, as the worked example shows. Moreover, the "
+"computational cost increases in proportion to the number of images. "
+"**Climbing image NEB**\\ (CI-NEB) removes the springs and reverses the "
+"sign of the tangential component of the force from the potential for the "
+"highest-energy image :math:`i_{\\max}` alone "
+"[NebHenkelmanUberuagaJonsson2000]_."
+
+#: ../../electronic/neb.rst:240
+msgid ""
+"\\boldsymbol F^{\\rm CI}_{i_{\\max}}\n"
+"=\\boldsymbol F_{i_{\\max}}-2\\,(\\boldsymbol "
+"F_{i_{\\max}}\\cdot\\hat{\\boldsymbol\\tau}_{i_{\\max}})\\,\\hat{\\boldsymbol\\tau}_{i_{\\max}}"
+"\n"
+"=\\boldsymbol F^{\\perp}_{i_{\\max}}-(\\boldsymbol "
+"F_{i_{\\max}}\\cdot\\hat{\\boldsymbol\\tau}_{i_{\\max}})\\,\\hat{\\boldsymbol\\tau}_{i_{\\max}}"
+" ."
+msgstr ""
+"\\boldsymbol F^{\\rm CI}_{i_{\\max}}\n"
+"=\\boldsymbol F_{i_{\\max}}-2\\,(\\boldsymbol "
+"F_{i_{\\max}}\\cdot\\hat{\\boldsymbol\\tau}_{i_{\\max}})\\,\\hat{\\boldsymbol\\tau}_{i_{\\max}}"
+"\n"
+"=\\boldsymbol F^{\\perp}_{i_{\\max}}-(\\boldsymbol "
+"F_{i_{\\max}}\\cdot\\hat{\\boldsymbol\\tau}_{i_{\\max}})\\,\\hat{\\boldsymbol\\tau}_{i_{\\max}}"
+" ."
+
+#: ../../electronic/neb.rst:247
+#, python-brace-format
+msgid ""
+"正の微小な係数 :math:`\\eta` を使ってこの力の向きに :math:`\\delta\\boldsymbol "
+"R=\\eta\\,\\boldsymbol F^{\\rm CI}` だけ動かすと、 エネルギーの変化は :math:`\\delta "
+"E=-\\boldsymbol F\\cdot\\delta\\boldsymbol R` から"
+msgstr ""
+"Using a small positive coefficient :math:`\\eta`, take a step "
+":math:`\\delta\\boldsymbol R=\\eta\\,\\boldsymbol F^{\\rm CI}` along this"
+" force. The energy change follows from :math:`\\delta E=-\\boldsymbol "
+"F\\cdot\\delta\\boldsymbol R` as"
+
+#: ../../electronic/neb.rst:250
+#, python-brace-format
+msgid ""
+"\\delta E=-\\eta\\left[\\,|\\boldsymbol F^{\\perp}|^2-(\\boldsymbol "
+"F\\cdot\\hat{\\boldsymbol\\tau})^2\\,\\right]"
+msgstr ""
+"\\delta E=-\\eta\\left[\\,|\\boldsymbol F^{\\perp}|^2-(\\boldsymbol "
+"F\\cdot\\hat{\\boldsymbol\\tau})^2\\,\\right]"
+
+#: ../../electronic/neb.rst:255
+#, python-brace-format
+msgid ""
+"となる。垂直方向にはエネルギーを下げ、接線方向には上げる。そのため、climbing imageは経路に沿って "
+"エネルギーを上り、垂直方向には谷底へ下りる向きに動く。:math:`\\boldsymbol F^{\\rm CI}=\\boldsymbol "
+"0` は 両成分が0、つまり :math:`\\boldsymbol F=\\boldsymbol 0` "
+"を意味するので、収束した点は停留点である。 ただし :math:`\\boldsymbol F=\\boldsymbol 0` "
+"から言えるのは停留点であることまでで、 それが1次の鞍点かどうかは、後の節「\\ :ref:`saddle-point-check`\\ "
+"」の方法で判定する。 停留点の位置はばねで決まらないので、同じ鞍点に十分収束した場合、そのエネルギーはイメージの数によらない。 "
+"ほかのイメージはclimbing imageの両側でそれぞれ等間隔に並ぶが、両側の間隔は一般に異なる。"
+msgstr ""
+"The step decreases the energy perpendicular to the path and increases it "
+"along the tangent. The climbing image therefore moves uphill along the "
+"path and downhill toward the valley floor in the perpendicular "
+"directions. The condition :math:`\\boldsymbol F^{\\rm CI}=\\boldsymbol 0`"
+" requires both force components to vanish. Thus :math:`\\boldsymbol "
+"F=\\boldsymbol 0`, and the converged point is stationary. However, "
+":math:`\\boldsymbol F=\\boldsymbol 0` establishes only that the point is "
+"stationary. Use the method in the section \\ :ref:`Verifying the Saddle "
+"Point <saddle-point-check>`\\  to determine whether it is a first-order "
+"saddle point. The springs do not set the position of the stationary "
+"point, so if the climbing image converges sufficiently to the same saddle"
+" point, its energy is independent of the number of images. The other "
+"images are equally spaced on each side of the climbing image, but the "
+"spacing generally differs between the two sides."
+
+#: ../../electronic/neb.rst:263
+msgid ""
+"最初からclimbing imageを使うと、経路の形が定まる前に、まだ低い位置にある最高イメージを "
+"誤った極大へ押し上げることがある。そのため、通常のNEBである程度収束させてから切り替える。 MEPに極大が複数ある場合、climbing "
+"imageが押し上げるのはその時点で最も高いイメージだけである。"
+msgstr ""
+"If the climbing image is enabled from the start, the current highest "
+"image may still be at low energy before the path takes shape, and can be "
+"driven to the wrong maximum. To avoid this, first run ordinary NEB until "
+"it has partly converged, then enable the climbing image. If the MEP has "
+"several maxima, only the current highest image is driven uphill by the "
+"climbing-image force."
+
+#: ../../electronic/neb.rst:270
+msgid "端点・経路の候補・イメージの数"
+msgstr "Endpoints, Candidate Paths, and Number of Images"
+
+#: ../../electronic/neb.rst:272
+msgid ""
+"**端点の緩和。** :eq:`neb-barriers`\\ の基準は両端の極小のエネルギーなので、両端は同じセル・同じ計算条件で "
+":ref:`固定セル緩和<structure-optimization>`\\ しておく。端点に力が残っていると、 "
+"障壁の基準そのものが極小からずれる。中間のイメージは、ふつう両端の原子座標を直線補間して作る。 "
+"周期境界条件では、同じ原子の両端の座標を最も近い周期像どうしで結ぶ。 直線補間で原子どうしが近づきすぎると、最初の数ステップの力が大きくなる。"
+msgstr ""
+"**Relaxing the endpoints.** The barriers in Equation :eq:`neb-barriers`\\"
+"  are referenced to the energies of the two endpoint minima, so use :ref"
+":`fixed-cell relaxation <structure-optimization>`\\  with the same cell "
+"and calculation settings for both endpoints. If forces remain at the "
+"endpoints, the reference energies for the barriers are shifted away from "
+"the minima. Intermediate images are usually initialized by linear "
+"interpolation between the endpoint coordinates. With periodic boundary "
+"conditions, connect the closest periodic images of the atomic coordinates"
+" for the same atom at both endpoints. If linear interpolation brings "
+"atoms too close together, the forces are large in the first few steps."
+
+#: ../../electronic/neb.rst:278
+msgid ""
+"**空孔を介した移動。** 原子が抜けた位置（空孔）の隣の原子がその空孔へ移ると、 その原子がもといた位置が空く。原子がサイト :math:`j`"
+" からサイト :math:`i` へ移るとき、 空孔は :math:`i` から :math:`j` "
+"へ、原子と逆向きに移る。始状態は「:math:`i` が空孔」、 終状態は「:math:`j` が空孔」の構造で、どちらも同じ数の原子を含む。 "
+":eq:`neb-barrier-difference`\\ の右辺は、空孔がサイト :math:`j` にある構造と :math:`i` "
+"にある構造の エネルギー差である。2つの構造は組成が同じなので、化学ポテンシャルの項が打ち消し合い、 この差はサイト :math:`j` と "
+":math:`i` の空孔の\\ :ref:`形成エネルギー<defect-formation-energy>`\\ の差に等しい。 "
+"非晶質ではサイトごとに形成エネルギーが違うので、順・逆の障壁も違う。"
+msgstr ""
+"**Migration via a vacancy.** When an atom next to a vacancy moves into "
+"that vacant site, the site it originally occupied becomes empty. If the "
+"atom moves from site :math:`j` to site :math:`i`, the vacancy moves in "
+"the opposite direction, from :math:`i` to :math:`j`. The initial "
+"structure has a vacancy at :math:`i` and the final structure has a "
+"vacancy at :math:`j`. Both contain the same number of atoms. The right-"
+"hand side of Equation :eq:`neb-barrier-difference`\\  is the difference "
+"between the energy of the structure with the vacancy at :math:`j` and the"
+" energy of the structure with the vacancy at :math:`i`. Since the two "
+"structures have the same composition, the chemical potential terms "
+"cancel. For sites :math:`j` and :math:`i`, this is also the difference in"
+" vacancy \\ :ref:`formation energies <defect-formation-energy>`\\ . In "
+"amorphous materials, the formation energy differs between sites, so the "
+"forward and reverse barriers also differ."
+
+#: ../../electronic/neb.rst:287
+msgid ""
+"**経路の候補。** 空孔の隣のどの原子が移りうるかは、事前には分からない。よく使われる方法は、 "
+"距離が閾値より短いサイトの組を候補に選び、それぞれでNEBを解くことである。 `Li₃PO₄のLi空孔の拡散経路 <https://example"
+".quloud-platform.quemix.com/li3po4/vacancy-paths.html>`__\\ が "
+"紹介する文献では、3.5 Å未満のLiサイトの組を候補にしている。得られる経路の数は、閾値に加えて、 "
+"候補を経路として採る基準でも変わる。例えば、NEBが収束しない組、途中に極小が現れて2回の素過程に分かれる組、 "
+"端点の緩和で空孔が別のサイトへ移ってしまう組を、どう数えるかである。 "
+"同じ構造でも、計算手法（機械学習ポテンシャルの種類など）が変わればエネルギー面が変わり、 採られる経路の数とつながり方が変わる。"
+msgstr ""
+"**Candidate paths.** Which atom next to a vacancy can move is unknown in "
+"advance. A common method selects candidate site pairs separated by less "
+"than a distance threshold and solves NEB for each pair. The paper "
+"discussed in the calculation example `Li Vacancy Diffusion Paths in "
+"Li₃PO₄ <https://example.quloud-platform.quemix.com/li3po4/vacancy-"
+"paths.html>`__\\  uses Li site pairs less than 3.5 Å apart as candidates."
+" The number of paths depends on the threshold and on the criteria for "
+"accepting candidate paths. For example, it depends on how one counts "
+"pairs for which NEB fails to converge, pairs for which an intermediate "
+"minimum splits the path into two elementary steps, and pairs for which "
+"endpoint relaxation moves the vacancy to another site. Even for the same "
+"structure, changing the computational method, such as the choice of "
+"machine learning potential, changes the energy surface and thus the "
+"number and connectivity of the accepted paths."
+
+#: ../../electronic/neb.rst:296
+msgid ""
+"**イメージの数。** NEBのイメージの数は、経路の形をどれだけ細かく表すかを決める。 climbing "
+"imageが同じ鞍点に十分収束すれば、そのエネルギーはイメージの数によらないので、障壁だけが目的なら "
+"少ないイメージで足りる。ただし、イメージが少なすぎると途中の極小や2つ目の極大を見落とす。 "
+"経路に沿ったエネルギーの曲線を描き、途中に極小が無いことを見ておくと、 1回の素過程として扱ってよいかが分かる。"
+msgstr ""
+"**Number of images.** The number of NEB images determines how finely the "
+"shape of the path is resolved. If the climbing image converges "
+"sufficiently to the same saddle point, its energy is independent of the "
+"image count, so a small number of images suffices if only the barrier is "
+"needed. But with too few images, an intermediate minimum or a second "
+"maximum may be missed. Plot the energy along the path and check for the "
+"absence of intermediate minima to establish whether the path can be "
+"treated as one elementary step."
+
+#: ../../electronic/neb.rst:305
+msgid "鞍点の確認"
+msgstr "Verifying the Saddle Point"
+
+#: ../../electronic/neb.rst:307
+msgid ""
+"climbing imageの力が許容値まで小さくなっても、その点が1次の鞍点とは限らない。 "
+"経路が尾根の上を通っていれば2次以上の鞍点に収束しうるし、途中の肩のような平坦な部分で 止まっていることもある。そこで、climbing "
+"imageの配置でヘッセ行列\\ :eq:`neb-force-hessian`\\ を求め、 "
+"その固有値を数える。周期セルでは、原子を1つずつ小さく動かして力の変化を求める :ref:`有限変位法<phonon-force-"
+"constant-calculation>`\\ が使える。"
+msgstr ""
+"Even if the force on the climbing image falls within the tolerance, the "
+"point need not be a first-order saddle point. If the path follows a "
+"ridge, the image can converge to a saddle point of second or higher "
+"order. It can also stop on a flat part of the path such as a shoulder. To"
+" check, calculate the Hessian from Equation \\ :eq:`neb-force-hessian`\\"
+"  at the climbing-image configuration and count its eigenvalues. For a "
+"periodic cell, one can use the :ref:`finite displacement method <phonon-"
+"force-constant-calculation>`\\ , which measures the force changes after "
+"displacing atoms slightly, one at a time."
+
+#: ../../electronic/neb.rst:313
+#, python-brace-format
+msgid ""
+"原子の質量を対角に並べた行列を :math:`M` とすると、振動数を与えるのは質量で重み付けした "
+":math:`D=M^{-1/2}HM^{-1/2}` の固有値 :math:`\\omega^2` である。:math:`D` は "
+":math:`H` に 正則な対称行列 :math:`M^{-1/2}` を両側から掛けた形なので、Sylvesterの慣性法則により、 "
+"負・0・正の固有値の数は :math:`H` と同じである。したがって"
+msgstr ""
+"Let :math:`M` be the diagonal matrix of atomic masses. The frequencies "
+"are given by the eigenvalues of the mass-weighted matrix "
+":math:`D=M^{-1/2}HM^{-1/2}`, denoted by :math:`\\omega^2`. The matrix "
+":math:`D` is obtained by multiplying :math:`H` on both sides by the "
+"invertible symmetric matrix :math:`M^{-1/2}`, so by Sylvester's law of "
+"inertia, the numbers of negative, zero, and positive eigenvalues are the "
+"same as for :math:`H`. Therefore, the following cases apply."
+
+#: ../../electronic/neb.rst:318
+msgid ""
+"一様な並進による0（周期セルでは3つ）を除き、負の固有値がちょうど1つ （\\ :ref:`虚数振動数<imaginary-"
+"frequency>`\\ が1つ）なら1次の鞍点である。"
+msgstr ""
+"Setting aside the zero eigenvalues due to uniform translation (three in a"
+" periodic cell), exactly one negative eigenvalue (one \\ :ref:`imaginary "
+"frequency <imaginary-frequency>`\\ ) indicates a first-order saddle "
+"point."
+
+#: ../../electronic/neb.rst:320
+msgid ""
+"負の固有値が2つ以上なら、2次以上の鞍点である。2つ目の負の固有値の固有ベクトルの向きに "
+"経路をずらしてNEBをやり直すと、エネルギーの低い経路へ移る。"
+msgstr ""
+"Two or more negative eigenvalues indicate a saddle point of second or "
+"higher order. Shifting the path in the direction of the eigenvector for "
+"the second negative eigenvalue and rerunning NEB moves the path to one "
+"with lower energy."
+
+#: ../../electronic/neb.rst:322
+msgid "負の固有値が無ければ、その点は極小か、まだ鞍点に達していない。"
+msgstr ""
+"If there are no negative eigenvalues, the point is a minimum or the "
+"calculation has yet to reach the saddle point."
+
+#: ../../electronic/neb.rst:324
+#, python-brace-format
+msgid ""
+"負の固有値の数は :math:`H` と :math:`D` で同じだが、固有ベクトルの向きは一般に異なる。 :math:`D` の固有ベクトルに"
+" :math:`M^{-1/2}` を掛けたものは :math:`H` の固有ベクトルにならないからである。 "
+"直交座標で定義したMEP（この記事の\\ :eq:`neb-mep-condition`）と比べるときは、同じ直交座標の :math:`H` の "
+"負の固有値の固有ベクトルを使う。1次の鞍点で経路の向きが正しければ、これはclimbing imageでの接線とほぼ平行になる。 "
+":math:`D` の固有ベクトルと比べるなら、経路も質量で重み付けした座標で定義する必要がある。"
+msgstr ""
+"The matrices :math:`H` and :math:`D` have the same number of negative "
+"eigenvalues, but their eigenvectors generally point in different "
+"directions. Multiplying an eigenvector of :math:`D` by :math:`M^{-1/2}` "
+"does not in general give an eigenvector of :math:`H`. For comparison with"
+" a Cartesian MEP (Equation \\ :eq:`neb-mep-condition` in this article), "
+"use the eigenvector of :math:`H` for the negative eigenvalue in those "
+"same Cartesian coordinates. At a first-order saddle point, if the path "
+"points in the correct direction, that eigenvector is nearly parallel to "
+"the tangent at the climbing image. To compare with an eigenvector of "
+":math:`D`, define the path in mass-weighted coordinates as well."
+
+#: ../../electronic/neb.rst:330
+msgid ""
+"1次の鞍点であっても、それが目的の2つの極小を結ぶとは限らない。負の固有値の固有ベクトルの向きに "
+"鞍点から両側へ少しずらし、構造最適化（最急降下）で下った先が、それぞれ目的の始点と終点の極小に "
+"着くことを確かめる。別の極小に着けば、その鞍点は別の素過程のものである。"
+msgstr ""
+"Even a first-order saddle point need not connect the two minima of "
+"interest. Displace slightly to either side of the saddle point along the "
+"eigenvector for the negative eigenvalue. Run structure optimization by "
+"steepest descent and check that the two downhill paths lead to the "
+"intended initial and final minima, respectively. If a path reaches a "
+"different minimum, the saddle point belongs to a different elementary "
+"step."
+
+#: ../../electronic/neb.rst:334
+msgid ""
+"原子数が多いセルでは、移る原子とその近くの原子だけを動かしてヘッセ行列の一部を求めることがある。 "
+"この場合、遠くの原子の緩和との結合を無視しているので、固有値の符号の判定は近似になる。"
+msgstr ""
+"For cells with many atoms, a partial Hessian is sometimes calculated by "
+"moving only the migrating atom and its neighbors. Since this neglects "
+"coupling to the relaxation of more distant atoms, the signs of the "
+"eigenvalues can be determined only approximately."
+
+#: ../../electronic/neb.rst:340
+msgid "説明用の事例：Müller–Brownポテンシャル上のNEB"
+msgstr "Worked Example: NEB on the Müller–Brown Potential"
+
+#: ../../electronic/neb.rst:342
+msgid ""
+"これまでの式の働きを、2次元の模型で確かめる。Müller–Brownポテンシャル [NebMullerBrown1979]_ は "
+"4つのガウス関数の和"
+msgstr ""
+"A two-dimensional model illustrates how the preceding equations work. The"
+" Müller–Brown potential [NebMullerBrown1979]_ is the sum of four Gaussian"
+" functions,"
+
+#: ../../electronic/neb.rst:345
+#, python-brace-format
+msgid ""
+"\\begin{aligned}\n"
+"E(x,y)&=\\sum_{m=1}^{4}A_m\\exp Q_m(x,y),\\\\\n"
+"Q_m(x,y)&=a_m(x-x_m)^2+b_m(x-x_m)(y-y_m)+c_m(y-y_m)^2\n"
+"\\end{aligned}"
+msgstr ""
+"\\begin{aligned}\n"
+"E(x,y)&=\\sum_{m=1}^{4}A_m\\exp Q_m(x,y),\\\\\n"
+"Q_m(x,y)&=a_m(x-x_m)^2+b_m(x-x_m)(y-y_m)+c_m(y-y_m)^2\n"
+"\\end{aligned}"
+
+#: ../../electronic/neb.rst:353
+msgid ""
+"で、:math:`(A_m)=(-200,-100,-170,15)`、:math:`(a_m)=(-1,-1,-6.5,0.7)`、:math:`(b_m)=(0,0,11,0.6)`、"
+" "
+":math:`(c_m)=(-10,-10,-6.5,0.7)`、:math:`(x_m)=(1,0,-0.5,-1)`、:math:`(y_m)=(0,0.5,1.5,1)`"
+" である。 エネルギーと座標は無次元で、MEPが大きく曲がる点が角切りを見るのに向く。 停留点を\\ :eq:`neb-force-"
+"hessian`\\ の解析的な勾配とヘッセ行列からNewton法で求めると、 次の値になる。"
+msgstr ""
+"with :math:`(A_m)=(-200,-100,-170,15)`, :math:`(a_m)=(-1,-1,-6.5,0.7)`, "
+":math:`(b_m)=(0,0,11,0.6)`, :math:`(c_m)=(-10,-10,-6.5,0.7)`, "
+":math:`(x_m)=(1,0,-0.5,-1)`, and :math:`(y_m)=(0,0.5,1.5,1)`. The energy "
+"and coordinates are dimensionless. The sharp turn in the MEP makes the "
+"potential useful for illustrating corner cutting. Solving for the "
+"stationary points by Newton's method with the analytical gradient and "
+"Hessian from Equation \\ :eq:`neb-force-hessian`\\  gives the following "
+"values."
+
+#: ../../electronic/neb.rst:359
+msgid "Müller–Brownポテンシャルの停留点（一部）"
+msgstr "Selected stationary points of the Müller–Brown potential"
+
+#: ../../electronic/neb.rst:363
+msgid "点"
+msgstr "Point"
+
+#: ../../electronic/neb.rst:364
+msgid "座標 :math:`(x,y)`"
+msgstr "Coordinates :math:`(x,y)`"
+
+#: ../../electronic/neb.rst:365
+msgid "エネルギー"
+msgstr "Energy"
+
+#: ../../electronic/neb.rst:366
+msgid "ヘッセ行列の固有値"
+msgstr "Hessian eigenvalues"
+
+#: ../../electronic/neb.rst:367
+msgid "極小 M1"
+msgstr "Minimum M1"
+
+#: ../../electronic/neb.rst:368
+msgid "(−0.558, 1.442)"
+msgstr "(−0.558, 1.442)"
+
+#: ../../electronic/neb.rst:369
+msgid "−146.70"
+msgstr "−146.70"
+
+#: ../../electronic/neb.rst:370
+msgid "410.5、4068.2"
+msgstr "410.5, 4068.2"
+
+#: ../../electronic/neb.rst:371
+msgid "極小 M3"
+msgstr "Minimum M3"
+
+#: ../../electronic/neb.rst:372
+msgid "(−0.050, 0.467)"
+msgstr "(−0.050, 0.467)"
+
+#: ../../electronic/neb.rst:373
+msgid "−80.77"
+msgstr "−80.77"
+
+#: ../../electronic/neb.rst:374
+msgid "221.0、1479.2"
+msgstr "221.0, 1479.2"
+
+#: ../../electronic/neb.rst:375
+msgid "鞍点 S1"
+msgstr "Saddle point S1"
+
+#: ../../electronic/neb.rst:376
+msgid "(−0.822, 0.624)"
+msgstr "(−0.822, 0.624)"
+
+#: ../../electronic/neb.rst:377 ../../electronic/neb.rst:413
+#: ../../electronic/neb.rst:416 ../../electronic/neb.rst:419
+msgid "−40.66"
+msgstr "−40.66"
+
+#: ../../electronic/neb.rst:378
+msgid "−750.9、490.2"
+msgstr "−750.9, 490.2"
+
+#: ../../electronic/neb.rst:380
+msgid ""
+":eq:`neb-barriers`\\ からM1→M3の順方向の障壁は106.03、M3→M1の逆方向の障壁は40.10である "
+"（丸める前のエネルギーから求めた）。その差65.93は、:eq:`neb-barrier-difference`\\ の通り 両端のエネルギー差 "
+":math:`-80.77-(-146.70)` に等しい。"
+msgstr ""
+"Equation :eq:`neb-barriers`\\  gives a forward barrier of 106.03 for "
+"M1→M3 and a reverse barrier of 40.10 for M3→M1, calculated from the "
+"unrounded energies. Their difference of 65.93 equals the energy "
+"difference between the endpoints by Equation :eq:`neb-barrier-"
+"difference`\\ , namely :math:`-80.77-(-146.70)`."
+
+#: ../../electronic/neb.rst:384
+#, python-brace-format
+msgid ""
+"M1とM3を結ぶ直線上に等間隔に置いたイメージから出発し、FIRE法で各イメージの力の大きさが :math:`10^{-4}` "
+"未満になるまで動かした。接線は\\ :eq:`neb-tangent`\\ で求めた。 :numref:`fig-neb-muller-"
+"brown`\\ の左図では、CI-NEBのイメージ（丸）が谷底を通って大きく曲がるMEP（実線）に "
+"乗っている。射影なしの弾性バンドを硬いばね（:math:`k=2000`、中間イメージ9個）で最小化すると（四角）、 "
+"経路はS1を通らずに谷の斜面を横切り、イメージの多くはM1の近くに集まる。"
+msgstr ""
+"Starting with equally spaced images on the line joining M1 and M3, we "
+"used FIRE to move them until the force magnitude on each image fell below"
+" :math:`10^{-4}`. We calculated the tangent from Equation \\ :eq:`neb-"
+"tangent`\\ . In the left panel of :numref:`fig-neb-muller-brown`\\ , the "
+"CI-NEB images (circles) lie on the sharply curved MEP (solid line) along "
+"the valley floor. Minimizing the plain elastic band with stiff springs "
+"(:math:`k=2000`, nine intermediate images, squares) gives a path that "
+"crosses the valley slope without passing through S1, and most images "
+"cluster near M1."
+
+#: ../../electronic/neb.rst:390
+msgid ""
+"左は等高線の上に描いた経路。CI-"
+"NEBの点は大きく曲がるMEPに乗り、射影なしの弾性バンドは斜面を直線的に横切る。右はMEPに沿ったエネルギーで、climbing "
+"imageが最高点に乗る。"
+msgstr ""
+"The left panel shows paths overlaid on contours. The CI-NEB points follow"
+" the sharply curved MEP, but the plain elastic band cuts straight across "
+"the slope. The right panel shows the energy along the MEP, with the "
+"climbing image at the highest point."
+
+#: ../../electronic/neb.rst:395
+msgid ""
+"Müller–Brownポテンシャル上のNEB（M1→M3）。左：等高線（間隔12）と経路。実線はS1から最急降下で 両側へ下って求めたMEP"
+"、丸はCI-NEB（中間イメージ9個、:math:`k=50`）、星はclimbing image、 "
+"四角は射影なしの弾性バンド（:math:`k=2000`）。右：MEPに沿った弧長とエネルギー。白抜きの丸と菱形は climbing "
+"imageを使わないNEB（中間イメージ9個と3個）で、各イメージをMEP上の最も近い点の弧長に置いた。 "
+"矢印は順方向と逆方向の障壁、点線は鞍点S1のエネルギー。"
+msgstr ""
+"NEB on the Müller–Brown potential (M1→M3). The left panel shows the paths"
+" over contours at energy intervals of 12. The solid line is the MEP "
+"obtained by steepest descent from S1 in both directions. Circles show CI-"
+"NEB (nine intermediate images, :math:`k=50`), the star marks the climbing"
+" image, and squares show the plain elastic band (:math:`k=2000`). The "
+"right panel shows the energy versus arc length along the MEP. Open "
+"circles and open diamonds show NEB without a climbing image (nine and "
+"three intermediate images, respectively). Each image is plotted at the "
+"arc length of the nearest point on the MEP. The arrows show the forward "
+"and reverse barriers, and the dotted line marks the energy of saddle "
+"point S1."
+
+#: ../../electronic/neb.rst:401
+msgid ""
+"**イメージの数とclimbing image。** 右図の白抜きの点はMEPの曲線に乗っているが、最高のイメージは "
+"鞍点の手前か先にあり、鞍点より低い。climbing imageを加えると、最高のイメージはS1に収束する。"
+msgstr ""
+"**Number of images and the climbing image.** The open markers in the "
+"right panel lie on the MEP curve, but the highest image lies before or "
+"after the saddle point and is lower in energy. Adding the climbing image "
+"makes the highest image converge to S1."
+
+#: ../../electronic/neb.rst:404
+msgid "M1→M3の最高エネルギー（:math:`k=50`）"
+msgstr "Highest energies for M1→M3 (:math:`k=50`)"
+
+#: ../../electronic/neb.rst:408
+msgid "中間イメージの数 :math:`P`"
+msgstr "Number of intermediate images :math:`P`"
+
+#: ../../electronic/neb.rst:409
+msgid "NEBの最高イメージ"
+msgstr "Highest-energy NEB image"
+
+#: ../../electronic/neb.rst:410
+msgid "CI-NEBのclimbing image"
+msgstr "CI-NEB climbing image"
+
+#: ../../electronic/neb.rst:411
+msgid "3"
+msgstr "3"
+
+#: ../../electronic/neb.rst:412
+msgid "−42.71"
+msgstr "−42.71"
+
+#: ../../electronic/neb.rst:414
+msgid "5"
+msgstr "5"
+
+#: ../../electronic/neb.rst:415
+msgid "−43.37"
+msgstr "−43.37"
+
+#: ../../electronic/neb.rst:417
+msgid "9"
+msgstr "9"
+
+#: ../../electronic/neb.rst:418
+msgid "−43.15"
+msgstr "−43.15"
+
+#: ../../electronic/neb.rst:421
+#, python-brace-format
+msgid ""
+"climbing imageを使わないNEBの最高エネルギーは、鞍点より2.0〜2.7低い。この差はイメージを増やしても "
+"単調には縮まない。最高のイメージと鞍点の距離は、イメージの並び方が鞍点とどうずれるかで決まるからである。 climbing imageの位置はどの"
+" :math:`P` でもS1と :math:`2\\times10^{-7}` 以内で一致した。"
+msgstr ""
+"The highest energy in NEB without a climbing image is 2.0–2.7 below the "
+"saddle-point energy. This difference does not decrease monotonically as "
+"images are added, because the distance from the highest image to the "
+"saddle point depends on where the saddle falls relative to the sequence "
+"of images. For all tested values of :math:`P`, the climbing-image "
+"position agreed with S1 to within :math:`2\\times10^{-7}`."
+
+#: ../../electronic/neb.rst:425
+#, python-brace-format
+msgid ""
+"**ばね定数。** 中間イメージ9個のNEBで :math:`k=5,50,500` と変えると、収束した各イメージの位置の差は 最大 "
+":math:`1.2\\times10^{-4}` で、隣り合うイメージの間隔はどれも0.1761〜0.1762にそろった。 "
+"収束までのステップ数は4532、1218、706と変わった。:eq:`neb-force`\\ から導いた通り、 :math:`k` "
+"は収束の速さだけを変える。"
+msgstr ""
+"**Spring constant.** Varying :math:`k=5,50,500` in NEB with nine "
+"intermediate images changed the positions of the converged images by at "
+"most :math:`1.2\\times10^{-4}`, and all neighbor spacings fell between "
+"0.1761 and 0.1762. The numbers of steps to convergence were 4532, 1218, "
+"and 706. As derived from Equation :eq:`neb-force`\\ , :math:`k` changes "
+"only the rate of convergence."
+
+#: ../../electronic/neb.rst:430
+msgid ""
+"**射影なしの弾性バンド。** 同じ9個のイメージで\\ :eq:`neb-elastic-band-objective`\\ を最小化すると、 "
+":math:`k=5` では9個すべてがM1かM3から0.1以内へ滑り落ち、最高エネルギーは−80.74で、 "
+"M3のエネルギーとほぼ同じになった。バンドは障壁について何も教えない。 :math:`k=2000` "
+"ではイメージがMEPから最大0.40離れ、最高エネルギーは−8.95と、 鞍点より31.7高くなった。角切りのために、障壁を大きく見積もる。"
+msgstr ""
+"**Plain elastic band.** Minimizing the objective in Equation \\ :eq:`neb-"
+"elastic-band-objective`\\  with the same nine images and :math:`k=5` made"
+" all nine slide to within 0.1 of M1 or M3. The highest energy was −80.74,"
+" nearly the energy of M3. The band tells us nothing about the barrier. "
+"With :math:`k=2000`, the images were as far as 0.40 from the MEP and the "
+"highest energy was −8.95, which is 31.7 above the saddle-point energy. "
+"Corner cutting causes an overestimate of the barrier."
+
+#: ../../electronic/neb.rst:436
+#, python-brace-format
+msgid ""
+"**鞍点の確認。** 中間イメージ9個のclimbing imageでヘッセ行列を求めると、固有値は−750.9と490.2で、 "
+"負の固有値が1つだけある。その固有ベクトルと\\ :eq:`neb-tangent`\\ の接線の内積の絶対値は0.9985で、 "
+"負の曲率の向きは経路に沿っている（この模型の座標は直交座標で、質量の重みは無い）。 この固有ベクトルの向きに両側へ :math:`10^{-3}`"
+" だけずらして最急降下で下ると、それぞれM1とM3に着く。 したがってこの点は、M1とM3を結ぶ1次の鞍点である。"
+msgstr ""
+"**Verifying the saddle point.** The Hessian at the climbing image for "
+"nine intermediate images has eigenvalues −750.9 and 490.2, with only one "
+"negative eigenvalue. The absolute value of the dot product between the "
+"eigenvector for this negative eigenvalue and the tangent from Equation \\"
+" :eq:`neb-tangent`\\  is 0.9985, so the direction of negative curvature "
+"lies along the path. The model uses Cartesian coordinates with no mass "
+"weighting. Displacing by :math:`10^{-3}` along this eigenvector in both "
+"directions and following steepest descent leads to M1 and M3, "
+"respectively. The point is therefore a first-order saddle point "
+"connecting M1 and M3."
+
+#: ../../electronic/neb.rst:442
+msgid ""
+"**途中の極小。** M1からM2（(0.623, 0.028)、エネルギー−108.17）へ中間イメージ15個でNEBを解くと、 "
+"経路はM3から0.020の位置にイメージを置いて通り、その前後に−40.67と−72.48の2つの極大が現れる。 "
+"この経路はM1→M3とM3→M2の2回の素過程からなり、M1から経路の最高点までのエネルギー差を、 "
+"M1→M2の1回の移動の障壁として扱うことはできない。この例では最初の極大の方が高いので、その差106.03は M1→M3の障壁と一致する。"
+msgstr ""
+"**Intermediate minimum.** In an NEB calculation from M1 to M2 "
+"(coordinates (0.623, 0.028), energy −108.17) with 15 intermediate images,"
+" the path passes M3 with an image 0.020 away and has two maxima, one on "
+"each side, at −40.67 and −72.48. The path consists of the two elementary "
+"steps M1→M3 and M3→M2, so the energy difference between M1 and the "
+"highest point along the path cannot be treated as the barrier for a "
+"single hop from M1 to M2. In this example the first maximum is higher, so"
+" that difference, 106.03, equals the M1→M3 barrier."
+
+#: ../../electronic/neb.rst:451
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../electronic/neb.rst:453
+msgid ""
+"**局所的な探索。** NEBは初期の経路の近くにあるMEPへ収束する。別の鞍点を通る、 "
+"障壁のより低い経路が存在しても見つからないことがある。候補の選び方や初期の経路を変えて "
+"結果が変わるかで、見落としの有無を判断する。HenkelmanとJónssonのdimer法 [NebDimer1999]_ "
+"のように、終状態を指定せずに鞍点を探す方法もある。"
+msgstr ""
+"**Local search.** NEB converges to an MEP near the initial path. It can "
+"miss a lower-barrier path through a different saddle point even if one "
+"exists. Change how the candidates are selected or vary the initial path "
+"and check whether the result changes to assess whether any paths were "
+"missed. Other methods, such as the dimer method of Henkelman and Jónsson "
+"[NebDimer1999]_, search for saddle points without specifying the final "
+"state."
+
+#: ../../electronic/neb.rst:457
+msgid ""
+"**0 Kのポテンシャルエネルギー。** NEBの障壁はポテンシャルエネルギー面上の差で、零点振動や "
+"振動のエントロピーを含まない。移動の頻度を求めるには、鞍点と極小の振動を使った\\ :ref:`遷移状態理論<transition-state-"
+"theory>`\\ が要る。"
+msgstr ""
+"**Potential energy at 0 K.** An NEB barrier is an energy difference on "
+"the potential energy surface and does not include zero-point vibrations "
+"or vibrational entropy. Calculating the hop frequency requires \\ "
+":ref:`transition state theory <transition-state-theory>`\\  using "
+"vibrations at the saddle point and the minimum."
+
+#: ../../electronic/neb.rst:459
+msgid ""
+"**セルと電荷。** 周期セルで空孔を動かすと、空孔はその周期像とも相互作用する。セルを大きくしたときに "
+"障壁が変わるかを調べれば、この相互作用の大きさを見積もれる。イオン結晶で陽イオンを取り除いた 空孔は\\ :ref:`電荷をもちうる"
+"<charged-defects>`\\ ので、中性のセルで求めた障壁と荷電した空孔の障壁は一般に異なる。"
+msgstr ""
+"**Cell and charge.** A vacancy migrating in a periodic cell also "
+"interacts with its periodic images. Checking whether the barrier changes "
+"with increasing cell size gives an estimate of the size of this "
+"interaction. A vacancy created by removing a cation from an ionic crystal"
+" \\ :ref:`can carry charge <charged-defects>`\\ , so the barrier from a "
+"neutral cell generally differs from that for a charged vacancy."
+
+#: ../../electronic/neb.rst:462
+msgid ""
+"**エネルギー面の精度。** 鞍点付近の配置は、平衡付近の構造よりエネルギーが高く、原子間の距離も異なる。 "
+"機械学習ポテンシャルでは、こうした遷移途中の構造が\\ :ref:`学習データ<mlip-training-data>`\\ に含まれるかで "
+"障壁の精度が変わる。`Li₃PO₄のLi空孔移動障壁 <https://example.quloud-"
+"platform.quemix.com/li3po4/vacancy-barriers.html>`__\\ が "
+"紹介する文献では、移動途中の構造を学習から外すと、DFTとの障壁の差が大きくなった。"
+msgstr ""
+"**Accuracy of the energy surface.** Configurations near the saddle point "
+"are higher in energy than structures near equilibrium and have different "
+"interatomic distances. The accuracy of the barrier obtained from a "
+"machine learning potential depends on whether such configurations along "
+"the transition are included in the \\ :ref:`training data <mlip-training-"
+"data>`\\ . The paper discussed in the calculation example `Li Vacancy "
+"Migration Barriers in Li₃PO₄ <https://example.quloud-"
+"platform.quemix.com/li3po4/vacancy-barriers.html>`__\\  found a larger "
+"discrepancy with DFT barriers when configurations along the hop were "
+"excluded from training."
+
+#: ../../electronic/neb.rst:466
+msgid ""
+"**座標の選び方。** :eq:`neb-mep-condition`\\ の「垂直」は座標の内積で決まるので、 "
+"直交座標と質量で重み付けした座標とでは、MEPの形が少し変わる。一方、鞍点は力が0の停留点なので、 "
+"その位置とエネルギーは座標の選び方によらない。したがって、同じ始点と同じ鞍点を比べる場合、障壁も座標の選び方によらない。"
+msgstr ""
+"**Choice of coordinates.** In Equation :eq:`neb-mep-condition`\\ , "
+"perpendicularity is defined by the coordinate inner product, so the shape"
+" of the MEP differs slightly between Cartesian and mass-weighted "
+"coordinates. But the saddle point is a stationary point with zero force, "
+"so its position and energy do not depend on the choice of coordinates. "
+"Thus, the barrier also does not depend on the coordinates when comparing "
+"the same starting point and saddle point."
+
+#: ../../electronic/neb.rst:469
+msgid ""
+"**非晶質の障壁の分布。** 非晶質では経路ごとに障壁が異なり、:eq:`neb-barriers`\\ の値は分布をもつ。 "
+"多数回の移動からなる拡散の速さは、障壁の平均ではなく、移動の\\ :ref:`経路がどうつながっているか<thermal-activation-"
+"limits>`\\ で決まる。"
+msgstr ""
+"**Distribution of barriers in amorphous materials.** The barriers vary "
+"from path to path in an amorphous material, so the values in Equation :eq"
+":`neb-barriers`\\  form a distribution. The rate of diffusion over many "
+"hops is determined by the \\ :ref:`connectivity of the migration paths "
+"<thermal-activation-limits>`\\ , not by the average barrier."
+
+#: ../../electronic/neb.rst:473
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../electronic/neb.rst:475
+msgid ":ref:`structure-optimization`"
+msgstr ":ref:`structure-optimization`"
+
+#: ../../electronic/neb.rst:476
+msgid ":ref:`imaginary-frequency`"
+msgstr ":ref:`Imaginary Frequencies and Dynamical Stability <imaginary-frequency>`"
+
+#: ../../electronic/neb.rst:477
+msgid ":ref:`mlip-training-data`"
+msgstr ""
+":ref:`How Training Data Determine the Range of Applicability <mlip-"
+"training-data>`"
+
+#: ../../electronic/neb.rst:478
+msgid ""
+"`Li₃PO₄のLi空孔の拡散経路 <https://example.quloud-platform.quemix.com/li3po4"
+"/vacancy-paths.html>`__"
+msgstr ""
+"`Li Vacancy Diffusion Paths in Li₃PO₄ <https://example.quloud-"
+"platform.quemix.com/li3po4/vacancy-paths.html>`__"
+
+#: ../../electronic/neb.rst:479
+msgid ""
+"`Li₃PO₄のLi空孔移動障壁 <https://example.quloud-platform.quemix.com/li3po4"
+"/vacancy-barriers.html>`__"
+msgstr ""
+"`Li Vacancy Migration Barriers in Li₃PO₄ <https://example.quloud-"
+"platform.quemix.com/li3po4/vacancy-barriers.html>`__"
+
+#: ../../electronic/neb.rst:482
+msgid "参考文献"
+msgstr "References"
+
+#: ../../electronic/neb.rst:484
+msgid ""
+"H. Jónsson, G. Mills, and K. W. Jacobsen, in *Classical and Quantum "
+"Dynamics in Condensed Phase Simulations*, edited by B. J. Berne, G. "
+"Ciccotti, and D. F. Coker (World Scientific, 1998), pp. 385–404. "
+"`doi:10.1142/9789812839664_0016 "
+"<https://doi.org/10.1142/9789812839664_0016>`_."
+msgstr ""
+"H. Jónsson, G. Mills, and K. W. Jacobsen, in *Classical and Quantum "
+"Dynamics in Condensed Phase Simulations*, edited by B. J. Berne, G. "
+"Ciccotti, and D. F. Coker (World Scientific, 1998), pp. 385–404. "
+"`doi:10.1142/9789812839664_0016 "
+"<https://doi.org/10.1142/9789812839664_0016>`_."
+
+#: ../../electronic/neb.rst:488
+msgid ""
+"G. Henkelman, B. P. Uberuaga, and H. Jónsson, *J. Chem. Phys.* **113**, "
+"9901–9904 (2000). `doi:10.1063/1.1329672 "
+"<https://doi.org/10.1063/1.1329672>`_."
+msgstr ""
+"G. Henkelman, B. P. Uberuaga, and H. Jónsson, *J. Chem. Phys.* **113**, "
+"9901–9904 (2000). `doi:10.1063/1.1329672 "
+"<https://doi.org/10.1063/1.1329672>`_."
+
+#: ../../electronic/neb.rst:491
+msgid ""
+"G. Henkelman and H. Jónsson, *J. Chem. Phys.* **113**, 9978–9985 (2000). "
+"`doi:10.1063/1.1323224 <https://doi.org/10.1063/1.1323224>`_."
+msgstr ""
+"G. Henkelman and H. Jónsson, *J. Chem. Phys.* **113**, 9978–9985 (2000). "
+"`doi:10.1063/1.1323224 <https://doi.org/10.1063/1.1323224>`_."
+
+#: ../../electronic/neb.rst:493
+msgid ""
+"D. Sheppard, R. Terrell, and G. Henkelman, *J. Chem. Phys.* **128**, "
+"134106 (2008). `doi:10.1063/1.2841941 "
+"<https://doi.org/10.1063/1.2841941>`_."
+msgstr ""
+"D. Sheppard, R. Terrell, and G. Henkelman, *J. Chem. Phys.* **128**, "
+"134106 (2008). `doi:10.1063/1.2841941 "
+"<https://doi.org/10.1063/1.2841941>`_."
+
+#: ../../electronic/neb.rst:495
+msgid ""
+"K. Müller and L. D. Brown, *Theor. Chim. Acta* **53**, 75–93 (1979). "
+"`doi:10.1007/BF00547608 <https://doi.org/10.1007/BF00547608>`_."
+msgstr ""
+"K. Müller and L. D. Brown, *Theor. Chim. Acta* **53**, 75–93 (1979). "
+"`doi:10.1007/BF00547608 <https://doi.org/10.1007/BF00547608>`_."
+
+#: ../../electronic/neb.rst:497
+msgid ""
+"G. Henkelman and H. Jónsson, *J. Chem. Phys.* **111**, 7010–7022 (1999). "
+"`doi:10.1063/1.480097 <https://doi.org/10.1063/1.480097>`_."
+msgstr ""
+"G. Henkelman and H. Jónsson, *J. Chem. Phys.* **111**, 7010–7022 (1999). "
+"`doi:10.1063/1.480097 <https://doi.org/10.1063/1.480097>`_."
+

@@ -1,0 +1,569 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/exchange_correlation.rst:4
+msgid "Kohn–Sham法と交換相関汎関数"
+msgstr "Kohn–Sham Method and Exchange-Correlation Functionals"
+
+#: ../../electronic/exchange_correlation.rst:6
+msgid ""
+"密度汎関数理論（density functional theory, DFT）は、電子密度から "
+"電子系の基底状態を求める理論である。Kohn–Sham法は、同じ密度を与える "
+"補助的な一電子軌道を用いてこの問題を解く。計算で選ぶLDAやPBEは、 電子の交換・相関の効果をエネルギーに取り入れる近似である。"
+msgstr ""
+"Density functional theory (DFT) determines the ground state of an "
+"electronic system from its electron density. The Kohn–Sham method solves "
+"this problem using auxiliary one-electron orbitals that reproduce the "
+"same density. Approximations such as LDA and PBE account for the effects "
+"of electron exchange and correlation on the energy."
+
+#: ../../electronic/exchange_correlation.rst:11
+msgid ""
+"前提は一電子のSchrödinger方程式である。電子密度を決める仕組みと、 交換相関汎関数の選択が格子定数や相の安定性にどう影響するかを学ぶ。 "
+"以下では原子核を固定し、磁性を扱わない場合を考える。"
+msgstr ""
+"This article assumes familiarity with the one-electron Schrödinger "
+"equation. It explains how the electron density is determined and how the "
+"choice of exchange-correlation functional affects lattice constants and "
+"phase stability. We consider fixed nuclei and leave magnetism out of the "
+"treatment."
+
+#: ../../electronic/exchange_correlation.rst:16
+msgid "電子密度を変数にした基底状態の計算"
+msgstr "Ground-State Calculations Using the Electron Density as the Variable"
+
+#: ../../electronic/exchange_correlation.rst:18
+#, python-brace-format
+msgid ""
+"電子密度 :math:`n(\\boldsymbol r)` は、位置 :math:`\\boldsymbol r` の "
+"周りに電子がどれだけ存在するかを表す数密度である。空間で積分すると 電子数 :math:`N_{\\mathrm e}` "
+"になる。Hohenberg–Kohnの変分原理によれば、 与えた外部ポテンシャルのもとで、電子数を保ってエネルギーを最小にする "
+"密度が基底状態の密度になる [DftHohenberg1964]_。"
+msgstr ""
+"The electron density :math:`n(\\boldsymbol r)` is the number density of "
+"electrons near position :math:`\\boldsymbol r`. Integrating it over space"
+" gives the number of electrons :math:`N_{\\mathrm e}`. By the "
+"Hohenberg–Kohn variational principle, for a given external potential the "
+"ground-state density is the density that minimizes the energy at fixed "
+"electron number [DftHohenberg1964]_."
+
+#: ../../electronic/exchange_correlation.rst:24
+msgid ""
+"Kohn–Sham法では、互いに相互作用しない補助系の軌道 :math:`\\psi_i` と その占有数 :math:`f_i` "
+"から実際の電子系の密度を作る。占有数にはスピンの 寄与を含め、結晶の場合はバンドと\\ :ref:`k点<kpoint_sampling>`\\ "
+"にわたって和を取り、 各k点の重み :math:`w_i` を掛ける。分子では :math:`w_i=1` とする。"
+msgstr ""
+"In the Kohn–Sham method, the orbitals :math:`\\psi_i` of an auxiliary "
+"system of noninteracting electrons and their occupation numbers "
+":math:`f_i` give the density of the actual electronic system. The "
+"occupation numbers include the spin contribution. For a crystal, sum over"
+" bands and \\ :ref:`k-points <kpoint_sampling>`\\ , weighting each "
+"k-point by :math:`w_i`. For a molecule, set :math:`w_i=1`."
+
+#: ../../electronic/exchange_correlation.rst:29
+#, python-brace-format
+msgid ""
+"n(\\boldsymbol r)=\\sum_i w_i f_i|\\psi_i(\\boldsymbol r)|^2,\\qquad\n"
+"\\int n(\\boldsymbol r)\\,d\\boldsymbol r=N_{\\mathrm e}."
+msgstr ""
+"n(\\boldsymbol r)=\\sum_i w_i f_i|\\psi_i(\\boldsymbol r)|^2,\\qquad\n"
+"\\int n(\\boldsymbol r)\\,d\\boldsymbol r=N_{\\mathrm e}."
+
+#: ../../electronic/exchange_correlation.rst:35
+#, python-brace-format
+msgid ""
+"局所的な外部ポテンシャル :math:`v_{\\rm ext}(\\boldsymbol r)` をもつ "
+"全電子系を、以下では原子単位で表す。電子系のエネルギーは、補助系の 運動エネルギー :math:`T_{\\rm "
+"s}[n]`、外部ポテンシャルの寄与、 電子密度どうしの静電反発 :math:`E_{\\rm H}[n]`、残りをまとめた 交換相関エネルギー "
+":math:`E_{\\rm xc}[n]` に分けられる [DftKohnSham1965]_。"
+msgstr ""
+"We use atomic units below for an all-electron system with a local "
+"external potential :math:`v_{\\rm ext}(\\boldsymbol r)`. The energy of "
+"the electronic system consists of the kinetic energy of the auxiliary "
+"system :math:`T_{\\rm s}[n]`, the contribution of the external potential,"
+" the electrostatic repulsion of the electron density with itself "
+":math:`E_{\\rm H}[n]`, and the exchange-correlation energy :math:`E_{\\rm"
+" xc}[n]`, which collects the remaining contributions [DftKohnSham1965]_."
+
+#: ../../electronic/exchange_correlation.rst:41
+#, python-brace-format
+msgid ""
+"\\begin{aligned}\n"
+"E[n]&=T_{\\rm s}[n]+\\int v_{\\rm ext}(\\boldsymbol r)n(\\boldsymbol "
+"r)\\,d\\boldsymbol r\n"
+"        +E_{\\rm H}[n]+E_{\\rm xc}[n],\\\\\n"
+"E_{\\rm H}[n]&=\\frac12\\iint\n"
+"  \\frac{n(\\boldsymbol r)n(\\boldsymbol r')}{|\\boldsymbol "
+"r-\\boldsymbol r'|}\n"
+"      \\,d\\boldsymbol r\\,d\\boldsymbol r'.\n"
+"\\end{aligned}"
+msgstr ""
+"\\begin{aligned}\n"
+"E[n]&=T_{\\rm s}[n]+\\int v_{\\rm ext}(\\boldsymbol r)n(\\boldsymbol "
+"r)\\,d\\boldsymbol r\n"
+"        +E_{\\rm H}[n]+E_{\\rm xc}[n],\\\\\n"
+"E_{\\rm H}[n]&=\\frac12\\iint\n"
+"  \\frac{n(\\boldsymbol r)n(\\boldsymbol r')}{|\\boldsymbol "
+"r-\\boldsymbol r'|}\n"
+"      \\,d\\boldsymbol r\\,d\\boldsymbol r'.\n"
+"\\end{aligned}"
+
+#: ../../electronic/exchange_correlation.rst:52
+#, python-brace-format
+msgid ""
+":math:`T_{\\rm s}` は各軌道の運動エネルギーを占有数で重み付けした和である。 :math:`E_{\\rm xc}` "
+"には、電子の反対称性に伴う交換、電子同士の運動が 避け合う相関、補助系と実系の運動エネルギーの差が含まれる。 "
+"構造間で全エネルギーを比べるときは、電子系のエネルギーに 核どうしの反発も加える。"
+msgstr ""
+"The term :math:`T_{\\rm s}` is the sum of the kinetic energies of the "
+"individual orbitals weighted by their occupation numbers. The term "
+":math:`E_{\\rm xc}` includes exchange due to the antisymmetry of the "
+"electronic wave function, correlation due to electrons avoiding one "
+"another as they move, and the difference in kinetic energy between the "
+"auxiliary and real systems. To compare total energies across structures, "
+"add the internuclear repulsion to the energy of the electronic system."
+
+#: ../../electronic/exchange_correlation.rst:59
+msgid "Kohn–Sham方程式と自己無撞着計算"
+msgstr "Kohn–Sham Equations and Self-Consistent Calculations"
+
+#: ../../electronic/exchange_correlation.rst:61
+#, python-brace-format
+msgid ""
+"軌道の直交規格化を保って\\ :eq:`dft-ks-energy`\\ を変分する。 :eq:`dft-ks-density`\\ "
+"により、密度を通じて変わる項から、 それぞれの密度に関する微分が一電子ポテンシャルとして現れる。 たとえば :math:`E_{\\rm H}` "
+"の二つの密度を順に変分すると、 対称な二項が出るので係数の :math:`1/2` が消える。得られる方程式は"
+msgstr ""
+"Vary the energy in Equation \\ :eq:`dft-ks-energy`\\  while keeping the "
+"orbitals orthonormal. With the density given by Equation :eq:`dft-ks-"
+"density`\\ , the density-dependent terms each give a one-electron "
+"potential through differentiation with respect to the density. For "
+"example, varying each of the two density factors in :math:`E_{\\rm H}` in"
+" turn gives two symmetric terms, canceling the factor of :math:`1/2`. The"
+" resulting equations are"
+
+#: ../../electronic/exchange_correlation.rst:67
+msgid ""
+"\\begin{gathered}\n"
+"\\left[-\\frac12\\nabla^2+v_{\\rm ext}+v_{\\rm H}+v_{\\rm xc}\\right]\n"
+"   \\psi_i=\\epsilon_i\\psi_i,\\\\\n"
+"v_{\\rm H}(\\boldsymbol r)=\\int\n"
+"   \\frac{n(\\boldsymbol r')}{|\\boldsymbol r-\\boldsymbol "
+"r'|}\\,d\\boldsymbol r',\n"
+"\\qquad\n"
+"v_{\\rm xc}(\\boldsymbol r)=\\frac{\\delta E_{\\rm xc}[n]}{\\delta "
+"n(\\boldsymbol r)}.\n"
+"\\end{gathered}"
+msgstr ""
+"\\begin{gathered}\n"
+"\\left[-\\frac12\\nabla^2+v_{\\rm ext}+v_{\\rm H}+v_{\\rm xc}\\right]\n"
+"   \\psi_i=\\epsilon_i\\psi_i,\\\\\n"
+"v_{\\rm H}(\\boldsymbol r)=\\int\n"
+"   \\frac{n(\\boldsymbol r')}{|\\boldsymbol r-\\boldsymbol "
+"r'|}\\,d\\boldsymbol r',\n"
+"\\qquad\n"
+"v_{\\rm xc}(\\boldsymbol r)=\\frac{\\delta E_{\\rm xc}[n]}{\\delta "
+"n(\\boldsymbol r)}.\n"
+"\\end{gathered}"
+
+#: ../../electronic/exchange_correlation.rst:79
+msgid ""
+":math:`\\epsilon_i` は補助系の一電子固有値である。右辺の軌道から密度が "
+"決まり、その密度が左辺のポテンシャルを決める。そのため、仮の密度で 方程式を解き、得られた密度でポテンシャルを更新する。入力と出力の密度が "
+"許容誤差内で一致するまで繰り返す計算を、自己無撞着計算（SCF）という。 固有値には密度が作るポテンシャルの寄与がすでに入っているため、 "
+"全エネルギーは\\ :eq:`dft-ks-energy`\\ に沿って各項を評価する。"
+msgstr ""
+"Here :math:`\\epsilon_i` is a one-electron eigenvalue of the auxiliary "
+"system. The orbitals on the right-hand side determine the density, and "
+"the density determines the potentials on the left-hand side. Start with a"
+" trial density, solve the equations, and update the potentials using the "
+"resulting density. Repeating this procedure until the input and output "
+"densities agree within a tolerance is called a self-consistent field "
+"(SCF) calculation. Since the eigenvalues already include contributions "
+"from the potentials produced by the density, evaluate the individual "
+"terms in Equation \\ :eq:`dft-ks-energy`\\  to obtain the total energy."
+
+#: ../../electronic/exchange_correlation.rst:89
+msgid "LDAとGGA（PBE）"
+msgstr "LDA and GGA (PBE)"
+
+#: ../../electronic/exchange_correlation.rst:91
+#, python-brace-format
+msgid ""
+"交換相関汎関数は、位置ごとの電子密度を入力とし、交換相関エネルギーを返す。 局所密度近似（local-density approximation,"
+" LDA）は、位置ごとに その点と同じ密度の一様電子ガスの値を使う。密度 :math:`n` の "
+"一様電子ガスでの電子1個あたりの交換相関エネルギーを :math:`\\epsilon_{\\rm xc}^{\\rm unif}(n)` "
+"とすると、"
+msgstr ""
+"An exchange-correlation functional takes the electron density at each "
+"position as input and returns the exchange-correlation energy. The local "
+"density approximation (LDA) uses the value for a uniform electron gas of "
+"the same density at each point. If :math:`n` is the density of a uniform "
+"electron gas and :math:`\\epsilon_{\\rm xc}^{\\rm unif}(n)` is its "
+"exchange-correlation energy per electron, the LDA energy is"
+
+#: ../../electronic/exchange_correlation.rst:97
+#, python-brace-format
+msgid ""
+"E_{\\rm xc}^{\\rm LDA}[n]=\\int\n"
+"n(\\boldsymbol r)\\,\\epsilon_{\\rm xc}^{\\rm unif}(n(\\boldsymbol "
+"r))\\,d\\boldsymbol r."
+msgstr ""
+"E_{\\rm xc}^{\\rm LDA}[n]=\\int\n"
+"n(\\boldsymbol r)\\,\\epsilon_{\\rm xc}^{\\rm unif}(n(\\boldsymbol "
+"r))\\,d\\boldsymbol r."
+
+#: ../../electronic/exchange_correlation.rst:103
+msgid ""
+"となる。局所性の目安は、密度が変化する距離 :math:`n/|\\nabla n|` と、 "
+"その点の密度で決まるFermi波長を比べることである。密度の変化する距離が "
+"Fermi波長より十分長い領域では、電子の波長ほど移動しても密度はほとんど "
+"変わらない。LDAはこの緩やかな変化の極限で、一様系の値を局所的に用いる [DftKohnSham1965]_。"
+msgstr ""
+"As a rough test of locality, compare the length scale :math:`n/|\\nabla "
+"n|` over which the density varies with the Fermi wavelength set by the "
+"local density. Where that length scale is much longer than the Fermi "
+"wavelength, the density changes very little over a distance of one "
+"electron wavelength. In this limit of slowly varying density, LDA uses "
+"the uniform-system value locally [DftKohnSham1965]_."
+
+#: ../../electronic/exchange_correlation.rst:109
+msgid ""
+"一般化勾配近似（generalized gradient approximation, GGA）は密度に "
+"加えてその勾配を用いる。PBEはPerdew、Burke、Ernzerhofが提案した GGAの一つである "
+"[DftPbe1996]_。密度が一様な極限ではLDAと 一致するように作られている。密度の変化がある原子の間や表面では、 "
+"その勾配がエネルギーに影響する。"
+msgstr ""
+"The generalized gradient approximation (GGA) uses the density as well as "
+"its gradient. One example is the Perdew–Burke–Ernzerhof (PBE) functional "
+"[DftPbe1996]_. PBE is constructed to agree with LDA in the uniform-"
+"density limit. Where the density varies, such as between atoms or at a "
+"surface, its gradient affects the energy."
+
+#: ../../electronic/exchange_correlation.rst:116
+msgid "格子定数・相対エネルギーの汎関数依存"
+msgstr "Dependence of Lattice Constants and Relative Energies on the Functional"
+
+#: ../../electronic/exchange_correlation.rst:118
+msgid ""
+"同じ結晶でも、汎関数を変えると圧縮や膨張に伴うエネルギーの変化が変わり、 平衡体積も動く。多くの固体では、LDAは格子定数を短めに、PBEは長めに"
+" 与える傾向がある。ずれの向きや大きさは材質や結合の性質に依存する [DftPbesol2008]_ [DftNishimatsu2010]_。"
+msgstr ""
+"Even for the same crystal, changing the functional changes how the energy"
+" varies with compression or expansion and shifts the equilibrium volume. "
+"For many solids, LDA tends to give smaller lattice constants and PBE "
+"larger ones. The direction and magnitude of the deviation depend on the "
+"material and the nature of its bonding [DftPbesol2008]_ "
+"[DftNishimatsu2010]_."
+
+#: ../../electronic/exchange_correlation.rst:123
+msgid ""
+"内側の原子をわずかに動かすとエネルギーが下がる材料では、その低下量が "
+"体積やひずみに敏感なことがある。BaTiO₃についてNishimatsuらは、 交換相関汎関数の違いが格子定数や極性変位のエネルギー面に現れ、 "
+"有効ハミルトニアンで見積もる転移温度にも影響することを示した [DftNishimatsu2010]_。 `BaTiO₃の安定基底状態 "
+"<https://example.quloud-platform.quemix.com/BaTiO3/stability.html>`__ "
+"では、相対エネルギー差が小さい低温相を比較している。汎関数の影響を 検討するときは、同じ格子と原子配置に対するエネルギー差と、各汎関数で "
+"構造を緩和した後のエネルギー差を比べる。後者には、緩和で格子と原子配置が 変わった効果も入る。"
+msgstr ""
+"In materials whose energy decreases when the atoms within the cell move "
+"slightly, the size of that decrease can be sensitive to volume or strain."
+" For BaTiO₃, Nishimatsu and coauthors showed that the choice of exchange-"
+"correlation functional affects the lattice constants and the energy "
+"surface for polar displacements, as well as the transition temperature "
+"estimated with an effective Hamiltonian [DftNishimatsu2010]_. The "
+"calculation example `Stable Ground State of BaTiO₃ <https://example"
+".quloud-platform.quemix.com/BaTiO3/stability.html>`__ compares the low-"
+"temperature phases, whose relative energy differences are small. To "
+"examine the effect of the functional, compare energy differences obtained"
+" with the same lattice and atomic configuration with those obtained after"
+" relaxing the structures with each functional. The latter include the "
+"effects of the changes in the lattice and atomic configuration during "
+"relaxation."
+
+#: ../../electronic/exchange_correlation.rst:134
+msgid ""
+"有限温度の実験格子定数と比較すると、差には交換相関汎関数の近似に加えて :ref:`熱膨張<thermal-expansion>`\\ "
+"など温度の効果も含まれる。汎関数の違いに着目するなら、 電子状態計算の数値条件を収束させ、比較する温度・圧力・構造を明示する。"
+msgstr ""
+"When comparing with experimental lattice constants at finite temperature,"
+" the difference reflects the approximation made by the exchange-"
+"correlation functional as well as temperature effects such as "
+":ref:`thermal expansion <thermal-expansion>`\\ . To focus on differences "
+"between functionals, converge the numerical settings of the electronic "
+"structure calculations and state the temperature, pressure, and "
+"structures used in the comparison."
+
+#: ../../electronic/exchange_correlation.rst:141
+msgid "説明用の事例：電子密度を倍にしたときのLDA交換"
+msgstr "Worked Example: LDA Exchange When the Electron Density Doubles"
+
+#: ../../electronic/exchange_correlation.rst:143
+#, python-brace-format
+msgid ""
+"交換だけを取り出すと、一様電子ガスの式からLDAでの密度依存を追える。 スピン分極のない3次元電子ガスを絶対零度で考える。電子は波数空間の 半径 "
+":math:`k_{\\rm F}` の球（Fermi球）を満たす。単位体積・スピンあたりの 状態数 :math:`1/(2\\pi)^3` "
+"を球の体積に掛け、スピンの2通りを数えると、"
+msgstr ""
+"By isolating exchange, we can trace how the LDA exchange energy depends "
+"on density using the formula for a uniform electron gas. Consider a "
+"three-dimensional electron gas with no spin polarization at absolute "
+"zero. The electrons fill a sphere in wave-vector space (the Fermi sphere)"
+" with radius :math:`k_{\\rm F}`. Multiplying the number of states per "
+"unit volume and per spin, :math:`1/(2\\pi)^3`, by the volume of the "
+"sphere and counting both spin states gives"
+
+#: ../../electronic/exchange_correlation.rst:148
+msgid ""
+"n=\\frac{2}{(2\\pi)^3}\\frac{4\\pi k_{\\rm F}^3}{3}\n"
+"  =\\frac{k_{\\rm F}^3}{3\\pi^2},\\qquad\n"
+"k_{\\rm F}=(3\\pi^2 n)^{1/3}."
+msgstr ""
+"n=\\frac{2}{(2\\pi)^3}\\frac{4\\pi k_{\\rm F}^3}{3}\n"
+"  =\\frac{k_{\\rm F}^3}{3\\pi^2},\\qquad\n"
+"k_{\\rm F}=(3\\pi^2 n)^{1/3}."
+
+#: ../../electronic/exchange_correlation.rst:155
+#, python-brace-format
+msgid ""
+"この波数から、LDAの節で使った局所的なFermi波長 :math:`2\\pi/k_{\\rm F}` が "
+"求まる。原子単位で、一様系の電子1個あたりの交換エネルギーは :math:`\\epsilon_{\\rm x}^{\\rm "
+"unif}=-3k_{\\rm F}/(4\\pi)` である。 :eq:`dft-fermi-sphere-density`\\ "
+"を代入し、電子数密度を掛けると、 :eq:`dft-lda-energy`\\ の交換部分が得られる [DftDirac1930]_。"
+msgstr ""
+"This wave number gives the local Fermi wavelength :math:`2\\pi/k_{\\rm "
+"F}` used in the LDA section. In atomic units, the exchange energy per "
+"electron in the uniform system is :math:`\\epsilon_{\\rm x}^{\\rm "
+"unif}=-3k_{\\rm F}/(4\\pi)`. Substituting Equation :eq:`dft-fermi-sphere-"
+"density`\\  and multiplying by the electron number density gives the part"
+" of Equation :eq:`dft-lda-energy`\\  that comes from exchange "
+"[DftDirac1930]_."
+
+#: ../../electronic/exchange_correlation.rst:161
+#, python-brace-format
+msgid ""
+"\\begin{gathered}\n"
+"n\\,\\epsilon_{\\rm x}^{\\rm unif}(n)\n"
+"   =-\\frac{3}{4\\pi}\\,n(3\\pi^2 n)^{1/3}\n"
+"   =-\\frac{3}{4}\\left(\\frac{3}{\\pi}\\right)^{1/3} n^{4/3},\\\\\n"
+"E_{\\rm x}^{\\rm LDA}[n]\n"
+"   =-\\frac{3}{4}\\left(\\frac{3}{\\pi}\\right)^{1/3}\n"
+"     \\int n(\\boldsymbol r)^{4/3}\\,d\\boldsymbol r.\n"
+"\\end{gathered}"
+msgstr ""
+"\\begin{gathered}\n"
+"n\\,\\epsilon_{\\rm x}^{\\rm unif}(n)\n"
+"   =-\\frac{3}{4\\pi}\\,n(3\\pi^2 n)^{1/3}\n"
+"   =-\\frac{3}{4}\\left(\\frac{3}{\\pi}\\right)^{1/3} n^{4/3},\\\\\n"
+"E_{\\rm x}^{\\rm LDA}[n]\n"
+"   =-\\frac{3}{4}\\left(\\frac{3}{\\pi}\\right)^{1/3}\n"
+"     \\int n(\\boldsymbol r)^{4/3}\\,d\\boldsymbol r.\n"
+"\\end{gathered}"
+
+#: ../../electronic/exchange_correlation.rst:173
+#, python-brace-format
+msgid ""
+"密度を0.01から0.02 bohr⁻³に倍増すると、交換エネルギーの絶対値は 電子1個あたりで :math:`2^{1/3}\\simeq "
+"1.260` 倍、単位体積あたりで :math:`2^{4/3}\\simeq 2.520` 倍になる。単位体積あたりでは、その体積に "
+"含まれる電子数も倍になる。"
+msgstr ""
+"Doubling the density from 0.01 to 0.02 bohr⁻³ increases the magnitude of "
+"the exchange energy by a factor of :math:`2^{1/3}\\simeq 1.260` per "
+"electron and by a factor of :math:`2^{4/3}\\simeq 2.520` per unit volume."
+" The number of electrons in a unit volume also doubles."
+
+#: ../../electronic/exchange_correlation.rst:178
+msgid "一様電子ガスの交換エネルギー"
+msgstr "Exchange energy of a uniform electron gas"
+
+#: ../../electronic/exchange_correlation.rst:182
+msgid "密度 (bohr⁻³)"
+msgstr "Density (bohr⁻³)"
+
+#: ../../electronic/exchange_correlation.rst:183
+msgid "Fermi波数 (bohr⁻¹)"
+msgstr "Fermi wave number (bohr⁻¹)"
+
+#: ../../electronic/exchange_correlation.rst:184
+msgid "電子1個あたり (Ha)"
+msgstr "Per electron (Ha)"
+
+#: ../../electronic/exchange_correlation.rst:185
+msgid "単位体積あたり (Ha/bohr³)"
+msgstr "Per unit volume (Ha/bohr³)"
+
+#: ../../electronic/exchange_correlation.rst:186
+msgid "0.01"
+msgstr "0.01"
+
+#: ../../electronic/exchange_correlation.rst:187
+msgid "0.66651"
+msgstr "0.66651"
+
+#: ../../electronic/exchange_correlation.rst:188
+msgid "−0.15912"
+msgstr "−0.15912"
+
+#: ../../electronic/exchange_correlation.rst:189
+msgid "−0.0015912"
+msgstr "−0.0015912"
+
+#: ../../electronic/exchange_correlation.rst:190
+msgid "0.02"
+msgstr "0.02"
+
+#: ../../electronic/exchange_correlation.rst:191
+msgid "0.83975"
+msgstr "0.83975"
+
+#: ../../electronic/exchange_correlation.rst:192
+msgid "−0.20048"
+msgstr "−0.20048"
+
+#: ../../electronic/exchange_correlation.rst:193
+msgid "−0.0040095"
+msgstr "−0.0040095"
+
+#: ../../electronic/exchange_correlation.rst:195
+msgid ""
+"この表では密度が高いほど交換によるエネルギー低下が大きい。結晶の平衡体積は、 "
+"核間反発、電子の運動エネルギー、相関などを含めた全エネルギーの極小で決まる。 交換部分の密度依存は圧縮で動く項の一つである。"
+msgstr ""
+"The table shows that exchange lowers the energy more at higher densities."
+" The equilibrium volume of a crystal is determined by the minimum of the "
+"total energy, which includes internuclear repulsion, electron kinetic "
+"energy, and correlation, among other terms. Exchange is one contribution "
+"that changes with density under compression."
+
+#: ../../electronic/exchange_correlation.rst:202
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../electronic/exchange_correlation.rst:204
+msgid ""
+"**近似の種類。** 一様電子ガスの表ではスピンの占有が等しく、交換だけを計算した。 "
+"磁性がある系ではスピンごとの密度が交換に効く。実用のLDAやGGAでは相関も加え、 その近似を通じて計算結果が変わる。"
+msgstr ""
+"**Types of approximation.** The table for the uniform electron gas "
+"assumes equal spin occupations and includes only exchange. In magnetic "
+"systems, the density for each spin affects exchange. Practical LDA and "
+"GGA functionals also include correlation, and the approximation used for "
+"it affects the results."
+
+#: ../../electronic/exchange_correlation.rst:207
+msgid ""
+"**汎関数の差と数値誤差。** 汎関数を比べる計算では、同じ格子と原子位置で 相対エネルギーを求めると、緩和で生じる差を切り分けられる。基底や\\"
+" :ref:`k点<kpoint_sampling>` の誤差がその相対エネルギー差に近い場合は、汎関数を変えた効果を見分けにくい。"
+msgstr ""
+"**Differences between functionals and numerical errors.** To compare "
+"functionals, calculate relative energies at the same lattice and atomic "
+"positions to separate the effect of the functional from the differences "
+"introduced by relaxation. If errors from the basis or \\ :ref:`k-points "
+"<kpoint_sampling>` are comparable to the relative energy differences, the"
+" effect of changing the functional is hard to distinguish."
+
+#: ../../electronic/exchange_correlation.rst:210
+msgid ""
+"**構造と有限温度。** 小さな格子定数のずれでも、ひずみと結びついた相の エネルギー差には大きく効く場合がある。0 "
+"Kの計算で近い格子定数を与えた 汎関数でも、有限温度の相境界を比べるには振動や熱膨張の寄与を考える。"
+msgstr ""
+"**Structure and finite temperature.** Even small deviations in lattice "
+"constants can strongly affect energy differences between phases that are "
+"coupled to strain. Even for a functional that gives lattice constants "
+"close to experiment in a 0 K calculation, account for vibrational and "
+"thermal-expansion contributions when comparing phase boundaries at finite"
+" temperature."
+
+#: ../../electronic/exchange_correlation.rst:215
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../electronic/exchange_correlation.rst:217
+msgid ":ref:`電子の占有数<fermi-level-and-occupation>`"
+msgstr ":ref:`Electron Occupation Numbers <fermi-level-and-occupation>`"
+
+#: ../../electronic/exchange_correlation.rst:218
+msgid ":doc:`spin_restriction`"
+msgstr ":doc:`spin_restriction`"
+
+#: ../../electronic/exchange_correlation.rst:221
+msgid "参考文献"
+msgstr "References"
+
+#: ../../electronic/exchange_correlation.rst:223
+msgid ""
+"P. Hohenberg and W. Kohn, *Phys. Rev.* **136**, B864–B871 (1964). "
+"`doi:10.1103/PhysRev.136.B864 "
+"<https://doi.org/10.1103/PhysRev.136.B864>`_."
+msgstr ""
+"P. Hohenberg and W. Kohn, *Phys. Rev.* **136**, B864–B871 (1964). "
+"`doi:10.1103/PhysRev.136.B864 "
+"<https://doi.org/10.1103/PhysRev.136.B864>`_."
+
+#: ../../electronic/exchange_correlation.rst:225
+msgid ""
+"W. Kohn and L. J. Sham, *Phys. Rev.* **140**, A1133–A1138 (1965). "
+"`doi:10.1103/PhysRev.140.A1133 "
+"<https://doi.org/10.1103/PhysRev.140.A1133>`_."
+msgstr ""
+"W. Kohn and L. J. Sham, *Phys. Rev.* **140**, A1133–A1138 (1965). "
+"`doi:10.1103/PhysRev.140.A1133 "
+"<https://doi.org/10.1103/PhysRev.140.A1133>`_."
+
+#: ../../electronic/exchange_correlation.rst:227
+msgid ""
+"J. P. Perdew, K. Burke, and M. Ernzerhof, *Phys. Rev. Lett.* **77**, "
+"3865–3868 (1996). `doi:10.1103/PhysRevLett.77.3865 "
+"<https://doi.org/10.1103/PhysRevLett.77.3865>`_."
+msgstr ""
+"J. P. Perdew, K. Burke, and M. Ernzerhof, *Phys. Rev. Lett.* **77**, "
+"3865–3868 (1996). `doi:10.1103/PhysRevLett.77.3865 "
+"<https://doi.org/10.1103/PhysRevLett.77.3865>`_."
+
+#: ../../electronic/exchange_correlation.rst:230
+msgid ""
+"P. A. M. Dirac, *Proc. Cambridge Philos. Soc.* **26**, 376–385 (1930). "
+"`doi:10.1017/S0305004100016108 "
+"<https://doi.org/10.1017/S0305004100016108>`_."
+msgstr ""
+"P. A. M. Dirac, *Proc. Cambridge Philos. Soc.* **26**, 376–385 (1930). "
+"`doi:10.1017/S0305004100016108 "
+"<https://doi.org/10.1017/S0305004100016108>`_."
+
+#: ../../electronic/exchange_correlation.rst:233
+msgid ""
+"J. P. Perdew et al., *Phys. Rev. Lett.* **100**, 136406 (2008). "
+"`doi:10.1103/PhysRevLett.100.136406 "
+"<https://doi.org/10.1103/PhysRevLett.100.136406>`_."
+msgstr ""
+"J. P. Perdew et al., *Phys. Rev. Lett.* **100**, 136406 (2008). "
+"`doi:10.1103/PhysRevLett.100.136406 "
+"<https://doi.org/10.1103/PhysRevLett.100.136406>`_."
+
+#: ../../electronic/exchange_correlation.rst:235
+msgid ""
+"T. Nishimatsu, M. Iwamoto, Y. Kawazoe, and U. V. Waghmare, *Phys. Rev. B*"
+" **82**, 134106 (2010). `doi:10.1103/PhysRevB.82.134106 "
+"<https://doi.org/10.1103/PhysRevB.82.134106>`_."
+msgstr ""
+"T. Nishimatsu, M. Iwamoto, Y. Kawazoe, and U. V. Waghmare, *Phys. Rev. B*"
+" **82**, 134106 (2010). `doi:10.1103/PhysRevB.82.134106 "
+"<https://doi.org/10.1103/PhysRevB.82.134106>`_."
+

@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/defects_migration.rst:4
+msgid "点欠陥と原子の移動"
+msgstr "Point Defects and Atomic Migration"
+
+#: ../../electronic/defects_migration.rst:6
+msgid "結晶や非晶質の中で原子が抜けた位置などの点欠陥を考え、欠陥を作るのに要るエネルギーと、欠陥を介して原子が隣の位置へ移るときに越えるエネルギー障壁を求めます。"
+msgstr ""
+"Consider point defects, such as sites where atoms are missing in crystals"
+" or amorphous materials. Learn how to calculate the energy needed to form"
+" a defect and the energy barrier an atom must cross to move to a "
+"neighboring site via a defect."
+

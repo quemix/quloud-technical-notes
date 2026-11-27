@@ -1321,7 +1321,7 @@ msgstr ":ref:`Band Structure and Density of States <bandstructure>`"
 
 #: ../../electronic/pdos.rst:505
 msgid ":ref:`kpoint_sampling`"
-msgstr ":ref:`k-Point Sampling <kpoint_sampling>`"
+msgstr ":ref:`k-Point Meshes and Integration Error <kpoint_sampling>`"
 
 #: ../../electronic/pdos.rst:506
 msgid ":ref:`tightbinding`"
