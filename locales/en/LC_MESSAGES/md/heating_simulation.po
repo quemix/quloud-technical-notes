@@ -1,0 +1,651 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../md/heating_simulation.rst:4
+msgid "昇温計算で相転移を調べる"
+msgstr "Using Heating Simulations to Study Phase Transitions"
+
+#: ../../md/heating_simulation.rst:6
+msgid ""
+"昇温する分子動力学計算では、結晶の形や原子配置が変化する様子を時間に沿って "
+"追うことができる。軌跡から読み取る転移温度は、熱力学的に二相がつり合う温度と "
+"ずれることがある。どの量で相を見分け、温度のずれがどこから生じるかを考える。"
+msgstr ""
+"A molecular dynamics simulation with a rising temperature lets you follow"
+" changes in crystal shape and atomic configuration over time. The "
+"transition temperature read from the trajectory may differ from the "
+"temperature at which the two phases are in thermodynamic equilibrium. "
+"This article examines which quantities distinguish the phases and where "
+"the temperature difference comes from."
+
+#: ../../md/heating_simulation.rst:10
+msgid ""
+"前提は\\ :ref:`統計アンサンブル<statistical-ensembles>`\\ と "
+":ref:`平衡化<equilibration>`\\ である。この記事では、構造から相を判定し、 "
+"昇温速度、保持時間、セルサイズが転移の見え方にどう影響するかを学ぶ。 溶融・急冷で非晶質モデルを作るときの冷却速度や保持時間の決め方も扱う。"
+msgstr ""
+"This article builds on \\ :ref:`statistical ensembles <statistical-"
+"ensembles>`\\  and :ref:`equilibration <equilibration>`\\ . You will "
+"learn how to identify phases from structure and how the heating rate, "
+"hold time, and cell size affect the observed transition. The article also"
+" covers how to choose cooling rates and hold times when making an "
+"amorphous model by melting and quenching."
+
+#: ../../md/heating_simulation.rst:18
+msgid "分極・局所変位・格子定数で相を見分ける"
+msgstr ""
+"Identifying Phases from Polarization, Local Displacements, and Lattice "
+"Constants"
+
+#: ../../md/heating_simulation.rst:20
+msgid ""
+"**秩序変数** は、相によって値や対称性が変わる量である。強誘電相転移では :ref:`自発分極<spontaneous-"
+"polarization>`\\ がその例である。 分極の向きや大きさが変わるとき、単位構造内の原子の相対変位やセルの形にも "
+"変化が現れる。分極を直接求めていない計算では、局所変位と格子定数を構造の 指標として使える [HeatQi2016]_。"
+msgstr ""
+"An **order parameter** is a quantity whose value or symmetry changes from"
+" one phase to another. In a ferroelectric phase transition, "
+":ref:`spontaneous polarization <spontaneous-polarization>`\\  is one "
+"example. When the direction or magnitude of polarization changes, the "
+"relative displacements of atoms within the structural unit and the shape "
+"of the cell also change. If the simulation does not calculate "
+"polarization directly, local displacements and lattice constants can "
+"serve as structural indicators [HeatQi2016]_."
+
+#: ../../md/heating_simulation.rst:26
+#, python-brace-format
+msgid ""
+"たとえば、六つの配位原子が作る八面体の中心から、金属原子がどれだけずれるかを測る。 八面体 :math:`i` の中心金属の位置を "
+":math:`\\boldsymbol r_i`、 六つの配位原子の位置を :math:`\\boldsymbol r_{ij}` "
+"とすると、局所変位は"
+msgstr ""
+"For example, measure the displacement of a metal atom from the center of "
+"the octahedron formed by its six coordinating atoms. For octahedron "
+":math:`i`, let :math:`\\boldsymbol r_i` be the position of the central "
+"metal atom and :math:`\\boldsymbol r_{ij}` the positions of the six "
+"coordinating atoms. The local displacement is"
+
+#: ../../md/heating_simulation.rst:30
+#, python-brace-format
+msgid ""
+"\\boldsymbol u_i=\\boldsymbol r_i-\\frac{1}{6}\\sum_{j=1}^{6}\n"
+"   \\boldsymbol r_{ij}"
+msgstr ""
+"\\boldsymbol u_i=\\boldsymbol r_i-\\frac{1}{6}\\sum_{j=1}^{6}\n"
+"   \\boldsymbol r_{ij}"
+
+#: ../../md/heating_simulation.rst:36
+msgid ""
+"である。周期境界下では、各配位原子の周期像のうち中心金属原子に最も近い像を "
+"選ぶ（最小像規約）。セル境界をまたいだ八面体でも、この選び方なら近接原子と 中心金属との距離を保ったまま八面体の中心を求められる。 "
+"全体の平均に加え、等価な基準軸に投影した成分ごとの分布を見ると、 平均が小さくても局所変位が残る場合を見分けられる。分極の異なる\\ "
+":ref:`分域<ferroelectric-domains>`\\ が混在する "
+"場合も平均は小さくなりうる。局所変位の分布と空間的な相関を併せると、 :ref:`変位型や秩序–無秩序型<displacive-order-"
+"disorder>`\\ の描像を検討できる。"
+msgstr ""
+"Under periodic boundary conditions, choose the periodic image of each "
+"coordinating atom closest to the central metal atom (the minimum image "
+"convention). This choice preserves the distances from neighboring atoms "
+"to the central metal atom when locating the center of an octahedron that "
+"straddles a cell boundary. Along with the overall mean, examine the "
+"distributions of components projected onto equivalent reference axes to "
+"see whether local displacements remain even when the mean is small. The "
+"mean can also be small when \\ :ref:`domains <ferroelectric-domains>`\\  "
+"with different polarizations coexist. The distribution of local "
+"displacements and their spatial correlations together can be used to "
+"examine :ref:`displacive or order–disorder <displacive-order-disorder>`\\"
+"  pictures."
+
+#: ../../md/heating_simulation.rst:44
+msgid ""
+"軸長が揃っていたセルで一部の軸長が変わることを格子定数の分裂という。 揺らいでいる軸長の瞬間値より、複数フレームの平均と揺らぎを比べる方が "
+"持続的な変形を捉えやすい。変位の向きも軸も相に応じて入れ替わるので、 軸の取り方を明示する。変位がほぼゼロのフレームでは方向角が不安定に "
+"なるため、大きさや成分の分布も併せて調べる。"
+msgstr ""
+"Lattice-parameter splitting occurs when some axes in a cell that "
+"initially had equal lengths change in length. Comparing averages and "
+"fluctuations across multiple frames makes it easier to detect persistent "
+"deformation than using the fluctuating instantaneous axis lengths. "
+"Specify the choice of axes because both the displacement directions and "
+"the axes can switch from phase to phase. In frames with nearly zero "
+"displacement, direction angles become unstable, so also examine the "
+"distributions of magnitudes and components."
+
+#: ../../md/heating_simulation.rst:53
+msgid "軌跡から読む見かけの転移温度"
+msgstr "Apparent Transition Temperature from the Trajectory"
+
+#: ../../md/heating_simulation.rst:55
+msgid ""
+"温度を連続的に上げると、同じ温度にとどまる時間は限られる。局所変位の 向きが切り替わり、格子の分裂も変化する温度域を見つけ、軌跡上の "
+"**見かけの転移温度** を割り当てる。たとえば方向角が温度とともに変わる速さを "
+"求めると、向きが急変する区間にピークが現れる。微分は揺らぎまで強調するので、 "
+"平均に使う温度幅を変えてもピークが残るか、別の指標も同じ温度域で変化するかを "
+"見る。各指標が異なる温度で変わるなら、判定の規則と変化が起きた温度幅を示す。"
+msgstr ""
+"As temperature rises continuously, the time spent at any one temperature "
+"is limited. Identify the temperature interval where local displacements "
+"switch direction and lattice-parameter splitting changes, then assign an "
+"**apparent transition temperature** on the trajectory. For example, the "
+"rate of change of the direction angle with temperature peaks where the "
+"direction changes abruptly. Differentiation also amplifies fluctuations, "
+"so check whether the peak persists when you change the temperature window"
+" used for averaging and whether another indicator changes in the same "
+"interval. If the indicators change at different temperatures, report the "
+"criterion used and the temperature interval over which the changes "
+"occurred."
+
+#: ../../md/heating_simulation.rst:62
+msgid ""
+"一定の外圧における平衡の転移温度は、共存する二相の同じ物質量あたりの ギブス自由エネルギーが等しくなる温度である。昇温中に相が切り替わる時刻には、"
+" 自由エネルギーで有利な相への変化に要する時間も効く。とくに一次転移では、 新しい相が核を作るまで初期の相が準安定な状態で残ることがある。 "
+"加熱時と冷却時で切り替わる温度が異なる現象を **ヒステリシス** という "
+"[HeatShao2025]_。この場合、加熱と冷却の転移温度の平均も、平衡値を直接与える わけではない。"
+msgstr ""
+"At fixed external pressure, the equilibrium transition temperature is the"
+" temperature at which the Gibbs free energy is equal in the two "
+"coexisting phases for the same amount of substance. When the phase "
+"switches during heating depends in part on how long it takes to transform"
+" into the phase with lower free energy. In a first-order transition in "
+"particular, the initial phase can remain metastable until the new phase "
+"nucleates. Switching at different temperatures during heating and cooling"
+" is called **hysteresis** [HeatShao2025]_. In this case, even averaging "
+"the heating and cooling transition temperatures does not directly give "
+"the equilibrium value."
+
+#: ../../md/heating_simulation.rst:73
+msgid "昇温速度・保持時間・セルサイズの影響"
+msgstr "Effects of Heating Rate, Hold Time, and Cell Size"
+
+#: ../../md/heating_simulation.rst:75
+msgid ""
+"目標温度 :math:`T_{\\mathrm{set}}` を一定速度で上げるとする。昇温速度を :math:`\\dot "
+"T_{\\mathrm{set}}`、ある温度域の幅を :math:`\\Delta T` とすると、 その範囲を通過する時間は"
+msgstr ""
+"Suppose the target temperature :math:`T_{\\mathrm{set}}` increases at a "
+"constant rate. For a heating rate :math:`\\dot T_{\\mathrm{set}}` and a "
+"temperature window of width :math:`\\Delta T`, the time spent crossing "
+"the window is"
+
+#: ../../md/heating_simulation.rst:79
+msgid "\\Delta t=\\frac{\\Delta T}{\\dot T_{\\mathrm{set}}}"
+msgstr "\\Delta t=\\frac{\\Delta T}{\\dot T_{\\mathrm{set}}}"
+
+#: ../../md/heating_simulation.rst:84
+msgid ""
+"である。通過時間が構造の緩和時間に比べて短ければ、温度制御が設定値を追っていても "
+"構造の変化は遅れる。温度を段階的に変える計算では、温度刻みと各段階の保持時間を "
+"変えると、その刻みで相の変化を分解できるか、保持中に構造が緩和できるかを調べられる。"
+msgstr ""
+"If the crossing time is short compared with the structural relaxation "
+"time, the structural change lags even when the temperature control tracks"
+" the set point. In simulations that change temperature in stages, varying"
+" the temperature step and the hold time at each stage lets you determine "
+"whether the step resolves the phase change and whether the structure can "
+"relax during the hold."
+
+#: ../../md/heating_simulation.rst:88
+msgid ""
+"セルサイズは、形成できる分域や新しい相の核の大きさ、許される揺らぎの波長を "
+"制限する。セルを拡大したときの転移温度の変化の向きは、相や計算条件に依存する。 "
+"複数のセルサイズを用いるときは、セルの変形条件と昇温速度をそろえるとサイズの "
+"影響を比較しやすい。初速度を変えた複数の軌跡で得るばらつきも、サイズ変化による "
+"ずれと区別する。加熱・冷却や一定温度での保持を併用すれば、初期相の影響や 準安定状態の持続を調べられる [HeatQi2016]_ "
+"[HeatShao2025]_。"
+msgstr ""
+"The cell size limits the sizes of the domains and nuclei of a new phase "
+"that can form, as well as the wavelengths of fluctuations the cell can "
+"accommodate. Whether increasing the cell size raises or lowers the "
+"transition temperature depends on the phases and calculation conditions. "
+"To compare different cell sizes, use the same constraints on cell "
+"deformation and the same heating rate. Distinguish the scatter across "
+"trajectories with different initial velocities from the shift caused by "
+"changing the cell size. Heating and cooling runs or holds at constant "
+"temperature can help assess the influence of the initial phase and the "
+"persistence of metastable states [HeatQi2016]_ [HeatShao2025]_."
+
+#: ../../md/heating_simulation.rst:96
+msgid "構造相転移と融解の検出"
+msgstr "Detecting Structural Phase Transitions and Melting"
+
+#: ../../md/heating_simulation.rst:98
+msgid ""
+"`BaTiO₃の構造相転移 <https://example.quloud-"
+"platform.quemix.com/BaTiO3/phase_transition.html>`__ "
+"では、Tiの局所変位の方向と格子定数の両方から結晶相を割り当てている。 使ったモデル間で転移温度に差があり、その差にはモデルに加えて、 "
+"セルサイズや昇温プロトコルの影響もありうる。比較には、学習に使った 参照計算の条件や昇温の設定をそろえる必要がある。"
+msgstr ""
+"The `structural phase transition calculation example for BaTiO₃ "
+"<https://example.quloud-"
+"platform.quemix.com/BaTiO3/phase_transition.html>`__ assigns crystal "
+"phases using both the directions of local displacements of Ti and the "
+"lattice constants. The transition temperatures differ between the models "
+"used. Cell size and the heating protocol may contribute to the difference"
+" alongside the choice of model. The comparison requires matching the "
+"conditions of the reference calculations used for training and the "
+"heating settings."
+
+#: ../../md/heating_simulation.rst:104
+msgid ""
+"融解では、結晶に特徴的な原子の周期配列が失われる。 近接原子の並び方を表す\\ :ref:`結合配向秩序パラメータ<bond-"
+"orientational-order>` の急な低下が、融解の目印になる。\\ :ref:`拡散<mean-squared-"
+"displacement>`\\ や長距離の構造秩序も調べると、 高温で揺らいでいる結晶と、流動する液体を見分ける根拠が増える "
+"[HeatChen2025]_。 急速な加熱や周期境界のもとでは結晶が過熱する場合があるため、 "
+"秩序が失われた温度を読むときも昇温速度と保持時間が重要になる。"
+msgstr ""
+"On melting, the periodic arrangement of atoms characteristic of a crystal"
+" is lost. A sharp drop in the \\ :ref:`bond orientational order parameter"
+" <bond-orientational-order>`, which describes the arrangement of "
+"neighboring atoms, signals melting. Examining \\ :ref:`diffusion <mean-"
+"squared-displacement>`\\  and long-range structural order gives "
+"additional evidence for distinguishing a fluctuating high-temperature "
+"crystal from a flowing liquid [HeatChen2025]_. Rapid heating or periodic "
+"boundary conditions can lead to superheating of the crystal, so the "
+"heating rate and hold time also matter when reading off the temperature "
+"at which order disappears."
+
+#: ../../md/heating_simulation.rst:116
+msgid "|melt-quench-heading|"
+msgstr "Building an Amorphous Model by Melting and Quenching"
+
+#: ../../md/heating_simulation.rst:118
+msgid ""
+"溶融・急冷では、結晶を溶かしてから短時間で冷却し、原子が規則的な配列を作る前に動きを遅くする。 "
+"分子動力学では、高温で液体になるまで保持した後に冷却し、低温で保持する。 高温保持中に、\\ :ref:`平均二乗変位（MSD）<mean-"
+"squared-displacement>`\\ が長時間で時間に 比例して増え、\\ :ref:`動径分布関数（RDF）<radial-"
+"distribution-function>`\\ から結晶に 特徴的な長距離のピークが消えれば、融解の目安になる。 "
+"冷却後の低温保持では、目標温度のもとで冷却直後の構造がどう緩和するかを追う。"
+msgstr ""
+"In melt-quench simulations, a crystal is melted and then cooled rapidly "
+"to slow the atoms before they can form a regular arrangement. In "
+"molecular dynamics, the system is held at high temperature until it "
+"becomes liquid, then cooled and held at low temperature. During the high-"
+"temperature hold, melting is indicated if the \\ :ref:`mean squared "
+"displacement (MSD) <mean-squared-displacement>`\\  grows linearly with "
+"time at long times and the \\ :ref:`radial distribution function (RDF) "
+"<radial-distribution-function>`\\  loses the long-range peaks "
+"characteristic of the crystal. During the low-temperature hold after "
+"cooling, follow how the freshly quenched structure relaxes at the target "
+"temperature."
+
+#: ../../md/heating_simulation.rst:125
+msgid ""
+"冷却後の配置を静的な計算の出発点にする場合は、座標に残る力が後続の計算に影響する。 セルの大きさと形を保つ場合は、急冷と低温保持の後に\\ "
+":ref:`原子座標を緩和<structure-optimization>`\\ して力を下げる。"
+msgstr ""
+"When the cooled configuration is the starting point for a static "
+"calculation, residual forces on the atoms affect the subsequent "
+"calculation. If the cell size and shape are held fixed, \\ :ref:`relax "
+"the atomic coordinates <structure-optimization>`\\  after quenching and "
+"the low-temperature hold to reduce the forces."
+
+#: ../../md/heating_simulation.rst:128
+msgid ""
+"冷却が速いほど、同じ温度範囲を通過するのにかかる時間は短い（\\ :eq:`heating-dwell-time`\\ で "
+"速度の絶対値を使う）。通過時間が構造の緩和時間より短い場合、原子の配列は温度の変化に追いつかない。 "
+"通常の実験に比べてMDが扱える時間は桁違いに短く、同じ温度差を冷却するときの冷却速度も高い。 "
+"急冷後の局所構造や密度には冷却履歴の影響が残る。例えばシリカでは、冷却速度を変えると 配位数や環の大きさの分布などが変わる "
+"[HeatVollmayr1996]_。"
+msgstr ""
+"Faster cooling shortens the time it takes to cross the same temperature "
+"range (use the absolute value of the rate in Equation \\ :eq:`heating-"
+"dwell-time`\\ ). If the crossing time is shorter than the structural "
+"relaxation time, the atomic arrangement cannot keep up with the "
+"temperature change. The timescales accessible to molecular dynamics are "
+"orders of magnitude shorter than those of typical experiments, so the "
+"cooling rate over the same temperature interval is also higher. The local"
+" structure and density after quenching retain the effects of the cooling "
+"history. In silica, for example, varying the cooling rate changes the "
+"distributions of coordination numbers and ring sizes [HeatVollmayr1996]_."
+
+#: ../../md/heating_simulation.rst:134
+msgid ""
+"小さい周期セルでは、セル内の配置が短い周期で繰り返される。高温での再配列が足りないと、 その配置に初期の結晶秩序が残ることもある。 "
+"`Li₃PO₄の溶融・急冷後の構造 <https://example.quloud-platform.quemix.com/li3po4"
+"/melt-quench-structure.html>`__\\ では、γ相の32原子セルをOpenMXの\\ :ref:`第一原理分子動力学"
+"<md-force-evaluation>`\\ で急冷し、 "
+"セルを固定して原子座標を緩和した。より長く高温保持したLiらの32原子モデルも、緩和後の構造に 部分的な結晶配列を含んでいた "
+"[RdfLiPhosphate]_。"
+msgstr ""
+"In a small periodic cell, the configuration inside the cell repeats over "
+"a short distance. If the atoms fail to rearrange sufficiently at high "
+"temperature, some of the initial crystalline order can remain. In the "
+"`Li₃PO₄ melt-quench calculation example <https://example.quloud-"
+"platform.quemix.com/li3po4/melt-quench-structure.html>`__\\ , a 32-atom "
+"cell of the γ phase was quenched using \\ :ref:`ab initio molecular "
+"dynamics <md-force-evaluation>`\\  in OpenMX and its atomic coordinates "
+"were relaxed with the cell fixed. The 32-atom model of Li et al., which "
+"was held at high temperature for longer, also retained some crystalline "
+"arrangements after relaxation [RdfLiPhosphate]_."
+
+#: ../../md/heating_simulation.rst:141
+msgid "こうした小セルは不規則な局所配置を調べる模型として使える。実験の非晶質を代表するかは、 急冷後に残る結晶秩序とセルサイズへの依存性で判断する。"
+msgstr ""
+"Small cells like these can serve as models for investigating irregular "
+"local configurations. Whether they represent an experimental amorphous "
+"material depends on the crystalline order remaining after quenching and "
+"on the dependence on cell size."
+
+#: ../../md/heating_simulation.rst:144
+msgid ""
+"同じ作製条件でも、異なる初速度から独立に高温保持と急冷を行うと、異なる構造を得ることがある。 "
+"同じ条件で作った構造間のばらつきが分かれば、冷却速度やセルサイズを変えたときの差が、 一つの軌跡に特有の違いかどうかを判断できる。急冷後の\\ "
+":ref:`動径分布関数<radial-distribution-function>`\\ には、 "
+"どの距離に原子対が集まりやすいかが現れる。結晶に特徴的な近接原子の向きが残ったかは、 \\ :ref:`結合配向秩序パラメータ<bond-"
+"orientational-order>`\\ を使って調べられる。"
+msgstr ""
+"Even under the same preparation conditions, independent high-temperature "
+"holds and quenches starting from different initial velocities can produce"
+" different structures. Knowing the scatter among structures prepared "
+"under the same conditions helps determine whether a difference seen after"
+" changing the cooling rate or cell size is specific to one trajectory. "
+"After quenching, the \\ :ref:`radial distribution function <radial-"
+"distribution-function>`\\  shows the distances at which atomic pairs tend"
+" to cluster. The \\ :ref:`bond orientational order parameter <bond-"
+"orientational-order>`\\  can reveal whether the orientations of "
+"neighboring atoms characteristic of the crystal remain."
+
+#: ../../md/heating_simulation.rst:153
+msgid "説明用の事例：温度域を通過する時間と相の遅れ"
+msgstr ""
+"Worked Example: Time Spent in a Temperature Window and the Lagging Phase "
+"Change"
+
+#: ../../md/heating_simulation.rst:155
+msgid ""
+"`BaTiO₃の昇温計算 <https://example.quloud-"
+"platform.quemix.com/BaTiO3/phase_transition.html>`__ "
+"では、QuloudのGPUでCHGNetを使い、外圧を制御したNPTで10 K/psの速さで昇温した。 :eq:`heating-dwell-"
+"time`\\ にこの速度を入れると、10 Kの範囲は1 ps、20 Kは2 ps、 50 Kは5 psで通過する。仮に構造が反応するのに4 "
+"ps程度かかる場合、20 K幅では その半分しか時間がない。ここでの4 psは比較のための仮定である。"
+msgstr ""
+"In the `BaTiO₃ heating simulation calculation example <https://example"
+".quloud-platform.quemix.com/BaTiO3/phase_transition.html>`__, CHGNet was "
+"run on a Quloud GPU with NPT pressure control and a heating rate of 10 "
+"K/ps. Substituting this rate into Equation :eq:`heating-dwell-time`\\  "
+"gives crossing times of 1 ps for a 10 K range, 2 ps for 20 K, and 5 ps "
+"for 50 K. If the structure takes about 4 ps to respond, crossing the 20 K"
+" window allows only half that time. The 4 ps response time here is an "
+"assumption for comparison."
+
+#: ../../md/heating_simulation.rst:161
+msgid ""
+"セルを変えると、同じ昇温速度でも観測される転移温度が動いた。以下は同事例の "
+"CHGNetで、BaTiO₃の基本の5原子セルを各軸に5回または8回並べたときの読み取り値である。"
+msgstr ""
+"Changing the cell shifted the observed transition temperatures even at "
+"the same heating rate. The values below come from the CHGNet trajectories"
+" in the same example, with the basic five-atom BaTiO₃ cell repeated five "
+"or eight times along each axis."
+
+#: ../../md/heating_simulation.rst:164
+msgid "CHGNetの昇温軌跡から読んだ転移温度"
+msgstr "Transition temperatures read from the CHGNet heating trajectories."
+
+#: ../../md/heating_simulation.rst:169
+msgid "セル"
+msgstr "Cell"
+
+#: ../../md/heating_simulation.rst:170
+msgid "直方晶（斜方晶）から正方晶へ"
+msgstr "Orthorhombic to tetragonal"
+
+#: ../../md/heating_simulation.rst:171
+msgid "正方晶から立方晶へ"
+msgstr "Tetragonal to cubic"
+
+#: ../../md/heating_simulation.rst:172
+msgid "5 × 5 × 5"
+msgstr "5 × 5 × 5"
+
+#: ../../md/heating_simulation.rst:173
+msgid "321 K"
+msgstr "321 K"
+
+#: ../../md/heating_simulation.rst:174
+msgid "646 K"
+msgstr "646 K"
+
+#: ../../md/heating_simulation.rst:175
+msgid "8 × 8 × 8"
+msgstr "8 × 8 × 8"
+
+#: ../../md/heating_simulation.rst:176
+msgid "390 K"
+msgstr "390 K"
+
+#: ../../md/heating_simulation.rst:177
+msgid "827 K"
+msgstr "827 K"
+
+#: ../../md/heating_simulation.rst:178
+msgid "増加幅"
+msgstr "Increase"
+
+#: ../../md/heating_simulation.rst:179
+msgid "69 K"
+msgstr "69 K"
+
+#: ../../md/heating_simulation.rst:180
+msgid "181 K"
+msgstr "181 K"
+
+#: ../../md/heating_simulation.rst:182
+msgid ""
+"この計算ではどちらの見かけの転移温度も上がった。有限セルでは、新しい相の 核が生まれる体積と、成長できるサイズがともに変わる。大きいセルで核を作る"
+" 場所が増えると転移は早まりうる。逆に、小セルで単位胞がそろって変形する経路が "
+"選ばれていた場合、セルを広げると変形の進み方も変わる。表の増加幅だけで、 どの要因が支配したかを特定することは難しい。"
+msgstr ""
+"Both apparent transition temperatures rose in this simulation. In a "
+"finite cell, the available volume for nucleation of the new phase and the"
+" size to which it can grow both change. A larger cell can make the "
+"transition occur sooner if it provides more sites for nucleation. "
+"Conversely, if the small cell favored a pathway in which unit cells "
+"deform in concert, enlarging the cell also changes how the deformation "
+"proceeds. The increases in the table alone make it difficult to identify "
+"which factor dominated."
+
+#: ../../md/heating_simulation.rst:191
+msgid "説明用の事例：加熱と冷却で現れる温度差"
+msgstr "Worked Example: Temperature Difference Between Heating and Cooling"
+
+#: ../../md/heating_simulation.rst:193
+#, python-brace-format
+msgid ""
+"構造が温度の変化に追いつかない場合、加熱と冷却で同じ判定基準を使っても 転移温度に差が出る。単純な模型として、規格化した秩序変数 "
+":math:`Q` の 平衡値 :math:`Q_{\\rm eq}` が、温度 :math:`T_0=400\\,\\mathrm{K}` "
+"の上下で 低温側の1と高温側の0に切り替わるとする。緩和の時間尺度を :math:`\\tau=4\\,\\mathrm{ps}` "
+"とおき、変化の速さが平衡値からのずれに比例する と仮定する。"
+msgstr ""
+"If the structure cannot keep up with the changing temperature, heating "
+"and cooling give different transition temperatures even with the same "
+"criterion. In a simple model, take a normalized order parameter :math:`Q`"
+" whose equilibrium value :math:`Q_{\\rm eq}` is 1 below "
+":math:`T_0=400\\,\\mathrm{K}` and 0 above it. Set the relaxation "
+"timescale to :math:`\\tau=4\\,\\mathrm{ps}` and assume the rate of change"
+" is proportional to the deviation from equilibrium:"
+
+#: ../../md/heating_simulation.rst:200
+msgid ""
+"\\frac{dQ}{dt}=\\frac{Q_{\\rm eq}-Q}{\\tau},\n"
+"\\qquad\n"
+"Q(t)-Q_{\\rm eq}=[Q(0)-Q_{\\rm eq}]\\exp(-t/\\tau)."
+msgstr ""
+"\\frac{dQ}{dt}=\\frac{Q_{\\rm eq}-Q}{\\tau},\n"
+"\\qquad\n"
+"Q(t)-Q_{\\rm eq}=[Q(0)-Q_{\\rm eq}]\\exp(-t/\\tau)."
+
+#: ../../md/heating_simulation.rst:207
+#, python-brace-format
+msgid ""
+"右の式は、設定温度が :math:`T_0` を通過した時刻を :math:`t=0` とし、 通過後の :math:`Q_{\\rm eq}` "
+"を一定に保った場合の解である。加熱では :math:`Q` が1から下がり、冷却では0から上がる。両方の軌跡で :math:`Q=1/2` "
+"を転移と判定すると、遅れは :math:`\\tau\\ln 2=2.773\\,\\mathrm{ps}` となる。"
+msgstr ""
+"The expression on the right is the solution obtained by taking the "
+"crossing of :math:`T_0` by the set temperature as :math:`t=0` and holding"
+" :math:`Q_{\\rm eq}` constant after the crossing. During heating, "
+":math:`Q` falls from 1, and during cooling it rises from 0. Using "
+":math:`Q=1/2` as the transition criterion for both trajectories gives a "
+"delay of :math:`\\tau\\ln 2=2.773\\,\\mathrm{ps}`."
+
+#: ../../md/heating_simulation.rst:213
+msgid ""
+"加熱・冷却の速さをともに10 K/psとすると、温度のずれは片側で約27.7 Kである。 :numref:`fig-heat-order-"
+"lag`\\ の丸印では、加熱で427.7 K、冷却で372.3 Kになる。 この模型のヒステリシス幅は丸め前の値から求めると55.5 Kである。"
+msgstr ""
+"At heating and cooling rates of 10 K/ps, the temperature shift is about "
+"27.7 K on each side. The circles in :numref:`fig-heat-order-lag`\\  mark "
+"427.7 K during heating and 372.3 K during cooling. The model's hysteresis"
+" width is 55.5 K when calculated from the unrounded values."
+
+#: ../../md/heating_simulation.rst:217
+msgid "加熱では秩序変数が400 Kより上で0.5に達し、冷却では400 Kより下で0.5に達する。"
+msgstr ""
+"The order parameter reaches 0.5 above 400 K during heating and below 400 "
+"K during cooling."
+
+#: ../../md/heating_simulation.rst:222
+msgid "緩和の遅れを表す模型の秩序変数。実線は加熱、破線は冷却。 点線は模型の平衡境界400 Kと判定値0.5、丸印は見かけの転移温度を表す。"
+msgstr ""
+"Order parameter in a model of delayed relaxation. The solid line shows "
+"heating, and the dashed line shows cooling. The dotted lines mark the "
+"model equilibrium boundary at 400 K and the threshold of 0.5. The circles"
+" mark the apparent transition temperatures."
+
+#: ../../md/heating_simulation.rst:228
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../md/heating_simulation.rst:230
+msgid ""
+"**軌跡上の判定と平衡。** 秩序変数の急変は、その軌跡が別の構造へ移った時刻を "
+"示す。平衡境界を知るには、各温度で十分に緩和させた分布や二相の自由エネルギー "
+"を求める必要がある。加熱と冷却の遅れが対称になるのは、この模型の仮定による。 "
+"核形成や成長が異なる速度で起きる系では、両方向で遅れの大きさも変わる。"
+msgstr ""
+"**Trajectory-based criteria and equilibrium.** An abrupt change in the "
+"order parameter shows when the trajectory switched to a different "
+"structure. Finding the equilibrium boundary requires either distributions"
+" after sufficient relaxation at each temperature or the free energy of "
+"each phase. The symmetry of the heating and cooling delays follows from "
+"the assumptions of this model. In systems where nucleation or growth "
+"proceeds at different rates in the two directions, the delays also differ"
+" in magnitude."
+
+#: ../../md/heating_simulation.rst:234
+msgid ""
+"**変位分布の温度幅。** 軌跡を温度帯で区切って分布を作るときは、転移を "
+"またぐと二つの相のフレームが一つの分布に混ざる。温度帯を細かくすると両相を 分けやすくなるが、帯ごとのフレームも少なくなる。 "
+"ピークの位置や向きが平均幅に敏感なら、平滑化の違いを相の差と誤認しないよう、 独立な軌跡や一定温度での保持から分布を補う。"
+msgstr ""
+"**Temperature windows for displacement distributions.** When binning "
+"trajectory frames by temperature, a window that straddles the transition "
+"mixes frames from both phases in a single distribution. Narrower windows "
+"make it easier to separate the phases but leave fewer frames in each "
+"window. If the peak positions or orientations are sensitive to the "
+"averaging window, supplement the distributions with data from independent"
+" trajectories or holds at constant temperature to avoid mistaking a "
+"smoothing effect for a phase difference."
+
+#: ../../md/heating_simulation.rst:239
+msgid ""
+"**セルサイズとばらつき。** 一つのサイズにつき一つの軌跡だけを比べると、 "
+"構造が切り替わる時刻の偶然のばらつきもサイズ差に含まれる。初速度を変えた "
+"複数の軌跡で判定温度の分布を求めれば、そのばらつきとサイズの効果を区別できる。"
+msgstr ""
+"**Cell size and scatter.** Comparing only one trajectory per cell size "
+"folds random variation in when the structure switches into the apparent "
+"difference between sizes. Distributions of the detected transition "
+"temperatures from multiple trajectories with different initial velocities"
+" help distinguish that variation from the effect of cell size."
+
+#: ../../md/heating_simulation.rst:242
+msgid ""
+"**相の判定と融解。** 多くの分域がある場合、全体の分極が打ち消し合うことがある。 "
+"結晶相を判定するときは変位分布と格子を照合する。融解では結合配向だけでなく :ref:`拡散<mean-squared-"
+"displacement>`\\ も見ると、秩序が弱くなった固体と流動する液体を区別する根拠が増える。"
+msgstr ""
+"**Phase identification and melting.** When there are many domains, their "
+"polarizations may cancel in the overall average. To identify the crystal "
+"phase, compare the displacement distribution with the lattice. When "
+"testing for melting, examining :ref:`diffusion <mean-squared-"
+"displacement>`\\  alongside bond orientation provides more evidence for "
+"distinguishing a solid with reduced order from a flowing liquid."
+
+#: ../../md/heating_simulation.rst:249
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../md/heating_simulation.rst:251
+msgid ":ref:`molecular-dynamics`"
+msgstr ":ref:`molecular-dynamics`"
+
+#: ../../md/heating_simulation.rst:252
+msgid ":ref:`radial-distribution-function`"
+msgstr ":ref:`radial-distribution-function`"
+
+#: ../../md/heating_simulation.rst:257
+msgid "参考文献"
+msgstr "References"
+
+#: ../../md/heating_simulation.rst:259
+msgid ""
+"Y. Qi, S. Liu, I. Grinberg, and A. M. Rappe, *Phys. Rev. B* **94**, "
+"134308 (2016). `doi:10.1103/PhysRevB.94.134308 "
+"<https://doi.org/10.1103/PhysRevB.94.134308>`_."
+msgstr ""
+"Y. Qi, S. Liu, I. Grinberg, and A. M. Rappe, *Phys. Rev. B* **94**, "
+"134308 (2016). `doi:10.1103/PhysRevB.94.134308 "
+"<https://doi.org/10.1103/PhysRevB.94.134308>`_."
+
+#: ../../md/heating_simulation.rst:262
+msgid ""
+"C. Shao and H. Huang, *Chinese Phys. B* **34**, 027701 (2025). "
+"`doi:10.1088/1674-1056/ad9e94 "
+"<https://doi.org/10.1088/1674-1056/ad9e94>`_."
+msgstr ""
+"C. Shao and H. Huang, *Chinese Phys. B* **34**, 027701 (2025). "
+"`doi:10.1088/1674-1056/ad9e94 "
+"<https://doi.org/10.1088/1674-1056/ad9e94>`_."
+
+#: ../../md/heating_simulation.rst:264
+msgid ""
+"P.-Y. Chen, K. Shibata, and T. Mizoguchi, *APL Mach. Learn.* **3**, "
+"036115 (2025). `doi:10.1063/5.0268149 "
+"<https://doi.org/10.1063/5.0268149>`_."
+msgstr ""
+"P.-Y. Chen, K. Shibata, and T. Mizoguchi, *APL Mach. Learn.* **3**, "
+"036115 (2025). `doi:10.1063/5.0268149 "
+"<https://doi.org/10.1063/5.0268149>`_."
+
+#: ../../md/heating_simulation.rst:267
+msgid ""
+"K. Vollmayr, W. Kob, and K. Binder, “Cooling-rate effects in amorphous "
+"silica: A computer-simulation study,” *Phys. Rev. B* **54**, 15808–15827 "
+"(1996). `doi:10.1103/PhysRevB.54.15808 "
+"<https://doi.org/10.1103/PhysRevB.54.15808>`_."
+msgstr ""
+"K. Vollmayr, W. Kob, and K. Binder, “Cooling-rate effects in amorphous "
+"silica: A computer-simulation study,” *Phys. Rev. B* **54**, 15808–15827 "
+"(1996). `doi:10.1103/PhysRevB.54.15808 "
+"<https://doi.org/10.1103/PhysRevB.54.15808>`_."
+

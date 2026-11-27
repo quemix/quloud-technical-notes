@@ -1,0 +1,582 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../md/rdf.rst:4
+msgid "動径分布関数と局所構造"
+msgstr "Radial Distribution Function and Local Structure"
+
+#: ../../md/rdf.rst:6
+msgid ""
+"動径分布関数（radial distribution function, RDF）は、原子を中心に見たとき、 "
+"周囲の原子がどの距離に集まりやすいかを表す。結晶を溶かして急冷すると、 遠くまで続く周期配列は失われても、近接原子の配置が残る場合がある。 "
+"その違いはRDFの近距離と遠距離に現れる。"
+msgstr ""
+"The radial distribution function (RDF) shows the distances from a central"
+" atom at which surrounding atoms tend to occur. After a crystal is melted"
+" and quenched, the arrangement of nearby atoms can persist even if long-"
+"range periodicity is lost. This difference shows up in the RDF at short "
+"and long distances."
+
+#: ../../md/rdf.rst:11
+msgid ""
+"前提は\\ :ref:`分子動力学の軌跡<molecular-dynamics>`\\ と :ref:`周期境界条件<pbc-allowed-"
+"wavevectors>`\\ である。 この記事では、RDFから配位数を求め、距離・方向・多面体のつながりを 異なる指標で読み解く。"
+msgstr ""
+"This article builds on \\ :ref:`molecular dynamics trajectories "
+"<molecular-dynamics>`\\  and :ref:`periodic boundary conditions <pbc-"
+"allowed-wavevectors>`\\ . You will learn how to calculate coordination "
+"numbers from the RDF and use different descriptors to interpret "
+"distances, directions, and the connectivity of polyhedra."
+
+#: ../../md/rdf.rst:17
+msgid "原子対を球殻で数える"
+msgstr "Counting Atomic Pairs in Spherical Shells"
+
+#: ../../md/rdf.rst:19
+#, python-brace-format
+msgid ""
+"3次元の均一なバルクを対象に、原子種 :math:`\\alpha` を中心、原子種 :math:`\\beta` "
+"を近接原子の候補とする。中心から距離 :math:`r` を 下端とし、幅 :math:`\\Delta r` の球殻に入る "
+":math:`\\beta` 原子を数える。 中心原子1個あたりの平均個数を :math:`\\langle "
+"n_{\\alpha\\beta}(r,\\Delta r)\\rangle`、 候補の平均数密度を :math:`\\rho_\\beta` "
+"とする。"
+msgstr ""
+"Consider a homogeneous three-dimensional bulk system. Use atoms of "
+"species :math:`\\alpha` as centers and atoms of species :math:`\\beta` as"
+" candidate neighbors. In a spherical shell with inner radius :math:`r` "
+"and width :math:`\\Delta r`, count the :math:`\\beta` atoms. Let "
+":math:`\\langle n_{\\alpha\\beta}(r,\\Delta r)\\rangle` be the mean count"
+" per central atom and :math:`\\rho_\\beta` the mean number density of "
+"candidate neighbors."
+
+#: ../../md/rdf.rst:25
+msgid ""
+"均一で原子間に相関がない基準系では、球殻内の平均個数は数密度と 球殻体積 :math:`\\Delta V_r` "
+"の積になる。観測した個数をこの値で割ると、 原子種の組ごとの **部分動径分布関数** が得られる "
+"[RdfAllenTildesley2017]_。"
+msgstr ""
+"In a homogeneous reference system with no interatomic correlations, the "
+"mean count in the shell is the number density times the shell volume "
+":math:`\\Delta V_r`. Dividing the observed count by this reference value "
+"gives the **partial radial distribution function** for each pair of "
+"species [RdfAllenTildesley2017]_:"
+
+#: ../../md/rdf.rst:29
+msgid ""
+"\\Delta V_r = \\frac{4\\pi}{3}\\big[(r+\\Delta r)^3-r^3\\big],\n"
+"\\qquad\n"
+"g_{\\alpha\\beta}(r)\\simeq\n"
+"\\frac{\\langle n_{\\alpha\\beta}(r,\\Delta "
+"r)\\rangle}{\\rho_\\beta\\Delta V_r}."
+msgstr ""
+"\\Delta V_r = \\frac{4\\pi}{3}\\big[(r+\\Delta r)^3-r^3\\big],\n"
+"\\qquad\n"
+"g_{\\alpha\\beta}(r)\\simeq\n"
+"\\frac{\\langle n_{\\alpha\\beta}(r,\\Delta "
+"r)\\rangle}{\\rho_\\beta\\Delta V_r}."
+
+#: ../../md/rdf.rst:37
+msgid ""
+"この式は固定体積での有限幅のビンを表す。:math:`\\alpha=\\beta` のときは "
+"中心原子自身を除外し、有限系ではその分だけ候補原子数を減らして規格化する。 "
+"体積が揺らぐ軌跡を扱う場合は、各フレームの体積で規格化してから平均する方法などがある。 "
+"比較では体積と時間平均の扱いをそろえる。全原子をまとめて数える全RDFには原子種の "
+"組ごとの寄与が重なる。構造を担う原子対を見つけるには部分RDFが役立つ。"
+msgstr ""
+"This formula describes finite-width bins at fixed volume. When "
+":math:`\\alpha=\\beta`, exclude the central atom itself and, in a finite "
+"system, reduce the number of candidates used for normalization "
+"accordingly. For a trajectory with fluctuating volume, one approach is to"
+" normalize by the volume of each frame before averaging. Treat the volume"
+" and time averaging consistently when comparing RDFs. The total RDF "
+"counts all atoms together and combines the contributions of different "
+"pairs of species. Partial RDFs help identify the pairs responsible for "
+"the structure."
+
+#: ../../md/rdf.rst:43
+#, python-brace-format
+msgid ""
+":math:`g_{\\alpha\\beta}(r)>1` は、その距離にある :math:`\\beta` 原子が "
+"無相関の基準系より多いことを表す。幅の狭いビンでは :math:`\\Delta V_r\\simeq 4\\pi r^2\\Delta r` "
+"なので、同じ数の原子対を数えても、 近距離と遠距離では規格化後の値が違う。また、周期境界を使う場合は球殻全体を "
+"一意に数えられる距離まで扱う。直方体セルの最小像を使うなら、最短辺の半分が目安である。"
+msgstr ""
+"A value of :math:`g_{\\alpha\\beta}(r)>1` means that more :math:`\\beta` "
+"atoms occur at that distance than in the uncorrelated reference system. "
+"For narrow bins, :math:`\\Delta V_r\\simeq 4\\pi r^2\\Delta r`, so the "
+"same pair count gives different normalized values at short and long "
+"distances. Under periodic boundary conditions, consider only distances at"
+" which the entire shell can be counted unambiguously. With the minimum "
+"image convention in a rectangular cell, half the shortest edge is a "
+"guideline."
+
+#: ../../md/rdf.rst:52
+msgid "第一ピークと配位数"
+msgstr "First Peak and Coordination Number"
+
+#: ../../md/rdf.rst:54
+#, python-brace-format
+msgid ""
+"第一ピークの位置は、第一近接殻でよく現れる原子間距離を示す。その殻の原子数を 求めるには、ピークの後の第一極小などを殻の境界 "
+":math:`r_{\\mathrm c}` として選び、 各球殻に含まれる個数を足す。:eq:`rdf-shell-"
+"normalization`\\ を個数について解き、 ビン幅を狭くすると、中心原子1個あたりの平均 **配位数** は"
+msgstr ""
+"The position of the first peak shows a common interatomic distance in the"
+" first neighbor shell. To count the atoms in the shell, choose a boundary"
+" :math:`r_{\\mathrm c}`, such as the first minimum after the peak, and "
+"add up the counts in the spherical shells. Solving Equation :eq:`rdf-"
+"shell-normalization`\\  for the count and taking the narrow-bin limit "
+"gives the mean **coordination number** per central atom:"
+
+#: ../../md/rdf.rst:59
+msgid ""
+"C_{\\alpha\\beta}(r_{\\mathrm c}) =\n"
+"4\\pi\\rho_\\beta\\int_0^{r_{\\mathrm c}} r^2g_{\\alpha\\beta}(r)\\,dr"
+msgstr ""
+"C_{\\alpha\\beta}(r_{\\mathrm c}) =\n"
+"4\\pi\\rho_\\beta\\int_0^{r_{\\mathrm c}} r^2g_{\\alpha\\beta}(r)\\,dr"
+
+#: ../../md/rdf.rst:65
+#, python-brace-format
+msgid ""
+"となる。ピークの高さは距離のばらつきやビン幅にも依存する。たとえば配位数が 同じでも、温度上昇で結合距離の分布が広がれば、ピークは低く広がりうる。"
+" 第一極小が浅いと、境界を少し動かすだけで隣の殻の一部が積分に入る。 その場合は :math:`r_{\\mathrm c}` "
+"を前後に動かしたときの配位数も示すと、 構造の違いと殻の切り方による違いを分けて読める。"
+msgstr ""
+"Peak height also depends on the spread of distances and the bin width. "
+"Even at the same coordination number, for example, a broader distribution"
+" of bond lengths at higher temperature can make the peak lower and wider."
+" If the first minimum is shallow, a small shift in the cutoff can include"
+" part of the next shell in the integral. Reporting the coordination "
+"numbers for slightly smaller and larger values of :math:`r_{\\mathrm c}` "
+"helps distinguish structural differences from differences due to the "
+"choice of cutoff."
+
+#: ../../md/rdf.rst:72
+msgid "アモルファスの短距離秩序と長距離秩序"
+msgstr "Short- and Long-Range Order in Amorphous Materials"
+
+#: ../../md/rdf.rst:74
+#, python-brace-format
+msgid ""
+"アモルファス（非晶質）固体では結晶の長距離周期性が失われても、短距離の 配位には秩序が残る。強く結合する原子対には鋭い第一ピークが出る一方、 "
+"結晶では遠くまで見られる規則的なピーク列が減衰する。均一な非晶質では "
+"十分遠方で相関が弱まり、:math:`g_{\\alpha\\beta}(r)` は1に近づく。"
+msgstr ""
+"In an amorphous solid, short-range coordination retains some order even "
+"though the long-range periodicity of a crystal is lost. Strongly bonded "
+"pairs produce a sharp first peak, while the regular series of peaks that "
+"extends to long distances in a crystal dies away. In a homogeneous "
+"amorphous material, correlations weaken at sufficiently long distances "
+"and :math:`g_{\\alpha\\beta}(r)` approaches 1."
+
+#: ../../md/rdf.rst:79
+msgid ""
+"`Li₃PO₄の部分RDF <https://example.quloud-platform.quemix.com/li3po4/large-"
+"structure-rdf.html>`__ では、急冷後にもP–Oの第一殻が残る。これはリン酸四面体の短距離配位の保持に 対応する "
+"[RdfLiPhosphate]_。 小セルでは周期境界による構造の反復や初期結晶の "
+"影響が残ることがある。遠距離側を比較するには、複数のセルサイズや独立な 急冷軌跡で、ピークの減衰が再現するかを見る。"
+msgstr ""
+"In the `Li₃PO₄ partial RDF calculation example <https://example.quloud-"
+"platform.quemix.com/li3po4/large-structure-rdf.html>`__, the P–O first "
+"shell remains after quenching. This corresponds to retention of short-"
+"range coordination within the phosphate tetrahedra [RdfLiPhosphate]_. "
+"Small cells can retain effects of periodic repetition or of the initial "
+"crystal. To compare the long-distance regions, check whether the decay of"
+" the peaks is reproduced across different cell sizes or independent "
+"quench trajectories."
+
+#: ../../md/rdf.rst:85
+msgid ""
+"RDFの比較では温度、平均を取る区間と時間、ビン幅をそろえる。温度が違うと "
+"熱揺らぎの幅が変わり、平均時間が短いとまれな構造の寄与や統計的なばらつきが "
+"変わる。ビン幅が違うと、狭いピークの高さや隣り合うピークの分離が変わる。 "
+"融解や急冷の途中を調べるなら、温度や構造が大きく変化する区間を一緒に平均すると 別々の状態の特徴が重なる。"
+msgstr ""
+"When comparing RDFs, use the same temperature, averaging windows and "
+"durations, and bin width. Temperature changes the magnitude of thermal "
+"fluctuations. A shorter averaging time changes the contribution of rare "
+"structures and the statistical variability. Bin width affects the height "
+"of narrow peaks and the separation of neighboring peaks. When examining "
+"melting or quenching in progress, averaging over a period in which the "
+"temperature or structure changes substantially mixes features of distinct"
+" states."
+
+#: ../../md/rdf.rst:94
+msgid "結合配向秩序パラメータ"
+msgstr "Bond Orientational Order Parameter"
+
+#: ../../md/rdf.rst:96
+msgid ""
+"RDFは原子対の距離を球面上でまとめるため、近接原子がどの方向に並ぶかは 別の量で調べる。Steinhardtらの **結合配向秩序パラメータ**"
+" は、各原子の 近接原子への方向を球面調和関数で表し、配向の違いを測る [RdfSteinhardt1983]_。"
+msgstr ""
+"The RDF averages pair distances over all directions, so a separate "
+"quantity is needed to determine how neighboring atoms are oriented. The "
+"**bond orientational order parameter** of Steinhardt et al. uses "
+"spherical harmonics to describe directions from each atom to its "
+"neighbors and quantify differences in orientation [RdfSteinhardt1983]_."
+
+#: ../../md/rdf.rst:100
+#, python-brace-format
+msgid ""
+"原子 :math:`i` の近接原子集合を :math:`\\mathcal N_i`、その個数を :math:`N_i`、原子 "
+":math:`i` から :math:`j` への単位ベクトルを :math:`\\hat{\\boldsymbol r}_{ij}` "
+"とする。標準的に規格化した球面調和関数を :math:`Y_{\\ell m}` と書くと、各方向についての値を平均した係数 "
+":math:`q_{\\ell m}` と、その大きさをまとめた :math:`q_\\ell` は"
+msgstr ""
+"For atom :math:`i`, let :math:`\\mathcal N_i` denote its set of neighbors"
+" and :math:`N_i` the number of neighbors. The unit vector from atom "
+":math:`i` to atom :math:`j` is :math:`\\hat{\\boldsymbol r}_{ij}`. For "
+"the conventionally normalized spherical harmonics :math:`Y_{\\ell m}`, "
+"the coefficients :math:`q_{\\ell m}` that average their values over the "
+"bond directions and the scalar :math:`q_\\ell` that combines their "
+"magnitudes are given by"
+
+#: ../../md/rdf.rst:106
+#, python-brace-format
+msgid ""
+"q_{\\ell m}(i)=\\frac{1}{N_i}\\sum_{j\\in\\mathcal N_i}\n"
+"  Y_{\\ell m}(\\hat{\\boldsymbol r}_{ij}),\\qquad\n"
+"q_\\ell(i)=\\left[\\frac{4\\pi}{2\\ell+1}\n"
+"   \\sum_{m=-\\ell}^{\\ell}|q_{\\ell m}(i)|^2\\right]^{1/2}"
+msgstr ""
+"q_{\\ell m}(i)=\\frac{1}{N_i}\\sum_{j\\in\\mathcal N_i}\n"
+"  Y_{\\ell m}(\\hat{\\boldsymbol r}_{ij}),\\qquad\n"
+"q_\\ell(i)=\\left[\\frac{4\\pi}{2\\ell+1}\n"
+"   \\sum_{m=-\\ell}^{\\ell}|q_{\\ell m}(i)|^2\\right]^{1/2}"
+
+#: ../../md/rdf.rst:114
+msgid ""
+"である。座標を回転すると係数の組は変わるが、二乗和は変わらない。 :math:`\\ell=6` の指標 :math:`q_6` "
+"は融解に伴う配向秩序の変化の目印に 使える。局所 :math:`q_6` の平均と、係数を全体で平均して求める大域的な "
+"秩序指標では、異なる向きの結晶粒の寄与が違う。 近接原子の選び方や対象原子種を変えると、同じ構造でも和に入る方向が変わる。 "
+"局所値を平均したのか、係数を先に全体で平均したのかを併せて示すと、 粒の向きのばらつきと、各原子の周りの配列の乱れを区別できる。"
+msgstr ""
+"Rotating the coordinates changes the set of coefficients while leaving "
+"the sum of their squared magnitudes unchanged. For :math:`\\ell=6`, the "
+"order parameter :math:`q_6` can indicate changes in orientational order "
+"during melting. Crystallites with different orientations contribute "
+"differently to the average of local :math:`q_6` values and to a global "
+"order parameter calculated by averaging the coefficients first. Changing "
+"the selection of neighbors or the atomic species changes which directions"
+" enter the sum, even for the same structure. State whether you averaged "
+"the local values or averaged the coefficients over the whole system first"
+" so that readers can distinguish variation in grain orientations from "
+"disorder around individual atoms."
+
+#: ../../md/rdf.rst:125
+msgid "配位多面体のつながり"
+msgstr "Connectivity of Coordination Polyhedra"
+
+#: ../../md/rdf.rst:127
+msgid ""
+"局所配位を多面体で記述すると、どの多面体がどのようにつながるかを数えられる。 隣り合う二つの多面体が同じ配位原子を1個共有すれば頂点共有、隣接する"
+" 2頂点なら辺共有、同じ面を作る頂点を共有すれば面共有である。八面体の 三角形の面では3個を共有する。"
+msgstr ""
+"Describing local coordination with polyhedra lets you count how the "
+"polyhedra connect. Two adjacent polyhedra are corner-sharing if they "
+"share one coordinating atom, edge-sharing if they share two adjacent "
+"vertices, and face-sharing if they share the vertices that form a face. "
+"For octahedra, face sharing means sharing the three atoms of a triangular"
+" face."
+
+#: ../../md/rdf.rst:132
+msgid ""
+"`急冷したBaTiO₃の例 <https://example.quloud-"
+"platform.quemix.com/BaTiO3/phase_transition.html>`__ "
+"では、各Tiの周りのOから八面体を定め、共有するOに応じてTi–Ti距離の "
+"分布を分ける。すると、Ti–Tiのどの距離域にどの接続が寄与しているかが 分かる。RDFのピークが重なる場合もあるため、接続の判定には元の軌跡上で"
+" 共有する原子を特定する。Li₃PO₄では同じ考え方をPO₄四面体に使える。"
+msgstr ""
+"In the `quenched BaTiO₃ calculation example <https://example.quloud-"
+"platform.quemix.com/BaTiO3/phase_transition.html>`__, the O atoms around "
+"each Ti define an octahedron. The Ti–Ti distance distribution is then "
+"separated by which O atoms are shared, revealing which type of connection"
+" contributes at each range of Ti–Ti distances. Because RDF peaks can "
+"overlap, identify shared atoms in the original trajectory to classify the"
+" connections. The same approach applies to PO₄ tetrahedra in Li₃PO₄."
+
+#: ../../md/rdf.rst:141
+msgid "説明用の事例：面心立方格子の第一殻"
+msgstr "Worked Example: First Shell of a Face-Centered Cubic Lattice"
+
+#: ../../md/rdf.rst:143
+#, python-brace-format
+msgid ""
+"面心立方（FCC）の第一殻では、距離が広く分布してRDFのピークが低くなっても、 "
+"殻に含まれる原子数は保たれる。この関係を単元素の理想格子から計算する。 慣用立方胞の辺を :math:`a=4.00\\,\\text{Å}` "
+"とする。第一近接原子は 面対角線の半分、:math:`r_1=a/\\sqrt{2}=2.8284\\,\\text{Å}` に12個ある。 "
+"慣用胞あたり4原子なので、数密度は :math:`\\rho=4/a^3=0.0625\\,\\text{Å}^{-3}` である。第二殻の距離 "
+":math:`a` より手前に積分上限 :math:`r_{\\rm c}=3.50\\,\\text{Å}` を置く。"
+msgstr ""
+"In the first shell of a face-centered cubic (FCC) lattice, the number of "
+"atoms stays the same even if a broader distribution of distances lowers "
+"the RDF peak. To see this, consider an ideal lattice of a single element."
+" Let the edge of the conventional cubic cell be "
+":math:`a=4.00\\,\\text{Å}`. There are 12 nearest neighbors at half the "
+"length of a face diagonal, :math:`r_1=a/\\sqrt{2}=2.8284\\,\\text{Å}`. "
+"With four atoms per conventional cell, the number density is "
+":math:`\\rho=4/a^3=0.0625\\,\\text{Å}^{-3}`. The second shell is at "
+"distance :math:`a`, so place the integration cutoff below it, at "
+":math:`r_{\\rm c}=3.50\\,\\text{Å}`."
+
+#: ../../md/rdf.rst:151
+msgid ""
+"第一殻の12本の距離が、:math:`r_1` を中心に標準偏差 :math:`s` のガウス分布で "
+"広がる模型を考える。各ビンの距離範囲でガウス分布を積分し、12を掛けると ビン内の平均個数が得られる。この個数を\\ :eq:`rdf-"
+"shell-normalization`\\ で 規格化してRDFにする。逆に\\ :eq:`rdf-coordination-"
+"integral`\\ の積分では 密度と球殻の面積を掛けるため、元の平均個数を足すことになる。"
+msgstr ""
+"Consider a model in which the 12 first-shell bond lengths spread out "
+"according to a Gaussian distribution centered at :math:`r_1` with "
+"standard deviation :math:`s`. Integrating the Gaussian over each bin and "
+"multiplying by 12 gives the mean count in the bin. Normalize the count "
+"with Equation \\ :eq:`rdf-shell-normalization`\\  to obtain the RDF. "
+"Conversely, the integral in Equation \\ :eq:`rdf-coordination-integral`\\"
+"  multiplies the RDF by the density and the shell surface area, "
+"recovering the sum of the original mean counts."
+
+#: ../../md/rdf.rst:157
+msgid "0.02 Å幅のビンで求めた第一殻のピークと配位数"
+msgstr "First-shell peak and coordination number calculated with 0.02 Å bins."
+
+#: ../../md/rdf.rst:161
+msgid "距離の標準偏差"
+msgstr "Standard deviation of distances"
+
+#: ../../md/rdf.rst:162
+msgid "RDFの最大値"
+msgstr "Maximum RDF"
+
+#: ../../md/rdf.rst:163
+msgid "3.50 Åまでの配位数"
+msgstr "Coordination number up to 3.50 Å"
+
+#: ../../md/rdf.rst:164
+msgid "0.03 Å"
+msgstr "0.03 Å"
+
+#: ../../md/rdf.rst:165
+msgid "24.9"
+msgstr "24.9"
+
+#: ../../md/rdf.rst:166 ../../md/rdf.rst:169
+msgid "12.000000"
+msgstr "12.000000"
+
+#: ../../md/rdf.rst:167
+msgid "0.08 Å"
+msgstr "0.08 Å"
+
+#: ../../md/rdf.rst:168
+msgid "9.5"
+msgstr "9.5"
+
+#: ../../md/rdf.rst:171
+msgid ""
+":numref:`fig-rdf-first-shell`\\ の左でピークは24.9から9.5へ下がる。 "
+"右の配位数はどちらも12に達しており、距離の分布が広がっただけで 殻の原子数がほぼ変わっていないことが分かる。表の積分値は表示桁で "
+"丸めた値である。模型には第一殻の寄与だけを入れている。"
+msgstr ""
+"The peak on the left of :numref:`fig-rdf-first-shell`\\  drops from 24.9 "
+"to 9.5. On the right, both coordination numbers reach 12, showing that "
+"broadening the distribution of distances leaves the number of atoms in "
+"the shell almost unchanged. The integrals in the table are rounded to the"
+" displayed precision. The model includes only the first-shell "
+"contribution."
+
+#: ../../md/rdf.rst:176
+msgid "左では距離のばらつきが大きいとRDFのピークが低くなる。右では両方の積算配位数が12に達する。"
+msgstr ""
+"On the left, a wider spread of distances gives a lower RDF peak. On the "
+"right, both cumulative coordination numbers reach 12."
+
+#: ../../md/rdf.rst:181
+msgid "FCC第一殻の距離を広げた模型。左はRDF、右は積算した配位数。 実線は標準偏差0.03 Å、破線は0.08 Å、縦の点線は積分上限3.50 Å。"
+msgstr ""
+"Model with broadened distributions of distances in the FCC first shell. "
+"The left panel shows the first-shell RDF, and the right shows the "
+"cumulative coordination number. The solid line uses a standard deviation "
+"of 0.03 Å and the dashed line 0.08 Å. The vertical dotted line marks the "
+"3.50 Å integration cutoff."
+
+#: ../../md/rdf.rst:187
+msgid "説明用の事例：配位方向から求める q₆"
+msgstr "Worked Example: Calculating q₆ from Bond Directions"
+
+#: ../../md/rdf.rst:189
+msgid ""
+"同じ距離に原子が並んでいても、結合どうしの角度によって :math:`q_6` は変わりうる。 :eq:`rdf-steinhardt-"
+"local`\\ の絶対値の二乗を二つの近接原子についての和に展開し、 球面調和関数の加法定理を使うと、内積から計算できる。"
+msgstr ""
+"Even when atoms lie at the same distances, :math:`q_6` can vary with the "
+"angles between bonds. Expand the squared magnitude in Equation :eq:`rdf-"
+"steinhardt-local`\\  as a sum over pairs of neighbors and apply the "
+"addition theorem for spherical harmonics. This gives the order parameter "
+"in terms of dot products:"
+
+#: ../../md/rdf.rst:193
+#, python-brace-format
+msgid ""
+"q_\\ell(i)^2=\\frac{1}{N_i^2}\n"
+"  \\sum_{j,k\\in\\mathcal N_i}\n"
+"  P_\\ell(\\hat{\\boldsymbol r}_{ij}\\cdot\\hat{\\boldsymbol r}_{ik})."
+msgstr ""
+"q_\\ell(i)^2=\\frac{1}{N_i^2}\n"
+"  \\sum_{j,k\\in\\mathcal N_i}\n"
+"  P_\\ell(\\hat{\\boldsymbol r}_{ij}\\cdot\\hat{\\boldsymbol r}_{ik})."
+
+#: ../../md/rdf.rst:200
+msgid ""
+":math:`P_\\ell` はLegendre多項式である。FCCでは面対角線の方向12本を含めると :math:`q_6=0.5745` "
+"となる。体心立方（BCC）で第一殻の体対角線方向8本を 使うと0.6285になる。BCCで第二殻も近接原子に含めた値とは定義が異なるため、 "
+"比較の際は殻の範囲をそろえる。"
+msgstr ""
+"Here :math:`P_\\ell` is a Legendre polynomial. For FCC, including the 12 "
+"face-diagonal directions gives :math:`q_6=0.5745`. For body-centered "
+"cubic (BCC), using the eight body-diagonal directions in the first shell "
+"gives 0.6285. This BCC value uses a different definition from one that "
+"also includes the second shell, so use the same shell convention when "
+"comparing values."
+
+#: ../../md/rdf.rst:205
+#, python-brace-format
+msgid ""
+"方向を独立かつ一様に選ぶ模型でも、有限個の近接原子の :math:`q_6` は 厳密にはゼロにならない。別々の方向の組では "
+":math:`P_6` の平均が0になり、 同じ方向の組では :math:`P_6(1)=1` となるので、:math:`q_6` "
+"の二乗平均平方根は :math:`1/\\sqrt{N_i}` である。12本なら0.2887になる。この値は無相関の方向を "
+"仮定した基準で、実際の液体の値は近接原子どうしの排除体積や相互作用にも依存する。"
+msgstr ""
+"Even in a model with independent and uniformly distributed directions, "
+":math:`q_6` for a finite number of neighbors does not vanish exactly. The"
+" average of :math:`P_6` over pairs of distinct directions is zero, and "
+"each direction paired with itself contributes :math:`P_6(1)=1`, so the "
+"root mean square of :math:`q_6` is :math:`1/\\sqrt{N_i}`. With 12 "
+"directions it is 0.2887. This reference value assumes uncorrelated "
+"directions. The value for a real liquid also depends on excluded volume "
+"and interactions among neighboring atoms."
+
+#: ../../md/rdf.rst:214
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../md/rdf.rst:216
+msgid ""
+"**距離と方向。** RDFから距離と配位数は読めるが、各結合が向く方向や、 共有される原子は確定しない。多面体の接続を調べる場合は、元の座標で "
+"隣接関係を追う。:math:`q_6` も位相や方向そのものを捨てた量なので、 単一の値だけで結晶型を一意に割り当てることはできない。"
+msgstr ""
+"**Distances and directions.** The RDF gives distances and coordination "
+"numbers but does not determine individual bond directions or which atoms "
+"are shared. To investigate polyhedral connectivity, track which atoms are"
+" neighbors in the original coordinates. The scalar :math:`q_6` also "
+"discards phase and directional information, so a single value cannot "
+"uniquely identify a crystal type."
+
+#: ../../md/rdf.rst:220
+msgid ""
+"**第一殻の取り方。** 殻の境界が明瞭な模型では積分上限を少し動かしても 配位数が安定する。液体などで殻が重なる場合は、ビン幅と境界を振って、 "
+"比較したい配位数の差が境界の取り方による変化より大きいかを調べる。"
+msgstr ""
+"**Choice of first-shell cutoff.** In a model with a well-defined shell "
+"boundary, the coordination number remains stable if the integration "
+"cutoff changes slightly. When shells overlap, as in a liquid, vary the "
+"bin width and the cutoff to check whether the coordination number "
+"difference of interest exceeds the variation due to the choice of cutoff."
+
+#: ../../md/rdf.rst:223
+msgid ""
+"**分布と時間発展。** RDFは各時刻で数えた距離の平均である。 ピークが残っていても、同じ原子が配位している時間までは求まらない。 寿命や\\"
+" :ref:`拡散<mean-squared-displacement>`\\ を調べるには、同じ原子を時間に沿って追う解析が必要になる。"
+msgstr ""
+"**Distributions and time evolution.** The RDF averages distance counts "
+"over time. A peak can persist without revealing how long the same atom "
+"remains a neighbor. Studying lifetimes or \\ :ref:`diffusion <mean-"
+"squared-displacement>`\\  requires tracking the same atoms over time."
+
+#: ../../md/rdf.rst:226
+msgid ""
+"**規格化の前提。** バルクの式は球殻が系内の一様な参照に含まれると仮定する。 "
+"表面や空孔の近くでは球殻の一部が占有できないこともあり、値の低下には 幾何学的な欠損も含まれる。対象となる体積や集計する原子の選び方に合わせて "
+"規格化を定める。"
+msgstr ""
+"**Normalization assumptions.** The bulk formula assumes that the "
+"spherical shell lies within a homogeneous reference system. Near a "
+"surface or vacancy, part of the shell may be inaccessible, so geometry "
+"can contribute to lower values. Choose the normalization to suit the "
+"volume considered and the selection of atoms counted."
+
+#: ../../md/rdf.rst:232
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../md/rdf.rst:234
+msgid ""
+"`Li₃PO₄のMD軌跡の部分RDF <https://example.quloud-platform.quemix.com/li3po4"
+"/partial-rdf.html>`__"
+msgstr ""
+"`Partial RDFs from a Li₃PO₄ MD Trajectory <https://example.quloud-"
+"platform.quemix.com/li3po4/partial-rdf.html>`__"
+
+#: ../../md/rdf.rst:235
+msgid ""
+"`Li₃PO₄の溶融・急冷後の構造 <https://example.quloud-platform.quemix.com/li3po4"
+"/melt-quench-structure.html>`__"
+msgstr ""
+"`Li₃PO₄ Structure After Melting and Quenching <https://example.quloud-"
+"platform.quemix.com/li3po4/melt-quench-structure.html>`__"
+
+#: ../../md/rdf.rst:238
+msgid "参考文献"
+msgstr "References"
+
+#: ../../md/rdf.rst:240
+msgid ""
+"P. J. Steinhardt, D. R. Nelson, and M. Ronchetti, *Phys. Rev. B* **28**, "
+"784–805 (1983). `doi:10.1103/PhysRevB.28.784 "
+"<https://doi.org/10.1103/PhysRevB.28.784>`_."
+msgstr ""
+"P. J. Steinhardt, D. R. Nelson, and M. Ronchetti, *Phys. Rev. B* **28**, "
+"784–805 (1983). `doi:10.1103/PhysRevB.28.784 "
+"<https://doi.org/10.1103/PhysRevB.28.784>`_."
+
+#: ../../md/rdf.rst:243
+msgid ""
+"W. Li, Y. Ando, E. Minamitani, and S. Watanabe, *J. Chem. Phys.* **147**,"
+" 214106 (2017). `doi:10.1063/1.4997242 "
+"<https://doi.org/10.1063/1.4997242>`_."
+msgstr ""
+"W. Li, Y. Ando, E. Minamitani, and S. Watanabe, *J. Chem. Phys.* **147**,"
+" 214106 (2017). `doi:10.1063/1.4997242 "
+"<https://doi.org/10.1063/1.4997242>`_."
+
+#: ../../md/rdf.rst:246
+msgid ""
+"M. P. Allen and D. J. Tildesley, *Computer Simulation of Liquids*, 2nd "
+"ed., Oxford University Press (2017). "
+"`doi:10.1093/oso/9780198803195.001.0001 "
+"<https://doi.org/10.1093/oso/9780198803195.001.0001>`_."
+msgstr ""
+"M. P. Allen and D. J. Tildesley, *Computer Simulation of Liquids*, 2nd "
+"ed., Oxford University Press (2017). "
+"`doi:10.1093/oso/9780198803195.001.0001 "
+"<https://doi.org/10.1093/oso/9780198803195.001.0001>`_."
+

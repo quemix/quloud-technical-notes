@@ -5,7 +5,13 @@ index
 solid/index
 solid/reciprocal_lattice
 solid/polarization
+md/index
+md/ensembles
+md/heating_simulation
+md/rdf
+md/diffusion
 md/thermal_activation
+md/mlip
 thermo/index
 thermo/state_functions
 thermo/temperature
