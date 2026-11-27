@@ -1,0 +1,607 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/lowdin.rst:4
+msgid "Löwdin解析"
+msgstr "Löwdin Analysis"
+
+#: ../../electronic/lowdin.rst:6
+msgid ""
+"**Löwdin解析** は、電子状態計算で得られた電子を原子ごとに割り当て、 "
+"原子の電子数やスピンの分布を評価する方法の一つである。原子に中心を置いた "
+"基底関数は一般に互いに重なっているため、重なりの部分にある電子をどの原子に "
+"数えるかには任意性がある。Löwdin解析では、元の基底をできるだけ変えないように 直交化した基底に密度行列を書き直し、その対角成分で電子を数える"
+" [Lowdin1950]_。 このように電子を原子や基底関数に割り当てる解析を **ポピュレーション解析** （population "
+"analysis）と総称する。"
+msgstr ""
+"**Löwdin analysis** is a way to assign the electrons from an electronic "
+"structure calculation to individual atoms and estimate their electron "
+"populations and spin distributions. Atom-centered basis functions "
+"generally overlap, so assigning electrons in the overlap region to "
+"particular atoms involves an arbitrary choice. Löwdin analysis rewrites "
+"the density matrix in a basis orthogonalized to stay as close as possible"
+" to the original basis, then counts electrons using its diagonal elements"
+" [Lowdin1950]_. Methods that assign electrons to atoms or basis functions"
+" in this way are collectively known as **population analysis**."
+
+#: ../../electronic/lowdin.rst:14
+msgid ""
+"**前提知識**: 基底関数による軌道の展開（LCAO）、対称行列の固有値分解、 "
+":ref:`スピン制限計算とスピン非制限計算<spin_restriction>` の密度行列。"
+msgstr ""
+"**Prerequisites**: orbital expansion in basis functions (LCAO), "
+"eigenvalue decomposition of symmetric matrices, and the density matrix "
+"from :ref:`spin-restricted and spin-unrestricted calculations "
+"<spin_restriction>`."
+
+#: ../../electronic/lowdin.rst:17
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../electronic/lowdin.rst:19
+#, python-brace-format
+msgid "非直交基底での電子数が :math:`\\mathrm{Tr}(DS)` で与えられることを導く。"
+msgstr ""
+"Derive the electron count :math:`\\mathrm{Tr}(DS)` for a nonorthogonal "
+"basis."
+
+#: ../../electronic/lowdin.rst:20
+#, python-brace-format
+msgid "対称直交化 :math:`S^{-1/2}` の定義と性質を説明する。"
+msgstr ""
+"Explain the definition and properties of the symmetric orthogonalization "
+"matrix :math:`S^{-1/2}`."
+
+#: ../../electronic/lowdin.rst:21
+#, python-brace-format
+msgid "Löwdin密度行列 :math:`S^{1/2}DS^{1/2}` を導き、Mulliken解析との違いを説明する。"
+msgstr ""
+"Derive the Löwdin density matrix :math:`S^{1/2}DS^{1/2}` and explain how "
+"Löwdin analysis differs from Mulliken analysis."
+
+#: ../../electronic/lowdin.rst:22
+msgid "原子ごとの電子数と原子スピン密度を評価し、その解釈の限界を理解する。"
+msgstr ""
+"Calculate the electron population and atomic spin density of each atom "
+"and understand the limits of their interpretation."
+
+#: ../../electronic/lowdin.rst:25
+msgid "非直交基底での電子数"
+msgstr "Electron Populations in a Nonorthogonal Basis"
+
+#: ../../electronic/lowdin.rst:27
+#, python-brace-format
+msgid ""
+"基底関数を :math:`\\chi_\\mu`\\ （:math:`\\mu=1,\\ldots,K`）、重なり行列を "
+":math:`S_{\\mu\\nu}=\\langle\\chi_\\mu|\\chi_\\nu\\rangle` とする。以下では基底関数と "
+"展開係数を実数とする。分子軌道を"
+msgstr ""
+"Let the basis functions be :math:`\\chi_\\mu`\\ "
+"(:math:`\\mu=1,\\ldots,K`) and the overlap matrix be "
+":math:`S_{\\mu\\nu}=\\langle\\chi_\\mu|\\chi_\\nu\\rangle`. Assume real "
+"basis functions and expansion coefficients throughout. Expand each "
+"molecular orbital as"
+
+#: ../../electronic/lowdin.rst:31
+#, python-brace-format
+msgid "\\psi_i(\\boldsymbol r)=\\sum_\\mu\\chi_\\mu(\\boldsymbol r)\\,C_{\\mu i}"
+msgstr "\\psi_i(\\boldsymbol r)=\\sum_\\mu\\chi_\\mu(\\boldsymbol r)\\,C_{\\mu i}"
+
+#: ../../electronic/lowdin.rst:35
+msgid "と展開し、軌道 :math:`i` の占有数を :math:`n_i` とすると、電子密度は"
+msgstr ""
+"and denote the occupation number of orbital :math:`i` by :math:`n_i`. The"
+" electron density is then"
+
+#: ../../electronic/lowdin.rst:37
+#, python-brace-format
+msgid ""
+"\\rho(\\boldsymbol r)=\\sum_i n_i\\,|\\psi_i(\\boldsymbol r)|^2\n"
+"=\\sum_{\\mu\\nu}D_{\\mu\\nu}\\,\\chi_\\mu(\\boldsymbol "
+"r)\\chi_\\nu(\\boldsymbol r),\n"
+"\\qquad\n"
+"D_{\\mu\\nu}=\\sum_i n_i\\,C_{\\mu i}C_{\\nu i}"
+msgstr ""
+"\\rho(\\boldsymbol r)=\\sum_i n_i\\,|\\psi_i(\\boldsymbol r)|^2\n"
+"=\\sum_{\\mu\\nu}D_{\\mu\\nu}\\,\\chi_\\mu(\\boldsymbol "
+"r)\\chi_\\nu(\\boldsymbol r),\n"
+"\\qquad\n"
+"D_{\\mu\\nu}=\\sum_i n_i\\,C_{\\mu i}C_{\\nu i}"
+
+#: ../../electronic/lowdin.rst:44
+msgid ""
+"と書ける。:math:`D` を基底関数表示の **密度行列** と呼ぶ。スピンごとに "
+":math:`D^\\alpha`、:math:`D^\\beta` を定義すれば、スピン和は "
+":math:`D=D^\\alpha+D^\\beta` である。全空間で積分すると、電子数は"
+msgstr ""
+"Here :math:`D` is the **density matrix** in the basis-function "
+"representation. Defining :math:`D^\\alpha` and :math:`D^\\beta` "
+"separately for the two spins gives the spin-summed matrix "
+":math:`D=D^\\alpha+D^\\beta`. Integrating the density over all space "
+"gives the electron count"
+
+#: ../../electronic/lowdin.rst:48
+#, python-brace-format
+msgid ""
+"N=\\int\\rho(\\boldsymbol r)\\,d\\boldsymbol r\n"
+"=\\sum_{\\mu\\nu}D_{\\mu\\nu}S_{\\nu\\mu}=\\mathrm{Tr}(DS)"
+msgstr ""
+"N=\\int\\rho(\\boldsymbol r)\\,d\\boldsymbol r\n"
+"=\\sum_{\\mu\\nu}D_{\\mu\\nu}S_{\\nu\\mu}=\\mathrm{Tr}(DS)"
+
+#: ../../electronic/lowdin.rst:54
+#, python-brace-format
+msgid ""
+"となる。基底が直交していれば :math:`S=I` で、:math:`N` は :math:`D` の対角成分の "
+"和になる。非直交基底では、:math:`\\mu\\ne\\nu` の項 :math:`D_{\\mu\\nu}S_{\\nu\\mu}` が "
+"2つの基底関数の重なり部分にある電子を表し、これを原子に分ける方法が一意に 決まらない。"
+msgstr ""
+"If the basis is orthogonal, :math:`S=I` and :math:`N` is the sum of the "
+"diagonal elements of :math:`D`. In a nonorthogonal basis, the off-"
+"diagonal terms with :math:`\\mu\\ne\\nu`, namely "
+":math:`D_{\\mu\\nu}S_{\\nu\\mu}`, represent electrons in the overlap "
+"between two basis functions, but there is no unique way to assign those "
+"electrons to atoms."
+
+#: ../../electronic/lowdin.rst:59
+msgid "**Mulliken解析** [Mulliken1955]_ は、:eq:`lw-trace` の対角和を基底関数ごとに分け、"
+msgstr ""
+"**Mulliken analysis** [Mulliken1955]_ partitions the diagonal sum in "
+"Equation :eq:`lw-trace` by basis function, giving"
+
+#: ../../electronic/lowdin.rst:61
+msgid "N_A^{\\mathrm{Mulliken}}=\\sum_{\\mu\\in A}(DS)_{\\mu\\mu}"
+msgstr "N_A^{\\mathrm{Mulliken}}=\\sum_{\\mu\\in A}(DS)_{\\mu\\mu}"
+
+#: ../../electronic/lowdin.rst:65
+#, python-brace-format
+msgid ""
+"とする。これは重なりの電子 :math:`2D_{\\mu\\nu}S_{\\nu\\mu}` を2つの基底関数に半分ずつ "
+"割り当てることに相当する。計算は簡単だが、:math:`(DS)_{\\mu\\mu}` は負になったり、 "
+"1軌道に入りうる電子数2を超えたりすることがあり、広がった基底関数を加えると 値が大きく変わる。"
+msgstr ""
+"This assigns half the overlap population "
+":math:`2D_{\\mu\\nu}S_{\\nu\\mu}` to each of the two basis functions. The"
+" calculation is simple, but :math:`(DS)_{\\mu\\mu}` can be negative or "
+"exceed the maximum of 2 electrons per orbital. Its value can change "
+"substantially when diffuse basis functions are added."
+
+#: ../../electronic/lowdin.rst:71
+msgid "対称直交化"
+msgstr "Symmetric Orthogonalization"
+
+#: ../../electronic/lowdin.rst:73
+#, python-brace-format
+msgid ""
+":math:`S` は実対称な正定値行列なので、直交行列 :math:`U` と正の固有値の対角行列 :math:`s` を使って "
+":math:`S=UsU^{\\mathsf T}` と分解でき、その平方根と逆平方根を"
+msgstr ""
+"Since :math:`S` is real, symmetric, and positive definite, it can be "
+"decomposed using an orthogonal matrix :math:`U` and a diagonal matrix "
+":math:`s` of positive eigenvalues as :math:`S=UsU^{\\mathsf T}`. Its "
+"square root and inverse square root are defined by"
+
+#: ../../electronic/lowdin.rst:76
+#, python-brace-format
+msgid "S^{1/2}=Us^{1/2}U^{\\mathsf T},\\qquad S^{-1/2}=Us^{-1/2}U^{\\mathsf T}"
+msgstr "S^{1/2}=Us^{1/2}U^{\\mathsf T},\\qquad S^{-1/2}=Us^{-1/2}U^{\\mathsf T}"
+
+#: ../../electronic/lowdin.rst:80
+msgid "で定義できる。これを使って新しい基底"
+msgstr "The inverse square root gives the new basis"
+
+#: ../../electronic/lowdin.rst:82
+#, python-brace-format
+msgid "\\lambda_\\nu=\\sum_\\mu\\chi_\\mu\\,(S^{-1/2})_{\\mu\\nu}"
+msgstr "\\lambda_\\nu=\\sum_\\mu\\chi_\\mu\\,(S^{-1/2})_{\\mu\\nu}"
+
+#: ../../electronic/lowdin.rst:87
+msgid "を作ると、"
+msgstr "whose overlaps are"
+
+#: ../../electronic/lowdin.rst:89
+#, python-brace-format
+msgid ""
+"\\langle\\lambda_\\mu|\\lambda_\\nu\\rangle\n"
+"=\\bigl(S^{-1/2}SS^{-1/2}\\bigr)_{\\mu\\nu}=\\delta_{\\mu\\nu}"
+msgstr ""
+"\\langle\\lambda_\\mu|\\lambda_\\nu\\rangle\n"
+"=\\bigl(S^{-1/2}SS^{-1/2}\\bigr)_{\\mu\\nu}=\\delta_{\\mu\\nu}"
+
+#: ../../electronic/lowdin.rst:94
+#, python-brace-format
+msgid "なので :math:`\\{\\lambda_\\nu\\}` は正規直交系になる。これを **対称直交化** （Löwdin直交化）という。"
+msgstr ""
+"so :math:`\\{\\lambda_\\nu\\}` is an orthonormal set. This procedure is "
+"called **symmetric orthogonalization** (Löwdin orthogonalization)."
+
+#: ../../electronic/lowdin.rst:97
+msgid ""
+"直交化の方法はGram–Schmidt法など他にもあるが、Gram–Schmidt法の結果は基底関数を "
+"並べる順序に依存する。対称直交化はすべての基底関数を対等に扱い、しかも すべての正規直交系の中で "
+":math:`\\sum_\\mu\\|\\lambda_\\mu-\\chi_\\mu\\|^2` を最小にする [CK1957]_。つまり "
+":math:`\\lambda_\\mu` は、元の :math:`\\chi_\\mu` に最も近い直交化された "
+"関数であり、:math:`\\chi_\\mu` と同じ原子に属すると見なすことが比較的自然である。"
+msgstr ""
+"Gram–Schmidt is another way to orthogonalize a basis, but its result "
+"depends on the order of the basis functions. Symmetric orthogonalization,"
+" by contrast, treats all basis functions equally and also minimizes "
+":math:`\\sum_\\mu\\|\\lambda_\\mu-\\chi_\\mu\\|^2` over all orthonormal "
+"sets [CK1957]_. Thus :math:`\\lambda_\\mu` is the orthogonalized function"
+" closest to the original :math:`\\chi_\\mu`, so it is relatively natural "
+"to regard it as belonging to the same atom as :math:`\\chi_\\mu`."
+
+#: ../../electronic/lowdin.rst:104
+msgid "Löwdin密度行列と原子の電子数"
+msgstr "Löwdin Density Matrix and Atomic Electron Populations"
+
+#: ../../electronic/lowdin.rst:106
+#, python-brace-format
+msgid ""
+":eq:`lw-sym-orth` を逆に解くと "
+":math:`\\chi_\\mu=\\sum_\\nu\\lambda_\\nu(S^{1/2})_{\\nu\\mu}` なので、分子軌道は"
+msgstr ""
+"Solving Equation :eq:`lw-sym-orth` for the original basis functions gives"
+" :math:`\\chi_\\mu=\\sum_\\nu\\lambda_\\nu(S^{1/2})_{\\nu\\mu}`, so the "
+"molecular orbitals can be rewritten as"
+
+#: ../../electronic/lowdin.rst:109
+#, python-brace-format
+msgid ""
+"\\psi_i=\\sum_\\mu\\chi_\\mu C_{\\mu i}\n"
+"=\\sum_\\nu\\lambda_\\nu\\,C^{\\mathrm L}_{\\nu i},\n"
+"\\qquad C^{\\mathrm L}=S^{1/2}C"
+msgstr ""
+"\\psi_i=\\sum_\\mu\\chi_\\mu C_{\\mu i}\n"
+"=\\sum_\\nu\\lambda_\\nu\\,C^{\\mathrm L}_{\\nu i},\n"
+"\\qquad C^{\\mathrm L}=S^{1/2}C"
+
+#: ../../electronic/lowdin.rst:115
+msgid "と書き直せる。直交化した基底での密度行列は"
+msgstr "The density matrix in the orthogonalized basis is"
+
+#: ../../electronic/lowdin.rst:117
+#, python-brace-format
+msgid ""
+"P^{\\mathrm L}=C^{\\mathrm L}\\,n\\,C^{\\mathrm L\\mathsf "
+"T}=S^{1/2}DS^{1/2}"
+msgstr ""
+"P^{\\mathrm L}=C^{\\mathrm L}\\,n\\,C^{\\mathrm L\\mathsf "
+"T}=S^{1/2}DS^{1/2}"
+
+#: ../../electronic/lowdin.rst:122
+msgid "となる（:math:`n` は占有数を並べた対角行列）。この基底は直交しているので、 電子数は対角成分の和で与えられ、実際に"
+msgstr ""
+"where :math:`n` is the diagonal matrix of occupation numbers. Since this "
+"basis is orthogonal, the electron count is the sum of the diagonal "
+"elements, as the trace confirms:"
+
+#: ../../electronic/lowdin.rst:125
+#, python-brace-format
+msgid ""
+"\\mathrm{Tr}\\,P^{\\mathrm L}=\\mathrm{Tr}\\bigl(S^{1/2}DS^{1/2}\\bigr)\n"
+"=\\mathrm{Tr}(DS)=N"
+msgstr ""
+"\\mathrm{Tr}\\,P^{\\mathrm L}=\\mathrm{Tr}\\bigl(S^{1/2}DS^{1/2}\\bigr)\n"
+"=\\mathrm{Tr}(DS)=N"
+
+#: ../../electronic/lowdin.rst:130
+msgid "が成り立つ。Löwdin解析では、原子 :math:`A` に属する元の基底関数に対応する 対角成分を合計し、"
+msgstr ""
+"In Löwdin analysis, the electron population assigned to atom :math:`A` is"
+" the sum of the diagonal elements corresponding to the original basis "
+"functions on that atom:"
+
+#: ../../electronic/lowdin.rst:133
+#, python-brace-format
+msgid "N_A=\\sum_{\\mu\\in A}P^{\\mathrm L}_{\\mu\\mu}"
+msgstr "N_A=\\sum_{\\mu\\in A}P^{\\mathrm L}_{\\mu\\mu}"
+
+#: ../../electronic/lowdin.rst:138
+msgid ""
+"をその原子に割り当てられる電子数とする。この電子数を軌道のエネルギーごとに分解したものが\\ :ref:`射影状態密度<projected-"
+"dos>`\\ （PDOS）である。"
+msgstr ""
+"Resolving this electron population by orbital energy gives the \\ "
+":ref:`projected density of states <projected-dos>`\\ (PDOS)."
+
+#: ../../electronic/lowdin.rst:140
+#, python-brace-format
+msgid ""
+"閉殻の単一行列式では、Löwdin電子数が物理的に妥当な範囲に収まることが保証される。 分子軌道の正規直交性 :math:`C^{\\mathsf"
+" T}SC=I` は :math:`C^{\\mathrm L\\mathsf T}C^{\\mathrm L}=I` "
+"と同じなので、:math:`Q=P^{\\mathrm L}/2` は占有軌道の空間への直交射影である。 射影の対角成分は "
+":math:`Q_{\\mu\\mu}=\\|Qe_\\mu\\|^2\\le1` を満たすから、"
+msgstr ""
+"For a closed-shell single determinant, Löwdin populations are guaranteed "
+"to lie within a physically meaningful range. Orthonormality of the "
+"molecular orbitals, :math:`C^{\\mathsf T}SC=I`, is equivalent to "
+":math:`C^{\\mathrm L\\mathsf T}C^{\\mathrm L}=I`, so :math:`Q=P^{\\mathrm"
+" L}/2` is the orthogonal projector onto the occupied orbital space. Its "
+"diagonal elements satisfy :math:`Q_{\\mu\\mu}=\\|Qe_\\mu\\|^2\\le1`, "
+"which gives"
+
+#: ../../electronic/lowdin.rst:145
+#, python-brace-format
+msgid "0\\le P^{\\mathrm L}_{\\mu\\mu}\\le2"
+msgstr "0\\le P^{\\mathrm L}_{\\mu\\mu}\\le2"
+
+#: ../../electronic/lowdin.rst:149
+#, python-brace-format
+msgid ""
+"となる。スピン非制限の場合は、スピンごとに :math:`P^{\\mathrm L\\sigma}=S^{1/2}D^\\sigma "
+"S^{1/2}` を作れば :math:`0\\le P^{\\mathrm L\\sigma}_{\\mu\\mu}\\le1` "
+"が成り立つ。Mulliken電子数にはこのような 保証がない。"
+msgstr ""
+"In the spin-unrestricted case, forming :math:`P^{\\mathrm "
+"L\\sigma}=S^{1/2}D^\\sigma S^{1/2}` separately for each spin gives "
+":math:`0\\le P^{\\mathrm L\\sigma}_{\\mu\\mu}\\le1`. Mulliken populations"
+" have no such guarantee."
+
+#: ../../electronic/lowdin.rst:155
+msgid "原子スピン密度"
+msgstr "Atomic Spin Density"
+
+#: ../../electronic/lowdin.rst:157
+msgid "スピンごとのLöwdin密度行列から、原子 :math:`A` の **原子スピン密度** （spin population）を"
+msgstr ""
+"The Löwdin density matrix for each spin is used to define, for atom "
+":math:`A`, the **atomic spin density** (spin population) as"
+
+#: ../../electronic/lowdin.rst:159
+#, python-brace-format
+msgid ""
+"m_A=\\sum_{\\mu\\in A}\\bigl(P^{\\mathrm L\\alpha}-P^{\\mathrm "
+"L\\beta}\\bigr)_{\\mu\\mu}"
+msgstr ""
+"m_A=\\sum_{\\mu\\in A}\\bigl(P^{\\mathrm L\\alpha}-P^{\\mathrm "
+"L\\beta}\\bigr)_{\\mu\\mu}"
+
+#: ../../electronic/lowdin.rst:164
+#, python-brace-format
+msgid ""
+"と定義する。これは原子 :math:`A` に割り当てたα電子数とβ電子数の差であり、 "
+":ref:`スピン密度<spin_restriction>` :math:`\\rho_{\\mathrm s}(\\boldsymbol r)`"
+" を原子ごとに分けた量に当たる。全原子の和は :math:`\\sum_Am_A=N_\\alpha-N_\\beta` "
+"になる。上の不等式から、1原子1基底関数の場合は :math:`|m_A|\\le1` である。スピン制限の閉殻計算では "
+":math:`D^\\alpha=D^\\beta` なので、 すべての原子で :math:`m_A=0` となる。"
+msgstr ""
+"This is the difference between the populations of α and β electrons "
+"assigned to atom :math:`A`, corresponding to a partition of the "
+":ref:`spin density <spin_restriction>` :math:`\\rho_{\\mathrm "
+"s}(\\boldsymbol r)` among the atoms. The sum over all atoms is "
+":math:`\\sum_Am_A=N_\\alpha-N_\\beta`. The preceding inequalities give "
+":math:`|m_A|\\le1` when there is one basis function per atom. In a "
+"closed-shell spin-restricted calculation, :math:`D^\\alpha=D^\\beta`, so "
+":math:`m_A=0` on every atom."
+
+#: ../../electronic/lowdin.rst:171
+msgid "簡単な例：最小基底の水素分子"
+msgstr "Simple Example: Hydrogen Molecule in a Minimal Basis"
+
+#: ../../electronic/lowdin.rst:173
+#, python-brace-format
+msgid ""
+"2つの水素原子に1s基底関数 :math:`\\chi_1`、:math:`\\chi_2` を1つずつ置き、重なりを :math:`s` "
+"とする。基底状態では結合性軌道 :math:`\\sigma_g=(\\chi_1+\\chi_2)/\\sqrt{2(1+s)}` "
+"に電子が2個入るので、"
+msgstr ""
+"Put one 1s basis function, :math:`\\chi_1` and :math:`\\chi_2` "
+"respectively, on each of two hydrogen atoms, and denote their overlap by "
+":math:`s`. In the ground state, two electrons occupy the bonding orbital "
+":math:`\\sigma_g=(\\chi_1+\\chi_2)/\\sqrt{2(1+s)}`, giving"
+
+#: ../../electronic/lowdin.rst:177
+#, python-brace-format
+msgid ""
+"S=\\begin{pmatrix}1&s\\\\s&1\\end{pmatrix},\\qquad\n"
+"D=\\frac{1}{1+s}\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}"
+msgstr ""
+"S=\\begin{pmatrix}1&s\\\\s&1\\end{pmatrix},\\qquad\n"
+"D=\\frac{1}{1+s}\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}"
+
+#: ../../electronic/lowdin.rst:182
+#, python-brace-format
+msgid ""
+"である。:math:`DS` の対角成分はどちらも1なので、Mulliken電子数は各原子1になる。 一方、:math:`S` の固有ベクトルは "
+":math:`(1,1)/\\sqrt2` と :math:`(1,-1)/\\sqrt2`、 固有値は :math:`1+s` と "
+":math:`1-s` なので、:math:`S^{1/2}` は :math:`(1,1)` 方向に :math:`\\sqrt{1+s}` "
+"を掛ける。したがって"
+msgstr ""
+"Both diagonal elements of :math:`DS` are 1, so the Mulliken population is"
+" 1 on each atom. For the Löwdin calculation, :math:`S` has eigenvectors "
+":math:`(1,1)/\\sqrt2` and :math:`(1,-1)/\\sqrt2` with eigenvalues "
+":math:`1+s` and :math:`1-s`, respectively. Thus :math:`S^{1/2}` "
+"multiplies the :math:`(1,1)` direction by :math:`\\sqrt{1+s}`, giving"
+
+#: ../../electronic/lowdin.rst:187
+msgid ""
+"C^{\\mathrm "
+"L}=S^{1/2}\\frac{1}{\\sqrt{2(1+s)}}\\begin{pmatrix}1\\\\1\\end{pmatrix}\n"
+"=\\frac{1}{\\sqrt2}\\begin{pmatrix}1\\\\1\\end{pmatrix},\\qquad\n"
+"P^{\\mathrm L}=\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}"
+msgstr ""
+"C^{\\mathrm "
+"L}=S^{1/2}\\frac{1}{\\sqrt{2(1+s)}}\\begin{pmatrix}1\\\\1\\end{pmatrix}\n"
+"=\\frac{1}{\\sqrt2}\\begin{pmatrix}1\\\\1\\end{pmatrix},\\qquad\n"
+"P^{\\mathrm L}=\\begin{pmatrix}1&1\\\\1&1\\end{pmatrix}"
+
+#: ../../electronic/lowdin.rst:193
+msgid ""
+"となり、Löwdin電子数も各原子1である。等価な2原子では、どちらの方法でも対称性から "
+"電子が半分ずつ分けられる。2つの方法の違いが現れるのは、原子が等価でない場合や、 基底関数の広がりが原子ごとに大きく異なる場合である。"
+msgstr ""
+"The Löwdin population is also 1 on each atom. For two equivalent atoms, "
+"symmetry divides the electrons equally between the atoms in both methods."
+" The methods differ when the atoms are inequivalent or their basis "
+"functions have very different spatial extents."
+
+#: ../../electronic/lowdin.rst:197
+#, python-brace-format
+msgid ""
+":math:`P^{\\mathrm L}` の非対角成分 :math:`P^{\\mathrm L}_{12}=1` は、直交化した基底で見た "
+"2原子間の電子の共有の程度を表し、:ref:`結合次数<bond_order>` の指標として使われる。"
+msgstr ""
+"The off-diagonal element of :math:`P^{\\mathrm L}`, :math:`P^{\\mathrm "
+"L}_{12}=1`, measures the extent of electron sharing between the two atoms"
+" in the orthogonalized basis and is used as an indicator of :ref:`bond "
+"order <bond_order>`."
+
+#: ../../electronic/lowdin.rst:201
+msgid "説明用の事例：水素原子鎖"
+msgstr "Worked Example: Hydrogen Atom Chain"
+
+#: ../../electronic/lowdin.rst:203
+msgid ""
+"`水素原子を並べると電子バンドは生まれるのか <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_ では、STO-"
+"3G基底（水素1原子あたり1個の基底関数）で計算した有限水素原子鎖 （原子間隔1.8 Å、Psi4 "
+"1.10）にLöwdin解析を用いている。スピン制限計算では、 各原子のLöwdin電子数はほぼ1で、例えば :math:`N=16` "
+"のRHFでは鎖の端の原子でも 0.994程度である。"
+msgstr ""
+"The calculation example `Do Electronic Bands Form in a Hydrogen Atom "
+"Chain? <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_ applies Löwdin "
+"analysis to finite hydrogen atom chains calculated with an STO-3G basis "
+"(one basis function per hydrogen atom, interatomic spacing 1.8 Å, Psi4 "
+"1.10). In spin-restricted calculations, the Löwdin population is close to"
+" 1 on each atom. For example, in RHF with :math:`N=16`, it is about 0.994"
+" even at the end of the chain."
+
+#: ../../electronic/lowdin.rst:209
+msgid ""
+"スピン非制限計算では、:math:`N=32` の鎖の中央で原子スピン密度 :eq:`lw-spin` が UHFで "
+":math:`\\pm0.895`、UKS-PBEで :math:`\\pm0.614` と原子ごとに符号を変える。 1原子1基底関数での上限 "
+":math:`|m_A|\\le1` と比べると、UHFではα電子とβ電子が 1つおきの原子にほぼ完全に分かれていることがわかる。全原子の和は "
+":math:`N_\\alpha=N_\\beta` を反映して0になる。"
+msgstr ""
+"In spin-unrestricted calculations for the :math:`N=32` chain, the atomic "
+"spin density given by Equation :eq:`lw-spin` alternates in sign from atom"
+" to atom near the center, with values of :math:`\\pm0.895` for UHF and "
+":math:`\\pm0.614` for UKS-PBE. Comparing with the bound "
+":math:`|m_A|\\le1` for one basis function per atom shows that UHF "
+"separates the α and β electrons almost completely onto alternating atoms."
+" The sum over all atoms is zero, reflecting :math:`N_\\alpha=N_\\beta`."
+
+#: ../../electronic/lowdin.rst:216
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../electronic/lowdin.rst:218
+msgid ""
+"電子を原子に分配する方法は一意ではなく、Löwdin電子数は観測量ではない。値は基底関数の "
+"選び方に依存し、特に広がった基底関数を含む基底では、ある原子の基底関数が別の原子の "
+"周りの電子を表すようになるため、原子への割り当ての意味が薄れる。Mulliken解析、 "
+"Löwdin解析のほかに、電子密度の空間分割に基づくBader解析やHirshfeld解析、 "
+"自然軌道に基づく自然ポピュレーション解析（NPA）なども用いられる。"
+msgstr ""
+"There is no unique way to assign electrons to atoms, and Löwdin "
+"populations are not observables. The values depend on the choice of basis"
+" functions. In particular, with diffuse basis functions, a function "
+"centered on one atom can represent electrons around another, making the "
+"assignment to atoms less meaningful. Besides Mulliken analysis and Löwdin"
+" analysis, other methods include Bader and Hirshfeld analyses, which "
+"partition the electron density in space, and natural population analysis "
+"(NPA), which is based on natural orbitals."
+
+#: ../../electronic/lowdin.rst:224
+msgid "したがって、Löwdin電子数や原子スピン密度は、同じ手法・同じ基底で得た結果を比較し、 電子状態の傾向を読み取るための指標として扱う。"
+msgstr ""
+"Thus, compare the Löwdin population and atomic spin density obtained with"
+" the same method and basis, and treat them as indicators of trends in "
+"electronic structure."
+
+#: ../../electronic/lowdin.rst:228
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../electronic/lowdin.rst:230
+msgid ":ref:`spin_restriction`"
+msgstr ":ref:`spin_restriction`"
+
+#: ../../electronic/lowdin.rst:231
+msgid ":ref:`bond_order`"
+msgstr ":ref:`bond_order`"
+
+#: ../../electronic/lowdin.rst:232
+msgid ":ref:`projected-dos`"
+msgstr ":ref:`projected-dos`"
+
+#: ../../electronic/lowdin.rst:233
+msgid ""
+"`水素原子を並べると電子バンドは生まれるのか <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_"
+msgstr ""
+"`Do Electronic Bands Form in a Hydrogen Atom Chain? <https://example"
+".quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_"
+
+#: ../../electronic/lowdin.rst:236
+msgid "参考文献"
+msgstr "References"
+
+#: ../../electronic/lowdin.rst:238
+msgid ""
+"`ORCA Manual: Population Analysis <https://orca-manual.mpi-"
+"muelheim.mpg.de/contents/spectroscopyproperties/population.html>`_"
+msgstr ""
+"`ORCA Manual: Population Analysis <https://orca-manual.mpi-"
+"muelheim.mpg.de/contents/spectroscopyproperties/population.html>`_"
+
+#: ../../electronic/lowdin.rst:239
+msgid "密度行列とポピュレーション解析の教科書的な説明は [Szabo1996]_ の3章にある。"
+msgstr ""
+"Chapter 3 of [Szabo1996]_ gives a textbook treatment of the density "
+"matrix and population analysis."
+
+#: ../../electronic/lowdin.rst:241
+msgid ""
+"P.-O. Löwdin, “On the Non-Orthogonality Problem Connected with the Use of"
+" Atomic Wave Functions in the Theory of Molecules and Crystals,” *Journal"
+" of Chemical Physics* **18**, 365–375 (1950), `doi:10.1063/1.1747632 "
+"<https://doi.org/10.1063/1.1747632>`_."
+msgstr ""
+"P.-O. Löwdin, “On the Non-Orthogonality Problem Connected with the Use of"
+" Atomic Wave Functions in the Theory of Molecules and Crystals,” *Journal"
+" of Chemical Physics* **18**, 365–375 (1950), `doi:10.1063/1.1747632 "
+"<https://doi.org/10.1063/1.1747632>`_."
+
+#: ../../electronic/lowdin.rst:245
+msgid ""
+"R. S. Mulliken, “Electronic Population Analysis on LCAO–MO Molecular Wave"
+" Functions. I,” *Journal of Chemical Physics* **23**, 1833–1840 (1955), "
+"`doi:10.1063/1.1740588 <https://doi.org/10.1063/1.1740588>`_."
+msgstr ""
+"R. S. Mulliken, “Electronic Population Analysis on LCAO–MO Molecular Wave"
+" Functions. I,” *Journal of Chemical Physics* **23**, 1833–1840 (1955), "
+"`doi:10.1063/1.1740588 <https://doi.org/10.1063/1.1740588>`_."
+
+#: ../../electronic/lowdin.rst:248
+msgid ""
+"B. C. Carlson and J. M. Keller, “Orthogonalization Procedures and the "
+"Localization of Wannier Functions,” *Physical Review* **105**, 102–103 "
+"(1957), `doi:10.1103/PhysRev.105.102 "
+"<https://doi.org/10.1103/PhysRev.105.102>`_."
+msgstr ""
+"B. C. Carlson and J. M. Keller, “Orthogonalization Procedures and the "
+"Localization of Wannier Functions,” *Physical Review* **105**, 102–103 "
+"(1957), `doi:10.1103/PhysRev.105.102 "
+"<https://doi.org/10.1103/PhysRev.105.102>`_."
+

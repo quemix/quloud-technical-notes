@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/index.rst:2
+msgid "電子状態計算"
+msgstr "Electronic Structure Calculations"
+
+#: ../../electronic/index.rst:4
+msgid "電子状態計算でのスピンの扱いを学び、得られた密度行列から原子ごとの電子数や結合次数を読み取ります。射影状態密度で電子がどのエネルギーの状態に入っているかを調べ、続いて、交換相関汎関数、基底関数と擬ポテンシャル、構造最適化といった密度汎関数法の計算条件を学びます。最後の章では、点欠陥を作るエネルギーと、原子が隣の位置へ移るときに越えるエネルギー障壁の求め方を学びます。"
+msgstr ""
+"This volume explains how spin is treated in electronic structure "
+"calculations and how to use the resulting density matrix to obtain atomic"
+" populations and bond orders. It shows how the projected density of "
+"states reveals the energies of the states that electrons occupy. It then "
+"covers calculation conditions for density functional theory, including "
+"exchange-correlation functionals, basis functions and pseudopotentials, "
+"and structure optimization. The last chapter explains how to calculate "
+"the energy required to form a point defect and the energy barrier an atom"
+" must cross to move to a neighboring site."
+

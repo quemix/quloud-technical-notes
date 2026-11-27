@@ -37,3 +37,10 @@ ml/appendix/gaussian_dist
 ml/appendix/gaussian_intg
 ml/appendix/matrix_formula
 ml/appendix/bayes_theorem
+electronic/index
+electronic/spin_treatment
+electronic/spin_restriction
+electronic/density_matrix_analysis
+electronic/lowdin
+electronic/pdos
+electronic/bond_order

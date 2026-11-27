@@ -117,7 +117,9 @@ Hellmann–Feynmanの定理により固有ベクトルの変化はエネルギ�
 
 すべてのホッピングが等しい最近接タイト・バインディング鎖を半充填にした場合の
 結合次数を求める。周期鎖の固有状態は :math:`c_n(k)=e^{ikna}/\sqrt N` であり、
-占有されるのは :math:`|k|<\pi/(2a)` の状態である。:eq:`bo-coulson` の和を積分に
+占有されるのは :math:`|k|<\pi/(2a)` の状態である。係数が複素数なので、:eq:`bo-coulson` の積の
+片方に複素共役を取って :math:`P_{rs}=\sum_in_i\,c_{ri}\,c_{si}^*` とする（実係数なら :eq:`bo-coulson` に戻る）。
+:eq:`bo-coulson` の和を積分に
 置き換え、:math:`\theta=ka` とおくと、
 
 .. math::

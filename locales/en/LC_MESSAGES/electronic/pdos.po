@@ -1,0 +1,1441 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 00:26+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/pdos.rst:4
+msgid "射影状態密度"
+msgstr "Projected Density of States"
+
+#: ../../electronic/pdos.rst:6
+msgid ""
+"**射影状態密度** （projected density of states, PDOS）は、状態密度を原子や軌道ごとの "
+"寄与に分けた量である。部分状態密度（partial DOS）とも呼ばれる。状態密度はどのエネルギーに "
+"どれだけ状態があるかを示すが、その状態がどの原子のどの軌道からできているかは示さない。PDOSは、各状態を局在した軌道へ射影した重みでこれを分け、例えば酸化物の価電子帯が"
+" 主に酸素の2p軌道からなり、そこに金属の軌道がどれだけ混じっているかを読めるようにする "
+"[PdosHoffmann1987]_。本稿では、PDOSの定義と和則を導き、2準位模型でPDOSと軌道の混成やイオン性との関係を式で追う。 "
+"続いて、実際の計算でPDOSを作るときに結果を左右する、非直交基底での射影、ガウス関数によるぼかし、 "
+"エネルギーの基準の揃え方を説明する。最後に2つのタイト・バインディング模型でPDOSを計算し、PDOSから読めることと読めないことを整理する。"
+msgstr ""
+"The **projected density of states** (PDOS), also called the partial DOS, "
+"resolves the density of states into contributions from individual atoms "
+"or orbitals. The density of states shows how many states there are at "
+"each energy, but it does not identify the atoms and orbitals that make up"
+" those states. The PDOS resolves these contributions using the weights of"
+" each state projected onto localized orbitals. For example, it can show "
+"whether the valence band of an oxide consists predominantly of oxygen 2p "
+"orbitals and how much metal orbital character is mixed in "
+"[PdosHoffmann1987]_. This article derives the PDOS and its sum rules, "
+"then uses a two-level model to show how the PDOS relates to orbital "
+"hybridization and ionicity. It explains three choices that affect the "
+"PDOS in practice: projection in a nonorthogonal basis, Gaussian "
+"broadening, and alignment of energy references. Finally, it calculates "
+"the PDOS for two tight-binding models to show what can and cannot be "
+"inferred from it."
+
+#: ../../electronic/pdos.rst:14
+msgid ""
+"**前提知識**: :ref:`状態密度<density-of-states>`、:ref:`Löwdin解析<lowdin>` の密度行列と "
+"対称直交化、:ref:`タイト・バインディング近似<tightbinding>`、 :ref:`開放端の鎖の固有状態<fc-standing-"
+"waves>`、:ref:`価電子帯上端<valence-conduction-band-gap>`。"
+msgstr ""
+"**Prerequisites**: :ref:`density of states <density-of-states>`, the "
+"density matrix and symmetric orthogonalization from :ref:`Löwdin analysis"
+" <lowdin>`, the :ref:`tight-binding approximation <tightbinding>`, "
+":ref:`eigenstates of an open-ended chain <fc-standing-waves>`, and the "
+":ref:`valence band maximum <valence-conduction-band-gap>`."
+
+#: ../../electronic/pdos.rst:18
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../electronic/pdos.rst:20
+msgid "直交基底への射影の重みからPDOSを定義し、和則と、占有状態で積分するとLöwdin電子数になることを導く。"
+msgstr ""
+"Define the PDOS using projection weights in an orthogonal basis. Derive "
+"the sum rules and show that integrating over occupied states gives the "
+"Löwdin population."
+
+#: ../../electronic/pdos.rst:21
+msgid "2準位模型で、スペクトルの重なり、軌道の混成、イオン性の関係を導く。"
+msgstr ""
+"Use a two-level model to derive the relation between spectral overlap, "
+"orbital hybridization, and ionicity."
+
+#: ../../electronic/pdos.rst:22
+msgid "非直交基底でのMulliken型とLöwdin型の射影の違いと、射影が基底に依存する理由を説明する。"
+msgstr ""
+"Explain the difference between Mulliken-type and Löwdin-type projections "
+"in a nonorthogonal basis and why the projections depend on the basis."
+
+#: ../../electronic/pdos.rst:23
+msgid "ガウス関数によるぼかしで保存される量と変わる量を導き、ぼかしの幅の選び方を説明する。"
+msgstr ""
+"Derive which quantities Gaussian broadening preserves and which it "
+"changes, and explain how to choose the broadening width."
+
+#: ../../electronic/pdos.rst:24
+msgid "構造ごとに価電子帯上端で揃えた図から読めることと読めないことを説明する。"
+msgstr ""
+"Explain what can and cannot be inferred from plots aligned to the valence"
+" band maximum of each structure."
+
+#: ../../electronic/pdos.rst:25
+msgid "水素原子鎖とAB交替鎖の模型で、原子の環境やイオン性がPDOSの形と重みにどう現れるかを読む。"
+msgstr ""
+"Use hydrogen atom chain and alternating AB chain models to see how the "
+"atomic environment and ionicity affect the shape and weights of the PDOS."
+
+#: ../../electronic/pdos.rst:28
+msgid "状態密度を軌道ごとに分ける"
+msgstr "Resolving the Density of States by Orbital"
+
+#: ../../electronic/pdos.rst:30
+msgid "分子や有限の鎖のように準位 :math:`\\varepsilon_i` が離散的な系では、1スピンあたりの 状態密度を"
+msgstr ""
+"In a system with discrete energy levels :math:`\\varepsilon_i`, such as a"
+" molecule or a finite chain, the density of states per spin is"
+
+#: ../../electronic/pdos.rst:33
+msgid "\\rho(E)=\\sum_i\\delta(E-\\varepsilon_i)"
+msgstr "\\rho(E)=\\sum_i\\delta(E-\\varepsilon_i)"
+
+#: ../../electronic/pdos.rst:38
+#, python-brace-format
+msgid ""
+"と書ける。:math:`\\delta` はディラックのデルタ関数である。これを軌道ごとに分けるために、 原子に中心を置いた正規直交な基底 "
+":math:`\\{\\lambda_\\mu\\}`\\ （:math:`\\mu=1,\\ldots,K`）を用意し、 状態 "
+":math:`\\psi_i` の軌道 :math:`\\mu` への重みを"
+msgstr ""
+"where :math:`\\delta` is the Dirac delta function. To resolve the density"
+" of states by orbital, choose an atom-centered orthonormal basis "
+":math:`\\{\\lambda_\\mu\\}`\\ (:math:`\\mu=1,\\ldots,K`) and define the "
+"weight of state :math:`\\psi_i` on orbital :math:`\\mu` as"
+
+#: ../../electronic/pdos.rst:42
+#, python-brace-format
+msgid "w_{\\mu i}=|\\langle\\lambda_\\mu|\\psi_i\\rangle|^2"
+msgstr "w_{\\mu i}=|\\langle\\lambda_\\mu|\\psi_i\\rangle|^2"
+
+#: ../../electronic/pdos.rst:47
+msgid "と定義する。この重みで :eq:`pd-dos` の各項を分けたものが、軌道 :math:`\\mu` への 射影状態密度である。"
+msgstr ""
+"Weighting each term in Equation :eq:`pd-dos` this way gives the projected"
+" density of states for orbital :math:`\\mu`:"
+
+#: ../../electronic/pdos.rst:50
+#, python-brace-format
+msgid ""
+"\\rho_\\mu(E)=\\sum_iw_{\\mu i}\\,\\delta(E-\\varepsilon_i),\\qquad\n"
+"\\rho_A(E)=\\sum_{\\mu\\in A}\\rho_\\mu(E)"
+msgstr ""
+"\\rho_\\mu(E)=\\sum_iw_{\\mu i}\\,\\delta(E-\\varepsilon_i),\\qquad\n"
+"\\rho_A(E)=\\sum_{\\mu\\in A}\\rho_\\mu(E)"
+
+#: ../../electronic/pdos.rst:56
+msgid ":math:`\\rho_A` は原子 :math:`A` に属する軌道の和で、原子への射影状態密度と呼ぶ。"
+msgstr ""
+"The sum :math:`\\rho_A` over the orbitals on atom :math:`A` is the "
+"projected density of states for that atom."
+
+#: ../../electronic/pdos.rst:58
+#, python-brace-format
+msgid ""
+"状態 :math:`\\psi_i` が基底の張る空間に入っていれば :math:`\\sum_\\mu w_{\\mu i}=1` であり、 "
+"基底の数だけある状態をすべて足せば :math:`\\sum_iw_{\\mu i}=1` である。したがって"
+msgstr ""
+"If the state :math:`\\psi_i` lies in the space spanned by the basis, "
+":math:`\\sum_\\mu w_{\\mu i}=1`. Summing over a full set of states, equal"
+" in number to the basis functions, gives :math:`\\sum_iw_{\\mu i}=1`. It "
+"follows that"
+
+#: ../../electronic/pdos.rst:61
+msgid ""
+"\\sum_\\mu\\rho_\\mu(E)=\\rho(E),\\qquad\n"
+"\\int\\rho_\\mu(E)\\,dE=1"
+msgstr ""
+"\\sum_\\mu\\rho_\\mu(E)=\\rho(E),\\qquad\n"
+"\\int\\rho_\\mu(E)\\,dE=1"
+
+#: ../../electronic/pdos.rst:67
+msgid ""
+"が成り立つ。前者は、PDOSを全軌道について足すと状態密度に戻ることを表す。後者は、 "
+"各軌道の重みが占有・非占有を合わせた全エネルギー範囲に合計1だけ分配されることを表す。"
+msgstr ""
+"The first sum rule says that summing the PDOS over all orbitals recovers "
+"the density of states. The second says that one unit of weight for each "
+"orbital is distributed across the full energy range, including occupied "
+"and unoccupied states."
+
+#: ../../electronic/pdos.rst:70
+#, python-brace-format
+msgid ""
+"占有数 :math:`f(E)`\\ （絶対零度ではフェルミ準位以下で1、以上で0）を掛けて積分すると、 "
+"軌道に割り当てられる電子数が得られる。閉殻でスピンの因子2を含めると、Löwdin解析の記号で "
+":math:`\\langle\\lambda_\\mu|\\psi_i\\rangle=C^{\\mathrm L}_{\\mu i}`、 "
+":math:`n_i=2f(\\varepsilon_i)` だから、"
+msgstr ""
+"Multiplying by the occupation number :math:`f(E)`\\ (1 below the Fermi "
+"level and 0 above it at absolute zero) and integrating gives the electron"
+" population assigned to the orbital. For a closed shell, include a factor"
+" of 2 for spin. In the notation of Löwdin analysis, "
+":math:`\\langle\\lambda_\\mu|\\psi_i\\rangle=C^{\\mathrm L}_{\\mu i}` and"
+" :math:`n_i=2f(\\varepsilon_i)`, so"
+
+#: ../../electronic/pdos.rst:74
+#, python-brace-format
+msgid ""
+"N_\\mu=2\\int f(E)\\,\\rho_\\mu(E)\\,dE\n"
+"=\\sum_in_i\\bigl|C^{\\mathrm L}_{\\mu i}\\bigr|^2\n"
+"=P^{\\mathrm L}_{\\mu\\mu}"
+msgstr ""
+"N_\\mu=2\\int f(E)\\,\\rho_\\mu(E)\\,dE\n"
+"=\\sum_in_i\\bigl|C^{\\mathrm L}_{\\mu i}\\bigr|^2\n"
+"=P^{\\mathrm L}_{\\mu\\mu}"
+
+#: ../../electronic/pdos.rst:81
+msgid ""
+"となる。右辺は :eq:`lw-population` "
+"の和を作る対角成分である。つまり、Löwdin基底へ射影したPDOSは、Löwdin電子数をエネルギーごとに分解したものである。電子数は1つの数だが、PDOSはその電子がどのエネルギーの状態に入っているかを示す。"
+msgstr ""
+"The right-hand side is the diagonal element summed in Equation :eq:`lw-"
+"population`. Thus, the PDOS projected onto the Löwdin basis resolves the "
+"Löwdin population by energy. The population is a single number, but the "
+"PDOS shows the energies of the states the electrons occupy."
+
+#: ../../electronic/pdos.rst:83
+#, python-brace-format
+msgid ""
+"周期系では、バンド :math:`n`、波数 :math:`\\boldsymbol k` の状態の重み :math:`w_{\\mu "
+"n}(\\boldsymbol k)` を使い、:eq:`rho(E)` と同じ規格化（1スピン・単位胞あたり）で"
+msgstr ""
+"For a periodic system, take the state in band :math:`n` at wave vector "
+":math:`\\boldsymbol k` with projection weight :math:`w_{\\mu "
+"n}(\\boldsymbol k)`, and use the same normalization as in Equation "
+":eq:`rho(E)` (per spin per unit cell). The projected density is"
+
+#: ../../electronic/pdos.rst:86
+msgid ""
+"\\rho_\\mu(E)=\\frac{1}{\\Omega_{\\mathrm{BZ}}}\\int_{\\mathrm{BZ}}\n"
+"\\sum_nw_{\\mu n}(\\boldsymbol "
+"k)\\,\\delta\\bigl(E-\\varepsilon_n(\\boldsymbol k)\\bigr)\\,\n"
+"\\mathrm d\\boldsymbol k"
+msgstr ""
+"\\rho_\\mu(E)=\\frac{1}{\\Omega_{\\mathrm{BZ}}}\\int_{\\mathrm{BZ}}\n"
+"\\sum_nw_{\\mu n}(\\boldsymbol "
+"k)\\,\\delta\\bigl(E-\\varepsilon_n(\\boldsymbol k)\\bigr)\\,\n"
+"\\mathrm d\\boldsymbol k"
+
+#: ../../electronic/pdos.rst:93
+msgid "と定義する。:math:`\\mu` は単位胞の中の軌道を指す。"
+msgstr "Here :math:`\\mu` denotes an orbital in the unit cell."
+
+#: ../../electronic/pdos.rst:95
+msgid ""
+"PDOSの形は、ハミルトニアンの行列要素と直接つながっている。:eq:`pd-pdos` の :math:`m` "
+"次のモーメントは、基底の張る空間での固有状態による展開 :math:`\\hat "
+"H^m=\\sum_i\\varepsilon_i^m|\\psi_i\\rangle\\langle\\psi_i|` から"
+msgstr ""
+"The shape of the PDOS is directly related to the matrix elements of the "
+"Hamiltonian. For the PDOS in Equation :eq:`pd-pdos`, the moment of order "
+":math:`m` follows from the eigenstate expansion in the space spanned by "
+"the basis, :math:`\\hat "
+"H^m=\\sum_i\\varepsilon_i^m|\\psi_i\\rangle\\langle\\psi_i|`:"
+
+#: ../../electronic/pdos.rst:99
+#, python-brace-format
+msgid ""
+"\\int E^m\\rho_\\mu(E)\\,dE=\\sum_iw_{\\mu i}\\,\\varepsilon_i^m\n"
+"=\\langle\\lambda_\\mu|\\hat H^m|\\lambda_\\mu\\rangle"
+msgstr ""
+"\\int E^m\\rho_\\mu(E)\\,dE=\\sum_iw_{\\mu i}\\,\\varepsilon_i^m\n"
+"=\\langle\\lambda_\\mu|\\hat H^m|\\lambda_\\mu\\rangle"
+
+#: ../../electronic/pdos.rst:105
+#, python-brace-format
+msgid ""
+"となる。:math:`m=1` は軌道エネルギー :math:`H_{\\mu\\mu}` である。:math:`m=2` から、 "
+"重心のまわりの広がりは :math:`\\langle\\lambda_\\mu|\\hat "
+"H^2|\\lambda_\\mu\\rangle-H_{\\mu\\mu}^2=\\sum_{\\nu\\ne\\mu}|H_{\\mu\\nu}|^2`"
+" で、他の軌道とのホッピングの2乗和に等しい。結合する相手が多いほど、また結合が強いほど、 その軌道のPDOSは広がる。"
+msgstr ""
+"The :math:`m=1` moment is the orbital energy :math:`H_{\\mu\\mu}`. For "
+":math:`m=2`, the spread about the centroid is "
+":math:`\\langle\\lambda_\\mu|\\hat "
+"H^2|\\lambda_\\mu\\rangle-H_{\\mu\\mu}^2=\\sum_{\\nu\\ne\\mu}|H_{\\mu\\nu}|^2`,"
+" the sum of the squared hoppings to other orbitals. The more neighbors an"
+" orbital couples to and the stronger those couplings are, the broader its"
+" PDOS."
+
+#: ../../electronic/pdos.rst:114
+msgid "軌道の混成とスペクトルの重なり"
+msgstr "Orbital Hybridization and Spectral Overlap"
+
+#: ../../electronic/pdos.rst:116
+msgid ""
+"2つの直交した軌道 :math:`|A\\rangle`、:math:`|B\\rangle` だけからなる2準位模型で、PDOSと "
+"混成の関係を調べる。ハミルトニアンを"
+msgstr ""
+"A two-level model with just two orthogonal orbitals, :math:`|A\\rangle` "
+"and :math:`|B\\rangle`, shows how PDOS relates to hybridization. Take the"
+" Hamiltonian to be"
+
+#: ../../electronic/pdos.rst:119
+#, python-brace-format
+msgid ""
+"H=\\begin{pmatrix}\\varepsilon_A&-t\\\\-t&\\varepsilon_B\\end{pmatrix},\\qquad"
+"\n"
+"\\Delta=\\varepsilon_B-\\varepsilon_A\\ge0,\\qquad\n"
+"\\bar\\varepsilon=\\frac{\\varepsilon_A+\\varepsilon_B}{2}"
+msgstr ""
+"H=\\begin{pmatrix}\\varepsilon_A&-t\\\\-t&\\varepsilon_B\\end{pmatrix},\\qquad"
+"\n"
+"\\Delta=\\varepsilon_B-\\varepsilon_A\\ge0,\\qquad\n"
+"\\bar\\varepsilon=\\frac{\\varepsilon_A+\\varepsilon_B}{2}"
+
+#: ../../electronic/pdos.rst:126
+#, python-brace-format
+msgid ""
+"とする。:math:`t>0` はホッピング、:math:`\\Delta` は軌道エネルギーの差である。 固有値は "
+":math:`E_\\pm=\\bar\\varepsilon\\pm R`\\ "
+"（:math:`R=\\sqrt{\\Delta^2/4+t^2}`）である。"
+msgstr ""
+"Here :math:`t>0` is the hopping and :math:`\\Delta` is the difference in "
+"orbital energies. The eigenvalues are :math:`E_\\pm=\\bar\\varepsilon\\pm"
+" R`\\ (:math:`R=\\sqrt{\\Delta^2/4+t^2}`)."
+
+#: ../../electronic/pdos.rst:129
+msgid ""
+"固有ベクトルの重みは、固有値 :math:`E` だけで書ける。固有方程式 :math:`(\\varepsilon_A-E)c_A-"
+"tc_B=0`、:math:`-tc_A+(\\varepsilon_B-E)c_B=0` の第1式から "
+":math:`t^2|c_B|^2=(E-\\varepsilon_A)^2|c_A|^2`、行列式が0の条件から "
+":math:`t^2=(E-\\varepsilon_A)(E-\\varepsilon_B)` である。2式から "
+":math:`|c_B|^2/|c_A|^2=(E-\\varepsilon_A)/(E-\\varepsilon_B)` となり、規格化すると"
+msgstr ""
+"The weights of an eigenvector can be expressed in terms of its eigenvalue"
+" :math:`E` alone. The first of the two eigenvalue equations, "
+":math:`(\\varepsilon_A-E)c_A-tc_B=0` and "
+":math:`-tc_A+(\\varepsilon_B-E)c_B=0`, gives "
+":math:`t^2|c_B|^2=(E-\\varepsilon_A)^2|c_A|^2`. The condition that the "
+"determinant vanish gives "
+":math:`t^2=(E-\\varepsilon_A)(E-\\varepsilon_B)`. Combining the two "
+"results gives "
+":math:`|c_B|^2/|c_A|^2=(E-\\varepsilon_A)/(E-\\varepsilon_B)`, and "
+"normalization yields"
+
+#: ../../electronic/pdos.rst:135
+#, python-brace-format
+msgid ""
+"w_A(E)=\\frac{E-\\varepsilon_B}{2E-\\varepsilon_A-\\varepsilon_B},\\qquad"
+"\n"
+"w_B(E)=\\frac{E-\\varepsilon_A}{2E-\\varepsilon_A-\\varepsilon_B}"
+msgstr ""
+"w_A(E)=\\frac{E-\\varepsilon_B}{2E-\\varepsilon_A-\\varepsilon_B},\\qquad"
+"\n"
+"w_B(E)=\\frac{E-\\varepsilon_A}{2E-\\varepsilon_A-\\varepsilon_B}"
+
+#: ../../electronic/pdos.rst:141
+msgid "を得る。下の準位 :math:`E_-` に代入すると、Bの重みは"
+msgstr "Substituting the lower energy level :math:`E_-` gives the weight on B:"
+
+#: ../../electronic/pdos.rst:143
+msgid ""
+"w_B^-=\\frac12\\left(1-\\alpha\\right),\\qquad\n"
+"\\alpha=\\frac{\\Delta/2}{\\sqrt{\\Delta^2/4+t^2}}"
+msgstr ""
+"w_B^-=\\frac12\\left(1-\\alpha\\right),\\qquad\n"
+"\\alpha=\\frac{\\Delta/2}{\\sqrt{\\Delta^2/4+t^2}}"
+
+#: ../../electronic/pdos.rst:149
+msgid ""
+"である。:math:`\\alpha` は、Harrisonが結合軌道の **極性** （polarity）と呼んだ量に当たる "
+"[PdosHarrison1973]_。:math:`E_-` の状態は :math:`c_A` と :math:`c_B` "
+"が同符号の結合性軌道、 :math:`E_+` は異符号の反結合性軌道である。"
+msgstr ""
+"Here :math:`\\alpha` corresponds to what Harrison called the **polarity**"
+" of a bond orbital [PdosHarrison1973]_. The state at :math:`E_-` is a "
+"bonding orbital in which :math:`c_A` and :math:`c_B` have the same sign. "
+"The state at :math:`E_+` is an antibonding orbital in which they have "
+"opposite signs."
+
+#: ../../electronic/pdos.rst:153
+msgid ":eq:`pd-pdos` に従ってPDOSを書くと、"
+msgstr "Equation :eq:`pd-pdos` gives the two projected densities of states:"
+
+#: ../../electronic/pdos.rst:155
+msgid ""
+"\\rho_A(E)&=(1-w_B^-)\\,\\delta(E-E_-)+w_B^-\\,\\delta(E-E_+)\\\\\n"
+"\\rho_B(E)&=w_B^-\\,\\delta(E-E_-)+(1-w_B^-)\\,\\delta(E-E_+)"
+msgstr ""
+"\\rho_A(E)&=(1-w_B^-)\\,\\delta(E-E_-)+w_B^-\\,\\delta(E-E_+)\\\\\n"
+"\\rho_B(E)&=w_B^-\\,\\delta(E-E_-)+(1-w_B^-)\\,\\delta(E-E_+)"
+
+#: ../../electronic/pdos.rst:160
+msgid ""
+"となる。:math:`t=0` なら :math:`w_B^-=0` で、Aの山は :math:`\\varepsilon_A`、Bの山は "
+":math:`\\varepsilon_B` にだけ立つ。:math:`t\\ne0` のとき、主にAからなる準位 :math:`E_-` "
+"にBの重みが現れ、:math:`E_+` にAの重みが現れる。PDOSで2つの軌道の山が同じエネルギーに 現れることを **スペクトルの重なり**"
+" と呼ぶ。:math:`\\Delta>0` のこの模型では、 スペクトルの重なりは1つの固有状態に2つの軌道が混じっていること、すなわち "
+"**軌道の混成** を表す。2電子が :math:`E_-` に入ると、 :eq:`pd-population` "
+"から、Bに割り当てられる電子数（占有状態でのBの重みの和）は :math:`N_B=2w_B^-` である。"
+msgstr ""
+"If :math:`t=0`, then :math:`w_B^-=0`, and A has a peak only at "
+":math:`\\varepsilon_A` and B only at :math:`\\varepsilon_B`. If "
+":math:`t\\ne0`, B contributes weight to the predominantly A level "
+":math:`E_-`, and A contributes weight at :math:`E_+`. Peaks from two "
+"orbitals at the same energy in the PDOS constitute **spectral overlap**. "
+"In this model with :math:`\\Delta>0`, spectral overlap means that the two"
+" orbitals mix in the same eigenstate, a phenomenon called **orbital "
+"hybridization**. When two electrons occupy :math:`E_-`, Equation :eq:`pd-"
+"population` gives the electron population assigned to B (the sum of B "
+"weights over the occupied states), :math:`N_B=2w_B^-`."
+
+#: ../../electronic/pdos.rst:166
+msgid ""
+":math:`\\alpha` は **共有結合性** と **イオン性** の間の位置を表す。:math:`\\Delta=0`\\ "
+"（同種の原子、 例えば :ref:`Löwdin解析<lowdin>` の水素分子）では "
+":math:`\\alpha=0`、:math:`w_B^-=1/2` "
+"で、電子は2つの軌道に等しく分かれる。:math:`t\\ll\\Delta` では "
+":math:`\\alpha\\simeq1-2t^2/\\Delta^2` から"
+msgstr ""
+"The parameter :math:`\\alpha` indicates where the bond lies on the "
+"spectrum from **covalent character** to **ionic character**. For "
+":math:`\\Delta=0`\\ (identical atoms, as in the hydrogen molecule in "
+":ref:`Löwdin analysis <lowdin>`), :math:`\\alpha=0` and "
+":math:`w_B^-=1/2`, so the electrons are shared equally between the two "
+"orbitals. For :math:`t\\ll\\Delta`, the approximation "
+":math:`\\alpha\\simeq1-2t^2/\\Delta^2` gives"
+
+#: ../../electronic/pdos.rst:169
+#, python-brace-format
+msgid "w_B^-\\simeq\\frac{t^2}{\\Delta^2}"
+msgstr "w_B^-\\simeq\\frac{t^2}{\\Delta^2}"
+
+#: ../../electronic/pdos.rst:174
+msgid ""
+"となり、結合性軌道はほぼAだけからなる。このとき電子はほぼAに移り、イオン結合の極限に近づく。 それでも :math:`t\\ne0` "
+"である限り、占有状態にはBの重み :math:`2t^2/\\Delta^2` が残る。"
+msgstr ""
+"In this case the bonding orbital consists almost entirely of A. The "
+"electrons shift almost entirely onto A, approaching the ionic bonding "
+"limit. Even so, as long as :math:`t\\ne0`, a weight of "
+":math:`2t^2/\\Delta^2` on B remains in the occupied state."
+
+#: ../../electronic/pdos.rst:177
+msgid ""
+":eq:`pd-dimer-w` から、PDOSの重みとホッピングの関係について2つのことがわかる。 第1に、重みは比 "
+":math:`t/\\Delta` だけで決まる。同じ :math:`w_B^-` は異なる :math:`t` と "
+":math:`\\Delta` の組から生じるので、重みからホッピングの大きさは決まらない。第2に、 "
+"同じエネルギーに山が重なることは、混成の十分条件ではない。:math:`t=0` でも "
+":math:`\\varepsilon_A=\\varepsilon_B` なら2つの山は重なる。状態ごとの重みを見ずに、状態について "
+"足したPDOSだけから両者を区別することはできない。また、重み :math:`|c_A|^2`、:math:`|c_B|^2` は "
+"係数の符号を含まないので、状態が結合性か反結合性かも示さない。これを区別するには、 係数の積 :math:`c_Ac_B` "
+"にハミルトニアンの非対角要素を掛けてエネルギーごとに描くCOHP [PdosDronskowski1993]_ "
+"や、重なり行列の要素を掛けるCOOP [PdosHoffmann1987]_ が使われる。"
+msgstr ""
+"Equation :eq:`pd-dimer-w` gives two insights into how the PDOS weight "
+"relates to hopping. First, the weight depends only on the ratio "
+":math:`t/\\Delta`. The same :math:`w_B^-` can arise from different pairs "
+"of :math:`t` and :math:`\\Delta`, so the weight does not determine the "
+"magnitude of the hopping. Second, coincident peaks are insufficient to "
+"establish hybridization. Even at :math:`t=0`, the peaks overlap if "
+":math:`\\varepsilon_A=\\varepsilon_B`. The PDOS summed over states cannot"
+" distinguish these cases without the weights of the individual states. "
+"Also, the weights :math:`|c_A|^2` and :math:`|c_B|^2` omit the signs of "
+"the coefficients, so they cannot show whether the state is bonding or "
+"antibonding. To distinguish bonding from antibonding, use the COHP, which"
+" resolves the product :math:`c_Ac_B` times the off-diagonal Hamiltonian "
+"element by energy [PdosDronskowski1993]_, or the COOP, which uses the "
+"overlap matrix element instead [PdosHoffmann1987]_."
+
+#: ../../electronic/pdos.rst:190
+msgid "非直交基底での射影"
+msgstr "Projection in a Nonorthogonal Basis"
+
+#: ../../electronic/pdos.rst:192
+#, python-brace-format
+msgid ""
+"第一原理計算で使う原子軌道 :math:`\\chi_\\mu` は一般に直交していない。展開係数を :math:`C_{\\mu "
+"i}`、重なり行列を :math:`S` とすると（記号は :ref:`Löwdin解析<lowdin>` と同じ）、 軌道 "
+":math:`\\psi_i` の規格化は、:math:`C` の第 :math:`i` 列を :math:`C_i` として "
+":math:`C_i^\\dagger SC_i=\\sum_{\\mu\\nu}C_{\\mu i}^*S_{\\mu\\nu}C_{\\nu "
+"i}=1` である。 この和を基底関数ごとに分ける方法が2通りある。"
+msgstr ""
+"The atomic orbitals :math:`\\chi_\\mu` used in first-principles "
+"calculations are generally nonorthogonal. Denote the expansion "
+"coefficients by :math:`C_{\\mu i}` and the overlap matrix by :math:`S`, "
+"as in :ref:`Löwdin analysis <lowdin>`. To normalize the orbital "
+":math:`\\psi_i`, take the column of :math:`C` with index :math:`i`, "
+"denoted by :math:`C_i`, and impose :math:`C_i^\\dagger "
+"SC_i=\\sum_{\\mu\\nu}C_{\\mu i}^*S_{\\mu\\nu}C_{\\nu i}=1`. There are two"
+" ways to partition this sum by basis function:"
+
+#: ../../electronic/pdos.rst:198
+#, python-brace-format
+msgid ""
+"w^{\\mathrm M}_{\\mu i}=\\operatorname{Re}\\bigl[C_{\\mu "
+"i}^*\\,(SC)_{\\mu i}\\bigr],\\qquad\n"
+"w^{\\mathrm L}_{\\mu i}=\\bigl|(S^{1/2}C)_{\\mu i}\\bigr|^2"
+msgstr ""
+"w^{\\mathrm M}_{\\mu i}=\\operatorname{Re}\\bigl[C_{\\mu "
+"i}^*\\,(SC)_{\\mu i}\\bigr],\\qquad\n"
+"w^{\\mathrm L}_{\\mu i}=\\bigl|(S^{1/2}C)_{\\mu i}\\bigr|^2"
+
+#: ../../electronic/pdos.rst:204
+#, python-brace-format
+msgid ""
+"前者がMulliken型 [Mulliken1955]_、後者が対称直交化した基底 [Lowdin1950]_ への射影である。 どちらも "
+":math:`\\mu` について足すと1になり、:eq:`pd-sum-rule` の第1式を満たす。 "
+"占有状態について足すと、それぞれMulliken電子数とLöwdin電子数になる。 Mulliken型の重みは、符号が負にもなりうる重なりの項 "
+":math:`\\operatorname{Re}[C_{\\mu i}^*S_{\\mu\\nu}C_{\\nu i}]` "
+"を2つの基底関数に半分ずつ 割り当てたものなので、負になることがある。Löwdin型の重みは絶対値の2乗なので負にならない。"
+msgstr ""
+"The first is a Mulliken-type projection [Mulliken1955]_, whereas the "
+"second projects onto the basis obtained by symmetric orthogonalization "
+"[Lowdin1950]_. Both sum to 1 over :math:`\\mu`, satisfying the first "
+"relation in Equation :eq:`pd-sum-rule`. Summing over occupied states "
+"gives the Mulliken population and the Löwdin population, respectively. "
+"Mulliken-type weights can be negative because they assign half of the "
+"overlap term :math:`\\operatorname{Re}[C_{\\mu i}^*S_{\\mu\\nu}C_{\\nu "
+"i}]` to each of the two basis functions and that term can have either "
+"sign. By contrast, Löwdin-type weights are squared magnitudes and are "
+"therefore nonnegative."
+
+#: ../../electronic/pdos.rst:210
+#, python-brace-format
+msgid ""
+":eq:`pd-mulliken-lowdin` に複素共役、実部、絶対値が入るのは、周期系のBloch軌道では係数が一般に複素数だからである。 "
+"係数をすべて :math:`i` 倍しても状態は同じなので、重みはこの位相によってはいけない。複素共役を付けない :math:`C_{\\mu "
+"i}(SC)_{\\mu i}` は、:math:`i` 倍で符号が変わってしまう。:math:`C_{\\mu i}^*(SC)_{\\mu "
+"i}` は位相によらず、 :math:`\\mu` "
+"について足すと実数の1になるが、各項は虚部をもちうるので、実部を重みとする。本稿の模型のように係数が実数なら、 :eq:`pd-mulliken-"
+"lowdin` は :math:`C_{\\mu i}(SC)_{\\mu i}` と "
+":math:`\\bigl((S^{1/2}C)_{\\mu i}\\bigr)^2` に戻る。"
+msgstr ""
+"Equation :eq:`pd-mulliken-lowdin` uses a complex conjugate, a real part, "
+"and a magnitude because the coefficients of Bloch orbitals in a periodic "
+"system are generally complex. Multiplying all the coefficients by "
+":math:`i` leaves the state unchanged, so the weights must be independent "
+"of this phase. Without complex conjugation, :math:`C_{\\mu i}(SC)_{\\mu "
+"i}` would change sign upon multiplication of the coefficients by "
+":math:`i`. With conjugation, :math:`C_{\\mu i}^*(SC)_{\\mu i}` is phase "
+"independent and sums to the real number 1 over :math:`\\mu`, but an "
+"individual term can have an imaginary part, so take its real part as the "
+"weight. If the coefficients are real, as in the models in this article, "
+"Equation :eq:`pd-mulliken-lowdin` reduces to :math:`C_{\\mu i}(SC)_{\\mu "
+"i}` and :math:`\\bigl((S^{1/2}C)_{\\mu i}\\bigr)^2`."
+
+#: ../../electronic/pdos.rst:216
+#, python-brace-format
+msgid ""
+":ref:`平面波基底<basis-set-cutoff>`\\ "
+"の計算では、Kohn–Sham軌道を原子軌道の組へ射影してPDOSを作る。原子軌道の組は 軌道の空間を完全には張らないので "
+":math:`\\sum_\\mu w_{\\mu i}<1` となり、PDOSの和は状態密度に 届かない。射影から漏れた割合 "
+":math:`1-\\sum_\\mu w_{\\mu i}` を状態について平均した量はspilling "
+"parameterと呼ばれ、射影の質の目安に使われる [PdosSanchezPortal1995]_。"
+msgstr ""
+"In calculations with a :ref:`plane-wave basis <basis-set-cutoff>`\\ , the"
+" PDOS is obtained by projecting the Kohn–Sham orbitals onto a set of "
+"atomic orbitals. The atomic orbitals do not span the entire orbital "
+"space, so :math:`\\sum_\\mu w_{\\mu i}<1` and the sum of the PDOS "
+"contributions falls short of the density of states. The fraction missed "
+"by the projection, :math:`1-\\sum_\\mu w_{\\mu i}`, averaged over the "
+"states, is called the spilling parameter and indicates the quality of the"
+" projection [PdosSanchezPortal1995]_."
+
+#: ../../electronic/pdos.rst:220
+msgid ""
+"どの方法でも、PDOSの値は基底関数の取り方に依存する。同じ波動関数でも、原子軌道の広がりや "
+"直交化の方法を変えれば、ある状態の重みがどの原子に入るかが変わる。"
+msgstr ""
+"In either method, the PDOS depends on the choice of basis functions. Even"
+" for the same wave function, changing the spatial extent of the atomic "
+"orbitals or the orthogonalization method changes which atoms receive the "
+"weight of a given state."
+
+#: ../../electronic/pdos.rst:226
+msgid "ガウス関数によるぼかし"
+msgstr "Gaussian Broadening"
+
+#: ../../electronic/pdos.rst:228
+msgid ""
+":eq:`pd-pdos` はデルタ関数の和で、そのままでは図にならない。周期系の :eq:`pd-pdos-k` も、 数値計算では有限個の\\"
+" :ref:`k点のメッシュ<kpoint-meshes>`\\ での和になり、やはりデルタ関数の "
+"和になる。そこで各デルタ関数を、面積1のガウス関数"
+msgstr ""
+"Equation :eq:`pd-pdos` is a sum of delta functions and cannot be plotted "
+"directly as a curve. In a numerical calculation, the periodic expression "
+"in Equation :eq:`pd-pdos-k` likewise becomes a sum over a finite \\ "
+":ref:`k-point mesh <kpoint-meshes>` \\ and remains a sum of delta "
+"functions. To plot a curve, replace each delta function with a Gaussian "
+"of unit area,"
+
+#: ../../electronic/pdos.rst:232
+msgid "g_\\sigma(x)=\\frac{1}{\\sqrt{2\\pi}\\,\\sigma}\\exp\\!\\left(-\\frac{x^2}{2\\sigma^2}\\right)"
+msgstr "g_\\sigma(x)=\\frac{1}{\\sqrt{2\\pi}\\,\\sigma}\\exp\\!\\left(-\\frac{x^2}{2\\sigma^2}\\right)"
+
+#: ../../electronic/pdos.rst:237
+msgid "に置き換えた"
+msgstr "which gives the broadened density"
+
+#: ../../electronic/pdos.rst:239
+#, python-brace-format
+msgid "\\tilde\\rho_\\mu(E)=\\sum_iw_{\\mu i}\\,g_\\sigma(E-\\varepsilon_i)"
+msgstr "\\tilde\\rho_\\mu(E)=\\sum_iw_{\\mu i}\\,g_\\sigma(E-\\varepsilon_i)"
+
+#: ../../electronic/pdos.rst:244
+msgid ""
+"を描く。:math:`\\sigma` はガウス関数の標準偏差で、これを **ぼかしの幅** と呼ぶ。 :math:`\\int "
+"g_\\sigma\\,dx=1`、:math:`\\int x\\,g_\\sigma\\,dx=0`、 :math:`\\int "
+"x^2g_\\sigma\\,dx=\\sigma^2` だから、全エネルギー範囲で積分すると"
+msgstr ""
+"The standard deviation :math:`\\sigma` of the Gaussian is called the "
+"**broadening width**. Since :math:`\\int g_\\sigma\\,dx=1`, :math:`\\int "
+"x\\,g_\\sigma\\,dx=0`, and :math:`\\int x^2g_\\sigma\\,dx=\\sigma^2`, "
+"integration over the full energy range gives"
+
+#: ../../electronic/pdos.rst:248
+msgid ""
+"\\int\\tilde\\rho_\\mu\\,dE&=\\int\\rho_\\mu\\,dE\\\\\n"
+"\\int E\\,\\tilde\\rho_\\mu\\,dE&=\\int E\\,\\rho_\\mu\\,dE\\\\\n"
+"\\int E^2\\tilde\\rho_\\mu\\,dE&=\\int "
+"E^2\\rho_\\mu\\,dE+\\sigma^2\\!\\int\\rho_\\mu\\,dE"
+msgstr ""
+"\\int\\tilde\\rho_\\mu\\,dE&=\\int\\rho_\\mu\\,dE\\\\\n"
+"\\int E\\,\\tilde\\rho_\\mu\\,dE&=\\int E\\,\\rho_\\mu\\,dE\\\\\n"
+"\\int E^2\\tilde\\rho_\\mu\\,dE&=\\int "
+"E^2\\rho_\\mu\\,dE+\\sigma^2\\!\\int\\rho_\\mu\\,dE"
+
+#: ../../electronic/pdos.rst:254
+msgid ""
+"となる。ぼかしは重みの合計と重心を変えず、広がりを :math:`\\sigma^2` だけ増やす。 "
+"ただし、これは全範囲で積分した場合に限る。エネルギーの窓を切って積分すると、窓の端から ガウス関数の裾が出入りするので、窓の中の重みや重心は "
+":math:`\\sigma` に依存する。"
+msgstr ""
+"Broadening preserves the total weight and centroid but increases the "
+"spread by :math:`\\sigma^2`. This holds only for integration over the "
+"full energy range. When integrating over an energy window, the Gaussian "
+"tails cross the window edges, so the weight and centroid within the "
+"window depend on :math:`\\sigma`."
+
+#: ../../electronic/pdos.rst:258
+#, python-brace-format
+msgid ""
+":math:`\\sigma` の下限は準位の間隔で決まる。有限の分子や鎖では準位そのものの間隔、周期系ではk点の間隔にバンドの傾き "
+":math:`|\\nabla_{\\boldsymbol k}\\varepsilon|` を掛けた程度が、その間隔に当たる。 "
+":math:`\\sigma` がこれより小さいと、曲線に個々の準位の山が残る。上限は読み取りたい構造で決まる。:math:`\\sigma` が"
+" ギャップやピークの幅に近づくと、バンド端の外に裾が出て、ピークの位置も動く。 "
+"したがって、価電子帯上端やギャップの値は、ぼかした曲線ではなく固有値から求める。"
+msgstr ""
+"The level spacing sets the lower limit for :math:`\\sigma`. For a finite "
+"molecule or chain, use the spacing of the levels themselves. For a "
+"periodic system, the corresponding spacing is roughly the separation "
+"between k-points times the band slope :math:`|\\nabla_{\\boldsymbol "
+"k}\\varepsilon|`. If :math:`\\sigma` is smaller than this spacing, the "
+"curve retains peaks from individual levels. The features of interest set "
+"the upper limit. When :math:`\\sigma` approaches the size of a gap or the"
+" width of a peak, tails extend beyond the band edges and peaks shift. "
+"Determine the valence band maximum and the gap from the eigenvalues "
+"instead of reading them off the broadened curve."
+
+#: ../../electronic/pdos.rst:263
+#, python-brace-format
+msgid ""
+"ぼかしの幅の定義は文献やプログラムによって異なる。 :ref:`金属のk点積分<smearing>`\\ で使うガウシアンスメアリング "
+":math:`f=\\tfrac12\\operatorname{erfc}\\bigl((\\varepsilon-\\mu)/\\sigma\\bigr)`"
+" では、 "
+":math:`-df/d\\varepsilon=\\exp\\bigl(-(\\varepsilon-\\mu)^2/\\sigma^2\\bigr)/(\\sqrt\\pi\\,\\sigma)`"
+" の標準偏差が :math:`\\sigma/\\sqrt2` である。同じ記号 :math:`\\sigma` が、標準偏差の "
+":math:`\\sqrt2` 倍を指すことがあるので、幅の値を比べるときは定義を揃える必要がある。 "
+"また、スメアリングは自己無撞着計算の占有数を変え、エネルギーにも影響する。PDOSのぼかしは "
+"計算の後で図を作るための処理で、占有数にも全エネルギーにも影響しない。"
+msgstr ""
+"Definitions of broadening width vary by publication and program. For "
+":ref:`k-point integration in metals <smearing>`\\ , Gaussian smearing "
+"uses "
+":math:`f=\\tfrac12\\operatorname{erfc}\\bigl((\\varepsilon-\\mu)/\\sigma\\bigr)`,"
+" for which "
+":math:`-df/d\\varepsilon=\\exp\\bigl(-(\\varepsilon-\\mu)^2/\\sigma^2\\bigr)/(\\sqrt\\pi\\,\\sigma)`"
+" has standard deviation :math:`\\sigma/\\sqrt2`. The same symbol "
+":math:`\\sigma` can denote :math:`\\sqrt2` times the standard deviation, "
+"so use the same definition when comparing widths. Smearing also changes "
+"the occupation numbers in a self-consistent calculation and affects the "
+"energy. PDOS broadening, by contrast, is applied after the calculation to"
+" produce a plot and affects neither the occupation numbers nor the total "
+"energy."
+
+#: ../../electronic/pdos.rst:275
+msgid "エネルギーの基準と価電子帯上端"
+msgstr "Energy Reference and the Valence Band Maximum"
+
+#: ../../electronic/pdos.rst:277
+#, python-brace-format
+msgid ""
+"周期系の計算では、固有値の原点に絶対的な意味がない。無限に続く結晶では平均の静電 "
+"ポテンシャルを決める基準がなく、プログラムは通常それを0とおくので、真空準位や別の結晶と 共通の原点を持たない "
+"[PdosVandeWalle1987]_。構造の異なる計算でPDOSを比べるときは、 絶縁体なら各構造の価電子帯上端 "
+":math:`E_{\\mathrm v}`、金属なら\\ :ref:`フェルミ準位<fermi-level-and-occupation>`\\"
+" を0に揃える。"
+msgstr ""
+"In periodic calculations, the zero of the eigenvalues has no absolute "
+"physical meaning. An infinite crystal provides no reference for the "
+"average electrostatic potential, so programs usually set it to 0. The "
+"resulting energy zero is not shared with the vacuum level or with another"
+" crystal [PdosVandeWalle1987]_. To compare the PDOS of different "
+"structures, set the zero for each structure to its valence band maximum "
+":math:`E_{\\mathrm v}` in an insulator or its \\ :ref:`Fermi level "
+"<fermi-level-and-occupation>` \\ in a metal."
+
+#: ../../electronic/pdos.rst:282
+#, python-brace-format
+msgid ""
+"揃えた図で読めるのは、同じ構造の中での相対的な位置である。例えば、ある軌道の重みが "
+"価電子帯の上端付近と下端付近のどちらに多いかは、基準の取り方によらない。一方、2つの構造の "
+"間で特徴の位置が動いたとき、その移動は特徴そのものの移動から :math:`E_{\\mathrm v}` の移動を "
+"差し引いたものである。:math:`E_{\\mathrm v}` も構造とともに動くので、揃えた図だけでは どちらが動いたかを区別できない。"
+msgstr ""
+"An aligned plot shows relative positions within the same structure. For "
+"example, whether an orbital carries more weight near the top or bottom of"
+" the valence band is independent of the energy reference. But when a "
+"feature shifts between two structures, the shift in the plot is the shift"
+" of the feature itself minus that of :math:`E_{\\mathrm v}`. Because "
+":math:`E_{\\mathrm v}` also moves with the structure, the aligned plots "
+"alone cannot tell which one moved."
+
+#: ../../electronic/pdos.rst:288
+#, python-brace-format
+msgid ""
+"揃えた図の重心の移動は、全エネルギーの分解としても読めない。理由は2つある。 第1に、占有された固有値の和 "
+":math:`\\sum_in_i\\varepsilon_i` を :math:`E_{\\mathrm v}` から測ると "
+":math:`\\sum_in_i(\\varepsilon_i-E_{\\mathrm v})=\\sum_in_i"
+"\\varepsilon_i-NE_{\\mathrm v}` となり、 :math:`E_{\\mathrm v}` が構造ごとに違えば、電子数"
+" :math:`N` 倍の差が混じる。第2に、\\ :ref:`Kohn–Sham法<kohn-sham-dft>`\\ の "
+"全エネルギーは固有値の和ではなく、電子間相互作用の二重計上を差し引く項を含む "
+"（参考文献のMartinの教科書）。したがって、揃えた図で重心が下がったことから 全エネルギーが下がったとは結論できない。"
+msgstr ""
+"A centroid shift in an aligned plot cannot be read as a contribution to "
+"the total energy, for two reasons. First, measuring the sum of occupied "
+"eigenvalues :math:`\\sum_in_i\\varepsilon_i` relative to "
+":math:`E_{\\mathrm v}` gives :math:`\\sum_in_i(\\varepsilon_i-E_{\\mathrm"
+" v})=\\sum_in_i\\varepsilon_i-NE_{\\mathrm v}`. If :math:`E_{\\mathrm v}`"
+" differs between structures, the comparison includes that difference "
+"multiplied by the electron count :math:`N`. Second, the total energy in "
+"the \\ :ref:`Kohn–Sham method <kohn-sham-dft>` \\ is not simply the sum "
+"of the eigenvalues, because it includes terms that subtract the double "
+"counting of electron–electron interactions (see Martin's textbook in the "
+"references). A lower centroid in an aligned plot therefore does not "
+"establish that the total energy has decreased."
+
+#: ../../electronic/pdos.rst:297
+msgid "説明用の事例：水素原子鎖の端と中央"
+msgstr "Worked Example: Ends and Center of a Hydrogen Atom Chain"
+
+#: ../../electronic/pdos.rst:299
+msgid ""
+"`水素原子を並べると電子バンドは生まれるのか <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_ の有限水素原子鎖（STO-"
+"3G基底、原子間隔1.8 Å、Psi4 1.10）では、RKS-PBEのLöwdin結合次数が、 "
+"パラメータを含まない一様な最近接タイト・バインディング模型の値と小数点以下2〜3桁まで "
+"一致する（:ref:`結合次数<bond_order>`）。そこで、同じ模型で原子ごとのPDOSを計算する。 "
+"以下の値は模型から求めたもので、Psi4の計算結果ではない。"
+msgstr ""
+"In the calculation example `Do Electronic Bands Form in a Hydrogen Atom "
+"Chain? <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_, the RKS-PBE "
+"Löwdin bond orders of the finite hydrogen atom chain (STO-3G basis, "
+"interatomic spacing 1.8 Å, Psi4 1.10) agree to 2–3 decimal places with "
+"those of a parameter-free, uniform nearest-neighbor tight-binding model "
+"(see :ref:`bond order <bond_order>`). We therefore use the same model to "
+"calculate the PDOS for individual atoms. The values below come from the "
+"model, not from the Psi4 calculation."
+
+#: ../../electronic/pdos.rst:305
+#, python-brace-format
+msgid ""
+":math:`N` 原子の開放端の鎖の固有状態は、:ref:`開放端の鎖の定在波<fc-standing-waves>` で 求めたとおり "
+":math:`E_j=\\varepsilon_0-2t\\cos\\theta_j`、 "
+":math:`\\phi_j(i)=\\sqrt{2/(N+1)}\\sin(i\\theta_j)`\\ "
+"（:math:`\\theta_j=j\\pi/(N+1)`）である。 原子 :math:`i` への重みは "
+":math:`w_{ij}=\\phi_j(i)^2` だから、端の原子（:math:`i=1`）のPDOSは"
+msgstr ""
+"For an open-ended chain of :math:`N` atoms, the :ref:`standing waves in "
+"the chain <fc-standing-waves>` have energies "
+":math:`E_j=\\varepsilon_0-2t\\cos\\theta_j` and eigenvectors "
+":math:`\\phi_j(i)=\\sqrt{2/(N+1)}\\sin(i\\theta_j)`\\ "
+"(:math:`\\theta_j=j\\pi/(N+1)`). The weight on atom :math:`i` is "
+":math:`w_{ij}=\\phi_j(i)^2`, so the PDOS of the end atom (:math:`i=1`) is"
+
+#: ../../electronic/pdos.rst:310
+#, python-brace-format
+msgid "\\rho_1(E)=\\sum_{j=1}^{N}\\frac{2}{N+1}\\sin^2\\theta_j\\,\\delta(E-E_j)"
+msgstr "\\rho_1(E)=\\sum_{j=1}^{N}\\frac{2}{N+1}\\sin^2\\theta_j\\,\\delta(E-E_j)"
+
+#: ../../electronic/pdos.rst:314
+#, python-brace-format
+msgid ""
+"となる。:math:`N\\to\\infty` では :math:`\\theta_j` が密に並び、和を "
+":math:`\\frac{N+1}{\\pi}\\int_0^\\pi d\\theta` "
+"に置き換えられる。:math:`dE/d\\theta=2t\\sin\\theta` を使うと"
+msgstr ""
+"As :math:`N\\to\\infty`, the values of :math:`\\theta_j` become dense and"
+" the sum can be replaced by :math:`\\frac{N+1}{\\pi}\\int_0^\\pi "
+"d\\theta`. Using :math:`dE/d\\theta=2t\\sin\\theta` gives"
+
+#: ../../electronic/pdos.rst:317
+msgid ""
+"\\rho_1(E)=\\frac{2}{\\pi}\\frac{\\sin^2\\theta}{2t\\sin\\theta}\n"
+"=\\frac{\\sqrt{4t^2-(E-\\varepsilon_0)^2}}{2\\pi t^2}"
+msgstr ""
+"\\rho_1(E)=\\frac{2}{\\pi}\\frac{\\sin^2\\theta}{2t\\sin\\theta}\n"
+"=\\frac{\\sqrt{4t^2-(E-\\varepsilon_0)^2}}{2\\pi t^2}"
+
+#: ../../electronic/pdos.rst:323
+msgid ""
+"を得る。鎖の中央の原子では :math:`\\sin^2(i\\theta)` が :math:`\\theta` について速く振動するので、 "
+"平均の1/2に置き換えてよい。すると"
+msgstr ""
+"For an atom at the center of the chain, :math:`\\sin^2(i\\theta)` "
+"oscillates rapidly with :math:`\\theta` and can be replaced by its "
+"average of 1/2. This gives the PDOS of the central atom,"
+
+#: ../../electronic/pdos.rst:326
+msgid "\\rho_{\\mathrm c}(E)=\\frac{1}{\\pi\\sqrt{4t^2-(E-\\varepsilon_0)^2}}"
+msgstr "\\rho_{\\mathrm c}(E)=\\frac{1}{\\pi\\sqrt{4t^2-(E-\\varepsilon_0)^2}}"
+
+#: ../../electronic/pdos.rst:331
+msgid "となり、無限鎖の1原子あたりの\\ :ref:`状態密度<density-of-states>`\\ に一致する。"
+msgstr ""
+"which agrees with the \\ :ref:`density of states <density-of-states>` \\ "
+"per atom in an infinite chain."
+
+#: ../../electronic/pdos.rst:333
+msgid "端の原子のPDOSはバンドの中央で最大の半円形で、中央の原子のPDOSはバンド端に向かって大きくなる。幅0.1tの曲線には準位ごとの小さな山が残り、幅0.4tの曲線はなめらかだが、バンド端の外に裾が出る。"
+msgstr ""
+"The PDOS of the end atom has a semicircular shape and peaks at the middle"
+" of the band, whereas the PDOS of the central atom rises toward the band "
+"edges. The curve with broadening width 0.1t retains small peaks from "
+"individual levels. The curve with broadening width 0.4t is smooth, but "
+"its tails extend beyond the band edges."
+
+#: ../../electronic/pdos.rst:339
+#, python-brace-format
+msgid ""
+"原子数 :math:`N=32` の開放端の一様な鎖について、端の原子（左）と中央の原子（右）への 射影状態密度 :eq:`pd-"
+"broadened`\\ （1スピンあたり）。細い青線は幅 :math:`\\sigma=0.1t`、太い茶色の線は "
+":math:`\\sigma=0.4t` でぼかした曲線、灰色の破線は :math:`N\\to\\infty` の極限 :eq:`pd-"
+"chain-edge`、:eq:`pd-chain-bulk`。点線は半充填のフェルミ準位 :math:`E_{\\mathrm "
+"F}=\\varepsilon_0`。"
+msgstr ""
+"For a uniform open-ended chain with :math:`N=32` atoms, the projected "
+"density of states from Equation :eq:`pd-broadened` \\ (per spin) is shown"
+" for the end atom (left) and central atom (right). The thin blue curve "
+"uses a broadening width of :math:`\\sigma=0.1t`, and the thick brown "
+"curve uses :math:`\\sigma=0.4t`. The gray dashed line shows the "
+":math:`N\\to\\infty` limit for the end atom in Equation :eq:`pd-chain-"
+"edge` and for the central atom in Equation :eq:`pd-chain-bulk`. The "
+"dotted line marks the Fermi level at half filling, :math:`E_{\\mathrm "
+"F}=\\varepsilon_0`."
+
+#: ../../electronic/pdos.rst:345
+msgid ""
+":numref:`fig-pdos-chain-sites`\\ では、同じ元素の同じ軌道でも、鎖のどこにあるかでPDOSの形が "
+"大きく違う。端の原子の重みはバンドの中央に集まり、:math:`|E-\\varepsilon_0|<t` にある割合は 極限で "
+":math:`1/3+\\sqrt3/(2\\pi)\\approx0.609` である。中央の原子では、極限で同じ範囲に1/3しかなく、 "
+"重みはバンド端に寄っている。この違いは :eq:`pd-moment` の2次のモーメントで説明できる。 "
+"隣接原子の数は端で1、中央で2なので、広がりは :math:`t^2` と :math:`2t^2` になる。"
+msgstr ""
+"As shown in :numref:`fig-pdos-chain-sites`\\ , even for the same orbital "
+"of the same element, the shape of the PDOS varies substantially with "
+"position in the chain. The weight on the end atom is concentrated near "
+"the middle of the band. In the limit, the fraction within "
+":math:`|E-\\varepsilon_0|<t` is :math:`1/3+\\sqrt3/(2\\pi)\\approx0.609`."
+" For the central atom, only 1/3 of the weight lies in the same range in "
+"the limit, and the weight is concentrated toward the band edges. The "
+"second moment in Equation :eq:`pd-moment` accounts for the difference. "
+"There is one neighbor at the end and there are two at the center, so the "
+"spreads are :math:`t^2` and :math:`2t^2`, respectively."
+
+#: ../../electronic/pdos.rst:351
+msgid ""
+"一方、占有状態で積分した電子数 :eq:`pd-population` "
+"は、どちらの原子も1である。鎖は1つおきの2組の原子に分けられ、ホッピングは組の間にしかない。このため固有状態は "
+":math:`\\varepsilon_0` について対称な対をなし、対の2状態は各原子に同じ重みを持つので、 "
+"どの原子でも重みの半分がフェルミ準位より下に入る。:ref:`Löwdin解析<lowdin>` "
+"で示したPsi4のRHFの値（:math:`N=16` の端の原子で0.994程度）が1からわずかにずれるのは、 "
+"自己無撞着な計算がこの模型の対称性を厳密には持たないためである。電子数が同じでもPDOSの形が "
+"違うことは、PDOSが電子数には現れない、原子の環境の情報を持つことを示している。"
+msgstr ""
+"By contrast, the electron population obtained by integrating over the "
+"occupied states in Equation :eq:`pd-population` is 1 for both atoms. The "
+"chain can be divided into two groups of alternating atoms, and hopping "
+"occurs only between groups. The eigenstates therefore come in pairs "
+"symmetric about :math:`\\varepsilon_0`, with the same weight on each atom"
+" for both states in a pair. Hence half of the weight on any atom is below"
+" the Fermi level. The RHF value from Psi4 in :ref:`Löwdin analysis "
+"<lowdin>` (about 0.994 for the end atom at :math:`N=16`) differs slightly"
+" from 1 because the self-consistent calculation does not have this model "
+"symmetry exactly. The different PDOS shapes at the same electron "
+"population show that the PDOS contains information about the local atomic"
+" environment that the population alone does not capture."
+
+#: ../../electronic/pdos.rst:357
+msgid ""
+"この図は、ぼかしの幅を選ぶときの目安も示す。:math:`N=32` の鎖の準位の間隔は、バンドの中央付近で :math:`0.190t` "
+"である。:math:`\\sigma=0.1t` の曲線には、この間隔で並ぶ準位ごとの小さな山が残る。 :math:`\\sigma=0.4t` "
+"の曲線はなめらかだが、中央の原子ではバンド端の発散のピークが :math:`\\pm1.67t` "
+"付近まで内側へ動き、バンドの外（:math:`|E-\\varepsilon_0|>2t`）に重みの0.167が "
+"はみ出す。:math:`\\sigma=0.1t` では0.083である。"
+msgstr ""
+"The figure also illustrates how to choose a broadening width. In the "
+":math:`N=32` chain, the level spacing near the middle of the band is "
+":math:`0.190t`. At :math:`\\sigma=0.1t`, small peaks from individual "
+"levels remain at this spacing. At :math:`\\sigma=0.4t`, the curve is "
+"smooth, but for the central atom the peaks due to the band-edge "
+"divergences shift inward to around :math:`\\pm1.67t`, and 0.167 of the "
+"weight lies outside the band (:math:`|E-\\varepsilon_0|>2t`). For "
+":math:`\\sigma=0.1t`, this fraction is 0.083."
+
+#: ../../electronic/pdos.rst:364
+msgid "説明用の事例：AB交替鎖とイオン性"
+msgstr "Worked Example: An Alternating AB Chain and Ionicity"
+
+#: ../../electronic/pdos.rst:366
+msgid ""
+"2準位模型の議論を周期系に広げるため、単位胞（格子定数 :math:`a`）にAとBの軌道を1つずつ "
+"交互に並べ、隣り合うAとBの間にだけホッピング :math:`-t` がある鎖を考える。 :ref:`ブロッホ和<bloch-sum>` "
+"でハミルトニアンを波数ごとに書くと"
+msgstr ""
+"To extend the two-level model to a periodic system, consider a chain with"
+" alternating A and B orbitals, one of each per unit cell (lattice "
+"constant :math:`a`), and hopping :math:`-t` only between neighboring A "
+"and B orbitals. Writing the Hamiltonian at each wave vector using "
+":ref:`Bloch sums <bloch-sum>` gives"
+
+#: ../../electronic/pdos.rst:370
+#, python-brace-format
+msgid ""
+"H(k)&=\\begin{pmatrix}\\varepsilon_A&h(k)\\\\h(k)^*&\\varepsilon_B\\end{pmatrix}\\\\"
+"\n"
+"h(k)&=-t\\bigl(1+e^{-ika}\\bigr),\\qquad "
+"|h(k)|=2t\\left|\\cos\\frac{ka}{2}\\right|"
+msgstr ""
+"H(k)&=\\begin{pmatrix}\\varepsilon_A&h(k)\\\\h(k)^*&\\varepsilon_B\\end{pmatrix}\\\\"
+"\n"
+"h(k)&=-t\\bigl(1+e^{-ika}\\bigr),\\qquad "
+"|h(k)|=2t\\left|\\cos\\frac{ka}{2}\\right|"
+
+#: ../../electronic/pdos.rst:376
+msgid ""
+"となる。各波数で :eq:`pd-dimer-h` の :math:`t` を :math:`|h(k)|` に置き換えた2準位模型なので、 "
+"バンドは"
+msgstr ""
+"At each wave vector, this is the two-level model of Equation :eq:`pd-"
+"dimer-h` with :math:`t` replaced by :math:`|h(k)|`, so the bands are"
+
+#: ../../electronic/pdos.rst:379
+msgid "E_\\pm(k)=\\bar\\varepsilon\\pm\\sqrt{\\frac{\\Delta^2}{4}+4t^2\\cos^2\\frac{ka}{2}}"
+msgstr "E_\\pm(k)=\\bar\\varepsilon\\pm\\sqrt{\\frac{\\Delta^2}{4}+4t^2\\cos^2\\frac{ka}{2}}"
+
+#: ../../electronic/pdos.rst:384
+msgid ""
+"であり、:eq:`pd-weight-e` の導出は :math:`t^2` を :math:`|h(k)|^2` に置き換えても "
+"そのまま成り立つ。重みはエネルギーだけの関数なので、PDOSは状態密度に重みを掛けた "
+":math:`\\rho_A(E)=w_A(E)\\rho(E)`、:math:`\\rho_B(E)=w_B(E)\\rho(E)` になる。"
+msgstr ""
+"The derivation of Equation :eq:`pd-weight-e` still holds with :math:`t^2`"
+" replaced by :math:`|h(k)|^2`. Since the weights depend only on energy, "
+"the PDOS is the density of states multiplied by the weights: "
+":math:`\\rho_A(E)=w_A(E)\\rho(E)` and :math:`\\rho_B(E)=w_B(E)\\rho(E)`."
+
+#: ../../electronic/pdos.rst:388
+#, python-brace-format
+msgid ""
+"下のバンドの上端は :math:`ka=\\pi` で、:math:`h=0` だから :math:`E_{\\mathrm "
+"v}=\\varepsilon_A`、 重みは純粋にAである。下端は :math:`k=0` "
+"で、Bの重みが最大になる。:math:`\\Delta/t=4` では、 :eq:`pd-dimer-w` の :math:`t` を "
+":math:`|h(0)|=2t` に置き換えて :math:`w_B=0.146` である。"
+msgstr ""
+"The lower band reaches its maximum at :math:`ka=\\pi`. Since :math:`h=0` "
+"there, :math:`E_{\\mathrm v}=\\varepsilon_A` and all of the weight is on "
+"A. At the bottom of the band, :math:`k=0`, the weight on B is largest. "
+"For :math:`\\Delta/t=4`, using Equation :eq:`pd-dimer-w` with :math:`t` "
+"replaced by :math:`|h(0)|=2t` gives :math:`w_B=0.146`."
+
+#: ../../electronic/pdos.rst:392
+msgid "価電子帯ではAの射影が大きく、Bの射影は価電子帯の下端で大きく上端で0になる。Δ/t=4ではΔ/t=1よりBの射影が小さい。"
+msgstr ""
+"The projection onto A dominates the valence band. The projection onto B "
+"is largest at the bottom of the valence band and is zero at the top. The "
+"projection onto B is smaller for Δ/t=4 than for Δ/t=1."
+
+#: ../../electronic/pdos.rst:398
+#, python-brace-format
+msgid ""
+"AB交替鎖の射影状態密度（1スピン・単位胞あたり、4000点のk点メッシュ、 幅 :math:`\\sigma=0.05t`\\ ）。左は "
+":math:`\\Delta/t=1`、右は :math:`\\Delta/t=4`。 "
+"淡い灰色の領域が全状態密度、青線がAへの射影、茶色の線がBへの射影で、 青線と茶色の線の和が灰色の領域の上端になる。横軸は各模型の価電子帯上端 "
+":math:`E_{\\mathrm v}` を0とし、点線で示す。バンド端の発散は縦軸の範囲で切っている。"
+msgstr ""
+"Projected density of states of the alternating AB chain (per spin per "
+"unit cell, on a k-point mesh of 4000 points with a broadening width of "
+":math:`\\sigma=0.05t`\\ ). The left panel shows :math:`\\Delta/t=1` and "
+"the right panel shows :math:`\\Delta/t=4`. The light gray area is the "
+"total density of states. The blue line is the projection onto A and the "
+"brown line is the projection onto B. The sum of the two lines gives the "
+"upper edge of the gray area. The horizontal axis is referenced to the "
+"valence band maximum :math:`E_{\\mathrm v}` of each model, marked by the "
+"dotted line at zero. The vertical axis clips the divergences at the band "
+"edges."
+
+#: ../../electronic/pdos.rst:404
+msgid ""
+":numref:`fig-pdos-ab-chain`\\ では、どちらの :math:`\\Delta` でも価電子帯（下のバンド）は "
+"主にAからなり、Bの重みは価電子帯の下端で大きく、上端で0になる。2準位模型でいえば、 "
+"価電子帯の下端はBが最も多く混じった結合性の状態、上端はBと混じらないAの状態である。 :math:`\\Delta/t` "
+"を大きくすると、価電子帯のBの重みは小さくなる。"
+msgstr ""
+"In :numref:`fig-pdos-ab-chain`\\ , the valence band (the lower band) is "
+"predominantly A at both values of :math:`\\Delta`. The weight on B is "
+"largest at the bottom of the valence band and vanishes at the top. In "
+"terms of the two-level model, the bottom of the valence band is a bonding"
+" state with the most admixture from B, whereas the top is an A state with"
+" no admixture from B. Increasing :math:`\\Delta/t` reduces the weight of "
+"B in the valence band."
+
+#: ../../electronic/pdos.rst:409
+msgid ""
+"下のバンドを単位胞あたり2電子で満たしたときの、Bに割り当てられる電子数 :math:`N_B` を :eq:`pd-population` "
+"から求めると、次の表のようになる。比較のため、同じ :math:`t` と :math:`\\Delta` の2準位模型の値 "
+":math:`2w_B^-` と、:math:`\\Delta\\gg t` での近似値も示す。"
+msgstr ""
+"Filling the lower band with two electrons per unit cell gives the "
+"electron population on B, :math:`N_B`, from Equation :eq:`pd-population`."
+" For comparison, the table includes the two-level model result for the "
+"same :math:`t` and :math:`\\Delta`, namely :math:`2w_B^-`, and the "
+"approximation for :math:`\\Delta\\gg t`."
+
+#: ../../electronic/pdos.rst:413
+msgid "Bに割り当てられる電子数 :math:`N_B`\\ （スピン和、単位胞あたり）"
+msgstr "Electron population on B, :math:`N_B` \\ (summed over spin, per unit cell)"
+
+#: ../../electronic/pdos.rst:417
+msgid ":math:`\\Delta/t`"
+msgstr ":math:`\\Delta/t`"
+
+#: ../../electronic/pdos.rst:418
+msgid "AB交替鎖"
+msgstr "Alternating AB chain"
+
+#: ../../electronic/pdos.rst:419
+msgid "2準位模型 :math:`2w_B^-`"
+msgstr "Two-level model :math:`2w_B^-`"
+
+#: ../../electronic/pdos.rst:420
+msgid "近似 :math:`4t^2/\\Delta^2`"
+msgstr "Approximation :math:`4t^2/\\Delta^2`"
+
+#: ../../electronic/pdos.rst:421
+msgid "0"
+msgstr "0"
+
+#: ../../electronic/pdos.rst:422 ../../electronic/pdos.rst:423
+#: ../../electronic/pdos.rst:436
+msgid "1.000"
+msgstr "1.000"
+
+#: ../../electronic/pdos.rst:424
+msgid "—"
+msgstr "—"
+
+#: ../../electronic/pdos.rst:425
+msgid "0.1"
+msgstr "0.1"
+
+#: ../../electronic/pdos.rst:426
+msgid "0.919"
+msgstr "0.919"
+
+#: ../../electronic/pdos.rst:427
+msgid "0.950"
+msgstr "0.950"
+
+#: ../../electronic/pdos.rst:428
+msgid "400"
+msgstr "400"
+
+#: ../../electronic/pdos.rst:429
+msgid "1"
+msgstr "1"
+
+#: ../../electronic/pdos.rst:430
+msgid "0.563"
+msgstr "0.563"
+
+#: ../../electronic/pdos.rst:431
+msgid "0.553"
+msgstr "0.553"
+
+#: ../../electronic/pdos.rst:432
+msgid "4.000"
+msgstr "4.000"
+
+#: ../../electronic/pdos.rst:433
+msgid "2"
+msgstr "2"
+
+#: ../../electronic/pdos.rst:434
+msgid "0.357"
+msgstr "0.357"
+
+#: ../../electronic/pdos.rst:435
+msgid "0.293"
+msgstr "0.293"
+
+#: ../../electronic/pdos.rst:437
+msgid "4"
+msgstr "4"
+
+#: ../../electronic/pdos.rst:438
+msgid "0.165"
+msgstr "0.165"
+
+#: ../../electronic/pdos.rst:439
+msgid "0.106"
+msgstr "0.106"
+
+#: ../../electronic/pdos.rst:440
+msgid "0.250"
+msgstr "0.250"
+
+#: ../../electronic/pdos.rst:441
+msgid "8"
+msgstr "8"
+
+#: ../../electronic/pdos.rst:442
+msgid "0.055"
+msgstr "0.055"
+
+#: ../../electronic/pdos.rst:443
+msgid "0.030"
+msgstr "0.030"
+
+#: ../../electronic/pdos.rst:444
+msgid "0.0625"
+msgstr "0.0625"
+
+#: ../../electronic/pdos.rst:446
+msgid ""
+":math:`\\Delta=0` では電子がAとBに1個ずつ分かれ、:math:`\\Delta` が大きいほど電子はAに移る。 "
+":math:`\\Delta/t\\ge1` の範囲で同じ :math:`\\Delta` で比べると、交替鎖の :math:`N_B` "
+"は2準位模型より大きい。:math:`\\Delta\\gg t` でこうなるのは、 各Aが2つのBと結合しており、:eq:`pd-moment`"
+" の広がり :math:`\\langle|h(k)|^2\\rangle=2t^2` が2準位模型の2倍 だからである。実際、:eq:`pd-"
+"ionic-limit` の :math:`t^2` を :math:`2t^2` に置き換えると、 :math:`\\Delta\\gg t` "
+"での近似 :math:`N_B\\simeq4t^2/\\Delta^2` が得られ、:math:`\\Delta/t=8` では "
+"交替鎖の値に近い。"
+msgstr ""
+"At :math:`\\Delta=0`, A and B each receive one electron. As "
+":math:`\\Delta` increases, electrons shift toward A. For "
+":math:`\\Delta/t\\ge1`, at the same :math:`\\Delta`, the alternating "
+"chain has a larger :math:`N_B` than the two-level model. When "
+":math:`\\Delta\\gg t`, this occurs because each A couples to two B atoms "
+"and the spread from Equation :eq:`pd-moment`, "
+":math:`\\langle|h(k)|^2\\rangle=2t^2`, is twice that of the two-level "
+"model. Indeed, using Equation :eq:`pd-ionic-limit` with :math:`t^2` "
+"replaced by :math:`2t^2` gives, for :math:`\\Delta\\gg t`, the "
+"approximation :math:`N_B\\simeq4t^2/\\Delta^2`, and at "
+":math:`\\Delta/t=8` it is close to the value for the alternating chain."
+
+#: ../../electronic/pdos.rst:453
+msgid ""
+":math:`\\Delta` が小さいと、大小は逆になる。:math:`\\Delta/t=0.1` では交替鎖の :math:`N_B` "
+"が0.919、2準位模型が0.950で、 両者は :math:`\\Delta/t\\approx0.88` "
+"で等しくなる。交替鎖では、価電子帯の上端 :math:`ka=\\pi` の近くで :math:`|h(k)|` が :math:`t` "
+"より小さくなり、 そこの状態のBの重みは2準位模型より小さく、上端ではAだけになる。:math:`\\Delta` "
+"が小さいと、この上端付近の寄与が、 平均の広がりが大きいことの効果を上回る。"
+msgstr ""
+"For small :math:`\\Delta`, the order reverses. At :math:`\\Delta/t=0.1`, "
+":math:`N_B` is 0.919 in the alternating chain and 0.950 in the two-level "
+"model. The values coincide at :math:`\\Delta/t\\approx0.88`. In the "
+"alternating chain, near the valence band maximum at :math:`ka=\\pi`, "
+":math:`|h(k)|` is smaller than :math:`t`, so the states there have less "
+"weight on B than in the two-level model. At the maximum, the state is "
+"entirely A. For small :math:`\\Delta`, the contribution from near the "
+"band maximum outweighs the effect of the larger average spread."
+
+#: ../../electronic/pdos.rst:458
+#, python-brace-format
+msgid ""
+"ぼかした曲線を積分して :math:`N_A` や :math:`N_B` を求めると、積分の上限によって値が変わる。 "
+":math:`\\Delta/t=4` の占有されたAの重みは :math:`N_A=2-N_B=1.835` である。ぼかした "
+":math:`2\\tilde\\rho_A` を :math:`E_{\\mathrm v}` "
+"まで積分すると、:math:`\\sigma=0.1t` で1.665、 :math:`\\sigma=0.4t` "
+"で1.456となり、正しい値より小さい。:math:`E_{\\mathrm v}` にはAの重みが "
+"集まっていて、その山の上側の裾が窓の外に出るからである。ギャップの中央まで積分すると、 "
+"どちらの幅でも小数第3位まで1.835に一致する。ギャップの半分（:math:`2t`）が :math:`\\sigma` の5倍以上あり、 "
+"ギャップの中央を越えて出入りする裾が小さいからである。:math:`\\sigma=t` では1.817となり、ずれが見えてくる。 "
+"電子数を厳密に求めるには、ぼかす前の固有状態の重みを、:eq:`pd-population` のように占有した状態について直接足す。"
+msgstr ""
+"When :math:`N_A` or :math:`N_B` is obtained by integrating a broadened "
+"curve, its value depends on the upper integration limit. For "
+":math:`\\Delta/t=4`, the occupied weight on A is :math:`N_A=2-N_B=1.835`."
+" Integrating the broadened :math:`2\\tilde\\rho_A` up to "
+":math:`E_{\\mathrm v}` gives 1.665 at :math:`\\sigma=0.1t` and 1.456 at "
+":math:`\\sigma=0.4t`, both below the correct value. The weight on A is "
+"concentrated at :math:`E_{\\mathrm v}`, so the upper tail of that peak "
+"extends beyond the window. Integrating to the middle of the gap gives "
+"1.835 to three decimal places at both widths. Half the gap (:math:`2t`) "
+"is at least five times :math:`\\sigma`, so little weight crosses the "
+"middle of the gap in the Gaussian tails. At :math:`\\sigma=t`, the result"
+" is 1.817 and the discrepancy becomes apparent. To obtain the exact "
+"electron population, sum the unbroadened weights of the occupied "
+"eigenstates directly, as in Equation :eq:`pd-population`."
+
+#: ../../electronic/pdos.rst:467
+msgid ""
+"同じ読み方は、実際の酸化物の計算にも使える。 `BaTiO₃の二重井戸ポテンシャル Part 2 <https://example.quloud-"
+"platform.quemix.com/BaTiO3/total-energy.html#batio3-mode-dos>`__ "
+"では、OpenMXのLDA（CA19）と局在基底（PAO）で、5原子の立方晶BaTiO\\ :sub:`3`\\ と、極性 "
+"ソフトモードに沿って原子をずらした構造のPDOSを、ガウス関数でぼかし、各構造の価電子帯上端を0に揃えて比べている。主にO "
+"2pからなる価電子帯に、Ti 3dの重みが有限に現れる。形式的な 酸化数ではTi\\ :sup:`4+`\\ "
+"はd電子を持たないが、交替鎖でAに電子が移っても :math:`N_B` が0に ならないのと同じく、Ti 3dとO "
+"2pの混成によって占有状態にTi 3dの重みが残る。Cohenは、 このTi 3d–O 2pの混成がBaTiO\\ :sub:`3`\\ "
+"とPbTiO\\ :sub:`3`\\ の強誘電不安定性に欠かせないことを 示した "
+"[PdosCohen1992]_。ただし実際の物質では1原子に複数の軌道があり、PAO基底への射影の "
+"仕方も模型と異なるので、模型の数値と事例の数値を直接比べることはできない。"
+msgstr ""
+"The same approach can be used to interpret calculations for real oxides. "
+"The calculation example `Double-Well Potential of BaTiO₃, Part 2 "
+"<https://example.quloud-platform.quemix.com/BaTiO3/total-"
+"energy.html#batio3-mode-dos>`__ uses OpenMX with LDA (CA19) and a "
+"localized basis (PAO) to compare the PDOS of five-atom cubic BaTiO\\ "
+":sub:`3` \\ with that of a structure in which the atoms have been "
+"displaced along a polar soft mode. The curves are broadened with a "
+"Gaussian and each structure's valence band maximum is set to zero. The "
+"predominantly O 2p valence band has a finite Ti 3d weight. In terms of "
+"its formal oxidation state, Ti\\ :sup:`4+` \\ has no d electrons, but "
+"hybridization between Ti 3d and O 2p leaves Ti 3d weight in occupied "
+"states, just as :math:`N_B` remains nonzero in the alternating chain even"
+" when electrons shift onto A. Cohen showed that the ferroelectric "
+"instability of BaTiO\\ :sub:`3` \\ and PbTiO\\ :sub:`3` \\ requires this "
+"Ti 3d–O 2p hybridization [PdosCohen1992]_. However, in the real material "
+"each atom has multiple orbitals and the projection onto the PAO basis "
+"differs from the projection used in the model, so values from the model "
+"and the calculation example cannot be compared directly."
+
+#: ../../electronic/pdos.rst:478
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../electronic/pdos.rst:480
+msgid ""
+"PDOSは観測量ではなく、基底の取り方に依存する。:ref:`Löwdin電子数<lowdin>` と同じく、 "
+"状態の重みをどの原子に割り当てるかは、原子軌道の広がり、直交化の方法（Mulliken型かLöwdin型か）、射影の完全さ（spilling "
+"parameter）で変わる。PDOSは、同じ方法・同じ基底で 得た結果どうしで比べる。"
+msgstr ""
+"The PDOS is not an observable and depends on the choice of basis. As with"
+" :ref:`Löwdin populations <lowdin>`, the assignment of a state's weight "
+"to individual atoms depends on the spatial extent of the atomic orbitals,"
+" the method of orthogonalization (Mulliken-type or Löwdin-type), and the "
+"completeness of the projection, indicated by the spilling parameter. "
+"Compare PDOS results obtained with the same method and basis."
+
+#: ../../electronic/pdos.rst:484
+msgid ""
+"PDOSを占有状態で積分して得られるのは、:eq:`pd-population` のとおりLöwdin電子数やMulliken電子数であり、 "
+"形式的な酸化数から数えた電子数ではない。遷移金属イオンの形式的な酸化数を "
+"変えても、イオンの近くの電子数はほとんど変わらないことが計算で示されている "
+"[PdosRaebiger2008]_。また、PDOSの重みは混成の行列要素そのものでもない。2準位模型の :eq:`pd-dimer-w` "
+"が示すとおり、重みは :math:`t/\\Delta` の比と結合する相手の数で 決まり、山が重なることだけでは混成の有無も決まらない。"
+msgstr ""
+"As Equation :eq:`pd-population` shows, integrating the PDOS over occupied"
+" states gives the Löwdin population or the Mulliken population, not an "
+"electron count derived from the formal oxidation state. Calculations have"
+" shown that changing the formal oxidation state of a transition-metal ion"
+" hardly changes the number of electrons near that ion "
+"[PdosRaebiger2008]_. The PDOS weight is also distinct from the "
+"hybridization matrix element itself. As Equation :eq:`pd-dimer-w` for the"
+" two-level model illustrates, the weight depends on the ratio "
+":math:`t/\\Delta` and on the number of coupling partners. Peak overlap "
+"alone cannot establish whether hybridization occurs."
+
+#: ../../electronic/pdos.rst:490
+#, python-brace-format
+msgid ""
+"構造ごとに価電子帯上端で揃えた図では、基準そのものが構造とともに動く。揃えた図での 重心の移動は :math:`E_{\\mathrm v}` "
+"の移動を含み、全エネルギーの分解としても読めない （:ref:`pdos-energy-alignment`）。"
+msgstr ""
+"In plots aligned to each structure's valence band maximum, the reference "
+"itself moves with the structure. A centroid shift in an aligned plot "
+"includes the shift of :math:`E_{\\mathrm v}` and cannot be interpreted as"
+" a contribution to the total energy (see :ref:`pdos-energy-alignment`)."
+
+#: ../../electronic/pdos.rst:494
+msgid ""
+"ぼかした曲線から窓を切って求めた量は、:math:`\\sigma` と窓の取り方に依存する。裾の出入りは "
+"重みの集まるバンド端やピークで大きいので、窓の端がそこにかかると値が大きく変わる。 "
+"数値を示すときは、ぼかしの関数と幅の定義、窓の範囲も併せて書く。"
+msgstr ""
+"A quantity obtained from a broadened curve over an energy window depends "
+"on :math:`\\sigma` and on the choice of window. The largest transfers of "
+"weight across the window edges occur near band edges or peaks where the "
+"weight is concentrated, so the value can change substantially when a "
+"window edge falls there. When reporting numerical values, also specify "
+"the broadening function, how its width is defined, and the bounds of the "
+"window."
+
+#: ../../electronic/pdos.rst:499
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../electronic/pdos.rst:501
+msgid ":ref:`lowdin`"
+msgstr ":ref:`lowdin`"
+
+#: ../../electronic/pdos.rst:502
+msgid ":ref:`bond_order`"
+msgstr ":ref:`bond_order`"
+
+#: ../../electronic/pdos.rst:503
+msgid ":ref:`brillouinzone`"
+msgstr ":ref:`Brillouin Zone <brillouinzone>`"
+
+#: ../../electronic/pdos.rst:504
+msgid ":ref:`bandstructure`"
+msgstr ":ref:`Band Structure and Density of States <bandstructure>`"
+
+#: ../../electronic/pdos.rst:505
+msgid ":ref:`kpoint_sampling`"
+msgstr ":ref:`k-Point Sampling <kpoint_sampling>`"
+
+#: ../../electronic/pdos.rst:506
+msgid ":ref:`tightbinding`"
+msgstr ":ref:`Tight-Binding Approximation <tightbinding>`"
+
+#: ../../electronic/pdos.rst:507
+msgid ""
+"`水素原子を並べると電子バンドは生まれるのか <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_"
+msgstr ""
+"`Do Electronic Bands Form in a Hydrogen Atom Chain? <https://example"
+".quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_"
+
+#: ../../electronic/pdos.rst:508
+msgid ""
+"`BaTiO₃の二重井戸ポテンシャル Part 2 <https://example.quloud-"
+"platform.quemix.com/BaTiO3/total-energy.html>`_"
+msgstr ""
+"`Double-Well Potential of BaTiO₃, Part 2 <https://example.quloud-"
+"platform.quemix.com/BaTiO3/total-energy.html>`_"
+
+#: ../../electronic/pdos.rst:511
+msgid "参考文献"
+msgstr "References"
+
+#: ../../electronic/pdos.rst:513
+msgid ""
+"R. M. Martin, *Electronic Structure: Basic Theory and Practical Methods*,"
+" 2nd ed. (Cambridge University Press, 2020), `doi:10.1017/9781108555586 "
+"<https://doi.org/10.1017/9781108555586>`_."
+msgstr ""
+"R. M. Martin, *Electronic Structure: Basic Theory and Practical Methods*,"
+" 2nd ed. (Cambridge University Press, 2020), `doi:10.1017/9781108555586 "
+"<https://doi.org/10.1017/9781108555586>`_."
+
+#: ../../electronic/pdos.rst:517
+msgid ""
+"R. Hoffmann, “How Chemistry and Physics Meet in the Solid State,” "
+"*Angewandte Chemie International Edition in English* **26**, 846–878 "
+"(1987), `doi:10.1002/anie.198708461 "
+"<https://doi.org/10.1002/anie.198708461>`_."
+msgstr ""
+"R. Hoffmann, “How Chemistry and Physics Meet in the Solid State,” "
+"*Angewandte Chemie International Edition in English* **26**, 846–878 "
+"(1987), `doi:10.1002/anie.198708461 "
+"<https://doi.org/10.1002/anie.198708461>`_."
+
+#: ../../electronic/pdos.rst:520
+msgid ""
+"D. Sánchez-Portal, E. Artacho, and J. M. Soler, “Projection of plane-wave"
+" calculations into atomic orbitals,” *Solid State Communications* **95**,"
+" 685–690 (1995), `doi:10.1016/0038-1098(95)00341-X "
+"<https://doi.org/10.1016/0038-1098(95)00341-X>`_."
+msgstr ""
+"D. Sánchez-Portal, E. Artacho, and J. M. Soler, “Projection of plane-wave"
+" calculations into atomic orbitals,” *Solid State Communications* **95**,"
+" 685–690 (1995), `doi:10.1016/0038-1098(95)00341-X "
+"<https://doi.org/10.1016/0038-1098(95)00341-X>`_."
+
+#: ../../electronic/pdos.rst:524
+msgid ""
+"C. G. Van de Walle and R. M. Martin, “Theoretical study of band offsets "
+"at semiconductor interfaces,” *Physical Review B* **35**, 8154–8165 "
+"(1987), `doi:10.1103/PhysRevB.35.8154 "
+"<https://doi.org/10.1103/PhysRevB.35.8154>`_."
+msgstr ""
+"C. G. Van de Walle and R. M. Martin, “Theoretical study of band offsets "
+"at semiconductor interfaces,” *Physical Review B* **35**, 8154–8165 "
+"(1987), `doi:10.1103/PhysRevB.35.8154 "
+"<https://doi.org/10.1103/PhysRevB.35.8154>`_."
+
+#: ../../electronic/pdos.rst:527
+msgid ""
+"W. A. Harrison, “Bond-Orbital Model and the Properties of Tetrahedrally "
+"Coordinated Solids,” *Physical Review B* **8**, 4487–4498 (1973), "
+"`doi:10.1103/PhysRevB.8.4487 <https://doi.org/10.1103/PhysRevB.8.4487>`_."
+msgstr ""
+"W. A. Harrison, “Bond-Orbital Model and the Properties of Tetrahedrally "
+"Coordinated Solids,” *Physical Review B* **8**, 4487–4498 (1973), "
+"`doi:10.1103/PhysRevB.8.4487 <https://doi.org/10.1103/PhysRevB.8.4487>`_."
+
+#: ../../electronic/pdos.rst:530
+msgid ""
+"R. Dronskowski and P. E. Blöchl, “Crystal orbital Hamilton populations "
+"(COHP): energy-resolved visualization of chemical bonding in solids based"
+" on density-functional calculations,” *Journal of Physical Chemistry* "
+"**97**, 8617–8624 (1993), `doi:10.1021/j100135a014 "
+"<https://doi.org/10.1021/j100135a014>`_."
+msgstr ""
+"R. Dronskowski and P. E. Blöchl, “Crystal orbital Hamilton populations "
+"(COHP): energy-resolved visualization of chemical bonding in solids based"
+" on density-functional calculations,” *Journal of Physical Chemistry* "
+"**97**, 8617–8624 (1993), `doi:10.1021/j100135a014 "
+"<https://doi.org/10.1021/j100135a014>`_."
+
+#: ../../electronic/pdos.rst:534
+msgid ""
+"R. E. Cohen, “Origin of ferroelectricity in perovskite oxides,” *Nature* "
+"**358**, 136–138 (1992), `doi:10.1038/358136a0 "
+"<https://doi.org/10.1038/358136a0>`_."
+msgstr ""
+"R. E. Cohen, “Origin of ferroelectricity in perovskite oxides,” *Nature* "
+"**358**, 136–138 (1992), `doi:10.1038/358136a0 "
+"<https://doi.org/10.1038/358136a0>`_."
+
+#: ../../electronic/pdos.rst:537
+msgid ""
+"H. Raebiger, S. Lany, and A. Zunger, “Charge self-regulation upon "
+"changing the oxidation state of transition metals in insulators,” "
+"*Nature* **453**, 763–766 (2008), `doi:10.1038/nature07009 "
+"<https://doi.org/10.1038/nature07009>`_."
+msgstr ""
+"H. Raebiger, S. Lany, and A. Zunger, “Charge self-regulation upon "
+"changing the oxidation state of transition metals in insulators,” "
+"*Nature* **453**, 763–766 (2008), `doi:10.1038/nature07009 "
+"<https://doi.org/10.1038/nature07009>`_."
+

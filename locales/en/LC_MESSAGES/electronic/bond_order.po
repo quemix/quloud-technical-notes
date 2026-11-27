@@ -1,0 +1,723 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 00:26+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../electronic/bond_order.rst:4
+msgid "結合次数"
+msgstr "Bond Order"
+
+#: ../../electronic/bond_order.rst:6
+msgid ""
+"**結合次数** は、原子間の化学結合の程度を表す指標である。化学結合の基本的な "
+"分類では、単結合、二重結合、三重結合にそれぞれ1、2、3を対応させる。電子状態 "
+"計算から評価した結合次数は整数とは限らず、その定義も複数ある。本稿では、 分子軌道の電子数による定義から出発し、密度行列の非対角要素による定義 "
+"（Coulson結合次数）とそのエネルギー上の意味、Wiberg・Mayerの結合指数との関係を 式で追う。"
+msgstr ""
+"**Bond order** measures the degree of chemical bonding between atoms. In "
+"the basic classification of chemical bonds, single, double, and triple "
+"bonds correspond to 1, 2, and 3, respectively. Bond orders obtained from "
+"electronic structure calculations need not be integers, and there are "
+"several ways to define them. This article starts with the definition "
+"based on molecular orbital populations. It then uses equations to derive "
+"the definition based on off-diagonal density matrix elements (the Coulson"
+" bond order), explain its relation to energy, and connect it to the "
+"Wiberg bond index and the Mayer bond index."
+
+#: ../../electronic/bond_order.rst:13
+msgid ""
+"**前提知識**: :ref:`タイト・バインディング近似<tightbinding>`、:ref:`開放端の鎖の固有状態<fc-"
+"standing-waves>`、 :ref:`Löwdin解析<lowdin>` の密度行列。"
+msgstr ""
+"**Prerequisites**: the :ref:`tight-binding approximation <tightbinding>`,"
+" :ref:`eigenstates of an open-ended chain <fc-standing-waves>`, and the "
+"density matrix from :ref:`Löwdin analysis <lowdin>`."
+
+#: ../../electronic/bond_order.rst:16
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../electronic/bond_order.rst:18
+msgid "結合性・反結合性軌道の電子数から結合次数を求める。"
+msgstr ""
+"Calculate bond order from the electron populations of bonding and "
+"antibonding orbitals."
+
+#: ../../electronic/bond_order.rst:19
+msgid "密度行列の非対角要素が結合次数になることを、二原子分子で確かめる。"
+msgstr ""
+"Verify for a diatomic molecule that an off-diagonal density matrix "
+"element gives the bond order."
+
+#: ../../electronic/bond_order.rst:20
+msgid "結合次数がホッピングに対するエネルギーの微分であることを導く。"
+msgstr ""
+"Derive the bond order from the derivative of the energy with respect to "
+"hopping."
+
+#: ../../electronic/bond_order.rst:21
+msgid "一様な半充填鎖の結合次数 :math:`2/\\pi` と、有限鎖の端による交替を導く。"
+msgstr ""
+"Derive the bond order :math:`2/\\pi` of a uniform chain at half filling "
+"and the bond alternation caused by the ends of a finite chain."
+
+#: ../../electronic/bond_order.rst:22
+msgid "Wiberg・Mayer結合指数との関係と、指標の限界を説明する。"
+msgstr ""
+"Explain the relation to the Wiberg bond index and the Mayer bond index "
+"and the limitations of these measures."
+
+#: ../../electronic/bond_order.rst:25
+msgid "分子軌道の電子数による定義"
+msgstr "Definition in Terms of Molecular Orbital Populations"
+
+#: ../../electronic/bond_order.rst:27
+msgid ""
+"二原子分子では、2つの原子軌道から結合性軌道と反結合性軌道ができる。それぞれに 入る電子数を "
+":math:`N_{\\mathrm{bonding}}`、:math:`N_{\\mathrm{antibonding}}` とすると、"
+msgstr ""
+"In a diatomic molecule, two atomic orbitals form a bonding and an "
+"antibonding orbital. Let their electron populations be "
+":math:`N_{\\mathrm{bonding}}` and :math:`N_{\\mathrm{antibonding}}`, "
+"respectively. The bond order is defined as"
+
+#: ../../electronic/bond_order.rst:30
+msgid "b=\\frac{N_{\\mathrm{bonding}}-N_{\\mathrm{antibonding}}}{2}"
+msgstr "b=\\frac{N_{\\mathrm{bonding}}-N_{\\mathrm{antibonding}}}{2}"
+
+#: ../../electronic/bond_order.rst:35
+msgid ""
+"を結合次数とする。電子対1組が1本の結合に対応するように2で割っている。例えば "
+"水素分子の基底状態では、結合性軌道に電子が2個入り、反結合性軌道は空なので :math:`b=1` である。He\\ :sub:`2`\\ "
+"では両方に2個ずつ入るので :math:`b=0` となり、 安定な結合をつくらないことと対応する。"
+msgstr ""
+"The factor of 2 in the denominator makes one electron pair correspond to "
+"one bond. For example, in the ground state of the hydrogen molecule, the "
+"bonding orbital contains two electrons and the antibonding orbital is "
+"empty, giving a bond order of :math:`b=1`. In He\\ :sub:`2`\\ , both "
+"orbitals contain two electrons, giving :math:`b=0`, consistent with the "
+"absence of a stable bond."
+
+#: ../../electronic/bond_order.rst:40
+msgid "この定義は、軌道を結合性・反結合性に分類できる簡単な分子でしか使えない。 多原子系に一般化するには、軌道の分類ではなく、原子間の密度行列要素を使う。"
+msgstr ""
+"This definition applies only to simple molecules whose orbitals can be "
+"classified as bonding or antibonding. To generalize it to polyatomic "
+"systems, use density matrix elements between atoms instead of classifying"
+" orbitals."
+
+#: ../../electronic/bond_order.rst:44
+msgid "密度行列による定義（Coulson結合次数）"
+msgstr "Definition from the Density Matrix (Coulson Bond Order)"
+
+#: ../../electronic/bond_order.rst:46
+#, python-brace-format
+msgid ""
+"各原子に1つずつ直交した軌道 :math:`|r\\rangle` を置き、分子軌道を :math:`\\psi_i=\\sum_r "
+"c_{ri}|r\\rangle`\\ （係数は実数）と展開する。Coulsonは π電子系に対して、原子 :math:`r` と "
+":math:`s` の間の結合次数を"
+msgstr ""
+"Place one orbital :math:`|r\\rangle` on each atom, with the orbitals "
+"forming an orthonormal basis. Expand each molecular orbital as "
+":math:`\\psi_i=\\sum_r c_{ri}|r\\rangle`\\ (with real coefficients). For "
+"a π-electron system, Coulson defined the bond order between atoms "
+":math:`r` and :math:`s` as"
+
+#: ../../electronic/bond_order.rst:50
+#, python-brace-format
+msgid "p_{rs}=\\sum_i n_i\\,c_{ri}\\,c_{si}"
+msgstr "p_{rs}=\\sum_i n_i\\,c_{ri}\\,c_{si}"
+
+#: ../../electronic/bond_order.rst:55
+#, python-brace-format
+msgid ""
+"と定義した [Coulson1939]_。ここで :math:`n_i` は軌道 :math:`i` の占有数である。 "
+"これは直交基底での密度行列の非対角要素 :math:`P_{rs}` そのものである。"
+msgstr ""
+"[Coulson1939]_. Here :math:`n_i` is the occupation number of orbital "
+":math:`i`. The bond order is exactly the off-diagonal density matrix "
+"element :math:`P_{rs}` in the orthogonal basis."
+
+#: ../../electronic/bond_order.rst:58
+msgid ""
+"二原子分子でこの定義が :eq:`bo-mo` と一致することを確かめる。結合性軌道と 反結合性軌道の係数は "
+":math:`(1,1)/\\sqrt2` と :math:`(1,-1)/\\sqrt2` なので、"
+msgstr ""
+"For a diatomic molecule, this definition agrees with Equation :eq:`bo-"
+"mo`. The coefficients of the bonding and antibonding orbitals are "
+":math:`(1,1)/\\sqrt2` and :math:`(1,-1)/\\sqrt2`, respectively, giving"
+
+#: ../../electronic/bond_order.rst:61
+msgid ""
+"p_{12}=N_{\\mathrm{bonding}}\\cdot\\frac{1}{\\sqrt2}\\cdot\\frac{1}{\\sqrt2}"
+"\n"
+"+N_{\\mathrm{antibonding}}\\cdot\\frac{1}{\\sqrt2}\\cdot\\left(-\\frac{1}{\\sqrt2}\\right)"
+"\n"
+"=\\frac{N_{\\mathrm{bonding}}-N_{\\mathrm{antibonding}}}{2}"
+msgstr ""
+"p_{12}=N_{\\mathrm{bonding}}\\cdot\\frac{1}{\\sqrt2}\\cdot\\frac{1}{\\sqrt2}"
+"\n"
+"+N_{\\mathrm{antibonding}}\\cdot\\frac{1}{\\sqrt2}\\cdot\\left(-\\frac{1}{\\sqrt2}\\right)"
+"\n"
+"=\\frac{N_{\\mathrm{bonding}}-N_{\\mathrm{antibonding}}}{2}"
+
+#: ../../electronic/bond_order.rst:67
+#, python-brace-format
+msgid ""
+"となる。結合性軌道の電子は :math:`p_{rs}` を増やし、反結合性軌道の電子は減らす。 :eq:`bo-coulson` "
+"は、この寄与をすべての占有軌道について足し合わせたものである。"
+msgstr ""
+"Electrons in bonding orbitals increase :math:`p_{rs}`, whereas electrons "
+"in antibonding orbitals decrease it. Equation :eq:`bo-coulson` sums these"
+" contributions over all occupied orbitals."
+
+#: ../../electronic/bond_order.rst:70
+#, python-brace-format
+msgid ""
+"基底関数が直交していない第一原理計算では、:ref:`Löwdin直交化<lowdin>` した 密度行列 :math:`P^{\\mathrm "
+"L}=S^{1/2}DS^{1/2}` の非対角要素を使うのが一つの方法である。 1原子1基底関数の場合、隣接原子 "
+":math:`i`、:math:`i+1` の間の量"
+msgstr ""
+"In first-principles calculations with nonorthogonal basis functions, one "
+"option is to apply :ref:`Löwdin orthogonalization <lowdin>` and use off-"
+"diagonal elements of the resulting density matrix :math:`P^{\\mathrm "
+"L}=S^{1/2}DS^{1/2}`. With one basis function per atom, the quantity for "
+"neighboring atoms :math:`i` and :math:`i+1`,"
+
+#: ../../electronic/bond_order.rst:74
+#, python-brace-format
+msgid "B_i=P^{\\mathrm L}_{i,i+1}"
+msgstr "B_i=P^{\\mathrm L}_{i,i+1}"
+
+#: ../../electronic/bond_order.rst:79
+msgid ""
+"はCoulson結合次数を非直交基底に拡張したものと見なせる。:math:`B_i` の符号は "
+"基底関数の位相の取り方に依存するので、比較するときは位相を揃えておく。"
+msgstr ""
+"can be viewed as an extension of the Coulson bond order to a "
+"nonorthogonal basis. The sign of :math:`B_i` depends on the choice of "
+"phase for the basis functions, so use consistent phases when comparing "
+"values."
+
+#: ../../electronic/bond_order.rst:83
+msgid "エネルギーとの関係"
+msgstr "Relation to Energy"
+
+#: ../../electronic/bond_order.rst:85
+#, python-brace-format
+msgid ""
+"Coulson結合次数には、エネルギー上の明確な意味がある。電子間相互作用を含まない タイト・バインディング模型で、ハミルトニアンの行列要素を "
+":math:`h_{rs}` とすると、 全エネルギーは"
+msgstr ""
+"The Coulson bond order has a direct connection to energy. In a tight-"
+"binding model without electron–electron interactions, let the Hamiltonian"
+" matrix elements be :math:`h_{rs}`. The total energy is"
+
+#: ../../electronic/bond_order.rst:89
+#, python-brace-format
+msgid ""
+"E=\\sum_i n_i\\langle\\psi_i|\\hat H|\\psi_i\\rangle\n"
+"=\\sum_i n_i\\sum_{rs}c_{ri}h_{rs}c_{si}\n"
+"=\\sum_{rs}h_{rs}P_{rs}"
+msgstr ""
+"E=\\sum_i n_i\\langle\\psi_i|\\hat H|\\psi_i\\rangle\n"
+"=\\sum_i n_i\\sum_{rs}c_{ri}h_{rs}c_{si}\n"
+"=\\sum_{rs}h_{rs}P_{rs}"
+
+#: ../../electronic/bond_order.rst:95
+#, python-brace-format
+msgid ""
+"と密度行列で書ける。1次元鎖でオンサイトエネルギーを :math:`\\varepsilon_0`、 :math:`i` 番目の結合のホッピングを"
+" :math:`h_{i,i+1}=-t_i` とすると、 :math:`P_{rs}=P_{sr}` より"
+msgstr ""
+"This expresses the energy in terms of the density matrix. For a one-"
+"dimensional chain, let :math:`\\varepsilon_0` be the on-site energy and "
+"let the hopping matrix element for bond :math:`i` be "
+":math:`h_{i,i+1}=-t_i`. Since :math:`P_{rs}=P_{sr}`, the energy becomes"
+
+#: ../../electronic/bond_order.rst:99
+#, python-brace-format
+msgid "E=\\varepsilon_0\\sum_rP_{rr}-2\\sum_it_i\\,B_i"
+msgstr "E=\\varepsilon_0\\sum_rP_{rr}-2\\sum_it_i\\,B_i"
+
+#: ../../electronic/bond_order.rst:104
+msgid ""
+"となる。占有数を固定してホッピング :math:`t_i` を少し変えるとき、 "
+"Hellmann–Feynmanの定理により固有ベクトルの変化はエネルギーの1次の変化に寄与しない。 したがって"
+msgstr ""
+"When the hopping :math:`t_i` changes slightly at fixed occupation "
+"numbers, the Hellmann–Feynman theorem says that changes in the "
+"eigenvectors do not contribute to the first-order change in energy. "
+"Therefore,"
+
+#: ../../electronic/bond_order.rst:108
+#, python-brace-format
+msgid "\\frac{\\partial E}{\\partial t_i}=-2B_i"
+msgstr "\\frac{\\partial E}{\\partial t_i}=-2B_i"
+
+#: ../../electronic/bond_order.rst:112
+msgid ""
+"である。結合次数が大きい結合ほど、ホッピングを強めたときにエネルギーが大きく下がる。 この意味で、:math:`B_i` "
+"は各結合が全エネルギーに寄与する重みを表す。"
+msgstr ""
+"The larger the bond order, the more the energy decreases when hopping is "
+"strengthened. In this sense, :math:`B_i` weights each bond's contribution"
+" to the total energy."
+
+#: ../../electronic/bond_order.rst:116
+msgid "一様な鎖の結合次数"
+msgstr "Bond Orders in a Uniform Chain"
+
+#: ../../electronic/bond_order.rst:118
+#, python-brace-format
+msgid ""
+"すべてのホッピングが等しい最近接タイト・バインディング鎖を半充填にした場合の 結合次数を求める。周期鎖の固有状態は "
+":math:`c_n(k)=e^{ikna}/\\sqrt N` であり、 占有されるのは :math:`|k|<\\pi/(2a)` "
+"の状態である。係数が複素数なので、:eq:`bo-coulson` の積の 片方に複素共役を取って "
+":math:`P_{rs}=\\sum_in_i\\,c_{ri}\\,c_{si}^*` とする（実係数なら :eq:`bo-coulson` "
+"に戻る）。 :eq:`bo-coulson` の和を積分に 置き換え、:math:`\\theta=ka` とおくと、"
+msgstr ""
+"Consider the bond order in a half-filled nearest-neighbor tight-binding "
+"chain with uniform hopping. The eigenstates of the periodic chain are "
+":math:`c_n(k)=e^{ikna}/\\sqrt N`, and the states with "
+":math:`|k|<\\pi/(2a)` are occupied. Because the coefficients are complex,"
+" take the complex conjugate of one factor in the product in Equation :eq"
+":`bo-coulson`, giving :math:`P_{rs}=\\sum_in_i\\,c_{ri}\\,c_{si}^*` "
+"(which reduces to Equation :eq:`bo-coulson` for real coefficients). "
+"Replacing the sum in Equation :eq:`bo-coulson` with an integral and "
+"setting :math:`\\theta=ka` gives"
+
+#: ../../electronic/bond_order.rst:125
+msgid ""
+"P_{n,n+m}=2\\sum_{|k|<\\pi/2a}\\frac{e^{-ikma}}{N}\n"
+"=\\frac{2}{2\\pi}\\int_{-\\pi/2}^{\\pi/2}e^{-im\\theta}\\,d\\theta\n"
+"=\\frac{2\\sin(m\\pi/2)}{m\\pi}"
+msgstr ""
+"P_{n,n+m}=2\\sum_{|k|<\\pi/2a}\\frac{e^{-ikma}}{N}\n"
+"=\\frac{2}{2\\pi}\\int_{-\\pi/2}^{\\pi/2}e^{-im\\theta}\\,d\\theta\n"
+"=\\frac{2\\sin(m\\pi/2)}{m\\pi}"
+
+#: ../../electronic/bond_order.rst:131
+msgid "となる。先頭の2はスピンの縮重度である。隣接原子間（:math:`m=1`）では"
+msgstr ""
+"The leading factor of 2 is the spin degeneracy. For neighboring atoms "
+"(:math:`m=1`), this yields"
+
+#: ../../electronic/bond_order.rst:133
+#, python-brace-format
+msgid "B=\\frac{2}{\\pi}\\approx0.637"
+msgstr "B=\\frac{2}{\\pi}\\approx0.637"
+
+#: ../../electronic/bond_order.rst:138
+#, python-brace-format
+msgid ""
+"を得る。:math:`B` は1より小さい。1原子1電子の鎖では、各原子の電子が左右の "
+"両隣と結合を分け合い、さらに遠い原子との相関（:math:`m=3,5,\\ldots`）にも分配される ためである。偶数の "
+":math:`m\\ne0` では :math:`P_{n,n+m}=0` となる。 この値は :math:`t` "
+"によらない。一様な鎖の固有ベクトルは :math:`t` の大きさに 依存しないからである。"
+msgstr ""
+"The bond order :math:`B` is less than 1 because, in a chain with one "
+"electron per atom, each atom's electron contributes to bonds with both "
+"neighbors and also to correlations with more distant atoms "
+"(:math:`m=3,5,\\ldots`). For even :math:`m\\ne0`, :math:`P_{n,n+m}=0`. "
+"The bond order is independent of :math:`t` because the eigenvectors of "
+"the uniform chain do not depend on the magnitude of :math:`t`."
+
+#: ../../electronic/bond_order.rst:144
+#, python-brace-format
+msgid ""
+"両端が開いた有限鎖では、:ref:`開放端の鎖<fc-standing-waves>` で求めた 固有ベクトル "
+":math:`\\phi_j(i)=\\sqrt{2/(N+1)}\\sin\\bigl(ij\\pi/(N+1)\\bigr)` を使って"
+msgstr ""
+"For a finite open-ended chain, use the :ref:`standing-wave <fc-standing-"
+"waves>` eigenvectors "
+":math:`\\phi_j(i)=\\sqrt{2/(N+1)}\\sin\\bigl(ij\\pi/(N+1)\\bigr)` to "
+"calculate"
+
+#: ../../electronic/bond_order.rst:147
+#, python-brace-format
+msgid "B_i=2\\sum_{j=1}^{N/2}\\phi_j(i)\\,\\phi_j(i+1)"
+msgstr "B_i=2\\sum_{j=1}^{N/2}\\phi_j(i)\\,\\phi_j(i+1)"
+
+#: ../../electronic/bond_order.rst:152
+msgid ""
+"を計算する。ホッピングが一様でも端の影響で :math:`B_i` は1本おきに強弱を繰り返し、 "
+"その振幅は鎖の中央に向かって小さくなる。鎖の中央での交替の振幅は :math:`N=16,32,64` "
+"でそれぞれ約0.065、0.031、0.016であり、おおむね :math:`1/N` で 減少して、:math:`N\\to\\infty` "
+"では一様な値 :eq:`bo-uniform` に近づく。"
+msgstr ""
+"Even with uniform hopping, the ends cause :math:`B_i` to alternate "
+"between strong and weak bonds, with an amplitude that decreases toward "
+"the center. At the center, the alternation amplitudes are about 0.065, "
+"0.031, and 0.016 for :math:`N=16,32,64`, respectively. They decrease "
+"approximately as :math:`1/N`, and as :math:`N\\to\\infty` the bond order "
+"approaches the uniform value in Equation :eq:`bo-uniform`."
+
+#: ../../electronic/bond_order.rst:158
+msgid "価数の和則"
+msgstr "Valence Sum Rule"
+
+#: ../../electronic/bond_order.rst:160
+msgid ""
+"閉殻の単一行列式では、直交基底での密度行列が :math:`P^2=2P` を満たす （:ref:`Löwdin解析<lowdin>` "
+"で見たように :math:`P/2` は射影である）。 その :math:`(r,r)` 成分を取ると"
+msgstr ""
+"For a closed-shell single determinant, the density matrix in an "
+"orthogonal basis satisfies :math:`P^2=2P` (as shown in :ref:`Löwdin "
+"analysis <lowdin>`, :math:`P/2` is a projector). Taking the :math:`(r,r)`"
+" element gives"
+
+#: ../../electronic/bond_order.rst:164
+#, python-brace-format
+msgid "\\sum_sP_{rs}^2=2P_{rr}"
+msgstr "\\sum_sP_{rs}^2=2P_{rr}"
+
+#: ../../electronic/bond_order.rst:168
+#, python-brace-format
+msgid "となる。1原子1軌道で :math:`P_{rr}=1` のとき、"
+msgstr "With one orbital per atom and :math:`P_{rr}=1`, this gives"
+
+#: ../../electronic/bond_order.rst:170
+#, python-brace-format
+msgid "\\sum_{s\\ne r}P_{rs}^2=1"
+msgstr "\\sum_{s\\ne r}P_{rs}^2=1"
+
+#: ../../electronic/bond_order.rst:175
+msgid ""
+"を得る。各原子が他の原子と結合に使える総量は一定であり、それが相手の原子に 分配されることを表す。水素分子では "
+":math:`P_{12}^2=1` で1本の単結合になる。 一様な無限鎖では、最近接の2本で "
+":math:`2(2/\\pi)^2\\approx0.81`、残りは遠い原子との :math:`m=3,5,\\ldots` "
+"の項が担い、:math:`\\sum_{m\\,\\mathrm{odd}}8/(m\\pi)^2=1` で和則が 満たされる。"
+msgstr ""
+"This sum rule shows that each atom has a fixed total bonding capacity, "
+"which is distributed among the other atoms. In the hydrogen molecule, "
+":math:`P_{12}^2=1` gives one single bond. In a uniform infinite chain, "
+"the two nearest-neighbor bonds contribute "
+":math:`2(2/\\pi)^2\\approx0.81`, and the terms for more distant atoms "
+"with :math:`m=3,5,\\ldots` supply the rest. The sum rule is satisfied "
+"because :math:`\\sum_{m\\,\\mathrm{odd}}8/(m\\pi)^2=1`."
+
+#: ../../electronic/bond_order.rst:182
+msgid "Wiberg結合指数とMayer結合次数"
+msgstr "Wiberg Bond Index and Mayer Bond Order"
+
+#: ../../electronic/bond_order.rst:184
+msgid "直交基底での密度行列を使い、原子 :math:`A` と :math:`B` の間の結合指数を"
+msgstr ""
+"In an orthogonal basis, the density matrix gives the following bond index"
+" between atoms :math:`A` and :math:`B`:"
+
+#: ../../electronic/bond_order.rst:186
+#, python-brace-format
+msgid "W_{AB}=\\sum_{\\mu\\in A}\\sum_{\\nu\\in B}P_{\\mu\\nu}^2"
+msgstr "W_{AB}=\\sum_{\\mu\\in A}\\sum_{\\nu\\in B}P_{\\mu\\nu}^2"
+
+#: ../../electronic/bond_order.rst:191
+#, python-brace-format
+msgid ""
+"と定義したものが **Wiberg結合指数** である [Wiberg1968]_。1原子1軌道では "
+":math:`W_{i,i+1}=B_i^2` となる。2乗しているので位相の取り方に依存せず、1原子に "
+"複数の基底関数がある場合も原子の組ごとにまとめられる。:eq:`bo-valence` は、 "
+"Wiberg指数の和が原子の価数になるという関係の特別な場合である。"
+msgstr ""
+"This is the **Wiberg bond index** [Wiberg1968]_. With one orbital per "
+"atom, :math:`W_{i,i+1}=B_i^2`. Squaring makes the index independent of "
+"the phase convention, and the sum groups contributions by atom pair even "
+"when each atom has several basis functions. Equation :eq:`bo-valence` is "
+"a special case of the rule that the sum of the Wiberg indices gives the "
+"valence of an atom."
+
+#: ../../electronic/bond_order.rst:196
+msgid "Mayerは、非直交基底のまま使える形として、閉殻では"
+msgstr ""
+"Mayer proposed a form that can be used directly in a nonorthogonal basis."
+" For a closed shell, it is"
+
+#: ../../electronic/bond_order.rst:198
+msgid ""
+"B^{\\mathrm{Mayer}}_{AB}=\\sum_{\\mu\\in A}\\sum_{\\nu\\in "
+"B}(DS)_{\\mu\\nu}(DS)_{\\nu\\mu}"
+msgstr ""
+"B^{\\mathrm{Mayer}}_{AB}=\\sum_{\\mu\\in A}\\sum_{\\nu\\in "
+"B}(DS)_{\\mu\\nu}(DS)_{\\nu\\mu}"
+
+#: ../../electronic/bond_order.rst:202
+msgid ""
+"を提案した [Mayer1983]_。直交基底（:math:`S=I`）ではWiberg指数に一致する。 "
+"スピン分極した系では、スピンごとの密度行列を使った"
+msgstr ""
+"as proposed in [Mayer1983]_. In an orthogonal basis (:math:`S=I`), this "
+"reduces to the Wiberg index. For a system with spin polarization, use the"
+" density matrix for each spin to evaluate"
+
+#: ../../electronic/bond_order.rst:205
+msgid ""
+"B^{\\mathrm{Mayer}}_{AB}=2\\sum_{\\mu\\in A}\\sum_{\\nu\\in B}\n"
+"\\left[(D^\\alpha S)_{\\mu\\nu}(D^\\alpha S)_{\\nu\\mu}\n"
+"+(D^\\beta S)_{\\mu\\nu}(D^\\beta S)_{\\nu\\mu}\\right]"
+msgstr ""
+"B^{\\mathrm{Mayer}}_{AB}=2\\sum_{\\mu\\in A}\\sum_{\\nu\\in B}\n"
+"\\left[(D^\\alpha S)_{\\mu\\nu}(D^\\alpha S)_{\\nu\\mu}\n"
+"+(D^\\beta S)_{\\mu\\nu}(D^\\beta S)_{\\nu\\mu}\\right]"
+
+#: ../../electronic/bond_order.rst:211
+msgid "が使われ、閉殻（:math:`D^\\alpha=D^\\beta=D/2`）では上の式に戻る。"
+msgstr ""
+"For a closed shell (:math:`D^\\alpha=D^\\beta=D/2`), this reduces to the "
+"preceding expression."
+
+#: ../../electronic/bond_order.rst:213
+msgid ""
+":eq:`bo-lowdin` の :math:`B_i` のような密度行列要素そのものと、それを2乗した "
+"Wiberg・Mayer型の指数は、同じ結合に対しても値が異なる。どの定義を使ったかを 明記し、同じ定義・同じ計算条件の中で比較する。"
+msgstr ""
+"Equation :eq:`bo-lowdin` gives the density matrix element :math:`B_i` "
+"itself, whereas Wiberg- and Mayer-type indices are based on squared "
+"elements. The values differ even for the same bond. State which "
+"definition was used and compare values obtained with the same definition "
+"and calculation conditions."
+
+#: ../../electronic/bond_order.rst:218
+msgid "説明用の事例：水素原子鎖"
+msgstr "Worked Example: Hydrogen Atom Chain"
+
+#: ../../electronic/bond_order.rst:220
+msgid ""
+"`水素原子を並べると電子バンドは生まれるのか <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_ では、STO-"
+"3G基底（水素1原子あたり1個の基底関数）で計算した有限水素原子鎖 （原子間隔1.8 Å、Psi4 1.10）について、:eq:`bo-"
+"lowdin` の :math:`B_i` を鎖に沿って 比べている。次の表は、例題の再現用データから、鎖の中央の隣り合う2本の結合の値と、 "
+"中央8本の結合を1本おきの2組に分けたときの平均値の差の半分（交替振幅）を まとめたものである。比較のため、同じ定義で :eq:`bo-open-"
+"chain` から求めた一様な 最近接タイト・バインディング（TB）模型の値も示す。"
+msgstr ""
+"The calculation example `Do Electronic Bands Form in a Hydrogen Atom "
+"Chain? <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_ uses Equation "
+":eq:`bo-lowdin` to compare :math:`B_i` along finite hydrogen atom chains "
+"calculated with an STO-3G basis (one basis function per hydrogen atom, "
+"interatomic spacing 1.8 Å, Psi4 1.10). Using the data provided to "
+"reproduce the example, the table lists the values of two adjacent bonds "
+"at the center of the chain and the alternation amplitude. The amplitude "
+"is half the difference between the means of the two groups formed by "
+"taking alternate bonds among the central eight. For comparison, the table"
+" also includes the values for the uniform nearest-neighbor tight-binding "
+"(TB) model from Equation :eq:`bo-open-chain` using the same definition."
+
+#: ../../electronic/bond_order.rst:228
+msgid "鎖の中央の結合次数 :math:`B_i` と交替振幅"
+msgstr ""
+"Bond orders :math:`B_i` and alternation amplitudes at the center of the "
+"chain"
+
+#: ../../electronic/bond_order.rst:232
+msgid ":math:`N`"
+msgstr ":math:`N`"
+
+#: ../../electronic/bond_order.rst:233
+msgid "一様TB模型"
+msgstr "Uniform TB model"
+
+#: ../../electronic/bond_order.rst:234
+msgid "RKS-PBE"
+msgstr "RKS-PBE"
+
+#: ../../electronic/bond_order.rst:235
+msgid "RHF"
+msgstr "RHF"
+
+#: ../../electronic/bond_order.rst:236
+msgid "16"
+msgstr "16"
+
+#: ../../electronic/bond_order.rst:237
+msgid "0.697 / 0.579（0.065）"
+msgstr "0.697 / 0.579 (0.065)"
+
+#: ../../electronic/bond_order.rst:238
+msgid "0.696 / 0.581（0.063）"
+msgstr "0.696 / 0.581 (0.063)"
+
+#: ../../electronic/bond_order.rst:239
+msgid "0.865 / 0.375（0.247）"
+msgstr "0.865 / 0.375 (0.247)"
+
+#: ../../electronic/bond_order.rst:240
+msgid "32"
+msgstr "32"
+
+#: ../../electronic/bond_order.rst:241
+msgid "0.667 / 0.607（0.031）"
+msgstr "0.667 / 0.607 (0.031)"
+
+#: ../../electronic/bond_order.rst:242
+msgid "0.666 / 0.608（0.030）"
+msgstr "0.666 / 0.608 (0.030)"
+
+#: ../../electronic/bond_order.rst:243 ../../electronic/bond_order.rst:247
+msgid "0.862 / 0.378（0.242）"
+msgstr "0.862 / 0.378 (0.242)"
+
+#: ../../electronic/bond_order.rst:244
+msgid "64"
+msgstr "64"
+
+#: ../../electronic/bond_order.rst:245
+msgid "0.652 / 0.621（0.016）"
+msgstr "0.652 / 0.621 (0.016)"
+
+#: ../../electronic/bond_order.rst:246
+msgid "0.651 / 0.622（0.015）"
+msgstr "0.651 / 0.622 (0.015)"
+
+#: ../../electronic/bond_order.rst:249
+msgid ""
+"RKS-PBEの値は、パラメータを含まない一様TB模型の値と小数点以下2〜3桁まで一致し、 中央8本の平均は0.637で :eq:`bo-"
+"uniform` の :math:`2/\\pi` に等しい。したがって、 RKS-"
+"PBEで見える交替は有限鎖の端による効果として理解でき、:math:`N` とともに 小さくなる。一方、RHFの交替振幅は :math:`N` "
+"を増やしてもほとんど変わらず、 端の効果では説明できない結合の強弱、すなわち結合次数波（BOW）が鎖の中央に 残っている（:ref"
+":`peierls-bond-order-wave` を参照）。"
+msgstr ""
+"The RKS-PBE values agree with those of the parameter-free uniform TB "
+"model to 2–3 decimal places. The mean over the eight central bonds is "
+"0.637, equal to the value in Equation :eq:`bo-uniform`, :math:`2/\\pi`. "
+"The alternation in RKS-PBE can therefore be understood as an effect of "
+"the ends of the finite chain and decreases as :math:`N` increases. In "
+"RHF, however, the alternation amplitude hardly changes as :math:`N` "
+"increases. The alternating strong and weak bonds that persist at the "
+"center cannot be explained by end effects and constitute a bond-order "
+"wave (BOW) (see :ref:`bond-order waves in a chain with fixed atoms "
+"<peierls-bond-order-wave>`)."
+
+#: ../../electronic/bond_order.rst:256
+msgid ""
+"スピン非制限計算（:math:`N=32`）では、スピン和の密度行列から求めた :math:`B_i` は ほぼ一様になり、UHFで0.312"
+"、UKS-PBEで0.531と、スピン制限計算の平均値より小さい。 α電子とβ電子が1つおきの原子に分かれて局在すると、隣接原子間で同じスピンの "
+"電子を共有する程度が下がり、スピン和の密度行列の非対角要素も小さくなる。"
+msgstr ""
+"In spin-unrestricted calculations (:math:`N=32`), :math:`B_i` from the "
+"spin-summed density matrix becomes nearly uniform, at 0.312 for UHF and "
+"0.531 for UKS-PBE, both below the mean values from spin-restricted "
+"calculations. When α and β electrons localize on alternating atoms, "
+"neighboring atoms share fewer electrons of the same spin, and the off-"
+"diagonal elements of the spin-summed density matrix decrease."
+
+#: ../../electronic/bond_order.rst:262
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../electronic/bond_order.rst:264
+msgid ""
+"結合次数は観測量ではなく、定義と基底関数に依存する指標である。結合エネルギーや 結合の長さとは異なる量であり、相関はあっても一対一には対応しない。"
+" :eq:`bo-energy` のようなエネルギーとの関係は、電子間相互作用のない模型で成り立つ "
+"ものであり、自己無撞着な平均場計算や相関のある計算では、そのままの形では成り立たない。"
+msgstr ""
+"Bond order is not an observable but a measure whose value depends on the "
+"definition and the basis functions. It is distinct from bond energy and "
+"bond length. It may correlate with those quantities, but there is no one-"
+"to-one correspondence. A relation to the energy such as Equation :eq:`bo-"
+"energy` holds for models without electron–electron interactions, but it "
+"does not apply in the same form to self-consistent mean-field or "
+"correlated calculations."
+
+#: ../../electronic/bond_order.rst:269
+msgid "非直交基底での結合次数は、直交化や分割の方法によって値が変わる。1原子に多くの 基底関数がある場合や、広がった基底関数を使う場合は特に注意する。"
+msgstr ""
+"In a nonorthogonal basis, bond orders depend on the method of "
+"orthogonalization or partitioning. Take particular care when there are "
+"many basis functions per atom or when the basis includes diffuse "
+"functions."
+
+#: ../../electronic/bond_order.rst:273
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../electronic/bond_order.rst:275
+msgid ":ref:`lowdin`"
+msgstr ":ref:`lowdin`"
+
+#: ../../electronic/bond_order.rst:276
+msgid ":ref:`projected-dos`"
+msgstr ":ref:`projected-dos`"
+
+#: ../../electronic/bond_order.rst:277
+msgid ":ref:`tightbinding`"
+msgstr ":ref:`Tight-Binding Approximation <tightbinding>`"
+
+#: ../../electronic/bond_order.rst:278
+msgid ":ref:`spin_restriction`"
+msgstr ":ref:`spin_restriction`"
+
+#: ../../electronic/bond_order.rst:279
+msgid ""
+"`水素原子を並べると電子バンドは生まれるのか <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_"
+msgstr ""
+"`Do Electronic Bands Form in a Hydrogen Atom Chain? <https://example"
+".quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_"
+
+#: ../../electronic/bond_order.rst:282
+msgid "参考文献"
+msgstr "References"
+
+#: ../../electronic/bond_order.rst:284
+msgid ""
+"`ORCA Manual: Population Analysis <https://orca-manual.mpi-"
+"muelheim.mpg.de/contents/spectroscopyproperties/population.html>`_"
+msgstr ""
+"`ORCA Manual: Population Analysis <https://orca-manual.mpi-"
+"muelheim.mpg.de/contents/spectroscopyproperties/population.html>`_"
+
+#: ../../electronic/bond_order.rst:286
+msgid ""
+"C. A. Coulson, “The electronic structure of some polyenes and aromatic "
+"molecules. VII. Bonds of fractional order by the molecular orbital "
+"method,” *Proceedings of the Royal Society of London A* **169**, 413–428 "
+"(1939), `doi:10.1098/rspa.1939.0006 "
+"<https://doi.org/10.1098/rspa.1939.0006>`_."
+msgstr ""
+"C. A. Coulson, “The electronic structure of some polyenes and aromatic "
+"molecules. VII. Bonds of fractional order by the molecular orbital "
+"method,” *Proceedings of the Royal Society of London A* **169**, 413–428 "
+"(1939), `doi:10.1098/rspa.1939.0006 "
+"<https://doi.org/10.1098/rspa.1939.0006>`_."
+
+#: ../../electronic/bond_order.rst:290
+msgid ""
+"K. B. Wiberg, “Application of the Pople-Santry-Segal CNDO method to the "
+"cyclopropylcarbinyl and cyclobutyl cation and to bicyclobutane,” "
+"*Tetrahedron* **24**, 1083–1096 (1968), `doi:10.1016/0040-4020(68)88057-3"
+" <https://doi.org/10.1016/0040-4020(68)88057-3>`_."
+msgstr ""
+"K. B. Wiberg, “Application of the Pople-Santry-Segal CNDO method to the "
+"cyclopropylcarbinyl and cyclobutyl cation and to bicyclobutane,” "
+"*Tetrahedron* **24**, 1083–1096 (1968), `doi:10.1016/0040-4020(68)88057-3"
+" <https://doi.org/10.1016/0040-4020(68)88057-3>`_."
+
+#: ../../electronic/bond_order.rst:294
+msgid ""
+"I. Mayer, “Charge, bond order and valence in the ab initio SCF theory,” "
+"*Chemical Physics Letters* **97**, 270–274 (1983), "
+"`doi:10.1016/0009-2614(83)80005-0 "
+"<https://doi.org/10.1016/0009-2614(83)80005-0>`_."
+msgstr ""
+"I. Mayer, “Charge, bond order and valence in the ab initio SCF theory,” "
+"*Chemical Physics Letters* **97**, 270–274 (1983), "
+"`doi:10.1016/0009-2614(83)80005-0 "
+"<https://doi.org/10.1016/0009-2614(83)80005-0>`_."
+

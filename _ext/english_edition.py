@@ -92,6 +92,27 @@ def _notice(text, classes, link_text=None, refuri=None, after=''):
     return nodes.container('', paragraph, classes=['quloud-edition-notice', *classes])
 
 
+def _kept_anchors(ids):
+    """Empty anchors for the ids of a replaced page body, and a script that carries the
+    followed anchor over to the link to the Japanese original (the same ids exist there)."""
+    spans = ''.join(f'<span id="{i}" class="quloud-kept-anchor"></span>' for i in dict.fromkeys(ids))
+    script = (
+        '<script>(() => {\n'
+        '  const follow = () => {\n'
+        '    const id = decodeURIComponent(location.hash.slice(1));\n'
+        '    const target = id && document.getElementById(id);\n'
+        '    const link = document.querySelector(".quloud-edition-untranslated a.reference");\n'
+        '    if (link) {\n'
+        '      const kept = target && target.classList.contains("quloud-kept-anchor");\n'
+        '      link.hash = kept ? location.hash : "";\n'
+        '    }\n'
+        '  };\n'
+        '  follow();\n'
+        '  window.addEventListener("hashchange", follow);\n'
+        '})();</script>')
+    return nodes.raw('', f'<div class="quloud-kept-anchors">{spans}</div>{script}', format='html')
+
+
 def _english_title(app, docname):
     """The page title without the "(Japanese only)" mark of the navigation."""
     title = app.quloud_english_titles.get(docname) or app.env.titles.get(docname)
@@ -204,12 +225,18 @@ def process_doctree(app, doctree, docname):
         title[:] = [nodes.Text(english)]
     toctrees = [node for node in section.findall(nodes.compound)
                 if 'toctree-wrapper' in node.get('classes', [])]
+    # Translated pages link to sections, equations and figures of this page; keep
+    # their ids, so that such a link lands on the notice instead of failing.
+    kept = [i for node in section.findall(nodes.Element) if node is not section
+            for i in node.get('ids', [])]
     section[:] = [title] if title is not None else []
     section += _notice(
         'This page has not been translated into English yet.',
         ['quloud-edition-untranslated'],
         'Read the Japanese original', _japanese_url(docname),
         'In desktop Chrome, the language menu on that page can show a machine translation.')
+    if kept:
+        section += _kept_anchors(kept)
     section.extend(toctrees)
     for node in list(doctree.children):
         if node is not section and not isinstance(node, nodes.target):
