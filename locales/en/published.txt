@@ -17,3 +17,17 @@ thermo/gibbs_energy
 thermo/appendix/index
 thermo/appendix/standard_state
 thermo/appendix/reference_state
+ml/index
+ml/gaussian_process_regression
+ml/regression_and_estimation
+ml/problem
+ml/likelihood
+ml/map
+ml/bayesian_prediction
+ml/bayes
+ml/gaussian_process
+ml/appendix/index
+ml/appendix/gaussian_dist
+ml/appendix/gaussian_intg
+ml/appendix/matrix_formula
+ml/appendix/bayes_theorem

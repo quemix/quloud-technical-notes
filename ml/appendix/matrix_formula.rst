@@ -21,8 +21,11 @@
 .. _matform_block:
 
 ==============================
-ブロック行列の逆行列 [#mf1]_
+ブロック行列の逆行列
 ==============================
+
+:math:`\boldsymbol{D}` と、次の式の :math:`\boldsymbol{M}^{-1}=\boldsymbol{A} - \boldsymbol{BD}^{-1}\boldsymbol{C}` が正則であれば、
+ブロック行列の逆行列は次のように書ける [#mf1]_\ 。
 
 .. math::
     \begin{pmatrix}
@@ -63,7 +66,7 @@
     \boldsymbol{L}^{-1} + \boldsymbol{A} \boldsymbol{\Lambda}^{-1}\boldsymbol{A}^\top \\
     \end{pmatrix}
 
-.. [#mf1] C. M. ビショップ, パターン認識と機械学習, 丸善出版 2012.
+.. [#mf1] C\. M\. ビショップ, パターン認識と機械学習, 丸善出版 2012.
 
 
 .. _matform_blockdet:
@@ -148,3 +151,46 @@
 ==============================
 一般化逆行列
 ==============================
+
+:math:`m \times n` 行列 :math:`\boldsymbol{A}` に対して、次の4つの条件をすべて満たす :math:`n \times m` 行列
+:math:`\boldsymbol{A}^{+}` はただ1つ存在する。これをムーア・ペンローズの一般化逆行列（擬似逆行列）と呼ぶ。
+
+.. math::
+    &\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{A} = \boldsymbol{A} , \qquad
+    \boldsymbol{A}^{+}\boldsymbol{A}\boldsymbol{A}^{+} = \boldsymbol{A}^{+} , \\
+    &\left( \boldsymbol{A}\boldsymbol{A}^{+} \right)^\top = \boldsymbol{A}\boldsymbol{A}^{+} , \qquad
+    \left( \boldsymbol{A}^{+}\boldsymbol{A} \right)^\top = \boldsymbol{A}^{+}\boldsymbol{A}
+    :label: mat_penrose
+
+:math:`\boldsymbol{A}` が正方で正則なら :math:`\boldsymbol{A}^{+} = \boldsymbol{A}^{-1}` である。
+:math:`\boldsymbol{A}` の列が線形独立（:math:`\mathrm{rank}\,\boldsymbol{A} = n`）なら
+:math:`\boldsymbol{A}^\top\boldsymbol{A}` は正則で、
+
+.. math::
+    \boldsymbol{A}^{+}
+    =
+    \left( \boldsymbol{A}^\top\boldsymbol{A} \right)^{-1} \boldsymbol{A}^\top
+    :label: mat_pinv
+
+となる。:math:`\boldsymbol{A}^{+}\boldsymbol{A} = \boldsymbol{I}` であることと、
+:math:`\boldsymbol{A}\boldsymbol{A}^{+} = \boldsymbol{A}\left( \boldsymbol{A}^\top\boldsymbol{A} \right)^{-1}\boldsymbol{A}^\top` が対称であることから、
+式 :eq:`mat_penrose` の4つの条件を確かめられる（たとえば :math:`\boldsymbol{A}\boldsymbol{A}^{+}\boldsymbol{A} = \boldsymbol{A}\boldsymbol{I} = \boldsymbol{A}`）。
+
+一般化逆行列は最小二乗法の解を与える。\ :ref:`最尤推定と最小二乗法<likelihood>`\ の
+:math:`L(\boldsymbol{w}) = \frac{1}{2} (\boldsymbol{t}-\boldsymbol{\Phi}\boldsymbol{w})^\top (\boldsymbol{t}-\boldsymbol{\Phi}\boldsymbol{w})`
+を :math:`\boldsymbol{w}` で微分してゼロとおくと
+
+.. math::
+    \boldsymbol{\Phi}^\top\boldsymbol{\Phi}\boldsymbol{w} = \boldsymbol{\Phi}^\top\boldsymbol{t}
+
+が得られる（正規方程式）。\ :math:`\boldsymbol{\Phi}` の列が線形独立なら、式 :eq:`mat_pinv` より
+
+.. math::
+    \boldsymbol{w}
+    =
+    \left( \boldsymbol{\Phi}^\top\boldsymbol{\Phi} \right)^{-1} \boldsymbol{\Phi}^\top \boldsymbol{t}
+    =
+    \boldsymbol{\Phi}^{+} \boldsymbol{t}
+
+となる。\ :math:`\boldsymbol{\Phi}` が正方で正則なら :math:`\boldsymbol{\Phi}^{+} = \boldsymbol{\Phi}^{-1}` で、
+\ :ref:`ガウス過程回帰<gaussian_process>`\ の式 :eq:`gp2` に一致する。

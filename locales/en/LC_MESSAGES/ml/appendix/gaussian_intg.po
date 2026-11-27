@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-27 18:30+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../ml/appendix/gaussian_intg.rst:5
+msgid "ガウス積分"
+msgstr "Gaussian Integral"
+
+#: ../../ml/appendix/gaussian_intg.rst:7
+msgid "一次元"
+msgstr "One dimension"
+
+#: ../../ml/appendix/gaussian_intg.rst:9
+msgid ""
+"\\int_{-\\infty}^{\\infty} dx\n"
+"\\exp{\\left(\n"
+"-\\alpha x^2\n"
+"\\right)}\n"
+"=\n"
+"\\sqrt{\n"
+"\\frac{\\pi}{\\alpha}\n"
+"}\n"
+"\n"
+msgstr ""
+"\\int_{-\\infty}^{\\infty} dx\n"
+"\\exp{\\left(\n"
+"-\\alpha x^2\n"
+"\\right)}\n"
+"=\n"
+"\\sqrt{\n"
+"\\frac{\\pi}{\\alpha}\n"
+"}\n"
+"\n"
+
+#: ../../ml/appendix/gaussian_intg.rst:20
+msgid "N次元"
+msgstr "N dimensions"
+
+#: ../../ml/appendix/gaussian_intg.rst:22
+msgid ""
+"\\int d\\boldsymbol{x}\n"
+"\\exp{\\left(\n"
+"-\\alpha \\boldsymbol{x}^\\top \\boldsymbol{x}\n"
+"\\right)}\n"
+"=\n"
+"\\sqrt{\\left(\n"
+"\\frac{\\pi}{\\alpha}\n"
+"\\right)^N}\n"
+"\n"
+msgstr ""
+"\\int d\\boldsymbol{x}\n"
+"\\exp{\\left(\n"
+"-\\alpha \\boldsymbol{x}^\\top \\boldsymbol{x}\n"
+"\\right)}\n"
+"=\n"
+"\\sqrt{\\left(\n"
+"\\frac{\\pi}{\\alpha}\n"
+"\\right)^N}\n"
+"\n"
+
+#: ../../ml/appendix/gaussian_intg.rst:33
+#, python-brace-format
+msgid "以下は、多次元ガウス分布関数の計算でよく現れる上式の一般形である（指数部に正値対称行列 :math:`\\boldsymbol{K}` を含む）。"
+msgstr ""
+"The following general form of the equation above often appears in "
+"calculations involving multivariate Gaussian distribution functions. Its "
+"exponent contains the symmetric positive-definite matrix "
+":math:`\\boldsymbol{K}`."
+
+#: ../../ml/appendix/gaussian_intg.rst:35
+msgid ""
+"\\int d\\boldsymbol{x}\n"
+"\\exp{\\left(\n"
+"-\\alpha \\boldsymbol{x}^\\top \\boldsymbol{K} \\boldsymbol{x}\n"
+"\\right)}\n"
+"=\n"
+"\\sqrt{\\left|\\boldsymbol{K}^{-1}\\right|}\n"
+"\\sqrt{\\left(\n"
+"\\frac{\\pi}{\\alpha}\n"
+"\\right)^N}\n"
+"\n"
+msgstr ""
+"\\int d\\boldsymbol{x}\n"
+"\\exp{\\left(\n"
+"-\\alpha \\boldsymbol{x}^\\top \\boldsymbol{K} \\boldsymbol{x}\n"
+"\\right)}\n"
+"=\n"
+"\\sqrt{\\left|\\boldsymbol{K}^{-1}\\right|}\n"
+"\\sqrt{\\left(\n"
+"\\frac{\\pi}{\\alpha}\n"
+"\\right)^N}\n"
+"\n"
+
+#: ../../ml/appendix/gaussian_intg.rst:47
+#, python-brace-format
+msgid ""
+"導出は容易で、 :math:`\\boldsymbol{K}` のコレスキー分解を作って変数変換を行い、 "
+"積分の外に出たヤコビアンを行列式の簡単な性質を使って処理すればよい。"
+msgstr ""
+"The derivation is straightforward. Use the Cholesky decomposition of "
+":math:`\\boldsymbol{K}` to change variables, then use a simple property "
+"of determinants to handle the Jacobian that factors out of the integral."
+

@@ -1,0 +1,32 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-27 18:30+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../ml/bayesian_prediction.rst:2
+msgid "ベイズ推定と確率的予測"
+msgstr "Bayesian Inference and Probabilistic Prediction"
+
+#: ../../ml/bayesian_prediction.rst:4
+msgid "パラメータの事後分布を求め、予測に使う方法を学びます。次に、関数の値の同時分布を考え、ガウス過程による予測を導きます。"
+msgstr ""
+"We derive the posterior distribution of the parameters and learn how to "
+"use it for prediction. We then consider the joint distribution of "
+"function values and derive a Gaussian process prediction."
+

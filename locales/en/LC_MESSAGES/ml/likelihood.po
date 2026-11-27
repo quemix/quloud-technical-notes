@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-27 18:30+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../ml/likelihood.rst:5
+msgid "最尤推定と最小二乗法"
+msgstr "Maximum Likelihood Estimation and Least Squares"
+
+#: ../../ml/likelihood.rst:9
+msgid "最尤推定法と最小二乗法の等価性"
+msgstr "Equivalence of Maximum Likelihood Estimation and Least Squares"
+
+#: ../../ml/likelihood.rst:11
+msgid "出力データの生成モデル（\\ :ref:`尤度関数<likelihood_function>`\\ ）として、式 :eq:`ml3`"
+msgstr ""
+"For the model that generates the output data (\\ :ref:`likelihood "
+"function <likelihood_function>`\\ ), use Equation :eq:`ml3`."
+
+#: ../../ml/likelihood.rst:13
+msgid ""
+"p(\\boldsymbol{t} | \\boldsymbol{X}, \\boldsymbol{w})\n"
+"=\n"
+"\\frac{1}{\\sqrt{(2\\pi)^N(\\sigma_\\varepsilon^2)^N}}\n"
+"\\exp{\\left(\n"
+"-\\frac{1}{2\\sigma_\\varepsilon^2}\n"
+"(\\boldsymbol{t}-\\boldsymbol{\\Phi}\\boldsymbol{w})^\\top "
+"(\\boldsymbol{t}-\\boldsymbol{\\Phi}\\boldsymbol{w})\n"
+"\\right)}\n"
+"\n"
+msgstr ""
+"p(\\boldsymbol{t} | \\boldsymbol{X}, \\boldsymbol{w})\n"
+"=\n"
+"\\frac{1}{\\sqrt{(2\\pi)^N(\\sigma_\\varepsilon^2)^N}}\n"
+"\\exp{\\left(\n"
+"-\\frac{1}{2\\sigma_\\varepsilon^2}\n"
+"(\\boldsymbol{t}-\\boldsymbol{\\Phi}\\boldsymbol{w})^\\top "
+"(\\boldsymbol{t}-\\boldsymbol{\\Phi}\\boldsymbol{w})\n"
+"\\right)}\n"
+"\n"
+
+#: ../../ml/likelihood.rst:22
+msgid "を採用し、実測データの発生確率を上げるように分布関数の未知パラメータを決める最尤推定を実行しよう。 上式の対数をとる"
+msgstr ""
+"To perform maximum likelihood estimation, we choose the unknown "
+"parameters of this distribution to make the observed data as probable as "
+"possible. Taking the logarithm of this likelihood function gives"
+
+#: ../../ml/likelihood.rst:25
+msgid ""
+"\\ln{p(\\boldsymbol{t} | \\boldsymbol{X}, \\boldsymbol{w})}\n"
+"=\n"
+"- \\frac{N\\ln2\\pi}{2} - \\frac{N\\ln\\sigma_\\varepsilon^2}{2}\n"
+"- \\frac{1}{2\\sigma_\\varepsilon^2} \\sum_{n=1}^N (t_n - "
+"y(\\boldsymbol{x_n},\\boldsymbol{w}) )^2 .\n"
+"\n"
+msgstr ""
+"\\ln{p(\\boldsymbol{t} | \\boldsymbol{X}, \\boldsymbol{w})}\n"
+"=\n"
+"- \\frac{N\\ln2\\pi}{2} - \\frac{N\\ln\\sigma_\\varepsilon^2}{2}\n"
+"- \\frac{1}{2\\sigma_\\varepsilon^2} \\sum_{n=1}^N (t_n - "
+"y(\\boldsymbol{x_n},\\boldsymbol{w}) )^2 .\n"
+"\n"
+
+#: ../../ml/likelihood.rst:32
+#, python-brace-format
+msgid "これを最大化するには、次式を :math:`\\boldsymbol{w}` について最小化すればよい"
+msgstr ""
+"To maximize this expression, minimize the following function with respect"
+" to :math:`\\boldsymbol{w}`."
+
+#: ../../ml/likelihood.rst:34
+#, python-brace-format
+msgid ""
+"L(\\boldsymbol{w}) = \\frac{1}{2} \\sum_{n=1}^N (t_n - "
+"y(\\boldsymbol{x_n},\\boldsymbol{w}) )^2 .\n"
+"\n"
+msgstr ""
+"L(\\boldsymbol{w}) = \\frac{1}{2} \\sum_{n=1}^N (t_n - "
+"y(\\boldsymbol{x_n},\\boldsymbol{w}) )^2 .\n"
+"\n"
+
+#: ../../ml/likelihood.rst:38
+msgid "これは最小二乗問題に他ならない。"
+msgstr "This is precisely a least-squares problem."
+
+#: ../../ml/likelihood.rst:44
+msgid "ハイパーパラメータについての最尤推定"
+msgstr "Maximum Likelihood Estimation of Hyperparameters"
+
+#: ../../ml/likelihood.rst:46
+msgid ""
+"式 :eq:`ml4` において、 :math:`\\sigma_\\varepsilon^2` "
+"についての最大化を考えることもできる。微分してゼロとおくと"
+msgstr ""
+"We can also maximize Equation :eq:`ml4` with respect to "
+":math:`\\sigma_\\varepsilon^2`. Setting the derivative with respect to "
+"this variance to zero gives"
+
+#: ../../ml/likelihood.rst:48
+#, python-brace-format
+msgid ""
+"- \\frac{N}{2\\sigma_\\varepsilon^2}\n"
+"+ \\frac{1}{\\left(\\sigma_\\varepsilon^2\\right)^2} L(\\boldsymbol{w})\n"
+"= 0\n"
+"\n"
+msgstr ""
+"- \\frac{N}{2\\sigma_\\varepsilon^2}\n"
+"+ \\frac{1}{\\left(\\sigma_\\varepsilon^2\\right)^2} L(\\boldsymbol{w})\n"
+"= 0\n"
+"\n"
+
+#: ../../ml/likelihood.rst:53
+msgid ""
+"\\therefore\n"
+"\\sigma_\\varepsilon^2\n"
+"=\n"
+"\\frac{2 L(\\boldsymbol{w})}{N}\n"
+"\n"
+msgstr ""
+"\\therefore\n"
+"\\sigma_\\varepsilon^2\n"
+"=\n"
+"\\frac{2 L(\\boldsymbol{w})}{N}\n"
+"\n"
+
+#: ../../ml/likelihood.rst:60
+msgid "が得られる。"
+msgstr "This is the maximum likelihood estimate of the noise variance."
+

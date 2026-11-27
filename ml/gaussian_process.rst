@@ -44,22 +44,22 @@
   = \boldsymbol{\Phi}^{-1} \boldsymbol{y} .
   :label: gp2
 
-パラメータ :math:`\boldsymbol{w}` に対する事前分布として
+パラメータ :math:`\boldsymbol{w}` に対する事前分布として、平均 0、分散 :math:`\alpha^{-1}` の等方的なガウス分布
 
 .. math::
     p(\boldsymbol{w})
     \propto
-    \exp{\left(-\frac{\beta}{2}\boldsymbol{w}^\top\boldsymbol{w}\right)}
+    \exp{\left(-\frac{\alpha}{2}\boldsymbol{w}^\top\boldsymbol{w}\right)}
     :label: gp3
 
 を考え、ここに式 :eq:`gp2` を代入すると次式が得られる
 
 .. math::
-    \exp{\left(-\frac{\beta}{2}\boldsymbol{w}^\top\boldsymbol{w}\right)}
+    \exp{\left(-\frac{\alpha}{2}\boldsymbol{w}^\top\boldsymbol{w}\right)}
     =
-    \exp{\left(-\frac{\beta}{2}\boldsymbol{y}^\top\boldsymbol{\Phi}^{-\top}\boldsymbol{\Phi}^{-1}\boldsymbol{y}\right)}
+    \exp{\left(-\frac{\alpha}{2}\boldsymbol{y}^\top\boldsymbol{\Phi}^{-\top}\boldsymbol{\Phi}^{-1}\boldsymbol{y}\right)}
     =
-    \exp{\left(-\frac{\beta}{2}\boldsymbol{y}^\top
+    \exp{\left(-\frac{\alpha}{2}\boldsymbol{y}^\top
     \left(\boldsymbol{\Phi}\boldsymbol{\Phi}^\top\right)^{-1}\boldsymbol{y}\right)} .
     :label: gp4
 
@@ -88,7 +88,7 @@
 .. math::
   k(\boldsymbol{x}_i, \boldsymbol{x}_j)
   \equiv
-  \sum_{n=0}^{N-1} \phi_n(\boldsymbol{x}_i) \phi_n(\boldsymbol{x}_j)
+  \alpha^{-1}\sum_{n=0}^{N-1} \phi_n(\boldsymbol{x}_i) \phi_n(\boldsymbol{x}_j)
   :label: gp_k
 
 という関数を定義して、これを要素とする行列を
@@ -109,7 +109,7 @@
 .. math::
   p(\boldsymbol{y})
   =
-  \frac{1}{\sqrt{(2\pi)^N\left| K \right|}}
+  \frac{1}{\sqrt{(2\pi)^N\left| \boldsymbol{K} \right|}}
   \exp{\left(
   -\frac{1}{2}
   \boldsymbol{y}^\top \boldsymbol{K}^{-1} \boldsymbol{y}
@@ -118,7 +118,7 @@
 
 以上より、パラメータ\ :math:`\boldsymbol{w}` を経由することなく、
 \ :math:`\boldsymbol{y}` についての確率分布を直接的に扱う定式化の可能性が示唆される。\
-そうすることで、基底関数やパラメータの数の増大で計算が困難になる、いわゆる「次元の呪い」からの解放される事になる。
+そうすることで、基底関数やパラメータの数の増大で計算が困難になる、いわゆる「次元の呪い」から解放される事になる。
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ガウス過程との関係
@@ -169,7 +169,7 @@
   d\boldsymbol{y}
   :label: gp_merge
 
-と計算される。これを :eq:`gp5` および :eq:`gp6` を用いて計算すると
+と計算される。これを :eq:`gp5` および :eq:`gp6` を用いて計算すると（\ :math:`\beta \equiv \sigma^{-2}_\varepsilon` とおく）
 
 .. math::
   p(\boldsymbol{t})

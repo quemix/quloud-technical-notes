@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-27 18:30+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../ml/appendix/bayes_theorem.rst:5
+msgid "ベイズの定理"
+msgstr "Bayes’ Theorem"
+
+#: ../../ml/appendix/bayes_theorem.rst:7
+msgid "説明のために以下のような絵を考える。"
+msgstr "To explain the theorem, consider the figure below."
+
+#: ../../ml/appendix/bayes_theorem.rst:16
+#, python-brace-format
+msgid ""
+"上図のマス内にある :math:`N_{ij}` は、「\\ :math:`X=i` かつ :math:`Y=j`\\ "
+"」という事象が起きた回数を表すものとする。\\ 青く色が付いた部分の和を取れば「\\ :math:`X=3`\\ "
+"」という事象が起きた回数になり、\\ オレンジ色の部分の和を取れば「\\ :math:`Y=2`\\ 」という事象が起きた回数となる。\\ "
+"いま、全てのマスの総和を :math:`N` と表すと、「\\ :math:`X=i` かつ :math:`Y=j`\\ "
+"」という事象が起こる確率は、\\"
+msgstr ""
+"Let the number :math:`N_{ij}` in each cell of the figure above count how "
+"often the event “\\ :math:`X=i` and :math:`Y=j`\\ ” occurred.\\  Summing "
+"the blue cells gives the number of times “\\ :math:`X=3`\\ ” occurred.\\"
+"  Summing the orange cells gives the number of times “\\ :math:`Y=2`\\ ” "
+"occurred.\\  If we denote the sum over all cells by :math:`N`, the "
+"probability of the event “\\ :math:`X=i` and :math:`Y=j`\\ ” is given by "
+"the formula below.\\"
+
+#: ../../ml/appendix/bayes_theorem.rst:21
+msgid ""
+"P(X=i, Y=j) = \\frac{N_{ij}}{N}\n"
+"\n"
+msgstr ""
+"P(X=i, Y=j) = \\frac{N_{ij}}{N}\n"
+"\n"
+
+#: ../../ml/appendix/bayes_theorem.rst:24
+msgid ""
+"と計算できる事になる。以上を踏まえ、つぎに条件付き確率を考える。\\ :math:`X=3` が起こったと知っているとき、\\ "
+":math:`Y=2` が起こる条件付き確率 :math:`P(Y=2|X=3)` は、上図より"
+msgstr ""
+"Next, consider conditional probability. When \\ :math:`X=3` is known to "
+"have occurred, the figure above gives the conditional probability that \\"
+" :math:`Y=2` occurred, denoted by :math:`P(Y=2|X=3)`."
+
+#: ../../ml/appendix/bayes_theorem.rst:27
+msgid ""
+"P(Y=2|X=3) = \\frac{N_{32}}{N_{X=3}}\n"
+"\n"
+msgstr ""
+"P(Y=2|X=3) = \\frac{N_{32}}{N_{X=3}}\n"
+"\n"
+
+#: ../../ml/appendix/bayes_theorem.rst:31
+#, python-brace-format
+msgid "と計算できることがわかる。ここで :math:`N_{X=3}` は、上図の青い部分の和"
+msgstr "Here :math:`N_{X=3}` is the sum of the blue cells in the figure above."
+
+#: ../../ml/appendix/bayes_theorem.rst:33
+#, python-brace-format
+msgid ""
+"N_{X=3} = \\sum_{j=1}^4 N_{3j}\n"
+"\n"
+msgstr ""
+"N_{X=3} = \\sum_{j=1}^4 N_{3j}\n"
+"\n"
+
+#: ../../ml/appendix/bayes_theorem.rst:36
+msgid "である。\\ :eq:`app-bayes1` を少し変形していく"
+msgstr "We can now rearrange Equation \\ :eq:`app-bayes1` as follows."
+
+#: ../../ml/appendix/bayes_theorem.rst:38
+msgid ""
+"P(Y=2|X=3)\n"
+"= \\frac{N_{32}}{N_{X=3}}\n"
+"= \\frac{N_{32}/N}{N_{X=3}/N}\n"
+"= \\frac{P(X=3, Y=2)}{P(X=3)} .\n"
+"\n"
+msgstr ""
+"P(Y=2|X=3)\n"
+"= \\frac{N_{32}}{N_{X=3}}\n"
+"= \\frac{N_{32}/N}{N_{X=3}/N}\n"
+"= \\frac{P(X=3, Y=2)}{P(X=3)} .\n"
+"\n"
+
+#: ../../ml/appendix/bayes_theorem.rst:45
+msgid "ここで、上図のオレンジ部分の和"
+msgstr ""
+"The following expression gives the sum of the orange cells in the figure "
+"above."
+
+#: ../../ml/appendix/bayes_theorem.rst:47
+#, python-brace-format
+msgid ""
+"N_{Y=2} = \\sum_{i=1}^6 N_{i2}\n"
+"\n"
+msgstr ""
+"N_{Y=2} = \\sum_{i=1}^6 N_{i2}\n"
+"\n"
+
+#: ../../ml/appendix/bayes_theorem.rst:50
+msgid "を用いて :eq:`app-bayes2` をさらに変形する。"
+msgstr "Using this sum, we rearrange Equation :eq:`app-bayes2` further."
+
+#: ../../ml/appendix/bayes_theorem.rst:52
+msgid ""
+"P(Y=2|X=3)\n"
+"= \\frac{N_{32}/N}{N_{X=3}/N}\n"
+"= \\frac{(N_{32}/N_{Y=2})(N_{Y=2}/N)}{N_{X=3}/N}\n"
+"= \\frac{P(X=3|Y=2) P(Y=2)}{P(X=3)}\n"
+"\n"
+msgstr ""
+"P(Y=2|X=3)\n"
+"= \\frac{N_{32}/N}{N_{X=3}/N}\n"
+"= \\frac{(N_{32}/N_{Y=2})(N_{Y=2}/N)}{N_{X=3}/N}\n"
+"= \\frac{P(X=3|Y=2) P(Y=2)}{P(X=3)}\n"
+"\n"
+
+#: ../../ml/appendix/bayes_theorem.rst:58
+msgid "したがって、"
+msgstr "Therefore, we obtain the following relationship."
+
+#: ../../ml/appendix/bayes_theorem.rst:60
+#, python-brace-format
+msgid ""
+"P(Y=2|X=3)\n"
+"= \\frac{P(X=3|Y=2) P(Y=2)}{P(X=3)}\n"
+"\n"
+msgstr ""
+"P(Y=2|X=3)\n"
+"= \\frac{P(X=3|Y=2) P(Y=2)}{P(X=3)}\n"
+"\n"
+
+#: ../../ml/appendix/bayes_theorem.rst:64
+msgid "という関係が成り立つことがわかる。これがベイズの定理である。"
+msgstr "This is Bayes' theorem."
+

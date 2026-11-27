@@ -1,0 +1,32 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-27 18:30+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../ml/regression_and_estimation.rst:2
+msgid "回帰モデルと点推定"
+msgstr "Regression Models and Point Estimation"
+
+#: ../../ml/regression_and_estimation.rst:4
+msgid "線形回帰の問題を定式化し、最尤推定・MAP推定が最小二乗法・正則化最小二乗法にどう対応するかを見ます。"
+msgstr ""
+"We formulate the linear regression problem and show how maximum "
+"likelihood estimation and MAP estimation correspond to least squares and "
+"regularized least squares, respectively."
+

@@ -66,9 +66,9 @@ MAP は *Maximum A Posteriori* の頭字語で、日本語では「最大事後�
     =
     - \frac{1}{2\sigma_\varepsilon^2} \sum_{n=1}^N (t_n - y(\boldsymbol{x_n},\boldsymbol{w}) )^2
     - \frac{1}{2\sigma_\boldsymbol{w}^2} \boldsymbol{w}^\top\boldsymbol{w}
-    - N\ln2\pi
+    - \frac{(N+M)\ln2\pi}{2}
     - \frac{N\ln\sigma_\varepsilon^2}{2}
-    - \frac{N\ln\sigma_\boldsymbol{w}^2}{2}
+    - \frac{M\ln\sigma_\boldsymbol{w}^2}{2}
     - \ln{C} .
     :label: map4
 

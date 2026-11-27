@@ -63,7 +63,7 @@
     p(\boldsymbol{w})
     =
     \frac{1}{
-    \sqrt{(2\pi)^{NM}(\beta^{-1})^N\left|\boldsymbol{S}_0\right|}
+    \sqrt{(2\pi)^{N+M}(\beta^{-1})^N\left|\boldsymbol{S}_0\right|}
     }
     \exp{\left(
     -\frac{\beta}{2}

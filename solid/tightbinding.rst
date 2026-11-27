@@ -290,7 +290,7 @@ Bと :math:`-t_2` で結ばれているので、
 * `N. Manini: The tight-binding model for electronic band structure <https://materia.fisica.unimi.it/manini/dida/tight.binding.notes.html>`_
 * N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart and
   Winston, 1976), Chap. 10.
-* J. K. Asbóth, L. Oroszlány, and A. Pályi, `A Short Course on Topological Insulators <https://arxiv.org/abs/1509.02295>`_, Section 1.3.
+* J\. K\. Asbóth, L. Oroszlány, and A. Pályi, `A Short Course on Topological Insulators <https://arxiv.org/abs/1509.02295>`_, Section 1.3.
 
 .. [McKinnon1995] B. A. McKinnon and T. C. Choy, “Significance of nonorthogonality in
    tight-binding models,” *Physical Review B* **52**, 14531 (1995),

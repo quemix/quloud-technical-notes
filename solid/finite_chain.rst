@@ -257,4 +257,4 @@ STO-3G基底（水素1原子あたり1個の1s型基底関数）で計算して�
 参考文献
 --------
 
-* J. K. Asbóth, L. Oroszlány, and A. Pályi, `A Short Course on Topological Insulators <https://arxiv.org/abs/1509.02295>`_, Chap. 1.
+* J\. K\. Asbóth, L. Oroszlány, and A. Pályi, `A Short Course on Topological Insulators <https://arxiv.org/abs/1509.02295>`_, Chap. 1.
