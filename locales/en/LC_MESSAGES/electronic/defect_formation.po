@@ -1090,7 +1090,7 @@ msgid ""
 "`GaN(0001)の表面相図 <https://example.quloud-"
 "platform.quemix.com/gan_surface/phase_diagram.html>`__"
 msgstr ""
-"`Surface Phase Diagram of GaN(0001) <https://example.quloud-"
+"`GaN(0001) Surface Phase Diagram <https://example.quloud-"
 "platform.quemix.com/gan_surface/phase_diagram.html>`__"
 
 #: ../../electronic/defect_formation.rst:407

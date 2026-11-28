@@ -536,7 +536,7 @@ msgid ""
 msgstr ""
 "`Mean Squared Displacement of Li <https://example.quloud-"
 "platform.quemix.com/li3po4/lithium-msd.html>`__ and `Li Diffusion "
-"Coefficient in a Large Model <https://example.quloud-"
+"Coefficient in the Large Model <https://example.quloud-"
 "platform.quemix.com/li3po4/large-model-diffusivity.html>`__ compare "
 "Li₃PO₄ MD trajectories with experiments [RdfLiPhosphate]_."
 

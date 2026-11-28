@@ -357,7 +357,7 @@ CohenとKrakauerは線形化補強平面波（LAPW）法の全エネルギー計
 この論文の不安定モードを約 :math:`-72\ \mathrm{cm^{-1}}` として引用し、固有ベクトルに沿って
 原子を動かした構造のエネルギーをOpenMX（LDA）で計算している。負の符号は、\ :ref:`虚数振動数<imaginary-frequency>`\ を表す約束による。
 
-`計算事例「BaTiO₃の安定性」 <https://example.quloud-platform.quemix.com/BaTiO3/stability.html>`_\ は、
+`計算事例「安定基底状態」 <https://example.quloud-platform.quemix.com/BaTiO3/stability.html>`_\ は、
 対称性を保って最適化した4相の0 Kの全エネルギーを、OpenMXとQuantum ESPRESSO（GGA-PBE）と3種類の\ :ref:`機械学習原子間ポテンシャル<mlip>`\ で比べている。全エネルギーの比較は、各構造が局所的な極小で
 あることまでは示さない。セルを固定した原子配置について極小であることは、その構造のフォノンが、
 一様な並進を除いてすべて正の :math:`\omega^2` をもつことで分かる（\ :ref:`動的安定性<imaginary-frequency>`）。
