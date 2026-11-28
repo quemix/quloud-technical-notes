@@ -1,0 +1,696 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:30+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/metal_bz_integration.rst:4
+msgid "金属のブリルアンゾーン積分"
+msgstr "Brillouin Zone Integration for Metals"
+
+#: ../../solid/metal_bz_integration.rst:6
+msgid ""
+"金属ではバンドがフェルミ準位を横切るので、絶対零度の占有数は\\ :ref:`フェルミ面<fermi-surface>`\\ を境に "
+"1から0へ跳ぶ。「\\ :ref:`kpoint_sampling`\\ 」で見たように、ブリルアンゾーン（BZ）積分を等間隔メッシュの和で "
+"近似したときの誤差は被積分関数のフーリエ成分で決まるので、この段差があると誤差は振れながらゆっくり減る。 "
+"本稿では、1次元の模型でその様子を確かめ、段差を扱う2つの方法、スメアリングとテトラヘドロン法を説明する。"
+msgstr ""
+"In a metal, bands cross the Fermi level, so at absolute zero the "
+"occupation number jumps from one to zero at the \\ :ref:`Fermi surface "
+"<fermi-surface>`\\ . As shown in “\\ :ref:`k-Point Meshes and Integration"
+" Error <kpoint_sampling>`\\ ,” the error in approximating a Brillouin "
+"zone (BZ) integral by a sum on a uniform mesh depends on the Fourier "
+"components of the integrand. With this step, the error decays slowly and "
+"oscillates. We illustrate this behavior with a one-dimensional model and "
+"explain two ways to handle the step: smearing and the tetrahedron method."
+
+#: ../../solid/metal_bz_integration.rst:11
+msgid ""
+"**前提知識**: :ref:`k点メッシュと積分誤差<kpoint_sampling>`、 :ref:`フェルミ–ディラック分布<fermi-"
+"dirac-distribution>`、:ref:`フェルミ面<fermi-surface>`。"
+msgstr ""
+"**Prerequisites**: :ref:`k-Point Meshes and Integration Error "
+"<kpoint_sampling>`, :ref:`Fermi–Dirac Distribution <fermi-dirac-"
+"distribution>`, and the :ref:`Fermi Surface <fermi-surface>`."
+
+#: ../../solid/metal_bz_integration.rst:14
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/metal_bz_integration.rst:16
+msgid "フェルミ面で占有数に段差がある被積分関数では、等間隔メッシュの誤差が振れながらゆっくり減る 理由を説明する。"
+msgstr ""
+"Explain why the error of a uniform mesh decays slowly and oscillates when"
+" the occupation number in the integrand has a step at the Fermi surface."
+
+#: ../../solid/metal_bz_integration.rst:18
+msgid "スメアリング関数の違いと、スメアリング幅を選ぶときの兼ね合いを説明する。"
+msgstr ""
+"Explain how smearing functions differ and the trade-off involved in "
+"choosing the smearing width."
+
+#: ../../solid/metal_bz_integration.rst:19
+msgid "スメアリングで最小化される自由エネルギー :math:`F` と、幅 :math:`\\sigma\\to0` の極限との関係を説明する。"
+msgstr ""
+"Explain how the free energy :math:`F` minimized with smearing relates to "
+"the limit :math:`\\sigma\\to0` of zero smearing width."
+
+#: ../../solid/metal_bz_integration.rst:20
+msgid "テトラヘドロン法の考え方と、スメアリングと比べた長所・短所を説明する。"
+msgstr ""
+"Explain how the tetrahedron method works and its advantages and "
+"disadvantages compared with smearing."
+
+#: ../../solid/metal_bz_integration.rst:25
+msgid "フェルミ面と占有数の段差"
+msgstr "Fermi Surface and the Step in Occupation"
+
+#: ../../solid/metal_bz_integration.rst:27
+msgid ""
+"絶対零度でスメアリングを使わない場合、占有数 :math:`f_j(\\boldsymbol k)` はフェルミ準位 :math:`\\mu` "
+"より低い状態では1、高い状態では0である。金属ではバンドがフェルミ準位を横切るので、 "
+":math:`\\varepsilon_j(\\boldsymbol k)=\\mu` の等エネルギー面（:ref:`フェルミ面<fermi-"
+"surface>`）を境に、 占有状態からの寄与に段差が生じることがある。1次元では、段差があるとフーリエ係数に :math:`1/|l|` "
+"程度でしか減らない成分が現れ、それが :eq:`kps-error` の誤差に残る。メッシュの点がフェルミ面のどちら側に "
+"入るかは分割数によって変わるため、誤差の符号が変わることもある。 "
+"フェルミ準位も電子数に合わせて決まるので、有限のメッシュで求まる値自体もメッシュによって動く。"
+msgstr ""
+"At absolute zero without smearing, the occupation number "
+":math:`f_j(\\boldsymbol k)` equals one for states below the Fermi level "
+":math:`\\mu` and zero for states above it. In metals, bands cross the "
+"Fermi level, so the contribution from occupied states can have a step at "
+"the constant-energy surface :math:`\\varepsilon_j(\\boldsymbol k)=\\mu` "
+"(the :ref:`Fermi surface <fermi-surface>`). In one dimension, a step "
+"introduces Fourier components that decay only on the order of "
+":math:`1/|l|` and contribute to the error in Equation :eq:`kps-error`. "
+"The number of subdivisions determines which side of the Fermi surface a "
+"mesh point falls on, so the sign of the error can also change. The Fermi "
+"level is itself set by the electron count, so the value obtained with a "
+"finite mesh also varies with the mesh."
+
+#: ../../solid/metal_bz_integration.rst:35
+#, python-brace-format
+msgid ""
+"1次元の模型で確かめる。バンド :math:`\\varepsilon(k)=-\\cos ka` と、 "
+":math:`k_F\\approx0.405\\pi/a` を与えるフェルミ準位 :math:`\\mu` を固定し、BZ平均 "
+":math:`\\frac{a}{2\\pi}\\int_{-\\pi/a}^{\\pi/a}\\theta(\\mu-\\varepsilon)\\,\\varepsilon\\,\\mathrm"
+" dk` （1スピン・単位胞あたりのバンドエネルギー）を :math:`N` 点の等間隔メッシュで近似した誤差を :numref:`fig-"
+"kps-model` に示す。 :math:`k_F` は :math:`\\pi/a` の簡単な有理数倍にならないように選んだ。 "
+"前の記事で調べた滑らかな関数 :math:`1/(1.5-\\cos ka)`\\ "
+"（緑）の誤差が指数関数的に減るのに対し、段差のある被積分関数（青）では、 :math:`N=128` でも "
+":math:`2\\times10^{-3}` 程度の誤差が符号を変えながら残る。"
+msgstr ""
+"We use a one-dimensional model with a fixed band "
+":math:`\\varepsilon(k)=-\\cos ka` and a fixed Fermi level giving "
+":math:`k_F\\approx0.405\\pi/a`. We denote the Fermi level by "
+":math:`\\mu`. The BZ average "
+":math:`\\frac{a}{2\\pi}\\int_{-\\pi/a}^{\\pi/a}\\theta(\\mu-\\varepsilon)\\,\\varepsilon\\,\\mathrm"
+" dk` is the band energy per spin and per unit cell. We approximate it on "
+"a uniform mesh of :math:`N` points and show the error in :numref:`fig-"
+"kps-model`. We chose :math:`k_F` so that it is not a simple rational "
+"multiple of :math:`\\pi/a`. The error for the smooth function "
+":math:`1/(1.5-\\cos ka)`\\  from the previous article (green) decays "
+"exponentially, but the error for the integrand with a step (blue) still "
+"changes sign and, even at :math:`N=128`, remains of order "
+":math:`2\\times10^{-3}`."
+
+#: ../../solid/metal_bz_integration.rst:46
+msgid ""
+"1次元模型での、 :math:`N` 点の等間隔メッシュによる和の誤差の絶対値（片対数）。緑：滑らかな 被積分関数 "
+":math:`1/(1.5-\\cos ka)`\\ 。青：バンド :math:`-\\cos ka` の占有状態のエネルギーの和 "
+"（段差あり）。アクア：同じ和をガウシアンスメアリング（実線 :math:`\\sigma=0.1`\\ 、破線 "
+":math:`\\sigma=0.05`\\ 、エネルギーの単位はホッピング積分の2倍）で求めたもので、細い水平線は それぞれの "
+":math:`N\\to\\infty` の値。黄：1次元の線形テトラヘドロン法。塗りつぶしの点は厳密値 "
+"より大きく、白抜きの点は小さい値。緑の誤差は滑らかな関数自身の厳密なBZ平均との差、ほかの誤差は段差のある模型の 厳密なBZ平均との差である。"
+msgstr ""
+"Absolute error of the sum on a uniform mesh of :math:`N` points for the "
+"one-dimensional model (semilog scale). Green: smooth integrand "
+":math:`1/(1.5-\\cos ka)`\\ . Blue: sum of the occupied energies of the "
+"band :math:`-\\cos ka`, with a step in the integrand. Aqua: the same sum "
+"with Gaussian smearing (solid :math:`\\sigma=0.1`\\ , dashed "
+":math:`\\sigma=0.05`\\ , in energy units of twice the hopping integral). "
+"The thin horizontal lines show the respective :math:`N\\to\\infty` "
+"limits. Yellow: one-dimensional linear tetrahedron method. Filled markers"
+" indicate estimates above the corresponding exact average, and open "
+"markers indicate estimates below it. The green errors are measured from "
+"the exact BZ average of the smooth function itself, and all other errors "
+"from the exact BZ average of the model with a step."
+
+#: ../../solid/metal_bz_integration.rst:54
+msgid "段差の扱い方には、占有数をなめらかにする **スメアリング** と、段差を含んだまま積分を精度よく 近似する **テトラヘドロン法** がある。"
+msgstr ""
+"**Smearing** smooths the occupation numbers. The **tetrahedron method** "
+"approximates the integral accurately while retaining the step."
+
+#: ../../solid/metal_bz_integration.rst:60
+msgid "スメアリング"
+msgstr "Smearing"
+
+#: ../../solid/metal_bz_integration.rst:62
+msgid ""
+"スメアリングでは、占有数を幅 :math:`\\sigma` のなめらかな関数 "
+":math:`f\\big((\\varepsilon-\\mu)/\\sigma\\big)` に置き換える（:numref:`fig-kps-"
+"smearing`\\ ）。 :math:`x=(\\varepsilon-\\mu)/\\sigma` "
+"として、よく使われる関数は次のとおりである。"
+msgstr ""
+"Smearing replaces occupation numbers by a smooth function of width "
+":math:`\\sigma`, :math:`f\\big((\\varepsilon-\\mu)/\\sigma\\big)` (see "
+":numref:`fig-kps-smearing`\\ ). With "
+":math:`x=(\\varepsilon-\\mu)/\\sigma`, commonly used functions are as "
+"follows."
+
+#: ../../solid/metal_bz_integration.rst:66
+msgid ""
+"**フェルミ–ディラック分布** :math:`f(x)=1/(e^x+1)`\\ 。 :math:`\\sigma=k_\\mathrm BT`"
+" とすると、 有限温度の電子の占有数そのものである。"
+msgstr ""
+"**Fermi–Dirac distribution** :math:`f(x)=1/(e^x+1)`\\ . Setting "
+":math:`\\sigma=k_\\mathrm BT` gives the actual electron occupation number"
+" at finite temperature."
+
+#: ../../solid/metal_bz_integration.rst:68
+#, python-brace-format
+msgid ""
+"**ガウシアン** :math:`f(x)=\\tfrac12\\operatorname{erfc}(x)`\\ 。段差をガウス関数で "
+"ぼかしたもので、裾がフェルミ–ディラック分布より速く減る。\\ :ref:`状態密度の図を描くときのぼかし<dos-broadening>`\\ "
+"とは、 同じ記号 :math:`\\sigma` でも幅の定義が異なる。"
+msgstr ""
+"**Gaussian** :math:`f(x)=\\tfrac12\\operatorname{erfc}(x)`\\ . This "
+"smears the step with a Gaussian function. Its tails decay faster than "
+"those of the Fermi–Dirac distribution. The width used for \\ "
+":ref:`broadening in a density of states plot <dos-broadening>`\\  has a "
+"different definition, even though it uses the same symbol "
+":math:`\\sigma`."
+
+#: ../../solid/metal_bz_integration.rst:71
+#, python-brace-format
+msgid ""
+"**Methfessel–Paxton（MP）** [Methfessel1989]_\\ 。ガウシアンにエルミート多項式の補正を加えた "
+"もので、1次では "
+":math:`f(x)=\\tfrac12\\operatorname{erfc}(x)-x\\,e^{-x^2}/(2\\sqrt\\pi)`\\"
+" 。 占有数は0〜1の範囲を両側にわずかにはみ出す（1次で −0.036〜1.036）。"
+msgstr ""
+"**Methfessel–Paxton (MP)** [Methfessel1989]_\\ . This adds a Hermite "
+"polynomial correction to the Gaussian. At first order, "
+":math:`f(x)=\\tfrac12\\operatorname{erfc}(x)-x\\,e^{-x^2}/(2\\sqrt\\pi)`\\"
+" . The occupation number extends slightly outside the range zero to one "
+"at both ends (−0.036 to 1.036 at first order)."
+
+#: ../../solid/metal_bz_integration.rst:74
+msgid ""
+"**Marzari–Vanderbilt（MV、コールドスメアリング）** [Marzari1999]_\\ 。 "
+":math:`y=-x-1/\\sqrt2` として "
+":math:`f=\\tfrac12\\{1+\\operatorname{erf}(y)\\}+e^{-y^2}/\\sqrt{2\\pi}`\\"
+" 。 占有数は負にならず、1を超える側だけにはみ出す（最大1.083）。"
+msgstr ""
+"**Marzari–Vanderbilt (MV, cold smearing)** [Marzari1999]_\\ . With "
+":math:`y=-x-1/\\sqrt2`, "
+":math:`f=\\tfrac12\\{1+\\operatorname{erf}(y)\\}+e^{-y^2}/\\sqrt{2\\pi}`\\"
+" . The occupation number never becomes negative but can exceed one "
+"(maximum 1.083)."
+
+#: ../../solid/metal_bz_integration.rst:82
+msgid ""
+"占有数 :math:`f` を :math:`(\\varepsilon-\\mu)/\\sigma` の関数として描いたもの。灰色は "
+":math:`\\sigma\\to0` の段差。同じ :math:`\\sigma` でも関数によって広がりが違うので、幅の値を "
+"異なる関数のあいだでそのまま比べることはできない。"
+msgstr ""
+"Occupation number :math:`f` plotted as a function of "
+":math:`(\\varepsilon-\\mu)/\\sigma`. Gray shows the step in the limit "
+":math:`\\sigma\\to0`. Even for the same :math:`\\sigma`, the spread "
+"depends on the function, so widths cannot be compared directly across "
+"different functions."
+
+#: ../../solid/metal_bz_integration.rst:89
+msgid "スメアリング幅とk点収束"
+msgstr "Smearing Width and k-Point Convergence"
+
+#: ../../solid/metal_bz_integration.rst:91
+#, python-brace-format
+msgid ""
+"スメアリングを使うと、 :math:`A(\\boldsymbol k)` はフェルミ面の付近でなめらかに変化する。 その変化の幅は、k空間では "
+":math:`\\sigma` をバンドの傾き :math:`|\\nabla_{\\boldsymbol k}\\varepsilon|` "
+"で割った程度である。k点の間隔がこの幅より十分細かくなれば、 :math:`A(\\boldsymbol k)` は "
+"メッシュから見て滑らかな関数になり、和は速く収束する。 :numref:`fig-kps-model` のガウシアンスメアリング（アクア）では、 "
+":math:`\\sigma=0.1` が :math:`N=40` 前後で、 :math:`\\sigma=0.05` が "
+":math:`N=100` 前後で、それぞれの極限値に落ち着く。 その極限値は本来の積分からずれ、模型ではずれは "
+":math:`0.091\\,\\sigma^2` で、:math:`\\sigma^2` に "
+"比例した。幅を広げるほど少ないk点で収束するが、収束する先が本来の値から離れる。この兼ね合いが、 スメアリング幅を選ぶときの基本である。"
+msgstr ""
+"With smearing, :math:`A(\\boldsymbol k)` changes smoothly near the Fermi "
+"surface. The width of this change in k-space is approximately "
+":math:`\\sigma` divided by the band slope :math:`|\\nabla_{\\boldsymbol "
+"k}\\varepsilon|`. Once the k-point spacing is much smaller than this "
+"width, the mesh resolves :math:`A(\\boldsymbol k)` as a smooth function "
+"and the sum converges quickly. For Gaussian smearing (aqua) in :numref"
+":`fig-kps-model`, the error for :math:`\\sigma=0.1` settles near its "
+"limit by around :math:`N=40`, and the error for :math:`\\sigma=0.05` "
+"settles near its own limit by around :math:`N=100`. These limits differ "
+"from the original integral. In this model the offset was "
+":math:`0.091\\,\\sigma^2`, proportional to :math:`\\sigma^2`. A larger "
+"width gives convergence with fewer k-points, but the result converges "
+"farther from the original value. This is the trade-off in choosing the "
+"smearing width."
+
+#: ../../solid/metal_bz_integration.rst:104
+msgid "スメアリングと自由エネルギー"
+msgstr "Smearing and Free Energy"
+
+#: ../../solid/metal_bz_integration.rst:106
+msgid ""
+"スメアリングを使った自己無撞着計算で最小化されるのは、全エネルギー :math:`E` "
+"そのものではなく、エントロピーに相当する項を引いた自由エネルギー"
+msgstr ""
+"A self-consistent calculation with smearing minimizes the free energy "
+"obtained by subtracting an entropy-like term from the total energy "
+":math:`E`:"
+
+#: ../../solid/metal_bz_integration.rst:109
+msgid "F=E-\\sigma S[f]"
+msgstr "F=E-\\sigma S[f]"
+
+#: ../../solid/metal_bz_integration.rst:114
+#, python-brace-format
+msgid ""
+"である。フェルミ–ディラック分布では、これは有限温度の電子系の自由エネルギー（Mermin [Mermin1965]_ ）で、 :math:`S`"
+" は電子のエントロピー :math:`-\\sum_{j\\boldsymbol k}\\{f\\ln f+(1-f)\\ln(1-f)\\}` "
+"（:math:`k_\\mathrm B` 単位、平均の規格化は :eq:`kps-sum` と同じ）である。ほかの関数にも、 :math:`F`"
+" が占有数について変分的になるような 一般化されたエントロピー :math:`S[f]` が対応する。 :math:`F` "
+"が変分的なので、原子に働く力や 応力は :math:`F` の微分として整合的に求まり、構造最適化では :math:`F` が最小化される。"
+msgstr ""
+"For the Fermi–Dirac distribution, this is the free energy of the electron"
+" system at finite temperature (Mermin [Mermin1965]_). Here :math:`S` is "
+"the electronic entropy :math:`-\\sum_{j\\boldsymbol k}\\{f\\ln "
+"f+(1-f)\\ln(1-f)\\}` (in units of :math:`k_\\mathrm B`, with the same "
+"normalization of the average as in Equation :eq:`kps-sum`). Other "
+"smearing functions also make :math:`F` variational with respect to the "
+"occupation numbers through a corresponding generalized entropy "
+":math:`S[f]`. Because :math:`F` is variational, the forces on the atoms "
+"and the stresses can be obtained consistently as derivatives of "
+":math:`F`, and structure optimization minimizes :math:`F`."
+
+#: ../../solid/metal_bz_integration.rst:124
+msgid "スメアリング幅をゼロにした極限"
+msgstr "The Limit of Zero Smearing Width"
+
+#: ../../solid/metal_bz_integration.rst:126
+msgid ""
+":math:`\\sigma\\to0` では、 :math:`F` も :math:`E` もスメアリングのない本来の全エネルギー "
+":math:`E_0` に近づく。フェルミ–ディラック分布やガウシアンでは、小さな :math:`\\sigma` で :math:`E` が "
+":math:`\\sigma^2` に比例して上がり、 :math:`F` はほぼ同じだけ下がるので、 "
+":math:`E_0\\approx(E+F)/2` と見積もれる [Gillan1989]_\\ 。MPやMVの関数は、 :math:`F` の"
+" :math:`\\sigma^2` に比例する主要なずれが消えるように作られており、 :math:`F` 自体の幅依存が小さい。 このとき "
+":math:`\\sigma\\to0` の値に近いのは :math:`F` のほうで、 :math:`E` はより大きくずれる。 MPやMVの "
+":math:`S` は正にも負にもなり、物理的なエントロピーではない。 "
+"スメアリングは、フェルミ–ディラック分布を実際の電子温度として使う場合を除けば、 積分を速く収束させるための数値的な手段である。"
+msgstr ""
+"As :math:`\\sigma\\to0`, both :math:`F` and :math:`E` approach the "
+"unsmeared total energy :math:`E_0`. With Fermi–Dirac or Gaussian "
+"smearing, for small :math:`\\sigma`, :math:`E` rises in proportion to "
+":math:`\\sigma^2` and :math:`F` falls by almost the same amount. This "
+"gives the estimate :math:`E_0\\approx(E+F)/2` [Gillan1989]_\\ . The MP "
+"and MV functions are designed to cancel the leading deviation of "
+":math:`F` proportional to :math:`\\sigma^2`, so :math:`F` itself depends "
+"only weakly on the width. In this case, of the two energies, the one "
+"closer to the value in the limit :math:`\\sigma\\to0` is :math:`F`, "
+"whereas :math:`E` deviates more. For MP and MV, :math:`S` can be positive"
+" or negative and has no interpretation as a physical entropy. Except when"
+" the Fermi–Dirac distribution is used with a physical electron "
+"temperature, smearing is a numerical means of accelerating integration "
+"convergence."
+
+#: ../../solid/metal_bz_integration.rst:139
+msgid "テトラヘドロン法"
+msgstr "Tetrahedron Method"
+
+#: ../../solid/metal_bz_integration.rst:141
+msgid ""
+"テトラヘドロン法 [Jepsen1971]_ [Lehmann1972]_ では、メッシュの点を頂点とする四面体 "
+"（テトラヘドロン）でBZを埋める。 :eq:`kps-mesh` のメッシュの小さな平行六面体を6個の四面体に 分けるので、四面体は全部で "
+":math:`6n_1n_2n_3` 個ある。各四面体の中では、バンドのエネルギーを 頂点の値から線形に補間し、 "
+":math:`\\theta(\\mu-\\varepsilon)` や :math:`\\delta(E-\\varepsilon)` を "
+"含む積分を四面体ごとに解析的に行う。フェルミ面が四面体のどこを通るかを補間から見積もるので、 占有数をなめらかにせずに、 "
+":math:`\\sigma=0` の積分を直接近似する。状態密度 :math:`\\rho(E)` の "
+"ようにデルタ関数を含む積分にも向いている。"
+msgstr ""
+"The tetrahedron method [Jepsen1971]_ [Lehmann1972]_ fills the BZ with "
+"tetrahedra whose vertices are the mesh points. Each small parallelepiped "
+"of the mesh in Equation :eq:`kps-mesh` is divided into six tetrahedra, "
+"giving :math:`6n_1n_2n_3` tetrahedra in total. Within each tetrahedron, "
+"the band energy is linearly interpolated from the vertex values. "
+"Integrals containing :math:`\\theta(\\mu-\\varepsilon)` or "
+":math:`\\delta(E-\\varepsilon)` are evaluated analytically within each "
+"tetrahedron. The interpolation estimates where the Fermi surface passes "
+"through the tetrahedron, so the method directly approximates the "
+":math:`\\sigma=0` integral without smoothing the occupation numbers. It "
+"is also suited to integrals with delta functions, such as the density of "
+"states :math:`\\rho(E)`."
+
+#: ../../solid/metal_bz_integration.rst:149
+#, python-brace-format
+msgid ""
+"1次元では、四面体は隣り合うメッシュの点を結ぶ線分にあたる。点の間のバンドを線分でつなぎ、 "
+"フェルミ準位との交点の位置で占有を切り替えて積分する。各点を「占有か非占有か」で数えるのでは "
+"なく、点と点の間のどこでフェルミ面を横切るかまで見積もるので、段差による不規則な振れが "
+"抑えられる。残る誤差は線形補間の誤差で、点の間隔の2乗に比例する。 :numref:`fig-kps-model` の "
+"線形テトラヘドロン法（黄）では、誤差は一定の符号のまま、 :math:`N` を2倍にするごとに約1/4に なった（ :math:`N=12` で"
+" :math:`7.6\\times10^{-3}`\\ 、 :math:`N=48` で :math:`4.9\\times10^{-4}`\\"
+" ）。"
+msgstr ""
+"In one dimension, the tetrahedra correspond to line segments joining "
+"adjacent mesh points. The band is interpolated linearly between points, "
+"and the occupation changes at the intersection with the Fermi level when "
+"integrating. The method estimates where the interval between mesh points "
+"crosses the Fermi surface instead of counting each point as occupied or "
+"unoccupied. This suppresses the irregular oscillations caused by the "
+"step. The remaining error is due to linear interpolation and is "
+"proportional to the square of the point spacing. For the linear "
+"tetrahedron method (yellow) in :numref:`fig-kps-model`, the error kept "
+"the same sign and fell to about one quarter each time :math:`N` doubled "
+"(at :math:`N=12` it was :math:`7.6\\times10^{-3}`\\ , and at :math:`N=48`"
+" it was :math:`4.9\\times10^{-4}`\\ )."
+
+#: ../../solid/metal_bz_integration.rst:156
+msgid ""
+":numref:`fig-kpoint-linear-interpolation`\\ のように、元の分散が下に凸な区間では、 "
+"線形補間はエネルギーを高めに見積もる。補間した線がフェルミ準位より下にある区間は、 "
+"元の分散で占有される区間より短い。この例では、占有区間の長さの誤差は同じ符号に保たれる。 "
+"交点で分散の傾きがゼロでなく、交点が区間内の同じ相対位置にある場合、点の間隔を 半分にすると交点のずれはおよそ4分の1になる。"
+msgstr ""
+"As in :numref:`fig-kpoint-linear-interpolation`\\ , linear interpolation "
+"overestimates the energy on an interval where the original dispersion "
+"curves upward (is convex). The part of the interpolated line below the "
+"Fermi level is shorter than the occupied interval of the original "
+"dispersion. In this example, the error in the length of the occupied "
+"interval keeps the same sign. If the dispersion has a nonzero slope at "
+"the crossing and the crossing stays at the same relative position within "
+"the interval, halving the point spacing reduces the crossing error to "
+"about one quarter."
+
+#: ../../solid/metal_bz_integration.rst:162
+msgid "下に凸な元の分散とフェルミ準位の交点は、二つのk点を結ぶ直線との交点より右にある。両矢印が交点のずれを示し、補間した占有区間は実際より短い。"
+msgstr ""
+"The original dispersion curves upward and crosses the Fermi level to the "
+"right of where the line joining the two k-points crosses it. A double-"
+"headed arrow marks the crossing offset. The interpolated occupied "
+"interval is shorter than the actual interval."
+
+#: ../../solid/metal_bz_integration.rst:168
+msgid ""
+"青い丸はメッシュの点、青い実線は線形補間、灰色の点線は元の分散の模式例。 フェルミ準位 :math:`\\mu` "
+"と交わる位置を、補間ではひし形、元の分散では白抜きの丸で示す。 両矢印は交点のずれ、薄青の範囲は補間で得た占有区間である。"
+msgstr ""
+"Blue circles mark the mesh points, the solid blue line is the linear "
+"interpolation, and the dotted gray line is a schematic of the original "
+"dispersion. At the Fermi level :math:`\\mu`, the diamond marks the "
+"interpolated crossing and the open circle marks the original crossing. "
+"The double-headed arrow shows the crossing offset, and the light blue "
+"region is the interpolated occupied interval."
+
+#: ../../solid/metal_bz_integration.rst:175
+msgid "Blöchl補正と適用条件"
+msgstr "Blöchl Correction and Its Applicability"
+
+#: ../../solid/metal_bz_integration.rst:177
+msgid ""
+"3次元では、線形補間の主要な誤差を補正する項を加えたBlöchlらの方法 [Blochl1994]_ が広く "
+"使われてきた。さらに、四面体の外の点の値も使って補間を改良し、誤差を小さくしたものが最適化 テトラヘドロン法 [Kawamura2014]_ "
+"である。テトラヘドロン法には次の注意がある。"
+msgstr ""
+"In three dimensions, the method of Blöchl and colleagues [Blochl1994]_ "
+"has been widely used. It adds a term that corrects the leading linear "
+"interpolation error. The optimized tetrahedron method [Kawamura2014]_ "
+"also uses values at points outside the tetrahedron to improve the "
+"interpolation and reduce the error. The tetrahedron method has the "
+"following limitations."
+
+#: ../../solid/metal_bz_integration.rst:181
+msgid "BZ全体を覆う規則的なメッシュが必要で、任意に選んだk点の一覧には使えない。"
+msgstr ""
+"It requires a regular mesh covering the entire BZ and cannot be used with"
+" an arbitrary list of k-points."
+
+#: ../../solid/metal_bz_integration.rst:182
+msgid ""
+"Blöchlの補正を加えたエネルギーは占有数について変分的でないため、それから求めた力や応力は "
+"スメアリングの場合ほど信頼できない。構造最適化にはスメアリングが使われることが多い。"
+msgstr ""
+"The Blöchl-corrected energy is not variational with respect to occupation"
+" numbers, so forces and stresses obtained from it are less reliable than "
+"with smearing. Smearing is often used for structure optimization."
+
+#: ../../solid/metal_bz_integration.rst:184
+msgid "メッシュ全体の四面体について占有の重みを計算するので、同じメッシュではスメアリングより 計算時間がかかることがある。"
+msgstr ""
+"The method computes occupation weights for tetrahedra across the entire "
+"mesh, so it can take longer than smearing on the same mesh."
+
+#: ../../solid/metal_bz_integration.rst:191
+msgid "説明用の事例：Cuのk点収束"
+msgstr "Worked Example: k-Point Convergence for Cu"
+
+#: ../../solid/metal_bz_integration.rst:193
+msgid ""
+"`k点はいくつ必要か：金属Cuと半導体Siの収束 <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html>`_ "
+"では、fccのCuの原始胞について、k点メッシュとスメアリングの条件を変えて全エネルギーを計算している （Quantum ESPRESSO "
+"7.5、PBE、PAW、カットオフ60/600 Ry、Γ点を含むメッシュ）。同じ事例の半導体Siでは "
+"分割数を増やすごとに誤差が同じ程度の比で減り続けた（\\ :ref:`kps-si-"
+"example`）のに対し、Cuの誤差は振れる。これは、フェルミ面を "
+"横切る占有数の段差が、小さなスメアリング幅では急な変化として残ることと整合する。"
+msgstr ""
+"The calculation example “`How Many k-Points Are Needed? Convergence for "
+"Metallic Cu and Semiconducting Si <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html>`_” calculates the "
+"total energy of the primitive cell of fcc Cu for different k-point meshes"
+" and smearing settings (Quantum ESPRESSO 7.5, PBE, PAW, 60/600 Ry "
+"cutoffs, meshes including the Γ point). For semiconducting Si in the same"
+" example, the error kept decreasing by a similar factor as the "
+"subdivision count increased (see \\ :ref:`Worked Example: k-Point "
+"Convergence for Si <kps-si-example>`), whereas the Cu error oscillates. "
+"This is consistent with the step in occupation across the Fermi surface "
+"remaining a sharp change at a small smearing width."
+
+#: ../../solid/metal_bz_integration.rst:199
+msgid ""
+"Cuの全エネルギー（MVスメアリング、幅0.02 Ry）は、 :math:`16^3` で0.5 meV/atomまで近づいたあと "
+"参照値の反対側に振れ、 :math:`24^3` の誤差が :math:`20^3` より大きい。"
+msgstr ""
+"The total energy of Cu (MV smearing, width 0.02 Ry) came within 0.5 "
+"meV/atom of the reference value at :math:`16^3`, then crossed to the "
+"other side of it. The error at :math:`24^3` was larger than at "
+":math:`20^3`."
+
+#: ../../solid/metal_bz_integration.rst:201
+msgid ""
+"スメアリング幅を広げると収束は速くなるが、幅0.04 Ryでは収束する :math:`F` が1.3 meV/atom ずれ、 :math:`E`"
+" のずれ（7.5 meV/atom）はそれよりずっと大きい。"
+msgstr ""
+"Increasing the smearing width speeds up convergence, but at a width of "
+"0.04 Ry the converged :math:`F` differs from the reference by 1.3 "
+"meV/atom, and the deviation of :math:`E` is much larger (7.5 meV/atom)."
+
+#: ../../solid/metal_bz_integration.rst:203
+msgid ""
+"2つのテトラヘドロン法（Blöchl、最適化）の :math:`48^3` の全エネルギーは0.003 meV/atomの差で "
+"一致し、MVスメアリング（0.02 Ry）の :math:`F` はそれより0.12 meV/atom高い。テトラヘドロン法の "
+"全エネルギーは振れずに一方向から収束した。"
+msgstr ""
+"With the two tetrahedron methods (Blöchl and optimized), the total "
+"energies on the :math:`48^3` mesh agree within 0.003 meV/atom. For MV "
+"smearing (0.02 Ry), :math:`F` is 0.12 meV/atom higher. The tetrahedron "
+"total energies converged from one side without oscillating."
+
+#: ../../solid/metal_bz_integration.rst:210
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../solid/metal_bz_integration.rst:212
+msgid ""
+"本稿の1次元模型は、フェルミ準位を固定し、バンドの形も自己無撞着に変わらないとした単純化である。 "
+"実際の計算では、フェルミ準位は電子数に合わせて決まり、電子密度を通じてバンドの形も変わる。 模型の数値（収束に必要な :math:`N`\\ "
+"、ずれの係数）は、この模型と選んだ :math:`k_F` に対するもので、 一般的な目安ではない。"
+msgstr ""
+"The one-dimensional model used here makes two simplifications: it fixes "
+"the Fermi level and assumes that the band shape does not change self-"
+"consistently. In an actual calculation, the electron count sets the Fermi"
+" level, and the band shape changes in response to the electron density. "
+"The numerical results, including the :math:`N`\\  needed for convergence "
+"and the coefficient of the offset, apply to this model and the chosen "
+":math:`k_F`. These values do not provide a general rule of thumb."
+
+#: ../../solid/metal_bz_integration.rst:217
+msgid ""
+"金属では、k点メッシュとスメアリング幅の両方が結果に効く。求めたい量について、メッシュと幅を "
+"変えて収束を確かめる。近い条件の計算どうしの差をとる量では、絶縁体の場合 （\\ :ref:`k点メッシュと積分誤差の解釈と限界<kps-"
+"interpretation-limits>`）と同じく、メッシュによる誤差が 打ち消し合うことが多い。"
+msgstr ""
+"In metals, both the k-point mesh and the smearing width affect the "
+"results. Vary the mesh and width to check convergence for the quantity of"
+" interest. When taking differences between calculations under similar "
+"conditions, mesh errors often cancel, as in insulators (see \\ "
+":ref:`interpretation and limitations of k-point meshes and integration "
+"error <kps-interpretation-limits>`)."
+
+#: ../../solid/metal_bz_integration.rst:225
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/metal_bz_integration.rst:227
+msgid ":ref:`kpoint_sampling`"
+msgstr ":ref:`kpoint_sampling`"
+
+#: ../../solid/metal_bz_integration.rst:228
+msgid ":ref:`fermi-level-and-occupation`"
+msgstr ":ref:`fermi-level-and-occupation`"
+
+#: ../../solid/metal_bz_integration.rst:229
+msgid ":ref:`irreducible-kpoints`"
+msgstr ":ref:`irreducible-kpoints`"
+
+#: ../../solid/metal_bz_integration.rst:230
+msgid ":ref:`structure-optimization`"
+msgstr ":ref:`structure-optimization`"
+
+#: ../../solid/metal_bz_integration.rst:231
+msgid ""
+"`k点はいくつ必要か：金属Cuと半導体Siの収束 <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html>`_"
+msgstr ""
+"`How Many k-Points Are Needed? Convergence for Metallic Cu and "
+"Semiconducting Si <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html>`_"
+
+#: ../../solid/metal_bz_integration.rst:236
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/metal_bz_integration.rst:238
+msgid ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 8."
+msgstr ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 8."
+
+#: ../../solid/metal_bz_integration.rst:240
+msgid ""
+"R. M. Martin, *Electronic Structure: Basic Theory and Practical Methods*,"
+" 2nd ed. (Cambridge University Press, 2020)."
+msgstr ""
+"R. M. Martin, *Electronic Structure: Basic Theory and Practical Methods*,"
+" 2nd ed. (Cambridge University Press, 2020)."
+
+#: ../../solid/metal_bz_integration.rst:243
+msgid ""
+"M. Methfessel and A. T. Paxton, “High-precision sampling for Brillouin-"
+"zone integration in metals,” *Physical Review B* **40**, 3616–3621 "
+"(1989), `doi:10.1103/PhysRevB.40.3616 "
+"<https://doi.org/10.1103/PhysRevB.40.3616>`_."
+msgstr ""
+"M. Methfessel and A. T. Paxton, “High-precision sampling for Brillouin-"
+"zone integration in metals,” *Physical Review B* **40**, 3616–3621 "
+"(1989), `doi:10.1103/PhysRevB.40.3616 "
+"<https://doi.org/10.1103/PhysRevB.40.3616>`_."
+
+#: ../../solid/metal_bz_integration.rst:246
+msgid ""
+"N. Marzari, D. Vanderbilt, A. De Vita, and M. C. Payne, “Thermal "
+"Contraction and Disordering of the Al(110) Surface,” *Physical Review "
+"Letters* **82**, 3296–3299 (1999), `doi:10.1103/PhysRevLett.82.3296 "
+"<https://doi.org/10.1103/PhysRevLett.82.3296>`_."
+msgstr ""
+"N. Marzari, D. Vanderbilt, A. De Vita, and M. C. Payne, “Thermal "
+"Contraction and Disordering of the Al(110) Surface,” *Physical Review "
+"Letters* **82**, 3296–3299 (1999), `doi:10.1103/PhysRevLett.82.3296 "
+"<https://doi.org/10.1103/PhysRevLett.82.3296>`_."
+
+#: ../../solid/metal_bz_integration.rst:249
+msgid ""
+"N. D. Mermin, “Thermal Properties of the Inhomogeneous Electron Gas,” "
+"*Physical Review* **137**, A1441–A1443 (1965), "
+"`doi:10.1103/PhysRev.137.A1441 "
+"<https://doi.org/10.1103/PhysRev.137.A1441>`_."
+msgstr ""
+"N. D. Mermin, “Thermal Properties of the Inhomogeneous Electron Gas,” "
+"*Physical Review* **137**, A1441–A1443 (1965), "
+"`doi:10.1103/PhysRev.137.A1441 "
+"<https://doi.org/10.1103/PhysRev.137.A1441>`_."
+
+#: ../../solid/metal_bz_integration.rst:252
+msgid ""
+"M. J. Gillan, “Calculation of the vacancy formation energy in aluminium,”"
+" *Journal of Physics: Condensed Matter* **1**, 689–711 (1989), "
+"`doi:10.1088/0953-8984/1/4/005 "
+"<https://doi.org/10.1088/0953-8984/1/4/005>`_."
+msgstr ""
+"M. J. Gillan, “Calculation of the vacancy formation energy in aluminium,”"
+" *Journal of Physics: Condensed Matter* **1**, 689–711 (1989), "
+"`doi:10.1088/0953-8984/1/4/005 "
+"<https://doi.org/10.1088/0953-8984/1/4/005>`_."
+
+#: ../../solid/metal_bz_integration.rst:255
+msgid ""
+"O. Jepsen and O. K. Andersen, “The electronic structure of h.c.p. "
+"Ytterbium,” *Solid State Communications* **9**, 1763–1767 (1971), "
+"`doi:10.1016/0038-1098(71)90313-9 "
+"<https://doi.org/10.1016/0038-1098(71)90313-9>`_."
+msgstr ""
+"O. Jepsen and O. K. Andersen, “The electronic structure of h.c.p. "
+"Ytterbium,” *Solid State Communications* **9**, 1763–1767 (1971), "
+"`doi:10.1016/0038-1098(71)90313-9 "
+"<https://doi.org/10.1016/0038-1098(71)90313-9>`_."
+
+#: ../../solid/metal_bz_integration.rst:258
+msgid ""
+"G. Lehmann and M. Taut, “On the Numerical Calculation of the Density of "
+"States and Related Properties,” *physica status solidi (b)* **54**, "
+"469–477 (1972), `doi:10.1002/pssb.2220540211 "
+"<https://doi.org/10.1002/pssb.2220540211>`_."
+msgstr ""
+"G. Lehmann and M. Taut, “On the Numerical Calculation of the Density of "
+"States and Related Properties,” *physica status solidi (b)* **54**, "
+"469–477 (1972), `doi:10.1002/pssb.2220540211 "
+"<https://doi.org/10.1002/pssb.2220540211>`_."
+
+#: ../../solid/metal_bz_integration.rst:261
+msgid ""
+"P. E. Blöchl, O. Jepsen, and O. K. Andersen, “Improved tetrahedron method"
+" for Brillouin-zone integrations,” *Physical Review B* **49**, "
+"16223–16233 (1994), `doi:10.1103/PhysRevB.49.16223 "
+"<https://doi.org/10.1103/PhysRevB.49.16223>`_."
+msgstr ""
+"P. E. Blöchl, O. Jepsen, and O. K. Andersen, “Improved tetrahedron method"
+" for Brillouin-zone integrations,” *Physical Review B* **49**, "
+"16223–16233 (1994), `doi:10.1103/PhysRevB.49.16223 "
+"<https://doi.org/10.1103/PhysRevB.49.16223>`_."
+
+#: ../../solid/metal_bz_integration.rst:264
+msgid ""
+"M. Kawamura, Y. Gohda, and S. Tsuneyuki, “Improved tetrahedron method for"
+" the Brillouin-zone integration applicable to response functions,” "
+"*Physical Review B* **89**, 094515 (2014), "
+"`doi:10.1103/PhysRevB.89.094515 "
+"<https://doi.org/10.1103/PhysRevB.89.094515>`_."
+msgstr ""
+"M. Kawamura, Y. Gohda, and S. Tsuneyuki, “Improved tetrahedron method for"
+" the Brillouin-zone integration applicable to response functions,” "
+"*Physical Review B* **89**, 094515 (2014), "
+"`doi:10.1103/PhysRevB.89.094515 "
+"<https://doi.org/10.1103/PhysRevB.89.094515>`_."
+

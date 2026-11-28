@@ -23,6 +23,16 @@ solid/periodic_electronic_states
 solid/blochstheorem
 solid/brillouinzone
 solid/periodic_boundary
+solid/energy_bands
+solid/bandstructure
+solid/tightbinding
+solid/finite_chain
+solid/fermi_level_and_occupation
+solid/semiconductor_conduction
+solid/kspace_integration
+solid/kpoint_sampling
+solid/metal_bz_integration
+solid/irreducible_kpoints
 md/index
 md/ensembles
 md/heating_simulation

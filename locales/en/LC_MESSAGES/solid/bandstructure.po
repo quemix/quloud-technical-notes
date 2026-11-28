@@ -1,0 +1,375 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:04+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/bandstructure.rst:5
+msgid "バンド構造と状態密度"
+msgstr "Band Structure and Density of States"
+
+#: ../../solid/bandstructure.rst:7
+msgid ""
+"孤立した原子の離散的な準位が、原子を並べるとエネルギーバンドになることを見る。続いて、半導体や絶縁体の "
+"価電子帯・伝導帯・バンドギャップを定義する。最後に、許される波数についての和をブリルアンゾーン（BZ）積分に 置き換え、状態数と状態密度を導く。"
+msgstr ""
+"We examine how the discrete levels of isolated atoms form energy bands "
+"when the atoms are brought together. We then define the valence band, "
+"conduction band, and band gap in semiconductors and insulators. Finally, "
+"we replace the sum over allowed wave vectors with a Brillouin zone (BZ) "
+"integral and derive the number of states and the density of states."
+
+#: ../../solid/bandstructure.rst:11
+msgid ""
+"**前提知識**: :ref:`ブロッホの定理と周期境界条件<blochstheorem>`、:ref:`第1ブリルアンゾーン<first-"
+"brillouin-zone>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Bloch’s Theorem and Periodic Boundary Conditions"
+" <blochstheorem>` and :ref:`First Brillouin Zone <first-brillouin-zone>`."
+
+#: ../../solid/bandstructure.rst:13
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/bandstructure.rst:15
+msgid "原子軌道の準位からバンドができることと、バンドの幅が軌道間の結びつきで決まることを説明する。"
+msgstr ""
+"Explain how atomic orbital levels form a band and how coupling between "
+"orbitals determines its width."
+
+#: ../../solid/bandstructure.rst:16
+msgid "価電子帯・伝導帯・バンドギャップを定義する。"
+msgstr "Define the valence band, conduction band, and band gap."
+
+#: ../../solid/bandstructure.rst:17
+msgid "波数の和の積分極限から、1バンド・1スピン・単位胞あたりの状態数が1であることを示し、状態密度を定義する。"
+msgstr ""
+"Take the integral limit of the sum over wave vectors to show that there "
+"is one state per band, per spin, per unit cell, and define the density of"
+" states."
+
+#: ../../solid/bandstructure.rst:23
+msgid "原子軌道からエネルギーバンドへ"
+msgstr "From Atomic Orbitals to Energy Bands"
+
+#: ../../solid/bandstructure.rst:25
+msgid ""
+"孤立した原子では、電子は離散的なエネルギーをもつ原子軌道に入る。同じ原子を 二つ近づけると、対応する軌道の重なりによって二つの準位が生じる。固体を"
+" :math:`N` 個の原子で記述し、各原子から一つずつ軌道をとると、同じ考え方で :math:`N` 個の準位ができる。巨視的な固体では "
+":math:`N` が非常に大きいので、 準位はある幅をもった範囲に密に並ぶ。この準位の集まりがエネルギーバンドである。"
+msgstr ""
+"In an isolated atom, electrons occupy atomic orbitals with discrete "
+"energies. When two identical atoms are brought close together, overlap "
+"between corresponding orbitals produces two levels. If we describe a "
+"solid using :math:`N` atoms and take one orbital from each atom, the same"
+" reasoning gives :math:`N` levels. In a macroscopic solid, :math:`N` is "
+"very large, so the levels are densely spaced over a range of energies. "
+"This collection of levels is an energy band."
+
+#: ../../solid/bandstructure.rst:31
+msgid ""
+":numref:`fig-atomic-levels-to-band`\\ では、原子の数が増えると一つの軌道から生じる準位の "
+"数が増え、無限鎖ではバンドを連続的に埋める。"
+msgstr ""
+"In :numref:`fig-atomic-levels-to-band`\\ , increasing the number of atoms"
+" increases the number of levels that arise from a single orbital. In an "
+"infinite chain, these levels fill the band continuously."
+
+#: ../../solid/bandstructure.rst:34
+msgid "一つの原子軌道から、原子数1、2、6に対応する1本、2本、6本の準位ができ、無限鎖では連続した帯になる。"
+msgstr ""
+"One atomic orbital gives rise to one, two, or six levels for one, two, or"
+" six atoms, respectively, and to a continuous band in the infinite chain."
+
+#: ../../solid/bandstructure.rst:40
+msgid ""
+"同じ原子を等間隔に並べ、最近接ホッピング :math:`t` のみを含めた模型。 横線は開放端の :math:`N` 原子の鎖の準位 "
+":math:`E_j=\\varepsilon_0-2t\\cos\\bigl(j\\pi/(N+1)\\bigr)`\\ "
+"（:math:`j=1,\\ldots,N`）、 色をつけた帯は無限鎖の連続バンド "
+":math:`E(k)=\\varepsilon_0-2t\\cos ka` を表す。 開放端の鎖の準位は「\\ :ref:`finite-"
+"chain`\\ 」（式 :eq:`tb-open-levels`）、無限鎖のバンドは「\\ :ref:`tightbinding`\\ 」（式 "
+":eq:`tb-band`）で導く。"
+msgstr ""
+"A model of equally spaced identical atoms with only nearest-neighbor "
+"hopping :math:`t`. For an open-ended chain with :math:`N` atoms, the "
+"horizontal lines show the levels "
+":math:`E_j=\\varepsilon_0-2t\\cos\\bigl(j\\pi/(N+1)\\bigr)`\\  "
+"(:math:`j=1,\\ldots,N`). The shaded region shows the continuous band "
+":math:`E(k)=\\varepsilon_0-2t\\cos ka` of an infinite chain. The open-"
+"ended chain levels are derived in “\\ :ref:`Finite-Chain Levels and the "
+"Finite-Size Gap <finite-chain>`\\ ” (Equation :eq:`tb-open-levels`), and "
+"the infinite-chain band is derived in “\\ :ref:`Tight-Binding "
+"Approximation <tightbinding>`\\ ” (Equation :eq:`tb-band`)."
+
+#: ../../solid/bandstructure.rst:45
+msgid ""
+"軌道間の結びつきが強いほど、準位の広がりは大きくなる。原子の外殻軌道は、 内殻軌道より隣の原子の軌道と重なりやすい。1次元鎖の\\ "
+":ref:`タイト・バインディング模型<tightbinding>`\\ では、 軌道間のホッピングからバンドの形と幅が決まる。"
+msgstr ""
+"Stronger coupling between orbitals spreads the levels over a wider range."
+" Outer-shell atomic orbitals overlap more readily with orbitals on "
+"neighboring atoms than core orbitals do. In the \\ :ref:`tight-binding "
+"model <tightbinding>`\\  of a one-dimensional chain, hopping between "
+"orbitals determines the shape and width of the band."
+
+#: ../../solid/bandstructure.rst:55
+msgid "|band-gap|"
+msgstr "Valence Band, Conduction Band, and Band Gap"
+
+#: ../../solid/bandstructure.rst:57
+#, python-brace-format
+msgid ""
+"半導体や絶縁体では、絶対零度で満たされた最上部のバンドを価電子帯、その上に ある空のバンドを伝導帯と呼ぶ。価電子帯上端 "
+":math:`E_{\\mathrm v}` と伝導帯下端 :math:`E_{\\mathrm c}` のエネルギー差 "
+":math:`E_{\\mathrm g}=E_{\\mathrm c}-E_{\\mathrm v}` "
+"がバンドギャップである。構造の異なる計算で状態密度を比べるときは、価電子帯上端を :ref:`エネルギーの基準<pdos-energy-"
+"alignment>`\\ に揃えることが多い。"
+msgstr ""
+"In a semiconductor or insulator, the highest filled band at absolute zero"
+" is called the valence band, and the empty band above it is called the "
+"conduction band. The energy difference between the valence band maximum "
+":math:`E_{\\mathrm v}` and the conduction band minimum :math:`E_{\\mathrm"
+" c}`, :math:`E_{\\mathrm g}=E_{\\mathrm c}-E_{\\mathrm v}`, is the band "
+"gap. When comparing the density of states across calculations for "
+"different structures, a common choice is to align the valence band maxima"
+" as the :ref:`energy reference <pdos-energy-alignment>`\\ ."
+
+#: ../../solid/bandstructure.rst:63
+msgid "熱や光で電子を価電子帯から伝導帯へ励起すると、伝導帯に電子、価電子帯に正孔が 生じる。ギャップが大きいほど、同じ温度での熱励起は起こりにくい。"
+msgstr ""
+"Thermal or optical excitation of an electron from the valence band to the"
+" conduction band creates an electron in the conduction band and a hole in"
+" the valence band. At a given temperature, thermal excitation is less "
+"likely for a larger gap."
+
+#: ../../solid/bandstructure.rst:66
+#, python-brace-format
+msgid ""
+":numref:`fig-band-gap-excitation`\\ では、一つの電子が伝導帯へ移り、価電子帯に空いた 状態が一つ残る。縦の間隔"
+" :math:`E_{\\mathrm g}` がバンドギャップである。"
+msgstr ""
+"In :numref:`fig-band-gap-excitation`\\ , one electron moves into the "
+"conduction band, leaving one unoccupied state in the valence band. The "
+"vertical separation :math:`E_{\\mathrm g}` is the band gap."
+
+#: ../../solid/bandstructure.rst:69
+msgid "価電子帯の頂点Evから伝導帯の底Ecへの励起。価電子帯の白丸は正孔、伝導帯の塗った丸は励起された電子を示す。"
+msgstr ""
+"Excitation from the valence band maximum Ev to the conduction band "
+"minimum Ec. The open circle in the valence band marks a hole, and the "
+"filled circle in the conduction band marks the excited electron."
+
+#: ../../solid/bandstructure.rst:75
+msgid "価電子帯上端と伝導帯下端が同じ波数にある場合の模式図。 茶色の矢印はバンド端間の励起、塗りつぶした丸は電子、白抜きの丸は正孔を表す。"
+msgstr ""
+"Schematic for a valence band maximum and conduction band minimum at the "
+"same wave number. The brown arrow marks excitation between the band "
+"edges, the filled circle represents an electron, and the open circle "
+"represents a hole."
+
+#: ../../solid/bandstructure.rst:78
+msgid ""
+"熱平衡での電子状態の占有数は\\ :ref:`フェルミ–ディラック分布<fermi-dirac-distribution>`\\ に従う。 "
+"励起された電子と正孔は電流を運び、その密度と移動度が\\ :ref:`半導体の電気伝導率<semiconductor-"
+"conductivity>`\\ を決める。"
+msgstr ""
+"At thermal equilibrium, the occupation numbers of electronic states "
+"follow the \\ :ref:`Fermi–Dirac distribution <fermi-dirac-"
+"distribution>`\\ . Excited electrons and holes carry current, and their "
+"densities and mobilities determine the \\ :ref:`electrical conductivity "
+"of a semiconductor <semiconductor-conductivity>`\\ ."
+
+#: ../../solid/bandstructure.rst:85
+msgid "状態の和とBZ積分"
+msgstr "Sum over States and Brillouin Zone Integration"
+
+#: ../../solid/bandstructure.rst:87
+msgid ""
+"単位胞を :math:`N` 個並べて\\ :ref:`周期境界条件<pbc-allowed-wavevectors>`\\ を課すと、式 :eq"
+":`pbc-allowed` の :math:`N` 個の波数が許され、第1ブリルアンゾーンの中に一様に分布する。波数の関数 "
+":math:`A(\\boldsymbol k)` を 許される波数について足し、単位胞の数で割った平均を :math:`\\bar "
+"A=\\frac1N\\sum_{\\boldsymbol k}A(\\boldsymbol k)` とする。 許される波数は、BZの体積 "
+":math:`\\Omega_{\\mathrm{BZ}}`\\ （式 :eq:`OmegaBZ`）を :math:`N` "
+"等分した体積ごとに1点ずつ あるので、:math:`N\\to\\infty` では和を積分に置き換えられ "
+"（:math:`\\sum_{\\boldsymbol "
+"k}\\to(N/\\Omega_\\mathrm{BZ})\\int_\\mathrm{BZ}\\mathrm d\\boldsymbol "
+"k`\\ ）、"
+msgstr ""
+"Arranging :math:`N` unit cells and imposing \\ :ref:`periodic boundary "
+"conditions <pbc-allowed-wavevectors>`\\  gives the allowed wave vectors "
+"in Equation :eq:`pbc-allowed`. These :math:`N` vectors are uniformly "
+"distributed in the first Brillouin zone. Averaging the function "
+":math:`A(\\boldsymbol k)` over the allowed wave vectors means dividing "
+"the sum by the number of unit cells, giving :math:`\\bar "
+"A=\\frac1N\\sum_{\\boldsymbol k}A(\\boldsymbol k)`. The BZ volume "
+":math:`\\Omega_{\\mathrm{BZ}}`\\  (Equation :eq:`OmegaBZ`) contains one "
+"allowed wave vector in each of its :math:`N` equal subdivisions. In the "
+"limit :math:`N\\to\\infty`, the integral replaces the sum "
+"(:math:`\\sum_{\\boldsymbol "
+"k}\\to(N/\\Omega_\\mathrm{BZ})\\int_\\mathrm{BZ}\\mathrm d\\boldsymbol "
+"k`\\ ), giving"
+
+#: ../../solid/bandstructure.rst:94
+msgid ""
+"\\bar A=\\frac{1}{\\Omega_\\mathrm{BZ}}\\int_\\mathrm{BZ}A(\\boldsymbol "
+"k)\\,\\mathrm d\\boldsymbol k"
+msgstr ""
+"\\bar A=\\frac{1}{\\Omega_\\mathrm{BZ}}\\int_\\mathrm{BZ}A(\\boldsymbol "
+"k)\\,\\mathrm d\\boldsymbol k"
+
+#: ../../solid/bandstructure.rst:99
+msgid ""
+"となる。巨視的な結晶では :math:`N` が非常に大きいので、この置き換えが使える。数値計算で積分を有限個の波数の和で "
+"近似するときの誤差は、「\\ :ref:`kpoint_sampling`\\ 」で扱う。"
+msgstr ""
+"The replacement by an integral applies to macroscopic crystals because "
+":math:`N` is very large. “\\ :ref:`k-Point Meshes and Integration Error "
+"<kpoint_sampling>`\\ ” discusses the error when a numerical calculation "
+"approximates the integral by a sum over finitely many wave vectors."
+
+#: ../../solid/bandstructure.rst:106
+msgid "状態数と状態密度（DOS）"
+msgstr "Number of States and Density of States (DOS)"
+
+#: ../../solid/bandstructure.rst:108
+msgid ""
+"1バンド・1スピンについて、エネルギー :math:`E` 以下にある状態数を単位胞あたりで 数える。バンドのエネルギーを "
+":math:`\\varepsilon(\\boldsymbol k)` とし、式 :eq:`kps-integral` の "
+":math:`A(\\boldsymbol k)` に階段関数 "
+":math:`\\Theta(E-\\varepsilon(\\boldsymbol k))` を選ぶと、"
+msgstr ""
+"For one band and one spin, we count the states per unit cell at or below "
+"energy :math:`E`. Let :math:`\\varepsilon(\\boldsymbol k)` be the band "
+"energy. In Equation :eq:`kps-integral`, choosing the function "
+":math:`A(\\boldsymbol k)` to be the step function "
+":math:`\\Theta(E-\\varepsilon(\\boldsymbol k))` gives"
+
+#: ../../solid/bandstructure.rst:112
+msgid ""
+"n(E)=\\frac{1}{\\Omega_{\\mathrm{BZ}}}\n"
+"     \\int_{\\mathrm{BZ}}\\Theta(E-\\varepsilon(\\boldsymbol "
+"k))\\,\\mathrm d\\boldsymbol k"
+msgstr ""
+"n(E)=\\frac{1}{\\Omega_{\\mathrm{BZ}}}\n"
+"     \\int_{\\mathrm{BZ}}\\Theta(E-\\varepsilon(\\boldsymbol "
+"k))\\,\\mathrm d\\boldsymbol k"
+
+#: ../../solid/bandstructure.rst:118
+msgid ""
+"となる。:math:`\\Theta` は単位ステップ関数である。すべての波数で :math:`\\varepsilon(\\boldsymbol"
+" k)<E` なら、積分は :math:`\\Omega_{\\mathrm{BZ}}` "
+"になり、単位胞あたりの状態数は1になる。これは、1本のバンドに1スピンあたり単位胞の数 :math:`N` と同じ数の 状態がある（\\ "
+":ref:`独立な波数の個数<pbc-wavevector-count>`）ことに対応する。"
+msgstr ""
+"Here :math:`\\Theta` is the unit step function. If "
+":math:`\\varepsilon(\\boldsymbol k)<E` for every wave vector, the "
+"integral equals :math:`\\Omega_{\\mathrm{BZ}}` and the number of states "
+"per unit cell is one. This corresponds to having as many states per spin "
+"in one band as there are unit cells :math:`N` (see \\ :ref:`the number of"
+" independent wave vectors <pbc-wavevector-count>`)."
+
+#: ../../solid/bandstructure.rst:123
+msgid "状態密度（density of states, DOS）は、単位エネルギー幅あたりの状態数である。 上の状態数をエネルギーで微分して求める。"
+msgstr ""
+"The density of states (DOS) is the number of states per unit energy. We "
+"obtain it by differentiating the cumulative state count with respect to "
+"energy."
+
+#: ../../solid/bandstructure.rst:126
+msgid ""
+"\\rho(E)=\\frac{\\mathrm dn(E)}{\\mathrm dE}\n"
+"=\\frac{1}{\\Omega_{\\mathrm{BZ}}}\n"
+" \\int_{\\mathrm{BZ}}\\delta(E-\\varepsilon(\\boldsymbol k))\\,\\mathrm "
+"d\\boldsymbol k"
+msgstr ""
+"\\rho(E)=\\frac{\\mathrm dn(E)}{\\mathrm dE}\n"
+"=\\frac{1}{\\Omega_{\\mathrm{BZ}}}\n"
+" \\int_{\\mathrm{BZ}}\\delta(E-\\varepsilon(\\boldsymbol k))\\,\\mathrm "
+"d\\boldsymbol k"
+
+#: ../../solid/bandstructure.rst:133
+msgid ""
+"ここで :math:`\\delta` はディラックのデルタ関数である。式 :eq:`rho(E)` の :math:`\\rho(E)` "
+"は1バンド・1スピン・単位胞あたりの状態密度である。 複数のバンドやスピンを扱うときは、それぞれの寄与を足す。"
+msgstr ""
+"Here :math:`\\delta` is the Dirac delta function. In Equation "
+":eq:`rho(E)`, :math:`\\rho(E)` gives the density of states per band, per "
+"spin, per unit cell. For multiple bands or spins, add their "
+"contributions."
+
+#: ../../solid/bandstructure.rst:137
+msgid ""
+":numref:`fig-band-state-count-and-dos`\\ では、累積状態数の曲線が急なところほど "
+"状態密度が大きい。バンドの全状態を数え終えると、累積状態数は1になる。"
+msgstr ""
+"In :numref:`fig-band-state-count-and-dos`\\ , the density of states is "
+"larger where the cumulative state count rises more steeply. Once all "
+"states in the band have been counted, the cumulative count is one."
+
+#: ../../solid/bandstructure.rst:140
+msgid "一次元バンドの累積状態数がバンドの下端で0から増え、上端で1に達する。状態密度はバンドの両端の内側で大きく、外ではゼロ。"
+msgstr ""
+"The cumulative state count for a one-dimensional band rises from zero at "
+"the lower band edge to one at the upper edge. The density of states is "
+"large just inside both edges and zero outside the band."
+
+#: ../../solid/bandstructure.rst:146
+msgid ""
+"一次元バンド :math:`\\varepsilon(k)=\\varepsilon_0-2t\\cos ka`\\ "
+"（最近接ホッピングだけのタイト・バインディング模型、 式 :eq:`tb-band`）について、1スピン・単位胞あたりの累積状態数 "
+":math:`n(E)` とその傾き :math:`\\rho(E)` を示す。縦の破線はバンド端で、 "
+"下段の曲線はバンド端へ内側から近づくと発散する。"
+msgstr ""
+"For the one-dimensional band "
+":math:`\\varepsilon(k)=\\varepsilon_0-2t\\cos ka`\\  (the tight-binding "
+"model with only nearest-neighbor hopping, Equation :eq:`tb-band`), the "
+"plots show the cumulative state count :math:`n(E)` and its slope "
+":math:`\\rho(E)` per spin and per unit cell. The vertical dashed lines "
+"mark the band edges. The lower curve diverges as the energy approaches "
+"either edge from inside the band."
+
+#: ../../solid/bandstructure.rst:151
+msgid ""
+":ref:`フェルミ–ディラック分布<fermi-dirac-distribution>` :math:`f(E)` は、エネルギー "
+":math:`E` の 1状態に電子が入る平均占有数である。:math:`f(E)\\rho(E)` は占有された状態の "
+"エネルギーあたりの密度を与える。これをエネルギーで積分すると、同じ規格化での電子数 が得られる。数値計算では、有限個の\\ "
+":ref:`k点のメッシュ<kpoint-meshes>`\\ を使い、BZ積分を和で近似する。 状態密度を原子や軌道ごとに分けたものを\\ "
+":ref:`射影状態密度<projected-dos>`\\ と呼ぶ。"
+msgstr ""
+"The :ref:`Fermi–Dirac distribution <fermi-dirac-distribution>` "
+":math:`f(E)` gives the mean electron occupation number of a state at "
+"energy :math:`E`. The product :math:`f(E)\\rho(E)` gives the density of "
+"occupied states per unit energy. Integrating it over energy gives the "
+"electron count with the same normalization. Numerical calculations use a "
+"finite \\ :ref:`k-point mesh <kpoint-meshes>`\\  to approximate the BZ "
+"integral with a sum. Resolving the density of states into contributions "
+"from individual atoms or orbitals gives the \\ :ref:`projected density of"
+" states <projected-dos>`\\ ."
+
+#: ../../solid/bandstructure.rst:161
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/bandstructure.rst:163
+msgid ""
+"MIT Materials Science, `Lecture 7 "
+"<https://wikis.mit.edu/confluence/display/MSEDG/Lecture%2B7>`_."
+msgstr ""
+"MIT Materials Science, `Lecture 7 "
+"<https://wikis.mit.edu/confluence/display/MSEDG/Lecture%2B7>`_."
+

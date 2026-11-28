@@ -61,10 +61,10 @@ def _japanese_paragraphs(doctree):
     for block in doctree.findall(nodes.TextElement):
         if any('toctree-wrapper' in a.get('classes', []) for a in _ancestors(block)):
             continue
-        # Substitution definitions are not displayed; Sphinx also never extracts them for
-        # translation, so a heading written as |name| is translated at its reference.
+        # Comments and substitution definitions are not displayed. Sphinx translates
+        # a heading written as |name| at the substitution reference.
         if isinstance(block, (nodes.literal_block, nodes.math_block, nodes.raw,
-                              nodes.substitution_definition)):
+                              nodes.comment, nodes.substitution_definition)):
             continue
         own_text = ''.join(t.astext() for t in block.children if isinstance(t, nodes.Text))
         if JAPANESE_TEXT.search(own_text):

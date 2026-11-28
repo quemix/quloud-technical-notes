@@ -1,0 +1,491 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:04+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/semiconductor_conduction.rst:4
+msgid "半導体の電気伝導"
+msgstr "Electrical Conduction in Semiconductors"
+
+#: ../../solid/semiconductor_conduction.rst:6
+msgid ""
+"半導体で電流を運ぶのは\\ :ref:`伝導帯の電子と価電子帯の正孔<valence-conduction-band-gap>`\\ "
+"である。弱い一様な電場を 仮定し、両者の移動度とキャリア密度から真性半導体の伝導率を求める。 キャリア密度の計算には\\ "
+":ref:`フェルミ–ディラック分布<fermi-dirac-distribution>`\\ を使う。"
+msgstr ""
+"In a semiconductor, \\ :ref:`electrons in the conduction band and holes "
+"in the valence band <valence-conduction-band-gap>`\\  carry current. "
+"Assuming a weak, uniform electric field, we find the conductivity of an "
+"intrinsic semiconductor from their mobilities and carrier densities. We "
+"use the \\ :ref:`Fermi–Dirac distribution <fermi-dirac-distribution>`\\  "
+"to calculate the carrier densities."
+
+#: ../../solid/semiconductor_conduction.rst:10
+msgid ""
+"**前提知識**: :ref:`価電子帯・伝導帯とバンドギャップ<valence-conduction-band-gap>`、:ref:`状態密度"
+"<density-of-states>`、 :ref:`フェルミ–ディラック分布<fermi-dirac-distribution>`\\ と\\"
+" :ref:`ボルツマン近似<fermi-boltzmann-limit>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Valence Band, Conduction Band, and Band Gap "
+"<valence-conduction-band-gap>`, :ref:`Number of States and Density of "
+"States (DOS) <density-of-states>`, :ref:`Fermi–Dirac Distribution <fermi-"
+"dirac-distribution>`\\ , and \\ :ref:`Boltzmann Approximation <fermi-"
+"boltzmann-limit>`."
+
+#: ../../solid/semiconductor_conduction.rst:13
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/semiconductor_conduction.rst:15
+msgid "電子と正孔の密度と移動度から、電気伝導率を表す。"
+msgstr ""
+"Express electrical conductivity in terms of the density and mobility of "
+"electrons and holes."
+
+#: ../../solid/semiconductor_conduction.rst:16
+msgid "有効質量と緩和時間から移動度を導く。"
+msgstr "Derive the mobility from the effective mass and relaxation time."
+
+#: ../../solid/semiconductor_conduction.rst:17
+msgid "放物線バンドとボルツマン近似から伝導帯の電子密度と価電子帯の正孔密度を求め、真性半導体のキャリア密度がバンドギャップで決まることを示す。"
+msgstr ""
+"Find the electron density in the conduction band and the hole density in "
+"the valence band using parabolic bands and the Boltzmann approximation. "
+"Show how the band gap determines the carrier density in an intrinsic "
+"semiconductor."
+
+#: ../../solid/semiconductor_conduction.rst:22
+msgid "電子・正孔と電気伝導率"
+msgstr "Electrons, Holes, and Electrical Conductivity"
+
+#: ../../solid/semiconductor_conduction.rst:24
+#, python-brace-format
+msgid ""
+"熱や光によって電子が価電子帯から伝導帯に励起されると、価電子帯には空いた状態 である正孔が生じる。電子と正孔の数密度をそれぞれ "
+":math:`n_{\\mathrm e},n_{\\mathrm h}`、 移動度を :math:`\\mu_{\\mathrm "
+"e},\\mu_{\\mathrm h}`、電気素量を :math:`e` とすると、 伝導率は両者の寄与の和である。"
+msgstr ""
+"When heat or light excites an electron from the valence band to the "
+"conduction band, it leaves an empty state, a hole, in the valence band. "
+"Let :math:`n_{\\mathrm e},n_{\\mathrm h}` be the electron and hole number"
+" densities, respectively, :math:`\\mu_{\\mathrm e},\\mu_{\\mathrm h}` "
+"their mobilities, and :math:`e` the elementary charge. The conductivity "
+"is the sum of the two contributions:"
+
+#: ../../solid/semiconductor_conduction.rst:29
+#, python-brace-format
+msgid "\\sigma=e(n_{\\mathrm e}\\mu_{\\mathrm e}+n_{\\mathrm h}\\mu_{\\mathrm h})"
+msgstr "\\sigma=e(n_{\\mathrm e}\\mu_{\\mathrm e}+n_{\\mathrm h}\\mu_{\\mathrm h})"
+
+#: ../../solid/semiconductor_conduction.rst:34
+msgid "電子のドリフトは電場と逆向き、正孔のドリフトは電場と同じ向きである。 電荷の符号も逆なので、どちらの電流も電場と同じ向きに流れる。"
+msgstr ""
+"Electrons drift against the electric field, whereas holes drift with it. "
+"Their charges have opposite signs, so both currents flow in the direction"
+" of the field."
+
+#: ../../solid/semiconductor_conduction.rst:40
+msgid "有効質量・緩和時間と移動度"
+msgstr "Effective Mass, Relaxation Time, and Mobility"
+
+#: ../../solid/semiconductor_conduction.rst:42
+#, python-brace-format
+msgid ""
+"バンド端付近の分散を放物線で近似すると、その曲率を有効質量で表せる。 例えば等方的な伝導帯の底では、底からの波数のずれを :math:`q` "
+"として、エネルギーは :math:`E_{\\mathrm c}+\\hbar^2q^2/(2m_{\\mathrm e}^*)` "
+"である。曲率が大きいほど 有効質量は小さい。価電子帯の頂上では、分散の下向きの曲率の大きさから正孔の 正の有効質量 "
+":math:`m_{\\mathrm h}^*` を定める。"
+msgstr ""
+"When the dispersion near a band edge is approximated by a parabola, its "
+"curvature can be expressed in terms of the effective mass. For example, "
+"at an isotropic conduction band minimum, let :math:`q` be the wave number"
+" measured from the minimum. The energy is :math:`E_{\\mathrm "
+"c}+\\hbar^2q^2/(2m_{\\mathrm e}^*)`. Greater curvature gives a smaller "
+"effective mass. At the valence band maximum, the magnitude of the "
+"downward curvature of the dispersion defines the positive hole effective "
+"mass :math:`m_{\\mathrm h}^*`."
+
+#: ../../solid/semiconductor_conduction.rst:48
+msgid "一様な電場 :math:`E` に対する電子のドリフト速度を :math:`v_{\\mathrm{de}}` とすると、"
+msgstr ""
+"For a uniform electric field :math:`E`, let :math:`v_{\\mathrm{de}}` "
+"denote the electron drift velocity, given by"
+
+#: ../../solid/semiconductor_conduction.rst:50
+msgid "v_{\\mathrm{de}}=-\\mu_{\\mathrm e}E"
+msgstr "v_{\\mathrm{de}}=-\\mu_{\\mathrm e}E"
+
+#: ../../solid/semiconductor_conduction.rst:55
+#, python-brace-format
+msgid ""
+"である。バンド端近くの電子の応答を有効質量 :math:`m_{\\mathrm e}^*` で表し、 散乱によって平均のドリフト速度が緩和時間 "
+":math:`\\tau_{\\mathrm e}` で減衰すると 仮定すると、平均速度 :math:`v` の運動方程式は"
+msgstr ""
+"We describe the response of an electron near a band edge by the effective"
+" mass :math:`m_{\\mathrm e}^*` and assume that scattering damps its mean "
+"drift velocity with relaxation time :math:`\\tau_{\\mathrm e}`. The "
+"equation of motion for the mean velocity :math:`v` is"
+
+#: ../../solid/semiconductor_conduction.rst:59
+msgid ""
+"m_{\\mathrm e}^*\\frac{\\mathrm dv}{\\mathrm dt}\n"
+"=-eE-\\frac{m_{\\mathrm e}^*v}{\\tau_{\\mathrm e}}"
+msgstr ""
+"m_{\\mathrm e}^*\\frac{\\mathrm dv}{\\mathrm dt}\n"
+"=-eE-\\frac{m_{\\mathrm e}^*v}{\\tau_{\\mathrm e}}"
+
+#: ../../solid/semiconductor_conduction.rst:65
+msgid "となる。定常状態で左辺をゼロとおくと、"
+msgstr ""
+"In the steady state, setting the left-hand side to zero gives the drift "
+"velocity:"
+
+#: ../../solid/semiconductor_conduction.rst:67
+msgid "v_{\\mathrm{de}}=-\\frac{e\\tau_{\\mathrm e}}{m_{\\mathrm e}^*}E"
+msgstr "v_{\\mathrm{de}}=-\\frac{e\\tau_{\\mathrm e}}{m_{\\mathrm e}^*}E"
+
+#: ../../solid/semiconductor_conduction.rst:72
+msgid "を得る。式 :eq:`v(de)` と比較すると電子の移動度は"
+msgstr ""
+"Comparing this result with Equation :eq:`v(de)` gives the electron "
+"mobility:"
+
+#: ../../solid/semiconductor_conduction.rst:74
+msgid "\\mu_{\\mathrm e}=\\frac{e\\tau_{\\mathrm e}}{m_{\\mathrm e}^*}"
+msgstr "\\mu_{\\mathrm e}=\\frac{e\\tau_{\\mathrm e}}{m_{\\mathrm e}^*}"
+
+#: ../../solid/semiconductor_conduction.rst:79
+#, python-brace-format
+msgid ""
+"となる。正孔は電荷 :math:`+e` を持つキャリアとして扱い、 正の有効質量 :math:`m_{\\mathrm h}^*` と緩和時間 "
+":math:`\\tau_{\\mathrm h}` を使う。 同じ手順で正孔のドリフト速度と移動度は"
+msgstr ""
+"We treat a hole as a carrier of charge :math:`+e` and use its positive "
+"effective mass :math:`m_{\\mathrm h}^*` and relaxation time "
+":math:`\\tau_{\\mathrm h}`. The same steps give the hole drift velocity "
+"and mobility:"
+
+#: ../../solid/semiconductor_conduction.rst:83
+msgid "v_{\\mathrm{dh}}=\\mu_{\\mathrm h}E"
+msgstr "v_{\\mathrm{dh}}=\\mu_{\\mathrm h}E"
+
+#: ../../solid/semiconductor_conduction.rst:88
+msgid "\\mu_{\\mathrm h}=\\frac{e\\tau_{\\mathrm h}}{m_{\\mathrm h}^*}"
+msgstr "\\mu_{\\mathrm h}=\\frac{e\\tau_{\\mathrm h}}{m_{\\mathrm h}^*}"
+
+#: ../../solid/semiconductor_conduction.rst:93
+msgid "となる。どちらのキャリアも、緩和時間が長いほど、また有効質量が小さいほど移動度が大きい。"
+msgstr ""
+"For either carrier, mobility increases with a longer relaxation time and "
+"with a smaller effective mass."
+
+#: ../../solid/semiconductor_conduction.rst:98
+msgid "伝導帯の電子密度"
+msgstr "Electron Density in the Conduction Band"
+
+#: ../../solid/semiconductor_conduction.rst:100
+#, python-brace-format
+msgid ""
+"伝導帯の下端を :math:`E_{\\mathrm c}`、単位体積あたりの状態密度を :math:`g_{\\mathrm c}(E)` "
+"とする。\\ :ref:`単位胞あたりの状態密度<density-of-states>`\\ から "
+"この規格化に移るには、対象とするバンドとスピンの寄与を足し、単位胞の体積で割る。 1状態あたりの占有数 :math:`f(E)` "
+"を掛けて積分すると、"
+msgstr ""
+"Let :math:`E_{\\mathrm c}` denote the conduction band minimum and "
+":math:`g_{\\mathrm c}(E)` the density of states per unit volume. To "
+"obtain the density per unit volume from the \\ :ref:`density of states "
+"per unit cell <density-of-states>`\\ , add the contributions from the "
+"bands and spins of interest and divide by the unit cell volume. "
+"Multiplying by the occupation number per state :math:`f(E)` and "
+"integrating gives the electron density:"
+
+#: ../../solid/semiconductor_conduction.rst:105
+msgid ""
+"n_{\\mathrm e}=\\int_{E_{\\mathrm c}}^\\infty g_{\\mathrm "
+"c}(E)f(E)\\,\\mathrm dE"
+msgstr ""
+"n_{\\mathrm e}=\\int_{E_{\\mathrm c}}^\\infty g_{\\mathrm "
+"c}(E)f(E)\\,\\mathrm dE"
+
+#: ../../solid/semiconductor_conduction.rst:110
+msgid "を得る。三次元で、スピン縮退を含む一つの等方的な放物線バンドを仮定すると、"
+msgstr ""
+"In three dimensions, for one isotropic parabolic band with spin "
+"degeneracy, the density of states is"
+
+#: ../../solid/semiconductor_conduction.rst:112
+msgid ""
+"g_{\\mathrm c}(E)=\\frac{\\sqrt{2}(m_{\\mathrm "
+"e}^*)^{3/2}}{\\pi^2\\hbar^3}\n"
+"                 \\sqrt{E-E_{\\mathrm c}}"
+msgstr ""
+"g_{\\mathrm c}(E)=\\frac{\\sqrt{2}(m_{\\mathrm "
+"e}^*)^{3/2}}{\\pi^2\\hbar^3}\n"
+"                 \\sqrt{E-E_{\\mathrm c}}"
+
+#: ../../solid/semiconductor_conduction.rst:118
+msgid ""
+"である。:math:`E_{\\mathrm c}-\\mu\\gg k_{\\mathrm B}T` なら、占有数を ボルツマン近似 "
+":eq:`f(E)_2` で置ける。変数 :math:`x=E-E_{\\mathrm c}` を使うと、 積分に残る "
+":math:`\\int_0^\\infty x^{1/2}e^{-x/(k_{\\mathrm B}T)}\\,\\mathrm dx` は "
+":math:`(\\sqrt{\\pi}/2)(k_{\\mathrm B}T)^{3/2}` である。したがって、"
+msgstr ""
+"If :math:`E_{\\mathrm c}-\\mu\\gg k_{\\mathrm B}T`, we can replace the "
+"occupation number with the Boltzmann approximation in Equation "
+":eq:`f(E)_2`. With the variable :math:`x=E-E_{\\mathrm c}`, the remaining"
+" integral :math:`\\int_0^\\infty x^{1/2}e^{-x/(k_{\\mathrm "
+"B}T)}\\,\\mathrm dx` equals :math:`(\\sqrt{\\pi}/2)(k_{\\mathrm "
+"B}T)^{3/2}`. Thus,"
+
+#: ../../solid/semiconductor_conduction.rst:123
+msgid ""
+"n_{\\mathrm e}=N_{\\mathrm c}\\exp\\!\\left[-\\frac{E_{\\mathrm "
+"c}-\\mu}{k_{\\mathrm B}T}\\right],\n"
+"\\qquad N_{\\mathrm c}=2\\left(\\frac{m_{\\mathrm e}^*k_{\\mathrm "
+"B}T}{2\\pi\\hbar^2}\\right)^{3/2}"
+msgstr ""
+"n_{\\mathrm e}=N_{\\mathrm c}\\exp\\!\\left[-\\frac{E_{\\mathrm "
+"c}-\\mu}{k_{\\mathrm B}T}\\right],\n"
+"\\qquad N_{\\mathrm c}=2\\left(\\frac{m_{\\mathrm e}^*k_{\\mathrm "
+"B}T}{2\\pi\\hbar^2}\\right)^{3/2}"
+
+#: ../../solid/semiconductor_conduction.rst:129
+#, python-brace-format
+msgid "となる。:math:`N_{\\mathrm c}` を伝導帯の有効状態密度と呼ぶ。"
+msgstr ""
+"We call :math:`N_{\\mathrm c}` the effective density of states in the "
+"conduction band."
+
+#: ../../solid/semiconductor_conduction.rst:134
+msgid "価電子帯の正孔密度"
+msgstr "Hole Density in the Valence Band"
+
+#: ../../solid/semiconductor_conduction.rst:136
+#, python-brace-format
+msgid "価電子帯の上端を :math:`E_{\\mathrm v}` とする。正孔は電子が占有していない 状態なので、正孔密度は"
+msgstr ""
+"Let :math:`E_{\\mathrm v}` be the valence band maximum. Since a hole is a"
+" state unoccupied by an electron, the hole density is"
+
+#: ../../solid/semiconductor_conduction.rst:139
+msgid ""
+"n_{\\mathrm h}=\\int_{-\\infty}^{E_{\\mathrm v}} g_{\\mathrm "
+"v}(E)[1-f(E)]\\,\\mathrm dE"
+msgstr ""
+"n_{\\mathrm h}=\\int_{-\\infty}^{E_{\\mathrm v}} g_{\\mathrm "
+"v}(E)[1-f(E)]\\,\\mathrm dE"
+
+#: ../../solid/semiconductor_conduction.rst:144
+msgid "である。上に凸の等方的な放物線バンドでは、スピン縮退を含む状態密度は"
+msgstr ""
+"For an isotropic parabolic band that curves downward, the density of "
+"states including spin degeneracy is"
+
+#: ../../solid/semiconductor_conduction.rst:146
+msgid ""
+"g_{\\mathrm v}(E)=\\frac{\\sqrt{2}(m_{\\mathrm "
+"h}^*)^{3/2}}{\\pi^2\\hbar^3}\n"
+"                 \\sqrt{E_{\\mathrm v}-E}"
+msgstr ""
+"g_{\\mathrm v}(E)=\\frac{\\sqrt{2}(m_{\\mathrm "
+"h}^*)^{3/2}}{\\pi^2\\hbar^3}\n"
+"                 \\sqrt{E_{\\mathrm v}-E}"
+
+#: ../../solid/semiconductor_conduction.rst:152
+#, python-brace-format
+msgid ""
+"となる。:math:`\\mu-E_{\\mathrm v}\\gg k_{\\mathrm B}T` なら状態が空いている確率 "
+":math:`1-f(E)` を ボルツマン近似 :eq:`1-f(E)` で置ける。変数を :math:`x=E_{\\mathrm v}-E`"
+" に 換えると伝導帯の場合と同じ積分になり、"
+msgstr ""
+"If :math:`\\mu-E_{\\mathrm v}\\gg k_{\\mathrm B}T`, we can replace the "
+"probability :math:`1-f(E)` that a state is empty with the Boltzmann "
+"approximation in Equation :eq:`1-f(E)`. Changing variables to "
+":math:`x=E_{\\mathrm v}-E` gives the same integral as for the conduction "
+"band, yielding"
+
+#: ../../solid/semiconductor_conduction.rst:156
+msgid ""
+"n_{\\mathrm h}=N_{\\mathrm v}\\exp\\!\\left[-\\frac{\\mu-E_{\\mathrm "
+"v}}{k_{\\mathrm B}T}\\right],\n"
+"\\qquad N_{\\mathrm v}=2\\left(\\frac{m_{\\mathrm h}^*k_{\\mathrm "
+"B}T}{2\\pi\\hbar^2}\\right)^{3/2}"
+msgstr ""
+"n_{\\mathrm h}=N_{\\mathrm v}\\exp\\!\\left[-\\frac{\\mu-E_{\\mathrm "
+"v}}{k_{\\mathrm B}T}\\right],\n"
+"\\qquad N_{\\mathrm v}=2\\left(\\frac{m_{\\mathrm h}^*k_{\\mathrm "
+"B}T}{2\\pi\\hbar^2}\\right)^{3/2}"
+
+#: ../../solid/semiconductor_conduction.rst:162
+#, python-brace-format
+msgid "を得る。:math:`N_{\\mathrm v}` は価電子帯の有効状態密度である。"
+msgstr ""
+"Here :math:`N_{\\mathrm v}` is the effective density of states in the "
+"valence band."
+
+#: ../../solid/semiconductor_conduction.rst:164
+#, python-brace-format
+msgid ""
+":numref:`fig-semiconductor-carrier-density`\\ の右を見ると、電子と正孔はそれぞれのバンド端から "
+":math:`k_{\\mathrm B}T` 程度の範囲に多く分布する。バンド端から離れると状態密度は増えるが、 電子の占有数 "
+":math:`f` や、価電子帯の状態が空いている確率 :math:`1-f` が急速に減るためである。ボルツマン近似では、積分して得られる "
+"キャリア密度は、化学ポテンシャルからバンド端までの距離に対して指数関数的に変化する。"
+msgstr ""
+"The right panel of :numref:`fig-semiconductor-carrier-density`\\  shows "
+"that electrons and holes are concentrated within about :math:`k_{\\mathrm"
+" B}T` of their respective band edges. Although the density of states "
+"increases away from the edges, the carriers concentrate near the edges "
+"because the electron occupation number :math:`f` and the probability "
+":math:`1-f` that a valence band state is empty fall rapidly. In the "
+"Boltzmann approximation, the integrated carrier density varies "
+"exponentially with the distance from the chemical potential to the band "
+"edge."
+
+#: ../../solid/semiconductor_conduction.rst:169
+msgid "同じエネルギー軸に状態密度、フェルミ分布、キャリアの分布を描く。電子は伝導帯下端のすぐ上、正孔は価電子帯上端のすぐ下に山を持つ。"
+msgstr ""
+"Density of states, Fermi–Dirac distribution, and carrier distributions "
+"plotted on the same energy axis. The electron distribution peaks just "
+"above the conduction band minimum and the hole distribution just below "
+"the valence band maximum."
+
+#: ../../solid/semiconductor_conduction.rst:175
+#, python-brace-format
+msgid ""
+"二つの等方的な放物線バンドの模式図。:math:`E_{\\mathrm g}=12k_{\\mathrm B}T`、 :math:`\\mu` "
+"はギャップの中央とし、電子と正孔の有効質量は等しくした。左は状態密度、 中央は電子の占有数、右は両者から求めた式 :eq:`n(e)` と式 "
+":eq:`n(h)` の被積分関数 （共通の倍率で拡大）。ボルツマン近似では、右の曲線はそれぞれのバンド端から "
+":math:`k_{\\mathrm B}T/2` だけバンド内に入った位置で最大になる。"
+msgstr ""
+"Schematic of two isotropic parabolic bands. We set :math:`E_{\\mathrm "
+"g}=12k_{\\mathrm B}T`, place :math:`\\mu` at the center of the gap, and "
+"use equal effective masses for electrons and holes. The left panel shows "
+"the density of states, the middle panel the electron occupation number, "
+"and the right panel the integrands of Equations :eq:`n(e)` and "
+":eq:`n(h)`, obtained from the density of states and the occupation number"
+" and scaled up by the same factor. In the Boltzmann approximation, each "
+"curve on the right peaks at a distance :math:`k_{\\mathrm B}T/2` inside "
+"its band from the edge."
+
+#: ../../solid/semiconductor_conduction.rst:184
+msgid "真性半導体のキャリア密度と電気伝導率"
+msgstr "Carrier Density and Electrical Conductivity in Intrinsic Semiconductors"
+
+#: ../../solid/semiconductor_conduction.rst:186
+#, python-brace-format
+msgid ""
+"不純物からキャリアの供給がない真性半導体では、熱平衡で伝導帯に励起された電子 1個につき価電子帯に正孔が1個生じるので "
+":math:`n_{\\mathrm e}=n_{\\mathrm h}=n_{\\mathrm i}` である。 式 :eq:`n(e)_2` "
+"と式 :eq:`n(h)_2` を掛けると化学ポテンシャルが消え、 バンドギャップ :math:`E_{\\mathrm "
+"g}=E_{\\mathrm c}-E_{\\mathrm v}` を使って"
+msgstr ""
+"In an intrinsic semiconductor, impurities supply no carriers. At thermal "
+"equilibrium, one hole is created in the valence band for every electron "
+"excited into the conduction band, so :math:`n_{\\mathrm e}=n_{\\mathrm "
+"h}=n_{\\mathrm i}`. Multiplying Equations :eq:`n(e)_2` and :eq:`n(h)_2` "
+"cancels the chemical potential. Using the band gap :math:`E_{\\mathrm "
+"g}=E_{\\mathrm c}-E_{\\mathrm v}`, we can write"
+
+#: ../../solid/semiconductor_conduction.rst:192
+msgid ""
+"n_{\\mathrm i}=\\sqrt{n_{\\mathrm e}n_{\\mathrm h}}\n"
+"=\\sqrt{N_{\\mathrm c}N_{\\mathrm v}}\\exp\\!\\left(-\\frac{E_{\\mathrm "
+"g}}{2k_{\\mathrm B}T}\\right)"
+msgstr ""
+"n_{\\mathrm i}=\\sqrt{n_{\\mathrm e}n_{\\mathrm h}}\n"
+"=\\sqrt{N_{\\mathrm c}N_{\\mathrm v}}\\exp\\!\\left(-\\frac{E_{\\mathrm "
+"g}}{2k_{\\mathrm B}T}\\right)"
+
+#: ../../solid/semiconductor_conduction.rst:198
+msgid "と書ける。この密度を式 :eq:`conductivity` に入れると、"
+msgstr ""
+"Substituting this density into Equation :eq:`conductivity` gives the "
+"conductivity:"
+
+#: ../../solid/semiconductor_conduction.rst:200
+msgid ""
+"\\sigma=e n_{\\mathrm i}(\\mu_{\\mathrm e}+\\mu_{\\mathrm h})\n"
+"=e(\\mu_{\\mathrm e}+\\mu_{\\mathrm h})\\sqrt{N_{\\mathrm c}N_{\\mathrm "
+"v}}\n"
+"  \\exp\\!\\left(-\\frac{E_{\\mathrm g}}{2k_{\\mathrm B}T}\\right)"
+msgstr ""
+"\\sigma=e n_{\\mathrm i}(\\mu_{\\mathrm e}+\\mu_{\\mathrm h})\n"
+"=e(\\mu_{\\mathrm e}+\\mu_{\\mathrm h})\\sqrt{N_{\\mathrm c}N_{\\mathrm "
+"v}}\n"
+"  \\exp\\!\\left(-\\frac{E_{\\mathrm g}}{2k_{\\mathrm B}T}\\right)"
+
+#: ../../solid/semiconductor_conduction.rst:207
+msgid "となる。式 :eq:`mu(e)` と式 :eq:`mu(h)` で移動度を置けば、"
+msgstr ""
+"Substituting the electron and hole mobilities from Equations :eq:`mu(e)` "
+"and :eq:`mu(h)` gives"
+
+#: ../../solid/semiconductor_conduction.rst:209
+msgid ""
+"\\sigma=2e^2\\left(\\frac{k_{\\mathrm B}T}{2\\pi\\hbar^2}\\right)^{3/2}\n"
+"(m_{\\mathrm e}^*m_{\\mathrm h}^*)^{3/4}\n"
+"\\left(\\frac{\\tau_{\\mathrm e}}{m_{\\mathrm e}^*}+\n"
+"      \\frac{\\tau_{\\mathrm h}}{m_{\\mathrm h}^*}\\right)\n"
+"\\exp\\!\\left(-\\frac{E_{\\mathrm g}}{2k_{\\mathrm B}T}\\right)"
+msgstr ""
+"\\sigma=2e^2\\left(\\frac{k_{\\mathrm B}T}{2\\pi\\hbar^2}\\right)^{3/2}\n"
+"(m_{\\mathrm e}^*m_{\\mathrm h}^*)^{3/4}\n"
+"\\left(\\frac{\\tau_{\\mathrm e}}{m_{\\mathrm e}^*}+\n"
+"      \\frac{\\tau_{\\mathrm h}}{m_{\\mathrm h}^*}\\right)\n"
+"\\exp\\!\\left(-\\frac{E_{\\mathrm g}}{2k_{\\mathrm B}T}\\right)"
+
+#: ../../solid/semiconductor_conduction.rst:218
+msgid ""
+"を得る。例えば温度と有効質量を固定すると、ギャップが大きいほど熱励起された "
+"キャリアの密度は指数関数的に小さくなる。実測の伝導率には移動度の温度依存も入る。 "
+"ドーピングがあれば電子と正孔の密度は一般に異なり、複数のバンドや谷が寄与する場合は 各状態密度を足して計算する。"
+msgstr ""
+"If the temperature and effective masses are held fixed, for example, the "
+"density of thermally excited carriers decreases exponentially as the gap "
+"grows. The measured conductivity also reflects the temperature dependence"
+" of the mobilities. With doping, the electron and hole densities "
+"generally differ. If several bands or valleys contribute, include the "
+"density of states of each in the sum."
+
+#: ../../solid/semiconductor_conduction.rst:224
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/semiconductor_conduction.rst:226
+msgid ""
+"Jesús A. del Alamo, MIT OpenCourseWare, `Integrated Microelectronic "
+"Devices, Lecture 3 <https://ocw.mit.edu/courses/6-720j-integrated-"
+"microelectronic-devices-"
+"spring-2007/1bccffbfa7b4487be99b8af8b46186ef_lecture3.pdf>`_."
+msgstr ""
+"Jesús A. del Alamo, MIT OpenCourseWare, `Integrated Microelectronic "
+"Devices, Lecture 3 <https://ocw.mit.edu/courses/6-720j-integrated-"
+"microelectronic-devices-"
+"spring-2007/1bccffbfa7b4487be99b8af8b46186ef_lecture3.pdf>`_."
+
+#: ../../solid/semiconductor_conduction.rst:227
+msgid ""
+"Jesús A. del Alamo, MIT OpenCourseWare, `Integrated Microelectronic "
+"Devices, Lecture 6 <https://ocw.mit.edu/courses/6-720j-integrated-"
+"microelectronic-devices-spring-2007/resources/lecture6/>`_."
+msgstr ""
+"Jesús A. del Alamo, MIT OpenCourseWare, `Integrated Microelectronic "
+"Devices, Lecture 6 <https://ocw.mit.edu/courses/6-720j-integrated-"
+"microelectronic-devices-spring-2007/resources/lecture6/>`_."
+

@@ -1,0 +1,240 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:04+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/fermi_level_and_occupation.rst:4
+msgid "フェルミ準位と占有数"
+msgstr "Fermi Level and Occupation Numbers"
+
+#: ../../solid/fermi_level_and_occupation.rst:6
+msgid ""
+":ref:`エネルギーバンド<bandstructure>`\\ に、電子がどのように入るかを考える。 "
+"電子数と温度から占有数を決め、金属のフェルミ面と半導体のキャリア密度の計算につなげる。"
+msgstr ""
+"We consider how electrons fill :ref:`energy bands <bandstructure>`\\ . "
+"From the electron count and temperature, we determine the occupation "
+"numbers. This connects the occupation numbers to the Fermi surface in "
+"metals and to the calculation of carrier densities in semiconductors."
+
+#: ../../solid/fermi_level_and_occupation.rst:9
+msgid "**前提知識**: :ref:`バンド構造と状態密度<bandstructure>`、:ref:`半充填<half-filling>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Band Structure and Density of States "
+"<bandstructure>` and :ref:`Half Filling <half-filling>`."
+
+#: ../../solid/fermi_level_and_occupation.rst:11
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/fermi_level_and_occupation.rst:13
+msgid "フェルミ–ディラック分布で占有数を表し、電子数から化学ポテンシャルが決まることを説明する。"
+msgstr ""
+"Express occupation numbers using the Fermi–Dirac distribution and explain"
+" how the electron count determines the chemical potential."
+
+#: ../../solid/fermi_level_and_occupation.rst:14
+msgid "絶対零度でのフェルミ面と、金属と半導体でのフェルミ準位の意味を説明する。"
+msgstr ""
+"Explain the Fermi surface at absolute zero and the meaning of the Fermi "
+"level in metals and semiconductors."
+
+#: ../../solid/fermi_level_and_occupation.rst:15
+msgid "ボルツマン近似が使える条件と、そのときの占有数の形を導く。"
+msgstr ""
+"Derive the conditions for the Boltzmann approximation and the resulting "
+"expressions for the occupation numbers."
+
+#: ../../solid/fermi_level_and_occupation.rst:20
+msgid "フェルミ–ディラック分布"
+msgstr "Fermi–Dirac Distribution"
+
+#: ../../solid/fermi_level_and_occupation.rst:22
+#, python-brace-format
+msgid ""
+"エネルギー :math:`E` の1電子状態を考える。熱平衡での平均占有数 :math:`f(E)` は、 電子の化学ポテンシャルを "
+":math:`\\mu`、温度を :math:`T`、ボルツマン定数を :math:`k_{\\mathrm B}` "
+"とすると、次のフェルミ–ディラック分布に従う。"
+msgstr ""
+"Consider a one-electron state of energy :math:`E`. At thermal "
+"equilibrium, its mean occupation number :math:`f(E)` follows the "
+"Fermi–Dirac distribution. With electron chemical potential :math:`\\mu`, "
+"temperature :math:`T`, and Boltzmann constant :math:`k_{\\mathrm B}`, the"
+" distribution is"
+
+#: ../../solid/fermi_level_and_occupation.rst:26
+#, python-brace-format
+msgid "f(E)=\\frac{1}{1+\\exp[(E-\\mu)/(k_{\\mathrm B}T)]}"
+msgstr "f(E)=\\frac{1}{1+\\exp[(E-\\mu)/(k_{\\mathrm B}T)]}"
+
+#: ../../solid/fermi_level_and_occupation.rst:31
+msgid ""
+"ここでの1電子状態はスピンを含めて区別し、各状態には電子が最大1個入る。 所定の電子数になるよう :math:`\\sum_\\alpha "
+"f(E_\\alpha)` を合わせることで :math:`\\mu` が決まる。:math:`\\alpha` "
+"は波数、バンド、スピンで指定した状態を表す。 :ref:`状態密度<density-of-states>`\\ "
+"が分かれば、状態の和をエネルギー積分に置き換えられる。 有限温度で :math:`E=\\mu` の状態があれば、その平均占有数は "
+":math:`1/2` である。"
+msgstr ""
+"Each one-electron state here includes a spin designation and can hold at "
+"most one electron. Setting :math:`\\sum_\\alpha f(E_\\alpha)` equal to "
+"the specified electron count determines :math:`\\mu`. The index "
+":math:`\\alpha` denotes a state specified by its wave vector, band, and "
+"spin. If the :ref:`density of states <density-of-states>`\\  is known, an"
+" energy integral can replace the sum over states. At finite temperature, "
+"any state with :math:`E=\\mu` has a mean occupation number of "
+":math:`1/2`."
+
+#: ../../solid/fermi_level_and_occupation.rst:37
+msgid ""
+":numref:`fig-fermi-occupation-temperature`\\ では、温度が高いほど占有数が変わる "
+"エネルギー範囲が広い。有限温度の曲線はすべて :math:`(E,f)=(\\mu,1/2)` を通る。"
+msgstr ""
+"In :numref:`fig-fermi-occupation-temperature`\\ , the energy range over "
+"which the occupation number changes grows wider as the temperature rises."
+" All finite-temperature curves pass through :math:`(E,f)=(\\mu,1/2)`."
+
+#: ../../solid/fermi_level_and_occupation.rst:40
+msgid "化学ポテンシャルを中心に1から0へ変化する占有数。絶対零度では段差があり、有限温度では温度が高いほど変化がなだらかになる。"
+msgstr ""
+"The occupation number changes from one to zero around the chemical "
+"potential. There is a step at absolute zero. At finite temperatures, the "
+"change becomes more gradual as the temperature rises."
+
+#: ../../solid/fermi_level_and_occupation.rst:46
+#, python-brace-format
+msgid ""
+"式 :eq:`f(E)` を、横軸のエネルギーを :math:`k_{\\mathrm B}T_1` で割って描いた。 実線は温度 "
+":math:`T_1`、一点鎖線は :math:`2.5T_1`、灰色の破線は絶対零度に近づけた極限。 黒丸は有限温度での "
+":math:`f(\\mu)=1/2` を示す。"
+msgstr ""
+"Plot of Equation :eq:`f(E)` with the energy on the horizontal axis "
+"divided by :math:`k_{\\mathrm B}T_1`. The solid curve is for temperature "
+":math:`T_1`, the dash-dotted curve is for :math:`2.5T_1`, and the gray "
+"dashed curve is the limit as the temperature approaches absolute zero. "
+"The black dot marks :math:`f(\\mu)=1/2` at finite temperature."
+
+#: ../../solid/fermi_level_and_occupation.rst:53
+msgid "絶対零度とフェルミ面"
+msgstr "Absolute Zero and the Fermi Surface"
+
+#: ../../solid/fermi_level_and_occupation.rst:55
+msgid ""
+":math:`T\\to0` では、:math:`E<\\mu` の占有数は1に、:math:`E>\\mu` の占有数は0に "
+"近づく。絶対零度での化学ポテンシャルをフェルミエネルギーと呼ぶ。半導体では有限温度の :math:`\\mu` "
+"もフェルミ準位と呼ぶことが多い。絶対零度で化学ポテンシャルが :ref:`バンドギャップ<valence-conduction-band-"
+"gap>`\\ 内にあるとき、ギャップ内でその値を動かしても各状態の占有は変わらない。"
+msgstr ""
+"As :math:`T\\to0`, the occupation number approaches one for "
+":math:`E<\\mu` and zero for :math:`E>\\mu`. The chemical potential at "
+"absolute zero is called the Fermi energy. In semiconductors, :math:`\\mu`"
+" at finite temperature is also often called the Fermi level. If the "
+"chemical potential lies within the :ref:`band gap <valence-conduction-"
+"band-gap>`\\  at absolute zero, moving it within the gap leaves the "
+"occupation of each state unchanged."
+
+#: ../../solid/fermi_level_and_occupation.rst:60
+msgid ""
+"金属では、少なくとも一つのバンドがフェルミ準位を横切る。波数空間で :math:`E_j(\\boldsymbol k)=\\mu` "
+"を満たす面がフェルミ面である。 等間隔な\\ :ref:`1次元のタイト・バインディング鎖<tightbinding>`\\ "
+"で最近接ホッピングだけを含めると、1原子1軌道の バンドに、スピンを含めて 原子数の2倍の状態がある。原子1個あたり電子1個の\\ "
+":ref:`半充填<half-filling>`\\ では、 フェルミ面に相当する境界は2つのフェルミ点 "
+":math:`k=\\pm\\pi/(2a)` になる。 金属では、この\\ :ref:`占有数の段差<kpoint-fermi-"
+"surface>`\\ がk点メッシュによる積分誤差に影響する。"
+msgstr ""
+"In a metal, at least one band crosses the Fermi level. The surface in "
+"wave-vector space satisfying :math:`E_j(\\boldsymbol k)=\\mu` is the "
+"Fermi surface. With only nearest-neighbor hopping in an equally spaced \\"
+" :ref:`one-dimensional tight-binding chain <tightbinding>`\\ , a band "
+"with one orbital per atom has twice as many states as atoms, counting "
+"spin. At \\ :ref:`half filling <half-filling>`\\ , with one electron per "
+"atom, the boundary corresponding to the Fermi surface consists of two "
+"Fermi points :math:`k=\\pm\\pi/(2a)`. In metals, this \\ :ref:`step in "
+"the occupation number <kpoint-fermi-surface>`\\  affects the integration "
+"error of a k-point mesh."
+
+#: ../../solid/fermi_level_and_occupation.rst:71
+msgid "ボルツマン近似"
+msgstr "Boltzmann Approximation"
+
+#: ../../solid/fermi_level_and_occupation.rst:73
+#, python-brace-format
+msgid ""
+":math:`E-\\mu\\gg k_{\\mathrm B}T` では、式 :eq:`f(E)` の分母で指数項が支配的になる。 "
+"したがって伝導帯の電子のように、この条件を満たす状態の占有数は"
+msgstr ""
+"For :math:`E-\\mu\\gg k_{\\mathrm B}T`, the exponential term dominates "
+"the denominator of Equation :eq:`f(E)`. Thus, for states that satisfy "
+"this condition, such as electron states in the conduction band, the "
+"occupation number is approximated by"
+
+#: ../../solid/fermi_level_and_occupation.rst:76
+msgid "f(E)\\simeq \\exp\\!\\left[-\\frac{E-\\mu}{k_{\\mathrm B}T}\\right]"
+msgstr "f(E)\\simeq \\exp\\!\\left[-\\frac{E-\\mu}{k_{\\mathrm B}T}\\right]"
+
+#: ../../solid/fermi_level_and_occupation.rst:81
+#, python-brace-format
+msgid ""
+"と近似できる。価電子帯の正孔の確率は、その電子状態が空である確率 :math:`1-f(E)` である。:math:`\\mu-E\\gg "
+"k_{\\mathrm B}T` では、分母の :math:`\\exp[(E-\\mu)/(k_{\\mathrm B}T)]` が小さいため、"
+msgstr ""
+"The probability of a hole in the valence band is the probability "
+":math:`1-f(E)` that the electron state is empty. When :math:`\\mu-E\\gg "
+"k_{\\mathrm B}T`, the term :math:`\\exp[(E-\\mu)/(k_{\\mathrm B}T)]` in "
+"the denominator is small. The resulting approximation is"
+
+#: ../../solid/fermi_level_and_occupation.rst:85
+msgid "f(E)\\simeq 1-\\exp\\!\\left[-\\frac{\\mu-E}{k_{\\mathrm B}T}\\right]"
+msgstr "f(E)\\simeq 1-\\exp\\!\\left[-\\frac{\\mu-E}{k_{\\mathrm B}T}\\right]"
+
+#: ../../solid/fermi_level_and_occupation.rst:90
+msgid "となり、正孔の確率は"
+msgstr "and the hole probability is"
+
+#: ../../solid/fermi_level_and_occupation.rst:92
+msgid "1-f(E)\\simeq \\exp\\!\\left[-\\frac{\\mu-E}{k_{\\mathrm B}T}\\right]"
+msgstr "1-f(E)\\simeq \\exp\\!\\left[-\\frac{\\mu-E}{k_{\\mathrm B}T}\\right]"
+
+#: ../../solid/fermi_level_and_occupation.rst:97
+msgid ""
+"となる。これらの近似から\\ :ref:`伝導帯の電子密度<conduction-band-electrons>`\\ と "
+":ref:`価電子帯の正孔密度<valence-band-holes>`\\ を求められる。フェルミ準位がバンド端に近づくと近似の条件が "
+"崩れるので、その場合は式 :eq:`f(E)` を状態密度との積分に使う。"
+msgstr ""
+"These approximations give the \\ :ref:`electron density in the conduction"
+" band <conduction-band-electrons>`\\  and the :ref:`hole density in the "
+"valence band <valence-band-holes>`\\ . When the Fermi level approaches a "
+"band edge, the condition for the approximation breaks down. In that case,"
+" use Equation :eq:`f(E)` in the integral with the density of states."
+
+#: ../../solid/fermi_level_and_occupation.rst:102
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/fermi_level_and_occupation.rst:104
+msgid ""
+"Jesús A. del Alamo, MIT OpenCourseWare, `Integrated Microelectronic "
+"Devices, Lecture 3 <https://ocw.mit.edu/courses/6-720j-integrated-"
+"microelectronic-devices-"
+"spring-2007/1bccffbfa7b4487be99b8af8b46186ef_lecture3.pdf>`_."
+msgstr ""
+"Jesús A. del Alamo, MIT OpenCourseWare, `Integrated Microelectronic "
+"Devices, Lecture 3 <https://ocw.mit.edu/courses/6-720j-integrated-"
+"microelectronic-devices-"
+"spring-2007/1bccffbfa7b4487be99b8af8b46186ef_lecture3.pdf>`_."
+

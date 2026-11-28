@@ -1,0 +1,622 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:30+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/tightbinding.rst:4
+msgid "タイト・バインディング近似"
+msgstr "Tight-Binding Approximation"
+
+#: ../../solid/tightbinding.rst:6
+msgid ""
+"**タイト・バインディング近似** （強束縛近似）は、原子の周囲などに局在した 軌道を基底として電子状態を記述する方法である。本稿では最も簡単な "
+"1次元原子鎖の模型を周期境界条件のもとで解き、バンドの形、分散の形を変える要因、 "
+"結合交替によるギャップがどの式から現れるかを確かめる。両端が開いた有限の鎖の準位は 「\\ :ref:`finite-chain`\\ 」で扱う。"
+msgstr ""
+"The **tight-binding approximation** describes electronic states in a "
+"basis of orbitals localized, for example, around atoms. We solve the "
+"simplest one-dimensional atomic chain model under periodic boundary "
+"conditions and identify the equations that give the band shape, the "
+"factors that change the dispersion, and the gap due to alternating bonds."
+" The levels of a finite chain with two open ends are treated in “\\ :ref"
+":`Finite-Chain Levels and the Finite-Size Gap <finite-chain>`\\ .”"
+
+#: ../../solid/tightbinding.rst:12
+msgid ""
+"**前提知識**: 量子力学の固有値問題、行列の対角化、:ref:`ブロッホの定理<blochstheorem>`、 :ref:`周期境界条件"
+"<pbc-allowed-wavevectors>`、:ref:`第1ブリルアンゾーン<first-brillouin-zone>`。"
+msgstr ""
+"**Prerequisites**: Eigenvalue problems in quantum mechanics, matrix "
+"diagonalization, :ref:`Bloch’s Theorem <blochstheorem>`, :ref:`Periodic "
+"Boundary Conditions <pbc-allowed-wavevectors>`, and the :ref:`First "
+"Brillouin Zone <first-brillouin-zone>`."
+
+#: ../../solid/tightbinding.rst:15
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/tightbinding.rst:17
+msgid "局在軌道の基底でハミルトニアンを行列として書き、1次元鎖のバンド分散を導く。"
+msgstr ""
+"Write the Hamiltonian as a matrix in a basis of localized orbitals and "
+"derive the band dispersion of a one-dimensional chain."
+
+#: ../../solid/tightbinding.rst:18
+msgid "軌道の重なりや第2近接ホッピングが分散の形をどう変えるかを説明する。"
+msgstr ""
+"Explain how orbital overlap and next-nearest-neighbor hopping change the "
+"shape of the dispersion."
+
+#: ../../solid/tightbinding.rst:19
+msgid "ホッピングが交替する鎖（SSH模型）でギャップ :math:`2|t_1-t_2|` が開くことを導く。"
+msgstr ""
+"Derive the gap :math:`2|t_1-t_2|` that opens in a chain with alternating "
+"hopping (the SSH model)."
+
+#: ../../solid/tightbinding.rst:22
+msgid "模型の設定"
+msgstr "Model Setup"
+
+#: ../../solid/tightbinding.rst:26
+#, python-brace-format
+msgid ""
+"原子 :math:`n` に置いた軌道を :math:`|n\\rangle` と書き、軌道は互いに直交する （:math:`\\langle "
+"m|n\\rangle=\\delta_{mn}`）とする。ハミルトニアンの行列要素を"
+msgstr ""
+"Denote the orbital on atom :math:`n` by :math:`|n\\rangle` and assume the"
+" orbitals are orthogonal (:math:`\\langle m|n\\rangle=\\delta_{mn}`). Set"
+" the Hamiltonian matrix elements to"
+
+#: ../../solid/tightbinding.rst:29
+msgid ""
+"\\langle n|\\hat H|n\\rangle=\\varepsilon_0,\\qquad\n"
+"\\langle n|\\hat H|n\\pm1\\rangle=-t\\quad(t>0)"
+msgstr ""
+"\\langle n|\\hat H|n\\rangle=\\varepsilon_0,\\qquad\n"
+"\\langle n|\\hat H|n\\pm1\\rangle=-t\\quad(t>0)"
+
+#: ../../solid/tightbinding.rst:35
+msgid ""
+"とし、それ以外の要素は0とする。:math:`\\varepsilon_0` を **軌道エネルギー** "
+"（**オンサイトエネルギー**）と呼ぶ。軌道間の電子の移動を表す非対角の行列要素を **ホッピング積分** と呼び、ここでは :math:`t` "
+"で表す。s軌道どうしの 隣接間の行列要素は通常負になるので、:math:`-t` と書いて :math:`t` を正に "
+"とることが多い。文献によって符号の付け方が異なるので、式を比較するときは注意する。"
+msgstr ""
+"with all other elements zero. We call :math:`\\varepsilon_0` the "
+"**orbital energy** (or **on-site energy**). The off-diagonal matrix "
+"elements that describe electron transfer between orbitals are called "
+"**hopping integrals**, denoted here by :math:`t`. The matrix element "
+"between neighboring s orbitals is usually negative, so it is often "
+"written :math:`-t` with :math:`t` taken positive. Sign conventions vary "
+"across the literature, so take care when comparing equations."
+
+#: ../../solid/tightbinding.rst:41
+msgid ""
+"波動関数を :math:`|\\psi\\rangle=\\sum_n c_n|n\\rangle` と展開すると、 Schrödinger方程式"
+" :math:`\\hat H|\\psi\\rangle=E|\\psi\\rangle` は係数に対する 連立方程式"
+msgstr ""
+"Expanding the wave function as :math:`|\\psi\\rangle=\\sum_n "
+"c_n|n\\rangle` gives the Schrödinger equation :math:`\\hat "
+"H|\\psi\\rangle=E|\\psi\\rangle` as a system of equations for the "
+"coefficients:"
+
+#: ../../solid/tightbinding.rst:45
+#, python-brace-format
+msgid "\\varepsilon_0 c_n-t\\,(c_{n+1}+c_{n-1})=E\\,c_n"
+msgstr "\\varepsilon_0 c_n-t\\,(c_{n+1}+c_{n-1})=E\\,c_n"
+
+#: ../../solid/tightbinding.rst:50
+msgid "になる。両端をどう扱うか（境界条件）を決めると、この式の解が決まる。"
+msgstr ""
+"The solutions of this equation depend on how the two ends are treated, "
+"that is, on the boundary conditions."
+
+#: ../../solid/tightbinding.rst:53
+msgid "周期鎖のバンド分散"
+msgstr "Band Dispersion in a Periodic Chain"
+
+#: ../../solid/tightbinding.rst:57
+#, python-brace-format
+msgid ""
+":math:`N` 個の原子を間隔 :math:`a` で並べ、\\ :ref:`周期境界条件<pbc-allowed-wavevectors>`"
+" :math:`c_{n+N}=c_n` を課す。:ref:`ブロッホの定理<blochstheorem>` より、並進 :math:`n\\to"
+" n+1` に 対して位相 :math:`e^{ika}` だけ変わる解を探せばよい。そこで、各原子の軌道に位相を付けて足し合わせた "
+"**ブロッホ和**"
+msgstr ""
+"Arrange :math:`N` atoms with spacing :math:`a` and impose \\ "
+":ref:`periodic boundary conditions <pbc-allowed-wavevectors>` "
+":math:`c_{n+N}=c_n`. By :ref:`Bloch’s theorem <blochstheorem>`, it "
+"suffices to seek solutions for which the translation :math:`n\\to n+1` "
+"introduces a phase factor :math:`e^{ika}`. We therefore form a **Bloch "
+"sum** by adding the orbitals on all atoms with phase factors:"
+
+#: ../../solid/tightbinding.rst:61
+#, python-brace-format
+msgid ""
+"|k\\rangle=\\frac{1}{\\sqrt N}\\sum_{n=1}^{N}e^{ikna}|n\\rangle,\\qquad\n"
+"k=\\frac{2\\pi m}{Na}\\quad(m=0,1,\\ldots,N-1)"
+msgstr ""
+"|k\\rangle=\\frac{1}{\\sqrt N}\\sum_{n=1}^{N}e^{ikna}|n\\rangle,\\qquad\n"
+"k=\\frac{2\\pi m}{Na}\\quad(m=0,1,\\ldots,N-1)"
+
+#: ../../solid/tightbinding.rst:67
+#, python-brace-format
+msgid "を考える。:math:`c_n=e^{ikna}/\\sqrt N` を :eq:`tb-recursion` に代入すると"
+msgstr ""
+"Substituting :math:`c_n=e^{ikna}/\\sqrt N` into Equation :eq:`tb-"
+"recursion` gives"
+
+#: ../../solid/tightbinding.rst:69
+#, python-brace-format
+msgid "c_{n+1}+c_{n-1}=\\left(e^{ika}+e^{-ika}\\right)c_n=2\\cos(ka)\\,c_n"
+msgstr "c_{n+1}+c_{n-1}=\\left(e^{ika}+e^{-ika}\\right)c_n=2\\cos(ka)\\,c_n"
+
+#: ../../solid/tightbinding.rst:73
+msgid "なので、:math:`|k\\rangle` は固有状態であり、固有値は"
+msgstr "so :math:`|k\\rangle` is an eigenstate with eigenvalue"
+
+#: ../../solid/tightbinding.rst:75
+msgid "E(k)=\\varepsilon_0-2t\\cos(ka)"
+msgstr "E(k)=\\varepsilon_0-2t\\cos(ka)"
+
+#: ../../solid/tightbinding.rst:80
+msgid ""
+"となる。有限の周期鎖では、:math:`N` 個の原子軌道から :math:`N` 個の状態ができる。 各状態の波数は :eq:`tb-"
+"bloch-sum` の離散値をとり、代表点を第1ブリルアンゾーン :math:`-\\pi/a<k\\le\\pi/a` から選べる。"
+msgstr ""
+"In a finite periodic chain, :math:`N` atomic orbitals give rise to "
+":math:`N` states. Each state's wave vector takes one of the discrete "
+"values in Equation :eq:`tb-bloch-sum`, and representative points can be "
+"chosen from the first Brillouin zone :math:`-\\pi/a<k\\le\\pi/a`."
+
+#: ../../solid/tightbinding.rst:86
+msgid ""
+":math:`N\\to\\infty` の極限では、離散的な準位がバンドを連続的に埋める。 :math:`k=0` "
+"ではすべての軌道が同位相で重なり、エネルギーは下端 :math:`\\varepsilon_0-2t` になる。:math:`k=\\pi/a` "
+"では隣どうしが逆位相になり、 エネルギーは上端 :math:`\\varepsilon_0+2t` になる。バンドの上端と下端の差を "
+"**バンド幅** と呼び、 この模型では :math:`W=4t` である。"
+msgstr ""
+"In the limit :math:`N\\to\\infty`, the discrete levels fill the band "
+"continuously. At :math:`k=0`, all orbitals overlap in phase and the "
+"energy is at the lower edge :math:`\\varepsilon_0-2t`. At "
+":math:`k=\\pi/a`, neighboring orbitals are out of phase and the energy is"
+" at the upper edge :math:`\\varepsilon_0+2t`. The difference between the "
+"upper and lower edges is the **bandwidth**, which is :math:`W=4t` in this"
+" model."
+
+#: ../../solid/tightbinding.rst:94
+msgid ""
+":math:`N` 個の波数それぞれに、スピンを含めて電子が2個まで入るので、バンドの定員は :math:`2N` "
+"個である。1原子あたり1電子の鎖では :math:`N` 個の電子が入り、定員の半分を占める。 これを **半充填** と呼ぶ。"
+msgstr ""
+"Each of the :math:`N` wave vectors can accommodate up to two electrons "
+"when spin is included, so the band can hold :math:`2N` electrons. A chain"
+" with one electron per atom contains :math:`N` electrons and fills half "
+"the available states. This is called **half filling**."
+
+#: ../../solid/tightbinding.rst:100
+#, python-brace-format
+msgid ""
+"無限鎖の半充填では、絶対零度で :math:`|k|<\\pi/(2a)` の状態が占有され、 \\ :ref:`フェルミ準位<fermi-"
+"surface>`\\ は :math:`E_{\\mathrm F}=\\varepsilon_0` になる。 "
+"占有された状態と空の状態の境目の波数を **フェルミ波数** と呼び、この鎖では :math:`k_{\\mathrm F}=\\pi/(2a)`"
+" である。 1次元ではフェルミ面は :math:`k=\\pm k_{\\mathrm F}` の2点になる。 "
+"バンドがフェルミ準位を横切るので、この模型の無限鎖は金属的である。"
+msgstr ""
+"For an infinite chain at half filling and absolute zero, the states with "
+":math:`|k|<\\pi/(2a)` are occupied, and the \\ :ref:`Fermi level <fermi-"
+"surface>`\\  is :math:`E_{\\mathrm F}=\\varepsilon_0`. The wave number at"
+" the boundary between occupied and empty states is called the **Fermi "
+"wave number**. For this chain, :math:`k_{\\mathrm F}=\\pi/(2a)`. In one "
+"dimension, the Fermi surface consists of the two points :math:`k=\\pm "
+"k_{\\mathrm F}`. The infinite chain is metallic in this model because the"
+" band crosses the Fermi level."
+
+#: ../../solid/tightbinding.rst:108
+msgid ""
+"原子数が有限でも、周期境界条件を課した鎖の準位は :eq:`tb-band` の離散的な点に乗る。 "
+"両端が開いた鎖では定在波が固有状態になり、原子数が大きいとき、およそ原子数に反比例する有限サイズギャップが現れる。 "
+"分子や有限の鎖の計算結果をバンドと比べるときに必要になるので、 「\\ :ref:`finite-chain`\\ 」で導く。"
+msgstr ""
+"Even for a finite number of atoms, the levels of a chain with periodic "
+"boundary conditions lie at discrete points on the curve in Equation :eq"
+":`tb-band`. For a chain with two open ends, standing waves are the "
+"eigenstates, and a finite-size gap appears that is approximately "
+"inversely proportional to the number of atoms when that number is large. "
+"“\\ :ref:`Finite-Chain Levels and the Finite-Size Gap <finite-chain>`\\ ”"
+" derives these results, which are needed to compare calculations for "
+"molecules or finite chains with a band."
+
+#: ../../solid/tightbinding.rst:114
+msgid "第2近接ホッピング"
+msgstr "Next-Nearest-Neighbor Hopping"
+
+#: ../../solid/tightbinding.rst:116
+msgid ""
+"ここまでの模型は、直交基底で最近接ホッピングのみを考える最小限のものである。 "
+"実際の原子軌道を基底にすると、軌道の重なりや、より遠い原子とのホッピングが現れ、 分散の形が変わる。"
+msgstr ""
+"The model so far is minimal, with an orthogonal basis and only nearest-"
+"neighbor hopping. Using actual atomic orbitals as the basis introduces "
+"overlap between orbitals and hopping to more distant atoms, changing the "
+"shape of the dispersion."
+
+#: ../../solid/tightbinding.rst:120
+msgid ""
+"第2近接の行列要素 :math:`\\langle n|\\hat H|n\\pm2\\rangle=-t_2` を加えても、 ブロッホ和 :eq"
+":`tb-bloch-sum` は固有状態のままであり、"
+msgstr ""
+"Even if we add a next-nearest-neighbor matrix element :math:`\\langle "
+"n|\\hat H|n\\pm2\\rangle=-t_2`, the Bloch sums in Equation :eq:`tb-bloch-"
+"sum` remain eigenstates, and the dispersion becomes"
+
+#: ../../solid/tightbinding.rst:123
+msgid "E(k)=\\varepsilon_0-2t\\cos(ka)-2t_2\\cos(2ka)"
+msgstr "E(k)=\\varepsilon_0-2t\\cos(ka)-2t_2\\cos(2ka)"
+
+#: ../../solid/tightbinding.rst:128
+msgid ""
+"となる。一般に :math:`m` 番目の近接ホッピングは :math:`\\cos(mka)` の項を加える。 したがって、周期鎖の "
+":math:`E(k)` を :math:`\\cos(mka)` で展開した係数は、 直交基底での各距離のホッピングに対応する。"
+msgstr ""
+"In general, hopping to a neighbor of order :math:`m` adds a "
+":math:`\\cos(mka)` term. Thus, the coefficients in the expansion of the "
+"periodic-chain dispersion :math:`E(k)` in terms of :math:`\\cos(mka)` "
+"correspond to hopping at each distance in an orthogonal basis."
+
+#: ../../solid/tightbinding.rst:135
+msgid "|nonorthogonal-basis|"
+msgstr "Orbital Overlap and the Generalized Eigenvalue Problem"
+
+#: ../../solid/tightbinding.rst:137
+msgid ""
+"隣接軌道の重なりを :math:`\\langle n|n\\pm1\\rangle=s` とすると、 固有値問題は一般化固有値問題 "
+":math:`Hc=ESc` になる。ブロッホ和を使うと :math:`H` と :math:`S` はともに対角化され、"
+msgstr ""
+"With overlap :math:`\\langle n|n\\pm1\\rangle=s` between neighboring "
+"orbitals, the eigenvalue problem becomes the generalized eigenvalue "
+"problem :math:`Hc=ESc`. The Bloch sums diagonalize both :math:`H` and "
+":math:`S`, giving"
+
+#: ../../solid/tightbinding.rst:141
+#, python-brace-format
+msgid "E(k)=\\frac{\\varepsilon_0-2t\\cos(ka)}{1+2s\\cos(ka)}"
+msgstr "E(k)=\\frac{\\varepsilon_0-2t\\cos(ka)}{1+2s\\cos(ka)}"
+
+#: ../../solid/tightbinding.rst:146
+msgid "となる。:math:`s` について1次まで展開すると"
+msgstr "Expanding to first order in :math:`s` gives"
+
+#: ../../solid/tightbinding.rst:148
+msgid "E(k)\\simeq\\varepsilon_0+2ts-2(t+\\varepsilon_0 s)\\cos(ka)+2ts\\cos(2ka)"
+msgstr "E(k)\\simeq\\varepsilon_0+2ts-2(t+\\varepsilon_0 s)\\cos(ka)+2ts\\cos(2ka)"
+
+#: ../../solid/tightbinding.rst:152
+msgid ""
+"となり、重なりは実効的な最近接ホッピングを変えるだけでなく、:math:`\\cos(2ka)` の "
+"項も生む。:math:`\\cos(2ka)` の項が必要だからといって、それだけで第2近接ホッピングが "
+"あるとは結論できない。重なりがあると、結合的な状態と反結合的な状態で準位の 広がり方が非対称になる [McKinnon1995]_。"
+msgstr ""
+"Orbital overlap changes the effective nearest-neighbor hopping and also "
+"produces a :math:`\\cos(2ka)` term. The need for a :math:`\\cos(2ka)` "
+"term alone does not establish that next-nearest-neighbor hopping is "
+"present. With overlap, the levels spread asymmetrically between bonding "
+"and antibonding states [McKinnon1995]_."
+
+#: ../../solid/tightbinding.rst:160
+msgid "ホッピングが交替する鎖（SSH模型）"
+msgstr "Chain with Alternating Hopping (SSH Model)"
+
+#: ../../solid/tightbinding.rst:162
+msgid ""
+"隣接原子間のホッピングの大きさが1本おきに :math:`t_1>0`、:math:`t_2>0` と交替する鎖を考える。 "
+"Su、Schrieffer、Heegerがポリアセチレンの結合交替を記述するために用いた模型で、 SSH模型と呼ばれる "
+"[SSH1979]_。元の模型ではホッピングの交替は原子の変位から 生じるが、ここではホッピングが交替するという結果だけを扱う。"
+msgstr ""
+"Consider a chain in which the hopping magnitudes between adjacent atoms "
+"alternate between :math:`t_1>0` and :math:`t_2>0`. Su, Schrieffer, and "
+"Heeger used this model to describe bond alternation in polyacetylene. It "
+"is called the SSH model [SSH1979]_. In the original model, alternating "
+"hopping arises from atomic displacements, but here we consider only the "
+"resulting alternation in hopping."
+
+#: ../../solid/tightbinding.rst:169
+msgid ""
+"周期は :math:`2a` に倍化するので、隣接する2原子を単位胞にとり、単位胞 :math:`m` "
+"の2つの原子をA、Bと呼ぶ。各単位胞のAの集まり、Bの集まりを **副格子** と呼ぶ。 胞内のAとBの間のホッピングを "
+":math:`-t_1`、Bと次の胞の Aの間のホッピングを :math:`-t_2` とする。単位胞の数を :math:`M=N/2` として、"
+" 副格子ごとのブロッホ和"
+msgstr ""
+"Since the period doubles to :math:`2a`, take two neighboring atoms as the"
+" unit cell and call the two atoms in cell :math:`m` A and B. The "
+"collections of A atoms and of B atoms across all cells are called "
+"**sublattices**. Let the hopping between A and B in the same cell be "
+":math:`-t_1` and that between B and A in the next cell be :math:`-t_2`. "
+"With the number of unit cells denoted by :math:`M=N/2`, form the Bloch "
+"sum for each sublattice:"
+
+#: ../../solid/tightbinding.rst:175
+#, python-brace-format
+msgid ""
+"|k,\\mathrm A\\rangle=\\frac{1}{\\sqrt M}\\sum_{m}e^{ik\\,2ma}|m,\\mathrm"
+" A\\rangle,\\qquad\n"
+"|k,\\mathrm B\\rangle=\\frac{1}{\\sqrt M}\\sum_{m}e^{ik\\,2ma}|m,\\mathrm"
+" B\\rangle"
+msgstr ""
+"|k,\\mathrm A\\rangle=\\frac{1}{\\sqrt M}\\sum_{m}e^{ik\\,2ma}|m,\\mathrm"
+" A\\rangle,\\qquad\n"
+"|k,\\mathrm B\\rangle=\\frac{1}{\\sqrt M}\\sum_{m}e^{ik\\,2ma}|m,\\mathrm"
+" B\\rangle"
+
+#: ../../solid/tightbinding.rst:180
+msgid ""
+"を作る。胞 :math:`m` のAは、同じ胞のBと :math:`-t_1`、1つ前の胞 :math:`m-1` の Bと "
+":math:`-t_2` で結ばれているので、"
+msgstr ""
+"Atom A in cell :math:`m` is coupled to B in the same cell by :math:`-t_1`"
+" and to B in the preceding cell :math:`m-1` by :math:`-t_2`, so"
+
+#: ../../solid/tightbinding.rst:183
+#, python-brace-format
+msgid ""
+"\\langle k,\\mathrm A|\\hat H|k,\\mathrm "
+"B\\rangle=-\\left(t_1+t_2e^{-2ika}\\right)"
+msgstr ""
+"\\langle k,\\mathrm A|\\hat H|k,\\mathrm "
+"B\\rangle=-\\left(t_1+t_2e^{-2ika}\\right)"
+
+#: ../../solid/tightbinding.rst:187
+msgid "となる。ハミルトニアンは :math:`k` ごとの :math:`2\\times2` 行列"
+msgstr "The Hamiltonian separates by :math:`k` into :math:`2\\times2` matrices"
+
+#: ../../solid/tightbinding.rst:189
+#, python-brace-format
+msgid ""
+"H(k)=\n"
+"\\begin{pmatrix}\n"
+"\\varepsilon_0 & -h(k)\\\\\n"
+"-h(k)^* & \\varepsilon_0\n"
+"\\end{pmatrix},\\qquad\n"
+"h(k)=t_1+t_2e^{-2ika}"
+msgstr ""
+"H(k)=\n"
+"\\begin{pmatrix}\n"
+"\\varepsilon_0 & -h(k)\\\\\n"
+"-h(k)^* & \\varepsilon_0\n"
+"\\end{pmatrix},\\qquad\n"
+"h(k)=t_1+t_2e^{-2ika}"
+
+#: ../../solid/tightbinding.rst:199
+msgid "に分かれる。"
+msgstr "of this form."
+
+#: ../../solid/tightbinding.rst:203
+msgid ""
+"実空間の周期が :math:`2a` になると逆格子の周期は :math:`\\pi/a` になり、 "
+"第1ブリルアンゾーンも半分の幅になる。元の周期 :math:`a` のゾーンと区別して、これを **縮小ブリルアンゾーン** と呼ぶ。 ここで "
+":math:`k` は縮小ブリルアンゾーン :math:`-\\pi/(2a)<k\\le\\pi/(2a)` を動き、固有値は"
+msgstr ""
+"When the real-space period becomes :math:`2a`, the reciprocal lattice "
+"period becomes :math:`\\pi/a`, and the first Brillouin zone is half as "
+"wide. To distinguish it from the zone for the original period :math:`a`, "
+"we call it the **reduced Brillouin zone**. Here :math:`k` ranges over the"
+" reduced Brillouin zone :math:`-\\pi/(2a)<k\\le\\pi/(2a)`, and the "
+"eigenvalues are"
+
+#: ../../solid/tightbinding.rst:207
+#, python-brace-format
+msgid ""
+"E_\\pm(k)=\\varepsilon_0\\pm|h(k)|\n"
+"=\\varepsilon_0\\pm\\sqrt{t_1^2+t_2^2+2t_1t_2\\cos(2ka)}"
+msgstr ""
+"E_\\pm(k)=\\varepsilon_0\\pm|h(k)|\n"
+"=\\varepsilon_0\\pm\\sqrt{t_1^2+t_2^2+2t_1t_2\\cos(2ka)}"
+
+#: ../../solid/tightbinding.rst:213
+msgid "である。"
+msgstr "for the two branches."
+
+#: ../../solid/tightbinding.rst:218
+msgid "|ssh-band-gap|"
+msgstr "Period Doubling and the Band Gap"
+
+#: ../../solid/tightbinding.rst:220
+msgid ""
+":math:`t_1=t_2=t` のときは :math:`|h(k)|=2t|\\cos(ka)|` となり、:eq:`tb-band` の "
+"バンドを縮小ゾーンに折り返したものに戻る。2本のバンドは :math:`k=\\pm\\pi/(2a)` で "
+"接している。:math:`t_1\\neq t_2` になると、:math:`\\cos(2ka)=-1` となるこの点で "
+":math:`|h(k)|` は最小値 :math:`|t_1-t_2|` をとり、2本のバンドの間に"
+msgstr ""
+"When :math:`t_1=t_2=t`, we have :math:`|h(k)|=2t|\\cos(ka)|`, recovering "
+"the band in Equation :eq:`tb-band` folded into the reduced zone. The two "
+"bands touch at :math:`k=\\pm\\pi/(2a)`. When :math:`t_1\\neq t_2`, at "
+"these points where :math:`\\cos(2ka)=-1`, :math:`|h(k)|` takes its "
+"minimum value :math:`|t_1-t_2|` and a gap opens between the two bands:"
+
+#: ../../solid/tightbinding.rst:225
+msgid "\\Delta_{\\mathrm{SSH}}=2|t_1-t_2|"
+msgstr "\\Delta_{\\mathrm{SSH}}=2|t_1-t_2|"
+
+#: ../../solid/tightbinding.rst:230
+#, python-brace-format
+msgid ""
+"のギャップが開く。半充填では下のバンドがちょうど満たされるので、ホッピングの 交替は金属的だった鎖を絶縁体的にする。ギャップが開く "
+":math:`k=\\pm\\pi/(2a)` は 元の鎖のフェルミ波数 :math:`k_{\\mathrm F}` であり、周期の倍化によって"
+" :math:`k_{\\mathrm F}` がちょうど新しいゾーン境界になったことに対応する。"
+msgstr ""
+"At half filling, the lower band is exactly filled, so alternating hopping"
+" turns the metallic chain into an insulating one. The gap opens at "
+":math:`k=\\pm\\pi/(2a)`, at the Fermi wave number :math:`k_{\\mathrm F}` "
+"of the original chain. This corresponds to period doubling placing "
+":math:`k_{\\mathrm F}` exactly at the new zone boundary."
+
+#: ../../solid/tightbinding.rst:235
+msgid ""
+":numref:`fig-tightbinding-ssh-bulk-gap`\\ では、ホッピングが交替すると、折り返しだけでは "
+"接していた二つのバンドがゾーン境界で離れる。"
+msgstr ""
+"In :numref:`fig-tightbinding-ssh-bulk-gap`\\ , alternating hopping "
+"separates the two bands at the zone boundary, where they touch when the "
+"band is only folded."
+
+#: ../../solid/tightbinding.rst:238
+msgid "半分の幅のブリルアンゾーンで比較した二つのバンド。等間隔鎖では境界で接し、ホッピングを交替させると上下のバンドの間にギャップが開く。"
+msgstr ""
+"Comparison of two bands in a Brillouin zone of half the original width. "
+"They touch at the boundary for an equally spaced chain. Alternating "
+"hopping opens a gap between the lower and upper bands."
+
+#: ../../solid/tightbinding.rst:244
+msgid ""
+"式 :eq:`tb-ssh-band` の上下のバンド。左は :math:`t_1=t_2=t`、右は :math:`t_1=0.8t,\\ "
+"t_2=1.2t`。両者を同じ縮小ゾーンに描いた。 右端の両矢印はバルクのギャップ（式 :eq:`tb-ssh-gap`）を示す。"
+msgstr ""
+"Upper and lower bands in Equation :eq:`tb-ssh-band`. The left panel shows"
+" :math:`t_1=t_2=t` and the right shows :math:`t_1=0.8t,\\ t_2=1.2t`, both"
+" in the same reduced zone. The double-headed arrow at the right marks the"
+" bulk gap (Equation :eq:`tb-ssh-gap`)."
+
+#: ../../solid/tightbinding.rst:248
+msgid ""
+"このギャップは無限鎖でも残る。この点で、等間隔の鎖を有限の長さで切ったときに "
+"現れるギャップとは違う。後者は鎖を長くするとゼロに近づく。両端が開いたSSH模型の鎖では、 端の結合の強さによって準位の並びが変わる（\\ "
+":ref:`finite-chain-ssh`）。"
+msgstr ""
+"This gap persists even in an infinite chain. It thus differs from the gap"
+" that appears when an equally spaced chain is cut to a finite length. "
+"That gap approaches zero as the chain grows longer. In a chain described "
+"by the SSH model with both ends open, the arrangement of the levels "
+"depends on the strength of the end bonds (see \\ :ref:`Open-Ended Chain "
+"with Alternating Hopping <finite-chain-ssh>`)."
+
+#: ../../solid/tightbinding.rst:258
+msgid ""
+"本稿ではホッピングの交替を与えられたものとして扱った。格子が自発的に二量化してこのギャップが開く条件は、 "
+"電子エネルギーの利得と弾性エネルギーの損失の釣り合いで決まり、\\ :ref:`Peierls不安定性<peierls-"
+"instability>`\\ で導く。"
+msgstr ""
+"Here we took the alternating hopping as given. The condition for the "
+"lattice to dimerize spontaneously and open this gap is set by the balance"
+" between the electronic energy gain and the elastic energy cost, as "
+"derived in \\ :ref:`Peierls instability <peierls-instability>`\\ ."
+
+#: ../../solid/tightbinding.rst:264
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../solid/tightbinding.rst:266
+msgid ""
+"本稿の模型は、直交基底、1原子1軌道、最近接ホッピングのみ、電子間相互作用なし "
+"という強い単純化の上に成り立っている。目的に応じて、複数の軌道、遠くの原子との ホッピング、軌道の重なり、電子間相互作用などを考慮する。"
+msgstr ""
+"The model here makes strong simplifications: an orthogonal basis, one "
+"orbital per atom, nearest-neighbor hopping only, and no electron-electron"
+" interactions. Depending on the purpose, one can include multiple "
+"orbitals, hopping to more distant atoms, orbital overlap, or electron-"
+"electron interactions."
+
+#: ../../solid/tightbinding.rst:270
+msgid ""
+":eq:`tb-band` や :eq:`tb-ssh-band` の :math:`t` は模型のパラメータである。 "
+"第一原理計算のバンドに当てはめて得た :math:`t` は、その計算の準位の並びを再現する有効パラメータであり、 "
+"フィットに使った分散の形（第2近接や重なりの項を含めるか）によっても値が変わる。"
+msgstr ""
+"In Equations :eq:`tb-band` and :eq:`tb-ssh-band`, :math:`t` is a model "
+"parameter. A value of :math:`t` obtained by fitting bands from a first-"
+"principles calculation is an effective parameter that reproduces the "
+"arrangement of levels in that calculation. Its value also depends on the "
+"dispersion used in the fit, such as whether it includes next-nearest-"
+"neighbor hopping or overlap terms."
+
+#: ../../solid/tightbinding.rst:277
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/tightbinding.rst:279
+msgid ":ref:`bandstructure`"
+msgstr ":ref:`bandstructure`"
+
+#: ../../solid/tightbinding.rst:280
+msgid ":ref:`blochstheorem`"
+msgstr ":ref:`blochstheorem`"
+
+#: ../../solid/tightbinding.rst:281
+msgid ":ref:`finite-chain`"
+msgstr ":ref:`finite-chain`"
+
+#: ../../solid/tightbinding.rst:282
+msgid ":ref:`peierls-instability`"
+msgstr ":ref:`peierls-instability`"
+
+#: ../../solid/tightbinding.rst:283
+msgid ":ref:`bond_order`"
+msgstr ":ref:`bond_order`"
+
+#: ../../solid/tightbinding.rst:288
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/tightbinding.rst:290
+msgid ""
+"`N. Manini: The tight-binding model for electronic band structure "
+"<https://materia.fisica.unimi.it/manini/dida/tight.binding.notes.html>`_"
+msgstr ""
+"`N. Manini: The tight-binding model for electronic band structure "
+"<https://materia.fisica.unimi.it/manini/dida/tight.binding.notes.html>`_"
+
+#: ../../solid/tightbinding.rst:291
+msgid ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 10."
+msgstr ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 10."
+
+#: ../../solid/tightbinding.rst:293
+msgid ""
+"J\\. K\\. Asbóth, L. Oroszlány, and A. Pályi, `A Short Course on "
+"Topological Insulators <https://arxiv.org/abs/1509.02295>`_, Section 1.3."
+msgstr ""
+"J\\. K\\. Asbóth, L. Oroszlány, and A. Pályi, `A Short Course on "
+"Topological Insulators <https://arxiv.org/abs/1509.02295>`_, Section 1.3."
+
+#: ../../solid/tightbinding.rst:295
+msgid ""
+"B. A. McKinnon and T. C. Choy, “Significance of nonorthogonality in "
+"tight-binding models,” *Physical Review B* **52**, 14531 (1995), "
+"`doi:10.1103/PhysRevB.52.14531 "
+"<https://doi.org/10.1103/PhysRevB.52.14531>`_."
+msgstr ""
+"B. A. McKinnon and T. C. Choy, “Significance of nonorthogonality in "
+"tight-binding models,” *Physical Review B* **52**, 14531 (1995), "
+"`doi:10.1103/PhysRevB.52.14531 "
+"<https://doi.org/10.1103/PhysRevB.52.14531>`_."
+
+#: ../../solid/tightbinding.rst:298
+msgid ""
+"W. P. Su, J. R. Schrieffer, and A. J. Heeger, “Solitons in "
+"Polyacetylene,” *Physical Review Letters* **42**, 1698–1701 (1979), "
+"`doi:10.1103/PhysRevLett.42.1698 "
+"<https://doi.org/10.1103/PhysRevLett.42.1698>`_."
+msgstr ""
+"W. P. Su, J. R. Schrieffer, and A. J. Heeger, “Solitons in "
+"Polyacetylene,” *Physical Review Letters* **42**, 1698–1701 (1979), "
+"`doi:10.1103/PhysRevLett.42.1698 "
+"<https://doi.org/10.1103/PhysRevLett.42.1698>`_."
+

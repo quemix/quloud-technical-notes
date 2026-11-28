@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:04+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/energy_bands.rst:2
+msgid "エネルギーバンド"
+msgstr "Energy Bands"
+
+#: ../../solid/energy_bands.rst:4
+msgid ""
+":ref:`価電子帯・伝導帯とバンドギャップ<valence-conduction-band-gap>`\\ と\\ :ref:`状態密度"
+"<density-of-states>`\\ "
+"から始めます。タイト・バインディング模型では、原子軌道間のホッピングからバンドの形やギャップを求め、有限の長さの鎖の準位がバンドとどう対応するかを見ます。続いて、フェルミ準位と占有数、半導体の電気伝導へ進みます。"
+msgstr ""
+"We begin with the :ref:`valence band, conduction band, and band gap "
+"<valence-conduction-band-gap>`\\  and the \\ :ref:`density of states "
+"<density-of-states>`\\ . In the tight-binding model, we use hopping "
+"between atomic orbitals to find band shapes and gaps, then see how the "
+"levels of a finite chain correspond to the bands. We then turn to the "
+"Fermi level and occupation numbers, followed by electrical conduction in "
+"semiconductors."
+

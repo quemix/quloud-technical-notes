@@ -1,0 +1,615 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:30+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/finite_chain.rst:4
+msgid "有限鎖の準位と有限サイズギャップ"
+msgstr "Finite-Chain Levels and the Finite-Size Gap"
+
+#: ../../solid/finite_chain.rst:6
+msgid ""
+"分子や有限の長さの鎖を計算すると、準位は離散的で、最高被占有軌道（HOMO）と "
+"最低空軌道（LUMO）の間に隙間（HOMO–LUMOギャップ）が開く。この隙間が結晶のバンドギャップに "
+"対応するのか、原子数が有限であるために生じたものなのかは、ギャップの大きさだけでは決まらない。 本稿では、\\ "
+":ref:`タイト・バインディング近似<tightbinding>`\\ の1次元鎖を両端が開いた境界条件で解き、 "
+"離散準位が周期鎖のバンドとどう対応するか、ギャップが原子数と境界条件でどう変わるかを確かめる。"
+msgstr ""
+"Calculations for molecules and finite chains give discrete levels, with a"
+" gap between the highest occupied molecular orbital (HOMO) and the lowest"
+" unoccupied molecular orbital (LUMO). The size of this HOMO–LUMO gap "
+"alone cannot tell us whether it corresponds to a crystal's band gap or "
+"arises from the finite number of atoms. We solve the one-dimensional "
+"chain in the \\ :ref:`tight-binding approximation <tightbinding>`\\  with"
+" both ends open and examine how its discrete levels correspond to the "
+"periodic-chain band and how the gap depends on the number of atoms and "
+"the boundary conditions."
+
+#: ../../solid/finite_chain.rst:12
+msgid ""
+"本稿では、両端が開いた :math:`N` 原子の鎖を **開放端の鎖**、:math:`N` 原子に周期境界条件を 課した鎖（環）を "
+"**有限の周期鎖** と呼ぶ。両者を合わせて有限鎖と呼ぶ。"
+msgstr ""
+"We call a chain of :math:`N` atoms with both ends open an **open-ended "
+"chain**, and a chain of :math:`N` atoms with periodic boundary conditions"
+" (a ring) a **finite periodic chain**. We refer to both as finite chains."
+
+#: ../../solid/finite_chain.rst:15
+msgid ""
+"**前提知識**: :ref:`タイト・バインディング近似<tightbinding>`\\ の模型（式 :eq:`tb-"
+"recursion`、:eq:`tb-band`）、 :ref:`半充填<half-filling>`、:ref:`SSH模型<tb-ssh>`。"
+msgstr ""
+"**Prerequisites**: The model in the :ref:`tight-binding approximation "
+"<tightbinding>`\\  (Equations :eq:`tb-recursion` and :eq:`tb-band`), "
+":ref:`half filling <half-filling>`, and the :ref:`SSH model <tb-ssh>`."
+
+#: ../../solid/finite_chain.rst:18
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/finite_chain.rst:20
+msgid "開放端の鎖の固有状態を求め、擬似波数の意味を説明する。"
+msgstr ""
+"Find the eigenstates of an open-ended chain and explain what "
+"pseudowavenumbers represent."
+
+#: ../../solid/finite_chain.rst:21
+msgid "半充填の開放端の鎖のHOMO–LUMOギャップが、原子数が大きいとき、およそ原子数に反比例して閉じることを示す。"
+msgstr ""
+"Show that the HOMO–LUMO gap of a half-filled open-ended chain closes "
+"approximately in inverse proportion to the number of atoms when the "
+"number of atoms is large."
+
+#: ../../solid/finite_chain.rst:22
+msgid "計算で得たギャップが、有限サイズによるものか、無限鎖でも残るものかを、原子数と境界条件への依存から判断する。"
+msgstr ""
+"Use the dependence on the number of atoms and the boundary conditions to "
+"determine whether a calculated gap arises from finite size or persists in"
+" the infinite chain."
+
+#: ../../solid/finite_chain.rst:27
+msgid "開放端の境界条件"
+msgstr "Open Boundary Conditions"
+
+#: ../../solid/finite_chain.rst:29
+msgid ""
+"開放端の鎖では、:math:`n=1` と :math:`n=N` の原子は片側に しか隣接原子をもたない。これは、仮想的な "
+":math:`n=0` と :math:`n=N+1` の位置に 係数0の軌道を置き、"
+msgstr ""
+"In an open-ended chain, the atoms at :math:`n=1` and :math:`n=N` have a "
+"neighbor on only one side. This is equivalent to placing orbitals with "
+"zero coefficients at the fictitious positions :math:`n=0` and "
+":math:`n=N+1` and imposing the boundary condition"
+
+#: ../../solid/finite_chain.rst:33
+#, python-brace-format
+msgid "c_0=c_{N+1}=0"
+msgstr "c_0=c_{N+1}=0"
+
+#: ../../solid/finite_chain.rst:38
+#, python-brace-format
+msgid ""
+"という境界条件で\\ :ref:`タイト・バインディング近似<tightbinding>`\\ の連立方程式 :eq:`tb-recursion`"
+" を解くことと同じである。 これを **開放境界条件** と呼ぶ。周期境界条件 :math:`c_{n+N}=c_n` と違い、並進 "
+":math:`n\\to n+1` は 鎖を自分自身に重ねないので、ブロッホ和は固有状態にならない。"
+msgstr ""
+"when solving the system of equations in the \\ :ref:`tight-binding "
+"approximation <tightbinding>`\\ , Equation :eq:`tb-recursion`. These are "
+"called **open boundary conditions**. With the periodic boundary condition"
+" :math:`c_{n+N}=c_n` the chain maps onto itself under translation, but "
+"with open boundaries the translation :math:`n\\to n+1` does not. Thus "
+"Bloch sums are not eigenstates of the open-ended chain."
+
+#: ../../solid/finite_chain.rst:45
+msgid "定在波と擬似波数"
+msgstr "Standing Waves and Pseudowavenumbers"
+
+#: ../../solid/finite_chain.rst:47
+#, python-brace-format
+msgid ""
+"周期鎖の進行波 :math:`e^{\\pm ikna}` を重ね合わせた定在波 :math:`c_n=\\sin(n\\theta)` を "
+"試すと、"
+msgstr ""
+"With the periodic chain’s traveling waves :math:`e^{\\pm ikna}` "
+"superposed into the trial standing wave :math:`c_n=\\sin(n\\theta)`, the "
+"identity"
+
+#: ../../solid/finite_chain.rst:50
+#, python-brace-format
+msgid ""
+"c_{n+1}+c_{n-1}=\\sin\\bigl((n+1)\\theta\\bigr)+\\sin\\bigl((n-1)\\theta\\bigr)"
+"\n"
+"=2\\cos\\theta\\,\\sin(n\\theta)"
+msgstr ""
+"c_{n+1}+c_{n-1}=\\sin\\bigl((n+1)\\theta\\bigr)+\\sin\\bigl((n-1)\\theta\\bigr)"
+"\n"
+"=2\\cos\\theta\\,\\sin(n\\theta)"
+
+#: ../../solid/finite_chain.rst:55
+#, python-brace-format
+msgid ""
+"より :math:`E=\\varepsilon_0-2t\\cos\\theta` を得る。:math:`c_0=0` は自動的に "
+"満たされ、:math:`c_{N+1}=\\sin\\bigl((N+1)\\theta\\bigr)=0` から :math:`\\theta`"
+" は"
+msgstr ""
+"gives :math:`E=\\varepsilon_0-2t\\cos\\theta`. The condition "
+":math:`c_0=0` is automatic, and "
+":math:`c_{N+1}=\\sin\\bigl((N+1)\\theta\\bigr)=0` quantizes "
+":math:`\\theta` according to"
+
+#: ../../solid/finite_chain.rst:58
+#, python-brace-format
+msgid "\\theta_j=\\frac{j\\pi}{N+1},\\qquad j=1,\\ldots,N"
+msgstr "\\theta_j=\\frac{j\\pi}{N+1},\\qquad j=1,\\ldots,N"
+
+#: ../../solid/finite_chain.rst:62
+#, python-brace-format
+msgid ""
+"に量子化される。:math:`\\sum_{n=1}^{N}\\sin^2(n\\theta_j)=(N+1)/2` を使って "
+"規格化すると、固有ベクトルと固有値は"
+msgstr ""
+"Normalizing with :math:`\\sum_{n=1}^{N}\\sin^2(n\\theta_j)=(N+1)/2` gives"
+" the eigenvectors and eigenvalues"
+
+#: ../../solid/finite_chain.rst:65
+msgid "\\phi_j(n)=\\sqrt{\\frac{2}{N+1}}\\sin\\left(\\frac{nj\\pi}{N+1}\\right),"
+msgstr "\\phi_j(n)=\\sqrt{\\frac{2}{N+1}}\\sin\\left(\\frac{nj\\pi}{N+1}\\right),"
+
+#: ../../solid/finite_chain.rst:70
+#, python-brace-format
+msgid ""
+"E_j=\\varepsilon_0-2t\\cos\\left(\\frac{j\\pi}{N+1}\\right),\\qquad "
+"j=1,\\ldots,N"
+msgstr ""
+"E_j=\\varepsilon_0-2t\\cos\\left(\\frac{j\\pi}{N+1}\\right),\\qquad "
+"j=1,\\ldots,N"
+
+#: ../../solid/finite_chain.rst:75
+msgid "となる。"
+msgstr "respectively."
+
+#: ../../solid/finite_chain.rst:79
+msgid ""
+":eq:`tb-open-levels` は、周期鎖の分散 :eq:`tb-band` に :math:`k_ja=j\\pi/(N+1)` "
+"を代入した形をしている。この :math:`k_j` を開放端の鎖の **擬似波数** と呼ぶ。開放端の鎖は並進対称性をもたないので "
+":math:`k_j` は厳密な 量子数ではないが、:eq:`tb-open-vec` が示すように、:math:`j` 番目の固有状態は 波数 "
+":math:`k_j` で空間的に振動する定在波である。:math:`N` を増やすと :math:`k_j` は "
+":math:`0<ka<\\pi` を細かく埋め、準位の集合は周期鎖のバンドに 近づく。"
+msgstr ""
+"Equation :eq:`tb-open-levels` has the form of the periodic-chain "
+"dispersion in Equation :eq:`tb-band` with :math:`k_ja=j\\pi/(N+1)` "
+"substituted. We call :math:`k_j` the **pseudowavenumber** of the open-"
+"ended chain. The open-ended chain lacks translational symmetry, so "
+":math:`k_j` is not an exact quantum number. But as Equation :eq:`tb-open-"
+"vec` shows, eigenstate number :math:`j` is a standing wave that "
+"oscillates in space with wave number :math:`k_j`. As :math:`N` increases,"
+" the values of :math:`k_j` fill :math:`0<ka<\\pi` more densely, and the "
+"set of levels approaches the periodic-chain band."
+
+#: ../../solid/finite_chain.rst:87
+msgid ""
+"定在波は :math:`+k` と :math:`-k` の進行波を重ねた形をしている。 :math:`k_j` "
+"の符号を反転すると定在波全体の符号が変わるので、独立な状態には 正の擬似波数だけを割り当てればよい。開放端で許される擬似波数は "
+":math:`j=1,\\ldots,N` に対応するため、固有状態の数は周期鎖と同じ :math:`N` 個である。"
+msgstr ""
+"A standing wave is a superposition of traveling waves with :math:`+k` and"
+" :math:`-k`. Reversing the sign of :math:`k_j` changes the sign of the "
+"entire standing wave, so only positive pseudowavenumbers are needed to "
+"label independent states. The allowed pseudowavenumbers for an open-ended"
+" chain correspond to :math:`j=1,\\ldots,N`, so there are :math:`N` "
+"eigenstates, the same number as in the periodic chain."
+
+#: ../../solid/finite_chain.rst:95
+msgid "開放端の鎖のHOMO–LUMOギャップ"
+msgstr "HOMO–LUMO Gap of an Open-Ended Chain"
+
+#: ../../solid/finite_chain.rst:97
+msgid ""
+"開放端の鎖で :math:`N` が偶数、半充填のとき、:math:`j=1,\\ldots,N/2` の準位が占有される。 HOMOは "
+":math:`j=N/2`、LUMOは :math:`j=N/2+1` なので、その差は"
+msgstr ""
+"For a half-filled open-ended chain with even :math:`N`, the levels "
+":math:`j=1,\\ldots,N/2` are occupied. The HOMO is :math:`j=N/2` and the "
+"LUMO is :math:`j=N/2+1`, so their difference is"
+
+#: ../../solid/finite_chain.rst:101
+#, python-brace-format
+msgid ""
+"\\Delta_N=E_{N/2+1}-E_{N/2}\n"
+"=2t\\left[\\cos\\frac{N\\pi}{2(N+1)}-\\cos\\frac{(N+2)\\pi}{2(N+1)}\\right]"
+msgstr ""
+"\\Delta_N=E_{N/2+1}-E_{N/2}\n"
+"=2t\\left[\\cos\\frac{N\\pi}{2(N+1)}-\\cos\\frac{(N+2)\\pi}{2(N+1)}\\right]"
+
+#: ../../solid/finite_chain.rst:106
+#, python-brace-format
+msgid ""
+"である。和積公式 :math:`\\cos A-\\cos B=2\\sin\\frac{A+B}{2}\\sin\\frac{B-A}{2}` "
+"に :math:`A+B=\\pi`、:math:`B-A=\\pi/(N+1)` を使うと"
+msgstr ""
+"Applying the sum-to-product identity :math:`\\cos A-\\cos "
+"B=2\\sin\\frac{A+B}{2}\\sin\\frac{B-A}{2}` with :math:`A+B=\\pi` and "
+":math:`B-A=\\pi/(N+1)` gives"
+
+#: ../../solid/finite_chain.rst:109
+#, python-brace-format
+msgid ""
+"\\Delta_N=4t\\sin\\left(\\frac{\\pi}{2(N+1)}\\right)\n"
+"\\simeq\\frac{2\\pi t}{N+1}\\qquad(N\\gg1)"
+msgstr ""
+"\\Delta_N=4t\\sin\\left(\\frac{\\pi}{2(N+1)}\\right)\n"
+"\\simeq\\frac{2\\pi t}{N+1}\\qquad(N\\gg1)"
+
+#: ../../solid/finite_chain.rst:115
+msgid ""
+"を得る。開放端の等間隔鎖では、有限の長さで準位が離散的になるため、HOMOとLUMOの間に 隙間が生じる。この **有限サイズギャップ** "
+"は大きな :math:`N` でおよそ :math:`1/N` に比例し、 無限鎖の極限でゼロになる。"
+msgstr ""
+"In an equally spaced open-ended chain, the finite length makes the levels"
+" discrete, leaving a gap between the HOMO and LUMO. This **finite-size "
+"gap** scales, for large :math:`N`, approximately as :math:`1/N` and "
+"vanishes in the infinite-chain limit."
+
+#: ../../solid/finite_chain.rst:119
+msgid ""
+"開放端の鎖の準位全体の幅は :math:`E_N-E_1=4t\\cos\\bigl(\\pi/(N+1)\\bigr)` であり、 "
+":math:`N\\to\\infty` で\\ :ref:`バンド幅<band-width>` :math:`4t` に近づく。:eq:`tb-"
+"finite-gap` と 準位の幅は、計算で得た有限鎖の準位から有効的なホッピング :math:`t` を 見積もる手がかりになる。"
+msgstr ""
+"The full spread of the open-ended chain's levels is "
+":math:`E_N-E_1=4t\\cos\\bigl(\\pi/(N+1)\\bigr)`. As :math:`N\\to\\infty`,"
+" it approaches the \\ :ref:`bandwidth <band-width>` :math:`4t`. Equation "
+":eq:`tb-finite-gap` and the spread of the levels can help estimate the "
+"effective hopping :math:`t` from calculated finite-chain levels."
+
+#: ../../solid/finite_chain.rst:127
+msgid "有限の周期鎖との比較"
+msgstr "Comparison with a Finite Periodic Chain"
+
+#: ../../solid/finite_chain.rst:129
+msgid ""
+"有限の周期鎖の準位は :eq:`tb-band` の離散的な点 :math:`k=2\\pi m/(Na)` に乗る。 "
+"半充填では、:math:`N` を4で割った余りによってギャップが変わる。 :math:`N=4n+2` の場合、無限鎖の正の\\ "
+":ref:`フェルミ波数<fermi-wavenumber>` :math:`\\pi/(2a)` の両隣の波数は "
+":math:`\\pi/(2a)\\pm\\pi/(Na)` である。式 :eq:`tb-band` に代入すると、 "
+"最高被占有準位と最低空準位の差は :math:`\\Delta_N=4t\\sin(\\pi/N)` となる。 例えば :math:`N=6` で"
+" :math:`2t` になる。大きな :math:`N` では :math:`\\Delta_N\\simeq4\\pi t/N` "
+"で、同じ原子数の開放端のギャップの約2倍である。"
+msgstr ""
+"The levels of a finite periodic chain lie at discrete points of Equation "
+":eq:`tb-band` with :math:`k=2\\pi m/(Na)`. At half filling, the gap "
+"depends on the remainder when :math:`N` is divided by four. If "
+":math:`N=4n+2`, the wave vectors on either side of the positive \\ "
+":ref:`Fermi wave number <fermi-wavenumber>` :math:`\\pi/(2a)` of the "
+"infinite chain are :math:`\\pi/(2a)\\pm\\pi/(Na)`. Substituting these "
+"into Equation :eq:`tb-band` gives :math:`\\Delta_N=4t\\sin(\\pi/N)` for "
+"the difference between the highest occupied and lowest unoccupied levels."
+" For example, :math:`N=6` gives :math:`2t`. For large :math:`N`, "
+":math:`\\Delta_N\\simeq4\\pi t/N`, about twice the gap of an open-ended "
+"chain with the same number of atoms."
+
+#: ../../solid/finite_chain.rst:137
+msgid ""
+":math:`N=4n` の場合は :math:`k=\\pm\\pi/(2a)` が許される。この二つの縮退した準位には、 "
+"スピンを含む4状態のうち2個分だけ電子が入るため、同じエネルギーに空状態が残り、 ギャップはゼロである。"
+msgstr ""
+"If :math:`N=4n`, the allowed wave vectors include "
+":math:`k=\\pm\\pi/(2a)`. Electrons occupy only two of the four states at "
+"these two degenerate levels, counting spin. Empty states thus remain at "
+"the same energy and the gap is zero."
+
+#: ../../solid/finite_chain.rst:141
+msgid ""
+":numref:`fig-tightbinding-finite-chain-gaps`\\ では、開放端と、周期境界でギャップが開く場合の "
+"点列がどちらもゼロへ近づく。周期境界では、原子数によってギャップが最初からゼロの点もある。 同じ等間隔の鎖でも、ギャップの大きさから "
+":math:`t` を見積もる式は境界条件と原子数によって変わる。"
+msgstr ""
+"In :numref:`fig-tightbinding-finite-chain-gaps`\\ , the gaps approach "
+"zero both for open-ended chains and for periodic chains with nonzero "
+"gaps. For periodic boundary conditions, some atom counts give a gap that "
+"is zero from the outset. Even for the same equally spaced chain, the "
+"equation for estimating :math:`t` from the gap depends on the boundary "
+"conditions and the number of atoms."
+
+#: ../../solid/finite_chain.rst:145
+msgid "原子数に対するギャップのグラフ。開放端とNが4n+2の周期鎖ではギャップが減少し、Nが4nの周期鎖ではすべてゼロ。"
+msgstr ""
+"Gap versus number of atoms. The gap decreases for open-ended chains and "
+"for periodic chains with N = 4n + 2. It is zero for every periodic chain "
+"with N = 4n."
+
+#: ../../solid/finite_chain.rst:151
+msgid ""
+"等間隔・半充填で原子数が偶数の鎖。丸は開放端（式 :eq:`tb-finite-gap`）、四角は :math:`N=4n+2` の周期鎖、三角は"
+" :math:`N=4n` の周期鎖を表す。 線は同じ条件の点を結ぶ目安で、原子数は離散値を取る。"
+msgstr ""
+"Equally spaced, half-filled chains with an even number of atoms. Circles "
+"represent open-ended chains (Equation :eq:`tb-finite-gap`), squares "
+"represent periodic chains with :math:`N=4n+2`, and triangles represent "
+"periodic chains with :math:`N=4n`. The lines are only guides connecting "
+"points for the same conditions. The number of atoms takes discrete "
+"values."
+
+#: ../../solid/finite_chain.rst:158
+msgid "ホッピングが交替する開放端の鎖"
+msgstr "Open-Ended Chain with Alternating Hopping"
+
+#: ../../solid/finite_chain.rst:160
+msgid ""
+"\\ :ref:`SSH模型<tb-ssh>`\\ のように隣接する結合の強さが :math:`t_1`、:math:`t_2` と交替すると、 "
+"無限鎖でもバンドギャップ :math:`\\Delta_{\\mathrm{SSH}}=2|t_1-t_2|`\\ （式 :eq:`tb-ssh-"
+"gap`）が残る。 鎖の内部の周期構造で決まるこのギャップを、端の影響と区別して **バルクのギャップ** と呼ぶ。 原子数 :math:`N` "
+"が偶数の開放端の鎖では、両端の結合はどちらも胞内の :math:`t_1` になる。 "
+"半充填のHOMO–LUMOギャップは、この端の結合が強いか弱いかで振る舞いが変わる。"
+msgstr ""
+"When neighboring bond strengths alternate as in the \\ :ref:`SSH model "
+"<tb-ssh>`\\ , taking the values :math:`t_1` and :math:`t_2`, the band gap"
+" :math:`\\Delta_{\\mathrm{SSH}}=2|t_1-t_2|`\\  (Equation :eq:`tb-ssh-"
+"gap`) persists even in an infinite chain. This gap is set by the periodic"
+" structure inside the chain and is called the **bulk gap** to distinguish"
+" it from end effects. In an open-ended chain with an even number of atoms"
+" :math:`N`, both end bonds are intracell bonds of strength :math:`t_1`. "
+"At half filling, the behavior of the HOMO–LUMO gap depends on whether "
+"these end bonds are strong or weak."
+
+#: ../../solid/finite_chain.rst:166
+msgid ""
+"**端の結合が強い**\\ （:math:`t_1>t_2`）: 準位はバルクのバンドに対応するものだけで、HOMO–LUMOギャップは "
+"鎖を長くすると上から :math:`2|t_1-t_2|` に近づく。"
+msgstr ""
+"**Strong end bonds**\\ (:math:`t_1>t_2`): Only levels corresponding to "
+"the bulk bands are present, and the HOMO–LUMO gap approaches "
+":math:`2|t_1-t_2|` from above as the chain grows longer."
+
+#: ../../solid/finite_chain.rst:168
+msgid ""
+"**端の結合が弱い**\\ （:math:`t_1<t_2`）: 十分に長い鎖では、バルクのギャップの中央 "
+":math:`\\varepsilon_0` 付近に、 両端に局在する二つの準位が現れる。HOMO–LUMOギャップはこの二準位の間隔であり、 "
+"原子数を2つ増やすごとにおよそ :math:`t_1/t_2` 倍に縮む。つまり鎖を長くすると指数関数的にゼロに近づく。"
+msgstr ""
+"**Weak end bonds**\\ (:math:`t_1<t_2`): In a sufficiently long chain, two"
+" levels localized at the ends emerge near the center of the bulk gap, "
+":math:`\\varepsilon_0`. The HOMO–LUMO gap is the separation between these"
+" levels. For every two atoms added, the gap is approximately "
+":math:`t_1/t_2` times its previous value, so it approaches zero "
+"exponentially as the chain grows longer."
+
+#: ../../solid/finite_chain.rst:172
+#, python-brace-format
+msgid ""
+"例えば :math:`t_1=1.2t,\\ t_2=0.8t` の40原子の鎖ではHOMO–LUMOギャップは約 :math:`0.84t` "
+"で、 バルクのギャップ :math:`0.8t` に近い。端を入れ替えた :math:`t_1=0.8t,\\ t_2=1.2t` では約 "
+":math:`4\\times10^{-4}t` になる。 "
+"したがって、有限鎖の計算でギャップが原子数とともに閉じても、それだけでバルクが金属的とは結論できない。 閉じ方が :math:`1/N` "
+"か指数関数的か、閉じずに一定値へ近づくかを見て、 有限サイズギャップ、端の準位、バルクのギャップを区別する。"
+msgstr ""
+"For example, in a 40-atom chain with :math:`t_1=1.2t,\\ t_2=0.8t`, the "
+"HOMO–LUMO gap is about :math:`0.84t`, close to the bulk gap of "
+":math:`0.8t`. With the end bonds switched, :math:`t_1=0.8t,\\ t_2=1.2t`, "
+"the gap is about :math:`4\\times10^{-4}t`. Thus, a gap that closes as the"
+" number of atoms increases in a finite-chain calculation does not by "
+"itself establish that the bulk is metallic. To distinguish a finite-size "
+"gap, end levels, and a bulk gap, check whether the gap closes as "
+":math:`1/N` or exponentially, or approaches a nonzero constant."
+
+#: ../../solid/finite_chain.rst:181
+msgid "説明用の事例：水素原子鎖"
+msgstr "Worked Example: Hydrogen Atom Chain"
+
+#: ../../solid/finite_chain.rst:183
+msgid ""
+"`水素原子を並べると電子バンドは生まれるのか <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_ では、原子間隔1.8 "
+"Åで等間隔に並べた中性の水素原子鎖 :math:`\\mathrm H_N` を、 STO-"
+"3G基底（水素1原子あたり1個の1s型基底関数）で計算している（Psi4 1.10、 "
+"原子核位置固定、開放端）。1原子1軌道・半充填という点で、本稿の模型と同じ構成である。 :numref:`tbl-fc-hydrogen-"
+"gaps` は、原子数を2倍ずつ変えたときのHOMO–LUMOギャップである。"
+msgstr ""
+"The calculation example “`Do Electronic Bands Form in a Hydrogen Atom "
+"Chain? <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_” uses an "
+"equally spaced neutral hydrogen atom chain :math:`\\mathrm H_N` with an "
+"interatomic spacing of 1.8 Å and an STO-3G basis (one 1s-type basis "
+"function per hydrogen atom). The calculations use Psi4 1.10 with fixed "
+"nuclei and open boundary conditions. The setup matches our model in "
+"having one orbital per atom and half filling. :numref:`tbl-fc-hydrogen-"
+"gaps` gives the HOMO–LUMO gaps as the number of atoms doubles."
+
+#: ../../solid/finite_chain.rst:189
+msgid "水素原子鎖のHOMO–LUMO軌道ギャップ（eV、計算事例の表から抜粋）"
+msgstr ""
+"HOMO–LUMO orbital gaps of a hydrogen atom chain (eV, excerpted from the "
+"table in the calculation example)"
+
+#: ../../solid/finite_chain.rst:194
+msgid ":math:`N`"
+msgstr ":math:`N`"
+
+#: ../../solid/finite_chain.rst:195
+msgid "RKS-PBE"
+msgstr "RKS-PBE"
+
+#: ../../solid/finite_chain.rst:196
+msgid ":math:`11.75/(N+1)`"
+msgstr ":math:`11.75/(N+1)`"
+
+#: ../../solid/finite_chain.rst:197
+msgid "RHF"
+msgstr "RHF"
+
+#: ../../solid/finite_chain.rst:198
+msgid "16"
+msgstr "16"
+
+#: ../../solid/finite_chain.rst:199 ../../solid/finite_chain.rst:200
+msgid "0.691"
+msgstr "0.691"
+
+#: ../../solid/finite_chain.rst:201
+msgid "5.679"
+msgstr "5.679"
+
+#: ../../solid/finite_chain.rst:202
+msgid "32"
+msgstr "32"
+
+#: ../../solid/finite_chain.rst:203 ../../solid/finite_chain.rst:204
+msgid "0.356"
+msgstr "0.356"
+
+#: ../../solid/finite_chain.rst:205
+msgid "5.007"
+msgstr "5.007"
+
+#: ../../solid/finite_chain.rst:206
+msgid "64"
+msgstr "64"
+
+#: ../../solid/finite_chain.rst:207 ../../solid/finite_chain.rst:208
+msgid "0.181"
+msgstr "0.181"
+
+#: ../../solid/finite_chain.rst:209
+msgid "4.764"
+msgstr "4.764"
+
+#: ../../solid/finite_chain.rst:211
+#, python-brace-format
+msgid ""
+"スピン制限のKohn–Sham計算（RKS-PBE）では、原子数を2倍にするとギャップはほぼ半分になり、 :math:`11.75\\ "
+"\\mathrm{eV}/(N+1)` に3桁まで一致する。これを :eq:`tb-finite-gap` の 大きな :math:`N` での形"
+" :math:`2\\pi t/(N+1)` と比べると、有効ホッピング "
+":math:`t\\approx11.75/(2\\pi)\\approx1.87` eVが得られ、バンド幅は "
+":math:`4t\\approx7.5` eVと見積もられる。:math:`N=64` の軌道エネルギーの幅 （約8.0 "
+"eV）はこれに近いが、:eq:`tb-band` の形だけでは準位の並びを再現しきれず、 :math:`\\cos(2ka)` "
+"の項を加えると当てはまりが大きく改善する。第2近接ホッピングの分散 :eq:`tb-band-t2` と、 軌道の重なりを含む分散 :eq"
+":`tb-band-overlap` は、その理由の候補を示している。"
+msgstr ""
+"In the spin-restricted Kohn–Sham calculation (RKS-PBE), doubling the "
+"number of atoms nearly halves the gap, which agrees with :math:`11.75\\ "
+"\\mathrm{eV}/(N+1)` to three significant digits. Comparing this "
+"dependence with Equation :eq:`tb-finite-gap` for large :math:`N`, namely "
+":math:`2\\pi t/(N+1)`, gives an effective hopping of "
+":math:`t\\approx11.75/(2\\pi)\\approx1.87` eV and an estimated bandwidth "
+"of :math:`4t\\approx7.5` eV. For :math:`N=64`, the orbital energy spread "
+"(about 8.0 eV) is close to this estimate, but the form of Equation :eq"
+":`tb-band` alone does not fully reproduce the arrangement of levels. "
+"Adding a :math:`\\cos(2ka)` term greatly improves the fit. The dispersion"
+" with next-nearest-neighbor hopping in Equation :eq:`tb-band-t2` and the "
+"dispersion that includes orbital overlap in Equation :eq:`tb-band-"
+"overlap` suggest possible reasons."
+
+#: ../../solid/finite_chain.rst:220
+msgid ""
+"一方、スピン制限のHartree–Fock計算（RHF）では、原子数を2倍にしてもギャップは約12%（16→32）、 "
+"約5%（32→64）しか減らず、:math:`N=64` でも約4.8 eVが残る。調べた範囲で :eq:`tb-finite-gap` の "
+":math:`1/N` 則に従わない。 "
+"このときRHFの電子状態では、隣接原子間の結合次数が鎖に沿って強・弱と交替しており、SSH模型の描像と整合する。 "
+"前の節の区別に当てはめると、RKSのギャップは有限サイズギャップとして振る舞い、RHFのギャップは 有限サイズギャップでは説明できない。 "
+"これらの数値は上記の計算条件（STO-3G、原子間隔1.8 Å、有限鎖）に対するものであり、 水素鎖の真の基底状態の性質を決めるものではない。"
+msgstr ""
+"By contrast, in the spin-restricted Hartree–Fock calculation (RHF), "
+"doubling the number of atoms reduces the gap by only about 12% (16→32) "
+"and 5% (32→64), and about 4.8 eV remains even at :math:`N=64`. Over the "
+"range examined, the RHF gap does not follow the scaling in Equation :eq"
+":`tb-finite-gap`, which is proportional to :math:`1/N`. In the RHF "
+"electronic state, bond orders between neighboring atoms alternate between"
+" strong and weak along the chain, consistent with the picture given by "
+"the SSH model. By the distinction in the previous section, the RKS gap "
+"behaves as a finite-size gap, but a finite-size gap cannot account for "
+"the RHF gap. These numbers are specific to the calculation conditions "
+"above (STO-3G, 1.8 Å spacing, finite chains) and do not determine the "
+"nature of the true ground state of a hydrogen chain."
+
+#: ../../solid/finite_chain.rst:231
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../solid/finite_chain.rst:233
+msgid ""
+"本稿の式は、\\ :ref:`タイト・バインディング近似<tb-interpretation-limits>`\\ と同じ単純化 "
+"（直交基底、1原子1軌道、最近接ホッピング、電子間相互作用なし）に基づく。 "
+"実際の分子では、端の原子の軌道エネルギーやホッピングが内部と異なることがあり、 端の準位の位置や有限サイズギャップの係数が変わる。"
+msgstr ""
+"The equations here make the same simplifications as the \\ :ref:`tight-"
+"binding approximation <tb-interpretation-limits>`\\ : an orthogonal "
+"basis, one orbital per atom, nearest-neighbor hopping, and no electron-"
+"electron interactions. In actual molecules, the orbital energies or "
+"hoppings of atoms at the ends can differ from those in the interior, "
+"changing the positions of end levels and the coefficient of the finite-"
+"size gap."
+
+#: ../../solid/finite_chain.rst:238
+msgid ""
+"第一原理計算の軌道エネルギーに :eq:`tb-band` や :eq:`tb-finite-gap` を当てはめて 得た :math:`t` "
+"は、その計算の準位の並びを再現する有効パラメータである。異なる手法 "
+"（例えばHartree–Fock法とKohn–Sham法）の軌道エネルギーは同じ物理量ではないため、 フィットした :math:`t` "
+"の大小をそのまま比較することはできない。"
+msgstr ""
+"Fitting Equations :eq:`tb-band` or :eq:`tb-finite-gap` to orbital "
+"energies from a first-principles calculation gives :math:`t` as an "
+"effective parameter that reproduces the arrangement of levels in that "
+"calculation. Orbital energies from different methods, such as the "
+"Hartree–Fock and Kohn–Sham methods, are different physical quantities, so"
+" the fitted values of :math:`t` cannot be compared directly."
+
+#: ../../solid/finite_chain.rst:246
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/finite_chain.rst:248
+msgid ":ref:`tightbinding`"
+msgstr ":ref:`tightbinding`"
+
+#: ../../solid/finite_chain.rst:249
+msgid ":ref:`bandstructure`"
+msgstr ":ref:`bandstructure`"
+
+#: ../../solid/finite_chain.rst:250
+msgid ":ref:`bond_order`"
+msgstr ":ref:`bond_order`"
+
+#: ../../solid/finite_chain.rst:251
+msgid ":ref:`projected-dos`"
+msgstr ":ref:`projected-dos`"
+
+#: ../../solid/finite_chain.rst:252
+msgid ":ref:`peierls-instability`"
+msgstr ":ref:`peierls-instability`"
+
+#: ../../solid/finite_chain.rst:253
+msgid ""
+"`水素原子を並べると電子バンドは生まれるのか <https://example.quloud-"
+"platform.quemix.com/hydrogen_chain/band_formation.html>`_"
+msgstr ""
+"`Do Electronic Bands Form in a Hydrogen Atom Chain? <https://example"
+".quloud-platform.quemix.com/hydrogen_chain/band_formation.html>`_"
+
+#: ../../solid/finite_chain.rst:258
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/finite_chain.rst:260
+msgid ""
+"J\\. K\\. Asbóth, L. Oroszlány, and A. Pályi, `A Short Course on "
+"Topological Insulators <https://arxiv.org/abs/1509.02295>`_, Chap. 1."
+msgstr ""
+"J\\. K\\. Asbóth, L. Oroszlány, and A. Pályi, `A Short Course on "
+"Topological Insulators <https://arxiv.org/abs/1509.02295>`_, Chap. 1."
+

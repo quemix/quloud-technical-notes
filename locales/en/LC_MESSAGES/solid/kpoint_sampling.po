@@ -1,0 +1,539 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:30+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/kpoint_sampling.rst:4
+msgid "k点メッシュと積分誤差"
+msgstr "k-Point Meshes and Integration Error"
+
+#: ../../solid/kpoint_sampling.rst:6
+msgid ""
+"結晶の電子状態計算では、全エネルギーや電子密度を求めるために、ブリルアンゾーン（BZ）全体に わたる積分を、有限個の波数ベクトル（ **k点** "
+"）での値の和で近似する。この和に使う点の集まりを **k点メッシュ** と呼ぶ。本稿では、状態の和がBZ積分になることを確かめ、 "
+"等間隔の点の和で積分を近似したときの誤差を、被積分関数のフーリエ成分で表す。 "
+"誤差の減り方は被積分関数の滑らかさで決まり、被積分関数が解析的になる絶縁体では指数関数的に減る。 :ref:`フェルミ面<fermi-"
+"surface>`\\ で占有数が跳ぶ金属の扱いは、次の記事 「\\ :ref:`metal-bz-integration`\\ 」で説明する。"
+msgstr ""
+"Electronic structure calculations for crystals use integrals over the "
+"entire Brillouin zone (BZ) to obtain quantities such as the total energy "
+"and electron density. They approximate these integrals by summing values "
+"at finitely many wave vectors (**k-points**). The set of points used in "
+"the sum is a **k-point mesh**. We show how a sum over states becomes a BZ"
+" integral, then express the error of the equally spaced sum in terms of "
+"the Fourier components of the integrand. How quickly the error decreases "
+"depends on the smoothness of the integrand. In insulators, where the "
+"integrand is analytic, it decreases exponentially. The treatment of "
+"metals, where occupation numbers jump at the :ref:`Fermi surface <fermi-"
+"surface>`\\ , is the subject of the next article, “\\ :ref:`Brillouin "
+"Zone Integration for Metals <metal-bz-integration>`\\ .”"
+
+#: ../../solid/kpoint_sampling.rst:14
+msgid ""
+"**前提知識**: :ref:`ブリルアンゾーン<first-brillouin-zone>`、 :ref:`周期境界条件<pbc-"
+"allowed-wavevectors>`、:ref:`状態の和とBZ積分<bz-average>`、:ref:`フーリエ級数<periodic-"
+"fourier-series>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Brillouin Zone <first-brillouin-zone>`, "
+":ref:`Periodic Boundary Conditions <pbc-allowed-wavevectors>`, :ref:`Sum "
+"over States and Brillouin Zone Integration <bz-average>`, and "
+":ref:`Fourier Series <periodic-fourier-series>`."
+
+#: ../../solid/kpoint_sampling.rst:17
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/kpoint_sampling.rst:19
+msgid "占有数で重み付けた状態の和を、BZ積分の形に書く。"
+msgstr ""
+"Write a sum over states weighted by their occupation numbers as a BZ "
+"integral."
+
+#: ../../solid/kpoint_sampling.rst:20
+msgid "Γ点を含む等間隔メッシュと、単位胞を有限個並べて周期境界条件を課した模型の波数を対応づける。"
+msgstr ""
+"Relate an equally spaced mesh that includes the Γ point to the wave "
+"vectors of a finite array of unit cells under periodic boundary "
+"conditions."
+
+#: ../../solid/kpoint_sampling.rst:21
+msgid "フーリエ係数から積分誤差を導き、被積分関数が解析的な絶縁体では誤差が指数関数的に減る 理由を説明する。"
+msgstr ""
+"Derive the integration error from the Fourier coefficients and explain "
+"why it decreases exponentially for insulators with an analytic integrand."
+
+#: ../../solid/kpoint_sampling.rst:25
+msgid "状態の和からBZ積分へ"
+msgstr "From a Sum over States to a Brillouin Zone Integral"
+
+#: ../../solid/kpoint_sampling.rst:27
+msgid ""
+"単位胞を :math:`N` 個並べて\\ :ref:`周期境界条件<pbc-allowed-wavevectors>`\\ を課すと、 :eq"
+":`pbc-allowed` の :math:`N` 個の波数が許され、BZの中に一様に分布する。 "
+"単位胞あたりの量、例えばバンドエネルギーや電子数は、すべての状態からの寄与を占有数で重み付けて 足し、単位胞の数で割って求める。バンド "
+":math:`j`\\ 、波数 :math:`\\boldsymbol k` の状態からの 寄与を :math:`a_j(\\boldsymbol"
+" k)`\\ 、占有数を :math:`f_j(\\boldsymbol k)` とすると、1スピンあたり"
+msgstr ""
+"Arranging :math:`N` unit cells and imposing \\ :ref:`periodic boundary "
+"conditions <pbc-allowed-wavevectors>`\\  gives the wave vectors in "
+"Equation :eq:`pbc-allowed`, with :math:`N` vectors uniformly distributed "
+"across the BZ. To obtain quantities per unit cell, such as the band "
+"energy or electron count, weight each state's contribution by its "
+"occupation number, sum over the states, and divide by the number of unit "
+"cells. For a state in band :math:`j`\\  with wave vector "
+":math:`\\boldsymbol k`, let :math:`a_j(\\boldsymbol k)`\\  be its "
+"contribution and :math:`f_j(\\boldsymbol k)` its occupation number. The "
+"average per spin is then"
+
+#: ../../solid/kpoint_sampling.rst:33
+#, python-brace-format
+msgid ""
+"\\bar A=\\frac{1}{N}\\sum_{\\boldsymbol k}A(\\boldsymbol k),\\qquad\n"
+"A(\\boldsymbol k)=\\sum_j f_j(\\boldsymbol k)\\,a_j(\\boldsymbol k)"
+msgstr ""
+"\\bar A=\\frac{1}{N}\\sum_{\\boldsymbol k}A(\\boldsymbol k),\\qquad\n"
+"A(\\boldsymbol k)=\\sum_j f_j(\\boldsymbol k)\\,a_j(\\boldsymbol k)"
+
+#: ../../solid/kpoint_sampling.rst:39
+msgid ""
+"である。:math:`N\\to\\infty` では、波数についての平均は\\ :ref:`BZ積分<bz-average>` :eq"
+":`kps-integral` に 置き換えられる。状態数 :math:`n(E)` と\\ :ref:`状態密度<density-of-"
+"states>` :math:`\\rho(E)` の式は、 :math:`A(\\boldsymbol k)` "
+"にそれぞれ階段関数とデルタ関数を選んだ場合にあたる。 全エネルギーには、このようなバンドごとの和のほかに電子間相互作用の項も含まれるが、 "
+"それらも状態の和から求めた電子密度などを通じてBZ積分に依存する。"
+msgstr ""
+"In the limit :math:`N\\to\\infty`, the \\ :ref:`BZ integral <bz-average>`"
+" in Equation :eq:`kps-integral` replaces the average over wave vectors. "
+"The formulas for the state count :math:`n(E)` and \\ :ref:`density of "
+"states <density-of-states>` :math:`\\rho(E)` correspond to choices of "
+":math:`A(\\boldsymbol k)` as a step function and a delta function, "
+"respectively. The total energy also contains terms for electron-electron "
+"interactions in addition to sums over bands, but those terms depend on BZ"
+" integration as well, through quantities such as the electron density "
+"obtained by summing over states."
+
+#: ../../solid/kpoint_sampling.rst:49
+msgid "Γ点中心メッシュとMonkhorst–Packメッシュ"
+msgstr "Γ-Point-Centered and Monkhorst–Pack Meshes"
+
+#: ../../solid/kpoint_sampling.rst:51
+msgid ""
+"実際の計算では、 :eq:`kps-integral` を有限個のk点の和で近似する。最も基本的な選び方は、 BZを各方向に "
+":math:`n_i` 等分した等間隔のメッシュ"
+msgstr ""
+"In a numerical calculation, a sum over finitely many k-points "
+"approximates Equation :eq:`kps-integral`. The simplest choice is a "
+"uniform mesh that divides the BZ into :math:`n_i` equal parts along each "
+"direction:"
+
+#: ../../solid/kpoint_sampling.rst:54
+#, python-brace-format
+msgid ""
+"\\boldsymbol k=\\sum_{i=1}^{3}\\frac{m_i}{n_i}\\,\\boldsymbol "
+"b_i\\qquad(m_i=0,1,\\ldots,n_i-1)"
+msgstr ""
+"\\boldsymbol k=\\sum_{i=1}^{3}\\frac{m_i}{n_i}\\,\\boldsymbol "
+"b_i\\qquad(m_i=0,1,\\ldots,n_i-1)"
+
+#: ../../solid/kpoint_sampling.rst:59
+msgid ""
+"である。これらの波数は、各方向に単位胞を :math:`n_i` 個並べた有限の結晶に周期境界条件を 課したときの波数に一致する（式 :eq"
+":`pbc-allowed`）。電子密度とポテンシャルが元の単位胞の 周期を保つ限り、\\ :ref:`Γ点<gamma-point>`\\ "
+"を含む :math:`n_1\\times n_2\\times n_3` メッシュでの計算と、 "
+"この有限の周期結晶の計算は、単位胞あたりで同じ結果を与える。メッシュによる積分誤差は、 周期境界を課した有限の結晶と無限結晶との差にあたる。"
+msgstr ""
+"These wave vectors coincide with those of a finite crystal with "
+":math:`n_i` unit cells in each direction under periodic boundary "
+"conditions (Equation :eq:`pbc-allowed`). As long as the electron density "
+"and potential retain the periodicity of the original unit cell, a "
+"calculation that includes the \\ :ref:`Γ point <gamma-point>`\\  on a "
+":math:`n_1\\times n_2\\times n_3` mesh gives the same result per unit "
+"cell as a calculation for this finite periodic crystal. The mesh "
+"integration error corresponds to the difference between the finite "
+"crystal with periodic boundary conditions and the infinite crystal."
+
+#: ../../solid/kpoint_sampling.rst:65
+msgid ""
+"同じ結晶をスーパーセルで計算するときは、\\ :ref:`バンドの折り返し<pbc-band-folding>`\\ が起こり、 "
+"BZが小さくなるので、同じ細かさのメッシュに必要な分割数は減る。BZの各方向のk点の間隔 :math:`|\\boldsymbol "
+"b_i|/n_i` がそろうように、セルの辺の長さに反比例して分割数 :math:`n_i` を選ぶのが目安になる。"
+msgstr ""
+"A supercell calculation of the same crystal gives \\ :ref:`band folding "
+"<pbc-band-folding>`\\  and a smaller BZ, so fewer subdivisions are needed"
+" for the same mesh spacing. To keep the k-point spacing "
+":math:`|\\boldsymbol b_i|/n_i` comparable in each BZ direction, a rule of"
+" thumb is to choose the number of subdivisions :math:`n_i` inversely "
+"proportional to the corresponding cell edge length."
+
+#: ../../solid/kpoint_sampling.rst:70
+#, python-brace-format
+msgid ""
+"Monkhorst–Packの方法 [Monkhorst1976]_ では、 :math:`r_i=1,\\ldots,n_i` として "
+":math:`\\boldsymbol k=\\sum_i\\frac{2r_i-n_i-1}{2n_i}\\boldsymbol b_i` "
+"の点を使う。 :math:`n_i` が奇数なら :eq:`kps-mesh` "
+"と同じ点の集まりになり、偶数なら点の間隔の半分だけずれてΓ点を含まない。 例えば1方向を4分割すると、逆格子の分率座標でΓ点中心メッシュは "
+":math:`0,\\pm1/4,1/2`、Monkhorst–Packメッシュは :math:`\\pm1/8,\\pm3/8` "
+"になる。どちらも間隔は同じで、点の位置が半目盛ずれている。"
+msgstr ""
+"The Monkhorst–Pack method [Monkhorst1976]_ uses the points indexed by "
+":math:`r_i=1,\\ldots,n_i` at :math:`\\boldsymbol k=\\sum_i\\frac{2r_i-"
+"n_i-1}{2n_i}\\boldsymbol b_i`. If :math:`n_i` is odd, the point set is "
+"the same as in Equation :eq:`kps-mesh`. If it is even, the points are "
+"shifted by half a mesh spacing and exclude the Γ point. For example, with"
+" four subdivisions along one direction, the fractional coordinates in the"
+" reciprocal lattice are :math:`0,\\pm1/4,1/2` for the Γ-point-centered "
+"mesh and :math:`\\pm1/8,\\pm3/8` for the Monkhorst–Pack mesh. The meshes "
+"have the same spacing, with their points shifted by half a step."
+
+#: ../../solid/kpoint_sampling.rst:77
+msgid ""
+":numref:`fig-kpoint-gamma-and-monkhorst-pack`\\ で、同じ間隔の点列が互いに :math:`1/8`"
+" だけずれる様子を比べられる。"
+msgstr ""
+"In :numref:`fig-kpoint-gamma-and-monkhorst-pack`\\ , we can compare the "
+"two equally spaced sets of points and see the offset of :math:`1/8` "
+"between them."
+
+#: ../../solid/kpoint_sampling.rst:80
+msgid "逆格子の分率座標を4分割した二つの点列。Γ点中心メッシュから右へ1/8ずらすとMonkhorst–Packメッシュになる。"
+msgstr ""
+"Two sets of points with four subdivisions along one fractional coordinate"
+" of the reciprocal lattice. Shifting the Γ-point-centered mesh to the "
+"right by 1/8 gives the Monkhorst–Pack mesh."
+
+#: ../../solid/kpoint_sampling.rst:86
+msgid ""
+"丸はΓ点中心、四角はMonkhorst–Packの点。境界の :math:`-1/2` と :math:`1/2` は "
+"等価なので、本文と同じく右の :math:`1/2` を数える。左の白抜きの丸は等価な位置を示す。"
+msgstr ""
+"Circles mark points in the Γ-point-centered mesh, and squares mark "
+"Monkhorst–Pack points. The boundary points :math:`-1/2` and :math:`1/2` "
+"are equivalent, so we count the point at :math:`1/2` on the right, as in "
+"the text. The open circle on the left marks the equivalent position."
+
+#: ../../solid/kpoint_sampling.rst:92
+msgid "|mesh-fourier-error|"
+msgstr "Mesh Error and Fourier Components"
+
+#: ../../solid/kpoint_sampling.rst:94
+msgid "等間隔の和の誤差は、被積分関数のフーリエ成分で表せる。1次元で :math:`A(k)` は周期 :math:`2\\pi/a` の関数なので、"
+msgstr ""
+"The error of the equally spaced sum can be expressed in terms of the "
+"Fourier components of the integrand. In one dimension, :math:`A(k)` has "
+"period :math:`2\\pi/a`, so its Fourier expansion and BZ average are"
+
+#: ../../solid/kpoint_sampling.rst:97
+msgid ""
+"A(k)=\\sum_{l=-\\infty}^{\\infty}A_l\\,e^{ikla},\\qquad\n"
+"\\frac{1}{\\Omega_\\mathrm{BZ}}\\int_\\mathrm{BZ}A(k)\\,\\mathrm dk=A_0"
+msgstr ""
+"A(k)=\\sum_{l=-\\infty}^{\\infty}A_l\\,e^{ikla},\\qquad\n"
+"\\frac{1}{\\Omega_\\mathrm{BZ}}\\int_\\mathrm{BZ}A(k)\\,\\mathrm dk=A_0"
+
+#: ../../solid/kpoint_sampling.rst:103
+#, python-brace-format
+msgid ""
+"と展開できる。メッシュ :math:`k=2\\pi m/(na)` での平均をとると、 "
+":math:`\\frac1n\\sum_{m=0}^{n-1}e^{2\\pi iml/n}` は :math:`l` が :math:`n` "
+"の倍数なら1、 そうでなければ0なので、"
+msgstr ""
+"On averaging over the mesh :math:`k=2\\pi m/(na)`, the factor "
+":math:`\\frac1n\\sum_{m=0}^{n-1}e^{2\\pi iml/n}` equals one if :math:`l` "
+"is a multiple of :math:`n` and zero otherwise. Thus,"
+
+#: ../../solid/kpoint_sampling.rst:107
+#, python-brace-format
+msgid ""
+"\\frac1n\\sum_{m=0}^{n-1}A\\!\\left(\\frac{2\\pi m}{na}\\right)\n"
+"=A_0+\\sum_{p\\neq0}A_{pn}\n"
+"\\;\\approx\\;A_0+A_n+A_{-n}"
+msgstr ""
+"\\frac1n\\sum_{m=0}^{n-1}A\\!\\left(\\frac{2\\pi m}{na}\\right)\n"
+"=A_0+\\sum_{p\\neq0}A_{pn}\n"
+"\\;\\approx\\;A_0+A_n+A_{-n}"
+
+#: ../../solid/kpoint_sampling.rst:114
+msgid ""
+"となる。誤差は、メッシュの分割数 :math:`n` の倍数番目のフーリエ成分だけから生じる。 :math:`A_l` は実空間で距離 "
+":math:`la` 離れた単位胞どうしの関係を表すので、誤差は、 単位胞を :math:`n` "
+"個並べた有限の周期結晶で、周期的に繰り返された隣の像との関係から生じると 読むこともできる。3次元でも同様に、誤差は "
+":math:`n_i\\boldsymbol a_i` を辺とする スーパーセルの格子ベクトルでのフーリエ成分から生じる。"
+msgstr ""
+"The error comes only from Fourier components whose indices are multiples "
+"of the mesh subdivision count :math:`n`. Since :math:`A_l` represents the"
+" relation between unit cells separated by :math:`la` in real space, we "
+"can also interpret the error as arising from the relation with "
+"periodically repeated neighboring images in a finite periodic crystal of "
+":math:`n` unit cells. Likewise, in three dimensions the error comes from "
+"Fourier components at lattice vectors of a supercell with edges "
+":math:`n_i\\boldsymbol a_i`."
+
+#: ../../solid/kpoint_sampling.rst:120
+msgid ""
+"したがって、収束の速さは :math:`A_l` が :math:`|l|` とともにどれだけ速く減るかで決まる。 周期関数 "
+":math:`A(k)` が実軸を含む複素平面の帯状領域で解析的なら、フーリエ係数の大きさが "
+"指数関数的に減るため、等間隔メッシュの積分誤差も指数関数的に減る （TrefethenとWeideman、2014年）。"
+msgstr ""
+"The rate of convergence therefore depends on how quickly :math:`A_l` "
+"decreases with :math:`|l|`. If the periodic function :math:`A(k)` is "
+"analytic in a strip of the complex plane containing the real axis, the "
+"magnitudes of the Fourier coefficients decrease exponentially, so the "
+"integration error of an equally spaced mesh decreases exponentially as "
+"well (Trefethen and Weideman, 2014)."
+
+#: ../../solid/kpoint_sampling.rst:125
+#, python-brace-format
+msgid ""
+"例えば :math:`A(k)=1/(1.5-\\cos ka)` では :math:`A_l=q^{|l|}/\\sqrt{1.25}`\\ "
+"（:math:`q=1.5-\\sqrt{1.25}\\approx0.382`\\ ）なので、 誤差の主要項は "
+":math:`2q^n/\\sqrt{1.25}` で、指数関数的に減る。 :math:`n=8` では "
+":math:`8.11\\times10^{-4}`\\ 、 :math:`n=16` では :math:`3.67\\times10^{-7}`"
+" で、等間隔の和を直接 計算した値と3桁一致する。"
+msgstr ""
+"For example, for :math:`A(k)=1/(1.5-\\cos ka)` we have "
+":math:`A_l=q^{|l|}/\\sqrt{1.25}`\\  "
+"(:math:`q=1.5-\\sqrt{1.25}\\approx0.382`\\ ), so the leading error term "
+"is :math:`2q^n/\\sqrt{1.25}` and decreases exponentially. At :math:`n=8` "
+"the leading term is :math:`8.11\\times10^{-4}`\\ , and at :math:`n=16` it"
+" is :math:`3.67\\times10^{-7}`. These values agree to three significant "
+"digits with the errors obtained by evaluating the equally spaced sum "
+"directly."
+
+#: ../../solid/kpoint_sampling.rst:131
+msgid ""
+"周期ポテンシャルの一電子ハミルトニアンで記述する絶対零度の絶縁体では、電子密度や占有バンドの "
+"エネルギーの和を求めるBZ積分の誤差は、等間隔メッシュを細かくすると指数関数的に減る。 "
+"フェルミ準位がギャップ内にあれば、占有状態の成分を取り出す射影演算子は、複素波数に拡張しても "
+"実軸近くで解析的である（GontierとLahbabi、2016年）。占有バンド内に交差点があっても、 "
+"占有状態全体で和をとったこれらの量の被積分関数は解析的である。この射影を実空間で表した 密度行列は、二点間の距離とともに指数関数的に減衰する "
+"[Kohn1996]_。"
+msgstr ""
+"For an insulator at absolute zero described by a periodic one-electron "
+"Hamiltonian, the error in BZ integrals for the electron density or the "
+"sum of occupied band energies decreases exponentially as the uniform mesh"
+" is refined. If the Fermi level lies in a gap, the projector onto "
+"occupied states is analytic near the real axis even when extended to "
+"complex wave vectors (Gontier and Lahbabi, 2016). The integrands for "
+"these quantities, summed over all occupied states, are analytic even if "
+"occupied bands cross. The density matrix, the real-space representation "
+"of this projector, decays exponentially with the distance between the two"
+" points [Kohn1996]_."
+
+#: ../../solid/kpoint_sampling.rst:138
+msgid ""
+"金属では、バンドがフェルミ準位を横切り、フェルミ面で占有数が1から0へ跳ぶ。被積分関数に段差が あるとフーリエ係数は :math:`1/|l|` "
+"程度でしか減らないので、誤差は振れながらゆっくり減る。 その様子と対処法は「\\ :ref:`metal-bz-integration`\\ "
+"」で扱う。"
+msgstr ""
+"In metals, bands cross the Fermi level, and occupation numbers jump from "
+"one to zero at the Fermi surface. If the integrand has a discontinuity, "
+"the Fourier coefficients decay only on the order of :math:`1/|l|`, so the"
+" error decreases slowly and oscillates. “\\ :ref:`Brillouin Zone "
+"Integration for Metals <metal-bz-integration>`\\ ” describes this "
+"behavior and how to handle it."
+
+#: ../../solid/kpoint_sampling.rst:145
+msgid "|mesh-symmetry|"
+msgstr "Using Symmetry to Reduce the Number of k-Points"
+
+#: ../../solid/kpoint_sampling.rst:147
+msgid ""
+"結晶に回転などの対称操作があると、全エネルギーのようなスカラー量の "
+"被積分関数は、対称操作で互いに移り合うk点で等しい。そこでメッシュの点を対称操作で移り合う組に 分け、各組から1点（\\ :ref:`既約k点"
+"<irreducible-kpoint-orbits>`\\ ）だけを計算して、組の点の数に比例する 重みをかけて足す（式 :eq:`kps-"
+"irreducible`）。計算する点の数は、細かいメッシュでは点群の位数の "
+"逆数に近い割合まで減る。メッシュ自体が結晶の対称性を保つように選ぶ必要がある。重みの導出と、 電子密度のように代表点の和を対称化して使う量は「\\"
+" :ref:`irreducible-kpoints`\\ 」で扱う。"
+msgstr ""
+"If the crystal has symmetry operations such as rotations, a scalar "
+"integrand, such as that for total energy, has equal values at k-points "
+"related by those operations. We can therefore group the mesh points into "
+"symmetry-related sets, calculate only one point per set (an \\ "
+":ref:`irreducible k-point <irreducible-kpoint-orbits>`\\ ), and sum the "
+"results with weights proportional to the number of points in each set "
+"(Equation :eq:`kps-irreducible`). On fine meshes, the number of points to"
+" calculate falls to a fraction close to the reciprocal of the order of "
+"the point group. The mesh itself must preserve the crystal symmetry. “\\ "
+":ref:`Irreducible k-Points and Crystal Symmetry <irreducible-kpoints>`\\ "
+"” derives the weights and discusses quantities such as the electron "
+"density, for which the sum over representatives is symmetrized."
+
+#: ../../solid/kpoint_sampling.rst:157
+msgid "説明用の事例：Siのk点収束"
+msgstr "Worked Example: k-Point Convergence for Si"
+
+#: ../../solid/kpoint_sampling.rst:159
+msgid ""
+"`k点はいくつ必要か：金属Cuと半導体Siの収束 <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html>`_ "
+"では、fccのCu（金属）とダイヤモンド構造のSi（半導体）の原始胞について、k点メッシュを細かく "
+"しながら全エネルギーと圧力を計算している（Quantum ESPRESSO 7.5、PBE、PAW、カットオフ 60/600 "
+"Ry、Γ点を含むメッシュ）。Siはフェルミ準位がバンドギャップの中にあり、占有状態の和をとる 被積分関数は解析的である。"
+msgstr ""
+"The calculation example “`How Many k-Points Are Needed? Convergence for "
+"Metallic Cu and Semiconducting Si <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html>`_” calculates the "
+"total energy and pressure of primitive cells of fcc Cu (a metal) and "
+"diamond-structure Si (a semiconductor) as the k-point mesh is refined "
+"(Quantum ESPRESSO 7.5, PBE, PAW, 60/600 Ry cutoffs, meshes including the "
+"Γ point). In Si, the Fermi level lies in the band gap, and the integrand "
+"summed over occupied states is analytic."
+
+#: ../../solid/kpoint_sampling.rst:165
+msgid ""
+"Siの全エネルギーの誤差は、この計算で調べた範囲では、各方向の分割数 :math:`n` を2増やす "
+"ごとにおよそ1/5〜1/8になった（:math:`8^3` で1.9 meV/atom、:math:`12^3` で0.07 meV/atom）。"
+" 分割数を2増やすごとに誤差が同じ程度の比で減り続けるのは、:eq:`kps-error` の主要項が "
+"指数関数的に減る場合に期待される振る舞いである。同じ事例のCuでは誤差が振れながら減る （\\ :ref:`metal-cu-example`）。"
+msgstr ""
+"Over the range examined, each increase of two in the number of "
+"subdivisions :math:`n` along each direction reduced the total energy "
+"error for Si to approximately 1/5–1/8 of its previous value (1.9 meV/atom"
+" at :math:`8^3` and 0.07 meV/atom at :math:`12^3`). This roughly constant"
+" reduction factor is what we expect for each additional two subdivisions "
+"when the leading term in Equation :eq:`kps-error` decreases "
+"exponentially. For Cu in the same example, the error decreases with "
+"oscillations (see \\ :ref:`Worked Example: k-Point Convergence for Cu "
+"<metal-cu-example>`)."
+
+#: ../../solid/kpoint_sampling.rst:174
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../solid/kpoint_sampling.rst:176
+msgid ""
+"誤差が指数関数的に減るという結論は、周期ポテンシャルの一電子ハミルトニアンで記述する "
+"絶対零度の絶縁体のように、被積分関数がBZで解析的な場合に限る。:math:`A(k)=1/(1.5-\\cos ka)` の "
+"誤差の数値はこの関数に対するもので、必要な分割数の一般的な目安ではない。"
+msgstr ""
+"Exponential error decay applies only when the integrand is analytic in "
+"the BZ, as for an insulator at absolute zero described by a periodic one-"
+"electron Hamiltonian. The numerical errors for :math:`A(k)=1/(1.5-\\cos "
+"ka)` apply to this function alone and do not give a general guide to how "
+"many subdivisions are needed."
+
+#: ../../solid/kpoint_sampling.rst:180
+msgid ""
+"必要なk点メッシュは、物質だけでなく、求めたい量と精度で変わる。格子定数を少し変えたときの "
+"エネルギー差のように、近い条件の計算どうしの差をとる量では、メッシュによる誤差が打ち消し合い、 "
+"全エネルギーそのものより粗いメッシュで収束することが多い。いずれの場合も、求めたい量について メッシュを変えて収束を確かめる必要がある。"
+msgstr ""
+"The required k-point mesh depends on the material, the quantity of "
+"interest, and the desired accuracy. When taking the difference between "
+"calculations under similar conditions, as with the energy difference from"
+" a small change in lattice constants, mesh errors can cancel, and the "
+"difference often converges on a coarser mesh than the total energy "
+"itself. In every case, vary the mesh to check convergence for the "
+"quantity of interest."
+
+#: ../../solid/kpoint_sampling.rst:188
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/kpoint_sampling.rst:190
+msgid ":ref:`blochstheorem`"
+msgstr ":ref:`blochstheorem`"
+
+#: ../../solid/kpoint_sampling.rst:191
+msgid ":ref:`brillouinzone`"
+msgstr ":ref:`brillouinzone`"
+
+#: ../../solid/kpoint_sampling.rst:192
+msgid ":ref:`metal-bz-integration`"
+msgstr ":ref:`metal-bz-integration`"
+
+#: ../../solid/kpoint_sampling.rst:193
+msgid ":ref:`irreducible-kpoints`"
+msgstr ":ref:`irreducible-kpoints`"
+
+#: ../../solid/kpoint_sampling.rst:194
+msgid ""
+"`k点はいくつ必要か：金属Cuと半導体Siの収束 <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html>`_"
+msgstr ""
+"`How Many k-Points Are Needed? Convergence for Metallic Cu and "
+"Semiconducting Si <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html>`_"
+
+#: ../../solid/kpoint_sampling.rst:199
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/kpoint_sampling.rst:201
+msgid ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 8."
+msgstr ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 8."
+
+#: ../../solid/kpoint_sampling.rst:203
+msgid ""
+"R. M. Martin, *Electronic Structure: Basic Theory and Practical Methods*,"
+" 2nd ed. (Cambridge University Press, 2020)."
+msgstr ""
+"R. M. Martin, *Electronic Structure: Basic Theory and Practical Methods*,"
+" 2nd ed. (Cambridge University Press, 2020)."
+
+#: ../../solid/kpoint_sampling.rst:205
+msgid ""
+"L. N. Trefethen and J. A. C. Weideman, `“The Exponentially Convergent "
+"Trapezoidal Rule” <https://doi.org/10.1137/130932132>`_, *SIAM Review* "
+"**56**, 385–458 (2014)."
+msgstr ""
+"L. N. Trefethen and J. A. C. Weideman, `“The Exponentially Convergent "
+"Trapezoidal Rule” <https://doi.org/10.1137/130932132>`_, *SIAM Review* "
+"**56**, 385–458 (2014)."
+
+#: ../../solid/kpoint_sampling.rst:208
+msgid ""
+"D. Gontier and S. Lahbabi, `“Convergence rates of supercell calculations "
+"in the reduced Hartree–Fock model” "
+"<https://doi.org/10.1051/m2an/2015084>`_, *ESAIM: M2AN* **50**, 1403–1424"
+" (2016), Sect. 5.3."
+msgstr ""
+"D. Gontier and S. Lahbabi, `“Convergence rates of supercell calculations "
+"in the reduced Hartree–Fock model” "
+"<https://doi.org/10.1051/m2an/2015084>`_, *ESAIM: M2AN* **50**, 1403–1424"
+" (2016), Sect. 5.3."
+
+#: ../../solid/kpoint_sampling.rst:212
+msgid ""
+"H. J. Monkhorst and J. D. Pack, “Special points for Brillouin-zone "
+"integrations,” *Physical Review B* **13**, 5188–5192 (1976), "
+"`doi:10.1103/PhysRevB.13.5188 "
+"<https://doi.org/10.1103/PhysRevB.13.5188>`_."
+msgstr ""
+"H. J. Monkhorst and J. D. Pack, “Special points for Brillouin-zone "
+"integrations,” *Physical Review B* **13**, 5188–5192 (1976), "
+"`doi:10.1103/PhysRevB.13.5188 "
+"<https://doi.org/10.1103/PhysRevB.13.5188>`_."
+
+#: ../../solid/kpoint_sampling.rst:215
+msgid ""
+"W. Kohn, “Density Functional and Density Matrix Method Scaling Linearly "
+"with the Number of Atoms,” *Physical Review Letters* **76**, 3168–3171 "
+"(1996), `doi:10.1103/PhysRevLett.76.3168 "
+"<https://doi.org/10.1103/PhysRevLett.76.3168>`_."
+msgstr ""
+"W. Kohn, “Density Functional and Density Matrix Method Scaling Linearly "
+"with the Number of Atoms,” *Physical Review Letters* **76**, 3168–3171 "
+"(1996), `doi:10.1103/PhysRevLett.76.3168 "
+"<https://doi.org/10.1103/PhysRevLett.76.3168>`_."
+

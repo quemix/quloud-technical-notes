@@ -1,0 +1,809 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:04+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/irreducible_kpoints.rst:4
+msgid "既約k点と結晶の対称性"
+msgstr "Irreducible k-Points and Crystal Symmetry"
+
+#: ../../solid/irreducible_kpoints.rst:6
+msgid ""
+"結晶の電子状態計算では、まずブリルアンゾーン（BZ）の多数のk点での計算を行い、最後にそれらの和をとって最終的な物理量を求める。 "
+"結晶の対称性を使うと、同じ情報を持つ点をまとめ、代表点だけで計算できる。 本稿ではブロッホ関数の変換からその理由を導き、代表点の重みを説明する。"
+msgstr ""
+"In an electronic structure calculation for a crystal, we first calculate "
+"at many k-points in the Brillouin zone (BZ), then sum their contributions"
+" to obtain the physical quantities of interest. Crystal symmetry allows "
+"us to group points that carry the same information and calculate only the"
+" representatives. We derive why this works from the transformation of "
+"Bloch functions and explain the weights of the representative points."
+
+#: ../../solid/irreducible_kpoints.rst:10
+msgid ""
+"**前提知識**: :ref:`ブロッホの定理<blochstheorem>`、 :ref:`ブリルアンゾーン<first-brillouin-"
+"zone>`、:ref:`k点メッシュ<kpoint_sampling>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Bloch’s Theorem <blochstheorem>`, the "
+":ref:`Brillouin Zone <first-brillouin-zone>`, and :ref:`k-Point Meshes "
+"<kpoint_sampling>`."
+
+#: ../../solid/irreducible_kpoints.rst:13
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/irreducible_kpoints.rst:15
+msgid "結晶の対称操作が波数とエネルギーに及ぼす関係を導く。"
+msgstr ""
+"Derive how crystal symmetry operations transform wave vectors and relate "
+"their energies."
+
+#: ../../solid/irreducible_kpoints.rst:16
+msgid "既約k点の重みが元のメッシュの和を再現することと、その条件を説明する。"
+msgstr ""
+"Explain how the weights of irreducible k-points reproduce the sum over "
+"the original mesh and specify the conditions for this to work."
+
+#: ../../solid/irreducible_kpoints.rst:19
+msgid "結晶の対称操作"
+msgstr "Crystal Symmetry Operations"
+
+#: ../../solid/irreducible_kpoints.rst:21
+msgid ""
+":ref:`結晶の対称操作<crystal-symmetry-operations>`\\ の線形部分を :math:`Q`、 並進部分を "
+":math:`\\boldsymbol t` とする。まとめて"
+msgstr ""
+"For a :ref:`crystal symmetry operation <crystal-symmetry-operations>`\\ ,"
+" let :math:`Q` be the linear part and :math:`\\boldsymbol t` the "
+"translational part. We write the operation as"
+
+#: ../../solid/irreducible_kpoints.rst:24
+#, python-brace-format
+msgid "g=\\{Q\\mid\\boldsymbol t\\}"
+msgstr "g=\\{Q\\mid\\boldsymbol t\\}"
+
+#: ../../solid/irreducible_kpoints.rst:29
+msgid ""
+"と表すことにする。位置 :math:`\\boldsymbol r` にこれを作用させると、位置 :math:`\\boldsymbol r'` "
+"に移るという場合"
+msgstr ""
+"When the operation takes position :math:`\\boldsymbol r` to position "
+":math:`\\boldsymbol r'`, the forward and inverse transformations are"
+
+#: ../../solid/irreducible_kpoints.rst:31
+#, python-brace-format
+msgid ""
+"\\boldsymbol r' = g\\boldsymbol r=Q\\boldsymbol r+\\boldsymbol t,\\qquad\n"
+"g^{-1}\\boldsymbol r' = \\boldsymbol r = Q^{-1}(\\boldsymbol "
+"r'-\\boldsymbol t)"
+msgstr ""
+"\\boldsymbol r' = g\\boldsymbol r=Q\\boldsymbol r+\\boldsymbol t,\\qquad\n"
+"g^{-1}\\boldsymbol r' = \\boldsymbol r = Q^{-1}(\\boldsymbol "
+"r'-\\boldsymbol t)"
+
+#: ../../solid/irreducible_kpoints.rst:37
+msgid ""
+"となる。Cartesian座標で :math:`Q` は直交行列、 :math:`\\boldsymbol t` はベクトルである。 "
+"この直交部分の集まりが\\ :ref:`結晶の点群<crystal-point-group>`\\ である。以下では、原子配置だけでなく、 "
+"電子のハミルトニアンも不変に保つ操作を考える。"
+msgstr ""
+"In Cartesian coordinates, :math:`Q` is an orthogonal matrix and "
+":math:`\\boldsymbol t` is a vector. The set of these orthogonal parts is "
+"the \\ :ref:`crystal point group <crystal-point-group>`\\ . Below, we "
+"consider operations that leave both the atomic arrangement and the "
+"electronic Hamiltonian invariant."
+
+#: ../../solid/irreducible_kpoints.rst:42
+msgid "ブロッホ関数の変換"
+msgstr "Transformation of Bloch Functions"
+
+#: ../../solid/irreducible_kpoints.rst:44
+msgid ""
+"スピンを明示しないスカラー波動関数を考える。波数 :math:`\\boldsymbol k` の ブロッホ関数は任意の格子並進 "
+":math:`\\boldsymbol L` に対して"
+msgstr ""
+"Consider a scalar wave function without explicit spin. A Bloch function "
+"of wave vector :math:`\\boldsymbol k` satisfies the following relation "
+"for any lattice translation :math:`\\boldsymbol L`:"
+
+#: ../../solid/irreducible_kpoints.rst:47
+#, python-brace-format
+msgid ""
+"\\psi_{\\boldsymbol k}(\\boldsymbol r+\\boldsymbol L)\n"
+"=e^{i\\boldsymbol k\\cdot\\boldsymbol L}\\psi_{\\boldsymbol "
+"k}(\\boldsymbol r)"
+msgstr ""
+"\\psi_{\\boldsymbol k}(\\boldsymbol r+\\boldsymbol L)\n"
+"=e^{i\\boldsymbol k\\cdot\\boldsymbol L}\\psi_{\\boldsymbol "
+"k}(\\boldsymbol r)"
+
+#: ../../solid/irreducible_kpoints.rst:53
+msgid "を満たす。 :eq:`ikp-operation` に対応する関数の変換を考える。関数と位置を同時に変換すると、それは元と何も変わらないので、"
+msgstr ""
+"Consider the transformation of the function corresponding to Equation :eq"
+":`ikp-operation`. When both the function and the position are "
+"transformed, the value stays the same:"
+
+#: ../../solid/irreducible_kpoints.rst:55
+#, python-brace-format
+msgid ""
+"(U_g\\psi_{\\boldsymbol k})(g\\boldsymbol r)\n"
+"=\\psi_{\\boldsymbol k}(\\boldsymbol r)"
+msgstr ""
+"(U_g\\psi_{\\boldsymbol k})(g\\boldsymbol r)\n"
+"=\\psi_{\\boldsymbol k}(\\boldsymbol r)"
+
+#: ../../solid/irreducible_kpoints.rst:61
+msgid "となる（\\ :math:`U_g` は変換に対応した演算子とする）。ここから"
+msgstr ""
+"Here \\ :math:`U_g` is the operator corresponding to the transformation. "
+"It follows that"
+
+#: ../../solid/irreducible_kpoints.rst:63
+#, python-brace-format
+msgid ""
+"(U_g\\psi_{\\boldsymbol k})(\\boldsymbol r)\n"
+"=\\psi_{\\boldsymbol k}(g^{-1}\\boldsymbol r)\n"
+"=\\psi_{\\boldsymbol k}\\!\\left(Q^{-1}(\\boldsymbol r-\\boldsymbol "
+"t)\\right)"
+msgstr ""
+"(U_g\\psi_{\\boldsymbol k})(\\boldsymbol r)\n"
+"=\\psi_{\\boldsymbol k}(g^{-1}\\boldsymbol r)\n"
+"=\\psi_{\\boldsymbol k}\\!\\left(Q^{-1}(\\boldsymbol r-\\boldsymbol "
+"t)\\right)"
+
+#: ../../solid/irreducible_kpoints.rst:70
+msgid "が導かれ、これで演算子 :math:`U_g` の作用が具体的に書き下せた事になる。"
+msgstr "This gives the explicit action of :math:`U_g`."
+
+#: ../../solid/irreducible_kpoints.rst:77
+msgid "|symmetry-kpoint-mapping|"
+msgstr "Transformation of Wave Vectors Under Symmetry Operations"
+
+#: ../../solid/irreducible_kpoints.rst:79
+#, python-brace-format
+msgid ""
+":math:`g` で移した結晶は元の結晶と同じなので、格子並進も格子並進に移り、 :math:`Q\\boldsymbol L` と "
+":math:`Q^{-1}\\boldsymbol L` も格子並進である。 :eq:`ikp-bloch` を "
+":math:`Q^{-1}\\boldsymbol L` に使い、 :math:`Q` の直交性 "
+"（:math:`Q^{-1}=Q^{\\mathsf T}`\\ ）から :math:`\\boldsymbol k\\cdot "
+"Q^{-1}\\boldsymbol L=(Q\\boldsymbol k)\\cdot\\boldsymbol L` とすると"
+msgstr ""
+"Applying :math:`g` leaves the crystal unchanged, so lattice translations "
+"map to lattice translations. In particular, :math:`Q\\boldsymbol L` and "
+":math:`Q^{-1}\\boldsymbol L` are lattice translations. Applying Equation "
+":eq:`ikp-bloch` to :math:`Q^{-1}\\boldsymbol L` and using the "
+"orthogonality of :math:`Q` (:math:`Q^{-1}=Q^{\\mathsf T}`\\ ), so that "
+":math:`\\boldsymbol k\\cdot Q^{-1}\\boldsymbol L=(Q\\boldsymbol "
+"k)\\cdot\\boldsymbol L`, gives"
+
+#: ../../solid/irreducible_kpoints.rst:85
+msgid ""
+"\\begin{aligned}\n"
+"(U_g\\psi_{\\boldsymbol k})(\\boldsymbol r+\\boldsymbol L)\n"
+"&=\\psi_{\\boldsymbol k}\\!\\left(Q^{-1}(\\boldsymbol r-\\boldsymbol "
+"t)+Q^{-1}\\boldsymbol L\\right)\\\\\n"
+"&=e^{i\\boldsymbol k\\cdot Q^{-1}\\boldsymbol L}(U_g\\psi_{\\boldsymbol "
+"k})(\\boldsymbol r)\\\\\n"
+"&=e^{i(Q\\boldsymbol k)\\cdot\\boldsymbol L}(U_g\\psi_{\\boldsymbol "
+"k})(\\boldsymbol r).\n"
+"\\end{aligned}"
+msgstr ""
+"\\begin{aligned}\n"
+"(U_g\\psi_{\\boldsymbol k})(\\boldsymbol r+\\boldsymbol L)\n"
+"&=\\psi_{\\boldsymbol k}\\!\\left(Q^{-1}(\\boldsymbol r-\\boldsymbol "
+"t)+Q^{-1}\\boldsymbol L\\right)\\\\\n"
+"&=e^{i\\boldsymbol k\\cdot Q^{-1}\\boldsymbol L}(U_g\\psi_{\\boldsymbol "
+"k})(\\boldsymbol r)\\\\\n"
+"&=e^{i(Q\\boldsymbol k)\\cdot\\boldsymbol L}(U_g\\psi_{\\boldsymbol "
+"k})(\\boldsymbol r).\n"
+"\\end{aligned}"
+
+#: ../../solid/irreducible_kpoints.rst:95
+#, python-brace-format
+msgid ""
+"したがって :math:`U_g\\psi_{\\boldsymbol k}` は波数 :math:`Q\\boldsymbol k` "
+"のブロッホ条件を満たす。 逆格子ベクトル :math:`\\boldsymbol G` に対して :math:`e^{i\\boldsymbol "
+"G\\cdot\\boldsymbol L}=1` なので、 :math:`\\boldsymbol G` "
+"だけ違う波数は同じブロッホ条件を与える。変換後の波数を :math:`\\boldsymbol k'` と書けば"
+msgstr ""
+"Thus :math:`U_g\\psi_{\\boldsymbol k}` satisfies the Bloch condition for "
+"wave vector :math:`Q\\boldsymbol k`. For a reciprocal lattice vector "
+":math:`\\boldsymbol G`, we have :math:`e^{i\\boldsymbol "
+"G\\cdot\\boldsymbol L}=1`, so wave vectors that differ by "
+":math:`\\boldsymbol G` give the same Bloch condition. If we write the "
+"transformed wave vector as :math:`\\boldsymbol k'`, it satisfies"
+
+#: ../../solid/irreducible_kpoints.rst:100
+#, python-brace-format
+msgid "\\boldsymbol k'\\equiv Q\\boldsymbol k\\pmod{\\boldsymbol G}"
+msgstr "\\boldsymbol k'\\equiv Q\\boldsymbol k\\pmod{\\boldsymbol G}"
+
+#: ../../solid/irreducible_kpoints.rst:105
+msgid "である。並進部分 :math:`\\boldsymbol t` は波数の行先には現れないが、波動関数の形や位相には影響する。"
+msgstr ""
+"The translational part :math:`\\boldsymbol t` does not enter the mapping "
+"of wave vectors, but it affects the shape and phase of the wave function."
+
+#: ../../solid/irreducible_kpoints.rst:107
+#, python-brace-format
+msgid ""
+":math:`Q` はCartesian座標の行列である。\\ :ref:`格子行列<lattice-translations>` "
+":math:`A` と\\ :ref:`逆格子行列<reciprocal-lattice>` :math:`B=2\\pi "
+"A^{-\\mathsf T}` を使い、実格子の\\ :ref:`分率座標<coordinates>`\\ で同じ操作を "
+":math:`W=A^{-1}QA` と表すと、逆格子の分率座標では :math:`B^{-1}QB=A^{\\mathsf "
+"T}QA^{-\\mathsf T}=(W^{-1})^{\\mathsf T}` となる。最後の等号には :math:`Q^{-\\mathsf"
+" T}=Q` を使った。一般には :math:`W` をそのままk点の分率座標に掛けられない。"
+msgstr ""
+"The matrix :math:`Q` is expressed in Cartesian coordinates. Let \\ "
+":ref:`lattice matrix <lattice-translations>` :math:`A` and \\ "
+":ref:`reciprocal lattice matrix <reciprocal-lattice>` :math:`B=2\\pi "
+"A^{-\\mathsf T}` describe the two lattices. If the same operation in "
+"real-space \\ :ref:`fractional coordinates <coordinates>`\\  is "
+":math:`W=A^{-1}QA`, its matrix in reciprocal-space fractional coordinates"
+" is :math:`B^{-1}QB=A^{\\mathsf T}QA^{-\\mathsf T}=(W^{-1})^{\\mathsf "
+"T}`. The last equality uses :math:`Q^{-\\mathsf T}=Q`. In general, we "
+"cannot apply :math:`W` directly to the fractional coordinates of a "
+"k-point."
+
+#: ../../solid/irreducible_kpoints.rst:114
+msgid "エネルギーの等価性"
+msgstr "Equality of Energies at Equivalent k-Points"
+
+#: ../../solid/irreducible_kpoints.rst:116
+#, python-brace-format
+msgid ""
+"ハミルトニアン :math:`H` がこの操作を保つとき、 :math:`HU_g=U_gH` である。 "
+":math:`H\\psi_{\\boldsymbol k}=\\varepsilon\\psi_{\\boldsymbol k}` なら"
+msgstr ""
+"When this operation leaves the Hamiltonian :math:`H` invariant, "
+":math:`HU_g=U_gH`. If :math:`H\\psi_{\\boldsymbol "
+"k}=\\varepsilon\\psi_{\\boldsymbol k}`, then"
+
+#: ../../solid/irreducible_kpoints.rst:119
+#, python-brace-format
+msgid ""
+"H(U_g\\psi_{\\boldsymbol k})=U_gH\\psi_{\\boldsymbol k}\n"
+"=\\varepsilon(U_g\\psi_{\\boldsymbol k})"
+msgstr ""
+"H(U_g\\psi_{\\boldsymbol k})=U_gH\\psi_{\\boldsymbol k}\n"
+"=\\varepsilon(U_g\\psi_{\\boldsymbol k})"
+
+#: ../../solid/irreducible_kpoints.rst:125
+#, python-brace-format
+msgid ""
+"なので、 :math:`U_g\\psi_{\\boldsymbol k}` は :math:`Q\\boldsymbol k` "
+"の同じエネルギーの固有状態である。 :math:`U_g` は1次独立な状態を1次独立な状態に移し、逆操作 :math:`g^{-1}` "
+"で戻せるので、 :math:`\\boldsymbol k` と :math:`Q\\boldsymbol k` "
+"のエネルギー固有値の集合は縮退度を含めて等しい。 各k点でバンドをエネルギーの低い順に番号付けると"
+msgstr ""
+"Thus :math:`U_g\\psi_{\\boldsymbol k}` is an eigenstate at "
+":math:`Q\\boldsymbol k` with the same energy. The operator :math:`U_g` "
+"maps linearly independent states to linearly independent states and can "
+"be undone by the inverse operation :math:`g^{-1}`. Therefore, the sets of"
+" energy eigenvalues at :math:`\\boldsymbol k` and :math:`Q\\boldsymbol k`"
+" are identical, including their degeneracies. Numbering the bands at each"
+" k-point in order of increasing energy gives"
+
+#: ../../solid/irreducible_kpoints.rst:130
+msgid ""
+"\\varepsilon_n(Q\\boldsymbol k)=\\varepsilon_n(\\boldsymbol "
+"k)\\qquad(n=1,2,\\ldots)"
+msgstr ""
+"\\varepsilon_n(Q\\boldsymbol k)=\\varepsilon_n(\\boldsymbol "
+"k)\\qquad(n=1,2,\\ldots)"
+
+#: ../../solid/irreducible_kpoints.rst:135
+msgid ""
+"である。ただし、変換後の状態が、 :math:`Q\\boldsymbol k` であらかじめ選んだ固有関数と "
+"等しいとは限らない。位相は任意であり、縮退があると同じエネルギーの状態どうしが混ざり得る。"
+msgstr ""
+"However, the transformed state need not coincide with an eigenfunction "
+"chosen in advance at :math:`Q\\boldsymbol k`. Its phase is arbitrary, and"
+" states of the same energy can mix when there is degeneracy."
+
+#: ../../solid/irreducible_kpoints.rst:141
+msgid "等価なk点の組と代表点"
+msgstr "Equivalent k-Points and Representative Points"
+
+#: ../../solid/irreducible_kpoints.rst:143
+msgid ""
+"メッシュを自分自身に写す対称操作で、 :eq:`ikp-kmap` によって互いに移り合う点を一組にする。 行先は "
+":math:`\\boldsymbol G` を法として考えるので、BZの境界で逆格子ベクトルだけ違う点は1点と数える。 "
+"各組から1点ずつ選んだ代表が既約k点である。"
+msgstr ""
+"Use symmetry operations that map the mesh onto itself to group points "
+"related by Equation :eq:`ikp-kmap`. Since the image is taken modulo "
+":math:`\\boldsymbol G`, points on the BZ boundary that differ by a "
+"reciprocal lattice vector count as one point. The irreducible k-points "
+"are the representatives chosen one from each group."
+
+#: ../../solid/irreducible_kpoints.rst:147
+#, python-brace-format
+msgid ""
+"組の点数 :math:`m_i` は、使う操作の数 :math:`N_{\\rm op}` から決まる。代表点 "
+":math:`\\boldsymbol k_i` を （:math:`\\boldsymbol G` を法として）自分自身に戻す操作が "
+":math:`s_i` 個あるとする。 :math:`Q\\boldsymbol k_i\\equiv Q'\\boldsymbol k_i` "
+"となるのは :math:`Q^{-1}Q'` が :math:`\\boldsymbol k_i` を戻すときなので、組のどの点にもちょうど "
+":math:`s_i` 個の操作が行き着き、"
+msgstr ""
+"The number of points :math:`m_i` in a group follows from the number of "
+"operations used, :math:`N_{\\rm op}`. Suppose the representative "
+":math:`\\boldsymbol k_i` is mapped to itself modulo :math:`\\boldsymbol "
+"G` by :math:`s_i` operations. The relation :math:`Q\\boldsymbol "
+"k_i\\equiv Q'\\boldsymbol k_i` holds exactly when :math:`Q^{-1}Q'` maps "
+":math:`\\boldsymbol k_i` to itself. Thus exactly :math:`s_i` operations "
+"reach each point in the group, and"
+
+#: ../../solid/irreducible_kpoints.rst:152
+msgid "m_i=\\frac{N_{\\rm op}}{s_i}"
+msgstr "m_i=\\frac{N_{\\rm op}}{s_i}"
+
+#: ../../solid/irreducible_kpoints.rst:157
+#, python-brace-format
+msgid ""
+"である。一般の点では :math:`s_i=1` で組は :math:`N_{\\rm op}` 点になり、Γ点のような対称性の高い点では "
+"組が小さい。"
+msgstr ""
+"At a general point, :math:`s_i=1` and the group contains :math:`N_{\\rm "
+"op}` points. At a high-symmetry point such as the Γ point, the group is "
+"smaller."
+
+#: ../../solid/irreducible_kpoints.rst:163
+msgid "|irreducible-kpoint-weights|"
+msgstr "Weights of Irreducible k-Points and Integration"
+
+#: ../../solid/irreducible_kpoints.rst:165
+msgid "等間隔メッシュの和を、既約k点 :math:`\\boldsymbol k_i` だけの重み付きの和で置き換える。"
+msgstr ""
+"We replace the sum over the uniform mesh with a weighted sum over only "
+"the irreducible k-points :math:`\\boldsymbol k_i`:"
+
+#: ../../solid/irreducible_kpoints.rst:167
+msgid ""
+"\\frac{1}{N_k}\\sum_{\\boldsymbol k\\in\\text{メッシュ}}A(\\boldsymbol "
+"k)=\\sum_i w_i\\,A(\\boldsymbol k_i),\n"
+"\\qquad\\sum_i w_i=1"
+msgstr ""
+"\\frac{1}{N_k}\\sum_{\\boldsymbol k\\in\\text{mesh}}A(\\boldsymbol "
+"k)=\\sum_i w_i\\,A(\\boldsymbol k_i),\n"
+"\\qquad\\sum_i w_i=1"
+
+#: ../../solid/irreducible_kpoints.rst:173
+msgid ""
+":math:`N_k=n_1n_2n_3` はメッシュの点の数である。全 :math:`N_k` 点が等しい重みを持ち、被積分量 "
+":math:`A(\\boldsymbol k)` が同じ組で等しいとき、重みは :math:`w_i=m_i/N_k` になり、"
+msgstr ""
+"Here :math:`N_k=n_1n_2n_3` is the number of mesh points. When all "
+":math:`N_k` points have equal weight and the integrand "
+":math:`A(\\boldsymbol k)` is constant within each group, the weights are "
+":math:`w_i=m_i/N_k`, giving"
+
+#: ../../solid/irreducible_kpoints.rst:176
+msgid ""
+"\\frac{1}{N_k}\\sum_{\\boldsymbol k\\in\\text{メッシュ}}A(\\boldsymbol k)\n"
+"=\\sum_{i=1}^{N_{\\rm irr}}\\frac{m_i}{N_k}A(\\boldsymbol k_i),\\qquad\n"
+"\\sum_i m_i=N_k,\\quad \\sum_i\\frac{m_i}{N_k}=1"
+msgstr ""
+"\\frac{1}{N_k}\\sum_{\\boldsymbol k\\in\\text{mesh}}A(\\boldsymbol k)\n"
+"=\\sum_{i=1}^{N_{\\rm irr}}\\frac{m_i}{N_k}A(\\boldsymbol k_i),\\qquad\n"
+"\\sum_i m_i=N_k,\\quad \\sum_i\\frac{m_i}{N_k}=1"
+
+#: ../../solid/irreducible_kpoints.rst:183
+#, python-brace-format
+msgid ""
+"と書ける。代表点に組の点数を掛けることで、元の和を正確に再現する。 :math:`A(\\boldsymbol k)` "
+"がエネルギーと占有数だけで決まる量（バンドエネルギーや電子数）なら、 :eq:`ikp-bands` "
+"から同じ組で等しい。一方、電子密度へのk点ごとの寄与は位置の関数で、 :eq:`ikp-transform` から "
+":math:`|(U_g\\psi_{\\boldsymbol k})(\\boldsymbol "
+"r)|^2=|\\psi_{\\boldsymbol k}(g^{-1}\\boldsymbol r)|^2` なので、 "
+":math:`Q\\boldsymbol k` の寄与は :math:`\\boldsymbol k` の寄与を :math:`g` "
+"で移したものになる。 代表点だけの和を、各操作で移して平均（対称化）してから使う。"
+msgstr ""
+"Multiplying the value at each representative by the number of points in "
+"its group exactly reproduces the original sum. If :math:`A(\\boldsymbol "
+"k)` depends only on energies and occupation numbers, as do the band "
+"energy and electron count, Equation :eq:`ikp-bands` shows that its value "
+"is the same throughout each group. By contrast, the contribution of each "
+"k-point to the electron density is a function of position. Equation :eq"
+":`ikp-transform` gives :math:`|(U_g\\psi_{\\boldsymbol k})(\\boldsymbol "
+"r)|^2=|\\psi_{\\boldsymbol k}(g^{-1}\\boldsymbol r)|^2`, so the "
+"contribution at :math:`Q\\boldsymbol k` is the contribution at "
+":math:`\\boldsymbol k` transformed by :math:`g`. The sum over "
+"representatives alone is used after symmetrization, by transforming it "
+"under each operation and averaging the results."
+
+#: ../../solid/irreducible_kpoints.rst:191
+msgid "正方格子の2次元メッシュ"
+msgstr "Two-Dimensional Mesh on a Square Lattice"
+
+#: ../../solid/irreducible_kpoints.rst:193
+msgid ""
+"90度回転と鏡映の8操作を持つ正方格子の結晶で、Γ点を中心とする :math:`3\\times3` メッシュを考える。 逆格子の基本ベクトルを "
+":math:`\\boldsymbol b_1,\\boldsymbol b_2` とすると、 :math:`\\boldsymbol "
+"k=s_1\\boldsymbol b_1+s_2\\boldsymbol b_2` の :math:`s_1,s_2` はそれぞれ "
+":math:`-1/3,0,1/3` のいずれかである。:numref:`fig-irreducible-square-mesh`\\ "
+"では、9点が 中心、軸上、対角方向の3組に分かれる。回転や鏡映で行き来できる点は同じ記号で示す。"
+msgstr ""
+"Consider a Γ-point-centered :math:`3\\times3` mesh for a square-lattice "
+"crystal with eight symmetry operations generated by 90-degree rotation "
+"and reflection. Let :math:`\\boldsymbol b_1,\\boldsymbol b_2` be the "
+"primitive reciprocal lattice vectors. In :math:`\\boldsymbol "
+"k=s_1\\boldsymbol b_1+s_2\\boldsymbol b_2`, each of :math:`s_1,s_2` is "
+"one of :math:`-1/3,0,1/3`. In :numref:`fig-irreducible-square-mesh`\\ , "
+"the nine points fall into three groups: the center, points on the axes, "
+"and points along the diagonals. Points related by rotation or reflection "
+"have the same marker."
+
+#: ../../solid/irreducible_kpoints.rst:199
+msgid "第1ブリルアンゾーンの正方形を薄青、既約な三角形の領域を薄緑で示す。中心、軸上、対角の各組から1点ずつを輪で囲み、重み1/9、4/9、4/9を添える。"
+msgstr ""
+"The square of the first Brillouin zone is light blue, and the irreducible"
+" triangular region is light green. One point from each group (center, on "
+"axes, on diagonals) is circled. Their respective weights are 1/9, 4/9, "
+"and 4/9."
+
+#: ../../solid/irreducible_kpoints.rst:205
+msgid ""
+"横軸と縦軸は逆格子の分率座標。薄青の正方形は第1ブリルアンゾーン （:math:`-1/2\\le "
+"s_i<1/2`）、薄緑の三角形は既約な領域の一例 （:math:`0\\le s_2\\le "
+"s_1<1/2`）である。輪で囲んだ3点が各組の代表点で、 右にそれぞれの正規化した重みを示す。"
+msgstr ""
+"The horizontal and vertical axes give fractional coordinates in the "
+"reciprocal lattice. The light blue square is the first Brillouin zone "
+"(:math:`-1/2\\le s_i<1/2`), and the light green triangle is an example of"
+" an irreducible region (:math:`0\\le s_2\\le s_1<1/2`). The three circled"
+" points are the group representatives. Their normalized weights appear on"
+" the right."
+
+#: ../../solid/irreducible_kpoints.rst:210
+#, python-brace-format
+msgid ""
+"Iは中心のΓ点、IIは軸上、IIIは対角方向の点である。Γ点は8操作すべてで自分自身に戻るので :math:`m=8/8=1`\\ "
+"、軸上の点はその軸に沿う鏡映と恒等操作の2個で戻るので :math:`m=8/2=4`\\ 、 対角方向の点も対角線に沿う鏡映と恒等操作で戻るので"
+" :math:`m=4` である。 :eq:`ikp-weight` の重みはそれぞれ :math:`1/9,4/9,4/9` となり、 "
+"例えば各組での値を :math:`A_{\\rm I},A_{\\rm II},A_{\\rm III}` とすると、元の9点の平均は "
+":math:`(A_{\\rm I}+4A_{\\rm II}+4A_{\\rm III})/9` である。鏡映の線に乗らない一般の点があれば、 "
+"その組は8点になる。"
+msgstr ""
+"Group I is the central Γ point, II the points on the axes, and III those "
+"along the diagonals. All eight operations map Γ back to itself, so "
+":math:`m=8/8=1`\\ . Reflection across the axis and the identity map a "
+"point on an axis back to itself, so :math:`m=8/2=4`\\ . Likewise, "
+"reflection across a diagonal and the identity map a point on a diagonal "
+"back to itself, so :math:`m=4`. The weights in Equation :eq:`ikp-weight` "
+"are :math:`1/9,4/9,4/9`, respectively. For example, if the values in the "
+"three groups are :math:`A_{\\rm I},A_{\\rm II},A_{\\rm III}`, the "
+"original nine-point average is :math:`(A_{\\rm I}+4A_{\\rm II}+4A_{\\rm "
+"III})/9`. A general point off the reflection lines would belong to a "
+"group of eight points."
+
+#: ../../solid/irreducible_kpoints.rst:219
+msgid "Cuの計算例"
+msgstr "Calculation Example for Cu"
+
+#: ../../solid/irreducible_kpoints.rst:221
+#, python-brace-format
+msgid ""
+"`Quloud ExamplesのCuの計算 <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html#sec-kp-irreducible>`_"
+" では、fcc Cuの基本単位胞についてΓ点を含む :math:`4\\times4\\times4` メッシュの 64点が、Quantum "
+"ESPRESSO 7.5で8個の既約k点にまとめられる。各点の座標と重みはリンク先の表にある。 fccの点群の操作は :math:`N_{\\rm"
+" op}=48` 個である。各組の点数 :math:`m_i` は、 代表点を自分自身に戻す操作の数 :math:`s_i` "
+"で48を割ると得られる（式 :eq:`ikp-orbit`）。"
+msgstr ""
+"In the Cu section of the Quloud calculation example “`How Many k-Points "
+"Are Needed? Convergence for Metallic Cu and Semiconducting Si "
+"<https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html#sec-kp-"
+"irreducible>`_,” Quantum ESPRESSO 7.5 reduces the 64 points of a "
+":math:`4\\times4\\times4` mesh that includes the Γ point for the "
+"primitive cell of fcc Cu to eight irreducible k-points. The linked table "
+"gives the coordinates and weights of the irreducible k-points. The fcc "
+"point group has :math:`N_{\\rm op}=48` operations. The number of points "
+":math:`m_i` in each group is 48 divided by the number of operations "
+":math:`s_i` that map its representative back to itself (Equation :eq"
+":`ikp-orbit`)."
+
+#: ../../solid/irreducible_kpoints.rst:227
+msgid "Cuの4×4×4メッシュの既約k点"
+msgstr "Irreducible k-points of the 4×4×4 mesh for Cu"
+
+#: ../../solid/irreducible_kpoints.rst:231
+msgid "代表点"
+msgstr "Representative point"
+
+#: ../../solid/irreducible_kpoints.rst:232
+msgid "組の点数 :math:`m_i`"
+msgstr "Number of points in the group :math:`m_i`"
+
+#: ../../solid/irreducible_kpoints.rst:233
+msgid "代表点を元に戻す操作の数 :math:`s_i`"
+msgstr "Number of operations fixing the representative :math:`s_i`"
+
+#: ../../solid/irreducible_kpoints.rst:234
+msgid "Γ点"
+msgstr "Γ point"
+
+#: ../../solid/irreducible_kpoints.rst:235
+msgid "1"
+msgstr "1"
+
+#: ../../solid/irreducible_kpoints.rst:236
+msgid "48"
+msgstr "48"
+
+#: ../../solid/irreducible_kpoints.rst:237
+msgid "Γ–L上"
+msgstr "On Γ–L"
+
+#: ../../solid/irreducible_kpoints.rst:238
+#: ../../solid/irreducible_kpoints.rst:245
+#: ../../solid/irreducible_kpoints.rst:257
+msgid "8"
+msgstr "8"
+
+#: ../../solid/irreducible_kpoints.rst:239
+#: ../../solid/irreducible_kpoints.rst:244
+#: ../../solid/irreducible_kpoints.rst:256
+msgid "6"
+msgstr "6"
+
+#: ../../solid/irreducible_kpoints.rst:240
+msgid "L点"
+msgstr "L point"
+
+#: ../../solid/irreducible_kpoints.rst:241
+#: ../../solid/irreducible_kpoints.rst:251
+msgid "4"
+msgstr "4"
+
+#: ../../solid/irreducible_kpoints.rst:242
+#: ../../solid/irreducible_kpoints.rst:250
+msgid "12"
+msgstr "12"
+
+#: ../../solid/irreducible_kpoints.rst:243
+msgid "Γ–X上"
+msgstr "On Γ–X"
+
+#: ../../solid/irreducible_kpoints.rst:246
+msgid "対称線の外の点"
+msgstr "Point off symmetry lines"
+
+#: ../../solid/irreducible_kpoints.rst:247
+msgid "24"
+msgstr "24"
+
+#: ../../solid/irreducible_kpoints.rst:248
+msgid "2"
+msgstr "2"
+
+#: ../../solid/irreducible_kpoints.rst:249
+msgid "Γ–K上"
+msgstr "On Γ–K"
+
+#: ../../solid/irreducible_kpoints.rst:252
+msgid "X点"
+msgstr "X point"
+
+#: ../../solid/irreducible_kpoints.rst:253
+msgid "3"
+msgstr "3"
+
+#: ../../solid/irreducible_kpoints.rst:254
+msgid "16"
+msgstr "16"
+
+#: ../../solid/irreducible_kpoints.rst:255
+msgid "W点"
+msgstr "W point"
+
+#: ../../solid/irreducible_kpoints.rst:259
+msgid ""
+"8組の点数を合計すると、元のメッシュの64点になる。このメッシュの各点には、その点を "
+"逆格子ベクトルの差を除いて元に戻す鏡映操作が少なくとも1つある。代表点ごとに恒等操作も 数えると :math:`s_i\\geq 2` "
+"となるため、48点の組は現れない。"
+msgstr ""
+"The point counts of the eight groups add up to the 64 points of the "
+"original mesh. Each point in this mesh has at least one reflection that "
+"maps it back to itself up to a reciprocal lattice vector. Counting the "
+"identity as well gives :math:`s_i\\geq 2` for every representative, so no"
+" group has 48 points."
+
+#: ../../solid/irreducible_kpoints.rst:263
+msgid ""
+"L点とX点はBZの境界にある。L点の方向は8つある（ :math:`2\\pi/a` 単位で "
+":math:`(\\pm\\frac12,\\pm\\frac12,\\pm\\frac12)`\\ ）が、 "
+":math:`(\\frac12,\\frac12,\\frac12)` と "
+":math:`(-\\frac12,-\\frac12,-\\frac12)` のように逆格子ベクトル :math:`(1,1,1)` "
+"だけ違う2点は同じ点なので、 4点と数える。X点も同様に6方向が3点になる。"
+msgstr ""
+"The L and X points are on the BZ boundary. There are eight L-point "
+"directions (in units of :math:`2\\pi/a`, given by "
+":math:`(\\pm\\frac12,\\pm\\frac12,\\pm\\frac12)`\\ ). However, two points"
+" such as :math:`(\\frac12,\\frac12,\\frac12)` and "
+":math:`(-\\frac12,-\\frac12,-\\frac12)` that differ by the reciprocal "
+"lattice vector :math:`(1,1,1)` are the same point, so we count four "
+"points. Likewise, the six X directions give three points."
+
+#: ../../solid/irreducible_kpoints.rst:268
+msgid ""
+"正規化した重みは :math:`m_i/64` で、例えばΓ点は :math:`1/64`\\ 、24点の組は :math:`24/64` "
+"である。 QEの出力の重み ``wk`` は、スピン偏極のない計算ではスピンの縮退を含めて合計が2になるように "
+"書かれるので、比較するときはその総和を確かめる。"
+msgstr ""
+"The normalized weight is :math:`m_i/64`. For example, the Γ point has "
+"weight :math:`1/64`\\ , and the group of 24 points has weight "
+":math:`24/64`. In a calculation without spin polarization, the weights "
+"``wk`` in the QE output include spin degeneracy and sum to two. Check the"
+" sum when comparing weights."
+
+#: ../../solid/irreducible_kpoints.rst:273
+msgid "適用範囲"
+msgstr "Applicability"
+
+#: ../../solid/irreducible_kpoints.rst:275
+msgid "結晶の対称性だけでなく、シフトを含むメッシュ自体が使う操作で不変でなければならない。 メッシュを保たない操作は使わず、保つ操作だけで組を作る。"
+msgstr ""
+"The operations must preserve the mesh itself, including any shift, as "
+"well as the crystal. Form the groups using only operations that leave the"
+" mesh invariant."
+
+#: ../../solid/irreducible_kpoints.rst:277
+msgid "ベクトルやテンソルの成分は一般に組の各点で同じ値ではない。電子密度と同じく、 量自体の変換を考慮して全点の寄与を復元する。"
+msgstr ""
+"Vector and tensor components are generally not constant across all points"
+" in a group. As with the electron density, we recover the contributions "
+"from all points by accounting for how the quantity itself transforms."
+
+#: ../../solid/irreducible_kpoints.rst:280
+msgid ""
+"既約化は元のメッシュの和を整理する操作であり、積分近似を粗くするものではない。 "
+"メッシュの密度に対する収束は別に確かめる必要がある。並進部分が波動関数の位相に与える影響や、 空間群による状態の分類は本稿では扱わない。"
+msgstr ""
+"Reduction to irreducible points regroups the sum over the original mesh "
+"without making the integration approximation coarser. Convergence with "
+"respect to mesh density must be checked separately. We do not cover the "
+"effects of translations on the wave-function phase or the classification "
+"of states by space group."
+
+#: ../../solid/irreducible_kpoints.rst:287
+msgid "|time-reversal-and-magnetism|"
+msgstr "Time-Reversal Symmetry and Magnetism"
+
+#: ../../solid/irreducible_kpoints.rst:289
+#, python-brace-format
+msgid ""
+"スピンを明示しない実ハミルトニアンでは、波動関数の複素共役が時間反転に対応する。 :math:`\\psi_{\\boldsymbol k}` "
+"が固有状態なら :math:`\\psi_{\\boldsymbol k}^*` も 同じエネルギーの固有状態である。式 :eq:`ikp-"
+"bloch` を複素共役にすると、 対応する波数は :math:`-\\boldsymbol k` になる。これにより "
+":math:`\\varepsilon_n(-\\boldsymbol k)=\\varepsilon_n(\\boldsymbol k)` "
+"が成り立つ。 メッシュがこの入れ替えを保てば、空間反転のない結晶でも既約化に使える。 非磁性のCuやSiでは空間反転でも同じ波数の対応が得られる。"
+msgstr ""
+"For a real Hamiltonian without explicit spin, time reversal corresponds "
+"to complex conjugation of the wave function. If "
+":math:`\\psi_{\\boldsymbol k}` is an eigenstate, then "
+":math:`\\psi_{\\boldsymbol k}^*` is an eigenstate with the same energy. "
+"Taking the complex conjugate of Equation :eq:`ikp-bloch` gives the "
+"corresponding wave vector :math:`-\\boldsymbol k`. It follows that "
+":math:`\\varepsilon_n(-\\boldsymbol k)=\\varepsilon_n(\\boldsymbol k)`. "
+"If the mesh is invariant under this exchange, the exchange can be used to"
+" reduce the mesh even in crystals without spatial inversion. In "
+"nonmagnetic Cu and Si, spatial inversion gives the same wave-vector "
+"mapping."
+
+#: ../../solid/irreducible_kpoints.rst:297
+msgid ""
+"スピン軌道相互作用を含まない共線磁性の計算では、スピンごとに実のハミルトニアンを 扱える場合がある。その場合は各スピンについても、複素共役から "
+":math:`\\boldsymbol k\\leftrightarrow-\\boldsymbol k` の対応が得られる。 "
+"物理的な時間反転はスピンの向きも反転するため、ここで使うのは各スピン内の "
+"ハミルトニアンの実性である。空間の操作が使えるかどうかは磁気秩序にも依存する。 "
+"例えば反強磁性体で、逆向きの磁気モーメントを持つ同種の原子を入れ替える操作は、 原子配置を保っても磁気秩序を変えることがある。"
+msgstr ""
+"In a collinear magnetic calculation without spin-orbit coupling, each "
+"spin channel may have a real Hamiltonian. In that case, complex "
+"conjugation gives the mapping :math:`\\boldsymbol "
+"k\\leftrightarrow-\\boldsymbol k` within each spin channel as well. "
+"Physical time reversal also reverses the spin direction, so the symmetry "
+"used here follows from the Hamiltonian being real within each spin "
+"channel. Which spatial operations can be used also depends on magnetic "
+"order. For example, in an antiferromagnet, an operation exchanging atoms "
+"of the same species with opposite magnetic moments can preserve the "
+"atomic arrangement but change the magnetic order."
+
+#: ../../solid/irreducible_kpoints.rst:305
+msgid ""
+"スピン軌道相互作用を含む計算では、空間の対称操作を波動関数に作用させるときに スピンの変換も考慮する。操作がハミルトニアンを保てば、波数の対応は式"
+" :eq:`ikp-kmap` で与えられる。外部磁場やスピン軌道相互作用を伴う磁性があると、 同じハミルトニアンで "
+":math:`\\boldsymbol k` と :math:`-\\boldsymbol k` の エネルギーが等しいとは限らない。"
+msgstr ""
+"In calculations with spin-orbit coupling, applying a spatial symmetry "
+"operation to a wave function also requires transforming the spin. If the "
+"operation preserves the Hamiltonian, Equation :eq:`ikp-kmap` gives the "
+"wave-vector mapping. In an external magnetic field or in a magnetic "
+"system with spin-orbit coupling, the energies at :math:`\\boldsymbol k` "
+"and :math:`-\\boldsymbol k` need not be equal for the same Hamiltonian."
+
+#: ../../solid/irreducible_kpoints.rst:312
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/irreducible_kpoints.rst:314
+msgid ":ref:`k点メッシュと積分誤差<kpoint_sampling>`：積分の近似と収束。"
+msgstr ""
+":ref:`k-Point Meshes and Integration Error <kpoint_sampling>` — "
+"Approximating the integral and checking convergence."
+
+#: ../../solid/irreducible_kpoints.rst:315
+msgid ":ref:`金属のブリルアンゾーン積分<metal-bz-integration>`：フェルミ面の段差の扱い。"
+msgstr ""
+":ref:`Brillouin Zone Integration for Metals <metal-bz-integration>` — "
+"Treatment of the step at the Fermi surface."
+
+#: ../../solid/irreducible_kpoints.rst:316
+msgid ":ref:`lattice`：格子行列・逆格子行列と分率座標。"
+msgstr ""
+":ref:`Lattices and Unit Cells <lattice>` — The lattice matrix, reciprocal"
+" lattice matrix, and fractional coordinates."
+
+#: ../../solid/irreducible_kpoints.rst:317
+msgid ""
+"`Quloud ExamplesのCuの既約k点 <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html#sec-kp-irreducible>`_"
+msgstr ""
+"`How Many k-Points Are Needed? Convergence for Metallic Cu and "
+"Semiconducting Si <https://example.quloud-"
+"platform.quemix.com/kpoints/kpoint_convergence.html#sec-kp-irreducible>`_"
+" — Irreducible k-points for Cu."
+
+#: ../../solid/irreducible_kpoints.rst:318
+msgid ""
+"`spglibの逆格子メッシュの説明 "
+"<https://spglib.readthedocs.io/en/stable/api/autodoc/spglib.kpoints.html>`_："
+" メッシュ、シフト、時間反転の扱いと既約点への対応。"
+msgstr ""
+"`Reciprocal lattice meshes in the spglib documentation "
+"<https://spglib.readthedocs.io/en/stable/api/autodoc/spglib.kpoints.html>`_"
+" — Meshes, shifts, time reversal, and mapping to irreducible points."
+
+#: ../../solid/irreducible_kpoints.rst:322
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/irreducible_kpoints.rst:324
+msgid ""
+"H. J. Monkhorst and J. D. Pack, “Special points for Brillouin-zone "
+"integrations,” *Physical Review B* **13**, 5188–5192 (1976), "
+"`doi:10.1103/PhysRevB.13.5188 "
+"<https://doi.org/10.1103/PhysRevB.13.5188>`_."
+msgstr ""
+"H. J. Monkhorst and J. D. Pack, “Special points for Brillouin-zone "
+"integrations,” *Physical Review B* **13**, 5188–5192 (1976), "
+"`doi:10.1103/PhysRevB.13.5188 "
+"<https://doi.org/10.1103/PhysRevB.13.5188>`_."
+
+#: ../../solid/irreducible_kpoints.rst:327
+msgid ""
+"M. S. Dresselhaus, G. Dresselhaus, and A. Jorio, *Group Theory: "
+"Application to the Physics of Condensed Matter* (Springer, 2008)."
+msgstr ""
+"M. S. Dresselhaus, G. Dresselhaus, and A. Jorio, *Group Theory: "
+"Application to the Physics of Condensed Matter* (Springer, 2008)."
+
