@@ -192,14 +192,17 @@ def process_doctree(app, doctree, docname):
             for ref in doctree.findall(nodes.reference):
                 if ref.get('refuri', '').split('#')[0] in volumes:
                     ref += _japanese_only_mark()
+            # Orphan pages (old URLs that only redirect to the moved section) are not articles.
             articles = [d for d in app.env.found_docs
-                        if d != docname and d not in app.env.toctree_includes]
+                        if d != docname and d not in app.env.toctree_includes
+                        and 'orphan' not in app.env.metadata.get(d, {})]
             done = len(app.quloud_english_published.intersection(articles))
             index = section.first_child_not_matching_class(nodes.title)
-            section.insert(len(section) if index is None else index, _notice(
-                f'The English edition is in progress: {done} of {len(articles)} articles '
-                'have been translated so far. Untranslated parts are marked “Japanese only” '
-                'and lead to the Japanese original.', ['quloud-edition-progress']))
+            if done < len(articles):
+                section.insert(len(section) if index is None else index, _notice(
+                    f'The English edition is in progress: {done} of {len(articles)} articles '
+                    'have been translated so far. Untranslated parts are marked “Japanese only” '
+                    'and lead to the Japanese original.', ['quloud-edition-progress']))
         status = _catalog_status(app, docname) or {'fuzzy': 0, 'untranslated': 0}
         status['japanese'] = _japanese_paragraphs(doctree)
         if any(status.values()):
