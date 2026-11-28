@@ -46,7 +46,7 @@ msgstr ""
 
 #: ../../solid/reciprocal_lattice.rst:15
 msgid "**学習目標**:"
-msgstr "**Learning Objectives**:"
+msgstr "**Learning objectives**:"
 
 #: ../../solid/reciprocal_lattice.rst:17
 #, python-brace-format

@@ -33,6 +33,11 @@ solid/kspace_integration
 solid/kpoint_sampling
 solid/metal_bz_integration
 solid/irreducible_kpoints
+solid/lattice_vibrations
+solid/phonon
+solid/phonon_thermal
+solid/soft_mode
+solid/landau_theory
 md/index
 md/ensembles
 md/heating_simulation

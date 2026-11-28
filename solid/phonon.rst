@@ -207,7 +207,7 @@
 非対角要素が消え、二つの固有値は :math:`2C/m_{\mathrm A}` と :math:`2C/m_{\mathrm B}` になる。
 それぞれのモードでは一方の種類の原子だけが動き、:math:`e^{i\pi l}=(-1)^l` のため隣の胞の
 同じ原子と逆向きに動く。:math:`m_{\mathrm A}\ne m_{\mathrm B}` なら二つの値は異なり、
-その間の振動数をもつモードは存在しない（ギャップ）。
+振動数 :math:`\sqrt{2C/m_{\mathrm A}}` と :math:`\sqrt{2C/m_{\mathrm B}}` の間にはモードが存在しない（ギャップ）。
 
 :numref:`fig-phonon-diatomic-chain`\ は :math:`m_{\mathrm B}=2m_{\mathrm A}` の場合である。
 :math:`\omega_0=\sqrt{C/m_{\mathrm A}}` を単位にすると、Γ点の光学モードは

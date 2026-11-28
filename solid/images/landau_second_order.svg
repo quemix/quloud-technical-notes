@@ -1277,7 +1277,7 @@ z
     </g>
    </g>
    <g id="text_13">
-    <!-- ソフトモードの振動数 -->
+    <!-- ソフトモードの振動数の2乗 -->
     <g style="fill: #25394c" transform="translate(308.71918 20.518418) scale(0.135 -0.135)">
      <defs>
       <path id="IPAGothic-2c4" d="M 1863 2578
@@ -1523,6 +1523,91 @@ L 5506 3469
 L 4809 3469
 z
 " transform="scale(0.015625)"/>
+      <path id="IPAGothic-d8" d="M 2900 325
+L 250 325
+Q 441 1553 1528 2453
+Q 1963 2806 2116 3034
+Q 2316 3319 2316 3706
+Q 2316 4022 2175 4219
+Q 1994 4494 1631 4494
+Q 894 4494 825 3406
+L 322 3406
+Q 359 4056 628 4428
+Q 981 4928 1644 4928
+Q 2106 4928 2425 4659
+Q 2828 4313 2828 3713
+Q 2828 2875 1881 2156
+Q 1072 1541 909 800
+L 2900 800
+L 2900 325
+z
+" transform="scale(0.015625)"/>
+      <path id="IPAGothic-8db" d="M 3756 1428
+Q 4803 575 6078 181
+L 5766 -263
+Q 4316 344 3403 1275
+L 3403 -447
+L 2950 -447
+L 2950 1244
+Q 2131 222 684 -381
+L 378 6
+Q 1688 438 2631 1428
+L 703 1428
+L 703 1806
+L 1581 1806
+L 1581 2516
+L 384 2516
+L 384 2900
+L 1581 2900
+L 1581 3584
+L 703 3584
+L 703 3956
+L 2950 3956
+L 2950 4500
+L 2688 4475
+Q 1825 4409 1081 4384
+L 881 4775
+Q 3334 4881 4800 5147
+L 5178 4763
+Q 4397 4638 3403 4538
+L 3403 3956
+L 5691 3956
+L 5691 3584
+L 4813 3584
+L 4813 2900
+L 6016 2900
+L 6016 2516
+L 4813 2516
+L 4813 1806
+L 5691 1806
+L 5691 1428
+L 3756 1428
+z
+M 4372 3584
+L 3391 3584
+L 3391 2894
+L 4372 2894
+L 4372 3584
+z
+M 2963 3584
+L 2022 3584
+L 2022 2894
+L 2963 2894
+L 2963 3584
+z
+M 4372 2522
+L 3391 2522
+L 3391 1806
+L 4372 1806
+L 4372 2522
+z
+M 2963 2522
+L 2022 2522
+L 2022 1806
+L 2963 1806
+L 2963 2522
+z
+" transform="scale(0.015625)"/>
      </defs>
      <use xlink:href="#IPAGothic-2c4"/>
      <use xlink:href="#IPAGothic-2dc" transform="translate(100 0)"/>
@@ -1534,6 +1619,9 @@ z
      <use xlink:href="#IPAGothic-907" transform="translate(700 0)"/>
      <use xlink:href="#IPAGothic-b93" transform="translate(800 0)"/>
      <use xlink:href="#IPAGothic-945" transform="translate(900 0)"/>
+     <use xlink:href="#IPAGothic-282" transform="translate(1000 0)"/>
+     <use xlink:href="#IPAGothic-d8" transform="translate(1100 0)"/>
+     <use xlink:href="#IPAGothic-8db" transform="translate(1150 0)"/>
     </g>
    </g>
   </g>

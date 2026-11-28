@@ -1,0 +1,592 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:34+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/phonon_thermal.rst:4
+msgid "格子振動の熱的性質"
+msgstr "Thermal Properties of Lattice Vibrations"
+
+#: ../../solid/phonon_thermal.rst:6
+msgid ""
+"\\ :ref:`調和近似<harmonic-approximation>`\\ では、結晶の振動は独立な調和振動子の集まり（\\ "
+":ref:`基準振動<ph-normal-modes>`）に分かれる。 "
+"本稿では、量子化した振動子のエネルギーから、絶対零度でも残る零点振動と、有限温度の振動エネルギー・比熱・ "
+"自由エネルギーを求める。続いて、2次の展開を超える非調和性と、振動数の体積依存性から生じる熱膨張を "
+"準調和近似で扱い、この近似を使える条件を確かめる。"
+msgstr ""
+"In the \\ :ref:`harmonic approximation <harmonic-approximation>`\\ , "
+"crystal vibrations separate into independent harmonic oscillators (\\ "
+":ref:`normal modes <ph-normal-modes>`). From the quantized oscillator "
+"energies, we obtain the zero-point vibrations that persist at absolute "
+"zero and the vibrational energy, heat capacity, and free energy at finite"
+" temperature. We then use the quasi-harmonic approximation to treat "
+"anharmonicity beyond the quadratic expansion and thermal expansion due to"
+" the volume dependence of the frequencies. We also examine the conditions"
+" under which the approximation applies."
+
+#: ../../solid/phonon_thermal.rst:11
+msgid ""
+"**前提知識**: :ref:`調和近似とフォノン<phonon>`\\ （とくに\\ :ref:`基準振動とフォノン<ph-normal-"
+"modes>`、:ref:`虚数振動数と動的安定性<imaginary-frequency>`）、 "
+":ref:`エネルギー等分配<temperature>`、統計力学のカノニカル分布。"
+msgstr ""
+"**Prerequisites**: :ref:`Harmonic Approximation and Phonons <phonon>`\\  "
+"(especially \\ :ref:`Normal Modes and Phonons <ph-normal-modes>` and "
+":ref:`Imaginary Frequencies and Dynamical Stability <imaginary-"
+"frequency>`), :ref:`Energy Equipartition <temperature>`, and the "
+"canonical distribution in statistical mechanics."
+
+#: ../../solid/phonon_thermal.rst:14
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/phonon_thermal.rst:16
+msgid "零点エネルギーと零点振動を調和振動子の量子効果として求め、構造の安定性の順序や転移温度に影響しうることを説明する。"
+msgstr ""
+"Obtain zero-point energy and zero-point vibrations as quantum effects of "
+"the harmonic oscillator and explain how they can affect the stability "
+"ordering of structures and transition temperatures."
+
+#: ../../solid/phonon_thermal.rst:17
+msgid "Bose–Einstein分布からモードの平均エネルギーと比熱を求め、高温で古典論の値に近づくことを示す。"
+msgstr ""
+"Use the Bose–Einstein distribution to obtain the mean energy and heat "
+"capacity of a mode and show that they approach their classical values at "
+"high temperature."
+
+#: ../../solid/phonon_thermal.rst:18
+msgid "分配関数から振動の自由エネルギーを導き、準調和近似で熱膨張とGrüneisen定数を説明する。"
+msgstr ""
+"Derive the vibrational free energy from the partition function and use "
+"the quasi-harmonic approximation to explain thermal expansion and the "
+"Grüneisen parameter."
+
+#: ../../solid/phonon_thermal.rst:19
+msgid "準調和近似を使える条件と、非調和性をあらわに扱う必要がある場合を区別する。"
+msgstr ""
+"Distinguish the conditions in which the quasi-harmonic approximation "
+"applies from those that require an explicit treatment of anharmonicity."
+
+#: ../../solid/phonon_thermal.rst:24
+msgid "零点振動と零点エネルギー"
+msgstr "Zero-Point Vibrations and Zero-Point Energy"
+
+#: ../../solid/phonon_thermal.rst:26
+msgid "調和振動子の基底状態のエネルギーは0でなく :math:`\\hbar\\omega/2` である。結晶全体では"
+msgstr ""
+"A harmonic oscillator has a nonzero ground-state energy of "
+":math:`\\hbar\\omega/2`. For the crystal as a whole, the sum"
+
+#: ../../solid/phonon_thermal.rst:28
+msgid ""
+"E_{\\mathrm{ZP}}=\\sum_{\\boldsymbol "
+"k,s}\\frac12\\hbar\\omega_s(\\boldsymbol k)"
+msgstr ""
+"E_{\\mathrm{ZP}}=\\sum_{\\boldsymbol "
+"k,s}\\frac12\\hbar\\omega_s(\\boldsymbol k)"
+
+#: ../../solid/phonon_thermal.rst:33
+msgid ""
+"が絶対零度でも残り、これを **零点エネルギー** と呼ぶ。基底状態の振幅の2乗平均は :math:`\\langle "
+"Q^2\\rangle=\\hbar/(2\\omega)` であり、原子は0 Kでも平衡位置のまわりに広がっている "
+"（**零点振動**）。:math:`Q` は質量の平方根を含むので、質量 :math:`m` の原子1個だけが動く モードでは変位の2乗平均が "
+":math:`\\hbar/(2m\\omega)` になり、軽い原子や振動数の低いモードほど大きい。"
+msgstr ""
+"persists even at absolute zero and is called the **zero-point energy**. "
+"The mean square amplitude in the ground state is :math:`\\langle "
+"Q^2\\rangle=\\hbar/(2\\omega)`, so the atoms are spread around their "
+"equilibrium positions even at 0 K (**zero-point vibrations**). The "
+"coordinate :math:`Q` includes the square root of the mass, so if only one"
+" atom of mass :math:`m` moves in a mode, its mean square displacement is "
+":math:`\\hbar/(2m\\omega)`. This value is larger for lighter atoms or "
+"lower-frequency modes."
+
+#: ../../solid/phonon_thermal.rst:38
+msgid ""
+"零点エネルギーは構造ごとに異なるので、静止した原子で計算した全エネルギーの差が小さい二つの 構造では、:eq:`ph-zpe` "
+"の差で安定性の順序が変わることがある。原子核の量子揺らぎは、 "
+"相転移の温度も変える。ZhongとVanderbiltは、第一原理計算に基づく有効ハミルトニアンを 経路積分モンテカルロ法で解いた "
+"[Zhong1996]_。SrTiO\\ :sub:`3`\\ では量子揺らぎが強誘電転移を完全に抑え、:ref:`八面体回転<sm-"
+"octahedral-rotation>`\\ の転移温度を130 Kから110 Kに下げた。BaTiO\\ :sub:`3`\\ "
+"では転移温度が35〜50 K下がった。"
+msgstr ""
+"The zero-point energy differs from one structure to another. When two "
+"structures have nearly equal total energies with the atoms held "
+"stationary, the difference in their zero-point energies (Equation :eq"
+":`ph-zpe`) can change their stability ordering. Quantum fluctuations of "
+"the nuclei also change phase transition temperatures. Zhong and "
+"Vanderbilt solved an effective Hamiltonian based on first-principles "
+"calculations using path-integral Monte Carlo [Zhong1996]_. In SrTiO\\ "
+":sub:`3`\\ , quantum fluctuations completely suppressed the ferroelectric"
+" transition and lowered the :ref:`octahedral rotation <sm-octahedral-"
+"rotation>`\\  transition temperature from 130 K to 110 K. In BaTiO\\ "
+":sub:`3`\\ , they lowered the transition temperatures by 35–50 K."
+
+#: ../../solid/phonon_thermal.rst:46
+msgid "有限温度の振動エネルギーと比熱"
+msgstr "Vibrational Energy and Heat Capacity at Finite Temperature"
+
+#: ../../solid/phonon_thermal.rst:48
+msgid ""
+"温度 :math:`T` では、振動数 :math:`\\omega` のモードの平均エネルギーは、**Bose–Einstein分布** の "
+"占有数 :math:`n_{\\mathrm B}=1/(e^{\\hbar\\omega/k_{\\mathrm B}T}-1)` を使って"
+msgstr ""
+"At temperature :math:`T`, the mean energy of a mode of frequency "
+":math:`\\omega` follows from the **Bose–Einstein distribution** with "
+"occupation number :math:`n_{\\mathrm B}=1/(e^{\\hbar\\omega/k_{\\mathrm "
+"B}T}-1)`:"
+
+#: ../../solid/phonon_thermal.rst:51
+#, python-brace-format
+msgid "\\langle E\\rangle=\\hbar\\omega\\left(n_{\\mathrm B}+\\frac12\\right)"
+msgstr "\\langle E\\rangle=\\hbar\\omega\\left(n_{\\mathrm B}+\\frac12\\right)"
+
+#: ../../solid/phonon_thermal.rst:56
+#, python-brace-format
+msgid ""
+"となる。:math:`x=\\hbar\\omega/k_{\\mathrm B}T` が小さい高温では "
+":math:`1/(e^x-1)=1/x-1/2+x/12+O(x^3)` より :math:`\\langle "
+"E\\rangle=k_{\\mathrm B}T+(\\hbar\\omega)^2/(12k_{\\mathrm B}T)+\\cdots` "
+"で、主要項は古典論の\\ :ref:`エネルギー等分配<temperature>`\\ の値 :math:`k_{\\mathrm B}T` "
+"に一致する。 :math:`k_{\\mathrm B}T\\ll\\hbar\\omega` "
+"の低温では、モードはほぼ基底状態にとどまり、温度を上げても エネルギーがほとんど増えない。"
+msgstr ""
+"At high temperatures, where :math:`x=\\hbar\\omega/k_{\\mathrm B}T` is "
+"small, :math:`1/(e^x-1)=1/x-1/2+x/12+O(x^3)` gives :math:`\\langle "
+"E\\rangle=k_{\\mathrm B}T+(\\hbar\\omega)^2/(12k_{\\mathrm B}T)+\\cdots`."
+" The leading term agrees with the classical \\ :ref:`energy equipartition"
+" <temperature>`\\  value :math:`k_{\\mathrm B}T`. At low temperatures "
+"with :math:`k_{\\mathrm B}T\\ll\\hbar\\omega`, the mode stays close to "
+"its ground state and its energy barely increases as the temperature "
+"rises."
+
+#: ../../solid/phonon_thermal.rst:64
+msgid "モードの平均エネルギーを温度で微分すると、そのモードの定積熱容量が求まる。結晶全体では"
+msgstr ""
+"Differentiating the mean energy of a mode with respect to temperature "
+"gives that mode's constant-volume heat capacity. For the whole crystal,"
+
+#: ../../solid/phonon_thermal.rst:66
+msgid ""
+"C_V=\\sum_{\\boldsymbol k,s}k_{\\mathrm "
+"B}\\frac{x_s^2e^{x_s}}{(e^{x_s}-1)^2},\\qquad\n"
+"x_s=\\frac{\\hbar\\omega_s(\\boldsymbol k)}{k_{\\mathrm B}T}"
+msgstr ""
+"C_V=\\sum_{\\boldsymbol k,s}k_{\\mathrm "
+"B}\\frac{x_s^2e^{x_s}}{(e^{x_s}-1)^2},\\qquad\n"
+"x_s=\\frac{\\hbar\\omega_s(\\boldsymbol k)}{k_{\\mathrm B}T}"
+
+#: ../../solid/phonon_thermal.rst:72
+#, python-brace-format
+msgid ""
+"となる。:math:`x_s\\to0` の高温では各モードの寄与が :math:`k_{\\mathrm B}` に近づき、:math:`n` "
+"原子の単位胞を :math:`N_{\\mathrm c}` 個並べた結晶全体で :math:`3nN_{\\mathrm "
+"c}k_{\\mathrm B}`、すなわち原子1個あたり :math:`3k_{\\mathrm B}` になる "
+"（Dulong–Petitの法則）。:math:`x_s\\gg1` の低温のモードは基底状態にとどまるので、寄与は "
+":math:`k_{\\mathrm B}x_s^2e^{-x_s}` と指数関数的に小さくなり、 "
+"比熱はDulong–Petitの値より小さくなる。 "
+"ただし3次元の結晶には、Γ点の近くで振動数が0に近づく音響分枝があるので、どんな低温でも励起されるモードが残る。 "
+"そのため低温の比熱は指数関数的ではなく、:math:`T^3` に比例して減る（Debyeの :math:`T^3` 則）。"
+msgstr ""
+"At high temperatures, where :math:`x_s\\to0`, each mode's contribution "
+"approaches :math:`k_{\\mathrm B}`. For a crystal with :math:`n` atoms per"
+" unit cell and :math:`N_{\\mathrm c}` cells, the total approaches "
+":math:`3nN_{\\mathrm c}k_{\\mathrm B}`, or :math:`3k_{\\mathrm B}` per "
+"atom (the Dulong–Petit law). At low temperatures with :math:`x_s\\gg1`, "
+"the mode remains in its ground state, so its contribution becomes "
+"exponentially small, :math:`k_{\\mathrm B}x_s^2e^{-x_s}`, and the heat "
+"capacity falls below the Dulong–Petit value. However, a three-dimensional"
+" crystal has acoustic branches whose frequencies approach zero near the Γ"
+" point, so some modes are excited at arbitrarily low temperatures. As a "
+"result, the heat capacity decreases in proportion to :math:`T^3` at low "
+"temperatures, rather than exponentially (the Debye :math:`T^3` law)."
+
+#: ../../solid/phonon_thermal.rst:82
+msgid "振動の自由エネルギー"
+msgstr "Vibrational Free Energy"
+
+#: ../../solid/phonon_thermal.rst:84
+msgid ""
+"振動数 :math:`\\omega` の調和振動子の分配関数は、エネルギー :math:`\\hbar\\omega(n+1/2)` "
+"の等比級数の和"
+msgstr ""
+"For a harmonic oscillator of frequency :math:`\\omega` the partition "
+"function is a geometric sum over the energy levels "
+":math:`\\hbar\\omega(n+1/2)`:"
+
+#: ../../solid/phonon_thermal.rst:86
+msgid ""
+"Z=\\sum_{n=0}^{\\infty}e^{-\\hbar\\omega(n+1/2)/k_{\\mathrm B}T}\n"
+"=\\frac{e^{-\\hbar\\omega/2k_{\\mathrm "
+"B}T}}{1-e^{-\\hbar\\omega/k_{\\mathrm B}T}}"
+msgstr ""
+"Z=\\sum_{n=0}^{\\infty}e^{-\\hbar\\omega(n+1/2)/k_{\\mathrm B}T}\n"
+"=\\frac{e^{-\\hbar\\omega/2k_{\\mathrm "
+"B}T}}{1-e^{-\\hbar\\omega/k_{\\mathrm B}T}}"
+
+#: ../../solid/phonon_thermal.rst:91
+#, python-brace-format
+msgid ""
+"である。独立なモードの自由エネルギーは足し合わせられるので、:math:`F=-k_{\\mathrm B}T\\ln Z` から、振動の "
+"自由エネルギーは"
+msgstr ""
+"The free energies of independent modes add, so :math:`F=-k_{\\mathrm "
+"B}T\\ln Z` gives the vibrational free energy"
+
+#: ../../solid/phonon_thermal.rst:94
+msgid ""
+"F_{\\mathrm{vib}}(T)=\\sum_{\\boldsymbol "
+"k,s}\\left[\\frac12\\hbar\\omega_s(\\boldsymbol k)\n"
+"+k_{\\mathrm B}T\\ln\\left(1-e^{-\\hbar\\omega_s(\\boldsymbol "
+"k)/k_{\\mathrm B}T}\\right)\\right]"
+msgstr ""
+"F_{\\mathrm{vib}}(T)=\\sum_{\\boldsymbol "
+"k,s}\\left[\\frac12\\hbar\\omega_s(\\boldsymbol k)\n"
+"+k_{\\mathrm B}T\\ln\\left(1-e^{-\\hbar\\omega_s(\\boldsymbol "
+"k)/k_{\\mathrm B}T}\\right)\\right]"
+
+#: ../../solid/phonon_thermal.rst:100
+msgid ""
+"となる。和は、Γ点の音響分枝の3モードを除いてとる。これらは結晶全体の剛体並進で、安定な結晶でも :math:`\\omega=0` であり、 "
+"振動ではない。Γ点を含むk点メッシュでこの3モードを和に入れると、第2項の対数が発散する。 第1項は零点エネルギー :eq:`ph-zpe` "
+"で、第2項は負なので、温度が上がると :math:`F_{\\mathrm{vib}}` は下がる。 "
+"振動数の低いモードほど第2項が大きく負になるので、振動数の低いモードを多くもつ構造ほど、温度とともに "
+"自由エネルギーが相対的に下がる。振動のエントロピーは :math:`S_{\\mathrm{vib}}=-\\partial "
+"F_{\\mathrm{vib}}/\\partial T` で求まる。 "
+"静止した原子の全エネルギーの差が小さい二つの構造では、この項で有限温度の安定性の順序が入れ替わることがある。"
+msgstr ""
+"Exclude the three modes of the acoustic branches at the Γ point from the "
+"sum. These are rigid translations of the entire crystal with "
+":math:`\\omega=0` even in a stable crystal, so they are not vibrations. "
+"Including them when the k-point mesh contains the Γ point makes the "
+"logarithm in the second term diverge. The first term is the zero-point "
+"energy (Equation :eq:`ph-zpe`), and the second term is negative, so "
+":math:`F_{\\mathrm{vib}}` decreases as the temperature rises. The lower "
+"the frequency of a mode, the more negative its second term. As the "
+"temperature rises, the free energy falls farther for structures with more"
+" low-frequency modes. The vibrational entropy is given by "
+":math:`S_{\\mathrm{vib}}=-\\partial F_{\\mathrm{vib}}/\\partial T`. If "
+"two structures have nearly equal total energies with the atoms held "
+"stationary, this term can reverse their stability ordering at finite "
+"temperature."
+
+#: ../../solid/phonon_thermal.rst:110
+msgid "非調和性"
+msgstr "Anharmonicity"
+
+#: ../../solid/phonon_thermal.rst:112
+msgid ""
+":eq:`ph-expansion` で無視した3次以上の項を **非調和項** と呼ぶ。非調和項があると 基準振動 :eq:`ph-"
+"normal-modes` は互いに独立でなくなり、フォノンどうしがエネルギーをやり取りする。 "
+"その結果、フォノンは有限の寿命をもち、熱伝導率が有限になる。振動の振幅が温度とともに "
+"大きくなると、平均的な力定数が変わり、振動数も温度に依存する。"
+msgstr ""
+"The cubic and higher-order terms neglected in Equation :eq:`ph-expansion`"
+" are called **anharmonic terms**. In their presence, the normal modes of "
+"Equation :eq:`ph-normal-modes` are no longer independent, and phonons "
+"exchange energy. As a result, phonons have finite lifetimes and the "
+"thermal conductivity is finite. As the vibrational amplitudes increase "
+"with temperature, the average force constants change and the frequencies "
+"also become temperature dependent."
+
+#: ../../solid/phonon_thermal.rst:117
+msgid ""
+"虚数振動数をもつ構造でも、エネルギーが際限なく下がるわけではない。調和近似の :math:`\\frac12\\omega_s^2Q^2` "
+"は小さい :math:`Q` での形にすぎず、変位が大きくなると4次などの "
+"非調和項がエネルギーを押し上げる。曲率が負の原点と、大きい変位での壁の間に、 エネルギーの極小が現れる。この形を\\ "
+":ref:`二重井戸ポテンシャル<double-well-potential>`\\ と呼び、虚数振動数をもつモードが 低温で凍結する\\ "
+":ref:`ソフトモード<soft-mode>`\\ の考え方につながる。"
+msgstr ""
+"Even for a structure with an imaginary frequency, the energy does not "
+"decrease without bound. The harmonic approximation gives the form "
+":math:`\\frac12\\omega_s^2Q^2`, which applies only at small :math:`Q`. At"
+" larger displacements, anharmonic terms such as the quartic term drive "
+"the energy back up. An energy minimum appears between the origin, where "
+"the curvature is negative, and the wall at large displacement. This shape"
+" is called a \\ :ref:`double-well potential <double-well-potential>`\\  "
+"and leads to the concept of a \\ :ref:`soft mode <soft-mode>`\\ , in "
+"which a mode with an imaginary frequency freezes in at low temperature."
+
+#: ../../solid/phonon_thermal.rst:126
+msgid "熱膨張と準調和近似"
+msgstr "Thermal Expansion and the Quasi-Harmonic Approximation"
+
+#: ../../solid/phonon_thermal.rst:128
+msgid ""
+"厳密に調和的な結晶は熱膨張しない。力定数が体積によらなければ振動数も体積によらず、 "
+"振動の自由エネルギーは体積の関数にならないので、平衡体積は温度で変わらない。 原子の平均位置も、放物線のポテンシャルでは平衡位置からずれない。"
+msgstr ""
+"A strictly harmonic crystal exhibits no thermal expansion. If the force "
+"constants are independent of volume, so are the frequencies. The "
+"vibrational free energy is then independent of volume, and the "
+"equilibrium volume does not change with temperature. In a parabolic "
+"potential, the average atomic positions also stay at their equilibrium "
+"positions."
+
+#: ../../solid/phonon_thermal.rst:132
+msgid ""
+"**準調和近似** では、各体積で調和近似を使い、振動数の体積依存性だけを取り入れる。 静止した原子の全エネルギー :math:`U(V)` "
+"に、各体積の振動数で求めた振動の自由エネルギー :eq:`ph-vib-free-energy` を加えた"
+msgstr ""
+"The **quasi-harmonic approximation** applies the harmonic approximation "
+"at each volume and accounts only for the volume dependence of the "
+"frequencies. The total free energy is the sum of the static total energy "
+":math:`U(V)` and the vibrational free energy (Equation :eq:`ph-vib-free-"
+"energy`) evaluated at the frequencies for each volume:"
+
+#: ../../solid/phonon_thermal.rst:135
+msgid ""
+"F(V,T)=U(V)+\\sum_{\\boldsymbol "
+"k,s}\\left[\\frac12\\hbar\\omega_s(\\boldsymbol k;V)\n"
+"+k_{\\mathrm B}T\\ln\\left(1-e^{-\\hbar\\omega_s(\\boldsymbol "
+"k;V)/k_{\\mathrm B}T}\\right)\\right]"
+msgstr ""
+"F(V,T)=U(V)+\\sum_{\\boldsymbol "
+"k,s}\\left[\\frac12\\hbar\\omega_s(\\boldsymbol k;V)\n"
+"+k_{\\mathrm B}T\\ln\\left(1-e^{-\\hbar\\omega_s(\\boldsymbol "
+"k;V)/k_{\\mathrm B}T}\\right)\\right]"
+
+#: ../../solid/phonon_thermal.rst:141
+msgid ""
+"を、外圧が0の場合に体積について最小にすると、温度 :math:`T` での平衡体積が求まる。和は式 :eq:`ph-vib-free-"
+"energy` と同じく、Γ点の剛体並進の3モードを除いてとる。 外圧 :math:`P_{\\mathrm{ext}}` "
+"がかかっている場合は、:math:`F+P_{\\mathrm{ext}}V` を最小にする [Baroni2010]_。 角括弧の中を "
+":math:`\\omega` で微分すると :math:`\\hbar(n_{\\mathrm B}+1/2)=\\langle "
+"E\\rangle/\\omega` になるので、モードごとの **Grüneisen定数**"
+msgstr ""
+"At zero external pressure, minimizing this expression with respect to "
+"volume gives the equilibrium volume at temperature :math:`T`. As in "
+"Equation :eq:`ph-vib-free-energy`, exclude the three Γ-point rigid "
+"translations from the sum. Under an external pressure "
+":math:`P_{\\mathrm{ext}}`, minimize :math:`F+P_{\\mathrm{ext}}V` "
+"[Baroni2010]_. Differentiating the expression in brackets with respect to"
+" :math:`\\omega` gives :math:`\\hbar(n_{\\mathrm B}+1/2)=\\langle "
+"E\\rangle/\\omega`. For each mode, the **Grüneisen parameter** is"
+
+#: ../../solid/phonon_thermal.rst:147
+#, python-brace-format
+msgid ""
+"\\gamma_s(\\boldsymbol k)=-\\frac{\\partial\\ln\\omega_s(\\boldsymbol "
+"k)}{\\partial\\ln V}"
+msgstr ""
+"\\gamma_s(\\boldsymbol k)=-\\frac{\\partial\\ln\\omega_s(\\boldsymbol "
+"k)}{\\partial\\ln V}"
+
+#: ../../solid/phonon_thermal.rst:152
+msgid "を使うと、圧力 :math:`P=-\\partial F/\\partial V` は"
+msgstr "With this parameter, the pressure :math:`P=-\\partial F/\\partial V` is"
+
+#: ../../solid/phonon_thermal.rst:154
+#, python-brace-format
+msgid ""
+"P=-\\frac{dU}{dV}+\\frac1V\\sum_{\\boldsymbol k,s}\\gamma_s(\\boldsymbol "
+"k)\\,\\langle E_s(\\boldsymbol k)\\rangle"
+msgstr ""
+"P=-\\frac{dU}{dV}+\\frac1V\\sum_{\\boldsymbol k,s}\\gamma_s(\\boldsymbol "
+"k)\\,\\langle E_s(\\boldsymbol k)\\rangle"
+
+#: ../../solid/phonon_thermal.rst:159
+msgid ""
+"となる。第2項は振動による圧力である。体積を広げると振動数が下がる（:math:`\\gamma>0`）通常の固体では "
+"この項が正で、結晶は外へ押し広げられる。温度が上がると :math:`\\langle E\\rangle` が増えて体積が "
+"大きくなる。:math:`\\langle E\\rangle` には零点エネルギーも含まれるので、0 Kでも平衡体積は "
+"静止した原子の値より少し大きい。:math:`U(V)` を平衡体積のまわりで体積弾性率 :math:`B` を使って展開し、 "
+"すべてのモードが同じ :math:`\\gamma` をもつとすると、熱膨張係数は :math:`\\alpha\\simeq\\gamma "
+"C_V/(BV)`\\ （:math:`C_V` は式 :eq:`ph-heat-capacity` "
+"の定積熱容量）となる。これをGrüneisenの関係と呼ぶ。"
+msgstr ""
+"The second term is the pressure due to vibrations. In typical solids, "
+"frequencies decrease as volume increases (:math:`\\gamma>0`), so this "
+"term is positive and pushes the crystal outward. As temperature rises, "
+":math:`\\langle E\\rangle` increases and the volume grows. Because "
+":math:`\\langle E\\rangle` includes the zero-point energy, the "
+"equilibrium volume is slightly greater than the static value even at 0 K."
+" If we expand :math:`U(V)` about the equilibrium volume using the bulk "
+"modulus :math:`B` and assume that all modes have the same "
+":math:`\\gamma`, the thermal expansion coefficient is "
+":math:`\\alpha\\simeq\\gamma C_V/(BV)`\\  (:math:`C_V` is the constant-"
+"volume heat capacity from Equation :eq:`ph-heat-capacity`). This is the "
+"Grüneisen relation."
+
+#: ../../solid/phonon_thermal.rst:168
+msgid ""
+"準調和近似は振動数の体積依存性だけを取り込み、一定体積でのフォノンどうしの相互作用は 無視する。式 :eq:`ph-qha-free-"
+"energy` の対数は、Γ点の剛体並進の3モードを除いた残りのすべてのモードで :math:`\\omega^2>0` のときにだけ "
+"定義できるので、この近似を使えるのは、考える体積の範囲で\\ :ref:`動的に安定<imaginary-frequency>`\\ "
+"な構造に限る。 安定性も、剛体並進を除いた残りのモードで判定する。 温度が高く振幅が大きい場合や、0 "
+"Kの計算で虚数振動数をもつ構造には、そのままでは使えない。"
+msgstr ""
+"The quasi-harmonic approximation accounts only for the volume dependence "
+"of the frequencies and neglects phonon–phonon interactions at fixed "
+"volume. The logarithm in Equation :eq:`ph-qha-free-energy` is defined "
+"only when :math:`\\omega^2>0` for all modes other than the three Γ-point "
+"rigid translations, so the approximation applies only to structures that "
+"are \\ :ref:`dynamically stable <imaginary-frequency>`\\  over the range "
+"of volumes considered. Assess stability using the modes left after "
+"excluding rigid translations. The approximation cannot be used as is at "
+"high temperatures with large vibrational amplitudes or for structures "
+"with imaginary frequencies in a 0 K calculation."
+
+#: ../../solid/phonon_thermal.rst:177
+msgid "説明用の事例：BaTiO\\ :sub:`3`\\ の格子定数の計算値と実験値"
+msgstr ""
+"Worked Example: Calculated and Experimental Values of the Lattice "
+"Constants of BaTiO\\ :sub:`3`\\ "
+
+#: ../../solid/phonon_thermal.rst:179
+msgid ""
+"`計算事例「格子定数」 <https://example.quloud-platform.quemix.com/BaTiO3/lattice-"
+"constant.html>`_\\ は、4相の格子定数をDFT（OpenMX、Quantum "
+"ESPRESSO）と機械学習原子間ポテンシャルで求め、実験値と 比べている。計算値は静止した原子の0 "
+"Kの最適化構造であり、実験値は各相が安定に存在する 有限温度で測られている。両者の差には、:eq:`ph-thermal-pressure` "
+"の熱膨張と零点振動による 体積の増加に加えて、\\ :ref:`交換相関汎関数<exchange-correlation-"
+"functional>`\\ の近似によるずれも含まれる。立方晶相は0 Kでは不安定モードをもつので、0 Kの立方晶の格子定数は、 "
+"対称性を課して得た鞍点の構造の値である（\\ :ref:`立方晶BaTiO₃の不安定なΓ点モード<phonon-"
+"batio3-example>`）。"
+msgstr ""
+"The `calculation example “Lattice Constants” <https://example.quloud-"
+"platform.quemix.com/BaTiO3/lattice-constant.html>`_\\  obtains the "
+"lattice constants of four phases using DFT (OpenMX, Quantum ESPRESSO) and"
+" machine learning interatomic potentials, and compares them with "
+"experiment. The calculated values come from optimized structures with "
+"static atoms at 0 K, whereas the experimental values are measured at "
+"finite temperatures where each phase is stable. The differences include "
+"the volume increase due to thermal expansion and zero-point vibrations in"
+" Equation :eq:`ph-thermal-pressure`, as well as errors from the "
+"approximate \\ :ref:`exchange-correlation functional <exchange-"
+"correlation-functional>`\\ . Because the cubic phase has an unstable mode"
+" at 0 K, its 0 K lattice constant is that of a saddle-point structure "
+"obtained by imposing symmetry (see \\ :ref:`the unstable Γ-point mode of "
+"cubic BaTiO₃ <phonon-batio3-example>`)."
+
+#: ../../solid/phonon_thermal.rst:185
+msgid ""
+"この差のうち、熱膨張と零点振動による部分を準調和近似で見積もれるのは、Γ点の剛体並進を除く全モードの :math:`\\omega^2` "
+"が正の構造だけである （\\ :ref:`適用できる条件<qha-applicability>`）。立方晶相は0 "
+"Kの計算で虚数振動数をもち、有限温度では大きな振幅の非調和な 運動で平均構造が立方晶に保たれている（\\ :ref:`ソフトモード<soft-"
+"mode>`）。そのため、立方晶の構造に式 :eq:`ph-qha-free-energy` を "
+"そのまま当てはめて、実験の立方晶の格子定数と比べることはできない。そのような相の格子定数の温度変化は、 \\ :ref:`分子動力学法"
+"<molecular-dynamics>`\\ など、非調和な運動を含む有限温度の計算で調べる。ほかの相についても、 "
+"準調和近似を使う前に、その相のフォノンに虚数振動数が無いことを確かめる必要がある。事例でも、フォノンによる "
+"動的安定性の確認と零点振動の評価を、残る課題に挙げている。"
+msgstr ""
+"The quasi-harmonic approximation can estimate the contribution of thermal"
+" expansion and zero-point vibrations to this difference only for "
+"structures with positive :math:`\\omega^2` for all modes except the "
+"Γ-point rigid translations (see \\ :ref:`when the approximation applies "
+"<qha-applicability>`). The cubic phase has an imaginary frequency in 0 K "
+"calculations, whereas at finite temperatures large-amplitude anharmonic "
+"motion keeps the average structure cubic (see \\ :ref:`soft modes <soft-"
+"mode>`). Thus, Equation :eq:`ph-qha-free-energy` cannot be applied "
+"directly to the cubic structure for comparison with the experimental "
+"cubic lattice constant. The temperature dependence of the lattice "
+"constant of such a phase is studied with finite-temperature calculations "
+"that include anharmonic motion, such as \\ :ref:`molecular dynamics "
+"<molecular-dynamics>`\\ . Before applying the quasi-harmonic "
+"approximation to the other phases, check that their phonons have no "
+"imaginary frequencies. The calculation example likewise lists "
+"verification of dynamical stability using phonons and evaluation of zero-"
+"point vibrations as remaining tasks."
+
+#: ../../solid/phonon_thermal.rst:196
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../solid/phonon_thermal.rst:198
+msgid ""
+"本稿の式は、各モードを独立な調和振動子とみなす近似に基づく。準調和近似で取り込む非調和性は振動数の "
+"体積依存性だけで、一定体積でのフォノンどうしの相互作用（フォノンの寿命や、振動数の温度依存性）は含まない。 "
+"融点に近い高温や、振幅の大きい軽い原子では、これらの効果が無視できなくなる。"
+msgstr ""
+"The equations in this article treat each mode as an independent harmonic "
+"oscillator. The quasi-harmonic approximation includes anharmonicity only "
+"through the volume dependence of the frequencies. It leaves out "
+"phonon–phonon interactions at fixed volume, including their effects on "
+"phonon lifetimes and the temperature dependence of the frequencies. These"
+" effects can no longer be neglected at high temperatures near the melting"
+" point or for light atoms with large vibrational amplitudes."
+
+#: ../../solid/phonon_thermal.rst:202
+msgid ""
+"零点振動も、調和近似の範囲では振動数から決まる量として扱った。軽い原子や、浅い二重井戸をもつ系では、原子核の "
+"量子揺らぎが非調和なポテンシャルの形に敏感になり、経路積分などで扱う必要がある。"
+msgstr ""
+"Within the harmonic approximation, we also treated zero-point vibrations "
+"as determined by the frequencies. For light atoms or systems with shallow"
+" double wells, quantum fluctuations of the nuclei become sensitive to the"
+" shape of the anharmonic potential and require a treatment such as path "
+"integrals."
+
+#: ../../solid/phonon_thermal.rst:208
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/phonon_thermal.rst:210
+msgid ":ref:`phonon`"
+msgstr ":ref:`phonon`"
+
+#: ../../solid/phonon_thermal.rst:211
+msgid ":ref:`soft-mode`"
+msgstr ":ref:`soft-mode`"
+
+#: ../../solid/phonon_thermal.rst:212
+msgid ":ref:`temperature`"
+msgstr ":ref:`temperature`"
+
+#: ../../solid/phonon_thermal.rst:213
+msgid ":ref:`heating-simulation`"
+msgstr ":ref:`heating-simulation`"
+
+#: ../../solid/phonon_thermal.rst:220
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/phonon_thermal.rst:222
+msgid ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chaps. 23, 25."
+msgstr ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chaps. 23, 25."
+
+#: ../../solid/phonon_thermal.rst:225
+msgid ""
+"W. Zhong and D. Vanderbilt, “Effect of quantum fluctuations on structural"
+" phase transitions in SrTiO\\ :sub:`3` and BaTiO\\ :sub:`3`,” *Physical "
+"Review B* **53**, 5047–5050 (1996), `doi:10.1103/PhysRevB.53.5047 "
+"<https://doi.org/10.1103/PhysRevB.53.5047>`_."
+msgstr ""
+"W. Zhong and D. Vanderbilt, “Effect of quantum fluctuations on structural"
+" phase transitions in SrTiO\\ :sub:`3` and BaTiO\\ :sub:`3`,” *Physical "
+"Review B* **53**, 5047–5050 (1996), `doi:10.1103/PhysRevB.53.5047 "
+"<https://doi.org/10.1103/PhysRevB.53.5047>`_."
+
+#: ../../solid/phonon_thermal.rst:228
+msgid ""
+"S. Baroni, P. Giannozzi, and E. Isaev, “Density-functional perturbation "
+"theory for quasi-harmonic calculations,” *Reviews in Mineralogy and "
+"Geochemistry* **71**, 39–57 (2010), `doi:10.2138/rmg.2010.71.3 "
+"<https://doi.org/10.2138/rmg.2010.71.3>`_."
+msgstr ""
+"S. Baroni, P. Giannozzi, and E. Isaev, “Density-functional perturbation "
+"theory for quasi-harmonic calculations,” *Reviews in Mineralogy and "
+"Geochemistry* **71**, 39–57 (2010), `doi:10.2138/rmg.2010.71.3 "
+"<https://doi.org/10.2138/rmg.2010.71.3>`_."
+

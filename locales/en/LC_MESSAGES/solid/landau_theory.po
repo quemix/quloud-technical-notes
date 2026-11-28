@@ -1,0 +1,560 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:34+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/landau_theory.rst:4
+msgid "Landau理論と相転移の次数"
+msgstr "Landau Theory and the Order of Phase Transitions"
+
+#: ../../solid/landau_theory.rst:6
+msgid ""
+"高温相で0、低温相で0でない量を **秩序変数** と呼ぶ。構造相転移では\\ :ref:`ソフトモードの振幅<sm-landau>`\\ が、 "
+"強誘電転移では\\ :ref:`自発分極<spontaneous-polarization>`\\ "
+"が秩序変数になる。Landau理論では、自由エネルギーを "
+"秩序変数の多項式で展開し、2次の係数だけが温度とともに符号を変えると仮定する。本稿では、この展開から、 "
+"秩序変数が連続的に育つ2次転移と、転移点で跳ぶ1次転移を導き、1次転移で現れる準安定な状態と、加熱と冷却で "
+"転移温度がずれる理由を説明する。最後に、秩序変数に共役な場への応答から、Curie–Weissの法則を導く。"
+msgstr ""
+"A quantity that is zero in the high-temperature phase and nonzero in the "
+"low-temperature phase is called an **order parameter**. In a structural "
+"phase transition, the \\ :ref:`soft-mode amplitude <sm-landau>`\\  serves"
+" as the order parameter, and in a ferroelectric transition, the \\ "
+":ref:`spontaneous polarization <spontaneous-polarization>`\\  plays that "
+"role. Landau theory expands the free energy as a polynomial in the order "
+"parameter and assumes that only the quadratic coefficient changes sign "
+"with temperature. From this expansion we derive second-order transitions,"
+" in which the order parameter grows continuously, and first-order "
+"transitions, in which it jumps at the transition. We explain the "
+"metastable states that arise in a first-order transition and why the "
+"transition temperatures on heating and cooling can differ. Finally, we "
+"derive the Curie–Weiss law from the response to a field conjugate to the "
+"order parameter."
+
+#: ../../solid/landau_theory.rst:12
+msgid ""
+"**前提知識**: :ref:`ソフトモードと構造相転移<soft-mode>`\\ （とくに\\ :ref:`秩序変数としてのモードの振幅"
+"<sm-landau>`\\ と \\ :ref:`+Qと−Qの等価性<sm-inversion-equivalence>`）、 "
+"一定温度では自由エネルギーが最小の状態が実現すること。"
+msgstr ""
+"**Prerequisites**: :ref:`Soft Modes and Structural Phase Transitions "
+"<soft-mode>`\\  (especially \\ :ref:`Mode Amplitude as an Order Parameter"
+" <sm-landau>`\\  and \\ :ref:`Equivalence of +Q and −Q and Inversion "
+"Symmetry <sm-inversion-equivalence>`), and the fact that at a given "
+"temperature the state with the lowest free energy is realized."
+
+#: ../../solid/landau_theory.rst:16
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/landau_theory.rst:18
+msgid "秩序変数で自由エネルギーを展開し、2次転移で秩序変数が転移温度から連続的に育つことを導く。"
+msgstr ""
+"Expand the free energy in the order parameter and derive how the order "
+"parameter grows continuously from the transition temperature in a second-"
+"order transition."
+
+#: ../../solid/landau_theory.rst:19
+#, python-brace-format
+msgid ""
+"4次の係数が負のとき1次転移になることを示し、転移温度 :math:`T_{\\mathrm C}` と :math:`T_0` "
+"の差、転移点での秩序変数の跳びを導く。"
+msgstr ""
+"Show that a negative quartic coefficient gives a first-order transition, "
+"and derive both the difference between the transition temperature "
+":math:`T_{\\mathrm C}` and :math:`T_0` and the jump in the order "
+"parameter at the transition."
+
+#: ../../solid/landau_theory.rst:20
+msgid "過冷却・過熱が起こりうる温度範囲を求め、加熱と冷却で転移温度がずれる理由を説明する。"
+msgstr ""
+"Find the temperature ranges in which supercooling and superheating are "
+"possible and explain why the transition temperatures on heating and "
+"cooling differ."
+
+#: ../../solid/landau_theory.rst:21
+msgid "秩序変数に共役な場への応答から、Curie–Weissの法則を導く。"
+msgstr ""
+"Derive the Curie–Weiss law from the response to a field conjugate to the "
+"order parameter."
+
+#: ../../solid/landau_theory.rst:26
+msgid "秩序変数による自由エネルギーの展開"
+msgstr "Expanding the Free Energy in the Order Parameter"
+
+#: ../../solid/landau_theory.rst:28
+msgid "秩序変数を :math:`\\eta` と書く。高温相のまわりで、単位体積あたりの自由エネルギーを :math:`\\eta` で展開して"
+msgstr ""
+"Write the order parameter as :math:`\\eta`. Expand the free energy per "
+"unit volume in powers of :math:`\\eta` about the high-temperature phase:"
+
+#: ../../solid/landau_theory.rst:30
+msgid ""
+"F(\\eta,T)=F_0(T)+\\frac12a(T-T_0)\\,\\eta^2+\\frac14\\beta\\,\\eta^4+\\frac16\\gamma\\,\\eta^6\\qquad(a>0,\\"
+" \\gamma>0)"
+msgstr ""
+"F(\\eta,T)=F_0(T)+\\frac12a(T-T_0)\\,\\eta^2+\\frac14\\beta\\,\\eta^4+\\frac16\\gamma\\,\\eta^6\\qquad(a>0,\\"
+" \\gamma>0)"
+
+#: ../../solid/landau_theory.rst:35
+msgid ""
+"と置く。奇数次の項がないのは、高温相の対称性で :math:`\\eta` と :math:`-\\eta` が\\ :ref:`等価になる"
+"<sm-inversion-equivalence>`\\ からである。 Landau理論の仮定は、2次の係数だけが "
+":math:`a(T-T_0)` と温度に比例して符号を変え、:math:`\\beta` と :math:`\\gamma` は "
+"転移の近くで温度によらないとすることである。各温度で :math:`F` を最小にする :math:`\\eta=\\eta_0` "
+"が、その温度で実現する 状態を表す。"
+msgstr ""
+"There are no odd-order terms because :math:`\\eta` and :math:`-\\eta` are"
+" \\ :ref:`equivalent <sm-inversion-equivalence>`\\  by symmetry of the "
+"high-temperature phase. Landau theory assumes that only the quadratic "
+"coefficient, :math:`a(T-T_0)`, varies linearly with temperature and "
+"changes sign, and that :math:`\\beta` and :math:`\\gamma` are independent"
+" of temperature near the transition. At each temperature, the value that "
+"minimizes :math:`F`, :math:`\\eta=\\eta_0`, represents the state realized"
+" at that temperature."
+
+#: ../../solid/landau_theory.rst:40
+#, python-brace-format
+msgid ""
+":math:`\\eta` をソフトモードの振幅 :math:`Q` とすると、0 Kのエネルギーの展開 :eq:`sm-landau` "
+"の2次の係数 :math:`\\kappa` は、 調和近似でのモードの振動数の2乗 :math:`\\omega_{\\mathrm s}^2`"
+" である。ただし :eq:`sm-landau` は単位胞あたりのエネルギーで、 :math:`Q` "
+"も単位胞あたりの質量重み付きの振幅なので、単位体積あたりの :math:`F` と比べるときは単位胞の体積 :math:`\\Omega` "
+"を掛ける。 体積を固定すると :math:`\\omega_{\\mathrm "
+"s}^2=\\Omega\\,\\partial^2F/\\partial Q^2` である。Landau理論は "
+":math:`\\kappa=\\Omega a(T-T_0)` と置き、 "
+"有限温度の平均的な復元力が温度とともに変わることを表す。:math:`\\eta` を分極 :math:`P` "
+"とすると、Devonshireが強誘電体に 用いた展開になる [Devonshire1949]_。"
+msgstr ""
+"If :math:`\\eta` is the soft-mode amplitude :math:`Q`, the coefficient of"
+" the quadratic term in the 0 K energy expansion (Equation :eq:`sm-"
+"landau`), :math:`\\kappa`, is the squared mode frequency "
+":math:`\\omega_{\\mathrm s}^2` in the harmonic approximation. However, "
+"Equation :eq:`sm-landau` gives the energy per unit cell, and :math:`Q` is"
+" also a mass-weighted amplitude per unit cell. When comparing with "
+":math:`F` per unit volume, multiply by the unit-cell volume "
+":math:`\\Omega`. At fixed volume, :math:`\\omega_{\\mathrm "
+"s}^2=\\Omega\\,\\partial^2F/\\partial Q^2`. Landau theory sets "
+":math:`\\kappa=\\Omega a(T-T_0)` to express the temperature dependence of"
+" the average restoring force at finite temperature. Taking :math:`\\eta` "
+"to be the polarization :math:`P` gives the expansion that Devonshire used"
+" for ferroelectrics [Devonshire1949]_."
+
+#: ../../solid/landau_theory.rst:50
+msgid "2次転移"
+msgstr "Second-Order Transition"
+
+#: ../../solid/landau_theory.rst:52
+msgid ""
+":math:`\\beta>0` の場合を考え、6次の項を省く。:math:`\\partial "
+"F/\\partial\\eta=a(T-T_0)\\eta+\\beta\\eta^3=0` から、 :math:`T>T_0` では極小は "
+":math:`\\eta_0=0` だけで、高温相が安定である。:math:`T<T_0` では :math:`\\eta=0` が極大になり、"
+msgstr ""
+"Consider :math:`\\beta>0` and omit the sixth-order term. From "
+":math:`\\partial F/\\partial\\eta=a(T-T_0)\\eta+\\beta\\eta^3=0`, for "
+":math:`T>T_0` the only minimum is at :math:`\\eta_0=0` and the high-"
+"temperature phase is stable. For :math:`T<T_0`, :math:`\\eta=0` becomes a"
+" maximum and minima appear at"
+
+#: ../../solid/landau_theory.rst:55
+#, python-brace-format
+msgid "\\eta_0^2=\\frac{a(T_0-T)}{\\beta}"
+msgstr "\\eta_0^2=\\frac{a(T_0-T)}{\\beta}"
+
+#: ../../solid/landau_theory.rst:60
+#, python-brace-format
+msgid ""
+"に極小が現れる。秩序変数は :math:`T_0` から :math:`\\sqrt{T_0-T}` "
+"に比例して連続的に育つ。このように秩序変数が連続的に 変わる転移を **2次転移**\\ （連続転移）と呼び、転移温度は "
+":math:`T_{\\mathrm C}=T_0` である。"
+msgstr ""
+"The order parameter grows continuously as the temperature drops below "
+":math:`T_0`, in proportion to :math:`\\sqrt{T_0-T}`. A transition in "
+"which the order parameter changes continuously is called a **second-order"
+" transition**\\  (a continuous transition), with transition temperature "
+":math:`T_{\\mathrm C}=T_0`."
+
+#: ../../solid/landau_theory.rst:63
+#, python-brace-format
+msgid ""
+":math:`\\eta=Q` のとき、極小のまわりの曲率に単位胞の体積を掛けた "
+":math:`\\Omega\\,\\partial^2F/\\partial Q^2` が、ソフトモードの振動数の2乗を与える。 "
+":math:`T>T_0` では :math:`\\omega_{\\mathrm s}^2=\\Omega a(T-T_0)` で、\\ "
+":ref:`Cochranの法則<sm-definition>`\\ （式 :eq:`sm-cochran`）に従って転移温度に向かって下がる。 "
+":math:`T<T_0` では "
+":math:`\\partial^2F/\\partial\\eta^2=a(T-T_0)+3\\beta\\eta_0^2=2a(T_0-T)`"
+" なので :math:`\\omega_{\\mathrm s}^2=2\\Omega a(T_0-T)` で、振動数の2乗は2倍の傾きで "
+"再び増える（:numref:`fig-landau-second-order`）。"
+msgstr ""
+"When :math:`\\eta=Q`, the curvature around the minimum multiplied by the "
+"unit-cell volume, :math:`\\Omega\\,\\partial^2F/\\partial Q^2`, gives the"
+" squared soft-mode frequency. For :math:`T>T_0`, the result is "
+":math:`\\omega_{\\mathrm s}^2=\\Omega a(T-T_0)`, which decreases toward "
+"the transition temperature according to \\ :ref:`Cochran’s law <sm-"
+"definition>`\\  (Equation :eq:`sm-cochran`). For :math:`T<T_0`, "
+":math:`\\partial^2F/\\partial\\eta^2=a(T-T_0)+3\\beta\\eta_0^2=2a(T_0-T)`"
+" gives :math:`\\omega_{\\mathrm s}^2=2\\Omega a(T_0-T)`, so the squared "
+"frequency increases again with double the slope magnitude (:numref:`fig-"
+"landau-second-order`)."
+
+#: ../../solid/landau_theory.rst:68
+msgid "左は秩序変数の温度変化で、T0より上で0、下でT0から平方根の形で増える。右は単位胞の体積を掛けた曲率で、T0の上でΩa(T-T0)、下で2Ωa(T0-T)の直線。"
+msgstr ""
+"Left: Temperature dependence of the order parameter. It is zero above T0 "
+"and grows from T0 with a square-root dependence below it. Right: "
+"Curvature multiplied by the unit-cell volume. The straight lines are "
+"Ωa(T-T0) above T0 and 2Ωa(T0-T) below it."
+
+#: ../../solid/landau_theory.rst:74
+msgid ""
+":math:`\\beta>0` の2次転移。左：秩序変数 :math:`\\eta_0`\\ （式 :eq:`landau-second-"
+"order`）。右：極小のまわりの曲率に単位胞の体積を掛けた "
+":math:`\\Omega\\,\\partial^2F/\\partial\\eta^2`\\ （:math:`\\eta=Q` "
+"ならソフトモードの :math:`\\omega^2`）。:math:`T_0` の上（青）は :math:`\\Omega "
+"a(T-T_0)`、下（赤）は :math:`2\\Omega a(T_0-T)`。 係数は説明用で、特定の物質の値ではない。"
+msgstr ""
+"Second-order transition for :math:`\\beta>0`. Left: Order parameter "
+":math:`\\eta_0`\\  (Equation :eq:`landau-second-order`). Right: Curvature"
+" around a minimum multiplied by the unit-cell volume, "
+":math:`\\Omega\\,\\partial^2F/\\partial\\eta^2`\\  (when :math:`\\eta=Q`,"
+" this is :math:`\\omega^2` for the soft mode). Above :math:`T_0` the blue"
+" line is :math:`\\Omega a(T-T_0)`, and below it the red line is "
+":math:`2\\Omega a(T_0-T)`. The coefficients are illustrative and do not "
+"represent any particular material."
+
+#: ../../solid/landau_theory.rst:81
+msgid "1次転移"
+msgstr "First-Order Transition"
+
+#: ../../solid/landau_theory.rst:83
+#, python-brace-format
+msgid ""
+":math:`\\beta<0` では、6次の項が大きい :math:`|\\eta|` での壁を作る。:math:`T` が "
+":math:`T_0` に下がる前に、:math:`\\eta\\ne0` の極小の 自由エネルギーが :math:`\\eta=0` "
+"と等しくなる。その温度が転移温度 :math:`T_{\\mathrm C}` で、:math:`F-F_0=0` と "
+":math:`\\partial F/\\partial\\eta=0` が同じ :math:`\\eta\\ne0` で成り立つ。それぞれを "
+":math:`\\eta^2`、:math:`\\eta` で割ると"
+msgstr ""
+"For :math:`\\beta<0`, the sixth-order term forms the walls at large "
+":math:`|\\eta|`. Before :math:`T` falls to :math:`T_0`, the free energy "
+"of the minimum at :math:`\\eta\\ne0` equals that at :math:`\\eta=0`. This"
+" occurs at the transition temperature :math:`T_{\\mathrm C}`, where "
+":math:`F-F_0=0` and :math:`\\partial F/\\partial\\eta=0` hold for the "
+"same nonzero value, :math:`\\eta\\ne0`. Dividing the two equations by "
+":math:`\\eta^2` and :math:`\\eta`, respectively, gives"
+
+#: ../../solid/landau_theory.rst:87
+#, python-brace-format
+msgid ""
+"\\frac12a(T_{\\mathrm "
+"C}-T_0)+\\frac14\\beta\\eta^2+\\frac16\\gamma\\eta^4=0,\\qquad\n"
+"a(T_{\\mathrm C}-T_0)+\\beta\\eta^2+\\gamma\\eta^4=0"
+msgstr ""
+"\\frac12a(T_{\\mathrm "
+"C}-T_0)+\\frac14\\beta\\eta^2+\\frac16\\gamma\\eta^4=0,\\qquad\n"
+"a(T_{\\mathrm C}-T_0)+\\beta\\eta^2+\\gamma\\eta^4=0"
+
+#: ../../solid/landau_theory.rst:92
+msgid ""
+"となる。第1式の2倍から第2式を引くと "
+":math:`-\\frac12\\beta\\eta^2-\\frac23\\gamma\\eta^4=0`、すなわち "
+":math:`\\eta^2=-3\\beta/(4\\gamma)` で、 これを第2式に戻すと"
+msgstr ""
+"Subtracting the second equation from twice the first gives "
+":math:`-\\frac12\\beta\\eta^2-\\frac23\\gamma\\eta^4=0`, or "
+":math:`\\eta^2=-3\\beta/(4\\gamma)`. Substituting this into the second "
+"equation gives"
+
+#: ../../solid/landau_theory.rst:95
+msgid ""
+"T_{\\mathrm C}-T_0=\\frac{3\\beta^2}{16a\\gamma}>0,\\qquad\n"
+"\\eta_0(T_{\\mathrm C})=\\sqrt{-\\frac{3\\beta}{4\\gamma}}"
+msgstr ""
+"T_{\\mathrm C}-T_0=\\frac{3\\beta^2}{16a\\gamma}>0,\\qquad\n"
+"\\eta_0(T_{\\mathrm C})=\\sqrt{-\\frac{3\\beta}{4\\gamma}}"
+
+#: ../../solid/landau_theory.rst:101
+#, python-brace-format
+msgid ""
+"を得る。秩序変数は :math:`T_{\\mathrm C}` で0から有限の値へ跳ぶ。このように秩序変数が不連続に変わる転移を "
+"**1次転移** と呼ぶ。 :math:`T_{\\mathrm C}` での :math:`\\eta=0` の曲率 "
+":math:`a(T_{\\mathrm C}-T_0)` は正なので、ソフトモードの振動数は :math:`T_{\\mathrm C}` "
+"で0にならないまま転移が起こる。高温相の振動数から外挿して0になる温度 :math:`T_0` は、:math:`T_{\\mathrm C}` "
+"より 低い。"
+msgstr ""
+"At :math:`T_{\\mathrm C}` the order parameter jumps from zero to a finite"
+" value. A transition in which the order parameter changes discontinuously"
+" is called a **first-order transition**. At :math:`T_{\\mathrm C}` the "
+"curvature at :math:`\\eta=0` is positive, with value :math:`a(T_{\\mathrm"
+" C}-T_0)`, so the transition occurs while the soft-mode frequency is "
+"still nonzero at :math:`T_{\\mathrm C}`. The zero-frequency temperature "
+":math:`T_0` obtained by extrapolation of the high-temperature frequency "
+"lies below :math:`T_{\\mathrm C}`."
+
+#: ../../solid/landau_theory.rst:109
+msgid "過冷却・過熱と転移温度のずれ"
+msgstr "Supercooling, Superheating, and Shifts in the Transition Temperature"
+
+#: ../../solid/landau_theory.rst:111
+#, python-brace-format
+msgid ""
+"1次転移では、:math:`T_{\\mathrm C}` の上下に、二つの状態の一方が極小として残る温度範囲がある（:numref:`fig-"
+"landau-first-order`）。 :math:`T_0<T<T_{\\mathrm C}` では :math:`\\eta=0` の曲率"
+" :math:`a(T-T_0)` が正なので、:math:`\\eta=0` は自由エネルギーの最小ではないが、 "
+"極小として残る。冷却では、高温相がこの範囲まで **過冷却** されうる。逆に加熱では、:math:`\\eta\\ne0` の極小が、 "
+":math:`a(T-T_0)+\\beta\\eta^2+\\gamma\\eta^4=0` が正の実数解 :math:`\\eta^2` "
+"をもつ温度、すなわち"
+msgstr ""
+"In a first-order transition, there are temperature ranges above and below"
+" :math:`T_{\\mathrm C}` in which one of the two states persists as a "
+"local minimum (:numref:`fig-landau-first-order`). For "
+":math:`T_0<T<T_{\\mathrm C}`, the curvature at :math:`\\eta=0` is "
+"positive, :math:`a(T-T_0)`, so :math:`\\eta=0` remains a local minimum "
+"even though it is no longer the global minimum of the free energy. On "
+"cooling, the high-temperature phase can therefore undergo "
+"**supercooling** into this range. Conversely, on heating, the minimum at "
+":math:`\\eta\\ne0` persists as long as "
+":math:`a(T-T_0)+\\beta\\eta^2+\\gamma\\eta^4=0` has a positive real "
+"solution for :math:`\\eta^2`, that is, as long as"
+
+#: ../../solid/landau_theory.rst:116
+#, python-brace-format
+msgid "T<T_1=T_0+\\frac{\\beta^2}{4a\\gamma}"
+msgstr "T<T_1=T_0+\\frac{\\beta^2}{4a\\gamma}"
+
+#: ../../solid/landau_theory.rst:121
+msgid "まで残り、低温相が **過熱** されうる。最小ではない極小にある状態を準安定な状態と呼ぶ。"
+msgstr ""
+"The low-temperature phase can therefore undergo **superheating**. A state"
+" at a local minimum that is higher than the global minimum is called "
+"metastable."
+
+#: ../../solid/landau_theory.rst:123
+msgid "1次転移の自由エネルギー曲線。T1より上では原点だけが極小。TCとT1の間では原点が最小で、両側に浅い極小が残る。TCでは三つの極小の高さが等しい。T0とTCの間では両側の極小が最小で、原点に浅い極小が残る。T0では原点が極小でなくなる。"
+msgstr ""
+"Free energy curves for a first-order transition. Above T1 the origin is "
+"the only minimum. Between TC and T1, the origin is the global minimum and"
+" shallow local minima remain on both sides. At TC the three minima have "
+"equal free energy. Between T0 and TC, the two side minima are the global "
+"minima and a shallow local minimum remains at the origin. At T0 the "
+"origin ceases to be a local minimum."
+
+#: ../../solid/landau_theory.rst:129
+#, python-brace-format
+msgid ""
+":math:`a=1`、:math:`\\beta=-1`、:math:`\\gamma=1`、:math:`T_0=0` の式 :eq"
+":`landau-expansion` を、5つの温度で描いた （:math:`T_{\\mathrm "
+"C}=3/16`、:math:`T_1=1/4`）。青は :math:`\\eta\\ne0` の状態が準安定な範囲、赤は "
+":math:`\\eta=0` の状態が準安定な範囲。 係数は説明用で、特定の物質の値ではない。"
+msgstr ""
+"For :math:`a=1`, :math:`\\beta=-1`, :math:`\\gamma=1`, and :math:`T_0=0`,"
+" Equation :eq:`landau-expansion` is plotted at five temperatures "
+"(:math:`T_{\\mathrm C}=3/16` and :math:`T_1=1/4`). Blue indicates the "
+"range in which the :math:`\\eta\\ne0` state is metastable, and red the "
+"range in which the :math:`\\eta=0` state is metastable. The coefficients "
+"are illustrative and do not represent any particular material."
+
+#: ../../solid/landau_theory.rst:133
+#, python-brace-format
+msgid ""
+"準安定な状態から最小の状態へ移るには、二つの極小の間の山を越える必要がある。実際の結晶では、新しい相が核を作って "
+"広がるまで、準安定な状態が残ることがある。そのため、冷却では :math:`T_{\\mathrm C}` と :math:`T_0` "
+"の間、加熱では :math:`T_{\\mathrm C}` と :math:`T_1` "
+"の間で状態が切り替わり、加熱と冷却で転移温度がずれうる（転移温度のヒステリシス）。 "
+"ずれの大きさは、この範囲の中で、核の生成の起こりやすさや加熱・冷却の速さで決まる。分子動力学で加熱と冷却の 転移温度を比べるときの注意は、\\ "
+":ref:`見かけの転移温度<apparent-transition-temperature>`\\ で扱う。"
+msgstr ""
+"A metastable state must cross the barrier between the two minima to reach"
+" the global minimum. In actual crystals, the metastable state can persist"
+" until the new phase nucleates and grows. As a result, the state switches"
+" between :math:`T_{\\mathrm C}` and :math:`T_0` on cooling and between "
+":math:`T_{\\mathrm C}` and :math:`T_1` on heating. The transition "
+"temperatures on heating and cooling can therefore differ (transition-"
+"temperature hysteresis). The magnitude of the shift within these ranges "
+"depends on how readily nucleation occurs and the rate of heating or "
+"cooling. For precautions when comparing transition temperatures on "
+"heating and cooling in molecular dynamics, see \\ :ref:`the apparent "
+"transition temperature <apparent-transition-temperature>`\\ ."
+
+#: ../../solid/landau_theory.rst:142
+msgid "共役な場への応答とCurie–Weissの法則"
+msgstr "Response to the Conjugate Field and the Curie–Weiss Law"
+
+#: ../../solid/landau_theory.rst:144
+msgid "秩序変数が分極 :math:`P` のとき、電場 :math:`E` を加えると自由エネルギーに :math:`-EP` が加わる。"
+msgstr ""
+"If the order parameter is the polarization :math:`P`, applying an "
+"electric field :math:`E` adds the term :math:`-EP` to the free energy:"
+
+#: ../../solid/landau_theory.rst:146
+msgid "F(P,T)=F_0+\\frac12a(T-T_0)P^2+\\frac14\\beta P^4+\\frac16\\gamma P^6-EP"
+msgstr "F(P,T)=F_0+\\frac12a(T-T_0)P^2+\\frac14\\beta P^4+\\frac16\\gamma P^6-EP"
+
+#: ../../solid/landau_theory.rst:151
+msgid ""
+"高温相の :math:`P=0` のまわりで :math:`\\partial F/\\partial P=0` を :math:`P` "
+"の1次まで残して解くと :math:`a(T-T_0)P=E` となり、 電気感受率は"
+msgstr ""
+"In the high-temperature phase near :math:`P=0`, solving :math:`\\partial "
+"F/\\partial P=0` to linear order in :math:`P` gives :math:`a(T-T_0)P=E`, "
+"and the electric susceptibility is"
+
+#: ../../solid/landau_theory.rst:154
+#, python-brace-format
+msgid ""
+"\\chi=\\frac{P}{\\varepsilon_0E}=\\frac{1}{\\varepsilon_0a(T-T_0)},\\qquad"
+" C=\\frac{1}{\\varepsilon_0a}"
+msgstr ""
+"\\chi=\\frac{P}{\\varepsilon_0E}=\\frac{1}{\\varepsilon_0a(T-T_0)},\\qquad"
+" C=\\frac{1}{\\varepsilon_0a}"
+
+#: ../../solid/landau_theory.rst:159
+#, python-brace-format
+msgid ""
+"となる。:math:`T_0` に近づくと発散するこの温度依存 :math:`\\chi=C/(T-T_0)` を "
+"**Curie–Weissの法則**、:math:`C` をCurie定数、 :math:`T_0` "
+"をCurie–Weiss温度と呼ぶ。Curie–Weiss温度は、2次の係数が0になる温度である。強誘電体の常誘電相での観測は 「\\ "
+":ref:`ferroelectricity`\\ 」の\\ :ref:`常誘電相とキュリー温度<paraelectric-phase>`\\ "
+"で扱う。2次転移ならこれは転移温度 :math:`T_{\\mathrm C}` に等しく、1次転移なら :math:`T_{\\mathrm "
+"C}` より低い。1次転移では、:math:`\\chi` は :math:`T_{\\mathrm C}` で有限のまま転移する。 "
+"極性ソフトモードの振動数とCurie–Weissの法則のつながりは、\\ :ref:`Lyddane–Sachs–Tellerの関係<polar-"
+"soft-mode>`\\ で扱った。"
+msgstr ""
+"This temperature dependence, which diverges as the temperature approaches"
+" :math:`T_0`, is :math:`\\chi=C/(T-T_0)` and is called the **Curie–Weiss "
+"law**. The coefficient :math:`C` is the Curie constant and :math:`T_0` is"
+" the Curie–Weiss temperature, the temperature at which the quadratic "
+"coefficient vanishes. Measurements in the paraelectric phase of "
+"ferroelectrics are discussed in “\\ :ref:`Ferroelectricity and Crystal "
+"Structure <ferroelectricity>`\\ ”, in the section on \\ :ref:`the "
+"paraelectric phase and the Curie temperature <paraelectric-phase>`\\ . "
+"For a second-order transition, the Curie–Weiss temperature equals the "
+"transition temperature :math:`T_{\\mathrm C}`. For a first-order "
+"transition, it is below :math:`T_{\\mathrm C}`, and the transition occurs"
+" with :math:`\\chi` still finite at :math:`T_{\\mathrm C}`. The \\ "
+":ref:`Lyddane–Sachs–Teller relation <polar-soft-mode>`\\  section "
+"discusses how the polar soft-mode frequency is related to the Curie–Weiss"
+" law."
+
+#: ../../solid/landau_theory.rst:168
+msgid "説明用の事例：BaTiO\\ :sub:`3`\\ の立方晶–正方晶転移"
+msgstr "Worked Example: Cubic-to-Tetragonal Transition in BaTiO\\ :sub:`3`\\ "
+
+#: ../../solid/landau_theory.rst:170
+#, python-brace-format
+msgid ""
+"BaTiO\\ :sub:`3`\\ の立方晶–正方晶転移は1次転移である。Merzは、転移温度のすぐ上で、弱い電場では分極が電場に比例し、 "
+"強い電場では分極–電場曲線の両端にヒステリシスが開くこと（二重ヒステリシス）を観測した [Merz1953]_。 "
+":math:`T>T_{\\mathrm C}` でも、:numref:`fig-landau-first-order` の青の曲線のように "
+":math:`P\\ne0` の極小が近くにあれば、 電場で :math:`-EP` "
+"を加えたときにその極小が最小になり、分極が跳ぶ。電場を戻すと分極が0に戻るので、正負の電場の側に 一つずつヒステリシスが開く。この観測は、式 "
+":eq:`fe-devonshire` の4次の係数 :math:`\\beta` が負であることを示す。 BaTiO\\ :sub:`3`\\ "
+"の三つの転移は、いずれも1次転移である [Zhong1995]_。"
+msgstr ""
+"The cubic-to-tetragonal transition of BaTiO\\ :sub:`3`\\  is a first-"
+"order transition. Just above the transition temperature, Merz observed "
+"that the polarization was proportional to the electric field at weak "
+"fields, but that hysteresis loops opened at both ends of the "
+"polarization–field curve at strong fields (double hysteresis) "
+"[Merz1953]_. Even for :math:`T>T_{\\mathrm C}`, if there is a nearby "
+"minimum as on the blue curve in :numref:`fig-landau-first-order`, at "
+":math:`P\\ne0`, adding the field term :math:`-EP` makes it the global "
+"minimum and the polarization jumps. When the field is reduced again, the "
+"polarization returns to zero, so one hysteresis loop opens on the "
+"positive-field side and one on the negative-field side. This observation "
+"shows that the quartic coefficient in Equation :eq:`fe-devonshire`, "
+":math:`\\beta`, is negative. All three transitions in BaTiO\\ :sub:`3`\\"
+"  are first-order transitions [Zhong1995]_."
+
+#: ../../solid/landau_theory.rst:177
+#, python-brace-format
+msgid ""
+"1次転移では、\\ :ref:`極性ソフトモード<polar-soft-mode>`\\ の振動数は :math:`T_{\\mathrm C}`"
+" で0にならず、誘電率は :math:`T_{\\mathrm C}` で有限のまま転移する。:math:`T_0` "
+"は、転移温度より上の誘電率や振動数を外挿して決まる温度で、 転移温度そのものではない。"
+msgstr ""
+"In a first-order transition, the \\ :ref:`polar soft mode <polar-soft-"
+"mode>`\\  frequency does not go to zero at :math:`T_{\\mathrm C}`, and "
+"the permittivity is still finite at :math:`T_{\\mathrm C}` as the "
+"transition takes place. The temperature :math:`T_0` comes from an "
+"extrapolation of the permittivity or frequency from above the transition."
+" It is not the transition temperature itself."
+
+#: ../../solid/landau_theory.rst:184
+msgid "解釈と限界"
+msgstr "Interpretation and Limitations"
+
+#: ../../solid/landau_theory.rst:186
+#, python-brace-format
+msgid ""
+"Landau理論は、秩序変数の空間的な揺らぎを無視し、平均の秩序変数だけで自由エネルギーを表す平均場の理論である。 "
+"2次転移の近くで揺らぎが大きくなる系では、秩序変数が :math:`(T_0-T)^{1/2}` に比例するという予測（臨界指数1/2）が "
+"実験と一致しないことがある。展開は秩序変数が小さい範囲で使えるもので、係数 "
+":math:`a`、:math:`\\beta`、:math:`\\gamma` は 実験や計算に合わせて決める現象論的な量である。"
+msgstr ""
+"Landau theory is a mean-field theory that neglects spatial fluctuations "
+"of the order parameter and expresses the free energy in terms of the "
+"average order parameter alone. In systems with large fluctuations near a "
+"second-order transition, the predicted proportionality of the order "
+"parameter to :math:`(T_0-T)^{1/2}` (critical exponent 1/2) may disagree "
+"with experiment. The expansion applies for small values of the order "
+"parameter, and the coefficients :math:`a`, :math:`\\beta`, and "
+":math:`\\gamma` are phenomenological quantities set by fitting to "
+"experiments or calculations."
+
+#: ../../solid/landau_theory.rst:191
+msgid ""
+"秩序変数が複数の成分をもつ場合（立方晶の3方向に縮退した極性モードなど）や、ひずみと結合する場合は、 対称性が許す項を展開に加える。その例は\\ "
+":ref:`二重井戸ポテンシャル<double-well-potential>`\\ の式 :eq:`sm-strain` と :eq:`sm-"
+"cubic-quartic` にある。"
+msgstr ""
+"If the order parameter has multiple components, as for a polar mode "
+"degenerate along three directions in a cubic crystal, or if it couples to"
+" strain, include the terms allowed by symmetry in the expansion. The \\ "
+":ref:`double-well potential <double-well-potential>`\\  section gives "
+"examples in Equations :eq:`sm-strain` and :eq:`sm-cubic-quartic`."
+
+#: ../../solid/landau_theory.rst:198
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/landau_theory.rst:200
+msgid ":ref:`soft-mode`"
+msgstr ":ref:`soft-mode`"
+
+#: ../../solid/landau_theory.rst:201
+msgid ":ref:`ferroelectricity`"
+msgstr ":ref:`ferroelectricity`"
+
+#: ../../solid/landau_theory.rst:202
+msgid ":ref:`heating-simulation`"
+msgstr ":ref:`heating-simulation`"
+
+#: ../../solid/landau_theory.rst:207
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/landau_theory.rst:209
+msgid ""
+"L\\. D. Landau and E. M. Lifshitz, *Statistical Physics*, Part 1, 3rd ed."
+" (Pergamon, 1980), Chap. XIV."
+msgstr ""
+"L\\. D. Landau and E. M. Lifshitz, *Statistical Physics*, Part 1, 3rd ed."
+" (Pergamon, 1980), Chap. XIV."
+

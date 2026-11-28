@@ -56,7 +56,7 @@ msgstr ""
 
 #: ../../solid/polarization.rst:18
 msgid "**学習目標**:"
-msgstr "**Learning Objectives**:"
+msgstr "**Learning objectives**:"
 
 #: ../../solid/polarization.rst:20
 msgid "周期結晶の分極が分極の量子の整数倍だけ不定であることを1次元の鎖で導き、反転対称な構造の分極が0か分極の量子の半分になることを説明する。"
