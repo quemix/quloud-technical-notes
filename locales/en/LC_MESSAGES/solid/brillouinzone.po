@@ -1,0 +1,418 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 09:15+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/brillouinzone.rst:5
+msgid "ブリルアンゾーン"
+msgstr "Brillouin Zone"
+
+#: ../../solid/brillouinzone.rst:7
+msgid ""
+"\\ :ref:`ブロッホの定理と周期境界条件<blochstheorem>`\\ "
+"で、逆格子ベクトルだけ異なる波数が同じ並進の性質を表すことを見た。 "
+"本稿では、等価な波数から代表を一つずつ選ぶ領域として第1ブリルアンゾーンを定め、その中で特別な役割をもつ Γ点、ゾーン境界、高対称点を導入する。"
+msgstr ""
+"In \\ :ref:`Bloch’s Theorem and Periodic Boundary Conditions "
+"<blochstheorem>`\\ , we saw that wave vectors differing by a reciprocal "
+"lattice vector have the same translation properties. We define the first "
+"Brillouin zone as the region for choosing one representative from each "
+"set of equivalent wave vectors, and introduce the Γ point, zone boundary,"
+" and high-symmetry points, which play special roles in the zone."
+
+#: ../../solid/brillouinzone.rst:11
+msgid ""
+"**前提知識**: :ref:`ブロッホの定理と周期境界条件<blochstheorem>`、:ref:`逆格子<reciprocal-"
+"lattice>`、 :ref:`基本単位胞<lattice-unit-cells>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Bloch’s Theorem and Periodic Boundary Conditions"
+" <blochstheorem>`, the :ref:`reciprocal lattice <reciprocal-lattice>`, "
+"and :ref:`primitive cells <lattice-unit-cells>`."
+
+#: ../../solid/brillouinzone.rst:14
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/brillouinzone.rst:16
+msgid "第1ブリルアンゾーンを逆格子のウィグナー・ザイツ胞として定め、その体積を実格子の基本単位胞の体積から求める。"
+msgstr ""
+"Define the first Brillouin zone as the Wigner–Seitz cell of the "
+"reciprocal lattice, and calculate its volume from the primitive cell "
+"volume of the direct lattice."
+
+#: ../../solid/brillouinzone.rst:17
+msgid "Γ点とゾーン境界で、格子並進の位相因子がどうなるかを説明する。"
+msgstr ""
+"Explain what happens to the phase factor for lattice translation at the Γ"
+" point and at the zone boundary."
+
+#: ../../solid/brillouinzone.rst:18
+msgid "高対称点の記号が、ブリルアンゾーンの形ごとに決まる位置を指すことを説明する。"
+msgstr ""
+"Explain how high-symmetry point labels refer to positions specific to "
+"each Brillouin zone shape."
+
+#: ../../solid/brillouinzone.rst:24
+msgid "第1ブリルアンゾーンとウィグナー・ザイツ胞"
+msgstr "First Brillouin Zone and the Wigner–Seitz Cell"
+
+#: ../../solid/brillouinzone.rst:26
+#, python-brace-format
+msgid ""
+"\\ :ref:`ブロッホの定理<bloch-theorem>`\\ （式 :eq:`Bloch`）によると、格子並進 "
+":math:`\\boldsymbol R` で波動関数に掛かる位相因子は :math:`e^{i\\boldsymbol "
+"k\\cdot\\boldsymbol R}` である。\\ :ref:`逆格子ベクトル<reciprocal-lattice>` "
+":math:`\\boldsymbol G` に対して :math:`e^{i\\boldsymbol G\\cdot\\boldsymbol "
+"R}=1` なので、 :math:`\\boldsymbol k` と :math:`\\boldsymbol k+\\boldsymbol G`"
+" は同じ位相因子を与える。 そこで、逆格子並進で等価な波数の組から一つずつ代表を取れる領域を選ぶ。"
+msgstr ""
+"According to \\ :ref:`Bloch's theorem <bloch-theorem>`\\  (Equation "
+":eq:`Bloch`), a lattice translation :math:`\\boldsymbol R` multiplies the"
+" wave function by the phase factor :math:`e^{i\\boldsymbol "
+"k\\cdot\\boldsymbol R}`. For a \\ :ref:`reciprocal lattice vector "
+"<reciprocal-lattice>` :math:`\\boldsymbol G`, :math:`e^{i\\boldsymbol "
+"G\\cdot\\boldsymbol R}=1`, so :math:`\\boldsymbol k` and "
+":math:`\\boldsymbol k+\\boldsymbol G` give the same phase factor. We "
+"therefore choose a region that provides one representative from each set "
+"of wave vectors related by reciprocal lattice translations."
+
+#: ../../solid/brillouinzone.rst:32
+msgid ""
+"第1ブリルアンゾーンは、他のどの逆格子点よりも原点に近い波数と、その境界からなる領域である。 "
+"これは逆格子のウィグナー・ザイツ胞（Wigner–Seitz cell）にあたり、"
+msgstr ""
+"The first Brillouin zone consists of wave vectors closer to the origin "
+"than to any other reciprocal lattice point, together with their boundary."
+" It is the Wigner–Seitz cell of the reciprocal lattice, defined by"
+
+#: ../../solid/brillouinzone.rst:35
+#, python-brace-format
+msgid ""
+"|\\boldsymbol k|\\leq |\\boldsymbol k-\\boldsymbol G|\n"
+"\\quad \\text{for all }\\boldsymbol G\\ne\\boldsymbol 0"
+msgstr ""
+"|\\boldsymbol k|\\leq |\\boldsymbol k-\\boldsymbol G|\n"
+"\\quad \\text{for all }\\boldsymbol G\\ne\\boldsymbol 0"
+
+#: ../../solid/brillouinzone.rst:40
+msgid ""
+"で定まる。つまり、各逆格子点と原点の間の垂直二等分面を考え、それぞれで原点側を "
+"取る。境界にある点どうしが逆格子ベクトルだけ異なる場合は、一方だけを代表とする。 例えば格子定数 :math:`a` "
+"の1次元格子なら、最も近い逆格子点は :math:`G=\\pm 2\\pi/a` なので、第1ブリルアンゾーンを "
+":math:`-\\pi/a<k\\leq\\pi/a` と取れる。"
+msgstr ""
+"To construct the zone, take the perpendicular bisector plane between the "
+"origin and each other reciprocal lattice point, and keep the side "
+"containing the origin in each case. If two boundary points differ by a "
+"reciprocal lattice vector, take only one of them as the representative. "
+"For example, in a one-dimensional lattice with lattice constant "
+":math:`a`, the nearest reciprocal lattice points are :math:`G=\\pm "
+"2\\pi/a`, so the first Brillouin zone can be taken as "
+":math:`-\\pi/a<k\\leq\\pi/a`."
+
+#: ../../solid/brillouinzone.rst:46
+msgid ""
+":numref:`fig-brillouin-zone-bisectors`\\ は、二次元で垂直二等分線の原点側を集める例である。 "
+"色のついた領域では、原点までの距離がどの逆格子点までの距離よりも大きくならない。"
+msgstr ""
+":numref:`fig-brillouin-zone-bisectors`\\  shows how to take the origin "
+"side of the perpendicular bisectors in two dimensions. In the shaded "
+"region, the distance to the origin is no greater than the distance to any"
+" other reciprocal lattice point."
+
+#: ../../solid/brillouinzone.rst:49
+msgid "原点Γの周りに六つの等距離の逆格子点がある。原点と各点との垂直二等分線が青い六角形の第1ブリルアンゾーンを囲む。"
+msgstr ""
+"Six reciprocal lattice points are equidistant from the origin Γ. The "
+"perpendicular bisectors between the origin and those points enclose the "
+"blue hexagon of the first Brillouin zone."
+
+#: ../../solid/brillouinzone.rst:55
+msgid ""
+"三角格子状に並んだ逆格子点について、原点 :math:`\\Gamma` に最も近い六点を描いた。 "
+"破線は垂直二等分線、青い六角形はその原点側が重なる第1ブリルアンゾーンである。"
+msgstr ""
+"The reciprocal lattice points form a triangular lattice. The six closest "
+"to the origin :math:`\\Gamma` are shown. The dashed lines are "
+"perpendicular bisectors. The first Brillouin zone is the blue hexagon "
+"formed by intersecting the half-planes on the origin side of the "
+"bisectors."
+
+#: ../../solid/brillouinzone.rst:58
+msgid ""
+"逆格子の基本並進ベクトル :math:`\\boldsymbol b_1,\\boldsymbol b_2,\\boldsymbol b_3` "
+"で張る平行六面体も逆格子の\\ :ref:`基本単位胞<lattice-unit-cells>`\\ である。形は一般に第1ブリルアンゾーンと "
+"異なるが、どちらも逆格子並進で空間を隙間なく埋め、体積は同じである。 実格子の基本単位胞の体積を :math:`\\Omega` とすると、"
+msgstr ""
+"The parallelepiped spanned by the primitive translation vectors "
+":math:`\\boldsymbol b_1,\\boldsymbol b_2,\\boldsymbol b_3` of the "
+"reciprocal lattice is also a \\ :ref:`primitive cell <lattice-unit-"
+"cells>`\\  of that lattice. Its shape generally differs from that of the "
+"first Brillouin zone, but both tile space without gaps under reciprocal "
+"lattice translations and have the same volume. If the direct-lattice "
+"primitive cell has volume :math:`\\Omega`, then the Brillouin zone volume"
+" is"
+
+#: ../../solid/brillouinzone.rst:63
+msgid ""
+"\\Omega_{\\mathrm{BZ}}=\n"
+"\\left|\\boldsymbol b_1\\cdot(\\boldsymbol b_2\\times\\boldsymbol "
+"b_3)\\right|\n"
+"=\\frac{(2\\pi)^3}{\\Omega}"
+msgstr ""
+"\\Omega_{\\mathrm{BZ}}=\n"
+"\\left|\\boldsymbol b_1\\cdot(\\boldsymbol b_2\\times\\boldsymbol "
+"b_3)\\right|\n"
+"=\\frac{(2\\pi)^3}{\\Omega}"
+
+#: ../../solid/brillouinzone.rst:70
+msgid ""
+"となる。逆格子並進に対して周期的な量については、第1ブリルアンゾーンの各部分を "
+"逆格子並進で移して集めれば平行六面体を構成できるため、どちらで積分しても同じ値になる。"
+msgstr ""
+"For quantities periodic under reciprocal lattice translations, "
+"integration over either region gives the same value. This follows because"
+" the first Brillouin zone can be divided into parts that can be brought "
+"together by reciprocal lattice translations to form the parallelepiped."
+
+#: ../../solid/brillouinzone.rst:76
+msgid "Γ点・ゾーン境界・高対称点"
+msgstr "The Γ Point, Zone Boundary, and High-Symmetry Points"
+
+#: ../../solid/brillouinzone.rst:80
+#, python-brace-format
+msgid ""
+"第1ブリルアンゾーンの中心 :math:`\\boldsymbol k=0` を **Γ点** と呼ぶ。Γ点では位相因子 "
+":math:`e^{i\\boldsymbol k\\cdot\\boldsymbol R}` がすべての格子ベクトルで1になるので、式 :eq"
+":`bloch-periodic-part` の 波動関数は周期部分 :math:`u_{\\boldsymbol 0}` "
+"そのものであり、どの単位胞でも同じ形をとる。"
+msgstr ""
+"The center of the first Brillouin zone, :math:`\\boldsymbol k=0`, is "
+"called the **Γ point**. At the Γ point, the phase factor "
+":math:`e^{i\\boldsymbol k\\cdot\\boldsymbol R}` is 1 for every lattice "
+"vector, so the wave function in Equation :eq:`bloch-periodic-part` is "
+"simply its periodic part :math:`u_{\\boldsymbol 0}` and has the same "
+"shape in every unit cell."
+
+#: ../../solid/brillouinzone.rst:86
+msgid ""
+"第1ブリルアンゾーンの境界を **ゾーン境界** と呼ぶ。境界上の波数 :math:`\\boldsymbol k` は、ある逆格子ベクトル "
+":math:`\\boldsymbol G\\ne\\boldsymbol 0` について :math:`|\\boldsymbol "
+"k|=|\\boldsymbol k-\\boldsymbol G|`、すなわち"
+msgstr ""
+"The boundary of the first Brillouin zone is called the **zone boundary**."
+" For a wave vector :math:`\\boldsymbol k` on the boundary, there is a "
+"reciprocal lattice vector :math:`\\boldsymbol G\\ne\\boldsymbol 0` such "
+"that :math:`|\\boldsymbol k|=|\\boldsymbol k-\\boldsymbol G|`, or "
+"equivalently"
+
+#: ../../solid/brillouinzone.rst:89
+#, python-brace-format
+msgid "\\boldsymbol k\\cdot\\boldsymbol G=\\frac{|\\boldsymbol G|^2}{2}"
+msgstr "\\boldsymbol k\\cdot\\boldsymbol G=\\frac{|\\boldsymbol G|^2}{2}"
+
+#: ../../solid/brillouinzone.rst:94
+#, python-brace-format
+msgid ""
+"を満たし、:math:`\\boldsymbol k` と :math:`\\boldsymbol k-\\boldsymbol G` "
+"は等価な波数である。格子定数 :math:`a` の1次元格子では ゾーン境界は :math:`k=\\pm\\pi/a` "
+"で、隣の単位胞に移るたびに位相因子 :math:`e^{ika}=-1` が掛かり、波動関数の符号が 反転する。:math:`k=\\pi/a` "
+"と :math:`-\\pi/a` は同じ位相因子を与えるので、同じ結晶運動量に分類される。ただし、 平面波 :math:`e^{+i\\pi "
+"x/a}` と :math:`e^{-i\\pi x/a}` は互いに独立な関数であり、同じ波数のラベルに独立な状態が二つ属しうる。 "
+"周期ポテンシャルがこの二つを混ぜると、ゾーン境界でエネルギーの異なる二つの状態に分かれ、バンドの間にギャップが開きうる。 "
+"結晶の周期が2倍になると、新しいゾーン境界でバンドの間にギャップが開きうること（\\ :ref:`SSH模型<tb-ssh>`）や、 "
+"ゾーン境界のフォノンで隣の胞の原子が逆向きに動くこと（\\ :ref:`1次元二原子鎖<ph-diatomic-"
+"chain>`）は、これらの性質による。"
+msgstr ""
+"The wave vectors :math:`\\boldsymbol k` and :math:`\\boldsymbol "
+"k-\\boldsymbol G` are equivalent. In a one-dimensional lattice with "
+"lattice constant :math:`a`, the zone boundary is at :math:`k=\\pm\\pi/a`."
+" Each step to the neighboring unit cell multiplies the wave function by "
+"the phase factor :math:`e^{ika}=-1`, reversing its sign. The points "
+":math:`k=\\pi/a` and :math:`-\\pi/a` give the same phase factor, so they "
+"have the same crystal momentum label. The plane waves :math:`e^{+i\\pi "
+"x/a}` and :math:`e^{-i\\pi x/a}`, however, are independent functions, so "
+"two independent states can have the same wave vector label. If the "
+"periodic potential mixes them, the two states split in energy at the zone"
+" boundary and a gap can open between the bands. These properties explain "
+"why a gap can open between bands at the new zone boundary when the "
+"crystal period doubles (see the \\ :ref:`SSH model <tb-ssh>`), and why "
+"atoms in neighboring cells move in opposite directions in the zone-"
+"boundary phonon (see the \\ :ref:`one-dimensional diatomic chain <ph-"
+"diatomic-chain>`)."
+
+#: ../../solid/brillouinzone.rst:104
+msgid ""
+"Γ点のほかにも、結晶の点群の多くの操作で、逆格子ベクトルの差を除いて自分自身に移る波数がある。これを **高対称点** "
+"と呼び、高対称点を結ぶ線のうち同じように対称操作で保たれるものを **対称線** と呼ぶ。 "
+"バンド構造やフォノン分散は、高対称点を結ぶ対称線に沿って描くことが多い（SetyawanとCurtarolo、2010年）。高対称点には、 "
+"ブリルアンゾーンの形ごとに慣用の記号が付いている（Bouckaert、Smoluchowski、Wigner、1936年）。立方晶の単純立方格子と面心立方格子（FCC）の例を"
+" :numref:`tbl-cubic-high-symmetry-points` に示す。"
+msgstr ""
+"In addition to the Γ point, some wave vectors map onto themselves under "
+"many operations of the crystal's point group, up to a reciprocal lattice "
+"vector. These are called **high-symmetry points**. Lines connecting high-"
+"symmetry points that are likewise preserved by symmetry operations are "
+"called **symmetry lines**. Band structures and phonon dispersions are "
+"often plotted along symmetry lines connecting high-symmetry points "
+"(Setyawan and Curtarolo, 2010). The conventional labels for high-symmetry"
+" points depend on the shape of the Brillouin zone (Bouckaert, "
+"Smoluchowski, and Wigner, 1936). Examples for the simple cubic and face-"
+"centered cubic (FCC) lattices are given in :numref:`tbl-cubic-high-"
+"symmetry-points`."
+
+#: ../../solid/brillouinzone.rst:110
+msgid "立方晶の高対称点（格子定数 :math:`a` の立方慣用単位胞の軸によるCartesian成分、単位 :math:`2\\pi/a`）"
+msgstr ""
+"High-symmetry points in cubic crystals (Cartesian components along the "
+"axes of the cubic conventional cell with lattice constant :math:`a`, in "
+"units of :math:`2\\pi/a`)"
+
+#: ../../solid/brillouinzone.rst:115
+msgid "格子"
+msgstr "Lattice"
+
+#: ../../solid/brillouinzone.rst:116
+msgid "記号"
+msgstr "Label"
+
+#: ../../solid/brillouinzone.rst:117
+msgid "位置"
+msgstr "Position"
+
+#: ../../solid/brillouinzone.rst:118
+msgid "単純立方"
+msgstr "Simple cubic"
+
+#: ../../solid/brillouinzone.rst:119 ../../solid/brillouinzone.rst:131
+msgid "Γ"
+msgstr "Γ"
+
+#: ../../solid/brillouinzone.rst:120 ../../solid/brillouinzone.rst:132
+msgid ":math:`(0,0,0)`"
+msgstr ":math:`(0,0,0)`"
+
+#: ../../solid/brillouinzone.rst:122 ../../solid/brillouinzone.rst:134
+msgid "X"
+msgstr "X"
+
+#: ../../solid/brillouinzone.rst:123
+msgid ":math:`(0,1/2,0)`\\ （面の中心）"
+msgstr ":math:`(0,1/2,0)`\\  (center of a face)"
+
+#: ../../solid/brillouinzone.rst:125
+msgid "M"
+msgstr "M"
+
+#: ../../solid/brillouinzone.rst:126
+msgid ":math:`(1/2,1/2,0)`\\ （辺の中点）"
+msgstr ":math:`(1/2,1/2,0)`\\  (midpoint of an edge)"
+
+#: ../../solid/brillouinzone.rst:128
+msgid "R"
+msgstr "R"
+
+#: ../../solid/brillouinzone.rst:129
+msgid ":math:`(1/2,1/2,1/2)`\\ （頂点）"
+msgstr ":math:`(1/2,1/2,1/2)`\\  (vertex)"
+
+#: ../../solid/brillouinzone.rst:130
+msgid "面心立方"
+msgstr "Face-centered cubic"
+
+#: ../../solid/brillouinzone.rst:135
+msgid ":math:`(0,1,0)`\\ （正方形の面の中心）"
+msgstr ":math:`(0,1,0)`\\  (center of a square face)"
+
+#: ../../solid/brillouinzone.rst:137
+msgid "L"
+msgstr "L"
+
+#: ../../solid/brillouinzone.rst:138
+msgid ":math:`(1/2,1/2,1/2)`\\ （六角形の面の中心）"
+msgstr ":math:`(1/2,1/2,1/2)`\\  (center of a hexagonal face)"
+
+#: ../../solid/brillouinzone.rst:140
+msgid "W"
+msgstr "W"
+
+#: ../../solid/brillouinzone.rst:141
+msgid ":math:`(1,1/2,0)`\\ （頂点）"
+msgstr ":math:`(1,1/2,0)`\\  (vertex)"
+
+#: ../../solid/brillouinzone.rst:143
+msgid "K"
+msgstr "K"
+
+#: ../../solid/brillouinzone.rst:144
+msgid ":math:`(3/4,3/4,0)`\\ （六角形の面どうしが接する辺の中点）"
+msgstr ""
+":math:`(3/4,3/4,0)`\\  (midpoint of the edge where two hexagonal faces "
+"meet)"
+
+#: ../../solid/brillouinzone.rst:146
+msgid ""
+"同じ記号でも、ブリルアンゾーンの形が違えば位置は違う。例えば単純立方格子のX点と面心立方格子のX点は、 それぞれの格子定数 :math:`a` で"
+" :math:`2\\pi/a` を単位にした座標が2倍違う。文献や計算プログラムの高対称点を読むときは、どの格子のどの単位胞の "
+"記号かを確かめる。"
+msgstr ""
+"The same label refers to different positions when the Brillouin zone "
+"shape differs. For example, take the X points in the simple cubic and "
+"face-centered cubic lattices. Using each lattice's own lattice constant "
+":math:`a` to set the unit :math:`2\\pi/a`, their coordinates differ by a "
+"factor of two. When looking up high-symmetry points in the literature or "
+"a calculation program, check which lattice and unit cell the labels refer"
+" to."
+
+#: ../../solid/brillouinzone.rst:153
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/brillouinzone.rst:155
+msgid ""
+"MIT Materials Science, `Lecture 7 "
+"<https://wikis.mit.edu/confluence/display/MSEDG/Lecture%2B7>`_."
+msgstr ""
+"MIT Materials Science, `Lecture 7 "
+"<https://wikis.mit.edu/confluence/display/MSEDG/Lecture%2B7>`_."
+
+#: ../../solid/brillouinzone.rst:156
+msgid ""
+"L. P. Bouckaert, R. Smoluchowski, and E. Wigner, `“Theory of Brillouin "
+"Zones and Symmetry Properties of Wave Functions in Crystals” "
+"<https://doi.org/10.1103/PhysRev.50.58>`_, *Physical Review* **50**, "
+"58–67 (1936)."
+msgstr ""
+"L. P. Bouckaert, R. Smoluchowski, and E. Wigner, `“Theory of Brillouin "
+"Zones and Symmetry Properties of Wave Functions in Crystals” "
+"<https://doi.org/10.1103/PhysRev.50.58>`_, *Physical Review* **50**, "
+"58–67 (1936)."
+
+#: ../../solid/brillouinzone.rst:159
+msgid ""
+"W. Setyawan and S. Curtarolo, `“High-throughput electronic band structure"
+" calculations: Challenges and tools” "
+"<https://doi.org/10.1016/j.commatsci.2010.05.010>`_, *Computational "
+"Materials Science* **49**, 299–312 (2010)."
+msgstr ""
+"W. Setyawan and S. Curtarolo, `“High-throughput electronic band structure"
+" calculations: Challenges and tools” "
+"<https://doi.org/10.1016/j.commatsci.2010.05.010>`_, *Computational "
+"Materials Science* **49**, 299–312 (2010)."
+

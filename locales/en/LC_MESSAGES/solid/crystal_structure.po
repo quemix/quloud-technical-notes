@@ -1,0 +1,42 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/crystal_structure.rst:2
+msgid "結晶構造と格子"
+msgstr "Crystal Structure and Lattices"
+
+#: ../../solid/crystal_structure.rst:4
+msgid ""
+"結晶を\\ :ref:`格子と単位構造<lattice-points>`\\ で表し、\\ :ref:`単位胞<lattice-unit-"
+"cells>`\\ と\\ :ref:`分率座標<coordinates>`\\ を導入します。 :ref:`格子定数と計量行列<lattice-"
+"metric>`\\ で胞の形を数値で表し、ブラベー格子型と結晶系を学びます。 続いて\\ :ref:`逆格子<reciprocal-"
+"lattice>`\\ を導入し、結晶の方向と格子面の指数、原子配置が回折の反射条件にどう関わるかを見ます。"
+msgstr ""
+"We represent a crystal in terms of a \\ :ref:`lattice and a motif "
+"<lattice-points>`\\ , then introduce \\ :ref:`unit cells <lattice-unit-"
+"cells>`\\  and \\ :ref:`fractional coordinates <coordinates>`\\ . We "
+"describe the cell shape numerically using :ref:`lattice constants and the"
+" metric tensor <lattice-metric>`\\  and learn about Bravais lattice types"
+" and crystal systems. Next we introduce the \\ :ref:`reciprocal lattice "
+"<reciprocal-lattice>`\\ , learn how to index crystal directions and "
+"lattice planes, and see how atomic arrangements affect reflection "
+"conditions in diffraction."
+

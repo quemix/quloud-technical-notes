@@ -1,0 +1,250 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 09:15+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/periodic_boundary.rst:4
+msgid "超胞とバンドの折り返し"
+msgstr "Supercells and Band Folding"
+
+#: ../../solid/periodic_boundary.rst:6
+msgid ""
+"同じ結晶を、単位胞をいくつかまとめた\\ :ref:`超胞（スーパーセル）<lt-supercell>`\\ の並びとして記述することがある。 "
+"超胞では並進の単位が大きくなるので、ブリルアンゾーン（BZ）が小さくなり、元のバンドがその中に折り返されて "
+"現れる。本稿では、折り返しで波数の数とバンドの本数がどう変わるかを1次元で導き、3次元へ広げる。 "
+"そのうえで、折り返しだけでは物理が変わらないこと、結晶の周期が実際に変わるとギャップが開きうることを説明する。"
+msgstr ""
+"The same crystal can be described as an array of \\ :ref:`supercells <lt-"
+"supercell>`\\ , each grouping several unit cells. A supercell increases "
+"the translation period and therefore reduces the Brillouin zone (BZ). The"
+" original bands appear folded into the smaller zone. We derive how "
+"folding changes the number of wave vectors and the number of bands in one"
+" dimension, then extend the result to three dimensions. We explain why "
+"folding alone leaves the physics unchanged and why a gap can open when "
+"the crystal period actually changes."
+
+#: ../../solid/periodic_boundary.rst:11
+msgid ""
+"**前提知識**: :ref:`ブロッホの定理と周期境界条件<blochstheorem>`、:ref:`第1ブリルアンゾーン<first-"
+"brillouin-zone>`、 :ref:`超胞<lt-supercell>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Bloch’s Theorem and Periodic Boundary Conditions"
+" <blochstheorem>`, the :ref:`first Brillouin zone <first-brillouin-"
+"zone>`, and :ref:`supercells <lt-supercell>`."
+
+#: ../../solid/periodic_boundary.rst:14
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/periodic_boundary.rst:16
+msgid "超胞のブリルアンゾーンに元のバンドを折り返し、波数の数とバンドの本数の関係を示す。"
+msgstr ""
+"Use band folding to bring the original bands into the supercell Brillouin"
+" zone and show how the number of wave vectors is related to the number of"
+" bands."
+
+#: ../../solid/periodic_boundary.rst:17
+msgid "折り返されたバンドの交点でギャップが開かない理由と、周期が実際に変わるとギャップが開きうる理由を説明する。"
+msgstr ""
+"Explain why no gap opens where the folded bands intersect and why a gap "
+"can open when the period actually changes."
+
+#: ../../solid/periodic_boundary.rst:22
+msgid "1次元の超胞での折り返し"
+msgstr "Folding in a One-Dimensional Supercell"
+
+#: ../../solid/periodic_boundary.rst:24
+#, python-brace-format
+msgid ""
+"1次元で、長さ :math:`Ma` の超胞を単位にとると、並進の単位も :math:`Ma` になるので、 状態は並進 :math:`Ma` "
+"に対する位相 :math:`e^{iKMa}` で分類されるようになる。元の波数 :math:`k` の状態は、 並進 :math:`Ma` "
+"に対して位相 :math:`e^{ikMa}` だけ変わるので、超胞の波数 :math:`K` は"
+msgstr ""
+"In one dimension, taking a supercell of length :math:`Ma` as the "
+"repeating unit also makes the translation period :math:`Ma`. States are "
+"then classified by the phase factor for a translation by :math:`Ma`, "
+"namely :math:`e^{iKMa}`. For the original state with wavenumber "
+":math:`k`, translation by :math:`Ma` multiplies the state by the phase "
+"factor :math:`e^{ikMa}`, so the supercell wavenumber :math:`K` is given "
+"by"
+
+#: ../../solid/periodic_boundary.rst:28
+msgid ""
+"K\\equiv k\\pmod{\\frac{2\\pi}{Ma}},\\qquad\n"
+"k\\equiv K+\\frac{2\\pi}{Ma}\\,j\\pmod{\\frac{2\\pi}{a}}\n"
+"\\quad(j=0,1,\\ldots,M-1)"
+msgstr ""
+"K\\equiv k\\pmod{\\frac{2\\pi}{Ma}},\\qquad\n"
+"k\\equiv K+\\frac{2\\pi}{Ma}\\,j\\pmod{\\frac{2\\pi}{a}}\n"
+"\\quad(j=0,1,\\ldots,M-1)"
+
+#: ../../solid/periodic_boundary.rst:35
+msgid ""
+"で与えられる。超胞のBZ :math:`-\\pi/(Ma)<K\\le\\pi/(Ma)` は元のBZの :math:`1/M` の幅となる。 "
+"元の1本のバンド :math:`\\varepsilon(k)` は、 超胞のBZでは "
+":math:`\\varepsilon_j(K)=\\varepsilon(K+2\\pi j/(Ma))` の :math:`M` "
+"本のバンドとして 現れる。これを\\ **バンドの折り返し**\\ （フォールディング）という。"
+msgstr ""
+"The supercell BZ :math:`-\\pi/(Ma)<K\\le\\pi/(Ma)` is :math:`1/M` as wide"
+" as the original BZ. In the supercell BZ, a single original band "
+":math:`\\varepsilon(k)` gives the folded dispersions "
+":math:`\\varepsilon_j(K)=\\varepsilon(K+2\\pi j/(Ma))`, for a total of "
+":math:`M` bands. This is called\\  **band folding**\\ ."
+
+#: ../../solid/periodic_boundary.rst:40
+msgid ""
+":math:`N` が :math:`M` の倍数なら、:math:`N` 個の単位胞は :math:`N/M` 個の超胞にまとめられる。 式 "
+":eq:`pbc-allowed` から 許される :math:`K` は :math:`N/M` 個である。 :math:`N=12` の結晶を"
+" :math:`2a`\\ 、 :math:`3a` の "
+"セルで記述すると、波数は12個から6個、4個に減り、そのかわりに各波数のバンドが2本、3本に増える （:numref:`fig-pbc-"
+"folding`\\ ）。状態の総数（波数の数 × バンドの本数）は12のままである。"
+msgstr ""
+"If :math:`N` is a multiple of :math:`M`, the :math:`N` unit cells can be "
+"grouped into :math:`N/M` supercells. In Equation :eq:`pbc-allowed`, the "
+"number of allowed values of :math:`K` is :math:`N/M`. Describing a "
+"crystal with :math:`N=12` using cells of lengths :math:`2a`\\  and "
+":math:`3a` reduces the number of wavenumbers from 12 to 6 and 4, "
+"respectively, but increases the number of bands per wavenumber to two and"
+" three, respectively (see :numref:`fig-pbc-folding`\\ ). The total number"
+" of states (number of wavenumbers × number of bands) remains 12."
+
+#: ../../solid/periodic_boundary.rst:50
+msgid ""
+":math:`N=12` の1次元の結晶の状態（青い点）を、単位胞 :math:`a` （左）、 :math:`2a` の 超胞（中）、 "
+":math:`3a` の超胞（右）で記述したもの。灰色の曲線は模型の バンド :math:`-\\cos ka` "
+"と、それをセルのBZに折り返したもの。点の数はどれも12個で、BZの境界や "
+"バンドの交点で重なった点は2つの状態を表す。横軸の幅は、それぞれのセルのBZの幅に比例させた。"
+msgstr ""
+"The blue dots mark the states of a one-dimensional crystal with "
+":math:`N=12`, described using a unit cell of length :math:`a` on the "
+"left, a supercell of length :math:`2a` in the middle, and a supercell of "
+"length :math:`3a` on the right. The gray curves show the model band "
+":math:`-\\cos ka` and the result of folding it into the BZ of each cell. "
+"Each plot has 12 dots in total, counting overlapping dots at BZ "
+"boundaries or band intersections as two states. The horizontal axis width"
+" is proportional to the BZ width of each cell."
+
+#: ../../solid/periodic_boundary.rst:58
+msgid "|three-dimensional-folding|"
+msgstr "Folding in a Three-Dimensional Supercell"
+
+#: ../../solid/periodic_boundary.rst:60
+#, python-brace-format
+msgid ""
+"3次元では、\\ :ref:`超胞の格子行列<lt-supercell>`\\ を整数行列 :math:`M` を用いて "
+":math:`A_\\mathrm{sup}=AM` と書くことができる。 超胞の体積は :math:`|\\det M|` 倍に、BZの体積は "
+":math:`1/|\\det M|` 倍になり、 元の波数 :math:`\\boldsymbol k` は超胞の逆格子ベクトル "
+":math:`\\boldsymbol G_\\mathrm{sup}` だけずらして小さなBZに折り返される "
+"（:math:`\\boldsymbol K=\\boldsymbol k-\\boldsymbol G_\\mathrm{sup}`\\ "
+"）。1つの :math:`\\boldsymbol K` に 元の :math:`|\\det M|` 個の波数が対応し、バンドの本数は "
+":math:`|\\det M|` 倍になる。"
+msgstr ""
+"In three dimensions, the \\ :ref:`supercell lattice matrix <lt-"
+"supercell>`\\  can be written using an integer matrix :math:`M` as "
+":math:`A_\\mathrm{sup}=AM`. The supercell volume is :math:`|\\det M|` "
+"times that of the original cell, and its BZ volume is :math:`1/|\\det M|`"
+" times that of the original BZ. An original wave vector "
+":math:`\\boldsymbol k` is folded into the smaller BZ by shifting it by a "
+"supercell reciprocal lattice vector :math:`\\boldsymbol G_\\mathrm{sup}` "
+"(:math:`\\boldsymbol K=\\boldsymbol k-\\boldsymbol G_\\mathrm{sup}`\\ ). "
+"Each :math:`\\boldsymbol K` corresponds to :math:`|\\det M|` original "
+"wave vectors, and the number of bands increases by a factor of "
+":math:`|\\det M|`."
+
+#: ../../solid/periodic_boundary.rst:70
+msgid "折り返しの意味"
+msgstr "Meaning of Folding"
+
+#: ../../solid/periodic_boundary.rst:72
+msgid ""
+"折り返しは、同じ状態をどの大きさのセルで記述するかの違いであり、それだけでは物理は何も 変わらない。 :numref:`fig-pbc-"
+"folding` の折り返されたバンドは、BZの境界や内部で交わったり 接したりするが、ギャップは開かない。元の単位胞の周期 :math:`a` "
+"があるかぎり、折り返された バンドどうしは異なる並進の性質を持ち、混ざらないからである。"
+msgstr ""
+"Folding describes the same states using a cell of a different size and by"
+" itself leaves the physics unchanged. The folded bands in :numref:`fig-"
+"pbc-folding` can cross or touch at the BZ boundary or in its interior, "
+"but no gap opens. As long as the original unit-cell period :math:`a` is "
+"present, the folded bands have different translation properties and do "
+"not mix."
+
+#: ../../solid/periodic_boundary.rst:77
+msgid ""
+"一方、原子の変位などで結晶の周期が実際に :math:`Ma` に変わると、元の並進 :math:`a` の対称性が 失われ、同じ "
+":math:`K` に折り返されたバンドどうしが混ざる。このとき、折り返されたバンドの交点で ギャップが開きうる。\\ :ref:`SSH模型"
+"<tb-ssh>`\\ では、1次元鎖の隣り合う結合の強さが交互に変わって 周期が :math:`2a` "
+"になると、:math:`K=\\pm\\pi/(2a)` でギャップが開く。周期を変える変位が小さいときには、超胞の "
+"バンドが元のバンドを折り返した形にどれだけ近いかを調べることで、変化の効果を読み取れる。"
+msgstr ""
+"If, on the other hand, the crystal period truly changes to :math:`Ma` "
+"because of atomic displacements or another change, the original "
+"translation symmetry by :math:`a` is lost, and bands folded onto the same"
+" :math:`K` mix. A gap can then open at the intersection of the folded "
+"bands. In the \\ :ref:`SSH model <tb-ssh>`\\ , alternating strengths of "
+"successive bonds in a one-dimensional chain give a period of :math:`2a`, "
+"and a gap opens at :math:`K=\\pm\\pi/(2a)`. When the displacement that "
+"changes the period is small, its effect can be read from how closely the "
+"supercell bands match the original bands after folding."
+
+#: ../../solid/periodic_boundary.rst:83
+msgid ""
+"計算の上では、超胞のバンドの本数が増えるかわりに、BZが小さくなるので、同じ細かさで BZ積分を行うのに必要な\\ "
+":ref:`k点メッシュの分割数<kpoint-meshes>`\\ が減る。"
+msgstr ""
+"In calculations, a supercell increases the number of bands, but it also "
+"reduces the BZ. As a result, BZ integration at the same resolution "
+"requires fewer \\ :ref:`subdivisions of the k-point mesh <kpoint-"
+"meshes>`\\ ."
+
+#: ../../solid/periodic_boundary.rst:89
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/periodic_boundary.rst:91
+msgid ":ref:`blochstheorem`"
+msgstr ":ref:`Bloch’s Theorem and Periodic Boundary Conditions <blochstheorem>`"
+
+#: ../../solid/periodic_boundary.rst:92
+msgid ":ref:`brillouinzone`"
+msgstr ":ref:`Brillouin Zone <brillouinzone>`"
+
+#: ../../solid/periodic_boundary.rst:93
+msgid ":ref:`lt-cell-transform`"
+msgstr ":ref:`Changing the Unit Cell for FCC <lt-cell-transform>`"
+
+#: ../../solid/periodic_boundary.rst:94
+msgid ":ref:`tightbinding`"
+msgstr ":ref:`Tight-Binding Approximation <tightbinding>`"
+
+#: ../../solid/periodic_boundary.rst:95
+msgid ":ref:`kpoint_sampling`"
+msgstr ":ref:`k-Point Meshes and Integration Error <kpoint_sampling>`"
+
+#: ../../solid/periodic_boundary.rst:100
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/periodic_boundary.rst:102
+msgid ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 8."
+msgstr ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 8."
+

@@ -1,0 +1,346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/structure_factor.rst:4
+msgid "構造因子と反射条件"
+msgstr "Structure Factor and Reflection Conditions"
+
+#: ../../solid/structure_factor.rst:6
+msgid ""
+"回折では、単位胞内の原子からの散乱波を位相込みで足す。単位胞内のどの位置に どの原子を置くかで、同じ格子でも反射の強度が変わる。ここでは "
+":ref:`分率座標<coordinates>`\\ と\\ :ref:`逆格子<reciprocal-lattice>`\\ "
+"を使って散乱波の和を表し、 :ref:`中心並進<centring-translation>`\\ から "
+"F中心・I中心の反射条件を導く。この条件は、\\ :ref:`中心並進のある胞の逆格子<centred-reciprocal-"
+"lattice>`\\ で 逆格子ベクトルになる指数の条件と一致する。"
+msgstr ""
+"In diffraction, we sum the scattered waves from the atoms in a unit cell,"
+" accounting for their phases. Even for the same lattice, the reflection "
+"intensities change with the species and positions of the atoms within the"
+" unit cell. We express the sum of the scattered waves using "
+":ref:`fractional coordinates <coordinates>`\\  and the \\ "
+":ref:`reciprocal lattice <reciprocal-lattice>`\\ , and derive the "
+"reflection conditions for F and I centering from the :ref:`centering "
+"translations <centring-translation>`\\ . These are the same conditions "
+"that determine which indices give reciprocal lattice vectors in the \\ "
+":ref:`reciprocal lattice of a cell with centering translations <centred-"
+"reciprocal-lattice>`\\ ."
+
+#: ../../solid/structure_factor.rst:13
+msgid ""
+"**前提知識**: :ref:`分率座標<coordinates>`、:ref:`逆格子<reciprocal-"
+"lattice>`、:ref:`中心並進<centring-translation>`、 :ref:`中心並進のある胞の逆格子<centred-"
+"reciprocal-lattice>`、:ref:`指数の共通因子<index-common-factor>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Fractional coordinates <coordinates>`, the "
+":ref:`reciprocal lattice <reciprocal-lattice>`, :ref:`centering "
+"translations <centring-translation>`, the :ref:`reciprocal lattice of a "
+"cell with centering translations <centred-reciprocal-lattice>`, and "
+":ref:`common factors in the indices <index-common-factor>`."
+
+#: ../../solid/structure_factor.rst:16
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/structure_factor.rst:18
+msgid "単位胞内の原子からの散乱波を位相込みで足し、構造因子を定義する。"
+msgstr ""
+"Sum the scattered waves from the atoms within a unit cell, accounting for"
+" their phases, and define the structure factor."
+
+#: ../../solid/structure_factor.rst:19
+msgid "中心並進で移り合う原子の散乱波が打ち消し合う条件から、F中心とI中心の反射条件を導く。"
+msgstr ""
+"Derive the reflection conditions for F and I centering from the "
+"conditions under which scattered waves from atoms related by centering "
+"translations cancel."
+
+#: ../../solid/structure_factor.rst:20
+msgid "反射条件が、中心並進のある胞で逆格子ベクトルになる指数の条件と一致することを確かめる。"
+msgstr ""
+"Verify that the reflection conditions match the conditions for indices to"
+" give reciprocal lattice vectors in cells with centering translations."
+
+#: ../../solid/structure_factor.rst:25
+msgid "原子ごとの散乱波と構造因子"
+msgstr "Scattered Waves from Individual Atoms and the Structure Factor"
+
+#: ../../solid/structure_factor.rst:27
+#, python-brace-format
+msgid ""
+"単位胞の格子行列を :math:`A`、その辺の双対行列を :math:`B=2\\pi A^{-\\mathsf T}` "
+"とする。:math:`A` が基本単位胞なら :math:`B` "
+"は逆格子の基本並進ベクトルの組である。中心並進のある慣用単位胞では、:math:`B` の整数結合のうち一部だけが逆格子ベクトルになる（\\ "
+":ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`）。 反射指数 "
+":math:`\\boldsymbol h=(h,k,l)^{\\mathsf T}`\\ （\\ :ref:`共通因子で約分しない<index-"
+"common-factor>`）の散乱ベクトルを :math:`\\boldsymbol g=B\\boldsymbol h` とし、原子 "
+":math:`j` の分率座標を :math:`\\boldsymbol s_j` とする。原点と比べた散乱波の位相は "
+":math:`\\boldsymbol g\\cdot A\\boldsymbol s_j=2\\pi\\boldsymbol "
+"h^{\\mathsf T}\\boldsymbol s_j` だけずれる。この位相で各原子の散乱因子 "
+":math:`f_j(\\boldsymbol g)` を足すと、 単位胞の **構造因子** が得られる。"
+msgstr ""
+"Let :math:`A` be the lattice matrix of the cell and :math:`B=2\\pi "
+"A^{-\\mathsf T}` the matrix dual to its edges. If :math:`A` describes a "
+"primitive cell, the columns of :math:`B` are the primitive translation "
+"vectors of the reciprocal lattice. For a conventional cell with centering"
+" translations, only some integer combinations of the columns of :math:`B`"
+" are reciprocal lattice vectors (see the \\ :ref:`reciprocal lattice of a"
+" cell with centering translations <centred-reciprocal-lattice>`). For "
+"reflection indices :math:`\\boldsymbol h=(h,k,l)^{\\mathsf T}`\\  (see "
+"why \\ :ref:`the indices are kept without reducing any common factor "
+"<index-common-factor>`), let the scattering vector be :math:`\\boldsymbol"
+" g=B\\boldsymbol h`. Let atom :math:`j` have fractional coordinates "
+":math:`\\boldsymbol s_j`. Relative to the origin, the scattered wave has "
+"a phase shift of :math:`\\boldsymbol g\\cdot A\\boldsymbol "
+"s_j=2\\pi\\boldsymbol h^{\\mathsf T}\\boldsymbol s_j`. Weighting each "
+"atomic scattering factor :math:`f_j(\\boldsymbol g)` by its phase factor "
+"and summing gives the **structure factor** of the unit cell:"
+
+#: ../../solid/structure_factor.rst:35
+#, python-brace-format
+msgid ""
+"F_{hkl}=\\sum_j f_j(\\boldsymbol g)\n"
+"\\exp\\!\\left(2\\pi i\\,\\boldsymbol h^{\\mathsf T}\\boldsymbol "
+"s_j\\right)"
+msgstr ""
+"F_{hkl}=\\sum_j f_j(\\boldsymbol g)\n"
+"\\exp\\!\\left(2\\pi i\\,\\boldsymbol h^{\\mathsf T}\\boldsymbol "
+"s_j\\right)"
+
+#: ../../solid/structure_factor.rst:41
+#, python-brace-format
+msgid ""
+"和は選んだ単位胞内の原子について取る。単一散乱の近似では、反射の強度は 幾何学的な補正などを除いて :math:`|F_{hkl}|^2` "
+"に比例する。例えば、散乱因子が 等しい二つの原子からの波の位相が :math:`\\pi` だけずれると、振幅の和はゼロになる。"
+msgstr ""
+"The sum runs over the atoms in the chosen unit cell. In the single-"
+"scattering approximation, the reflection intensity is proportional to "
+":math:`|F_{hkl}|^2`, apart from corrections such as geometric factors. "
+"For example, two atoms with equal scattering factors give zero total "
+"amplitude if their scattered waves differ in phase by :math:`\\pi`."
+
+#: ../../solid/structure_factor.rst:45
+msgid ""
+":numref:`fig-structure-factor-phase-sum`\\ では、二つの散乱振幅を矢印として足し、 "
+"同じ大きさでも位相によって和が変わることを示す。F中心の四つの位相因子についても、 :numref:`fig-f-centering-phase-"
+"sum` で同じ考え方を使う。"
+msgstr ""
+"In :numref:`fig-structure-factor-phase-sum`\\ , we add the two scattering"
+" amplitudes as arrows. The sum depends on their phases even when the "
+"amplitudes have equal magnitudes. We use the same approach for the four "
+"phase factors for F centering in :numref:`fig-f-centering-phase-sum`."
+
+#: ../../solid/structure_factor.rst:49
+msgid "同じ振幅の矢印を同じ向きに足すと2f、逆向きに足すと始点に戻ってゼロになる。"
+msgstr ""
+"Two arrows of equal magnitude add to 2f when they point in the same "
+"direction and return to the starting point for a sum of zero when they "
+"point in opposite directions."
+
+#: ../../solid/structure_factor.rst:55
+msgid ""
+"二つの矢印は散乱振幅の大きさと位相を表し、見分けやすいよう縦にずらしている。 黒丸は和の終点を示す。右では位相差が :math:`\\pi` "
+"なので、二つ目の矢印が左を向く。"
+msgstr ""
+"The two arrows represent the magnitudes and phases of the scattering "
+"amplitudes. They are offset vertically so that they can be distinguished."
+" The black dot marks the endpoint of the sum. In the right panel, the "
+"phase difference is :math:`\\pi`, so the second arrow points left."
+
+#: ../../solid/structure_factor.rst:61
+msgid "中心並進による打ち消し"
+msgstr "Cancellation by Centering Translations"
+
+#: ../../solid/structure_factor.rst:63
+#, python-brace-format
+msgid ""
+"中心並進がある慣用単位胞では、同じ単位構造が複数の格子点に置かれている。 原点を含めた中心並進の分率座標の集合を :math:`T` "
+"とする。単位構造内の原子の 座標 :math:`\\boldsymbol s_j` に :math:`\\boldsymbol t\\in T` "
+"を足すたびに、 :eq:`structure-factor-sum` の各項に同じ位相因子が掛かる。そこで和を 中心並進の因子 "
+":math:`S_T` と単位構造の因子 :math:`F^{\\rm motif}_{hkl}` に分けられる。"
+msgstr ""
+"In a conventional cell with centering translations, the same motif is "
+"placed at multiple lattice points. Let :math:`T` be the set of centering "
+"translations in fractional coordinates, including the origin. For an atom"
+" at fractional coordinates :math:`\\boldsymbol s_j` in the motif, adding "
+"a centering translation :math:`\\boldsymbol t\\in T` multiplies each term"
+" in Equation :eq:`structure-factor-sum` by the same phase factor. The sum"
+" thus factors into a centering term :math:`S_T` and a motif term "
+":math:`F^{\\rm motif}_{hkl}`:"
+
+#: ../../solid/structure_factor.rst:69
+msgid ""
+"F_{hkl}=S_T(hkl)F^{\\rm motif}_{hkl},\\qquad\n"
+"S_T(hkl)=\\sum_{\\boldsymbol t\\in T}\n"
+"e^{2\\pi i\\,\\boldsymbol h^{\\mathsf T}\\boldsymbol t}"
+msgstr ""
+"F_{hkl}=S_T(hkl)F^{\\rm motif}_{hkl},\\qquad\n"
+"S_T(hkl)=\\sum_{\\boldsymbol t\\in T}\n"
+"e^{2\\pi i\\,\\boldsymbol h^{\\mathsf T}\\boldsymbol t}"
+
+#: ../../solid/structure_factor.rst:76
+msgid ""
+"中心並進どうしを足すと、整数の差を除いてまた :math:`T` の要素になる。そのため、ある :math:`\\boldsymbol "
+"t_0\\in T` を各 :math:`\\boldsymbol t` に足しても :math:`T` の要素が並べ替わるだけで、 "
+":math:`S_T(hkl)\\,e^{2\\pi i\\,\\boldsymbol h^{\\mathsf T}\\boldsymbol "
+"t_0}=S_T(hkl)` が成り立つ。 :math:`\\boldsymbol h^{\\mathsf T}\\boldsymbol t_0`"
+" が整数でない :math:`\\boldsymbol t_0` が一つでもあれば 位相因子は1でないので :math:`S_T=0`、すべての "
+":math:`\\boldsymbol t` で整数なら :math:`S_T` は :math:`T` の要素数に等しい。後者は、\\ "
+":ref:`中心並進のある胞の逆格子<centred-reciprocal-lattice>`\\ の条件 :eq:`centred-"
+"reciprocal-condition` そのものである。逆格子の側から見ると、条件を満たさない指数は逆格子ベクトルに "
+"対応せず、散乱波の側から見ると、中心並進で移り合う原子の散乱波が打ち消し合う。"
+msgstr ""
+"The sum of two centering translations is again an element of :math:`T` up"
+" to integer shifts. Thus adding any :math:`\\boldsymbol t_0\\in T` to "
+"every :math:`\\boldsymbol t` simply permutes the elements of :math:`T` "
+"modulo integer shifts, giving :math:`S_T(hkl)\\,e^{2\\pi i\\,\\boldsymbol"
+" h^{\\mathsf T}\\boldsymbol t_0}=S_T(hkl)`. If :math:`\\boldsymbol "
+"h^{\\mathsf T}\\boldsymbol t_0` is noninteger for even one "
+":math:`\\boldsymbol t_0`, the phase factor differs from 1, so "
+":math:`S_T=0`. If the dot product is an integer for every "
+":math:`\\boldsymbol t`, then :math:`S_T` equals the number of elements in"
+" :math:`T`. The latter case is precisely the condition for the \\ "
+":ref:`reciprocal lattice of a cell with centering translations <centred-"
+"reciprocal-lattice>`\\  in Equation :eq:`centred-reciprocal-condition`. "
+"From the reciprocal-lattice viewpoint, indices that fail the condition do"
+" not correspond to reciprocal lattice vectors. From the scattering "
+"viewpoint, scattered waves from atoms related by centering translations "
+"cancel."
+
+#: ../../solid/structure_factor.rst:85
+#, python-brace-format
+msgid ""
+":math:`S_T=0` なら、単位構造によらず反射が消える。これを中心並進による 系統消滅と呼ぶ。:math:`S_T\\ne 0` "
+"の指数でも、:math:`F^{\\rm motif}_{hkl}` が ゼロになると反射は消える。"
+msgstr ""
+"If :math:`S_T=0`, the reflection vanishes regardless of the motif. This "
+"is a systematic absence due to centering translations. Even for indices "
+"with :math:`S_T\\ne 0`, the reflection vanishes if :math:`F^{\\rm "
+"motif}_{hkl}` is zero."
+
+#: ../../solid/structure_factor.rst:92
+msgid "F中心の反射条件"
+msgstr "F-Centering Reflection Conditions"
+
+#: ../../solid/structure_factor.rst:94
+msgid ""
+"F中心の慣用単位胞では、原点のほかに :math:`(0,1/2,1/2)`、:math:`(1/2,0,1/2)`、 "
+":math:`(1/2,1/2,0)` の中心並進がある。式 :eq:`structure-factor-centring` に代入すると、"
+msgstr ""
+"The conventional cell with F centering has the centering translations "
+":math:`(0,1/2,1/2)`, :math:`(1/2,0,1/2)`, and :math:`(1/2,1/2,0)`, in "
+"addition to the origin. Substituting them into Equation :eq:`structure-"
+"factor-centring` gives"
+
+#: ../../solid/structure_factor.rst:97
+#, python-brace-format
+msgid "S_{\\rm F}=1+(-1)^{k+l}+(-1)^{h+l}+(-1)^{h+k}"
+msgstr "S_{\\rm F}=1+(-1)^{k+l}+(-1)^{h+l}+(-1)^{h+k}"
+
+#: ../../solid/structure_factor.rst:102
+#, python-brace-format
+msgid ""
+"となる。:math:`h,k,l` がすべて偶数かすべて奇数なら4項とも正で、:math:`S_{\\rm F}=4` "
+"になる。奇数と偶数が混ざると正と負が2項ずつになり、:math:`S_{\\rm F}=0` になる。 例えば :math:`(100)` "
+"は消滅し、:math:`(200)` はF中心の反射条件を満たす。 これは条件 :eq:`centred-reciprocal-"
+"condition` をF中心の :math:`T` に当てはめた結果と同じである。"
+msgstr ""
+"If :math:`h,k,l` are all even or all odd, all four terms are positive and"
+" :math:`S_{\\rm F}=4`. When odd and even indices are mixed, two terms are"
+" positive and two are negative, so :math:`S_{\\rm F}=0`. For example, "
+":math:`(100)` is systematically absent and :math:`(200)` satisfies the "
+"reflection condition for F centering. This is the same result as applying"
+" Equation :eq:`centred-reciprocal-condition` to the F-centering set "
+":math:`T`."
+
+#: ../../solid/structure_factor.rst:107
+msgid ""
+":numref:`fig-f-centering-phase-sum`\\ では、:math:`(200)` の四つの位相因子が強め合い、 "
+":math:`(100)` では正と負の項が打ち消し合う。"
+msgstr ""
+"In :numref:`fig-f-centering-phase-sum`\\ , the four phase factors for "
+":math:`(200)` reinforce one another, whereas for :math:`(100)` the "
+"positive and negative terms cancel."
+
+#: ../../solid/structure_factor.rst:110
+msgid "上の(200)では右向きの四本の矢印を足して4になる。下の(100)では右向き二本と左向き二本を足し、0に戻る。"
+msgstr ""
+"For (200) at the top, four rightward arrows add to 4. For (100) at the "
+"bottom, two rightward arrows and two leftward arrows add back to 0."
+
+#: ../../solid/structure_factor.rst:116
+#, python-brace-format
+msgid ""
+"矢印は式 :eq:`structure-factor-f-factor` の4項を上から順に表す。右向きが :math:`+1`、左向きが "
+":math:`-1` で、点線で上下を結んで前の矢印の終点から足している。 黒丸は和 :math:`S_{\\rm F}` の値を示す。"
+msgstr ""
+"From top to bottom, the arrows represent the four terms in Equation :eq"
+":`structure-factor-f-factor`. Rightward arrows represent :math:`+1` and "
+"leftward arrows represent :math:`-1`. The dotted lines connect the rows "
+"so that each arrow is added from the tip of the previous one. The black "
+"dot marks the sum :math:`S_{\\rm F}`."
+
+#: ../../solid/structure_factor.rst:121
+msgid "I中心の反射条件"
+msgstr "I-Centering Reflection Conditions"
+
+#: ../../solid/structure_factor.rst:123
+msgid "I中心の慣用単位胞には原点と :math:`(1/2,1/2,1/2)` の二つの位置がある。 同様に和を取ると、"
+msgstr ""
+"A conventional cell with I centering has two positions: the origin and "
+":math:`(1/2,1/2,1/2)`. Summing the terms in the same way gives"
+
+#: ../../solid/structure_factor.rst:126
+#, python-brace-format
+msgid "S_{\\rm I}=1+(-1)^{h+k+l}"
+msgstr "S_{\\rm I}=1+(-1)^{h+k+l}"
+
+#: ../../solid/structure_factor.rst:130
+msgid ""
+"となる。:math:`h+k+l` が奇数なら消滅し、偶数ならI中心の反射条件を満たす。 例えば :math:`(111)` "
+"はI中心では消滅するがF中心の条件を満たし、 :math:`(110)` はI中心の条件を満たすがF中心では消滅する。 "
+"実際に観測される反射の有無や強度を解釈するときは、 :ref:`らせん・映進操作<screw-and-glide>`\\ "
+"による反射条件や、単位構造の散乱振幅も考慮する。"
+msgstr ""
+"If :math:`h+k+l` is odd, the reflection is absent. If it is even, the "
+"reflection satisfies the I-centering condition. For example, "
+":math:`(111)` is absent for I centering but satisfies the F-centering "
+"condition, whereas :math:`(110)` satisfies the I-centering condition but "
+"is absent for F centering. To interpret whether a reflection is observed "
+"and how strong it is, also consider the reflection conditions imposed by "
+":ref:`screw operations and glide operations <screw-and-glide>`\\  and the"
+" motif's scattering amplitude."
+
+#: ../../solid/structure_factor.rst:137
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/structure_factor.rst:139
+msgid "IUCr, `Structure factor <https://dictionary.iucr.org/Structure_factor>`_."
+msgstr "IUCr, `Structure factor <https://dictionary.iucr.org/Structure_factor>`_."
+
+#: ../../solid/structure_factor.rst:140
+msgid ""
+"IUCr, `Reflection conditions "
+"<https://dictionary.iucr.org/Reflection_conditions>`_."
+msgstr ""
+"IUCr, `Reflection conditions "
+"<https://dictionary.iucr.org/Reflection_conditions>`_."
+

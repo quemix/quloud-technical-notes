@@ -1,0 +1,439 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/blochstheorem.rst:5
+msgid "ブロッホの定理と周期境界条件"
+msgstr "Bloch’s Theorem and Periodic Boundary Conditions"
+
+#: ../../solid/blochstheorem.rst:7
+msgid ""
+"結晶のポテンシャルは格子と同じ周期をもつ。このとき一電子状態は、格子並進で波動関数に掛かる位相、 "
+"すなわち波数で分類できる。本稿では、単位胞を有限個並べて両端をつなぐ周期境界条件を定義し、 "
+"その上でブロッホの定理を導く。続いて、一周したときの位相の条件から許される波数を求め、独立な波数の 個数が単位胞の数に等しいことを示す。"
+msgstr ""
+"A crystal's potential has the same periodicity as its lattice. Its one-"
+"electron states can then be classified by the phase factor acquired by "
+"the wave function under lattice translation, or equivalently by the wave "
+"vector. We define periodic boundary conditions by arranging a finite "
+"number of unit cells and joining the ends, then derive Bloch's theorem "
+"under those conditions. We find the allowed wave vectors from the phase "
+"condition for going once around the system and show that the number of "
+"independent wave vectors equals the number of unit cells."
+
+#: ../../solid/blochstheorem.rst:12
+msgid ""
+"**前提知識**: :ref:`格子と基本並進ベクトル<lattice-translations>`、:ref:`逆格子<reciprocal-"
+"lattice>` （式 :eq:`ortho`）、:ref:`周期関数のフーリエ級数<periodic-fourier-"
+"series>`、量子力学の固有値問題。"
+msgstr ""
+"**Prerequisites**: :ref:`Lattices and primitive translation vectors "
+"<lattice-translations>`, the :ref:`reciprocal lattice <reciprocal-"
+"lattice>` (Equation :eq:`ortho`), :ref:`Fourier series of periodic "
+"functions <periodic-fourier-series>`, and eigenvalue problems in quantum "
+"mechanics."
+
+#: ../../solid/blochstheorem.rst:15
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/blochstheorem.rst:17
+msgid "周期境界条件のもとで、ハミルトニアンと格子並進の共通固有状態からブロッホの定理を導く。"
+msgstr ""
+"Derive Bloch's theorem from the common eigenstates of the Hamiltonian and"
+" lattice translations under periodic boundary conditions."
+
+#: ../../solid/blochstheorem.rst:18
+msgid "波動関数を、平面波と格子と同じ周期の関数の積で表す。"
+msgstr ""
+"Express the wave function as a product of a plane wave and a function "
+"with the same periodicity as the lattice."
+
+#: ../../solid/blochstheorem.rst:19
+msgid "一周したときの位相の条件から許される波数を求め、独立な波数の個数が単位胞の数に等しいことを示す。"
+msgstr ""
+"Find the allowed wave vectors from the phase condition for going once "
+"around the system, and show that the number of independent wave vectors "
+"equals the number of unit cells."
+
+#: ../../solid/blochstheorem.rst:24
+msgid "周期ポテンシャルと格子並進"
+msgstr "Periodic Potential and Lattice Translations"
+
+#: ../../solid/blochstheorem.rst:26
+msgid ""
+"格子ベクトル :math:`\\boldsymbol R` は、:ref:`基本並進ベクトル<lattice-translations>` "
+":math:`\\boldsymbol a_i` の整数結合 :math:`\\boldsymbol R=\\sum_i "
+"n_i\\boldsymbol a_i` である。 結晶中の一電子ポテンシャル :math:`V(\\boldsymbol r)` は\\ "
+":ref:`格子と同じ周期<periodic>`\\ をもち、"
+msgstr ""
+"A lattice vector :math:`\\boldsymbol R` is an integer combination of the "
+":ref:`primitive translation vectors <lattice-translations>` "
+":math:`\\boldsymbol a_i`, given by :math:`\\boldsymbol R=\\sum_i "
+"n_i\\boldsymbol a_i`. The one-electron potential :math:`V(\\boldsymbol "
+"r)` in the crystal has the \\ :ref:`same periodicity as the lattice "
+"<periodic>`\\  and satisfies"
+
+#: ../../solid/blochstheorem.rst:30
+msgid "V(\\boldsymbol r+\\boldsymbol R)=V(\\boldsymbol r)"
+msgstr "V(\\boldsymbol r+\\boldsymbol R)=V(\\boldsymbol r)"
+
+#: ../../solid/blochstheorem.rst:35
+msgid ""
+"が成り立つ。一電子状態の波動関数を :math:`\\psi`、そのエネルギーを :math:`E` とする。 一電子ハミルトニアン "
+":math:`H` に対するシュレーディンガー方程式は"
+msgstr ""
+"Let :math:`\\psi` be the wave function of a one-electron state and "
+":math:`E` its energy. The Schrödinger equation for the one-electron "
+"Hamiltonian :math:`H` is"
+
+#: ../../solid/blochstheorem.rst:38
+msgid "H\\psi(\\boldsymbol r)=E\\psi(\\boldsymbol r)"
+msgstr "H\\psi(\\boldsymbol r)=E\\psi(\\boldsymbol r)"
+
+#: ../../solid/blochstheorem.rst:43
+msgid "である。電子の質量を :math:`m`、換算プランク定数を :math:`\\hbar` とすると、"
+msgstr ""
+"With electron mass :math:`m` and reduced Planck constant :math:`\\hbar`, "
+"the Hamiltonian is"
+
+#: ../../solid/blochstheorem.rst:45
+#, python-brace-format
+msgid "H=-\\frac{\\hbar^2}{2m}\\nabla^2+V(\\boldsymbol r)"
+msgstr "H=-\\frac{\\hbar^2}{2m}\\nabla^2+V(\\boldsymbol r)"
+
+#: ../../solid/blochstheorem.rst:50
+#, python-brace-format
+msgid ""
+"である。格子並進の演算子 :math:`T_{\\boldsymbol R}` を :math:`(T_{\\boldsymbol "
+"R}\\psi)(\\boldsymbol r)=\\psi(\\boldsymbol r+\\boldsymbol R)` と定義する。"
+msgstr ""
+"Define the lattice translation operator :math:`T_{\\boldsymbol R}` by "
+":math:`(T_{\\boldsymbol R}\\psi)(\\boldsymbol r)=\\psi(\\boldsymbol "
+"r+\\boldsymbol R)`."
+
+#: ../../solid/blochstheorem.rst:56
+msgid "周期境界条件"
+msgstr "Periodic Boundary Conditions"
+
+#: ../../solid/blochstheorem.rst:58
+msgid ""
+"巨視的な結晶を、表面の影響を除いて扱うために、:ref:`基本並進ベクトル<lattice-translations>` "
+":math:`\\boldsymbol a_i` の方向に単位胞を :math:`N_i` 個並べ、各方向の両端をつないで"
+msgstr ""
+"To model a macroscopic crystal without surface effects, take the "
+"directions of the :ref:`primitive translation vectors <lattice-"
+"translations>` :math:`\\boldsymbol a_i`. Arrange :math:`N_i` unit cells "
+"along each direction and join the two ends by imposing"
+
+#: ../../solid/blochstheorem.rst:61
+msgid ""
+"\\psi(\\boldsymbol r+N_i\\boldsymbol a_i)=\\psi(\\boldsymbol "
+"r)\\qquad(i=1,2,3)"
+msgstr ""
+"\\psi(\\boldsymbol r+N_i\\boldsymbol a_i)=\\psi(\\boldsymbol "
+"r)\\qquad(i=1,2,3)"
+
+#: ../../solid/blochstheorem.rst:66
+msgid ""
+"を課す。これをBorn–von Kármánの\\ **周期境界条件**\\ と呼ぶ。結晶は :math:`N=N_1N_2N_3` "
+"個の単位胞からなる、端の無い輪のような系になる。"
+msgstr ""
+"These are the Born–von Kármán\\  **periodic boundary conditions**\\ . The"
+" crystal then comprises :math:`N=N_1N_2N_3` unit cells in a loop-like "
+"system with no ends."
+
+#: ../../solid/blochstheorem.rst:69
+#, python-brace-format
+msgid ""
+"この条件を満たす波動関数に格子並進を施しても、条件はそのまま満たされる。運動エネルギーの微分演算子は 並進で変わらず、ポテンシャルには式 "
+":eq:`V(r+R)` の周期性があるので、:math:`H` と :math:`T_{\\boldsymbol R}` は "
+"可換である。格子並進どうしも可換なので、エネルギーと格子並進の共通固有状態を選べる。 "
+"エネルギーが縮退していれば、同じエネルギーをもつ状態の線形結合から共通固有状態を選ぶ。"
+msgstr ""
+"Translating a wave function by a lattice vector preserves the periodic "
+"boundary conditions if the wave function already satisfies them. The "
+"kinetic-energy differential operator is invariant under translation, and "
+"the potential has the periodicity of Equation :eq:`V(r+R)`, so :math:`H` "
+"and :math:`T_{\\boldsymbol R}` commute. Lattice translations also commute"
+" with one another, so common eigenstates of energy and lattice "
+"translations can be chosen. If the energy is degenerate, choose common "
+"eigenstates from linear combinations of states with the same energy."
+
+#: ../../solid/blochstheorem.rst:77
+msgid "ブロッホの定理"
+msgstr "Bloch’s Theorem"
+
+#: ../../solid/blochstheorem.rst:79
+#, python-brace-format
+msgid ""
+"共通固有状態に格子並進を施すと、波動関数に位相因子が掛かる。並進は周期境界のもとで 波動関数のノルムを保つため、固有値 "
+":math:`\\lambda(\\boldsymbol R)` の絶対値は1である。 :math:`T_{\\boldsymbol "
+"R+\\boldsymbol R'}=T_{\\boldsymbol R}T_{\\boldsymbol R'}` なので、 "
+":math:`\\lambda(\\boldsymbol R+\\boldsymbol R')=\\lambda(\\boldsymbol "
+"R)\\lambda(\\boldsymbol R')` が成り立つ。"
+msgstr ""
+"Lattice translation multiplies the wave function of a common eigenstate "
+"by a phase factor. Under periodic boundary conditions, translation "
+"preserves the norm of the wave function, so the eigenvalue "
+":math:`\\lambda(\\boldsymbol R)` has magnitude 1. Since "
+":math:`T_{\\boldsymbol R+\\boldsymbol R'}=T_{\\boldsymbol "
+"R}T_{\\boldsymbol R'}`, it follows that :math:`\\lambda(\\boldsymbol "
+"R+\\boldsymbol R')=\\lambda(\\boldsymbol R)\\lambda(\\boldsymbol R')`."
+
+#: ../../solid/blochstheorem.rst:86
+#, python-brace-format
+msgid ""
+"基本並進の固有値を :math:`\\lambda(\\boldsymbol a_i)=e^{i\\theta_i}` と書き、3方向の位相を "
+"**波数ベクトル** :math:`\\boldsymbol k=\\sum_i(\\theta_i/2\\pi)\\boldsymbol "
+"b_i` にまとめる。 実格子と逆格子の関係 :math:`\\boldsymbol a_i\\cdot\\boldsymbol "
+"b_j=2\\pi\\delta_{ij}` （式 :eq:`ortho`）から、:math:`\\boldsymbol "
+"k\\cdot\\boldsymbol R=\\sum_i n_i\\theta_i` となる。 固有値の積の規則とこの内積から "
+":math:`\\lambda(\\boldsymbol R)=e^{i\\boldsymbol k\\cdot\\boldsymbol R}` "
+"となり、 任意の格子ベクトル :math:`\\boldsymbol R` に対して"
+msgstr ""
+"Write the eigenvalues of the primitive translations as "
+":math:`\\lambda(\\boldsymbol a_i)=e^{i\\theta_i}` and collect the phases "
+"in the three directions into the **wave vector** :math:`\\boldsymbol "
+"k=\\sum_i(\\theta_i/2\\pi)\\boldsymbol b_i`. The relation between the "
+"direct and reciprocal lattices, :math:`\\boldsymbol a_i\\cdot\\boldsymbol"
+" b_j=2\\pi\\delta_{ij}` (Equation :eq:`ortho`), gives :math:`\\boldsymbol"
+" k\\cdot\\boldsymbol R=\\sum_i n_i\\theta_i`. The product rule for the "
+"eigenvalues and this dot product give :math:`\\lambda(\\boldsymbol "
+"R)=e^{i\\boldsymbol k\\cdot\\boldsymbol R}`, so for any lattice vector "
+":math:`\\boldsymbol R`,"
+
+#: ../../solid/blochstheorem.rst:93
+#, python-brace-format
+msgid ""
+"\\psi_{\\boldsymbol k}(\\boldsymbol r+\\boldsymbol R)\n"
+"=e^{i\\boldsymbol k\\cdot\\boldsymbol R}\\psi_{\\boldsymbol "
+"k}(\\boldsymbol r)"
+msgstr ""
+"\\psi_{\\boldsymbol k}(\\boldsymbol r+\\boldsymbol R)\n"
+"=e^{i\\boldsymbol k\\cdot\\boldsymbol R}\\psi_{\\boldsymbol "
+"k}(\\boldsymbol r)"
+
+#: ../../solid/blochstheorem.rst:99
+msgid "が成り立つ。これがブロッホの定理である。式 :eq:`Bloch` から位相因子をくくり出すと、 波動関数は平面波と格子と同じ周期をもつ関数の積"
+msgstr ""
+"This is Bloch's theorem. Factoring out the phase factor in Equation "
+":eq:`Bloch` exposes the lattice periodicity of the remaining factor."
+
+#: ../../solid/blochstheorem.rst:102
+#, python-brace-format
+msgid ""
+"\\psi_{\\boldsymbol k}(\\boldsymbol r)\n"
+"=e^{i\\boldsymbol k\\cdot\\boldsymbol r}u_{\\boldsymbol k}(\\boldsymbol "
+"r),\\qquad\n"
+"u_{\\boldsymbol k}(\\boldsymbol r+\\boldsymbol R)=u_{\\boldsymbol "
+"k}(\\boldsymbol r)"
+msgstr ""
+"\\psi_{\\boldsymbol k}(\\boldsymbol r)\n"
+"=e^{i\\boldsymbol k\\cdot\\boldsymbol r}u_{\\boldsymbol k}(\\boldsymbol "
+"r),\\qquad\n"
+"u_{\\boldsymbol k}(\\boldsymbol r+\\boldsymbol R)=u_{\\boldsymbol "
+"k}(\\boldsymbol r)"
+
+#: ../../solid/blochstheorem.rst:109
+msgid "として表せる。"
+msgstr ""
+"The equation thus expresses the wave function as the product of a plane "
+"wave and a function with the same periodicity as the lattice."
+
+#: ../../solid/blochstheorem.rst:111
+msgid ""
+":numref:`fig-bloch-phase-translation`\\ の上段では、隣の単位胞の同じ胞内位置へ移るたびに "
+"位相が同じ角度だけ進む。下段では、実部が胞ごとに異なる形をとる一方、周期関数 :math:`u_k(x)` "
+"と波動関数の大きさは胞ごとに同じ形を繰り返す。"
+msgstr ""
+"In the upper panels of :numref:`fig-bloch-phase-translation`\\ , each "
+"step to the same position in the neighboring unit cell advances the phase"
+" by the same angle. In the lower panel, the real part takes a different "
+"shape in each cell, but the periodic function :math:`u_k(x)` and the "
+"magnitude of the wave function repeat from cell to cell."
+
+#: ../../solid/blochstheorem.rst:115
+msgid "上段の複素振幅は右の胞へ移るごとに長さを保ってπ/3ずつ回転する。下段では周期関数と波動関数の大きさを重ねた破線が各胞で繰り返し、波動関数の実部を描いた実線は位相とともに変化する。"
+msgstr ""
+"In the upper panels, the complex amplitude rotates by π/3 at each step to"
+" the cell on the right, preserving its length. In the lower panel, the "
+"dashed curve, where the periodic function and the magnitude of the wave "
+"function coincide, repeats in each cell, whereas the solid curve for the "
+"real part of the wave function changes with the phase."
+
+#: ../../solid/blochstheorem.rst:121
+msgid ""
+":math:`ka=\\pi/3`、 :math:`u_k(x)=1+0.3\\cos[2\\pi(x-x_0)/a]` とした一次元の例。 "
+"上段の矢印は :math:`\\psi_k(x_0+na)/\\psi_k(x_0)` を複素平面上に表し、破線は一つ前の胞での "
+"向きを示す。下段の縦の点線は胞の境界、丸は上段で位相を比べた位置である。 この例の :math:`u_k` は実数かつ正なので、下段では "
+":math:`|\\psi_k|` と同じ破線に重なる。"
+msgstr ""
+"A one-dimensional example with :math:`ka=\\pi/3` and "
+":math:`u_k(x)=1+0.3\\cos[2\\pi(x-x_0)/a]`. The arrows in the upper panels"
+" show :math:`\\psi_k(x_0+na)/\\psi_k(x_0)` in the complex plane, and the "
+"dashed lines show the direction in the preceding cell. In the lower "
+"panel, the vertical dotted lines mark cell boundaries, and the dots mark "
+"the positions where the phases are compared above. In this example, "
+":math:`u_k` is real and positive, so it coincides with :math:`|\\psi_k|` "
+"on the same dashed curve in the lower panel."
+
+#: ../../solid/blochstheorem.rst:130
+msgid "許される波数とその個数"
+msgstr "Allowed Wavenumbers and Their Count"
+
+#: ../../solid/blochstheorem.rst:132
+#, python-brace-format
+msgid ""
+"周期境界条件 :eq:`pbc-condition` は、並進 :math:`N_i\\boldsymbol a_i` "
+"で波動関数が元に戻ることを求める。 式 :eq:`Bloch` から、一周したときの位相因子は "
+":math:`e^{iN_i\\boldsymbol k\\cdot\\boldsymbol a_i}=1` となる。 "
+":math:`\\boldsymbol k=\\sum_j x_j\\boldsymbol b_j` "
+"と書くと、:math:`\\boldsymbol k\\cdot\\boldsymbol a_i=2\\pi x_i` なので、 各方向で "
+":math:`N_ix_i` が整数 :math:`m_i` となる波数が許される。"
+msgstr ""
+"The periodic boundary conditions in Equation :eq:`pbc-condition` require "
+"the wave function to return to itself under a translation by "
+":math:`N_i\\boldsymbol a_i`. From Equation :eq:`Bloch`, the phase factor "
+"for going once around the system is constrained by "
+":math:`e^{iN_i\\boldsymbol k\\cdot\\boldsymbol a_i}=1`. Writing "
+":math:`\\boldsymbol k=\\sum_j x_j\\boldsymbol b_j` gives "
+":math:`\\boldsymbol k\\cdot\\boldsymbol a_i=2\\pi x_i`, so the allowed "
+"wave vectors are those for which :math:`N_ix_i` is an integer :math:`m_i`"
+" in each direction:"
+
+#: ../../solid/blochstheorem.rst:137
+#, python-brace-format
+msgid ""
+"\\boldsymbol k=\\sum_{i=1}^{3}\\frac{m_i}{N_i}\\,\\boldsymbol "
+"b_i\\qquad(m_i\\ \\text{は整数})"
+msgstr ""
+"\\boldsymbol k=\\sum_{i=1}^{3}\\frac{m_i}{N_i}\\,\\boldsymbol "
+"b_i\\qquad(m_i\\ \\text{is an integer})"
+
+#: ../../solid/blochstheorem.rst:142
+#, python-brace-format
+msgid ""
+":ref:`逆格子ベクトル<reciprocal-lattice>` :math:`\\boldsymbol G` だけ異なる "
+":math:`\\boldsymbol k` と :math:`\\boldsymbol k+\\boldsymbol G` "
+"は、すべての格子ベクトルに対して同じ位相 :math:`e^{i\\boldsymbol k\\cdot\\boldsymbol R}` "
+"を与える（:math:`e^{i\\boldsymbol G\\cdot\\boldsymbol R}=1`\\ ） "
+"ので、同じ並進の性質を表す。式 :eq:`pbc-allowed` では、:math:`m_i` に :math:`N_i` を足すと波数に "
+":math:`\\boldsymbol b_i` が加わる。したがって各方向で :math:`m_i=0,1,\\ldots,N_i-1` "
+"を数えれば、独立な波数は全部で :math:`N=N_1N_2N_3` 個になる。これは単位胞の数に等しい。等価な波数の組から代表を一つずつ選ぶ "
+"領域が、次の記事の\\ :ref:`第1ブリルアンゾーン<first-brillouin-zone>`\\ である。"
+msgstr ""
+"For a :ref:`reciprocal lattice vector <reciprocal-lattice>` "
+":math:`\\boldsymbol G`, the wave vectors :math:`\\boldsymbol k` and "
+":math:`\\boldsymbol k+\\boldsymbol G` give the same phase factor "
+":math:`e^{i\\boldsymbol k\\cdot\\boldsymbol R}` for every lattice vector "
+"(:math:`e^{i\\boldsymbol G\\cdot\\boldsymbol R}=1`\\ ), so they have the "
+"same translation properties. In Equation :eq:`pbc-allowed`, increasing "
+":math:`m_i` by :math:`N_i` adds :math:`\\boldsymbol b_i` to the wave "
+"vector. Thus counting :math:`m_i=0,1,\\ldots,N_i-1` in each direction "
+"gives :math:`N=N_1N_2N_3` independent wave vectors in total. This equals "
+"the number of unit cells. The next article introduces the \\ :ref:`first "
+"Brillouin zone <first-brillouin-zone>`\\ , a region for choosing one "
+"representative from each set of equivalent wave vectors."
+
+#: ../../solid/blochstheorem.rst:151
+msgid ""
+"格子定数 :math:`a` の単位胞を :math:`N` 個並べた1次元結晶では、 :math:`k=2\\pi m/(Na)` "
+"が許される。:math:`k=0` なら単位胞間で位相は変化しない。 :math:`k=\\pi/a` は :math:`m=N/2` "
+"にあたり、:math:`N` が偶数のときに許される。 この波数では、隣の単位胞に移るたびに波動関数の符号が反転する。"
+msgstr ""
+"Consider a one-dimensional crystal whose unit cells have lattice constant"
+" :math:`a` and are arranged in a row of :math:`N` cells. The allowed "
+"wavenumbers are :math:`k=2\\pi m/(Na)`. When :math:`k=0`, the phase does "
+"not change from one cell to another. The wavenumber :math:`k=\\pi/a` "
+"corresponds to :math:`m=N/2` and is allowed when :math:`N` is even. At "
+"this wavenumber, the wave function changes sign at each step to the "
+"neighboring unit cell."
+
+#: ../../solid/blochstheorem.rst:156
+msgid ""
+":numref:`fig-pbc-allowed`\\ の左では、波数が :math:`2\\pi/a` だけ異なる二つの曲線が、 "
+"単位胞の位置では同じ値になることに注目する。曲線は位相因子の実部を表している。 右では、:math:`N` を増やすと波数の間隔 "
+":math:`2\\pi/(Na)` が狭くなる。 :math:`N\\to\\infty` の極限で、波数は "
+":math:`-\\pi/a<k\\le\\pi/a` の範囲を連続的に埋める。"
+msgstr ""
+"On the left in :numref:`fig-pbc-allowed`\\ , note that the two curves "
+"whose wavenumbers differ by :math:`2\\pi/a` have the same values at the "
+"unit cell positions. The curves show the real part of the phase factor. "
+"On the right, increasing :math:`N` narrows the wavenumber spacing "
+":math:`2\\pi/(Na)`. In the limit :math:`N\\to\\infty`, the wavenumbers "
+"fill the interval :math:`-\\pi/a<k\\le\\pi/a` continuously."
+
+#: ../../solid/blochstheorem.rst:165
+#, python-brace-format
+msgid ""
+"格子定数 :math:`a` の単位胞 :math:`N` 個を輪につないだ1次元の結晶で許される波数 :math:`k`\\ 。 左： "
+":math:`N=8` のときの、各単位胞の位置での :math:`\\cos kx` （位相因子 :math:`e^{ikx}` の実部、 "
+"青い点）と、それを結ぶ曲線（灰色）。いちばん下の行の破線は、 :math:`k=2\\pi/(8a)` に逆格子ベクトル "
+":math:`2\\pi/a` を足した波数の :math:`\\cos kx` で、単位胞の位置では実線 "
+"（:math:`k=2\\pi/(8a)`\\ ）と同じ値をとる。右： :math:`N` = 4、8、16のときに "
+":math:`-\\pi/a<k\\le\\pi/a` の範囲で許される :math:`k`\\ 。 :math:`-\\pi/a` と "
+":math:`\\pi/a` は逆格子ベクトルだけ異なる同じ点なので、 :math:`\\pi/a` だけを描いた。 "
+":math:`N\\to\\infty` では、許される :math:`k` がこの範囲全体を埋める。"
+msgstr ""
+"For a one-dimensional crystal with lattice constant :math:`a` and "
+":math:`N` unit cells joined in a ring, the figure shows the allowed "
+"wavenumbers :math:`k`\\ . In the left panel for :math:`N=8`, the blue "
+"dots show :math:`\\cos kx`, the real part of the phase factor "
+":math:`e^{ikx}`, at each unit cell position. The gray curves connect the "
+"dots. The dashed curve in the bottom row is :math:`\\cos kx` for the "
+"wavenumber :math:`k=2\\pi/(8a)` plus the reciprocal lattice vector "
+":math:`2\\pi/a`. At the unit cell positions it takes the same values as "
+"the solid curve (:math:`k=2\\pi/(8a)`\\ ). In the right panel, for "
+":math:`N` = 4, 8, and 16, the plots show the values within "
+":math:`-\\pi/a<k\\le\\pi/a` that are allowed for :math:`k`\\ . The points"
+" :math:`-\\pi/a` and :math:`\\pi/a` differ by a reciprocal lattice vector"
+" and represent the same point, so only :math:`\\pi/a` is shown. In the "
+"limit :math:`N\\to\\infty`, the allowed values of :math:`k` fill the "
+"entire interval."
+
+#: ../../solid/blochstheorem.rst:175
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/blochstheorem.rst:177
+msgid ":ref:`brillouinzone`"
+msgstr ":ref:`Brillouin Zone <brillouinzone>`"
+
+#: ../../solid/blochstheorem.rst:178
+msgid ":ref:`periodic_boundary`"
+msgstr ":ref:`Supercells and Band Folding <periodic_boundary>`"
+
+#: ../../solid/blochstheorem.rst:179
+msgid ":ref:`tightbinding`"
+msgstr ":ref:`Tight-Binding Approximation <tightbinding>`"
+
+#: ../../solid/blochstheorem.rst:184
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/blochstheorem.rst:186
+msgid ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 8."
+msgstr ""
+"N. W. Ashcroft and N. D. Mermin, *Solid State Physics* (Holt, Rinehart "
+"and Winston, 1976), Chap. 8."
+

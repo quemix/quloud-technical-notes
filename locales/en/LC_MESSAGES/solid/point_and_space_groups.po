@@ -1,0 +1,449 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 09:15+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/point_and_space_groups.rst:4
+msgid "点群と空間群"
+msgstr "Point Groups and Space Groups"
+
+#: ../../solid/point_and_space_groups.rst:6
+msgid ""
+":ref:`結晶の対称操作<crystal-symmetry-operations>`\\ を使い、空間群と点群が何を分類するかを "
+"整理する。格子と原子配置の両方を考えることで、同じ\\ :ref:`ブラベー格子型<bravais-lattice-types>`\\ "
+"の結晶で対称性の違いが 生じる理由も見えてくる。"
+msgstr ""
+"We use :ref:`crystal symmetry operations <crystal-symmetry-operations>`\\"
+"  to explain what space groups and point groups classify. Considering "
+"both the lattice and the atomic arrangement also reveals why crystals of "
+"the same \\ :ref:`Bravais lattice type <bravais-lattice-types>`\\  can "
+"have different symmetries."
+
+#: ../../solid/point_and_space_groups.rst:10
+msgid ""
+"**前提知識**: :ref:`結晶の対称操作<crystal-symmetry-operations>`、:ref:`ブラベー格子型"
+"<bravais-lattice-types>`、 :ref:`分率座標<coordinates>`、:ref:`方向指数とMiller指数"
+"<crystal-directions-planes>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Crystal symmetry operations <crystal-symmetry-"
+"operations>`, :ref:`Bravais lattice types <bravais-lattice-types>`, "
+":ref:`fractional coordinates <coordinates>`, and :ref:`direction indices "
+"and Miller indices <crystal-directions-planes>`."
+
+#: ../../solid/point_and_space_groups.rst:13
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/point_and_space_groups.rst:15
+msgid "空間群・並進部分群・点群の関係を説明し、らせん操作と映進操作が点群に何を残すかを示す。"
+msgstr ""
+"Explain the relationship between a space group, its translation subgroup,"
+" and its point group, and identify what remains of screw operations and "
+"glide operations in the point group."
+
+#: ../../solid/point_and_space_groups.rst:16
+msgid "点群の操作から、等価な方向と面の族を求める。"
+msgstr ""
+"Use point group operations to find families of equivalent directions and "
+"planes."
+
+#: ../../solid/point_and_space_groups.rst:17
+msgid "非対称単位の原子と対称操作から、単位胞内の原子座標を展開する。"
+msgstr ""
+"Generate the atomic coordinates in a unit cell from the atoms in the "
+"asymmetric unit and the symmetry operations."
+
+#: ../../solid/point_and_space_groups.rst:18
+msgid "反転対称性から、自発分極が許されるかを判定する。"
+msgstr ""
+"Use inversion symmetry to determine whether spontaneous polarization is "
+"allowed."
+
+#: ../../solid/point_and_space_groups.rst:23
+msgid "空間群と並進部分群"
+msgstr "Space Groups and Translation Subgroups"
+
+#: ../../solid/point_and_space_groups.rst:25
+msgid ""
+"ある結晶の原子配置を保つ操作をすべて集めたものが **空間群** :math:`\\mathcal G` である。 このうち線形部分が "
+":math:`I` の操作、つまり結晶を保つ純粋な並進の集まりを並進部分群 :math:`\\mathcal T` "
+"と呼ぶ。対応する並進ベクトルの集合が、その結晶の格子である。 例えばF中心の慣用単位胞を用いる場合は、胞の辺を整数倍した並進に加え、 "
+":ref:`中心並進<centring-translation>`\\ も :math:`\\mathcal T` に含まれる。 "
+"三次元の結晶の空間群は230種類に分類される。"
+msgstr ""
+"The **space group** :math:`\\mathcal G` consists of all operations that "
+"preserve the atomic arrangement of a crystal. The operations with linear "
+"part :math:`I`, namely the pure translations that preserve the crystal, "
+"form the translation subgroup :math:`\\mathcal T`. The corresponding "
+"translation vectors form the lattice of the crystal. For example, if an "
+"F-centered conventional cell is used, the :ref:`centering translations "
+"<centring-translation>`\\  are included in :math:`\\mathcal T` together "
+"with translations by integer multiples of the cell edges. The space "
+"groups of three-dimensional crystals are classified into 230 types."
+
+#: ../../solid/point_and_space_groups.rst:34
+msgid ""
+"空間群の操作には、回転に軸方向の並進が伴うらせん操作や、鏡映に面に沿った並進が 伴う映進操作もある。例えば :math:`z` "
+"軸のまわりの180度回転と :math:`c/2` の軸方向 並進を一緒に行う :math:`2_1` らせん操作は、2回繰り返すと "
+":math:`c` の純粋な並進になる。 原子の座標を展開したり回折の反射条件を調べたりするときは、この並進部分も必要になる。"
+msgstr ""
+"Space group operations also include screw operations, which combine "
+"rotation with translation along the axis, and glide operations, which "
+"combine reflection with translation along the plane. For example, "
+"combining a 180° rotation about the :math:`z` axis with an axial "
+"translation of :math:`c/2` gives a :math:`2_1` screw operation. Applying "
+"it twice gives a pure translation of :math:`c`. The translational part is"
+" needed when generating atomic coordinates or checking reflection "
+"conditions in diffraction."
+
+#: ../../solid/point_and_space_groups.rst:42
+msgid "点群と空間群の関係"
+msgstr "Relation Between Point Groups and Space Groups"
+
+#: ../../solid/point_and_space_groups.rst:44
+#, python-brace-format
+msgid ""
+"空間群の各操作 :math:`\\{Q\\mid\\boldsymbol t\\}` から線形部分 :math:`Q` を取り出すと **点群**"
+" :math:`\\mathcal P` が得られる。式 :eq:`crystal-symmetry-composition` に よれば、同じ "
+":math:`Q` を持つ二つの操作の差は純粋な格子並進である。点群の一つの "
+"操作には、格子並進の違いだけをもつ空間群の操作の組が対応する。この関係を :math:`\\mathcal G/\\mathcal "
+"T\\simeq\\mathcal P` と書く。 三次元の結晶学的な点群は32種類である。"
+msgstr ""
+"Taking each space group operation :math:`\\{Q\\mid\\boldsymbol t\\}` and "
+"extracting its linear part :math:`Q` gives the **point group** "
+":math:`\\mathcal P`. According to Equation :eq:`crystal-symmetry-"
+"composition`, two operations with the same :math:`Q` differ by a pure "
+"lattice translation. A single point group operation corresponds to a set "
+"of space group operations that differ only by lattice translations. We "
+"write this relationship as :math:`\\mathcal G/\\mathcal T\\simeq\\mathcal"
+" P`. There are 32 crystallographic point groups in three dimensions."
+
+#: ../../solid/point_and_space_groups.rst:51
+msgid ""
+"先の :math:`2_1` らせん操作の例では、点群に残るのは180度回転である。同じ点群の "
+"操作でも、空間群では純粋な回転として現れる場合と、らせん操作として現れる場合がある。 :ref:`対称操作による波数の変換<kpoint-"
+"symmetry-mapping>`\\ には線形部分を使い、 :ref:`構造因子<scattering-structure-"
+"factor>`\\ には原子の位置に応じた散乱波の位相が入る。"
+msgstr ""
+"In the preceding example of the :math:`2_1` screw operation, the point "
+"group retains the 180° rotation. The same point group operation can occur"
+" in a space group as a pure rotation or as a screw operation. The linear "
+"part is used in the :ref:`transformation of wave vectors under symmetry "
+"operations <kpoint-symmetry-mapping>`\\ , whereas the :ref:`structure "
+"factor <scattering-structure-factor>`\\  includes the phases of the "
+"scattered waves, which depend on the atomic positions."
+
+#: ../../solid/point_and_space_groups.rst:61
+msgid "|equivalent-direction-families|"
+msgstr "Families of Equivalent Directions and Planes"
+
+#: ../../solid/point_and_space_groups.rst:63
+msgid ""
+":ref:`方向指数<crystal-direction-index>` :math:`[uvw]` は1本の方向、\\ "
+":ref:`Miller指数<lattice-planes-miller>` :math:`(hkl)` "
+"は1組の平行な格子面を指す。結晶の対称操作で互いに移り合う2つの方向に沿って見ると、原子の並びは同じである。外場や磁気秩序を含めて、測定するときの結晶の状態もその対称操作を保つなら、その方向に沿って測る物性も等しい。例えば立方晶では、:math:`z`"
+" 軸まわりの90度回転が :math:`[100]` を :math:`[010]` "
+"へ移す。このような方向や面の集まりを族と呼び、ひとまとめにした記号で書く（:numref:`lt-index-"
+"brackets`。International Tables for Crystallography, Vol. A (2006), "
+"`§1.1.4 <https://it.iucr.org/Ab/ch1o1v0001/sec1o1o4.pdf>`__）。"
+msgstr ""
+"The :ref:`direction indices <crystal-direction-index>` :math:`[uvw]` "
+"specify a single direction, and the \\ :ref:`Miller indices <lattice-"
+"planes-miller>` :math:`(hkl)` specify a set of parallel lattice planes. "
+"Viewed along two directions related by a crystal symmetry operation, the "
+"atoms have the same arrangement. The physical properties measured along "
+"those directions are also equal if the state of the crystal during "
+"measurement still preserves that operation, taking any external field or "
+"magnetic order into account. For example, in a cubic crystal, a 90° "
+"rotation about the :math:`z` axis maps :math:`[100]` to :math:`[010]`. A "
+"set of such directions or planes is called a family and is denoted by one"
+" symbol (see :numref:`lt-index-brackets` and International Tables for "
+"Crystallography, Vol. A (2006), `§1.1.4 "
+"<https://it.iucr.org/Ab/ch1o1v0001/sec1o1o4.pdf>`__)."
+
+#: ../../solid/point_and_space_groups.rst:65
+msgid "方向と面の指数の括弧"
+msgstr "Bracket notation for direction and plane indices"
+
+#: ../../solid/point_and_space_groups.rst:70
+msgid "表記"
+msgstr "Notation"
+
+#: ../../solid/point_and_space_groups.rst:71
+msgid "指すもの"
+msgstr "What it denotes"
+
+#: ../../solid/point_and_space_groups.rst:72
+msgid ":math:`[uvw]`"
+msgstr ":math:`[uvw]`"
+
+#: ../../solid/point_and_space_groups.rst:73
+msgid "1本の方向。格子ベクトル :math:`A\\boldsymbol u` の向き"
+msgstr ""
+"A single direction, given by the orientation of the lattice vector "
+":math:`A\\boldsymbol u`"
+
+#: ../../solid/point_and_space_groups.rst:74
+msgid ":math:`\\langle uvw\\rangle`"
+msgstr ":math:`\\langle uvw\\rangle`"
+
+#: ../../solid/point_and_space_groups.rst:75
+msgid ":math:`[uvw]` と対称操作で移り合う方向の集まり"
+msgstr "The set of directions related to :math:`[uvw]` by symmetry operations"
+
+#: ../../solid/point_and_space_groups.rst:76
+msgid ":math:`(hkl)`"
+msgstr ":math:`(hkl)`"
+
+#: ../../solid/point_and_space_groups.rst:77
+msgid "1組の平行な格子面。法線は逆格子ベクトル :math:`B\\boldsymbol h`"
+msgstr ""
+"A set of parallel lattice planes with reciprocal lattice vector "
+":math:`B\\boldsymbol h` as the normal"
+
+#: ../../solid/point_and_space_groups.rst:78
+#, python-brace-format
+msgid ":math:`\\{hkl\\}`"
+msgstr ":math:`\\{hkl\\}`"
+
+#: ../../solid/point_and_space_groups.rst:79
+msgid ":math:`(hkl)` と対称操作で移り合う面の集まり"
+msgstr "The set of planes related to :math:`(hkl)` by symmetry operations"
+
+#: ../../solid/point_and_space_groups.rst:81
+#, python-brace-format
+msgid ""
+"どの方向が等価かは、結晶の点群で決まる。対称操作 :math:`\\{Q\\mid\\boldsymbol t\\}` "
+"の線形部分を格子基底で表した行列を :math:`W=A^{-1}QA`\\ （:eq:`crystal-symmetry-"
+"fractional`）とする。方向と面法線は2点の差で決まるベクトルなので、並進 :math:`\\boldsymbol t` "
+"は作用しない。方向は :math:`QA\\boldsymbol u=A(W\\boldsymbol u)` に移る。:math:`Q` "
+"は直交行列なので :math:`Q=Q^{-\\mathsf T}=A^{-\\mathsf T}W^{-\\mathsf "
+"T}A^{\\mathsf T}` と書ける。これを使うと、面法線は :math:`QB\\boldsymbol h=2\\pi "
+"A^{-\\mathsf T}W^{-\\mathsf T}\\boldsymbol h=B(W^{-\\mathsf "
+"T}\\boldsymbol h)` に移る。点群 :math:`\\mathcal P` の各操作から作る :math:`W` の集合を "
+":math:`\\mathcal W` と書けば、"
+msgstr ""
+"The crystal's point group determines which directions are equivalent. For"
+" the symmetry operation :math:`\\{Q\\mid\\boldsymbol t\\}`, let "
+":math:`W=A^{-1}QA`\\  be the matrix of its linear part in the lattice "
+"basis (Equation :eq:`crystal-symmetry-fractional`). Directions and plane "
+"normals are determined by differences between two points, so the "
+"translation :math:`\\boldsymbol t` has no effect on them. The direction "
+"maps to :math:`QA\\boldsymbol u=A(W\\boldsymbol u)`. Since :math:`Q` is "
+"orthogonal, we can write :math:`Q=Q^{-\\mathsf T}=A^{-\\mathsf "
+"T}W^{-\\mathsf T}A^{\\mathsf T}`. It follows that the plane normal maps "
+"to :math:`QB\\boldsymbol h=2\\pi A^{-\\mathsf T}W^{-\\mathsf "
+"T}\\boldsymbol h=B(W^{-\\mathsf T}\\boldsymbol h)`. For each operation in"
+" the point group :math:`\\mathcal P`, form the corresponding matrix "
+":math:`W` and denote the set of these matrices by :math:`\\mathcal W`. "
+"Then"
+
+#: ../../solid/point_and_space_groups.rst:83
+msgid ""
+"\\langle uvw\\rangle=\\{\\,W\\boldsymbol u\\mid W\\in\\mathcal "
+"W\\,\\},\\qquad\n"
+"\\{hkl\\}=\\{\\,W^{-\\mathsf T}\\boldsymbol h\\mid W\\in\\mathcal W\\,\\}."
+msgstr ""
+"\\langle uvw\\rangle=\\{\\,W\\boldsymbol u\\mid W\\in\\mathcal "
+"W\\,\\},\\qquad\n"
+"\\{hkl\\}=\\{\\,W^{-\\mathsf T}\\boldsymbol h\\mid W\\in\\mathcal W\\,\\}."
+
+#: ../../solid/point_and_space_groups.rst:89
+msgid "並進が作用しないので、らせん軸や映進面は、対応する回転や鏡映と同じ族を作る。"
+msgstr ""
+"Since translations have no effect on the vectors, screw axes and glide "
+"planes yield the same families as the corresponding rotations and "
+"reflections."
+
+#: ../../solid/point_and_space_groups.rst:91
+msgid ""
+"族に含まれる方向の数は点群によって変わる。立方晶の点群 :math:`m\\bar3m`\\ "
+"（48個の操作）は、立方慣用単位胞の基底で、成分の並べ替えと符号の反転をすべて含む。このため "
+":math:`\\langle100\\rangle` は "
+":math:`\\pm[100]`、:math:`\\pm[010]`、:math:`\\pm[001]` "
+"の6方向、:math:`\\langle110\\rangle` は12方向、:math:`\\langle111\\rangle` "
+"は8方向になる。正方晶の点群 :math:`4/mmm`\\ （16個）には :math:`c` 軸を :math:`a` "
+"軸へ移す操作が無い。:math:`\\langle100\\rangle` は :math:`\\pm[100]` と "
+":math:`\\pm[010]` の4方向だけで、:math:`\\pm[001]` は別の族 "
+":math:`\\langle001\\rangle` になる。極性の点群 :math:`4mm`\\ （8個）には :math:`c` "
+"軸を反転する操作も無く、:math:`[001]` と :math:`[00\\bar1]` は等価でない。:math:`[uvw]` と "
+":math:`[\\bar u\\bar v\\bar w]` が同じ族に入るのは、反転のように :math:`\\boldsymbol u` を"
+" :math:`-\\boldsymbol u` へ移す操作が点群にあるときに限る（\\ :ref:`反転対称性と自発分極<inversion-"
+"and-polarization>`\\ ）。"
+msgstr ""
+"The number of directions in a family depends on the point group. In the "
+"basis of the cubic conventional cell, the cubic point group "
+":math:`m\\bar3m`\\  (48 operations) includes every permutation of the "
+"components and every combination of sign changes. Thus "
+":math:`\\langle100\\rangle` contains the six directions "
+":math:`\\pm[100]`, :math:`\\pm[010]`, and :math:`\\pm[001]`, "
+":math:`\\langle110\\rangle` contains 12 directions, and "
+":math:`\\langle111\\rangle` contains eight. The tetragonal point group "
+":math:`4/mmm`\\  (16 operations) has no operation that maps the :math:`c`"
+" axis to the :math:`a` axis. The family :math:`\\langle100\\rangle` "
+"contains only the four directions :math:`\\pm[100]` and "
+":math:`\\pm[010]`, and :math:`\\pm[001]` form a separate family "
+":math:`\\langle001\\rangle`. The polar point group :math:`4mm`\\  (eight "
+"operations) also has no operation that reverses the :math:`c` axis, so "
+":math:`[001]` and :math:`[00\\bar1]` are inequivalent. The directions "
+":math:`[uvw]` and :math:`[\\bar u\\bar v\\bar w]` belong to the same "
+"family only if the point group has an operation such as inversion that "
+"maps :math:`\\boldsymbol u` to :math:`-\\boldsymbol u` (see \\ "
+":ref:`inversion symmetry and spontaneous polarization <inversion-and-"
+"polarization>`\\ )."
+
+#: ../../solid/point_and_space_groups.rst:93
+#, python-brace-format
+msgid ""
+"族の要素は、数字の並べ替えと符号の反転とは限らない。立方慣用単位胞の直交基底では :math:`W` が直交行列で "
+":math:`W^{-\\mathsf T}=W` なので、:math:`\\langle uvw\\rangle` と "
+":math:`\\{uvw\\}` "
+"は同じ指数の組を並べる。六方晶の基底（:math:`\\gamma=120^\\circ`）では、:math:`c` 軸まわりの60度回転が "
+":math:`\\boldsymbol a_1` を :math:`\\boldsymbol a_1+\\boldsymbol a_2` "
+"へ移す。点群 :math:`6/mmm` の :math:`\\langle100\\rangle` は "
+":math:`\\pm[100]`、:math:`\\pm[010]`、:math:`\\pm[110]` "
+"の6方向、:math:`\\{100\\}` は "
+":math:`\\pm(100)`、:math:`\\pm(010)`、:math:`\\pm(1\\bar10)` の6組になる。"
+msgstr ""
+"The members of a family are not necessarily obtained by permuting the "
+"indices and changing their signs. In the orthogonal basis of a cubic "
+"conventional cell, :math:`W` is orthogonal and :math:`W^{-\\mathsf T}=W`,"
+" so :math:`\\langle uvw\\rangle` and :math:`\\{uvw\\}` list the same "
+"index triples. In a hexagonal basis (:math:`\\gamma=120^\\circ`), a 60° "
+"rotation about the :math:`c` axis maps :math:`\\boldsymbol a_1` to "
+":math:`\\boldsymbol a_1+\\boldsymbol a_2`. For point group :math:`6/mmm`,"
+" :math:`\\langle100\\rangle` contains six directions, :math:`\\pm[100]`, "
+":math:`\\pm[010]`, and :math:`\\pm[110]`, whereas :math:`\\{100\\}` "
+"contains six sets of planes, :math:`\\pm(100)`, :math:`\\pm(010)`, and "
+":math:`\\pm(1\\bar10)`."
+
+#: ../../solid/point_and_space_groups.rst:98
+msgid "非対称単位と原子座標の展開"
+msgstr "Asymmetric Unit and Expansion of Atomic Coordinates"
+
+#: ../../solid/point_and_space_groups.rst:100
+msgid ""
+"非対称単位は、空間群の操作で空間全体に展開できる領域である。 :ref:`CIF<lt-cif>` に対称操作と代表原子の\\ "
+":ref:`分率座標<coordinates>`\\ がある場合、式 :eq:`crystal-symmetry-fractional` "
+"を使って単位胞内の等価な原子を求められる。 単位胞の外に出た座標は、各成分が :math:`[0,1)` "
+"に入るよう整数を足し引きして戻す。例えば反転 :math:`(x,y,z)\\mapsto(-x,-y,-z)` を "
+":math:`(1/4,1/4,0)` に施すと :math:`(3/4,3/4,0)` と等価な位置が得られる。反転中心の "
+":math:`(0,0,0)` にある原子は自分自身に戻るため、1個として数える。"
+msgstr ""
+"An asymmetric unit is a region from which all of space can be generated "
+"by applying the space group operations. If a :ref:`CIF <lt-cif>` contains"
+" the symmetry operations and the \\ :ref:`fractional coordinates "
+"<coordinates>`\\  of representative atoms, Equation :eq:`crystal-"
+"symmetry-fractional` gives the equivalent atoms in the unit cell. Bring "
+"coordinates outside the unit cell back into it by adding or subtracting "
+"integers so each component lies in :math:`[0,1)`. For example, applying "
+"the inversion :math:`(x,y,z)\\mapsto(-x,-y,-z)` to :math:`(1/4,1/4,0)` "
+"gives a position equivalent to :math:`(3/4,3/4,0)`. An atom at the "
+"inversion center :math:`(0,0,0)` maps onto itself, so count it once."
+
+#: ../../solid/point_and_space_groups.rst:108
+msgid ""
+":numref:`fig-asymmetric-unit-inversion`\\ では、反転で胞外の :math:`(-1/4,-1/4,0)`"
+" に移った点を 格子並進 :math:`(1,1,0)` で胞内の :math:`(3/4,3/4,0)` へ戻す。格子並進は結晶全体の配置を "
+"保つので、胞内に戻した点も元の原子と対称性で等価である。"
+msgstr ""
+"In :numref:`fig-asymmetric-unit-inversion`\\ , inversion sends the point "
+"outside the cell to :math:`(-1/4,-1/4,0)`. The lattice translation "
+":math:`(1,1,0)` brings it back inside to :math:`(3/4,3/4,0)`. The lattice"
+" translation preserves the entire crystal arrangement, so the point "
+"brought back into the cell is symmetry-equivalent to the original atom."
+
+#: ../../solid/point_and_space_groups.rst:112
+msgid "分率座標で(1/4,1/4)の原子を反転し、胞外の(-1/4,-1/4)から(1,1)だけ並進して胞内の(3/4,3/4)を得る。"
+msgstr ""
+"The atom at fractional coordinates (1/4,1/4) maps by inversion to "
+"(-1/4,-1/4) outside the cell. Translation by (1,1) brings it to (3/4,3/4)"
+" inside the cell."
+
+#: ../../solid/point_and_space_groups.rst:118
+msgid ""
+":math:`z=0` の断面。白抜きの丸がCIFにあると仮定した代表原子、×が反転直後の位置、 "
+"塗りつぶした丸が単位胞内に折り戻した等価な原子である。ひし形は反転中心の原点を示す。"
+msgstr ""
+"A cross section at :math:`z=0`. The open circle marks the representative "
+"atom assumed to be in the CIF, the × marks its position immediately after"
+" inversion, and the filled circle marks the equivalent atom brought back "
+"into the unit cell. The diamond marks the origin, the inversion center."
+
+#: ../../solid/point_and_space_groups.rst:124
+msgid "反転対称性と自発分極"
+msgstr "Inversion Symmetry and Spontaneous Polarization"
+
+#: ../../solid/point_and_space_groups.rst:126
+msgid ""
+"ブラベー格子型は格子点の並びを分類し、空間群はそこに置いた原子配置の対称性を表す。 例えば\\ "
+":ref:`チタン酸バリウムの立方晶相<batio3-crystal-phases>`\\ では、反転で 原子配置が保たれる。\\ "
+":ref:`自発分極<spontaneous-polarization>`\\ は極性ベクトルなので、反転で符号が変わる。 反転対称な構造では "
+":math:`\\boldsymbol P` と :math:`-\\boldsymbol P` が同じ構造の分極を表す。 周期結晶の分極は\\ "
+":ref:`分極の量子<fo-polarization-quantum>`\\ の整数倍だけ不定なので、この条件は分極の量子を法として "
+":math:`\\boldsymbol P\\equiv-\\boldsymbol P` "
+"となり、分極の各成分は0か分極の量子の半分になる。どちらの場合も、 反転対称な構造は\\ :ref:`自発分極をもたない"
+"<polarization-inversion>`。自発分極は、反転対称な参照構造からの "
+"分極の変化として測られる量だからである。正方晶相では反転対称性が失われ、長軸方向の分極が許される。 "
+"実際に分極が生じるか、その大きさがいくらかは、原子変位と電子状態で決まる。"
+msgstr ""
+"Bravais lattice types classify arrangements of lattice points, whereas "
+"space groups describe the symmetry of the atomic arrangement on the "
+"lattice. For example, inversion preserves the atomic arrangement in the "
+"\\ :ref:`cubic phase of barium titanate <batio3-crystal-phases>`\\ . \\ "
+":ref:`Spontaneous polarization <spontaneous-polarization>`\\  is a polar "
+"vector, so it changes sign under inversion. In an inversion-symmetric "
+"structure, :math:`\\boldsymbol P` and :math:`-\\boldsymbol P` represent "
+"the polarization of the same structure. The polarization of a periodic "
+"crystal is defined only modulo the \\ :ref:`polarization quantum <fo-"
+"polarization-quantum>`\\ , so this condition becomes :math:`\\boldsymbol "
+"P\\equiv-\\boldsymbol P` modulo that quantum. Each component of the "
+"polarization is therefore either zero or half the quantum. In either "
+"case, an inversion-symmetric structure \\ :ref:`has no spontaneous "
+"polarization <polarization-inversion>`, because spontaneous polarization "
+"is measured as the change in polarization from an inversion-symmetric "
+"reference structure. In the tetragonal phase, inversion symmetry is lost "
+"and polarization along the long axis is allowed. Whether polarization "
+"actually occurs, and how large it is, depend on the atomic displacements "
+"and electronic states."
+
+#: ../../solid/point_and_space_groups.rst:137
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/point_and_space_groups.rst:139
+msgid "IUCr, `Space group <https://dictionary.iucr.org/Space_group>`_."
+msgstr "IUCr, `Space group <https://dictionary.iucr.org/Space_group>`_."
+
+#: ../../solid/point_and_space_groups.rst:140
+msgid "IUCr, `Point group <https://dictionary.iucr.org/Point_group>`_."
+msgstr "IUCr, `Point group <https://dictionary.iucr.org/Point_group>`_."
+
+#: ../../solid/point_and_space_groups.rst:141
+msgid ""
+"IUCr, `The structure of space groups "
+"<https://it.iucr.org/Ac/ch1o3v0001/sec1o3o3/>`_."
+msgstr ""
+"IUCr, `The structure of space groups "
+"<https://it.iucr.org/Ac/ch1o3v0001/sec1o3o3/>`_."
+
+#: ../../solid/point_and_space_groups.rst:142
+msgid "IUCr, `Asymmetric unit <https://dictionary.iucr.org/Asymmetric_unit>`_."
+msgstr "IUCr, `Asymmetric unit <https://dictionary.iucr.org/Asymmetric_unit>`_."
+

@@ -1,0 +1,255 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/symmetry_operations.rst:4
+msgid "結晶の対称操作"
+msgstr "Crystal Symmetry Operations"
+
+#: ../../solid/symmetry_operations.rst:6
+msgid ""
+"結晶に回転や並進を施したとき、同じ種類の原子が同じ位置を占める配置に戻れば、 その変換は結晶の対称操作である。ここでは\\ :ref:`格子行列"
+"<lattice-translations>` :math:`A` と\\ :ref:`分率座標<coordinates>`\\ "
+"を使い、対称操作で原子がどこへ移るかを求める。"
+msgstr ""
+"A rotation or translation of a crystal is a symmetry operation if the "
+"resulting arrangement has atoms of the same species at the same positions"
+" as before. We use the \\ :ref:`lattice matrix <lattice-translations>` "
+":math:`A` and \\ :ref:`fractional coordinates <coordinates>`\\  to "
+"determine where a symmetry operation moves each atom."
+
+#: ../../solid/symmetry_operations.rst:10
+msgid ""
+"**前提知識**: :ref:`格子行列<lattice-translations>` "
+":math:`A`、:ref:`分率座標<coordinates>`、:ref:`計量行列<lattice-metric>`、直交行列。"
+msgstr ""
+"**Prerequisites**: The :ref:`lattice matrix <lattice-translations>` "
+":math:`A`, :ref:`fractional coordinates <coordinates>`, the :ref:`metric "
+"tensor <lattice-metric>`, and orthogonal matrices."
+
+#: ../../solid/symmetry_operations.rst:12
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/symmetry_operations.rst:14
+#, python-brace-format
+msgid "回転・鏡映・反転・並進を :math:`\\{Q\\mid\\boldsymbol t\\}` で表し、操作の合成と逆操作を求める。"
+msgstr ""
+"Represent rotations, reflections, inversions, and translations as "
+":math:`\\{Q\\mid\\boldsymbol t\\}`, and find compositions and inverse "
+"operations."
+
+#: ../../solid/symmetry_operations.rst:15
+msgid "Cartesian座標の操作を分率座標の操作に書き直し、格子を保つ操作の線形部分が整数行列になることを示す。"
+msgstr ""
+"Rewrite operations from Cartesian coordinates in fractional coordinates "
+"and show that the linear part of a lattice-preserving operation is an "
+"integer matrix."
+
+#: ../../solid/symmetry_operations.rst:16
+msgid "分率座標で原子を移し、周期像まで含めて配置が重なるかで対称操作かどうかを判定する。"
+msgstr ""
+"Move the atoms in fractional coordinates and determine whether the "
+"transformation is a symmetry operation by checking if the arrangements "
+"coincide, including periodic images."
+
+#: ../../solid/symmetry_operations.rst:19
+msgid "回転・鏡映・反転・並進"
+msgstr "Rotations, Reflections, Inversions, and Translations"
+
+#: ../../solid/symmetry_operations.rst:21
+msgid ""
+"Cartesian座標では位置 :math:`\\boldsymbol r` への操作を 直交行列 :math:`Q` と並進ベクトル "
+":math:`\\boldsymbol t` の組で表す。"
+msgstr ""
+"In Cartesian coordinates, we represent an operation on a position "
+":math:`\\boldsymbol r` by pairing an orthogonal matrix :math:`Q` with a "
+"translation vector :math:`\\boldsymbol t`:"
+
+#: ../../solid/symmetry_operations.rst:24
+#, python-brace-format
+msgid ""
+"g=\\{Q\\mid\\boldsymbol t\\},\\qquad\n"
+"g\\boldsymbol r=Q\\boldsymbol r+\\boldsymbol t"
+msgstr ""
+"g=\\{Q\\mid\\boldsymbol t\\},\\qquad\n"
+"g\\boldsymbol r=Q\\boldsymbol r+\\boldsymbol t"
+
+#: ../../solid/symmetry_operations.rst:30
+#, python-brace-format
+msgid ""
+":math:`Q^{\\mathsf T}Q=I` なので、操作を受けた2点の距離は変わらない。 原点を通る :math:`z` "
+"軸のまわりの90度回転は :math:`(x,y,z)\\mapsto(-y,x,z)`、 :math:`xy` 面での鏡映は "
+":math:`(x,y,z)\\mapsto(x,y,-z)` である。 原点を中心とする反転は :math:`Q=-I`、純粋な並進は "
+":math:`Q=I` に対応する。 軸や中心の位置が原点からずれているときは、同じ線形部分を持つ操作でも :math:`\\boldsymbol"
+" t` が加わる。例えば :math:`\\boldsymbol c` を中心とする反転は :math:`\\boldsymbol "
+"r\\mapsto 2\\boldsymbol c-\\boldsymbol r` である。"
+msgstr ""
+"Since :math:`Q^{\\mathsf T}Q=I`, the operation preserves the distance "
+"between two points. A 90° rotation about the :math:`z` axis through the "
+"origin gives the mapping :math:`(x,y,z)\\mapsto(-y,x,z)`. A reflection in"
+" the :math:`xy` plane gives :math:`(x,y,z)\\mapsto(x,y,-z)`. Inversion "
+"about the origin corresponds to :math:`Q=-I` and a pure translation to "
+":math:`Q=I`. When the axis or center is displaced from the origin, a "
+"translation :math:`\\boldsymbol t` is added even for an operation with "
+"the same linear part. For example, inversion about :math:`\\boldsymbol c`"
+" gives :math:`\\boldsymbol r\\mapsto 2\\boldsymbol c-\\boldsymbol r`."
+
+#: ../../solid/symmetry_operations.rst:38
+msgid ""
+":numref:`fig-crystal-symmetry-operations`\\ では、回転・鏡映・反転で点のどの成分が "
+"変わるかを座標面への投影で比べる。"
+msgstr ""
+"The projections onto the coordinate planes in :numref:`fig-crystal-"
+"symmetry-operations`\\  show which coordinates of a point change under "
+"rotation, reflection, and inversion."
+
+#: ../../solid/symmetry_operations.rst:41
+msgid "左の90度回転ではzが変わらず、中央の鏡映ではzだけ符号が変わる。右の原点での反転ではx、y、zの符号がすべて変わり、xz面では右上から左下へ移る。"
+msgstr ""
+"In the 90° rotation on the left, z stays the same. In the reflection in "
+"the middle, only z changes sign. In the inversion about the origin on the"
+" right, x, y, and z all change sign, and the point moves from upper right"
+" to lower left in the xz plane."
+
+#: ../../solid/symmetry_operations.rst:47
+msgid ""
+"白抜きの丸が変換前、塗りつぶした丸が変換後の点。左は :math:`z` 軸回りの90度回転を :math:`xy` 面に投影した図。中央と右は "
+":math:`xz` 面への投影で、中央の水平の破線は 鏡映面との交線である。右の反転では :math:`z` の符号も変わる。"
+msgstr ""
+"Open circles show the points before transformation, and filled circles "
+"show the transformed points. Left: a 90° rotation about the :math:`z` "
+"axis projected onto the :math:`xy` plane. The middle and right panels "
+"show projections onto the :math:`xz` plane. The horizontal dashed line in"
+" the middle panel is its intersection with the mirror plane. In the "
+"inversion on the right, :math:`z` also changes sign."
+
+#: ../../solid/symmetry_operations.rst:52
+msgid "操作の合成と逆操作"
+msgstr "Composition of Operations and Inverse Operations"
+
+#: ../../solid/symmetry_operations.rst:54
+msgid ""
+":math:`g_2` のあとに :math:`g_1` を施すと、後から行う線形変換は 先に行った並進にも作用する。式 :eq"
+":`crystal-symmetry-affine` を順に適用すると、"
+msgstr ""
+"When :math:`g_2` is followed by :math:`g_1`, the second linear "
+"transformation acts on the first translation as well. Applying Equation "
+":eq:`crystal-symmetry-affine` in sequence gives"
+
+#: ../../solid/symmetry_operations.rst:57
+msgid ""
+"g_1g_2=\\{Q_1Q_2\\mid Q_1\\boldsymbol t_2+\\boldsymbol t_1\\},\\qquad\n"
+"g^{-1}=\\{Q^{-1}\\mid -Q^{-1}\\boldsymbol t\\}"
+msgstr ""
+"g_1g_2=\\{Q_1Q_2\\mid Q_1\\boldsymbol t_2+\\boldsymbol t_1\\},\\qquad\n"
+"g^{-1}=\\{Q^{-1}\\mid -Q^{-1}\\boldsymbol t\\}"
+
+#: ../../solid/symmetry_operations.rst:63
+#, python-brace-format
+msgid ""
+"を得る。逆操作では並進を取り消してから :math:`Q^{-1}` を作用させる。 "
+"結晶を保つ操作を合成しても結晶は保たれ、どの操作にも逆操作がある。 これらの操作全体が結晶の\\ :ref:`空間群<crystal-space-"
+"group>`\\ をなす。"
+msgstr ""
+"To apply the inverse operation, undo the translation first, then apply "
+":math:`Q^{-1}`. Composing operations that preserve the crystal still "
+"preserves the crystal, and each operation has an inverse. The set of all "
+"these operations forms the crystal's \\ :ref:`space group <crystal-space-"
+"group>`\\ ."
+
+#: ../../solid/symmetry_operations.rst:68
+msgid "分率座標での対称操作"
+msgstr "Symmetry Operations in Fractional Coordinates"
+
+#: ../../solid/symmetry_operations.rst:70
+msgid ""
+"分率座標 :math:`\\boldsymbol s` では :math:`\\boldsymbol r=A\\boldsymbol s` "
+"である。 式 :eq:`crystal-symmetry-affine` に代入すると、"
+msgstr ""
+"In fractional coordinates :math:`\\boldsymbol s`, the position is "
+":math:`\\boldsymbol r=A\\boldsymbol s`. Substitution into Equation :eq"
+":`crystal-symmetry-affine` gives"
+
+#: ../../solid/symmetry_operations.rst:73
+#, python-brace-format
+msgid ""
+"\\boldsymbol s'=W\\boldsymbol s+\\boldsymbol u,\\qquad\n"
+"W=A^{-1}QA,\\qquad\n"
+"\\boldsymbol u=A^{-1}\\boldsymbol t"
+msgstr ""
+"\\boldsymbol s'=W\\boldsymbol s+\\boldsymbol u,\\qquad\n"
+"W=A^{-1}QA,\\qquad\n"
+"\\boldsymbol u=A^{-1}\\boldsymbol t"
+
+#: ../../solid/symmetry_operations.rst:80
+#, python-brace-format
+msgid ""
+"となる。基本並進ベクトルを列にもつ :math:`A` を使う場合、対称操作の線形部分は 格子の並進をまた格子の並進に移すので、:math:`W`"
+" の列は整数である。逆操作についても 同じことが言え、:math:`\\det W=\\pm1` になる。また、\\ :ref:`計量行列"
+"<lattice-metric>` :math:`G=A^{\\mathsf T}A` に 対して :math:`W^{\\mathsf "
+"T}GW=G` が成り立つ。この条件で格子を保つ候補を絞り、 式 :eq:`crystal-symmetry-fractional` "
+"で原子を移して、元素ごとの配置が周期像まで含めて 重なるかを確かめる。"
+msgstr ""
+"When :math:`A` has primitive translation vectors as its columns, the "
+"linear part of a symmetry operation maps lattice translations to lattice "
+"translations, so the columns of :math:`W` contain integers. The same "
+"applies to the inverse operation, which implies :math:`\\det W=\\pm1`. "
+"For the \\ :ref:`metric tensor <lattice-metric>` :math:`G=A^{\\mathsf "
+"T}A`, we also have :math:`W^{\\mathsf T}GW=G`. Use this condition to "
+"narrow down the operations that preserve the lattice. Then move the atoms"
+" using Equation :eq:`crystal-symmetry-fractional` and check whether the "
+"positions of each species coincide, including periodic images."
+
+#: ../../solid/symmetry_operations.rst:87
+msgid ""
+"例えば立方慣用単位胞の分率座標で、:math:`z` 軸まわりの90度回転を :math:`(1/4,1/2,0)` に施すと "
+":math:`(-1/2,1/4,0)` になる。第1成分に整数の1を足せば :math:`(1/2,1/4,0)` "
+"となる。この位置に同じ元素の原子があり、他の原子も同様に対応する とき、その回転は原子配置の対称操作である。"
+msgstr ""
+"For example, in fractional coordinates of a cubic conventional cell, a "
+"90° rotation about the :math:`z` axis takes :math:`(1/4,1/2,0)` to "
+":math:`(-1/2,1/4,0)`. Adding the integer 1 to the first component gives "
+":math:`(1/2,1/4,0)`. The rotation is a symmetry operation of the atomic "
+"arrangement if an atom of the same element occupies this position and "
+"every other atom maps to a corresponding atom in the same way."
+
+#: ../../solid/symmetry_operations.rst:93
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/symmetry_operations.rst:95
+msgid ""
+"IUCr, `Definition of symmetry elements in space groups and point groups "
+"<https://www.iucr.org/who-we-are/commissions/commission-on-"
+"crystallographic-nomenclature/published-reports/symel>`_."
+msgstr ""
+"IUCr, `Definition of symmetry elements in space groups and point groups "
+"<https://www.iucr.org/who-we-are/commissions/commission-on-"
+"crystallographic-nomenclature/published-reports/symel>`_."
+
+#: ../../solid/symmetry_operations.rst:96
+msgid ""
+"IUCr, `The structure of space groups "
+"<https://it.iucr.org/Ac/ch1o3v0001/sec1o3o3/>`_."
+msgstr ""
+"IUCr, `The structure of space groups "
+"<https://it.iucr.org/Ac/ch1o3v0001/sec1o3o3/>`_."
+

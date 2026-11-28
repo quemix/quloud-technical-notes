@@ -1,0 +1,40 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/crystal_symmetry.rst:2
+msgid "結晶の対称性"
+msgstr "Crystal Symmetry"
+
+#: ../../solid/crystal_symmetry.rst:4
+msgid ""
+"回転・鏡映・反転・並進を座標で表し、原子配置を保つ操作を調べます。 操作の線形部分を集めた\\ :ref:`点群<crystal-point-"
+"group>`\\ と、並進まで含めた\\ :ref:`空間群<crystal-space-group>`\\ の関係を学びます。 "
+"点群で移り合う結晶方向と格子面を、\\ :ref:`等価な方向と面の族<equivalent-directions>`\\ としてまとめます。"
+msgstr ""
+"We express rotations, reflections, inversions, and translations in "
+"coordinates and examine which operations preserve the atomic arrangement."
+" We study the relationship between the \\ :ref:`point group <crystal-"
+"point-group>`\\ , which collects the linear parts of the operations, and "
+"the \\ :ref:`space group <crystal-space-group>`\\ , which includes the "
+"translations as well. We group crystal directions and lattice planes "
+"related by point group operations into \\ :ref:`families of equivalent "
+"directions and planes <equivalent-directions>`\\ ."
+

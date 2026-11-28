@@ -1,0 +1,279 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/unitcell.rst:5
+msgid "ブラベー格子と結晶系"
+msgstr "Bravais Lattices and Crystal Systems"
+
+#: ../../solid/unitcell.rst:7
+msgid ""
+"格子を対称性で分類した14のブラベー格子型と、格子系・結晶系の関係を整理する。続く7つの節では、 "
+"結晶系ごとに、そこに現れる格子の慣用単位胞を3次元の図で示す。"
+msgstr ""
+"We review the 14 Bravais lattice types, which classify lattices by "
+"symmetry, and the relationship between lattice systems and crystal "
+"systems. The next seven sections show three-dimensional views of the "
+"conventional cells of the lattices that occur in each crystal system."
+
+#: ../../solid/unitcell.rst:10
+msgid ""
+"**前提知識**: :ref:`基本並進ベクトル<lattice-translations>`、:ref:`格子定数<lattice-"
+"metric>`、 :ref:`慣用単位胞<lattice-unit-cells>`、:ref:`中心並進<centring-"
+"translation>`。"
+msgstr ""
+"**Prerequisites**: :ref:`primitive translation vectors <lattice-"
+"translations>`, :ref:`lattice constants <lattice-metric>`, "
+":ref:`conventional cells <lattice-unit-cells>`, and :ref:`centering "
+"translations <centring-translation>`."
+
+#: ../../solid/unitcell.rst:13
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/unitcell.rst:15
+msgid "ブラベー格子型が格子の何を分類したものかを説明し、14の型を格子系と中心並進の記号（P、I、F、C、R）で読む。"
+msgstr ""
+"Explain what Bravais lattice types classify and identify the 14 types "
+"from the lattice system and the symbol for the centering translations (P,"
+" I, F, C, R)."
+
+#: ../../solid/unitcell.rst:16
+msgid "格子系と結晶系の違いを、三方晶系に菱面体格子と六方格子の両方が現れる例で説明する。"
+msgstr ""
+"Explain the difference between lattice systems and crystal systems using "
+"the trigonal crystal system, in which both rhombohedral and hexagonal "
+"lattices occur."
+
+#: ../../solid/unitcell.rst:21
+msgid "格子の分類"
+msgstr "Classification of Lattices"
+
+#: ../../solid/unitcell.rst:23
+msgid ""
+"格子は、\\ :ref:`基本並進ベクトル<lattice-translations>`\\ の長さや角度（\\ :ref:`格子定数"
+"<lattice-metric>`）を連続的に変えれば無数に作れる。 これらを、格子が持つ対称性（格子点の集合を自分自身に重ねる回転・鏡映と、 "
+":ref:`慣用単位胞<lattice-unit-cells>`\\ の\\ :ref:`中心並進<centring-"
+"translation>`\\ の種類）によって分類したものが "
+"ブラベー（Bravais）格子型であり、3次元では14種類ある。14は格子の個数ではなく型の数である。 "
+"格子に置いた原子の配置まで含めた対称性は、結晶の\\ :ref:`空間群<crystal-space-group>`\\ で表す。"
+msgstr ""
+"Infinitely many lattices can be made by continuously varying the lengths "
+"and angles of the \\ :ref:`primitive translation vectors <lattice-"
+"translations>`\\ , which are the \\ :ref:`lattice constants <lattice-"
+"metric>`. Bravais lattice types classify those lattices by symmetry: the "
+"rotations and reflections that map the set of lattice points onto itself,"
+" and the ways the :ref:`conventional cell <lattice-unit-cells>`\\  is "
+"centered by \\ :ref:`centering translations <centring-translation>`\\ . "
+"There are 14 types in three dimensions. Fourteen is the number of types, "
+"not the number of lattices. The crystal's \\ :ref:`space group <crystal-"
+"space-group>`\\  describes its symmetry including the arrangement of "
+"atoms on the lattice."
+
+#: ../../solid/unitcell.rst:29
+msgid ""
+"表の行は格子系、後の図を載せた節の見出しは、原子配置の対称性をもとにした結晶系である。 "
+"多くは一対一に対応するが、菱面体格子系・六方格子系と三方晶系・六方晶系の組では、 一つの結晶系に複数の格子系が現れる。"
+msgstr ""
+"The table rows list lattice systems, whereas the headings above the "
+"figures below name crystal systems, which are based on the symmetry of "
+"the atomic arrangement. Most correspond one-to-one. The relationship "
+"between the rhombohedral and hexagonal lattice systems and the trigonal "
+"crystal system and hexagonal crystal system is an exception: a single "
+"crystal system can have more than one lattice system."
+
+#: ../../solid/unitcell.rst:33
+msgid "3次元の14ブラベー格子型"
+msgstr "The 14 Bravais lattice types in three dimensions"
+
+#: ../../solid/unitcell.rst:36
+msgid "格子系"
+msgstr "Lattice system"
+
+#: ../../solid/unitcell.rst:37
+msgid "慣用単位胞の中心化"
+msgstr "Centering of the conventional cell"
+
+#: ../../solid/unitcell.rst:38
+msgid "種類数"
+msgstr "Number of types"
+
+#: ../../solid/unitcell.rst:39
+msgid "三斜"
+msgstr "Triclinic"
+
+#: ../../solid/unitcell.rst:40 ../../solid/unitcell.rst:55
+msgid "P"
+msgstr "P"
+
+#: ../../solid/unitcell.rst:41 ../../solid/unitcell.rst:53
+#: ../../solid/unitcell.rst:56
+msgid "1"
+msgstr "1"
+
+#: ../../solid/unitcell.rst:42
+msgid "単斜"
+msgstr "Monoclinic"
+
+#: ../../solid/unitcell.rst:43
+msgid "P, C"
+msgstr "P, C"
+
+#: ../../solid/unitcell.rst:44 ../../solid/unitcell.rst:50
+msgid "2"
+msgstr "2"
+
+#: ../../solid/unitcell.rst:45
+msgid "直方（斜方）"
+msgstr "Orthorhombic"
+
+#: ../../solid/unitcell.rst:46
+msgid "P, C, I, F"
+msgstr "P, C, I, F"
+
+#: ../../solid/unitcell.rst:47
+msgid "4"
+msgstr "4"
+
+#: ../../solid/unitcell.rst:48
+msgid "正方"
+msgstr "Tetragonal"
+
+#: ../../solid/unitcell.rst:49
+msgid "P, I"
+msgstr "P, I"
+
+#: ../../solid/unitcell.rst:51
+msgid "菱面体"
+msgstr "Rhombohedral"
+
+#: ../../solid/unitcell.rst:52
+msgid "R"
+msgstr "R"
+
+#: ../../solid/unitcell.rst:54
+msgid "六方"
+msgstr "Hexagonal"
+
+#: ../../solid/unitcell.rst:57
+msgid "立方"
+msgstr "Cubic"
+
+#: ../../solid/unitcell.rst:58
+msgid "P, I, F"
+msgstr "P, I, F"
+
+#: ../../solid/unitcell.rst:59
+msgid "3"
+msgstr "3"
+
+#: ../../solid/unitcell.rst:60
+msgid "合計"
+msgstr "Total"
+
+#: ../../solid/unitcell.rst:62
+msgid "14"
+msgstr "14"
+
+#: ../../solid/unitcell.rst:64
+msgid ""
+"記号は慣用単位胞の中心並進の種類を表す。Pは単純（中心並進なし、格子点1個）、Iは体心（2個）、Fは面心（4個）、Cは1組の向かい合う面の中心に格子点を持つ底心（2個。軸の選び方によりA、Bとも書く）である。Rは菱面体格子で、基本単位胞は菱面体、\\"
+" :ref:`六方軸の慣用単位胞<lt-rhombohedral-hexagonal>`\\ では格子点3個を含む。"
+msgstr ""
+"The symbols denote the kinds of centering translations of the "
+"conventional cell. P is primitive (no centering translation, one lattice "
+"point), I is body-centered (two lattice points), and F is face-centered "
+"(four lattice points). C is base-centered, with lattice points at the "
+"centers of one pair of opposite faces and two lattice points per cell. It"
+" is also written A or B, depending on the choice of axes. R denotes the "
+"rhombohedral lattice. Its primitive cell is a rhombohedron, and its \\ "
+":ref:`conventional cell with hexagonal axes <lt-rhombohedral-"
+"hexagonal>`\\  contains three lattice points."
+
+#: ../../solid/unitcell.rst:66
+msgid "菱面体格子（R）を持つ結晶は三方晶系に属する。三方晶系には、α石英のように六方格子（P）を 持つ結晶もある。六方晶系の結晶の格子は六方Pである。"
+msgstr ""
+"Crystals with a rhombohedral lattice (R) belong to the trigonal crystal "
+"system. The trigonal crystal system also includes crystals with a "
+"hexagonal lattice (P), such as α-quartz. Crystals in the hexagonal "
+"crystal system have hexagonal P lattices."
+
+#: ../../solid/unitcell.rst:71
+msgid "三斜晶系"
+msgstr "Triclinic Crystal System"
+
+#: ../../solid/unitcell.rst:73
+msgid "三斜格子（P）を含む。"
+msgstr "This system includes the triclinic lattice (P)."
+
+#: ../../solid/unitcell.rst:86
+msgid "単斜晶系"
+msgstr "Monoclinic Crystal System"
+
+#: ../../solid/unitcell.rst:88
+msgid "単純単斜格子、底心単斜格子を含む。"
+msgstr "This system includes primitive and base-centered monoclinic lattices."
+
+#: ../../solid/unitcell.rst:101
+msgid "直方晶系"
+msgstr "Orthorhombic Crystal System"
+
+#: ../../solid/unitcell.rst:103
+msgid "斜方晶系と呼ばれることもある。単純直方格子、体心直方格子、面心直方格子、底心直方格子を含む。"
+msgstr ""
+"This system includes primitive, body-centered, face-centered, and base-"
+"centered orthorhombic lattices."
+
+#: ../../solid/unitcell.rst:116
+msgid "正方晶系"
+msgstr "Tetragonal Crystal System"
+
+#: ../../solid/unitcell.rst:118
+msgid "単純正方格子、体心正方格子を含む。"
+msgstr "This system includes primitive and body-centered tetragonal lattices."
+
+#: ../../solid/unitcell.rst:131
+msgid "三方晶系"
+msgstr "Trigonal Crystal System"
+
+#: ../../solid/unitcell.rst:133
+msgid "菱面体格子（rhombohedral lattice、R）を含む。三方晶系の結晶には、六方格子（P）を持つものもある。"
+msgstr ""
+"This system includes the rhombohedral lattice (R). Some crystals in the "
+"trigonal crystal system have a hexagonal lattice (P)."
+
+#: ../../solid/unitcell.rst:146
+msgid "六方晶系"
+msgstr "Hexagonal Crystal System"
+
+#: ../../solid/unitcell.rst:148
+msgid "六方格子（P）を含む。"
+msgstr "This system includes the hexagonal lattice (P)."
+
+#: ../../solid/unitcell.rst:161
+msgid "立方晶系"
+msgstr "Cubic Crystal System"
+
+#: ../../solid/unitcell.rst:163
+msgid "単純立方格子、体心立方格子、面心立方格子を含む。"
+msgstr ""
+"This system includes simple cubic, body-centered cubic, and face-centered"
+" cubic lattices."
+

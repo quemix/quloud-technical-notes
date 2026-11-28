@@ -1,0 +1,585 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-25 13:09+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/lattice.rst:5
+msgid "格子と単位胞"
+msgstr "Lattices and Unit Cells"
+
+#: ../../solid/lattice.rst:7
+msgid ""
+"結晶を格子と単位構造に分けて表し、格子を基本並進ベクトルで記述する。続いて、繰り返しの単位となる "
+"単位胞の選び方と、単位胞の中の位置を表す分率座標を導入する。最後に、慣用単位胞で必要になる 中心並進を扱う。"
+msgstr ""
+"We describe a crystal in terms of a lattice and a motif, and specify the "
+"lattice using primitive translation vectors. We then show how to choose a"
+" unit cell as the repeating unit and introduce fractional coordinates for"
+" positions within it. Finally, we discuss the centering translations "
+"required when using a conventional cell."
+
+#: ../../solid/lattice.rst:11
+msgid "**前提知識**: 3次元のベクトルと行列の演算。"
+msgstr "**Prerequisites**: Operations with three-dimensional vectors and matrices."
+
+#: ../../solid/lattice.rst:13
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/lattice.rst:15
+msgid "結晶を格子と単位構造に分け、格子を基本並進ベクトルと格子行列で表す。"
+msgstr ""
+"Describe a crystal in terms of a lattice and a motif, and represent the "
+"lattice using primitive translation vectors and a lattice matrix."
+
+#: ../../solid/lattice.rst:16
+msgid "基本単位胞と慣用単位胞の違いを、胞に含まれる格子点の数で説明する。"
+msgstr ""
+"Explain the difference between a primitive cell and a conventional cell "
+"in terms of the number of lattice points each contains."
+
+#: ../../solid/lattice.rst:17
+msgid "分率座標とCartesian座標を格子行列で相互に変換する。"
+msgstr ""
+"Use the lattice matrix to convert between fractional coordinates and "
+"Cartesian coordinates."
+
+#: ../../solid/lattice.rst:18
+msgid "慣用単位胞の中心並進を説明し、BCCとFCCの格子点の位置を挙げる。"
+msgstr ""
+"Explain centering translations in conventional cells and identify the "
+"lattice-point positions in BCC and FCC."
+
+#: ../../solid/lattice.rst:23
+msgid "格子と格子点"
+msgstr "Lattices and Lattice Points"
+
+#: ../../solid/lattice.rst:25
+msgid ""
+"離散的な点の集合で、任意の二点を結ぶベクトルだけ全体を平行移動しても元の集合に重なるものを "
+"格子（並進格子、lattice）と呼ぶ。集合の各点が格子点（lattice point）である。 :numref:`fig-lattice-"
+"points-motif`\\ の上段では、異なる格子点から同じベクトルだけ移動すると、 いずれも別の格子点に重なる。"
+msgstr ""
+"A lattice (or translation lattice) is a discrete set of points that "
+"coincides with itself when translated by the vector joining any two of "
+"its points. Each point in the set is a lattice point. In the top panel of"
+" :numref:`fig-lattice-points-motif`\\ , translating by the same vector "
+"from different lattice points takes each one to another lattice point."
+
+#: ../../solid/lattice.rst:30
+msgid ""
+"周期的に並ぶ点の集合がすべて格子になるわけではない。図の中段では、点の間隔が "
+"短・長と交互に並ぶ。隣り合う二点の短い間隔だけ右にずらすと、元の点に重ならない点が "
+"現れる。したがって、この点の配列そのものは格子ではない。短・長の一組分を格子点の間隔に とり、各格子点を基準に同じ二点を置けば、元の配列を表せる。"
+msgstr ""
+"Some periodic sets of points do not form lattices. In the middle panel, "
+"the spacing between points alternates between short and long. A shift to "
+"the right by just the short spacing between two adjacent points leaves "
+"some shifted points without a match in the original array. The array "
+"itself is therefore not a lattice. It can be represented by taking the "
+"sum of one short and one long spacing as the lattice-point spacing, and "
+"placing the same pair of points relative to each lattice point."
+
+#: ../../solid/lattice.rst:35
+msgid ""
+"結晶構造は、格子の各格子点を基準に同じ原子配置を繰り返して表す。この原子配置を "
+"単位構造（motif）と呼ぶ。格子点は繰り返しの基準点であり、原子の位置と一致するとは "
+"限らない。図の下段では、黒丸で示す格子点が二原子の間にある。結晶構造を "
+"指定するには、格子に加えて、単位構造をつくる原子の種類と格子点に対する位置が必要である。"
+msgstr ""
+"A crystal structure is represented by repeating the same arrangement of "
+"atoms relative to each point of a lattice. This arrangement is called the"
+" motif. A lattice point serves as a reference for the repetition and need"
+" not coincide with an atom. In the bottom panel, the black circle marking"
+" a lattice point lies between two atoms. Specifying the crystal structure"
+" requires both the lattice and the species and positions of the atoms in "
+"the motif relative to the lattice point."
+
+#: ../../solid/lattice.rst:40
+msgid "上段は格子点どうしを結ぶ横向きと斜めの並進。中段は短い間隔だけ移すと一部のみ、短・長の一組分だけ移すと全体が重なる一次元配列。下段は二原子の間に格子点を置いた単位構造。"
+msgstr ""
+"The top panel shows horizontal and diagonal translations between lattice "
+"points. The middle panel shows a one-dimensional array that coincides "
+"only in part after a shift by the short spacing and coincides completely "
+"after a shift by one short plus one long spacing. The bottom panel shows "
+"a motif with the lattice point between two atoms."
+
+#: ../../solid/lattice.rst:46
+msgid ""
+"上段では、横向きの実線の矢印どうし、斜めの破線の矢印どうしが、それぞれ同じ並進を表す。 "
+"中段は元の配列と、移動量の異なる二つの配列を比べたもの。縦の点線は重なる点を結び、 白抜きの丸は、移動後に元の点と重ならない点を表す。 "
+"下段の黒丸は格子点、青いひし形と茶色の四角は原子で、破線の枠は格子点一つと その単位構造を囲む。"
+msgstr ""
+"In the top panel, the solid horizontal arrows represent the same "
+"translation as one another, as do the dashed diagonal arrows. The middle "
+"panel compares the original array with two arrays shifted by different "
+"distances. Vertical dotted lines connect coincident points, and open "
+"circles mark shifted points that do not coincide with original points. In"
+" the bottom panel, black circles mark lattice points, and blue diamonds "
+"and brown squares mark atoms. The dashed box encloses one lattice point "
+"and its motif."
+
+#: ../../solid/lattice.rst:55
+msgid "格子並進と基本並進ベクトル"
+msgstr "Lattice Translations and Primitive Translation Vectors"
+
+#: ../../solid/lattice.rst:57
+msgid ""
+"3次元の格子では、互いに独立な3本のベクトル :math:`\\boldsymbol a_1,\\boldsymbol "
+"a_2,\\boldsymbol a_3` をうまく選ぶと、格子点の1つを原点としたとき、すべての格子点を整数 :math:`n_i` を用いて "
+":math:`n_1\\boldsymbol a_1+n_2\\boldsymbol a_2+n_3\\boldsymbol a_3` "
+"と過不足なく表せる。このような3本を基本並進ベクトル（primitive translation "
+"vectors）と呼び、その組を格子の基底という（原子の単位構造を「基底」と呼ぶ文献もあるので、両者を混同しないよう注意する）。直交座標の成分で書くと"
+msgstr ""
+"For a three-dimensional lattice, choose three linearly independent "
+"vectors :math:`\\boldsymbol a_1,\\boldsymbol a_2,\\boldsymbol a_3` so "
+"that, with a lattice point as the origin, the integers :math:`n_i` in "
+":math:`n_1\\boldsymbol a_1+n_2\\boldsymbol a_2+n_3\\boldsymbol a_3` "
+"generate all the lattice points and no other points. These three vectors "
+"are called primitive translation vectors and together form a lattice "
+"basis. Some references also call the atomic motif a “basis,” so take care"
+" to distinguish the two. In Cartesian coordinates, the vectors are"
+
+#: ../../solid/lattice.rst:59
+#, python-brace-format
+msgid ""
+"\\boldsymbol{a}_1 =\n"
+"\\begin{pmatrix}\n"
+"a_{1}^x \\\\\n"
+"a_{1}^y \\\\\n"
+"a_{1}^z\n"
+"\\end{pmatrix}\n"
+", \\quad\n"
+"\\boldsymbol{a}_2 =\n"
+"\\begin{pmatrix}\n"
+"a_{2}^x \\\\\n"
+"a_{2}^y \\\\\n"
+"a_{2}^z\n"
+"\\end{pmatrix}\n"
+", \\quad\n"
+"\\boldsymbol{a}_3 =\n"
+"\\begin{pmatrix}\n"
+"a_{3}^x \\\\\n"
+"a_{3}^y \\\\\n"
+"a_{3}^z\n"
+"\\end{pmatrix}\n"
+"\n"
+msgstr ""
+"\\boldsymbol{a}_1 =\n"
+"\\begin{pmatrix}\n"
+"a_{1}^x \\\\\n"
+"a_{1}^y \\\\\n"
+"a_{1}^z\n"
+"\\end{pmatrix}\n"
+", \\quad\n"
+"\\boldsymbol{a}_2 =\n"
+"\\begin{pmatrix}\n"
+"a_{2}^x \\\\\n"
+"a_{2}^y \\\\\n"
+"a_{2}^z\n"
+"\\end{pmatrix}\n"
+", \\quad\n"
+"\\boldsymbol{a}_3 =\n"
+"\\begin{pmatrix}\n"
+"a_{3}^x \\\\\n"
+"a_{3}^y \\\\\n"
+"a_{3}^z\n"
+"\\end{pmatrix}\n"
+"\n"
+
+#: ../../solid/lattice.rst:82
+msgid "である。これらを列に並べた3×3行列"
+msgstr "Arrange these vectors as the columns of a 3×3 matrix"
+
+#: ../../solid/lattice.rst:84
+#, python-brace-format
+msgid ""
+"A \\equiv\n"
+"(\\boldsymbol a_1,\\boldsymbol a_2,\\boldsymbol a_3)\n"
+"=\n"
+"\\begin{pmatrix}\n"
+"a_{1}^x & a_{2}^x & a_{3}^x \\\\\n"
+"a_{1}^y & a_{2}^y & a_{3}^y \\\\\n"
+"a_{1}^z & a_{2}^z & a_{3}^z\n"
+"\\end{pmatrix}\n"
+"\n"
+msgstr ""
+"A \\equiv\n"
+"(\\boldsymbol a_1,\\boldsymbol a_2,\\boldsymbol a_3)\n"
+"=\n"
+"\\begin{pmatrix}\n"
+"a_{1}^x & a_{2}^x & a_{3}^x \\\\\n"
+"a_{1}^y & a_{2}^y & a_{3}^y \\\\\n"
+"a_{1}^z & a_{2}^z & a_{3}^z\n"
+"\\end{pmatrix}\n"
+"\n"
+
+#: ../../solid/lattice.rst:95
+msgid "を格子行列と呼ぶ。:math:`A` を用いれば、格子点の位置ベクトル全体は"
+msgstr ""
+"called the lattice matrix. In terms of :math:`A`, the set of all lattice-"
+"point position vectors is"
+
+#: ../../solid/lattice.rst:97
+#, python-brace-format
+msgid ""
+"\\Lambda(A)=\\{A\\boldsymbol n\\mid\\boldsymbol n\\in\\mathbb Z^3\\}\n"
+"\n"
+msgstr ""
+"\\Lambda(A)=\\{A\\boldsymbol n\\mid\\boldsymbol n\\in\\mathbb Z^3\\}\n"
+"\n"
+
+#: ../../solid/lattice.rst:101
+msgid ""
+"と書ける。:math:`A\\boldsymbol n` "
+"は格子全体を自分自身に重ねる並進も表すので、格子並進ベクトル（単に格子ベクトルとも）と呼ぶ。本ノートでは格子ベクトルを :math:`A` "
+"の列に置く規約を用いる。"
+msgstr ""
+"The vector :math:`A\\boldsymbol n` also represents a translation that "
+"maps the lattice onto itself, so it is called a lattice translation "
+"vector, or lattice vector for short. These notes place the lattice "
+"vectors in the columns of :math:`A`."
+
+#: ../../solid/lattice.rst:103
+msgid ""
+":ref:`基本並進ベクトルの選び方<lt-primitive-basis>`\\ は一意ではない。例えば :math:`\\boldsymbol"
+" a_1,\\ \\boldsymbol a_1+\\boldsymbol a_2,\\ \\boldsymbol a_3` "
+"も同じ格子を生成する。"
+msgstr ""
+"The :ref:`choice of primitive translation vectors <lt-primitive-basis>`\\"
+"  is not unique. For example, :math:`\\boldsymbol a_1,\\ \\boldsymbol "
+"a_1+\\boldsymbol a_2,\\ \\boldsymbol a_3` also generate the same lattice."
+
+#: ../../solid/lattice.rst:109
+msgid "基本単位胞と慣用単位胞"
+msgstr "Primitive Cell and Conventional Cell"
+
+#: ../../solid/lattice.rst:111
+msgid ""
+"3本の独立な格子ベクトルを辺とする平行六面体は、辺の整数結合だけ平行移動した複製で、空間を隙間も重なりもなく埋める。このように繰り返しの単位となる領域を単位胞（unit"
+" cell）と呼ぶ。以下では平行六面体の単位胞を扱う。"
+msgstr ""
+"Translated copies of the parallelepiped spanned by three independent "
+"lattice vectors tile space without gaps or overlaps when the translations"
+" are integer combinations of its edges. A region that serves as a "
+"repeating unit in this way is called a unit cell. The discussion below "
+"uses parallelepipedal unit cells."
+
+#: ../../solid/lattice.rst:113
+msgid ""
+"基本並進ベクトルを辺とする平行六面体は、格子点を1個だけ含む。頂点の8個の格子点はそれぞれ隣接する8つの胞に共有されるので、:math:`8\\times1/8=1`"
+" 個と数える。格子点を1個だけ含む単位胞を基本単位胞（primitive "
+"cell）と呼ぶ。基本胞、原始胞、原始単位胞ともいう。基本単位胞の体積は単位胞の中で最小である。平行六面体でない基本単位胞もあり、Wigner–Seitz胞がその例である。逆格子に同じ構成を適用したものが"
+" :ref:`第1ブリルアンゾーン<first-brillouin-zone>`\\ である。"
+msgstr ""
+"A parallelepiped spanned by the primitive translation vectors contains "
+"just one lattice point. The eight lattice points at its vertices are each"
+" shared by eight adjoining cells, so they contribute "
+":math:`8\\times1/8=1` lattice point. A unit cell containing just one "
+"lattice point is called a primitive cell. The primitive cell has the "
+"smallest volume among unit cells. It need not be a parallelepiped. A "
+"Wigner–Seitz cell is one example. Applying the same construction to the "
+"reciprocal lattice gives the :ref:`first Brillouin zone <first-brillouin-"
+"zone>`\\ ."
+
+#: ../../solid/lattice.rst:116
+msgid ""
+"慣用単位胞（conventional cell）は、格子の対称性が分かりやすい軸を辺に選んだ単位胞である。 立方格子系の\\ "
+":ref:`ブラベー格子型<bravais-lattice-types>`\\ である単純立方・体心立方（BCC）・面心立方（FCC）では、 "
+"いずれも立方体を慣用単位胞にとる。 含まれる格子点はそれぞれ1個、2個、4個である。単純立方の慣用単位胞は基本単位胞でもあり、 "
+"BCCとFCCの慣用単位胞は基本単位胞のそれぞれ2倍、4倍の体積をもつ。 BCCとFCCでは、立方体の頂点から体心や面心の格子点への移動も\\ "
+":ref:`中心並進<centring-translation>`\\ として表せる。"
+msgstr ""
+"A conventional cell is a unit cell whose edges are chosen along axes that"
+" make the lattice symmetry easy to see. The \\ :ref:`Bravais lattice "
+"types <bravais-lattice-types>`\\  in the cubic lattice system are simple "
+"cubic, body-centered cubic (BCC), and face-centered cubic (FCC). All "
+"three use a cube as the conventional cell. They contain one, two, and "
+"four lattice points, respectively. The simple cubic conventional cell is "
+"also a primitive cell, whereas the BCC and FCC conventional cells have "
+"two and four times the volumes of their respective primitive cells. For "
+"BCC and FCC, a displacement from a cube vertex to a lattice point at the "
+"body center or a face center can also be expressed as a \\ "
+":ref:`centering translation <centring-translation>`\\ ."
+
+#: ../../solid/lattice.rst:123
+msgid ""
+":numref:`fig-centred-rectangular-cells`\\ の二次元の例では、長方形の慣用単位胞の頂点と "
+"中心に格子点がある。ひし形の基本単位胞を選ぶと、同じ格子を半分の面積の胞で表せる。 三次元のFCCでは、立方体の慣用単位胞と菱面体の基本単位胞が "
+":numref:`lt-fcc-cell-figure` のように対応する。"
+msgstr ""
+"In the two-dimensional example in :numref:`fig-centred-rectangular-"
+"cells`\\ , lattice points lie at the vertices and at the center of the "
+"rectangular conventional cell. Choosing a diamond-shaped primitive cell "
+"represents the same lattice in half the area. In three-dimensional FCC, "
+"the relationship between the cubic conventional cell and the rhombohedral"
+" primitive cell is shown in :numref:`lt-fcc-cell-figure`."
+
+#: ../../solid/lattice.rst:128
+msgid "中心付き矩形格子に、格子点2個分を含む長方形と格子点1個分を含むひし形を重ねる。中心並進ベクトルtは長方形の頂点から中心を指す。"
+msgstr ""
+"A rectangle containing the equivalent of two lattice points and a diamond"
+" containing the equivalent of one are overlaid on a centered rectangular "
+"lattice. The centering translation vector t points from a vertex of the "
+"rectangle to its center."
+
+#: ../../solid/lattice.rst:134
+msgid ""
+"実線の長方形は慣用単位胞で、頂点の4分の1ずつと中心を合わせて格子点2個分を含む。 "
+"破線のひし形は基本単位胞で、四つの頂点の格子点を内角の割合で分け合い、合わせて格子点1個分を含む。 矢印 :math:`\\boldsymbol "
+"t` は長方形の頂点から中心への並進を表す。"
+msgstr ""
+"The solid rectangle is the conventional cell. It contains the equivalent "
+"of two lattice points, counting one-quarter of each vertex point and the "
+"point at the center. The dashed diamond is the primitive cell. It shares "
+"the lattice points at its four vertices in proportion to the interior "
+"angles, for a total of one lattice point. The arrow :math:`\\boldsymbol "
+"t` represents the translation from a vertex of the rectangle to its "
+"center."
+
+#: ../../solid/lattice.rst:141
+msgid "格子座標（分率座標）"
+msgstr "Lattice Coordinates (Fractional Coordinates)"
+
+#: ../../solid/lattice.rst:143
+msgid "結晶中の位置は、直交座標（Cartesian座標、XYZ座標）の成分"
+msgstr ""
+"A position in a crystal can be represented by its components in Cartesian"
+" coordinates (XYZ)"
+
+#: ../../solid/lattice.rst:145
+#, python-brace-format
+msgid ""
+"\\boldsymbol{r}\n"
+"=\n"
+"\\begin{pmatrix}\n"
+"x \\\\\n"
+"y \\\\\n"
+"z\n"
+"\\end{pmatrix}\n"
+"\n"
+msgstr ""
+"\\boldsymbol{r}\n"
+"=\n"
+"\\begin{pmatrix}\n"
+"x \\\\\n"
+"y \\\\\n"
+"z\n"
+"\\end{pmatrix}\n"
+"\n"
+
+#: ../../solid/lattice.rst:155
+msgid "で表すほか、格子ベクトルを基底にとって"
+msgstr "or by taking the lattice vectors as a basis and writing it as"
+
+#: ../../solid/lattice.rst:157
+#, python-brace-format
+msgid ""
+"\\boldsymbol{r}\n"
+"=\n"
+"s_1 \\boldsymbol{a}_1 +\n"
+"s_2 \\boldsymbol{a}_2 +\n"
+"s_3 \\boldsymbol{a}_3\n"
+"\n"
+msgstr ""
+"\\boldsymbol{r}\n"
+"=\n"
+"s_1 \\boldsymbol{a}_1 +\n"
+"s_2 \\boldsymbol{a}_2 +\n"
+"s_3 \\boldsymbol{a}_3\n"
+"\n"
+
+#: ../../solid/lattice.rst:165
+#, python-brace-format
+msgid ""
+"とも表せる。係数 :math:`s_i` を格子座標または分率座標（fractional coordinates）と呼ぶ。列ベクトル "
+":math:`\\boldsymbol{s}=(s_1,s_2,s_3)^\\top` にまとめれば、格子行列 :eq:`amat` を使って"
+msgstr ""
+"The coefficients :math:`s_i` are called lattice coordinates or fractional"
+" coordinates. Collecting them in the column vector "
+":math:`\\boldsymbol{s}=(s_1,s_2,s_3)^\\top` and using the lattice matrix "
+"in Equation :eq:`amat` gives"
+
+#: ../../solid/lattice.rst:167
+#, python-brace-format
+msgid ""
+"\\boldsymbol r=A\\boldsymbol s,\\qquad\n"
+"\\boldsymbol s=A^{-1}\\boldsymbol r\n"
+"\n"
+msgstr ""
+"\\boldsymbol r=A\\boldsymbol s,\\qquad\n"
+"\\boldsymbol s=A^{-1}\\boldsymbol r\n"
+"\n"
+
+#: ../../solid/lattice.rst:172
+msgid ""
+"である。本ノートでは分率座標を列ベクトルで表す。\\ :ref:`格子ベクトルを行に格納するAPI<lt-array-"
+"conventions>`\\ へ渡すときは、格子行列を転置する。"
+msgstr ""
+"These notes express fractional coordinates as column vectors. To use an "
+"\\ :ref:`API that stores lattice vectors in rows <lt-array-"
+"conventions>`\\ , transpose the lattice matrix."
+
+#: ../../solid/lattice.rst:174
+msgid ""
+":numref:`fig-lattice-fractional-coordinates`\\ では、斜めの基底に沿った二つの成分を "
+"足して位置を求める。点線はそれぞれの基底ベクトルに平行である。"
+msgstr ""
+"In :numref:`fig-lattice-fractional-coordinates`\\ , the position is "
+"obtained by adding two components along an oblique basis. Each dotted "
+"line is parallel to one of the basis vectors."
+
+#: ../../solid/lattice.rst:177
+msgid "斜めに交わる格子ベクトルa1、a2を辺とする平行四辺形。a1の半分とa2の4分の3を足した位置を点で示す。"
+msgstr ""
+"The oblique lattice vectors a1 and a2 form the sides of a parallelogram. "
+"A point marks the position obtained by adding half of a1 to three-"
+"quarters of a2."
+
+#: ../../solid/lattice.rst:183
+msgid "二次元の例。矢印 :math:`\\boldsymbol r` の終点は、分率座標 :math:`(1/2,3/4)` にある。"
+msgstr ""
+"A two-dimensional example. The tip of the arrow :math:`\\boldsymbol r` is"
+" at fractional coordinates :math:`(1/2,3/4)`."
+
+#: ../../solid/lattice.rst:185
+msgid "格子ベクトルだけ離れた点どうしは周期性により同等なので、同等な点の中から単位胞内の代表を1つ選ぶときは、\\ :math:`s_i` を"
+msgstr ""
+"Periodicity makes points separated by a lattice vector equivalent. To "
+"choose one representative within the unit cell from each set of "
+"equivalent points, restrict \\ :math:`s_i` to the half-open interval"
+
+#: ../../solid/lattice.rst:187
+msgid ""
+"0 \\leq s_i < 1\n"
+"\n"
+msgstr ""
+"0 \\leq s_i < 1\n"
+"\n"
+
+#: ../../solid/lattice.rst:191
+msgid ""
+"の半開区間にとる。\\ :math:`s_i = 1` の点は :math:`s_i = 0` の点から :math:`\\boldsymbol "
+"a_i` だけずれた同等な点なので、範囲から除く。"
+msgstr ""
+"Exclude the point with \\ :math:`s_i = 1` because it is displaced from "
+"the equivalent point with :math:`s_i = 0` by :math:`\\boldsymbol a_i`."
+
+#: ../../solid/lattice.rst:193
+msgid ""
+"分率座標の値は、どの単位胞の辺を基準にするかで変わる。:math:`A` "
+"の代わりに慣用単位胞の辺を並べた行列を使えば、慣用単位胞に対する分率座標が得られる。"
+msgstr ""
+"The values of the fractional coordinates depend on which unit cell "
+"provides the basis vectors. Replacing :math:`A` with the matrix whose "
+"columns are the edges of the conventional cell gives fractional "
+"coordinates relative to that cell."
+
+#: ../../solid/lattice.rst:198
+msgid "中心並進"
+msgstr "Centering Translations"
+
+#: ../../solid/lattice.rst:200
+msgid ""
+"BCC格子の立方慣用単位胞には、8つの頂点に加えて体心にも格子点がある。慣用単位胞の辺を :math:`\\boldsymbol "
+"c_1,\\boldsymbol c_2,\\boldsymbol c_3` とすると、頂点から体心へのベクトル"
+msgstr ""
+"The cubic conventional cell of a BCC lattice has a lattice point at the "
+"body center as well as at each of its eight vertices. If the edges of the"
+" conventional cell are :math:`\\boldsymbol c_1,\\boldsymbol "
+"c_2,\\boldsymbol c_3`, the vector from a vertex to the body center is"
+
+#: ../../solid/lattice.rst:202
+msgid ""
+"\\boldsymbol t=\\tfrac12(\\boldsymbol c_1+\\boldsymbol c_2+\\boldsymbol "
+"c_3)\n"
+"\n"
+msgstr ""
+"\\boldsymbol t=\\tfrac12(\\boldsymbol c_1+\\boldsymbol c_2+\\boldsymbol "
+"c_3)\n"
+"\n"
+
+#: ../../solid/lattice.rst:205
+#, python-brace-format
+msgid ""
+"も格子ベクトルであり、この並進で格子全体は自分自身に重なる。しかし :math:`\\boldsymbol t` は "
+":math:`\\boldsymbol c_i` "
+"の整数結合では書けない。このように、慣用単位胞の辺の整数結合に含まれない格子並進を中心並進（centring "
+"translation）と呼ぶ。:math:`A_{\\rm c}=(\\boldsymbol c_1,\\boldsymbol "
+"c_2,\\boldsymbol c_3)` とし、原点と中心並進を慣用単位胞の分率座標で書いた集合を :math:`T` とすれば、格子は"
+msgstr ""
+"is also a lattice vector, because this translation maps the entire "
+"lattice onto itself. But :math:`\\boldsymbol t` cannot be written as an "
+"integer combination of :math:`\\boldsymbol c_i`. A lattice translation "
+"that cannot be written as an integer combination of the conventional cell"
+" edges is called a centering translation. Let :math:`A_{\\rm "
+"c}=(\\boldsymbol c_1,\\boldsymbol c_2,\\boldsymbol c_3)`, and let "
+":math:`T` be the set consisting of the origin and the centering "
+"translations expressed in fractional coordinates of the conventional "
+"cell. The lattice is then"
+
+#: ../../solid/lattice.rst:207
+msgid ""
+"\\Lambda=\\{A_{\\rm c}(\\boldsymbol n+\\boldsymbol\\tau)\\mid\\boldsymbol"
+" n\\in\\mathbb Z^3,\\ \\boldsymbol\\tau\\in T\\}\n"
+"\n"
+msgstr ""
+"\\Lambda=\\{A_{\\rm c}(\\boldsymbol n+\\boldsymbol\\tau)\\mid\\boldsymbol"
+" n\\in\\mathbb Z^3,\\ \\boldsymbol\\tau\\in T\\}\n"
+"\n"
+
+#: ../../solid/lattice.rst:211
+#, python-brace-format
+msgid ""
+"と表せる。BCCでは :math:`T=\\{(0,0,0),(1/2,1/2,1/2)\\}`、FCCでは "
+":math:`T=\\{(0,0,0),(0,1/2,1/2),(1/2,0,1/2),(1/2,1/2,0)\\}` "
+"で、FCCには3つの面心並進がある。:math:`T` "
+"の要素数が慣用単位胞内の格子点の数である。慣用単位胞の辺だけを並進とみなすと中心の格子点を落とすが、基本並進ベクトルを選び直せば式 :eq"
+":`translation-lattice` の形に戻り、中心並進を別に考える必要はない。"
+msgstr ""
+"For BCC, :math:`T=\\{(0,0,0),(1/2,1/2,1/2)\\}`. For FCC, "
+":math:`T=\\{(0,0,0),(0,1/2,1/2),(1/2,0,1/2),(1/2,1/2,0)\\}`, with three "
+"face-centering translations. The number of elements in :math:`T` is the "
+"number of lattice points in the conventional cell. Using only the "
+"conventional cell edges as translations misses the centered lattice "
+"points, but switching to primitive translation vectors restores the form "
+"of Equation :eq:`translation-lattice` and removes the need to account for"
+" centering translations separately."
+
+#: ../../solid/lattice.rst:213
+msgid ""
+"二次元では :numref:`fig-centred-rectangular-cells` のように、長方形の頂点から中心への "
+"並進を加えると、頂点の並びと中心の並びが互いに入れ替わり、格子全体が重なる。"
+msgstr ""
+"In two dimensions, as shown in :numref:`fig-centred-rectangular-cells`, "
+"adding the translation from a vertex of the rectangle to its center "
+"interchanges the array of vertices and the array of centers, so the whole"
+" lattice coincides with itself."
+
+#: ../../solid/lattice.rst:216
+msgid "中心並進は格子点についての性質である。単位胞の中心に原子があるだけでは中心並進にならず、結晶構造全体がその並進で重なる必要がある。例えばCsCl型構造では立方体の頂点にCs、体心にClがあり、体心への並進はCsをClに移すので結晶構造を保たない。この構造の格子は単純立方である。"
+msgstr ""
+"Centering translations are a property of the lattice points. Having an "
+"atom at the center of the unit cell is insufficient to establish a "
+"centering translation because the translation must map the entire crystal"
+" structure onto itself. For example, in the CsCl structure, Cs atoms "
+"occupy the cube vertices and a Cl atom occupies the body center. The "
+"translation to the body center maps Cs onto Cl and therefore does not "
+"preserve the crystal structure. Its lattice is simple cubic."
+

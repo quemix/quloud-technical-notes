@@ -3,7 +3,20 @@
 # ここに無い記事も英語版にページとして出るが、本文は日本語の原文への案内に置き換わる（_ext/english_edition.py）。
 index
 solid/index
+solid/crystal_structure
+solid/lattice
+solid/lattice_metric
+solid/unitcell
 solid/reciprocal_lattice
+solid/crystal_directions_planes
+solid/structure_factor
+solid/crystal_symmetry
+solid/symmetry_operations
+solid/point_and_space_groups
+solid/periodic_electronic_states
+solid/blochstheorem
+solid/brillouinzone
+solid/periodic_boundary
 solid/polarization
 md/index
 md/ensembles
