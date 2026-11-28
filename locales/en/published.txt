@@ -13,11 +13,16 @@ solid/structure_factor
 solid/crystal_symmetry
 solid/symmetry_operations
 solid/point_and_space_groups
+solid/cell_transformations
+solid/lattice_transform
+solid/unitcell_transform
+solid/cell_shape_bravais
+solid/pseudocubic
+solid/crystal_structure_input
 solid/periodic_electronic_states
 solid/blochstheorem
 solid/brillouinzone
 solid/periodic_boundary
-solid/polarization
 md/index
 md/ensembles
 md/heating_simulation
@@ -64,3 +69,8 @@ electronic/structure_optimization
 electronic/defects_migration
 electronic/defect_formation
 electronic/neb
+solid/crystal_properties
+solid/ferroelectricity
+solid/polarization
+solid/ferroelectric_origin
+solid/peierls_instability

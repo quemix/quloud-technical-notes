@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 09:33+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/crystal_properties.rst:2
+msgid "結晶構造と物性"
+msgstr "Crystal Structure and Physical Properties"
+
+#: ../../solid/crystal_properties.rst:4
+msgid ""
+"結晶構造と物性の関係を、チタン酸バリウムの強誘電性と、1次元鎖の\\ :ref:`Peierls不安定性<peierls-"
+"instability>`\\ を例に学びます。強誘電性は、相と分域の構造、\\ :ref:`周期結晶の分極<periodic-"
+"polarization>`\\ の求め方、不安定性の起源の3つの記事に分けています。"
+msgstr ""
+"We use ferroelectricity in barium titanate and the \\ :ref:`Peierls "
+"instability <peierls-instability>` \\ of a one-dimensional chain to learn"
+" how crystal structure relates to physical properties. Three articles on "
+"ferroelectricity cover the structures of phases and domains, how to "
+"calculate the \\ :ref:`polarization of periodic crystals <periodic-"
+"polarization>`\\ , and the origin of the instability."
+

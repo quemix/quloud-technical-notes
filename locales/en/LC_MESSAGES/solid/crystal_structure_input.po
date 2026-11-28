@@ -1,0 +1,390 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 09:33+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/crystal_structure_input.rst:4
+msgid "構造の標準化と計算入力"
+msgstr "Structure Standardization and Calculation Input"
+
+#: ../../solid/crystal_structure_input.rst:6
+msgid "格子還元・結晶学的標準化で何が変わるかを整理し、構造ファイルや計算ソフトで 格子ベクトルと原子座標をどう指定するかを確認する。"
+msgstr ""
+"We describe what changes during lattice reduction and crystallographic "
+"standardization, then examine how to specify lattice vectors and atomic "
+"coordinates in structure files and simulation software."
+
+#: ../../solid/crystal_structure_input.rst:9
+msgid ""
+"**前提知識**: :ref:`格子の基底変換<lt-primitive-basis>`、:ref:`Cartesian座標の回転<lt-"
+"cartesian-rotation>`、 :ref:`基本単位胞<lattice-unit-cells>`、:ref:`超胞<lt-"
+"supercell>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Lattice basis transformations <lt-primitive-"
+"basis>`, :ref:`rotation of Cartesian coordinates <lt-cartesian-"
+"rotation>`, :ref:`primitive cells <lattice-unit-cells>`, and "
+":ref:`supercells <lt-supercell>`."
+
+#: ../../solid/crystal_structure_input.rst:12
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/crystal_structure_input.rst:14
+msgid "格子還元と結晶学的標準化で、何が変わり何が保たれるかを区別する。"
+msgstr ""
+"Distinguish what changes and what is preserved in lattice reduction and "
+"crystallographic standardization."
+
+#: ../../solid/crystal_structure_input.rst:15
+msgid "CIF、Quantum ESPRESSO、SPR-KKR、LAMMPSで、格子ベクトルと原子座標の指定がどう違うかを確かめる。"
+msgstr ""
+"Check how the specification of lattice vectors and atomic coordinates "
+"differs among CIF, Quantum ESPRESSO, SPR-KKR, and LAMMPS."
+
+#: ../../solid/crystal_structure_input.rst:16
+msgid "格子ベクトルを列と行のどちらに並べるかの違いによる入力の誤りを避ける。"
+msgstr ""
+"Avoid input errors caused by differences in whether lattice vectors are "
+"stored in columns or rows."
+
+#: ../../solid/crystal_structure_input.rst:21
+msgid "格子還元と結晶学的標準化"
+msgstr "Lattice Reduction and Crystallographic Standardization"
+
+#: ../../solid/crystal_structure_input.rst:23
+msgid "Niggli還元は格子の計量に基づき、同じ格子を簡潔な基底で表す手続きである。原子配置を含む結晶学的標準化は対称性を探索し、選んだ空間群設定に基づく標準慣用単位胞または基本単位胞を構成する。目的と入力情報が異なる。"
+msgstr ""
+"Niggli reduction uses the lattice metric to express the same lattice in a"
+" simpler basis. Crystallographic standardization includes the atomic "
+"arrangement in the symmetry search and constructs the standard "
+"conventional cell or primitive cell for the chosen space group setting. "
+"The two procedures use different inputs and serve different purposes."
+
+#: ../../solid/crystal_structure_input.rst:25
+msgid ""
+"spglibの `standardize_cell "
+"<https://spglib.readthedocs.io/en/stable/api/autodoc/spglib.cell.html#spglib.cell.standardize_cell>`_"
+" は ``to_primitive=True`` で基本単位胞、``to_primitive=False``\\ "
+"（既定値）で標準慣用単位胞を返す。``no_idealize=False``\\ "
+"（既定値）では、対称性に合わせて格子定数や原子位置が調整されることがある。歪みや緩和後の数値を保持したい場合は "
+"``no_idealize=True`` を検討する。ただしこの指定は理想化を止めるもので、対称性探索を止めるものではない。入力構造に対して "
+"``symprec`` と ``angle_tolerance`` が適切か、許容差を変えたときに検出対称性が安定するかも確認する。"
+msgstr ""
+"In spglib, `standardize_cell "
+"<https://spglib.readthedocs.io/en/stable/api/autodoc/spglib.cell.html#spglib.cell.standardize_cell>`_"
+" returns a primitive cell with ``to_primitive=True``, or a standard "
+"conventional cell with ``to_primitive=False`` \\ (the default). With "
+"``no_idealize=False`` \\ (the default), it may adjust the lattice "
+"constants and atomic positions to match the symmetry. To retain the "
+"numerical values of a distorted or relaxed structure, consider "
+"``no_idealize=True``. This setting disables idealization but leaves the "
+"symmetry search active. Also check whether ``symprec`` and "
+"``angle_tolerance`` are appropriate for the input structure and whether "
+"the detected symmetry is stable as you vary the tolerances."
+
+#: ../../solid/crystal_structure_input.rst:27
+msgid ""
+"spglibは対称性判定結果に基づいて原子順序やCartesianの向きを変える場合があり、標準化結果だけで物理的同一性を完全に判定できるわけではない。spglibのPython"
+" APIは格子ベクトルを\\ **行**\\ として受け取る（\\ :ref:`配列規約<lt-array-conventions>`）。"
+msgstr ""
+"Depending on the symmetry it detects, spglib may reorder atoms or change "
+"the Cartesian orientation. The standardized output alone does not fully "
+"determine whether structures are physically equivalent. The spglib Python"
+" API takes lattice vectors as \\ **rows** \\ (see \\ :ref:`array layout "
+"conventions <lt-array-conventions>`)."
+
+#: ../../solid/crystal_structure_input.rst:32
+msgid "計算ソフトと構造ファイル"
+msgstr "Simulation Software and Structure Files"
+
+#: ../../solid/crystal_structure_input.rst:37
+msgid "CIF"
+msgstr "CIF"
+
+#: ../../solid/crystal_structure_input.rst:39
+msgid ""
+"CIFは通常、単位胞の辺の長さ・角度と原子の\\ :ref:`分率座標<coordinates>`\\ を記録する。まず、座標が単位胞内の "
+"全原子を含むか、非対称単位の代表原子だけを記録しているかを確認する。 代表原子だけのときは、空間群情報や対称操作を使って\\ "
+":ref:`非対称単位から原子座標を展開する<asymmetric-unit-and-cif>`。"
+msgstr ""
+"A CIF usually records the unit cell's edge lengths and angles and the "
+"atoms' \\ :ref:`fractional coordinates <coordinates>`\\ . First check "
+"whether the coordinates include every atom in the cell or only "
+"representatives in the asymmetric unit. If they include only "
+"representatives, use the space group information or symmetry operations "
+"to \\ :ref:`expand the atomic coordinates from the asymmetric unit "
+"<asymmetric-unit-and-cif>`."
+
+#: ../../solid/crystal_structure_input.rst:43
+msgid ""
+"部分占有があれば、組成や無秩序をどうモデル化するかを決める。セル定数から分かるのは 単位胞の形と大きさで、\\ "
+":ref:`Cartesian座標系での置き方<cell-parameters-cartesian>`\\ は別に選ぶ。"
+msgstr ""
+"If there are partial occupancies, decide how to model the composition or "
+"disorder. The cell parameters give the shape and size of the unit cell. "
+"Choose the \\ :ref:`orientation in Cartesian coordinates <cell-"
+"parameters-cartesian>` \\ separately."
+
+#: ../../solid/crystal_structure_input.rst:49
+msgid "Quantum ESPRESSO"
+msgstr "Quantum ESPRESSO"
+
+#: ../../solid/crystal_structure_input.rst:51
+#, python-brace-format
+msgid ""
+"Quantum ESPRESSO 7.5の公式 `INPUT_PW <https://www.quantum-"
+"espresso.org/Doc/INPUT_PW.html>`_ によると、``ibrav=0`` は ``CELL_PARAMETERS`` "
+"でセルを与え、``ibrav>0`` はQEが定義するBravais格子のベクトルを使う。``ATOMIC_POSITIONS crystal``"
+" は、``ibrav`` または ``CELL_PARAMETERS`` "
+"によって指定された計算セルの3本の格子ベクトルに対する分率座標である。``ibrav=0`` では超胞を直接指定することもできる。例えば "
+"``ibrav=2`` のベクトルは :math:`\\frac a2(-1,0,1)`、:math:`\\frac "
+"a2(0,1,1)`、:math:`\\frac a2(-1,1,0)` であり、FCC基本単位胞を使うが、\\ :ref:`FCCの基底変換"
+"<lt-fcc-cell>`\\ に用いる :math:`P_{\\rm F}` の取り方とは軸向きが異なる。引数が負の設定もあり、例えば "
+"``ibrav=-3`` "
+"は体心立方格子の別の対称的な軸設定を表す。符号だけからベクトルの向きや原点を推測せず、公式表の定義を使う。計算セルを変更したときは、分率座標や方向指数をそのまま引き継がず、対応する基底変換を行う。格子成分、原子位置の単位、格子定数の単位を明示し、Bohr、Å、``alat``"
+" を混ぜない。"
+msgstr ""
+"According to the official Quantum ESPRESSO 7.5 `INPUT_PW <https://www"
+".quantum-espresso.org/Doc/INPUT_PW.html>`_ documentation, ``ibrav=0`` "
+"takes the cell from ``CELL_PARAMETERS``, whereas ``ibrav>0`` uses the "
+"Bravais lattice vectors defined by QE. ``ATOMIC_POSITIONS crystal`` "
+"specifies fractional coordinates relative to the three lattice vectors of"
+" the simulation cell defined by ``ibrav`` or ``CELL_PARAMETERS``. With "
+"``ibrav=0`` you can also specify a supercell directly. For example, the "
+"vectors for ``ibrav=2`` are :math:`\\frac a2(-1,0,1)`, :math:`\\frac "
+"a2(0,1,1)`, and :math:`\\frac a2(-1,1,0)`. These vectors span an FCC "
+"primitive cell, but its axes are oriented differently from those obtained"
+" in the \\ :ref:`FCC basis transformation <lt-fcc-cell>` \\  with "
+":math:`P_{\\rm F}`. Some settings use a negative argument. For example, "
+"``ibrav=-3`` specifies an alternative symmetric choice of axes for the "
+"body-centered cubic lattice. Use the definitions in the official table, "
+"since the sign alone does not establish the vector orientations or the "
+"origin. When changing the simulation cell, apply the corresponding basis "
+"transformation to the fractional coordinates and direction indices rather"
+" than carrying them over unchanged. Specify the lattice components and "
+"state the units of the atomic positions and lattice constants. Keep Bohr,"
+" Å, and ``alat`` distinct."
+
+#: ../../solid/crystal_structure_input.rst:56
+msgid "SPR-KKR"
+msgstr "SPR-KKR"
+
+#: ../../solid/crystal_structure_input.rst:58
+msgid ""
+"SPR-KKRは結晶・薄膜・表面などの計算形態に応じた構造入力を持つ。公開されている `SPR-KKR User Guide "
+"<https://sprkkr.org/?download_id=3257&sdm_process_download=1>`_ "
+"の層構造の例では、格子ベクトルと原子位置の記述がバルク結晶のポテンシャル入力と同じ形式ではない。したがって、ファイル種別・マニュアル版・計算モードを特定せずに、ベクトルの行列配置や角度パラメータを一律に断定しない。"
+msgstr ""
+"SPR-KKR accepts structural inputs specific to calculation types such as "
+"crystals, thin films, and surfaces. In the layered-structure example in "
+"the public `SPR-KKR User Guide "
+"<https://sprkkr.org/?download_id=3257&sdm_process_download=1>`_, the "
+"lattice vectors and atomic positions use a different format from the "
+"potential input for a bulk crystal. Specify the file type, manual "
+"version, and calculation mode before stating how vectors are arranged in "
+"a matrix or how angles are parameterized."
+
+#: ../../solid/crystal_structure_input.rst:60
+#, python-brace-format
+msgid ""
+"実際の入力では対象バージョンのマニュアルと動作例を確認し、結晶方向（例えば :math:`[001]_{\\rm "
+"c}`）、Cartesian方向、磁化方向のどれを指定しているかを特定する。MAEやtorqueの方向を扱う際は、格子の軸変換だけでなくCartesian磁化ベクトルも同じ座標変換と整合させる。"
+msgstr ""
+"For an actual input, consult the manual and working examples for the "
+"version in use. Identify whether the input specifies a crystal direction "
+"(such as :math:`[001]_{\\rm c}`), a Cartesian direction, or a "
+"magnetization direction. For directions used in MAE or torque "
+"calculations, keep the Cartesian magnetization vector consistent with the"
+" same coordinate transformation as the lattice axes."
+
+#: ../../solid/crystal_structure_input.rst:65
+msgid "LAMMPS"
+msgstr "LAMMPS"
+
+#: ../../solid/crystal_structure_input.rst:67
+msgid ""
+"LAMMPSの `triclinic box documentation "
+"<https://docs.lammps.org/Howto_triclinic.html>`_ は一般三斜セルとrestricted "
+"triclinic boxを区別する。一般形式は右手系の任意方向の辺ベクトルで与えられ、restricted形式では "
+":math:`\\boldsymbol a=(l_x,0,0)`、:math:`\\boldsymbol "
+"b=(xy,l_y,0)`、:math:`\\boldsymbol c=(xz,yz,l_z)` "
+"と軸を揃える。LAMMPSは一般形式からrestricted形式へ移す際、箱を回転し、原子座標や速度などのCartesian量にも同じ回転を適用する。内部計算ではrestricted形式を使う。:math:`xy,xz,yz`"
+" はtilt factorsである。"
+msgstr ""
+"The LAMMPS `triclinic box documentation "
+"<https://docs.lammps.org/Howto_triclinic.html>`_ distinguishes the "
+"general triclinic cell from the restricted triclinic box. The general "
+"form takes arbitrarily oriented edge vectors in a right-handed system. "
+"The restricted form aligns the axes so that :math:`\\boldsymbol "
+"a=(l_x,0,0)`, :math:`\\boldsymbol b=(xy,l_y,0)`, and :math:`\\boldsymbol "
+"c=(xz,yz,l_z)`. To convert from the general to the restricted form, "
+"LAMMPS rotates the box and applies the same rotation to Cartesian "
+"quantities such as atomic coordinates and velocities. The internal "
+"calculation uses the restricted form. The quantities :math:`xy,xz,yz` are"
+" the tilt factors."
+
+#: ../../solid/crystal_structure_input.rst:69
+msgid ""
+"入力・出力形式やコマンドによって一般形式を指定できる範囲が異なる。超胞生成は別途行列 :math:`M` "
+"に基づいて周期像を作る。箱だけを回して原子位置・速度・その他のベクトルを据え置くと、元の構造を保たない。テンソルや外場を含む計算では、どの量がセル座標系とともに変換されるかを個別に確認する。"
+msgstr ""
+"Support for the general form varies by input format, output format, and "
+"command. Constructing a supercell is a separate operation that generates "
+"periodic images using the matrix :math:`M`. Rotating only the box while "
+"keeping the atomic positions, velocities, and other vectors fixed does "
+"not preserve the original structure. For calculations with tensors or "
+"external fields, check separately which quantities transform with the "
+"cell coordinate system."
+
+#: ../../solid/crystal_structure_input.rst:74
+msgid "実装上の配列規約"
+msgstr "Array Conventions in the Implementation"
+
+#: ../../solid/crystal_structure_input.rst:76
+msgid ""
+"本稿の列規約では :math:`A` の各列が格子ベクトルで、Cartesian位置は :math:`\\boldsymbol "
+"r=A\\boldsymbol s`。spglibのPython APIやASEの `Cell <https://docs.ase-"
+"lib.org/ase/cell.html>`_ は3本の格子ベクトルを行として並べるため、対応は ``lattice_rows = A.T`` "
+"である。原子座標を行配列 ``positions_rows`` として渡す場合、Cartesian座標の行配列は ``positions_rows"
+" @ lattice_rows`` になる。"
+msgstr ""
+"With the column convention used here, the columns of :math:`A` are the "
+"lattice vectors and the Cartesian coordinates of a position are "
+":math:`\\boldsymbol r=A\\boldsymbol s`. The spglib Python API and ASE's "
+"`Cell <https://docs.ase-lib.org/ase/cell.html>`_ store the three lattice "
+"vectors as rows, so the corresponding array is ``lattice_rows = A.T``. "
+"When atomic coordinates are passed in the row array ``positions_rows``, "
+"the Cartesian coordinate row array is ``positions_rows @ lattice_rows``."
+
+#: ../../solid/crystal_structure_input.rst:78
+#, python-brace-format
+msgid ""
+"列形式の式をNumPyの行配列へ移すときは転置も式の一部として扱う。格子行配列 :math:`L=A^{\\mathsf T}` の基底変更は "
+":math:`L'=P^{\\mathsf T}L`、分率座標の行配列は :math:`S'=SP^{-\\mathsf T}` "
+"となる。配列のshapeだけを見て乗算順を推測しない。"
+msgstr ""
+"When converting column-vector formulas to NumPy row arrays, treat the "
+"transpose as part of the formula. For the lattice row array "
+":math:`L=A^{\\mathsf T}`, the change of basis is :math:`L'=P^{\\mathsf "
+"T}L`, and for the fractional coordinate row array it is "
+":math:`S'=SP^{-\\mathsf T}`. Array shape alone does not determine the "
+"multiplication order."
+
+#: ../../solid/crystal_structure_input.rst:83
+msgid "よくある誤り"
+msgstr "Common Mistakes"
+
+#: ../../solid/crystal_structure_input.rst:85
+msgid "慣用単位胞の3辺だけを基本並進とみなし、F中心・I中心・底心の格子点を落とす。"
+msgstr ""
+"Treating only the three edges of the conventional cell as primitive "
+"translations and omitting lattice points in face-centered, body-centered,"
+" or base-centered cells."
+
+#: ../../solid/crystal_structure_input.rst:86
+#, python-brace-format
+msgid ":math:`A'=AP` を使いながら、分率座標を :math:`P^{-1}` で変換しない。"
+msgstr ""
+"Using :math:`A'=AP` without transforming fractional coordinates by "
+":math:`P^{-1}`."
+
+#: ../../solid/crystal_structure_input.rst:87
+msgid "方向指数 :math:`\\boldsymbol u` とMiller指数 :math:`\\boldsymbol h` に同じ変換則を適用する。"
+msgstr ""
+"Applying the same transformation rule to direction indices "
+":math:`\\boldsymbol u` and Miller indices :math:`\\boldsymbol h`."
+
+#: ../../solid/crystal_structure_input.rst:88
+msgid "格子だけ回し、Cartesian磁化・外場・速度・応力などを対応させない。"
+msgstr ""
+"Rotating only the lattice and leaving Cartesian magnetization, external "
+"fields, velocities, stress, and similar quantities inconsistent with it."
+
+#: ../../solid/crystal_structure_input.rst:89
+msgid "原点シフトを忘れる、またはwrapだけで基本単位胞縮約・超胞化が済むと思う。"
+msgstr ""
+"Forgetting the origin shift, or assuming that wrapping alone suffices to "
+"reduce to a primitive cell or build a supercell."
+
+#: ../../solid/crystal_structure_input.rst:90
+msgid "対称性標準化による理想化を、緩和後構造を保つ単なる基底変更とみなす。"
+msgstr ""
+"Treating idealization through symmetry standardization as a mere basis "
+"change that preserves the relaxed structure."
+
+#: ../../solid/crystal_structure_input.rst:91
+msgid "行ベクトルAPIへ列行列をそのまま渡す、あるいはÅ・Bohr・``alat`` を混同する。"
+msgstr ""
+"Passing a matrix of column vectors unchanged to a row-vector API, or "
+"confusing Å, Bohr, and ``alat``."
+
+#: ../../solid/crystal_structure_input.rst:96
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/crystal_structure_input.rst:98
+msgid ""
+"IUCr, `Conventional cell "
+"<https://dictionary.iucr.org/Conventional_cell>`_."
+msgstr ""
+"IUCr, `Conventional cell "
+"<https://dictionary.iucr.org/Conventional_cell>`_."
+
+#: ../../solid/crystal_structure_input.rst:99
+msgid ""
+"spglib, `Python API: standardize_cell "
+"<https://spglib.readthedocs.io/en/stable/api/autodoc/spglib.cell.html#spglib.cell.standardize_cell>`_"
+" および `Definitions and conventions "
+"<https://spglib.readthedocs.io/en/stable/definition.html>`_."
+msgstr ""
+"spglib, `Python API: standardize_cell "
+"<https://spglib.readthedocs.io/en/stable/api/autodoc/spglib.cell.html#spglib.cell.standardize_cell>`_"
+" and `Definitions and conventions "
+"<https://spglib.readthedocs.io/en/stable/definition.html>`_."
+
+#: ../../solid/crystal_structure_input.rst:100
+msgid "ASE, `Cell <https://docs.ase-lib.org/ase/cell.html>`_."
+msgstr "ASE, `Cell <https://docs.ase-lib.org/ase/cell.html>`_."
+
+#: ../../solid/crystal_structure_input.rst:101
+msgid ""
+"Quantum ESPRESSO 7.5, `pw.x input description <https://www.quantum-"
+"espresso.org/Doc/INPUT_PW.html>`_."
+msgstr ""
+"Quantum ESPRESSO 7.5, `pw.x input description <https://www.quantum-"
+"espresso.org/Doc/INPUT_PW.html>`_."
+
+#: ../../solid/crystal_structure_input.rst:102
+msgid ""
+"LAMMPS, `Triclinic simulation boxes "
+"<https://docs.lammps.org/Howto_triclinic.html>`_."
+msgstr ""
+"LAMMPS, `Triclinic simulation boxes "
+"<https://docs.lammps.org/Howto_triclinic.html>`_."
+
+#: ../../solid/crystal_structure_input.rst:103
+msgid ""
+"SPR-KKR, `User Guide (19 October 2023) "
+"<https://sprkkr.org/?download_id=3257&sdm_process_download=1>`_. "
+"入力仕様はファイル種別と版に依存する。"
+msgstr ""
+"SPR-KKR, `User Guide (19 October 2023) "
+"<https://sprkkr.org/?download_id=3257&sdm_process_download=1>`_. The "
+"input specifications depend on the file type and version."
+

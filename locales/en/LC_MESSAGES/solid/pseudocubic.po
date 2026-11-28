@@ -1,0 +1,695 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:01+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/pseudocubic.rst:5
+msgid "ペロブスカイトの擬立方格子"
+msgstr "Pseudocubic Lattice of Perovskites"
+
+#: ../../solid/pseudocubic.rst:7
+msgid ""
+":ref:`単位胞の取り直し<lt-cell-transform>`\\ と\\ :ref:`胞の形とブラベー格子型<lt-cell-shape-"
+"bravais>`\\ では、同じ格子を別の胞で表す例を見た。ここでは、少しだけ歪んだ結晶を、 "
+"歪む前の高対称な結晶の軸で表す方法を扱う。この軸を使うと、相ごとに空間群の胞が違っても、格子定数や "
+"方向の指数を共通の軸で比べられる。BaTiO\\ :sub:`3`\\ を例に、擬立方胞と各相の慣用単位胞の関係、直方晶相での "
+"格子定数の換算、擬立方表記で表せないことを順に見る。"
+msgstr ""
+"In :ref:`Changing the Unit Cell for FCC <lt-cell-transform>` \\ and \\ "
+":ref:`Cell Shape and Bravais Lattice Type <lt-cell-shape-bravais>`\\ , we"
+" saw how different cells can describe the same lattice. Here we describe "
+"a slightly distorted crystal using the axes of the high-symmetry crystal "
+"before distortion. These axes give a common basis for comparing lattice "
+"constants and direction indices even when the conventional cells of the "
+"space groups differ from phase to phase. Using BaTiO\\ :sub:`3` \\ as an "
+"example, we relate the pseudocubic cell to each phase's conventional "
+"cell, convert the lattice constants of the orthorhombic phase, and "
+"describe the limits of pseudocubic notation."
+
+#: ../../solid/pseudocubic.rst:12
+msgid ""
+"**前提知識**: :ref:`格子の基底変換<lt-primitive-basis>`、:ref:`方向と面の指数の変換<lt-index-"
+"transform>`、 :ref:`等価な方向と面の族<equivalent-directions>`、:ref:`空間群<crystal-"
+"space-group>`、 :ref:`R格子の六方軸表示<lt-rhombohedral-hexagonal>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Lattice basis transformations <lt-primitive-"
+"basis>`, :ref:`transformations of direction and plane indices <lt-index-"
+"transform>`, :ref:`families of equivalent directions and planes "
+"<equivalent-directions>`, :ref:`space groups <crystal-space-group>`, and "
+":ref:`the hexagonal setting of an R lattice <lt-rhombohedral-hexagonal>`."
+
+#: ../../solid/pseudocubic.rst:16
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/pseudocubic.rst:18
+msgid "擬立方胞と各相の慣用単位胞の関係を、変換行列で表す。"
+msgstr ""
+"Use transformation matrices to relate the pseudocubic cell to the "
+"conventional cell of each phase."
+
+#: ../../solid/pseudocubic.rst:19
+msgid "直方晶のA中心化胞の格子定数を、擬立方の格子定数に換算する。"
+msgstr ""
+"Convert the lattice constants of the A-centered orthorhombic cell to "
+"pseudocubic lattice constants."
+
+#: ../../solid/pseudocubic.rst:20
+msgid "空間群の設定による軸の名前の違いと、擬立方表記で表せないことを説明する。"
+msgstr ""
+"Explain how axis names differ between space group settings and what "
+"pseudocubic notation cannot describe."
+
+#: ../../solid/pseudocubic.rst:25
+msgid "擬立方胞と各相の胞"
+msgstr "Pseudocubic Cell and the Cells of Individual Phases"
+
+#: ../../solid/pseudocubic.rst:27
+#, python-brace-format
+msgid ""
+"理想的なペロブスカイト型構造ABO\\ :sub:`3`\\ は空間群 :math:`Pm\\bar3m` "
+"をとり、単純立方格子の胞に1化学式単位を含む（BaTiO\\ :sub:`3`\\ では胞の一辺が約4 Å）。BaTiO\\ :sub:`3`\\"
+" の正方晶・直方（斜方）晶・菱面体晶の相は、この構造から原子がわずかに変位し、格子が少し歪んだものである [`Kwei 1993 "
+"<https://doi.org/10.1021/j100112a043>`__]。空間群の慣用単位胞の軸は相ごとに向きも大きさも異なる。一方、これらの相では原子の変位で並進周期が変わらないので、どの相でも、立方胞の3辺から連続的に変形した3本の格子ベクトルを選べる。この3本を辺とする胞を\\"
+" **擬立方胞**\\ （pseudocubic cell）と呼び、格子行列を :math:`A_{\\rm pc}=(\\boldsymbol "
+"a_{\\rm pc},\\boldsymbol b_{\\rm pc},\\boldsymbol c_{\\rm pc})` "
+"と書く。添字pcを付けた方向・面の指数は、この胞の基底での係数を表す。各相の胞は、\\ :ref:`基底変換<lt-primitive-"
+"basis>`\\ の行列 :math:`P` を使って"
+msgstr ""
+"The ideal perovskite structure ABO\\ :sub:`3` \\ has space group "
+":math:`Pm\\bar3m` and contains one formula unit per simple cubic cell "
+"(for BaTiO\\ :sub:`3` \\ the cell edge is about 4 Å). The tetragonal, "
+"orthorhombic, and rhombohedral phases of BaTiO\\ :sub:`3` \\ arise from "
+"small atomic displacements and a slight lattice distortion of this "
+"structure [`Kwei 1993 <https://doi.org/10.1021/j100112a043>`__]. The axes"
+" of the conventional cells for the space groups differ in orientation and"
+" length from phase to phase. However, the atomic displacements in these "
+"phases leave the translational periodicity unchanged, so in each phase we"
+" can choose three lattice vectors obtained by continuously deforming the "
+"three cubic cell edges. We call the cell spanned by these vectors the \\ "
+"**pseudocubic cell** \\ and write its lattice matrix as :math:`A_{\\rm "
+"pc}=(\\boldsymbol a_{\\rm pc},\\boldsymbol b_{\\rm pc},\\boldsymbol "
+"c_{\\rm pc})`. Direction and plane indices with the subscript pc are "
+"coefficients in this cell's basis. Using the \\ :ref:`basis "
+"transformation <lt-primitive-basis>` \\ matrix :math:`P`, we can write "
+"the cell of each phase as"
+
+#: ../../solid/pseudocubic.rst:29
+#, python-brace-format
+msgid "A=A_{\\rm pc}P,\\qquad V=|\\det P|\\,V_{\\rm pc}"
+msgstr "A=A_{\\rm pc}P,\\qquad V=|\\det P|\\,V_{\\rm pc}"
+
+#: ../../solid/pseudocubic.rst:34
+msgid ""
+"と表せる。:numref:`lt-batio3-pseudocubic-table` "
+"に各相の胞と擬立方胞の関係をまとめる。分極の向きの列は、等価な方向の族から1つを選んで書いた。"
+msgstr ""
+":numref:`lt-batio3-pseudocubic-table` summarizes the relationship between"
+" the pseudocubic cell and the cell of each phase. The polarization column"
+" lists one representative direction from each family of equivalent "
+"directions."
+
+#: ../../solid/pseudocubic.rst:36
+msgid "BaTiO\\ :sub:`3`\\ の各相の胞と擬立方胞"
+msgstr ""
+"Cells of the BaTiO\\ :sub:`3` \\ phases and their relation to the "
+"pseudocubic cell"
+
+#: ../../solid/pseudocubic.rst:41
+msgid "相"
+msgstr "Phase"
+
+#: ../../solid/pseudocubic.rst:42
+msgid "空間群"
+msgstr "Space group"
+
+#: ../../solid/pseudocubic.rst:43
+msgid "擬立方胞との関係"
+msgstr "Relation to the pseudocubic cell"
+
+#: ../../solid/pseudocubic.rst:44
+msgid ":math:`|\\det P|`"
+msgstr ":math:`|\\det P|`"
+
+#: ../../solid/pseudocubic.rst:45
+msgid "分極の向き"
+msgstr "Polarization direction"
+
+#: ../../solid/pseudocubic.rst:46
+msgid "立方晶"
+msgstr "Cubic"
+
+#: ../../solid/pseudocubic.rst:47
+msgid ":math:`Pm\\bar3m`"
+msgstr ":math:`Pm\\bar3m`"
+
+#: ../../solid/pseudocubic.rst:48
+msgid "同じ胞。:math:`a=b=c`、角は90°"
+msgstr "Same cell. :math:`a=b=c`, with angles of 90°."
+
+#: ../../solid/pseudocubic.rst:49 ../../solid/pseudocubic.rst:54
+msgid "1"
+msgstr "1"
+
+#: ../../solid/pseudocubic.rst:50
+msgid "なし"
+msgstr "None"
+
+#: ../../solid/pseudocubic.rst:51
+msgid "正方晶"
+msgstr "Tetragonal"
+
+#: ../../solid/pseudocubic.rst:52
+msgid ":math:`P4mm`"
+msgstr ":math:`P4mm`"
+
+#: ../../solid/pseudocubic.rst:53
+msgid "同じ胞。:math:`a=b\\ne c`、角は90°"
+msgstr "Same cell. :math:`a=b\\ne c`, with angles of 90°."
+
+#: ../../solid/pseudocubic.rst:55
+#, python-brace-format
+msgid ":math:`[001]_{\\rm pc}`"
+msgstr ":math:`[001]_{\\rm pc}`"
+
+#: ../../solid/pseudocubic.rst:56
+msgid "直方晶"
+msgstr "Orthorhombic"
+
+#: ../../solid/pseudocubic.rst:57
+msgid ":math:`Amm2`"
+msgstr ":math:`Amm2`"
+
+#: ../../solid/pseudocubic.rst:58
+#, python-brace-format
+msgid ""
+":math:`\\boldsymbol a_{\\rm orth}=\\boldsymbol a_{\\rm "
+"pc}`。:math:`\\boldsymbol b_{\\rm orth}`、:math:`\\boldsymbol c_{\\rm "
+"orth}` は面の対角線（式 :eq:`pseudocubic-orthorhombic`）"
+msgstr ""
+":math:`\\boldsymbol a_{\\rm orth}=\\boldsymbol a_{\\rm pc}`. "
+":math:`\\boldsymbol b_{\\rm orth}` and :math:`\\boldsymbol c_{\\rm orth}`"
+" are face diagonals (Equation :eq:`pseudocubic-orthorhombic`)."
+
+#: ../../solid/pseudocubic.rst:59
+msgid "2"
+msgstr "2"
+
+#: ../../solid/pseudocubic.rst:60
+#, python-brace-format
+msgid ":math:`[011]_{\\rm pc}`"
+msgstr ":math:`[011]_{\\rm pc}`"
+
+#: ../../solid/pseudocubic.rst:61
+msgid "菱面体晶"
+msgstr "Rhombohedral"
+
+#: ../../solid/pseudocubic.rst:62
+msgid ":math:`R3m`"
+msgstr ":math:`R3m`"
+
+#: ../../solid/pseudocubic.rst:63
+msgid "菱面体基本単位胞が擬立方胞（角は90°に近い）。慣用単位胞は六方軸の胞"
+msgstr ""
+"The rhombohedral primitive cell is the pseudocubic cell (angles close to "
+"90°). The conventional cell uses hexagonal axes."
+
+#: ../../solid/pseudocubic.rst:64
+msgid "1（六方軸は3）"
+msgstr "1 (3 in the hexagonal setting)"
+
+#: ../../solid/pseudocubic.rst:65
+#, python-brace-format
+msgid ":math:`[111]_{\\rm pc}`"
+msgstr ":math:`[111]_{\\rm pc}`"
+
+#: ../../solid/pseudocubic.rst:67
+#, python-brace-format
+msgid ""
+"どの相でも擬立方胞は基本単位胞の一つであり、慣用単位胞との違いは中心化と軸の取り方にある。直方晶相ではA中心化胞（:math:`|\\det "
+"P|=2`）、菱面体晶相では六方軸の胞（:math:`|\\det P|=3`）が慣用単位胞になる。後者は\\ :ref:`R格子の節<lt-"
+"rhombohedral-hexagonal>`\\ の :math:`P_{R,H}` で作る。辺の長さは "
+":math:`a_{R,H}\\simeq\\sqrt2\\,a_{\\rm "
+"pc}`、:math:`c_{R,H}\\simeq\\sqrt3\\,a_{\\rm pc}` で、:math:`\\boldsymbol "
+"c_{R,H}=\\boldsymbol a_{\\rm pc}+\\boldsymbol b_{\\rm pc}+\\boldsymbol "
+"c_{\\rm pc}` が極性軸 :math:`[111]_{\\rm pc}` に沿う。"
+msgstr ""
+"In each phase the pseudocubic cell is a primitive cell. The conventional "
+"cell differs in centering and choice of axes. The orthorhombic phase uses"
+" an A-centered conventional cell (:math:`|\\det P|=2`), and the "
+"rhombohedral phase uses a conventional cell in the hexagonal setting "
+"(:math:`|\\det P|=3`). For the latter, use the matrix defined in the \\ "
+":ref:`section on the R lattice <lt-rhombohedral-hexagonal>`\\ , "
+":math:`P_{R,H}`. The edge lengths are "
+":math:`a_{R,H}\\simeq\\sqrt2\\,a_{\\rm pc}` and "
+":math:`c_{R,H}\\simeq\\sqrt3\\,a_{\\rm pc}`, and :math:`\\boldsymbol "
+"c_{R,H}=\\boldsymbol a_{\\rm pc}+\\boldsymbol b_{\\rm pc}+\\boldsymbol "
+"c_{\\rm pc}` lies along the polar axis :math:`[111]_{\\rm pc}`."
+
+#: ../../solid/pseudocubic.rst:72
+msgid "直方晶のA中心化胞との換算"
+msgstr "Conversion to an A-Centered Orthorhombic Cell"
+
+#: ../../solid/pseudocubic.rst:74
+#, python-brace-format
+msgid ""
+"空間群 :math:`Amm2` の標準の設定では、2回軸（極性軸）を :math:`c` 軸に取り、胞はA中心並進 "
+":math:`(0,1/2,1/2)` を持つ。BaTiO\\ :sub:`3`\\ の直方晶相では、2回軸は擬立方胞の面の対角線 "
+":math:`[011]_{\\rm pc}` に沿う。そこで"
+msgstr ""
+"In the standard setting of space group :math:`Amm2`, the twofold axis "
+"(the polar axis) is the :math:`c` axis, and the cell has A-centering "
+"translation :math:`(0,1/2,1/2)`. In the orthorhombic phase of BaTiO\\ "
+":sub:`3`\\ , the twofold axis follows the face diagonal "
+":math:`[011]_{\\rm pc}` of the pseudocubic cell. We therefore choose"
+
+#: ../../solid/pseudocubic.rst:76
+#, python-brace-format
+msgid ""
+"\\begin{aligned}\n"
+"\\boldsymbol a_{\\rm orth}&=\\boldsymbol a_{\\rm pc},\\\\\n"
+"\\boldsymbol b_{\\rm orth}&=\\boldsymbol b_{\\rm pc}-\\boldsymbol c_{\\rm"
+" pc},\\\\\n"
+"\\boldsymbol c_{\\rm orth}&=\\boldsymbol b_{\\rm pc}+\\boldsymbol c_{\\rm"
+" pc},\n"
+"\\end{aligned}\n"
+"\\qquad\n"
+"P_{\\rm pc,orth}=\\begin{pmatrix}\n"
+"1&0&0\\\\0&1&1\\\\0&-1&1\n"
+"\\end{pmatrix},\\qquad \\det P_{\\rm pc,orth}=2"
+msgstr ""
+"\\begin{aligned}\n"
+"\\boldsymbol a_{\\rm orth}&=\\boldsymbol a_{\\rm pc},\\\\\n"
+"\\boldsymbol b_{\\rm orth}&=\\boldsymbol b_{\\rm pc}-\\boldsymbol c_{\\rm"
+" pc},\\\\\n"
+"\\boldsymbol c_{\\rm orth}&=\\boldsymbol b_{\\rm pc}+\\boldsymbol c_{\\rm"
+" pc},\n"
+"\\end{aligned}\n"
+"\\qquad\n"
+"P_{\\rm pc,orth}=\\begin{pmatrix}\n"
+"1&0&0\\\\0&1&1\\\\0&-1&1\n"
+"\\end{pmatrix},\\qquad \\det P_{\\rm pc,orth}=2"
+
+#: ../../solid/pseudocubic.rst:89
+#, python-brace-format
+msgid ""
+"と取る（:numref:`fig-pseudocubic-orthorhombic-"
+"cell`）。直方晶の胞の体積は擬立方胞の2倍で、格子点を2個含む。A中心並進の分率座標を擬立方胞の基底へ移すと :math:`P_{\\rm "
+"pc,orth}(0,1/2,1/2)^{\\mathsf T}=(0,1,0)^{\\mathsf T}` "
+"で、:math:`\\boldsymbol b_{\\rm pc}` という格子並進になる。:ref:`FCCの基本単位胞<lt-fcc-"
+"cell>`\\ への変換（:math:`\\det P_{\\rm "
+"F}=1/4`）とは逆向きに、基本単位胞から中心化した慣用単位胞へ移る変換である。"
+msgstr ""
+"(see :numref:`fig-pseudocubic-orthorhombic-cell`). The orthorhombic cell "
+"has twice the volume of the pseudocubic cell and contains two lattice "
+"points. In the pseudocubic basis, the fractional coordinates of the "
+"A-centering translation transform as :math:`P_{\\rm "
+"pc,orth}(0,1/2,1/2)^{\\mathsf T}=(0,1,0)^{\\mathsf T}`, giving the "
+"lattice translation :math:`\\boldsymbol b_{\\rm pc}`. This transformation"
+" goes from a primitive cell to a centered conventional cell, in the "
+"opposite direction to the transformation to the :ref:`FCC primitive cell "
+"<lt-fcc-cell>` \\ (:math:`\\det P_{\\rm F}=1/4`)."
+
+#: ../../solid/pseudocubic.rst:91
+msgid "格子点の並ぶ面で、青い破線のひし形が擬立方胞、オレンジの長方形が直方晶のA中心化胞。長方形の辺は擬立方胞の2本の辺の差と和で、長方形の中心にも格子点がある。"
+msgstr ""
+"In the plane of the lattice points, the blue dashed rhombus is the "
+"pseudocubic cell and the orange rectangle is the A-centered orthorhombic "
+"cell. The rectangle's edges are the difference and sum of two pseudocubic"
+" cell edges. A lattice point also lies at the center of the rectangle."
+
+#: ../../solid/pseudocubic.rst:97
+#, python-brace-format
+msgid ""
+":math:`\\boldsymbol a_{\\rm pc}` に垂直な面への投影。黒丸は格子点、青い矢印と破線のひし形は擬立方胞の "
+":math:`\\boldsymbol b_{\\rm pc}`、:math:`\\boldsymbol c_{\\rm "
+"pc}`、オレンジの矢印と長方形は直方晶の胞の :math:`\\boldsymbol b_{\\rm "
+"orth}`、:math:`\\boldsymbol c_{\\rm orth}` を示す。白抜きの丸はA中心並進による格子点。 見やすさのため "
+":math:`\\alpha_{\\rm pc}` を76°に誇張した（BaTiO\\ :sub:`3`\\ では約89.9°）。"
+msgstr ""
+"Projection onto the plane perpendicular to :math:`\\boldsymbol a_{\\rm "
+"pc}`. Filled black circles mark lattice points. The blue arrows and "
+"dashed rhombus show :math:`\\boldsymbol b_{\\rm pc}` and "
+":math:`\\boldsymbol c_{\\rm pc}` of the pseudocubic cell. The orange "
+"arrows and rectangle show :math:`\\boldsymbol b_{\\rm orth}` and "
+":math:`\\boldsymbol c_{\\rm orth}` of the orthorhombic cell. The open "
+"circle marks the lattice point from the A-centering translation. For "
+"clarity, :math:`\\alpha_{\\rm pc}` is exaggerated to 76°. In BaTiO\\ "
+":sub:`3` \\ it is about 89.9°."
+
+#: ../../solid/pseudocubic.rst:102
+#, python-brace-format
+msgid ""
+"直方晶の胞の辺は互いに直交するので、計量行列 :math:`G_{\\rm orth}=P_{\\rm pc,orth}^{\\mathsf "
+"T}G_{\\rm pc}P_{\\rm pc,orth}` は対角になる。:math:`G_{\\rm pc}=P_{\\rm "
+"pc,orth}^{-\\mathsf T}G_{\\rm orth}P_{\\rm pc,orth}^{-1}` を計算すると、擬立方胞は "
+":math:`b_{\\rm pc}=c_{\\rm pc}`、:math:`\\beta_{\\rm pc}=\\gamma_{\\rm "
+"pc}=90^\\circ` で、:math:`\\alpha_{\\rm pc}` "
+"だけが90°からずれる。胞の形は単斜だが、結晶の対称性は直方のままである。このとき"
+msgstr ""
+"The edges of the orthorhombic cell are mutually perpendicular, so the "
+"metric matrix :math:`G_{\\rm orth}=P_{\\rm pc,orth}^{\\mathsf T}G_{\\rm "
+"pc}P_{\\rm pc,orth}` is diagonal. Evaluating :math:`G_{\\rm pc}=P_{\\rm "
+"pc,orth}^{-\\mathsf T}G_{\\rm orth}P_{\\rm pc,orth}^{-1}` gives "
+":math:`b_{\\rm pc}=c_{\\rm pc}` and :math:`\\beta_{\\rm pc}=\\gamma_{\\rm"
+" pc}=90^\\circ` for the pseudocubic cell, with only :math:`\\alpha_{\\rm "
+"pc}` differing from 90°. The cell has a monoclinic shape, but the crystal"
+" symmetry remains orthorhombic. In this case,"
+
+#: ../../solid/pseudocubic.rst:104
+#, python-brace-format
+msgid ""
+"\\begin{aligned}\n"
+"b_{\\rm orth}^2&=|\\boldsymbol b_{\\rm pc}-\\boldsymbol c_{\\rm "
+"pc}|^2=2b_{\\rm pc}^2(1-\\cos\\alpha_{\\rm pc}),\\\\\n"
+"c_{\\rm orth}^2&=|\\boldsymbol b_{\\rm pc}+\\boldsymbol c_{\\rm "
+"pc}|^2=2b_{\\rm pc}^2(1+\\cos\\alpha_{\\rm pc})\n"
+"\\end{aligned}"
+msgstr ""
+"\\begin{aligned}\n"
+"b_{\\rm orth}^2&=|\\boldsymbol b_{\\rm pc}-\\boldsymbol c_{\\rm "
+"pc}|^2=2b_{\\rm pc}^2(1-\\cos\\alpha_{\\rm pc}),\\\\\n"
+"c_{\\rm orth}^2&=|\\boldsymbol b_{\\rm pc}+\\boldsymbol c_{\\rm "
+"pc}|^2=2b_{\\rm pc}^2(1+\\cos\\alpha_{\\rm pc})\n"
+"\\end{aligned}"
+
+#: ../../solid/pseudocubic.rst:111
+#, python-brace-format
+msgid ""
+"で、:math:`(\\boldsymbol b_{\\rm pc}-\\boldsymbol c_{\\rm "
+"pc})\\cdot(\\boldsymbol b_{\\rm pc}+\\boldsymbol c_{\\rm pc})=b_{\\rm "
+"pc}^2-c_{\\rm pc}^2=0` から2本の対角線は直交する。半角の公式で書き直し、逆に解いた式と並べると"
+msgstr ""
+"The two diagonals are perpendicular because :math:`(\\boldsymbol b_{\\rm "
+"pc}-\\boldsymbol c_{\\rm pc})\\cdot(\\boldsymbol b_{\\rm pc}+\\boldsymbol"
+" c_{\\rm pc})=b_{\\rm pc}^2-c_{\\rm pc}^2=0`. Using the half-angle "
+"formulas and also solving for the pseudocubic parameters gives"
+
+#: ../../solid/pseudocubic.rst:113
+msgid ""
+"\\begin{aligned}\n"
+"b_{\\rm orth}&=2b_{\\rm pc}\\sin\\frac{\\alpha_{\\rm pc}}2,&\n"
+"c_{\\rm orth}&=2b_{\\rm pc}\\cos\\frac{\\alpha_{\\rm pc}}2,\\\\\n"
+"b_{\\rm pc}=c_{\\rm pc}&=\\frac{\\sqrt{b_{\\rm orth}^2+c_{\\rm "
+"orth}^2}}2,&\n"
+"\\cos\\alpha_{\\rm pc}&=\\frac{c_{\\rm orth}^2-b_{\\rm orth}^2}{c_{\\rm "
+"orth}^2+b_{\\rm orth}^2}\n"
+"\\end{aligned}"
+msgstr ""
+"\\begin{aligned}\n"
+"b_{\\rm orth}&=2b_{\\rm pc}\\sin\\frac{\\alpha_{\\rm pc}}2,&\n"
+"c_{\\rm orth}&=2b_{\\rm pc}\\cos\\frac{\\alpha_{\\rm pc}}2,\\\\\n"
+"b_{\\rm pc}=c_{\\rm pc}&=\\frac{\\sqrt{b_{\\rm orth}^2+c_{\\rm "
+"orth}^2}}2,&\n"
+"\\cos\\alpha_{\\rm pc}&=\\frac{c_{\\rm orth}^2-b_{\\rm orth}^2}{c_{\\rm "
+"orth}^2+b_{\\rm orth}^2}\n"
+"\\end{aligned}"
+
+#: ../../solid/pseudocubic.rst:123
+#, python-brace-format
+msgid ""
+":math:`\\alpha_{\\rm pc}=90^\\circ` なら :math:`b_{\\rm orth}=c_{\\rm "
+"orth}=\\sqrt2\\,b_{\\rm pc}` である。擬立方の格子定数を :math:`\\sqrt2` 倍して直方晶の胞の "
+":math:`b`、:math:`c` とする換算は、この極限で成り立つ。:math:`b_{\\rm orth}` と "
+":math:`c_{\\rm orth}` の差は :math:`\\alpha_{\\rm pc}` の90°からのずれに表れるので、長さを "
+":math:`\\sqrt2` 倍するだけでは再現できない。"
+msgstr ""
+"When :math:`\\alpha_{\\rm pc}=90^\\circ`, we get :math:`b_{\\rm "
+"orth}=c_{\\rm orth}=\\sqrt2\\,b_{\\rm pc}`. Multiplying the pseudocubic "
+"lattice constant by :math:`\\sqrt2` to recover :math:`b` and :math:`c` of"
+" the orthorhombic cell is valid in this limit. The difference between "
+":math:`b_{\\rm orth}` and :math:`c_{\\rm orth}` appears as the deviation "
+"of :math:`\\alpha_{\\rm pc}` from 90°, so simply multiplying the length "
+"by :math:`\\sqrt2` cannot reproduce it."
+
+#: ../../solid/pseudocubic.rst:125
+#, python-brace-format
+msgid ""
+"実測の格子定数で差の大きさを見積もる。Shiraneらの中性子回折による263 Kの構造は :math:`a_{\\rm orth}=3.990`"
+" Å、:math:`b_{\\rm orth}=5.669` Å、:math:`c_{\\rm orth}=5.682` Å [`Shirane "
+"1957 <https://doi.org/10.1103/PhysRev.105.856>`__]（値は\\ `AFLOWの結晶構造プロトタイプ"
+" <https://aflow.org/p/AB3C_oC10_38_a_ae_b-002>`__\\ の記録から引用）。式 :eq"
+":`pseudocubic-orthorhombic-lengths` から :math:`a_{\\rm pc}=3.990` "
+"Å、:math:`b_{\\rm pc}=c_{\\rm pc}=4.013` Å、:math:`\\cos\\alpha_{\\rm "
+"pc}=0.00229`、:math:`\\alpha_{\\rm pc}=89.87^\\circ` "
+"を得る。:math:`\\sqrt2\\,b_{\\rm pc}=5.6755` Å は :math:`b_{\\rm orth}` "
+"より0.0065 Å長く、:math:`c_{\\rm orth}` より0.0065 Å短い。擬立方の値 :math:`b_{\\rm "
+"pc}=c_{\\rm pc}` だけを :math:`\\sqrt2` 倍して戻すと、約0.2%ある :math:`b` と :math:`c`"
+" の差が消える。"
+msgstr ""
+"Use measured lattice constants to estimate the size of the difference. "
+"The structure at 263 K measured by Shirane and coauthors using neutron "
+"diffraction has :math:`a_{\\rm orth}=3.990` Å, :math:`b_{\\rm "
+"orth}=5.669` Å, and :math:`c_{\\rm orth}=5.682` Å [`Shirane 1957 "
+"<https://doi.org/10.1103/PhysRev.105.856>`__] (values from the \\ `AFLOW "
+"crystal structure prototype "
+"<https://aflow.org/p/AB3C_oC10_38_a_ae_b-002>`__ \\ record). Equation :eq"
+":`pseudocubic-orthorhombic-lengths` gives :math:`a_{\\rm pc}=3.990` Å, "
+":math:`b_{\\rm pc}=c_{\\rm pc}=4.013` Å, :math:`\\cos\\alpha_{\\rm "
+"pc}=0.00229`, and :math:`\\alpha_{\\rm pc}=89.87^\\circ`. The result "
+":math:`\\sqrt2\\,b_{\\rm pc}=5.6755` Å is 0.0065 Å longer than "
+":math:`b_{\\rm orth}` and 0.0065 Å shorter than :math:`c_{\\rm orth}`. "
+"Converting back using only the pseudocubic value :math:`b_{\\rm "
+"pc}=c_{\\rm pc}` multiplied by :math:`\\sqrt2` erases the difference of "
+"about 0.2% between :math:`b` and :math:`c`."
+
+#: ../../solid/pseudocubic.rst:127
+#, python-brace-format
+msgid ""
+"方向と面の指数は、:ref:`方向と面の指数の変換則<lt-index-transform>`\\ どおり :math:`\\boldsymbol"
+" u_{\\rm orth}=P_{\\rm pc,orth}^{-1}\\boldsymbol u_{\\rm "
+"pc}`、:math:`\\boldsymbol h_{\\rm orth}=P_{\\rm pc,orth}^{\\mathsf "
+"T}\\boldsymbol h_{\\rm pc}` で移る。極性軸 :math:`[011]_{\\rm pc}` は "
+":math:`[001]_{\\rm orth}`、:math:`[01\\bar1]_{\\rm pc}` は "
+":math:`[010]_{\\rm orth}` である。面 :math:`(011)_{\\rm pc}` は "
+":math:`(002)_{\\rm orth}` になり、同じ逆格子ベクトルを表す。逆に :math:`(001)_{\\rm orth}` は"
+" :math:`\\boldsymbol h_{\\rm pc}=(0,1/2,1/2)` で整数にならず、逆格子点ではない。これは "
+":math:`k+l` が奇数の反射が消えるA中心の反射条件にあたり、\\ :ref:`中心並進のある胞の逆格子<centred-"
+"reciprocal-lattice>`\\ の条件 :eq:`centred-reciprocal-condition` を "
+":math:`T=\\{(0,0,0),(0,1/2,1/2)\\}` に当てはめたものである。"
+msgstr ""
+"Following the :ref:`transformation rules for direction and plane indices "
+"<lt-index-transform>`\\ , the indices transform as :math:`\\boldsymbol "
+"u_{\\rm orth}=P_{\\rm pc,orth}^{-1}\\boldsymbol u_{\\rm pc}` and "
+":math:`\\boldsymbol h_{\\rm orth}=P_{\\rm pc,orth}^{\\mathsf "
+"T}\\boldsymbol h_{\\rm pc}`. The polar axis :math:`[011]_{\\rm pc}` "
+"becomes :math:`[001]_{\\rm orth}`, and :math:`[01\\bar1]_{\\rm pc}` "
+"becomes :math:`[010]_{\\rm orth}`. The plane :math:`(011)_{\\rm pc}` "
+"becomes :math:`(002)_{\\rm orth}`, representing the same reciprocal "
+"lattice vector. Conversely, :math:`(001)_{\\rm orth}` gives "
+":math:`\\boldsymbol h_{\\rm pc}=(0,1/2,1/2)`, whose components are not "
+"all integers, so it does not correspond to a reciprocal lattice point. "
+"This is the A-centering reflection condition, which forbids reflections "
+"with odd :math:`k+l`. To obtain this rule, take the condition for the \\ "
+":ref:`reciprocal lattice of a cell with centering translations <centred-"
+"reciprocal-lattice>` \\  in Equation :eq:`centred-reciprocal-condition` "
+"and apply it to :math:`T=\\{(0,0,0),(0,1/2,1/2)\\}`."
+
+#: ../../solid/pseudocubic.rst:132
+msgid "空間群の設定による軸の名前の違い"
+msgstr "Axis Names in Different Space Group Settings"
+
+#: ../../solid/pseudocubic.rst:134
+#, python-brace-format
+msgid ""
+"上の :math:`P_{\\rm pc,orth}` は :math:`Amm2` の標準の設定を前提にしている。同じ空間群型（No. "
+"38）は、軸の名前の付け方によって "
+":math:`Amm2`、:math:`Bmm2`、:math:`B2mm`、:math:`C2mm`、:math:`Cm2m`、:math:`Am2m`"
+" とも書ける（International Tables for Crystallography, Vol. A (2006), `Table "
+"4.3.2.1 <https://it.iucr.org/Ab/ch4o3v0001/table4o3o2o1.pdf>`__）。例えば "
+":math:`C2mm` の設定では極性軸が :math:`a` 軸、擬立方胞の辺と同じ長さの軸が :math:`c` "
+"軸になり、:math:`P` "
+"の列が入れ替わる。文献や構造ファイルの「:math:`b`」「:math:`c`」がどの物理的な方向の長さかは設定で変わるので、設定の違う文献の "
+":math:`b` どうしを並べると、別の方向の長さを比べることになりうる。空間群の記号から擬立方胞との対応 :math:`P` "
+"を決めれば、同じ物理的な方向どうしを対応づけられる。"
+msgstr ""
+"The matrix :math:`P_{\\rm pc,orth}` above assumes the standard setting "
+":math:`Amm2`. The same space group type (No. 38) can be written as "
+":math:`Amm2`, :math:`Bmm2`, :math:`B2mm`, :math:`C2mm`, :math:`Cm2m`, or "
+":math:`Am2m`, depending on how the axes are named (International Tables "
+"for Crystallography, Vol. A (2006), `Table 4.3.2.1 "
+"<https://it.iucr.org/Ab/ch4o3v0001/table4o3o2o1.pdf>`__). For example, in"
+" the :math:`C2mm` setting, the polar axis is the :math:`a` axis and the "
+"axis whose length equals the pseudocubic edge length is the :math:`c` "
+"axis, so the columns of :math:`P` are permuted. In papers or structure "
+"files, the physical directions associated with the lengths “:math:`b`” "
+"and “:math:`c`” depend on the setting. Comparing values of :math:`b` from"
+" papers that use different settings can therefore compare lengths in "
+"different directions. Use the space group symbol to determine the mapping"
+" :math:`P` to the pseudocubic cell and match the same physical "
+"directions."
+
+#: ../../solid/pseudocubic.rst:139
+msgid "擬立方表記で表せないこと"
+msgstr "Limitations of Pseudocubic Notation"
+
+#: ../../solid/pseudocubic.rst:141
+#, python-brace-format
+msgid ""
+"擬立方の指数は、歪んだ相の方向を高温相の立方胞の軸で名付ける。:ref:`等価な方向の族<equivalent-directions>`\\ "
+"は低温相の点群で決まるので、擬立方表記の族は厳密な等価性を表さない。例えば「擬立方の "
+":math:`\\langle100\\rangle`」は、立方晶の点群 :math:`m\\bar3m` "
+"で等価だった6方向の名前である。正方晶相（点群 :math:`4mm`）では、6方向は極性軸の向き :math:`[001]_{\\rm "
+"pc}`、その逆向き :math:`[00\\bar1]_{\\rm pc}`、残りの4方向という3つの族に分かれる。強誘電体の分極が「擬立方の "
+":math:`\\langle100\\rangle` を向く」とは、6方向のうち1つが選ばれた状態をいう。分極の向きがそろった領域を\\ "
+":ref:`分域<ferroelectric-domains>`\\ （ドメイン）といい、隣り合う分域では6方向のうち別の方向が選ばれている。"
+msgstr ""
+"Pseudocubic indices name directions in the distorted phase using the axes"
+" of the cubic cell of the high-temperature phase. The :ref:`families of "
+"equivalent directions <equivalent-directions>` \\ are determined by the "
+"point group of the low-temperature phase, so pseudocubic families do not "
+"indicate exact equivalence. For example, “pseudocubic "
+":math:`\\langle100\\rangle`” names six directions that were equivalent "
+"under the cubic point group :math:`m\\bar3m`. In the tetragonal phase "
+"(point group :math:`4mm`), the six directions split into three families: "
+"the polar direction :math:`[001]_{\\rm pc}`, its reverse "
+":math:`[00\\bar1]_{\\rm pc}`, and the other four directions. Polarization"
+" along “pseudocubic :math:`\\langle100\\rangle`” in a ferroelectric means"
+" that one of the six directions has been selected. A region with a "
+"uniform polarization direction is called a \\ :ref:`domain "
+"<ferroelectric-domains>`\\ . Neighboring domains select different "
+"directions from the six."
+
+#: ../../solid/pseudocubic.rst:143
+#, python-brace-format
+msgid ""
+"直方晶相（点群 :math:`mm2`）では、立方晶で :math:`\\langle110\\rangle` "
+"だった12方向が5つの族に分かれる。極性軸 :math:`[011]_{\\rm pc}` とその逆向き "
+":math:`[0\\bar1\\bar1]_{\\rm pc}` はそれぞれ単独の族で、:math:`\\pm[01\\bar1]_{\\rm "
+"pc}` が1つの族、残りの8方向が4方向ずつ2つの族になる。「分極は擬立方の :math:`\\langle110\\rangle` "
+"を向く」は、この12方向のうち1つが極性軸として選ばれたことを表す。"
+msgstr ""
+"In the orthorhombic phase (point group :math:`mm2`), the twelve cubic "
+":math:`\\langle110\\rangle` directions split into five families. The "
+"polar direction :math:`[011]_{\\rm pc}` and its reverse "
+":math:`[0\\bar1\\bar1]_{\\rm pc}` each form a family of one, "
+":math:`\\pm[01\\bar1]_{\\rm pc}` forms one family, and the other eight "
+"directions form two families of four each. “Polarization points along "
+"pseudocubic :math:`\\langle110\\rangle`” means that one of the twelve "
+"directions has been selected as the polar axis."
+
+#: ../../solid/pseudocubic.rst:145
+#, python-brace-format
+msgid ""
+"擬立方胞が基本単位胞になるのは、BaTiO\\ :sub:`3`\\ "
+"の各相のように並進周期が立方相と同じ場合に限る。隣り合う酸素八面体が互いに逆向きに回転する相では、並進周期が擬立方胞の辺の2倍になる方向が現れる "
+"[`Glazer 1972 <https://doi.org/10.1107/S0567740872007976>`__, `Howard & "
+"Stokes 1998 <https://doi.org/10.1107/S0108768198004200>`__]。例えばGdFeO\\ "
+":sub:`3`\\ 型の :math:`Pnma` の胞は :math:`a\\simeq c\\simeq\\sqrt2\\,a_{\\rm "
+"pc}`、:math:`b\\simeq2a_{\\rm pc}` "
+"で、4化学式単位を含む。このとき擬立方胞の辺は格子並進でなく、擬立方胞は単位胞にならない。擬立方の格子定数は、長さと角度を立方胞の軸で読むための参照として使われる。"
+msgstr ""
+"The pseudocubic cell is a primitive cell only when the translational "
+"periodicity is the same as in the cubic phase, as it is in the phases of "
+"BaTiO\\ :sub:`3`\\ . In phases where neighboring oxygen octahedra rotate "
+"in opposite senses, some directions have a translational period twice the"
+" pseudocubic cell edge length [`Glazer 1972 "
+"<https://doi.org/10.1107/S0567740872007976>`__, `Howard & Stokes 1998 "
+"<https://doi.org/10.1107/S0108768198004200>`__]. For example, the GdFeO\\"
+" :sub:`3`\\ -type :math:`Pnma` cell has :math:`a\\simeq "
+"c\\simeq\\sqrt2\\,a_{\\rm pc}` and :math:`b\\simeq2a_{\\rm pc}` and "
+"contains four formula units. In this case the pseudocubic edges are not "
+"lattice translations, and the pseudocubic cell is not a unit cell. The "
+"pseudocubic lattice constants serve as a reference for interpreting "
+"lengths and angles in terms of the cubic axes."
+
+#: ../../solid/pseudocubic.rst:148
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/pseudocubic.rst:150
+msgid ":ref:`ferroelectricity` — BaTiO\\ :sub:`3`\\ の相と自発分極。"
+msgstr ""
+":ref:`ferroelectricity` — Phases of BaTiO\\ :sub:`3` \\ and spontaneous "
+"polarization."
+
+#: ../../solid/pseudocubic.rst:151
+msgid ":ref:`lt-cell-transform` — FCCで見る単位胞の取り直し。"
+msgstr ":ref:`lt-cell-transform` — Choosing a different unit cell for FCC."
+
+#: ../../solid/pseudocubic.rst:152
+msgid ":ref:`lt-cell-shape-bravais` — R格子の六方軸表示など、胞の形とブラベー格子型。"
+msgstr ""
+":ref:`lt-cell-shape-bravais` — Cell shape and Bravais lattice type, "
+"including the hexagonal setting of an R lattice."
+
+#: ../../solid/pseudocubic.rst:155
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/pseudocubic.rst:157
+msgid ""
+"IUCr, *International Tables for Crystallography*, Vol. A (2006), `Table "
+"4.3.2.1 <https://it.iucr.org/Ab/ch4o3v0001/table4o3o2o1.pdf>`__."
+msgstr ""
+"IUCr, *International Tables for Crystallography*, Vol. A (2006), `Table "
+"4.3.2.1 <https://it.iucr.org/Ab/ch4o3v0001/table4o3o2o1.pdf>`__."
+
+#: ../../solid/pseudocubic.rst:158
+msgid ""
+"G\\. H. Kwei, A. C. Lawson, S. J. L. Billinge, and S.-W. Cheong, "
+"“Structures of the ferroelectric phases of barium titanate,” *Journal of "
+"Physical Chemistry* **97**, 2368–2377 (1993), `doi:10.1021/j100112a043 "
+"<https://doi.org/10.1021/j100112a043>`__."
+msgstr ""
+"G\\. H. Kwei, A. C. Lawson, S. J. L. Billinge, and S.-W. Cheong, "
+"“Structures of the ferroelectric phases of barium titanate,” *Journal of "
+"Physical Chemistry* **97**, 2368–2377 (1993), `doi:10.1021/j100112a043 "
+"<https://doi.org/10.1021/j100112a043>`__."
+
+#: ../../solid/pseudocubic.rst:159
+msgid ""
+"G\\. Shirane, H. Danner, and R. Pepinsky, “Neutron diffraction study of "
+"orthorhombic BaTiO\\ :sub:`3`,” *Physical Review* **105**, 856–860 "
+"(1957), `doi:10.1103/PhysRev.105.856 "
+"<https://doi.org/10.1103/PhysRev.105.856>`__. 格子定数は `AFLOW Encyclopedia "
+"of Crystallographic Prototypes, AB3C_oC10_38_a_ae_b-002 "
+"<https://aflow.org/p/AB3C_oC10_38_a_ae_b-002>`__ の記録による."
+msgstr ""
+"G\\. Shirane, H. Danner, and R. Pepinsky, “Neutron diffraction study of "
+"orthorhombic BaTiO\\ :sub:`3`,” *Physical Review* **105**, 856–860 "
+"(1957), `doi:10.1103/PhysRev.105.856 "
+"<https://doi.org/10.1103/PhysRev.105.856>`__. Lattice constants are from "
+"the entry in the `AFLOW Encyclopedia of Crystallographic Prototypes, "
+"AB3C_oC10_38_a_ae_b-002 <https://aflow.org/p/AB3C_oC10_38_a_ae_b-002>`__."
+
+#: ../../solid/pseudocubic.rst:160
+msgid ""
+"A\\. M. Glazer, “The classification of tilted octahedra in perovskites,” "
+"*Acta Crystallographica B* **28**, 3384–3392 (1972), "
+"`doi:10.1107/S0567740872007976 "
+"<https://doi.org/10.1107/S0567740872007976>`__."
+msgstr ""
+"A\\. M. Glazer, “The classification of tilted octahedra in perovskites,” "
+"*Acta Crystallographica B* **28**, 3384–3392 (1972), "
+"`doi:10.1107/S0567740872007976 "
+"<https://doi.org/10.1107/S0567740872007976>`__."
+
+#: ../../solid/pseudocubic.rst:161
+msgid ""
+"C\\. J. Howard and H. T. Stokes, “Group-theoretical analysis of "
+"octahedral tilting in perovskites,” *Acta Crystallographica B* **54**, "
+"782–789 (1998), `doi:10.1107/S0108768198004200 "
+"<https://doi.org/10.1107/S0108768198004200>`__."
+msgstr ""
+"C\\. J. Howard and H. T. Stokes, “Group-theoretical analysis of "
+"octahedral tilting in perovskites,” *Acta Crystallographica B* **54**, "
+"782–789 (1998), `doi:10.1107/S0108768198004200 "
+"<https://doi.org/10.1107/S0108768198004200>`__."
+

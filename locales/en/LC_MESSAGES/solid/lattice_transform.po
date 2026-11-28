@@ -1,0 +1,706 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:01+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/lattice_transform.rst:5
+msgid "格子基底と座標系の変換"
+msgstr "Lattice Basis and Coordinate System Transformations"
+
+#: ../../solid/lattice_transform.rst:7
+msgid "結晶構造は、並進周期を表す格子と、単位胞内の原子配置で記述される。同じ結晶でも、基本単位胞と慣用単位胞、異なる基底、座標、原点をとれば、格子ベクトルや原子座標の数値は変わる。ここでは、格子基底の変更と超胞、Cartesian座標の回転、原点移動を行列で表し、分率座標・逆格子ベクトル・方向と面の指数がどう変わるかを確認する。"
+msgstr ""
+"A crystal structure is described by a lattice that specifies its "
+"translational periodicity and by an arrangement of atoms within the unit "
+"cell. Even for the same crystal, the numerical values of lattice vectors "
+"and atomic coordinates change if we choose a different primitive cell, "
+"conventional cell, basis, coordinate system, or origin. Here we use "
+"matrices to describe changes of lattice basis, supercell construction, "
+"rotations of Cartesian coordinates, and origin shifts. We examine how "
+"these operations change fractional coordinates, reciprocal lattice "
+"vectors, and the indices of directions and planes."
+
+#: ../../solid/lattice_transform.rst:9
+msgid ""
+"**前提知識**: 3次元線形代数、:ref:`格子行列<lattice-translations>` :math:`A`、 "
+":ref:`逆格子行列<reciprocal-lattice>` :math:`B`、:ref:`分率座標<coordinates>`、 "
+":ref:`計量行列<lattice-metric>` :math:`G`、:ref:`方向指数とMiller指数<crystal-"
+"directions-planes>`。"
+msgstr ""
+"**Prerequisites**: Three-dimensional linear algebra, the :ref:`lattice "
+"matrix <lattice-translations>` :math:`A`, the :ref:`reciprocal lattice "
+"matrix <reciprocal-lattice>` :math:`B`, :ref:`fractional coordinates "
+"<coordinates>`, the :ref:`metric matrix <lattice-metric>` :math:`G`, and "
+":ref:`direction indices and Miller indices <crystal-directions-planes>`."
+
+#: ../../solid/lattice_transform.rst:13
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/lattice_transform.rst:15
+msgid "同じ格子を保つ基本並進ベクトルの取り直しの条件を導き、慣用単位胞や超胞への変換と区別する。"
+msgstr ""
+"Derive the condition under which a new set of primitive translation "
+"vectors preserves the lattice, and distinguish this change from "
+"transformations to a conventional cell or a supercell."
+
+#: ../../solid/lattice_transform.rst:16
+msgid "Cartesian回転や原点移動に伴う座標の変換を求める。"
+msgstr ""
+"Determine how coordinates transform under a Cartesian rotation or an "
+"origin shift."
+
+#: ../../solid/lattice_transform.rst:17
+msgid "逆格子ベクトル、結晶方向、Miller指数の変換を区別する。"
+msgstr ""
+"Distinguish the transformation rules for reciprocal lattice vectors, "
+"crystal directions, and Miller indices."
+
+#: ../../solid/lattice_transform.rst:19
+msgid ""
+"構造の記述を変えるときの主な操作を下表にまとめる。変換した構造を計算に使うときは、 入力先の\\ :ref:`格子ベクトルの配列規約<lt-"
+"array-conventions>`\\ も必要になる。"
+msgstr ""
+"The table summarizes the main operations for changing the description of "
+"a structure. To use a transformed structure in a calculation, you also "
+"need the receiving software's \\ :ref:`lattice vector layout conventions "
+"<lt-array-conventions>`\\ ."
+
+#: ../../solid/lattice_transform.rst:22
+msgid "構造の記述を変えたときの主な量"
+msgstr "Main quantities involved in changing the description of a structure"
+
+#: ../../solid/lattice_transform.rst:27
+msgid "操作"
+msgstr "Operation"
+
+#: ../../solid/lattice_transform.rst:28
+msgid "変換する量"
+msgstr "Quantities transformed"
+
+#: ../../solid/lattice_transform.rst:29
+msgid "条件と保存されるもの"
+msgstr "Conditions and invariants"
+
+#: ../../solid/lattice_transform.rst:30
+msgid "基本並進ベクトルの組の変更 :math:`A'=AP`"
+msgstr "Change of primitive translation vectors :math:`A'=AP`"
+
+#: ../../solid/lattice_transform.rst:31
+#, python-brace-format
+msgid ":math:`\\boldsymbol s'=P^{-1}\\boldsymbol s`, :math:`B'=BP^{-\\mathsf T}`"
+msgstr ":math:`\\boldsymbol s'=P^{-1}\\boldsymbol s`, :math:`B'=BP^{-\\mathsf T}`"
+
+#: ../../solid/lattice_transform.rst:32
+msgid ":math:`P\\in GL(3,\\mathbb Z)` なら並進格子、体積、距離を保つ。"
+msgstr ""
+"If :math:`P\\in GL(3,\\mathbb Z)`, the translation lattice, volume, and "
+"distances are preserved."
+
+#: ../../solid/lattice_transform.rst:33
+msgid "慣用単位胞から基本単位胞への変更"
+msgstr "Change from a conventional cell to a primitive cell"
+
+#: ../../solid/lattice_transform.rst:34
+msgid "格子、原子座標、周期的に等価な原子の整理"
+msgstr ""
+"Lattice, atomic coordinates, and identification of periodically "
+"equivalent atoms"
+
+#: ../../solid/lattice_transform.rst:35
+msgid "同じ結晶をより小さい胞で表す。単位胞当たりの原子数は変わる。"
+msgstr ""
+"Represents the same crystal in a smaller cell. The number of atoms per "
+"unit cell changes."
+
+#: ../../solid/lattice_transform.rst:36
+#, python-brace-format
+msgid "超胞 :math:`A_{\\rm sup}=AM`"
+msgstr "Supercell :math:`A_{\\rm sup}=AM`"
+
+#: ../../solid/lattice_transform.rst:37
+msgid "原子の周期像と座標"
+msgstr "Periodic images of atoms and their coordinates"
+
+#: ../../solid/lattice_transform.rst:38
+msgid ":math:`M` が、行列式が0でない整数行列なら元の周期構造を再現するが、選んだ胞の体積・原子数は :math:`|\\det M|` 倍。"
+msgstr ""
+"If :math:`M` is an integer matrix with nonzero determinant, the "
+"transformation reproduces the original periodic structure, but the volume"
+" and atom count of the chosen cell are :math:`|\\det M|` times those of "
+"the original cell."
+
+#: ../../solid/lattice_transform.rst:39
+msgid "Cartesian回転 :math:`A'=QA`"
+msgstr "Cartesian rotation :math:`A'=QA`"
+
+#: ../../solid/lattice_transform.rst:40
+msgid "Cartesian位置とベクトルも :math:`Q` で回す"
+msgstr "Cartesian positions and vectors also rotate by :math:`Q`"
+
+#: ../../solid/lattice_transform.rst:41
+#, python-brace-format
+msgid ":math:`Q^{\\mathsf T}Q=I` なら長さ・角度・体積を保つ。"
+msgstr "If :math:`Q^{\\mathsf T}Q=I`, lengths, angles, and volume are preserved."
+
+#: ../../solid/lattice_transform.rst:42
+msgid "原点移動"
+msgstr "Origin shift"
+
+#: ../../solid/lattice_transform.rst:43
+msgid "原子の分率座標"
+msgstr "Fractional coordinates of atoms"
+
+#: ../../solid/lattice_transform.rst:44
+msgid "原子間変位と格子は保つ。分率座標の数値は変わる。"
+msgstr ""
+"Interatomic displacements and the lattice are preserved. The numerical "
+"values of fractional coordinates change."
+
+#: ../../solid/lattice_transform.rst:45
+msgid "対称性への理想化"
+msgstr "Symmetry-based idealization"
+
+#: ../../solid/lattice_transform.rst:46
+msgid "格子や原子座標を許容差に基づき調整する場合がある"
+msgstr ""
+"The lattice and atomic coordinates may be adjusted according to a "
+"tolerance"
+
+#: ../../solid/lattice_transform.rst:47
+msgid "入力と厳密に同じ数値構造とは限らない。許容差と設定を記録する。"
+msgstr ""
+"The numerical structure need not be exactly the same as the input. Record"
+" the tolerance and settings."
+
+#: ../../solid/lattice_transform.rst:49
+msgid "格子基底の変更、胞の拡大・縮小、Cartesian空間全体の回転、対称性を使った構造の理想化は別の操作である。これらを一つの「座標変換」として扱わないことが、誤入力や物理量の向きの取り違えを防ぐ。"
+msgstr ""
+"Changing the lattice basis, enlarging or shrinking the cell, rotating all"
+" of Cartesian space, and idealizing a structure using symmetry are "
+"distinct operations. Keeping them distinct avoids input errors and "
+"mistakes in the directions of physical quantities."
+
+#: ../../solid/lattice_transform.rst:54
+msgid "基本並進ベクトルの取り直し"
+msgstr "Choosing New Primitive Translation Vectors"
+
+#: ../../solid/lattice_transform.rst:56
+msgid "正則行列 :math:`P` を用いて格子行列 :eq:`amat` を"
+msgstr ""
+"Using an invertible matrix :math:`P`, consider the following "
+"transformation of the lattice matrix in Equation :eq:`amat`:"
+
+#: ../../solid/lattice_transform.rst:58
+msgid "A'=AP"
+msgstr "A'=AP"
+
+#: ../../solid/lattice_transform.rst:62
+#, python-brace-format
+msgid ""
+"のように変換することを考える。\\ :math:`A`\\ 系でのカルテシアン座標 :math:`A\\boldsymbol{s}` が、 "
+":math:`A'`\\ 系で :math:`A'\\boldsymbol{s'}` と書けるとすると :math:`\\boldsymbol s"
+" \\rightarrow \\boldsymbol s'` の変換は"
+msgstr ""
+"If the Cartesian position in the \\ :math:`A` \\ basis, "
+":math:`A\\boldsymbol{s}`, can be written in the :math:`A'` \\ basis as "
+":math:`A'\\boldsymbol{s'}`, the transformation :math:`\\boldsymbol s "
+"\\rightarrow \\boldsymbol s'` gives"
+
+#: ../../solid/lattice_transform.rst:65
+#, python-brace-format
+msgid ""
+"A\\boldsymbol s=A'\\boldsymbol s'\n"
+"\\quad\\Longrightarrow\\quad\n"
+"\\boldsymbol s'=P^{-1}\\boldsymbol s,"
+msgstr ""
+"A\\boldsymbol s=A'\\boldsymbol s'\n"
+"\\quad\\Longrightarrow\\quad\n"
+"\\boldsymbol s'=P^{-1}\\boldsymbol s,"
+
+#: ../../solid/lattice_transform.rst:71
+msgid "となり、計量行列と体積は"
+msgstr "and the metric matrix and volume transform as"
+
+#: ../../solid/lattice_transform.rst:73
+#, python-brace-format
+msgid "G'=P^{\\mathsf T}GP,\\qquad V'=|\\det P|V"
+msgstr "G'=P^{\\mathsf T}GP,\\qquad V'=|\\det P|V"
+
+#: ../../solid/lattice_transform.rst:77
+msgid "に変わる。"
+msgstr "in the new basis."
+
+#: ../../solid/lattice_transform.rst:82
+msgid "|same-lattice-condition|"
+msgstr "Unimodular Transformations and Lattice Preservation"
+
+#: ../../solid/lattice_transform.rst:84
+msgid ""
+":math:`A` を基本並進ベクトルの組とする。格子ベクトルはすべて :math:`A` の列の整数結合なので、 "
+"新しい胞の辺を格子ベクトルから選ぶ限り :math:`P` は整数行列になる。:math:`A'=AP` も同じ格子の基本並進ベクトルの "
+"組となるには、:math:`P` が整数行列で :math:`\\det P=\\pm1` であることが必要十分である。 "
+"このような行列をユニモジュラ行列（:math:`P\\in GL(3,\\mathbb Z)`）と呼ぶ。"
+msgstr ""
+"Take :math:`A` to be a set of primitive translation vectors. Every "
+"lattice vector is an integer combination of the columns of :math:`A`, so "
+":math:`P` has integer entries as long as the new cell edges are chosen "
+"from the lattice vectors. The columns of :math:`A'=AP` are also a set of "
+"primitive translation vectors of the same lattice if and only if "
+":math:`P` has integer entries and :math:`\\det P=\\pm1`. Such a matrix is"
+" called a unimodular matrix (:math:`P\\in GL(3,\\mathbb Z)`)."
+
+#: ../../solid/lattice_transform.rst:89
+#, python-brace-format
+msgid ""
+":math:`P` が整数なら、新しい基底ベクトルは古い基底ベクトルの整数結合になる。 "
+"同じ格子を保つには、逆に古い基底ベクトルも新しい基底ベクトルの整数結合で書ける必要がある。 そのため、:math:`P^{-1}` "
+"も整数行列でなければならない。整数行列の逆行列が整数になるのは :math:`\\det P=\\pm1` のときである。このとき整数の組 "
+":math:`\\boldsymbol n` と :math:`P^{-1}\\boldsymbol n` "
+"が一対一に対応し、格子点の集合と胞体積が保たれる。"
+msgstr ""
+"If :math:`P` has integer entries, the new basis vectors are integer "
+"combinations of the old ones. To preserve the same lattice, the old basis"
+" vectors must also be expressible as integer combinations of the new "
+"ones. Thus :math:`P^{-1}` must also be an integer matrix. The inverse of "
+"an integer matrix has integer entries if and only if :math:`\\det "
+"P=\\pm1`. In this case there is a one-to-one correspondence between the "
+"integer tuples :math:`\\boldsymbol n` and :math:`P^{-1}\\boldsymbol n`, "
+"which preserves the set of lattice points and the cell volume."
+
+#: ../../solid/lattice_transform.rst:95
+msgid ""
+"また :math:`\\det P=-1` "
+"なら、基底ベクトルの向き（右手系・左手系）は反転する。体積は絶対値で同じだが、右手系を要求する入力形式では、さらに1本の軸の符号を反転するなどして右手系へ戻す。"
+msgstr ""
+"If :math:`\\det P=-1`, the handedness of the basis reverses. The absolute"
+" volume is unchanged, but if the input format requires a right-handed "
+"basis, restore it, for example by additionally flipping the sign of one "
+"axis."
+
+#: ../../solid/lattice_transform.rst:97
+msgid ""
+"例えば2次元正方格子で :math:`\\boldsymbol a'_1=\\boldsymbol "
+"a_1`、:math:`\\boldsymbol a'_2=\\boldsymbol a_1+\\boldsymbol a_2` "
+"としても格子点は同じである。基本平行四辺形の形だけが変わる。"
+msgstr ""
+"For example, for a two-dimensional square lattice, choosing "
+":math:`\\boldsymbol a'_1=\\boldsymbol a_1` and :math:`\\boldsymbol "
+"a'_2=\\boldsymbol a_1+\\boldsymbol a_2` leaves the lattice points "
+"unchanged. Only the shape of the primitive parallelogram changes."
+
+#: ../../solid/lattice_transform.rst:99
+msgid "2次元正方格子の同じ格子点を表す標準基底とユニモジュラ変換後の基底"
+msgstr ""
+"The standard basis and the basis obtained by a unimodular transformation "
+"describe the same points of a two-dimensional square lattice."
+
+#: ../../solid/lattice_transform.rst:105
+#, python-brace-format
+msgid ""
+"基底を :math:`P=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}` "
+"で変えても、格子点の集合は変わらない。平行四辺形は選んだ基底が囲む胞を示す。"
+msgstr ""
+"Changing the basis by :math:`P=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}` "
+"leaves the set of lattice points unchanged. Each parallelogram shows the "
+"cell spanned by the chosen basis."
+
+#: ../../solid/lattice_transform.rst:107
+#, python-brace-format
+msgid ""
+":math:`P` が整数行列で :math:`|\\det P|=N>1` なら、:math:`A'` "
+"の列の整数結合は元の格子の一部（部分格子）しか 生成せず、:math:`A'` の胞は元の格子点を :math:`N` "
+"個含む。この胞で元の結晶を表す方法は二つある。 一つは、胞内の :math:`N` 個の格子点への並進を\\ :ref:`中心並進"
+"<centring-translation>`\\ として加え、元の格子を "
+"そのまま表す方法で、慣用単位胞がこれにあたる。例えばFCCの基本単位胞から慣用単位胞へ移る行列 :math:`P_{\\rm F}^{-1}`\\"
+" （:ref:`lt-fcc-cell`）は整数行列で、行列式は4である。もう一つは、:math:`A'` の並進だけを 周期とみなし、胞内の "
+":math:`N` 個の格子点に置いた単位構造の複製を周期像として胞に入れる方法で、 次節の\\ :ref:`超胞<lt-"
+"supercell>`\\ がこれにあたる。"
+msgstr ""
+"If :math:`P` is an integer matrix and :math:`|\\det P|=N>1`, integer "
+"combinations of the columns of :math:`A'` generate only a sublattice of "
+"the original lattice, and the cell spanned by :math:`A'` contains "
+":math:`N` points of the original lattice. There are two ways to describe "
+"the original crystal using this cell. The first is to retain the original"
+" lattice by adding the translations to the :math:`N` lattice points "
+"inside the cell as \\ :ref:`centering translations <centring-"
+"translation>`\\ . This is how a conventional cell works. For example, the"
+" transformation :math:`P_{\\rm F}^{-1}` \\ (see :ref:`Changing the Unit "
+"Cell for FCC <lt-fcc-cell>`) from the FCC primitive cell to the "
+"conventional cell has integer entries and determinant 4. The second is to"
+" use only the translations generated by :math:`A'` as the periods and put"
+" copies of the motif at the :math:`N` lattice points in the cell as "
+"periodic images. This gives the \\ :ref:`supercell <lt-supercell>` \\ "
+"described in the next section."
+
+#: ../../solid/lattice_transform.rst:115
+#, python-brace-format
+msgid ""
+"逆向きに、中心並進をもつ慣用単位胞から出発すると、基本単位胞への :math:`P` は整数行列にならず、 :math:`|\\det P|<1`"
+" となる。例えば慣用単位胞から基本単位胞への :math:`P_{\\rm F}` は成分に :math:`1/2` を含み、 "
+":math:`\\det P_{\\rm F}=1/4` である。どの場合も :math:`|\\det P|` "
+"は新しい胞と元の胞の体積の比である。"
+msgstr ""
+"In the reverse direction, when starting from a conventional cell with "
+"centering translations, the matrix :math:`P` for the change to a "
+"primitive cell has noninteger entries and :math:`|\\det P|<1`. For "
+"example, the conventional-to-primitive matrix :math:`P_{\\rm F}` contains"
+" entries equal to :math:`1/2`, and :math:`\\det P_{\\rm F}=1/4`. In every"
+" case :math:`|\\det P|` gives the ratio of the new cell volume to the "
+"original one."
+
+#: ../../solid/lattice_transform.rst:124
+msgid "|supercell-periodic-images|"
+msgstr "Supercells and Periodic Images"
+
+#: ../../solid/lattice_transform.rst:126
+msgid "基本並進ベクトルの組 :math:`A` と整数行列 :math:`M` で"
+msgstr ""
+"Given the primitive translation vectors :math:`A` and an integer matrix "
+":math:`M`, set"
+
+#: ../../solid/lattice_transform.rst:128
+#, python-brace-format
+msgid "A_{\\rm sup}=AM"
+msgstr "A_{\\rm sup}=AM"
+
+#: ../../solid/lattice_transform.rst:132
+#, python-brace-format
+msgid ""
+"とすると、:math:`|\\det M|=N` の超胞は元の胞の体積の :math:`N` "
+"倍の胞となる。同じ周期構造を表すには、元の胞内の各原子について :math:`\\mathbb Z^3/M\\mathbb Z^3` "
+"の剰余類代表に対応する :math:`N` 個の周期像を作り、超胞へ折り畳む。例えば、対角行列 "
+":math:`M=\\mathrm{diag}(2,3,2)` なら :math:`N=12` で、原子数も12倍になる。"
+msgstr ""
+"A supercell with :math:`|\\det M|=N` has :math:`N` times the volume of "
+"the original cell. To represent the same periodic structure, for each "
+"atom in the original cell use representatives of the cosets of "
+":math:`\\mathbb Z^3/M\\mathbb Z^3` to generate :math:`N` periodic images "
+"and wrap them into the supercell. For example, for the diagonal matrix "
+":math:`M=\\mathrm{diag}(2,3,2)`, :math:`N=12`, so the number of atoms "
+"also increases by a factor of 12."
+
+#: ../../solid/lattice_transform.rst:134
+msgid ""
+"超胞は元の格子と同じ周期点集合を持つが、超胞ベクトルが生成する格子点は疎になる（元の格子の部分格子となる）。したがって「結晶の物理的な周期性は同じ」と「選んだ周期境界の並進格子が同じ」は区別する。非対角"
+" :math:`M` でも行列式の絶対値が胞数を与えるが、周期像の列挙は対角ケースの単純な3重ループでは一般に足りない。"
+msgstr ""
+"A supercell represents the same periodic set of points as the original "
+"lattice, but the supercell vectors themselves generate a sparser lattice "
+"(a sublattice of the original lattice). Distinguish the unchanged "
+"physical periodicity of the crystal from the translation lattice chosen "
+"for its periodic boundaries. The absolute determinant still gives the "
+"number of cells for a nondiagonal :math:`M`, but the simple triple loop "
+"for diagonal matrices generally does not suffice to enumerate the "
+"periodic images."
+
+#: ../../solid/lattice_transform.rst:136
+#, python-brace-format
+msgid ""
+":numref:`fig-supercell-periodic-images`\\ では、超胞で表し直しても原子の並びが保たれる。 "
+"繰り返す枠を大きくした分だけ、枠の内側に元の胞の周期像を入れている。 正方格子をもとにした下段の例では、非対角の変換 "
+":math:`M=\\bigl(\\begin{smallmatrix}1&1\\\\-1&1\\end{smallmatrix}\\bigr)`"
+" で面積が2倍になり、:math:`(0,0)` と :math:`(1,0)` の整数並進に対応する二つの像が入る。"
+msgstr ""
+":numref:`fig-supercell-periodic-images` \\ shows that the arrangement of "
+"atoms is preserved when the crystal is represented by a supercell. The "
+"larger repeat region is filled with periodic images of the original cell."
+" In the lower example, based on a square lattice, the nondiagonal "
+"transformation "
+":math:`M=\\bigl(\\begin{smallmatrix}1&1\\\\-1&1\\end{smallmatrix}\\bigr)`"
+" doubles the area and includes two images corresponding to the integer "
+"translations :math:`(0,0)` and :math:`(1,0)`."
+
+#: ../../solid/lattice_transform.rst:141
+msgid "上段は元の単位胞4個分を含む2×2超胞と隣の周期像。下段は傾けた正方形の超胞で、元の単位胞2個分の原子を含む。"
+msgstr ""
+"The top panel shows a 2×2 supercell containing four original unit cells, "
+"together with a neighboring periodic image of the supercell. The bottom "
+"panel shows a tilted square supercell containing the atoms of two "
+"original unit cells."
+
+#: ../../solid/lattice_transform.rst:147
+#, python-brace-format
+msgid ""
+"上段の点線の小枠が元の単位胞、実線の大枠が :math:`2\\times2` の超胞、破線の大枠が隣の周期像。 "
+"下段では、元の正方形の単位胞に対して超胞の辺は :math:`\\sqrt{2}` 倍である。 "
+"青い丸は原子を表し、下段の座標は原子に加えた元の格子の整数並進を示す。白抜きの丸は原点である。"
+msgstr ""
+"In the top panel, the dotted small outlines mark the original unit cells,"
+" the solid large outline marks the :math:`2\\times2` supercell, and the "
+"dashed large outline marks the neighboring periodic image. In the bottom "
+"panel, the sides of the supercell are :math:`\\sqrt{2}` times as long as "
+"those of the original square unit cell. Blue circles denote atoms. The "
+"coordinates in the bottom panel give the original-lattice integer "
+"translations applied to the atoms. The open circle marks the origin."
+
+#: ../../solid/lattice_transform.rst:154
+msgid "Cartesian座標の回転"
+msgstr "Rotation of Cartesian Coordinates"
+
+#: ../../solid/lattice_transform.rst:156
+msgid "右手系のまま向きの異なるCartesian座標系へ移り、Cartesian成分を回転行列 :math:`Q\\in SO(3)` で変換するとき"
+msgstr ""
+"When changing to a differently oriented Cartesian coordinate system that "
+"is still right-handed, transform the Cartesian coordinates and other "
+"Cartesian components with the rotation matrix :math:`Q\\in SO(3)`:"
+
+#: ../../solid/lattice_transform.rst:158
+msgid "A'=QA,\\qquad \\boldsymbol r'=Q\\boldsymbol r."
+msgstr "A'=QA,\\qquad \\boldsymbol r'=Q\\boldsymbol r."
+
+#: ../../solid/lattice_transform.rst:162
+#, python-brace-format
+msgid ""
+"座標軸のほうを回転 :math:`R` で回すと見るなら成分の変換は :math:`Q=R^{\\mathsf T}` で、物体を "
+":math:`R` で回すと見るなら :math:`Q=R` である。どちらの見方でも、以下の関係は成分を変換する行列 :math:`Q` "
+"で書ける。"
+msgstr ""
+"If we view the coordinate axes as rotating by :math:`R`, the component "
+"transformation is :math:`Q=R^{\\mathsf T}`. If we view the object as "
+"rotating by :math:`R`, it is :math:`Q=R`. In either view, the relations "
+"below use the matrix :math:`Q` that transforms the components."
+
+#: ../../solid/lattice_transform.rst:164
+#, python-brace-format
+msgid ""
+"同じ基底番号を保つなら分率座標は変わらない。直交性 :math:`Q^{\\mathsf T}Q=I` により "
+":math:`G'=A'^{\\mathsf T}A'=G` で（\\ :ref:`格子ベクトルの独立な成分<lattice-"
+"dof>`）、長さ・角度・体積が保たれる。Cartesian成分で表す磁化、磁場、電場、力、速度などのベクトルも "
+":math:`\\boldsymbol v'=Q\\boldsymbol v` とする。2階テンソルは座標表現として "
+":math:`T'=QTQ^{\\mathsf T}` と変換する。"
+msgstr ""
+"If the basis vectors retain their numbering, the fractional coordinates "
+"are unchanged. Orthogonality :math:`Q^{\\mathsf T}Q=I` gives "
+":math:`G'=A'^{\\mathsf T}A'=G` (see \\ :ref:`independent components of "
+"the lattice vectors <lattice-dof>`), so lengths, angles, and volume are "
+"preserved. For vectors expressed in Cartesian components, including "
+"magnetization, magnetic fields, electric fields, forces, and velocities, "
+"use :math:`\\boldsymbol v'=Q\\boldsymbol v`. The coordinate "
+"representation of a second-rank tensor transforms as "
+":math:`T'=QTQ^{\\mathsf T}`."
+
+#: ../../solid/lattice_transform.rst:166
+msgid "これは結晶と、全てのベクトル・テンソルを一緒に回して座標軸を取り替える場合である。実験室で、外部磁場を固定したまま結晶だけを回す操作では、相対方向が変わり、同じ物理条件とは見なせなくなる。"
+msgstr ""
+"This is the case in which the crystal and all vectors and tensors rotate "
+"together under the change of axes. But rotating only the crystal in the "
+"laboratory while keeping the external magnetic field fixed changes their "
+"relative orientation, so the two operations describe different physical "
+"conditions."
+
+#: ../../solid/lattice_transform.rst:171
+msgid "原点移動と原子座標"
+msgstr "Origin Shifts and Atomic Coordinates"
+
+#: ../../solid/lattice_transform.rst:173
+msgid ""
+"新しい原点を旧基底の分率座標 :math:`\\boldsymbol t` に置き、同時に基底を :math:`A'=AP` "
+"にする。新しい位置座標は"
+msgstr ""
+"Put the new origin at fractional coordinates :math:`\\boldsymbol t` in "
+"the old basis and change the basis to :math:`A'=AP`. The new position "
+"coordinates are"
+
+#: ../../solid/lattice_transform.rst:175
+#, python-brace-format
+msgid "\\boldsymbol s'=P^{-1}(\\boldsymbol s-\\boldsymbol t)."
+msgstr "\\boldsymbol s'=P^{-1}(\\boldsymbol s-\\boldsymbol t)."
+
+#: ../../solid/lattice_transform.rst:179
+msgid ""
+"必要なら各成分から整数を引き、:math:`[0,1)` "
+"に折り返す（wrap）。原点移動は原子間変位や格子を変えないが、原子の分率座標は変える。基本単位胞への縮約では周期同値な原子の重複同定、超胞化では周期像の生成が必要なので、原子を単にwrapするだけでは不十分である。"
+msgstr ""
+"If needed, subtract integers from the components to wrap them into "
+":math:`[0,1)`. An origin shift leaves interatomic displacements and the "
+"lattice unchanged but changes the fractional coordinates of the atoms. "
+"Reducing to a primitive cell requires identifying duplicate periodically "
+"equivalent atoms, and constructing a supercell requires generating "
+"periodic images, so simply wrapping the atoms is insufficient."
+
+#: ../../solid/lattice_transform.rst:181
+msgid "原点移動後にCartesian回転 :math:`Q` も施すと、"
+msgstr "If a Cartesian rotation :math:`Q` is also applied after the origin shift,"
+
+#: ../../solid/lattice_transform.rst:183
+#, python-brace-format
+msgid ""
+"A'=QAP,\\qquad \\boldsymbol r'=Q(\\boldsymbol r-A\\boldsymbol t),\\qquad\n"
+"\\boldsymbol s'=P^{-1}(\\boldsymbol s-\\boldsymbol t)."
+msgstr ""
+"A'=QAP,\\qquad \\boldsymbol r'=Q(\\boldsymbol r-A\\boldsymbol t),\\qquad\n"
+"\\boldsymbol s'=P^{-1}(\\boldsymbol s-\\boldsymbol t)."
+
+#: ../../solid/lattice_transform.rst:188
+msgid "原点位置を回転後の座標系で定義する場合は平行移動ベクトルの書き方が変わるため、変換の順序と原点の定義を明記する。"
+msgstr ""
+"If the origin is specified in the rotated coordinate system, the "
+"translation vector takes a different form, so state the order of the "
+"transformations and how the origin is defined."
+
+#: ../../solid/lattice_transform.rst:193
+msgid "逆格子行列の変換"
+msgstr "Transformation of the Reciprocal Lattice Matrix"
+
+#: ../../solid/lattice_transform.rst:195
+#, python-brace-format
+msgid ""
+"逆格子行列を :math:`B=2\\pi A^{-\\mathsf T}` とすると :math:`A^{\\mathsf T}B=2\\pi "
+"I`。基底変換 :math:`A'=AP` に対して"
+msgstr ""
+"For the reciprocal lattice matrix :math:`B=2\\pi A^{-\\mathsf T}`, we "
+"have :math:`A^{\\mathsf T}B=2\\pi I`. Under the basis transformation "
+":math:`A'=AP`,"
+
+#: ../../solid/lattice_transform.rst:197
+#, python-brace-format
+msgid "B'=B P^{-\\mathsf T}."
+msgstr "B'=B P^{-\\mathsf T}."
+
+#: ../../solid/lattice_transform.rst:201
+#, python-brace-format
+msgid "Cartesian回転も含めれば :math:`B'=QBP^{-\\mathsf T}` である。"
+msgstr "Including a Cartesian rotation gives :math:`B'=QBP^{-\\mathsf T}`."
+
+#: ../../solid/lattice_transform.rst:208
+msgid "|direction-and-plane-indices|"
+msgstr "Transforming Crystal Directions and Plane Indices"
+
+#: ../../solid/lattice_transform.rst:210
+msgid ""
+":ref:`方向指数<crystal-direction-index>` :math:`\\boldsymbol u` "
+"は基底ベクトルの係数なので、同じCartesian方向を保つ係数変換は"
+msgstr ""
+"The :ref:`direction indices <crystal-direction-index>` "
+":math:`\\boldsymbol u` are coefficients of the basis vectors, so the "
+"coefficient transformation that preserves the same Cartesian direction is"
+
+#: ../../solid/lattice_transform.rst:212
+#, python-brace-format
+msgid "\\boldsymbol u'=P^{-1}\\boldsymbol u."
+msgstr "\\boldsymbol u'=P^{-1}\\boldsymbol u."
+
+#: ../../solid/lattice_transform.rst:216
+msgid ""
+"一方、\\ :ref:`Miller指数<lattice-planes-miller>` :math:`\\boldsymbol h` "
+"は逆格子ベクトル（面法線）\\ :math:`\\boldsymbol g=B\\boldsymbol h` の係数なので、同じ "
+":math:`\\boldsymbol g` を保つ指数は"
+msgstr ""
+"By contrast, the \\ :ref:`Miller indices <lattice-planes-miller>` "
+":math:`\\boldsymbol h` are the coefficients of the reciprocal lattice "
+"vector (the plane normal) \\ :math:`\\boldsymbol g=B\\boldsymbol h`, so "
+"the indices that preserve the same :math:`\\boldsymbol g` are"
+
+#: ../../solid/lattice_transform.rst:218
+#, python-brace-format
+msgid "\\boldsymbol h'=P^{\\mathsf T}\\boldsymbol h."
+msgstr "\\boldsymbol h'=P^{\\mathsf T}\\boldsymbol h."
+
+#: ../../solid/lattice_transform.rst:222
+msgid "方向は基底ベクトルの係数、面指数は双対基底での係数であり、変換則が逆向きになる。"
+msgstr ""
+"Direction indices are coefficients in the lattice basis, whereas plane "
+"indices are coefficients in the dual basis. The transformation rules "
+"therefore go in opposite directions."
+
+#: ../../solid/lattice_transform.rst:224
+#, python-brace-format
+msgid ""
+"変換後の指数は整数になるとは限らない。方向や面の向きだけを表すなら、分母を払って :ref:`互いに素な整数<index-common-"
+"factor>`\\ にそろえてよい。回折指数のように同じ :math:`\\boldsymbol g` を表す "
+":math:`\\boldsymbol h'=P^{\\mathsf T}\\boldsymbol h` "
+"は、分数成分を含む場合も含めてそのまま保ち、共通因子で約分してはならない。"
+msgstr ""
+"The transformed indices need not be integers. To specify only the "
+"orientation of a direction or plane, you can clear the denominators and "
+"reduce the indices to :ref:`coprime integers <index-common-factor>`\\ . "
+"To represent the same :math:`\\boldsymbol g`, as with diffraction "
+"indices, keep :math:`\\boldsymbol h'=P^{\\mathsf T}\\boldsymbol h` as it "
+"is even if it has fractional components. Do not divide out a common "
+"factor."
+
+#: ../../solid/lattice_transform.rst:228
+#, python-brace-format
+msgid ""
+"この変換則は、\\ :ref:`等価な方向と面の族<equivalent-directions>`\\ を作る点群の操作と同じ形をしている。 "
+":math:`U=P^{-1}` と置けば :math:`\\boldsymbol u'=U\\boldsymbol "
+"u`、:math:`\\boldsymbol h'=U^{-\\mathsf T}\\boldsymbol h` と書け、 点群の操作の "
+":math:`\\boldsymbol u\\mapsto W\\boldsymbol u`、:math:`\\boldsymbol "
+"h\\mapsto W^{-\\mathsf T}\\boldsymbol h`\\ （式 :eq:`equivalent-direction-"
+"family`）と 対応する。ただし基底変換は同じベクトルを別の基底で書き直す操作で、:math:`W` "
+"は同じ基底のまま別の方向へ移す操作である。"
+msgstr ""
+"These rules have the same form as the point group operations that "
+"generate \\ :ref:`families of equivalent directions and planes "
+"<equivalent-directions>`\\ . Setting :math:`U=P^{-1}` gives "
+":math:`\\boldsymbol u'=U\\boldsymbol u` and :math:`\\boldsymbol "
+"h'=U^{-\\mathsf T}\\boldsymbol h`, corresponding to the point group "
+"operations :math:`\\boldsymbol u\\mapsto W\\boldsymbol u` and "
+":math:`\\boldsymbol h\\mapsto W^{-\\mathsf T}\\boldsymbol h` \\ (Equation"
+" :eq:`equivalent-direction-family`). A basis transformation, however, "
+"describes the same vector in a different basis, whereas :math:`W` changes"
+" the direction in the same basis."
+
+#: ../../solid/lattice_transform.rst:236
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/lattice_transform.rst:238
+msgid ":ref:`lattice` — 格子ベクトル、単位胞、分率座標、中心並進。"
+msgstr ""
+":ref:`lattice` — Lattice vectors, unit cells, fractional coordinates, and"
+" centering translations."
+
+#: ../../solid/lattice_transform.rst:239
+msgid ":ref:`lattice-parameters` — 計量行列と、格子定数から格子ベクトルを求める方法。"
+msgstr ""
+":ref:`lattice-parameters` — The metric matrix and how to obtain lattice "
+"vectors from lattice constants."
+
+#: ../../solid/lattice_transform.rst:240
+msgid ":ref:`crystal-directions-planes` — 方向指数とMiller指数、面間隔。"
+msgstr ""
+":ref:`crystal-directions-planes` — Direction indices, Miller indices, and"
+" interplanar spacing."
+
+#: ../../solid/lattice_transform.rst:241
+msgid ":ref:`lt-cell-transform` — FCCの慣用単位胞と基本単位胞の間の変換。"
+msgstr ""
+":ref:`lt-cell-transform` — Transformations between the FCC conventional "
+"cell and primitive cell."
+
+#: ../../solid/lattice_transform.rst:242
+msgid ":ref:`lt-cell-shape-bravais` — 胞の形だけではブラベー格子型が決まらない例。"
+msgstr ""
+":ref:`lt-cell-shape-bravais` — Examples in which the cell shape alone "
+"does not determine the Bravais lattice type."
+
+#: ../../solid/lattice_transform.rst:243
+msgid ":ref:`pseudocubic-cell` — 歪んだ結晶を高対称相の軸で表す。"
+msgstr ""
+":ref:`pseudocubic-cell` — Describing distorted crystals in terms of the "
+"axes of a high-symmetry phase."
+
+#: ../../solid/lattice_transform.rst:244
+msgid ":ref:`lt-structure-input` — 構造の標準化、ファイル形式、配列規約。"
+msgstr ""
+":ref:`lt-structure-input` — Structure standardization, file formats, and "
+"array layout conventions."
+

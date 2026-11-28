@@ -1,0 +1,44 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 09:33+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/cell_transformations.rst:2
+msgid "単位胞と座標系の変換"
+msgstr "Unit Cell and Coordinate System Transformations"
+
+#: ../../solid/cell_transformations.rst:4
+msgid ""
+"同じ結晶でも、基本単位胞と慣用単位胞、超胞、座標軸の向き、原点の取り方によって、格子ベクトルや 原子座標の数値は変わります。\\ "
+":ref:`格子基底と座標系の変換<lattice-transform>`\\ で変換則を導き、 "
+"FCCで単位胞を取り直して原子位置や指数の変わり方を確かめ、六方・菱面体などの格子で胞の形だけではブラベー格子型が決まらないことを見ます。続いて、ペロブスカイトの擬立方格子を見ます。"
+" 最後に、構造の標準化と計算ソフトへの入力に当てはめます。"
+msgstr ""
+"Even for the same crystal, the numerical values of the lattice vectors "
+"and atomic coordinates depend on whether we use a primitive cell, "
+"conventional cell, or supercell, which axes we choose, and where we place"
+" the origin. In \\ :ref:`Lattice Basis and Coordinate System "
+"Transformations <lattice-transform>`\\ , we derive the transformation "
+"rules. We then use FCC to see how atomic positions and indices change "
+"when we choose a new unit cell, and use hexagonal and rhombohedral "
+"examples to show why the cell shape alone does not determine the Bravais "
+"lattice type. Next we look at the pseudocubic lattice of a perovskite. "
+"Finally, we apply these ideas to structure standardization and input for "
+"calculation software."
+

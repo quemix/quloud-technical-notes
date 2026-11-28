@@ -1,0 +1,1098 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Quemix inc
+# This file is distributed under the same license as the Quloud Technical
+# Notes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quloud Technical Notes 2025.8.25\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-28 10:01+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.19.0\n"
+
+#: ../../solid/ferroelectricity.rst:5
+msgid "強誘電性と結晶構造"
+msgstr "Ferroelectricity and Crystal Structure"
+
+#: ../../solid/ferroelectricity.rst:7
+msgid ""
+"強誘電体は、\\ :ref:`自発分極<spontaneous-polarization>`\\ "
+"をもち、外部電場によってその向きを反転できる物質である。 代表例のチタン酸バリウム（BaTiO\\ :sub:`3`\\ "
+"）を通して、結晶の対称性と 原子変位がどのように分極につながるかを見ていく。"
+msgstr ""
+"A ferroelectric is a material that has \\ :ref:`spontaneous polarization "
+"<spontaneous-polarization>` \\ whose direction can be reversed by an "
+"external electric field. Using the representative example of barium "
+"titanate (BaTiO\\ :sub:`3`\\ ), we examine how crystal symmetry and "
+"atomic displacements give rise to polarization."
+
+#: ../../solid/ferroelectricity.rst:11
+msgid ""
+"ここでは、結晶構造から強誘電性を理解するための基本を扱う。BaTiO\\ :sub:`3`\\ の "
+"計算条件やQuloudでの操作手順は扱わない。具体的な計算事例と操作手順は、 それぞれQuloud "
+"Examplesとオンラインマニュアルで扱う。周期結晶の分極の値の求め方は「\\ :ref:`periodic-polarization`\\ "
+"」、 立方晶が極性の変位に対して不安定になる理由は「\\ :ref:`ferroelectric-origin`\\ "
+"」で扱う。自由エネルギーの展開からの導出は 「\\ :ref:`landau-theory`\\ 」にまとめた。"
+msgstr ""
+"This article covers the basics of understanding ferroelectricity from "
+"crystal structure. The calculation settings for BaTiO\\ :sub:`3` \\ and "
+"the steps for using Quloud are outside its scope. Quloud Examples "
+"provides specific calculation examples, and the online manual covers the "
+"operating procedures. For how to calculate polarization in periodic "
+"crystals, see \\ :ref:`Polarization in Periodic Crystals <periodic-"
+"polarization>`\\ . For why the cubic structure is unstable against polar "
+"displacements, see \\ :ref:`Origin of the Ferroelectric Instability of "
+"BaTiO₃ <ferroelectric-origin>`\\ . The derivation from a free-energy "
+"expansion is given in \\ :ref:`Landau Theory and the Order of Phase "
+"Transitions <landau-theory>`\\ ."
+
+#: ../../solid/ferroelectricity.rst:17
+msgid ""
+"**前提知識**: :ref:`反転対称性と自発分極<inversion-and-polarization>`、:ref:`等価な方向の族"
+"<equivalent-directions>`、:ref:`ペロブスカイトの擬立方格子<pseudocubic-"
+"cell>`、:ref:`ソフトモードと構造相転移<soft-mode>`\\ （とくに\\ :ref:`秩序変数としてのモードの振幅<sm-"
+"landau>`）、:ref:`Landau理論と相転移の次数<landau-theory>`。"
+msgstr ""
+"**Prerequisites**: :ref:`Inversion symmetry and spontaneous polarization "
+"<inversion-and-polarization>`, :ref:`families of equivalent directions "
+"<equivalent-directions>`, the :ref:`pseudocubic lattice of perovskites "
+"<pseudocubic-cell>`, :ref:`soft modes and structural phase transitions "
+"<soft-mode>` \\ (especially \\ :ref:`mode amplitude as an order parameter"
+" <sm-landau>`), and :ref:`Landau theory and the order of phase "
+"transitions <landau-theory>`."
+
+#: ../../solid/ferroelectricity.rst:19
+msgid "**学習目標**:"
+msgstr "**Learning objectives**:"
+
+#: ../../solid/ferroelectricity.rst:21
+msgid ""
+"常誘電相の誘電率がCurie–Weissの法則に従うことと、1次転移では転移温度とCurie–Weiss温度がずれることを説明し、BaTiO\\ "
+":sub:`3`\\ の二重ヒステリシスの観測から転移の次数を読む。"
+msgstr ""
+"Explain that the permittivity of the paraelectric phase follows the "
+"Curie–Weiss law and that the transition temperature differs from the "
+"Curie–Weiss temperature for a first-order transition. Use the observed "
+"double hysteresis in BaTiO\\ :sub:`3` \\ to identify the order of the "
+"transition."
+
+#: ../../solid/ferroelectricity.rst:22
+msgid "BaTiO\\ :sub:`3`\\ の4つの相の空間群と分極の向きを、擬立方格子の方向で説明する。"
+msgstr ""
+"Describe the space groups and polarization directions of the four BaTiO\\"
+" :sub:`3` \\ phases using pseudocubic lattice directions."
+
+#: ../../solid/ferroelectricity.rst:23
+msgid "分極の方位状態の数（分域がとりうる分極の向きの数）を点群の位数から求め、隣り合う分域の分極がなす角を挙げる。"
+msgstr ""
+"Determine the number of polarization orientation states (the number of "
+"possible polarization directions of a domain) from the orders of the "
+"point groups. List the angles between the polarizations of neighboring "
+"domains."
+
+#: ../../solid/ferroelectricity.rst:24
+msgid "回折で決まる平均構造と、各単位胞の局所的な変位の違いを説明する。"
+msgstr ""
+"Explain how the average structure determined by diffraction differs from "
+"the local displacements in individual unit cells."
+
+#: ../../solid/ferroelectricity.rst:30
+msgid "自発分極と強誘電性"
+msgstr "Spontaneous Polarization and Ferroelectricity"
+
+#: ../../solid/ferroelectricity.rst:32
+msgid ""
+"分極は、電気双極子モーメントを体積で割った量であり、単位体積あたりの 電荷の偏りを表す。結晶では、正負のイオンの変位に加えて電子密度の変化も "
+"分極に寄与する。"
+msgstr ""
+"Polarization is electric dipole moment per unit volume and describes the "
+"charge imbalance per unit volume. In a crystal, changes in the electron "
+"density contribute to polarization as well as displacements of positive "
+"and negative ions."
+
+#: ../../solid/ferroelectricity.rst:36
+msgid ""
+"結晶構造が極性をもつと、自発分極が許される。ただし、極性があることだけで 強誘電体とは限らない。強誘電体と呼ぶには、自発分極の向きを外部電場で "
+"可逆に切り替えられることが必要である。"
+msgstr ""
+"A polar crystal structure allows spontaneous polarization. Polarity "
+"alone, however, does not guarantee ferroelectricity. For a material to be"
+" ferroelectric, its spontaneous polarization must be reversibly "
+"switchable by an external electric field."
+
+#: ../../solid/ferroelectricity.rst:44
+msgid "常誘電相とキュリー温度"
+msgstr "Paraelectric Phase and the Curie Temperature"
+
+#: ../../solid/ferroelectricity.rst:46
+#, python-brace-format
+msgid ""
+"強誘電体を加熱すると、ある温度で自発分極が消え、電場をかけている間だけ分極が生じる相に移る。 この高温の相を\\ **常誘電相**\\ "
+"（paraelectric phase）、転移温度を\\ **キュリー温度** :math:`T_{\\mathrm C}` と呼ぶ（\\ "
+":ref:`ソフトモードの記事<sm-definition>`\\ の転移温度 :math:`T_{\\mathrm c}` "
+"にあたる）。常誘電相では、弱い電場 :math:`E` に比例して分極が生じ、 電気感受率 :math:`\\chi` を使って "
+":math:`P=\\varepsilon_0\\chi E` と書ける。強誘電体の常誘電相では、 :math:`T_{\\mathrm C}` "
+"に近づくと :math:`\\chi` が大きくなり、"
+msgstr ""
+"On heating a ferroelectric, spontaneous polarization vanishes at a "
+"certain temperature. The crystal enters a phase in which polarization "
+"appears only while an electric field is applied. This high-temperature "
+"phase is called the \\ **paraelectric phase**\\ , and the transition "
+"temperature is the \\ **Curie temperature** :math:`T_{\\mathrm C}` (the "
+"\\ :ref:`transition temperature <sm-definition>` \\  denoted by "
+":math:`T_{\\mathrm c}` in the soft-mode article). In the paraelectric "
+"phase the polarization is proportional to a weak electric field "
+":math:`E`. With electric susceptibility :math:`\\chi`, it is "
+":math:`P=\\varepsilon_0\\chi E`. In the paraelectric phase of a "
+"ferroelectric, as the temperature approaches :math:`T_{\\mathrm C}`, "
+":math:`\\chi` increases according to"
+
+#: ../../solid/ferroelectricity.rst:52
+#, python-brace-format
+msgid "\\chi=\\frac{C}{T-T_0}"
+msgstr "\\chi=\\frac{C}{T-T_0}"
+
+#: ../../solid/ferroelectricity.rst:57
+msgid ""
+"に従う。これを\\ **Curie–Weissの法則**\\ 、:math:`C` をCurie定数、:math:`T_0` "
+"をCurie–Weiss温度と呼ぶ。:ref:`極性ソフトモード<polar-soft-mode>`\\ "
+"の振動数が下がると静的な誘電率が発散するので、 この法則は格子振動の側からも導ける。その場合の :math:`T_0` は、Cochranの法則 "
+":eq:`sm-cochran` でソフトモードの振動数が0に外挿される温度である。 分極で展開した自由エネルギーからの導出は\\ "
+":ref:`共役な場への応答<landau-curie-weiss>`\\ にある。"
+msgstr ""
+"This is the \\ **Curie–Weiss law**\\ , with Curie constant :math:`C` and "
+"Curie–Weiss temperature :math:`T_0`. As the frequency of the :ref:`polar "
+"soft mode <polar-soft-mode>` \\ decreases, the static permittivity "
+"diverges, so this law can also be derived from lattice vibrations. In "
+"that derivation, :math:`T_0` is the temperature at which extrapolation by"
+" Cochran's law in Equation :eq:`sm-cochran` gives zero soft-mode "
+"frequency. For a derivation from a free-energy expansion in polarization,"
+" see \\ :ref:`the response to a conjugate field <landau-curie-weiss>`\\ ."
+
+#: ../../solid/ferroelectricity.rst:61
+#, python-brace-format
+msgid ""
+":math:`T_0` と :math:`T_{\\mathrm C}` の関係は、分極で展開した自由エネルギーから分かる "
+"[Devonshire1949]_。導出は 「\\ :ref:`landau-theory`\\ "
+"」で扱い、ここでは結論だけを述べる。分極の4次の係数が正なら、分極は :math:`T_0` から連続的に育つ \\ :ref:`2次転移"
+"<second-order-transition>`\\ になり、:math:`T_{\\mathrm C}=T_0` "
+"である。4次の係数が負なら\\ :ref:`1次転移<first-order-transition>`\\ になり、 分極は "
+":math:`T_{\\mathrm C}` で有限の値へ跳び、常誘電相の :math:`\\chi` から外挿した :math:`T_0` は "
+":math:`T_{\\mathrm C}` より低い。1次転移では、 冷却と加熱で常誘電相と強誘電相がそれぞれ\\ "
+":ref:`準安定な状態として残りうる<landau-metastability>`\\ ので、転移温度が加熱と冷却でずれうる。"
+msgstr ""
+"The relationship between :math:`T_0` and :math:`T_{\\mathrm C}` follows "
+"from the free energy expanded in polarization [Devonshire1949]_. See \\ "
+":ref:`Landau Theory and the Order of Phase Transitions <landau-theory>` "
+"\\ for the derivation. Here we give only the conclusions. If the quartic "
+"coefficient in polarization is positive, polarization grows continuously "
+"from :math:`T_0` in a \\ :ref:`second-order transition <second-order-"
+"transition>`\\ , and :math:`T_{\\mathrm C}=T_0`. If the quartic "
+"coefficient is negative, there is a \\ :ref:`first-order transition "
+"<first-order-transition>`\\ . Polarization jumps to a finite value at "
+":math:`T_{\\mathrm C}`, and extrapolation of :math:`\\chi` from the "
+"paraelectric phase gives :math:`T_0` below :math:`T_{\\mathrm C}`. In a "
+"first-order transition, the paraelectric phase on cooling and the "
+"ferroelectric phase on heating can \\ :ref:`persist as metastable states "
+"<landau-metastability>`\\ , so the transition temperatures on heating and"
+" cooling may differ."
+
+#: ../../solid/ferroelectricity.rst:67
+#, python-brace-format
+msgid ""
+"BaTiO\\ :sub:`3`\\ では、Merzが :math:`T_{\\mathrm C}` "
+"のすぐ上で、弱い電場では直線、強い電場では両端に ヒステリシスが開く分極–電場曲線（二重ヒステリシス）を観測し、4次の係数が負であること、 "
+"つまり立方晶から正方晶への転移が1次であることを示した [Merz1953]_\\ （\\ :ref:`読み方<landau-"
+"batio3-example>`）。BaTiO\\ :sub:`3`\\ の三つの転移は いずれも1次である [Zhong1995]_。"
+msgstr ""
+"In BaTiO\\ :sub:`3`\\ , just above :math:`T_{\\mathrm C}`, Merz observed "
+"a polarization–electric field curve that was linear at weak fields but "
+"opened into hysteresis loops at the two ends at strong fields (double "
+"hysteresis). This showed that the quartic coefficient is negative, which "
+"identifies the cubic-to-tetragonal transition as first order [Merz1953]_ "
+"\\ (see \\ :ref:`interpretation of the data <landau-batio3-example>`). "
+"All three transitions in BaTiO\\ :sub:`3` \\ are first order "
+"[Zhong1995]_."
+
+#: ../../solid/ferroelectricity.rst:76
+msgid "BaTiO\\ :sub:`3`\\ の立方晶相と正方晶相"
+msgstr "Cubic and Tetragonal Phases of BaTiO\\ :sub:`3`"
+
+#: ../../solid/ferroelectricity.rst:78
+msgid ""
+"BaTiO\\ :sub:`3`\\ は、理想的なペロブスカイト構造をもつ。高温の立方晶相では、 "
+"平均構造としてTi原子が周囲の6個の酸素原子が作る八面体の中心に位置する。この構造には :ref:`反転中心<inversion-and-"
+"polarization>`\\ があり、結晶全体として特定の向きの自発分極は生じない。 立方晶相はBaTiO\\ :sub:`3`\\ "
+"の常誘電相である。"
+msgstr ""
+"BaTiO\\ :sub:`3` \\ has the ideal perovskite structure. In the average "
+"structure of the high-temperature cubic phase, each Ti atom lies at the "
+"center of the octahedron formed by its six oxygen neighbors. This "
+"structure has a :ref:`center of inversion <inversion-and-polarization>`\\"
+" , so the crystal as a whole develops no spontaneous polarization along "
+"any particular direction. For BaTiO\\ :sub:`3` \\ the cubic phase is the "
+"paraelectric phase."
+
+#: ../../solid/ferroelectricity.rst:83
+msgid ""
+"バルクのBaTiO\\ :sub:`3`\\ を冷却すると、約393 Kで立方晶相から正方晶相へ移る。 "
+"正方晶相ではTiと酸素の相対位置が変わり、反転対称性が失われる。結晶の 長軸方向に極性が生じ、自発分極をもつ。この構造変化が強誘電性の起源を "
+"理解するための基本例となる [Zhong1995]_ [Bull2021]_。"
+msgstr ""
+"On cooling, bulk BaTiO\\ :sub:`3` \\ changes from the cubic phase to the "
+"tetragonal phase at about 393 K. In the tetragonal phase, the relative "
+"positions of Ti and oxygen change and inversion symmetry is lost. The "
+"crystal becomes polar along its long axis and has spontaneous "
+"polarization. This structural change is a basic example for understanding"
+" the origin of ferroelectricity [Zhong1995]_ [Bull2021]_."
+
+#: ../../solid/ferroelectricity.rst:92
+msgid "|batio3-experimental-structures|"
+msgstr "Symmetry and Lattice Strain in Experimental Structures"
+
+#: ../../solid/ferroelectricity.rst:94
+msgid "Quloudで表示したBaTiO3立方晶相の単位胞"
+msgstr "Unit cell of cubic BaTiO3 displayed in Quloud"
+
+#: ../../solid/ferroelectricity.rst:100
+msgid ""
+"立方晶相（413 K）の平均構造。格子定数は :math:`a=b=c=4.0097` Å。 "
+"Quloudのモデラーに実験構造を読み込み、表示した。色はBa（緑）、Ti（灰色）、 O（赤）を示す。表示には隣接する周期像も含まれる。"
+msgstr ""
+"Average structure of the cubic phase (413 K), with lattice constant "
+":math:`a=b=c=4.0097` Å. The experimental structure was loaded into and "
+"displayed in the Quloud modeler. The colors indicate Ba (green), Ti "
+"(gray), and O (red). The display also includes neighboring periodic "
+"images."
+
+#: ../../solid/ferroelectricity.rst:104
+msgid "Quloudで表示したBaTiO3正方晶相の単位胞"
+msgstr "Unit cell of tetragonal BaTiO3 displayed in Quloud"
+
+#: ../../solid/ferroelectricity.rst:110
+msgid ""
+"正方晶相（303 K）。格子定数は :math:`a=b=3.9925` Å、:math:`c=4.0371` Å。 Tiと酸素の相対変位、および"
+" :math:`c>a` の格子ひずみが見られる。"
+msgstr ""
+"Tetragonal phase (303 K), with lattice constants :math:`a=b=3.9925` Å and"
+" :math:`c=4.0371` Å. The figure shows the relative displacement of Ti and"
+" oxygen, and the lattice strain :math:`c>a`."
+
+#: ../../solid/ferroelectricity.rst:113
+msgid ""
+"図の座標はNakataniらの単結晶X線回折による実験構造に基づく。2つの温度の構造を "
+"並べているため、図は相転移をその場で追跡したものではない。また、高温立方晶相 "
+"では局所的なTi変位が残りうることが報告されており、立方晶の図は平均構造を表す [Nakatani2016]_。"
+msgstr ""
+"The coordinates in the figures come from experimental structures measured"
+" by Nakatani and coauthors using single-crystal X-ray diffraction. The "
+"figures compare structures at two temperatures and therefore do not track"
+" the phase transition in situ. Although local Ti displacements have been "
+"reported to persist in the high-temperature cubic phase, the cubic view "
+"shows the average structure [Nakatani2016]_."
+
+#: ../../solid/ferroelectricity.rst:118
+msgid "立方晶相と正方晶相の構造上の違い"
+msgstr "Structural differences between the cubic and tetragonal phases"
+
+#: ../../solid/ferroelectricity.rst:122
+msgid "観点"
+msgstr "Property"
+
+#: ../../solid/ferroelectricity.rst:123
+msgid "立方晶相"
+msgstr "Cubic phase"
+
+#: ../../solid/ferroelectricity.rst:124
+msgid "正方晶相"
+msgstr "Tetragonal phase"
+
+#: ../../solid/ferroelectricity.rst:125
+msgid "代表的な空間群"
+msgstr "Representative space group"
+
+#: ../../solid/ferroelectricity.rst:126
+#, python-brace-format
+msgid ":math:`Pm\\bar{3}m`"
+msgstr ":math:`Pm\\bar{3}m`"
+
+#: ../../solid/ferroelectricity.rst:127 ../../solid/ferroelectricity.rst:173
+msgid ":math:`P4mm`"
+msgstr ":math:`P4mm`"
+
+#: ../../solid/ferroelectricity.rst:128
+msgid "格子の形"
+msgstr "Lattice shape"
+
+#: ../../solid/ferroelectricity.rst:129
+msgid ":math:`a=b=c`"
+msgstr ":math:`a=b=c`"
+
+#: ../../solid/ferroelectricity.rst:130
+msgid ":math:`a=b\\ne c`"
+msgstr ":math:`a=b\\ne c`"
+
+#: ../../solid/ferroelectricity.rst:131
+msgid "反転対称性"
+msgstr "Inversion symmetry"
+
+#: ../../solid/ferroelectricity.rst:132 ../../solid/ferroelectricity.rst:136
+msgid "ある"
+msgstr "Present"
+
+#: ../../solid/ferroelectricity.rst:133 ../../solid/ferroelectricity.rst:135
+msgid "ない"
+msgstr "Absent"
+
+#: ../../solid/ferroelectricity.rst:134
+msgid "自発分極"
+msgstr "Spontaneous polarization"
+
+#: ../../solid/ferroelectricity.rst:138
+msgid ""
+"正方晶相の格子ひずみは、格子定数を使って :math:`c/a` で表せる。立方晶からの ずれは :math:`c/a-1` "
+"で見積もれる。ただし、この比だけでは分極の大きさは 求まらない。分極には単位胞内の各原子の変位と電子状態も関係する（\\ :ref:`分極の評価"
+"<polarization-evaluation>`）。"
+msgstr ""
+"The tetragonal lattice strain can be expressed by the ratio :math:`c/a` "
+"of the lattice constants. Estimate the deviation from cubic symmetry by "
+":math:`c/a-1`. This ratio alone, however, cannot give the magnitude of "
+"the polarization. The displacement of each atom in the unit cell and the "
+"electronic state also contribute (see \\ :ref:`evaluation of polarization"
+" <polarization-evaluation>`)."
+
+#: ../../solid/ferroelectricity.rst:146
+msgid "4つの相と分極の向き"
+msgstr "Four Phases and Their Polarization Directions"
+
+#: ../../solid/ferroelectricity.rst:148
+msgid ""
+"正方晶相をさらに冷やすと、BaTiO\\ :sub:`3`\\ は約278 Kで直方晶（斜方晶ともいう）相へ、約183 Kで菱面体晶相へ移る "
+"[Kwei1993]_ [Shi2018]_。以下では、立方晶・正方晶・直方晶・菱面体晶の相をそれぞれC・T・O・Rと書く。Merzは、 "
+"低温側の二つの転移で分極の向きが変わることを測定し、これを、酸素八面体の中でTiの変位の向きが :math:`[001]` から "
+":math:`[011]` へ、 さらに :math:`[111]` へ変わることと対応づけた [Merz1949]_。方向は、どの相でも\\ "
+":ref:`擬立方胞<pseudocubic-cell>`\\ の軸で書く（各相の胞と擬立方胞の関係は :numref:`lt-batio3"
+"-pseudocubic-table`）。 :numref:`tbl-batio3-four-phases` と :numref:`fig-"
+"batio3-polar-directions` に4相をまとめる。"
+msgstr ""
+"On cooling the tetragonal phase further, BaTiO\\ :sub:`3` \\ changes to "
+"the orthorhombic phase at about 278 K and to the rhombohedral phase at "
+"about 183 K [Kwei1993]_ [Shi2018]_. Here we use C, T, O, and R for the "
+"cubic, tetragonal, orthorhombic, and rhombohedral phases, respectively. "
+"Merz measured changes in the polarization direction at the two lower-"
+"temperature transitions and related them to successive changes in the "
+"direction of Ti displacement within the oxygen octahedron from "
+":math:`[001]` to :math:`[011]` and then to :math:`[111]` [Merz1949]_. "
+"Directions in every phase are given in the axes of the \\ "
+":ref:`pseudocubic cell <pseudocubic-cell>` \\ (see :numref:`lt-batio3"
+"-pseudocubic-table` for its relation to the cell of each phase). :numref"
+":`tbl-batio3-four-phases` and :numref:`fig-batio3-polar-directions` "
+"summarize the four phases."
+
+#: ../../solid/ferroelectricity.rst:154
+msgid "BaTiO\\ :sub:`3`\\ の4つの相（温度は常圧での目安）"
+msgstr ""
+"The four phases of BaTiO\\ :sub:`3` \\ (approximate temperatures at "
+"ambient pressure)"
+
+#: ../../solid/ferroelectricity.rst:159 ../../solid/ferroelectricity.rst:242
+msgid "相"
+msgstr "Phase"
+
+#: ../../solid/ferroelectricity.rst:160
+msgid "温度範囲"
+msgstr "Temperature range"
+
+#: ../../solid/ferroelectricity.rst:161
+msgid "空間群"
+msgstr "Space group"
+
+#: ../../solid/ferroelectricity.rst:162
+msgid "点群"
+msgstr "Point group"
+
+#: ../../solid/ferroelectricity.rst:163
+msgid "分極の向き（擬立方）"
+msgstr "Polarization direction (pseudocubic)"
+
+#: ../../solid/ferroelectricity.rst:164
+msgid "0でない分極の成分の数"
+msgstr "Number of nonzero polarization components"
+
+#: ../../solid/ferroelectricity.rst:165
+msgid "立方晶（C）"
+msgstr "Cubic (C)"
+
+#: ../../solid/ferroelectricity.rst:166
+msgid "約393 K以上"
+msgstr "About 393 K and above"
+
+#: ../../solid/ferroelectricity.rst:167
+msgid ":math:`Pm\\bar3m`"
+msgstr ":math:`Pm\\bar3m`"
+
+#: ../../solid/ferroelectricity.rst:168
+msgid ":math:`m\\bar3m`"
+msgstr ":math:`m\\bar3m`"
+
+#: ../../solid/ferroelectricity.rst:169
+msgid "なし"
+msgstr "None"
+
+#: ../../solid/ferroelectricity.rst:170
+msgid "0"
+msgstr "0"
+
+#: ../../solid/ferroelectricity.rst:171
+msgid "正方晶（T）"
+msgstr "Tetragonal (T)"
+
+#: ../../solid/ferroelectricity.rst:172
+msgid "約278〜393 K"
+msgstr "About 278–393 K"
+
+#: ../../solid/ferroelectricity.rst:174
+msgid ":math:`4mm`"
+msgstr ":math:`4mm`"
+
+#: ../../solid/ferroelectricity.rst:175
+msgid ":math:`\\langle100\\rangle`"
+msgstr ":math:`\\langle100\\rangle`"
+
+#: ../../solid/ferroelectricity.rst:176
+msgid "1"
+msgstr "1"
+
+#: ../../solid/ferroelectricity.rst:177
+msgid "直方晶（O）"
+msgstr "Orthorhombic (O)"
+
+#: ../../solid/ferroelectricity.rst:178
+msgid "約183〜278 K"
+msgstr "About 183–278 K"
+
+#: ../../solid/ferroelectricity.rst:179
+msgid ":math:`Amm2`"
+msgstr ":math:`Amm2`"
+
+#: ../../solid/ferroelectricity.rst:180
+msgid ":math:`mm2`"
+msgstr ":math:`mm2`"
+
+#: ../../solid/ferroelectricity.rst:181
+msgid ":math:`\\langle110\\rangle`"
+msgstr ":math:`\\langle110\\rangle`"
+
+#: ../../solid/ferroelectricity.rst:182
+msgid "2"
+msgstr "2"
+
+#: ../../solid/ferroelectricity.rst:183
+msgid "菱面体晶（R）"
+msgstr "Rhombohedral (R)"
+
+#: ../../solid/ferroelectricity.rst:184
+msgid "約183 K以下"
+msgstr "About 183 K and below"
+
+#: ../../solid/ferroelectricity.rst:185
+msgid ":math:`R3m`"
+msgstr ":math:`R3m`"
+
+#: ../../solid/ferroelectricity.rst:186
+msgid ":math:`3m`"
+msgstr ":math:`3m`"
+
+#: ../../solid/ferroelectricity.rst:187
+msgid ":math:`\\langle111\\rangle`"
+msgstr ":math:`\\langle111\\rangle`"
+
+#: ../../solid/ferroelectricity.rst:188
+msgid "3"
+msgstr "3"
+
+#: ../../solid/ferroelectricity.rst:190
+msgid ""
+"転移温度は1次転移の性質上、\\ :ref:`加熱と冷却でずれうる<apparent-transition-"
+"temperature>`。立方晶–正方晶の転移を403 Kとする文献もある [Zhong1995]_。"
+msgstr ""
+"For a first-order transition, the transition temperature \\ :ref:`can "
+"differ between heating and cooling <apparent-transition-temperature>`. "
+"Some references put the cubic-to-tetragonal transition at 403 K "
+"[Zhong1995]_."
+
+#: ../../solid/ferroelectricity.rst:192
+msgid "4つの立方体。左から立方晶は中心の点だけ、正方晶は面の中心へ向かう001の矢印、直方晶は辺の中点へ向かう011の矢印、菱面体晶は頂点へ向かう111の矢印。同じ族の他の方向を灰色の点で示す。"
+msgstr ""
+"Four cubes from left to right: the cubic phase with just a central dot, "
+"the tetragonal phase with a [001] arrow to a face center, the "
+"orthorhombic phase with a [011] arrow to an edge midpoint, and the "
+"rhombohedral phase with a [111] arrow to a vertex. Gray dots indicate the"
+" other directions in each family."
+
+#: ../../solid/ferroelectricity.rst:198
+msgid ""
+"BaTiO\\ :sub:`3`\\ の4相の分極の向き。左から高温側の順に並べた。立方体は擬立方胞、中央の点はTiの平均位置を表す。 "
+"矢印は分極の向きの一例で、正方晶は面の中心、直方晶は辺の中点、菱面体晶は頂点へ向かう。 "
+"灰色の点は、立方晶の対称操作で矢印の向きと移り合う方向（同じ族の残りの方向）を示す。破線は奥に隠れた辺である。"
+msgstr ""
+"Polarization directions in the four phases of BaTiO\\ :sub:`3`\\ , from "
+"highest to lowest temperature. The cubes represent pseudocubic cells, "
+"with the average Ti position marked at the center. Each arrow shows a "
+"representative polarization direction: toward a face center in the "
+"tetragonal phase, toward an edge midpoint in the orthorhombic phase, and "
+"toward a vertex in the rhombohedral phase. Gray dots indicate the other "
+"directions in each family, related to the arrow direction by cubic "
+"symmetry operations. Dashed lines mark hidden back edges."
+
+#: ../../solid/ferroelectricity.rst:202
+msgid ""
+"表の最後の列は、相を見分ける指標になる。\\ :ref:`等価な方向の族<equivalent-directions>`\\ "
+"で見たとおり、立方晶の点群 :math:`m\\bar3m` "
+"の操作は、分極の成分の並べ替えと符号の反転である。これらの操作で、どの軸の成分が0でないかや "
+"その符号は変わるが、0でない成分の数は変わらない。したがって、次節の分域のどれを選んでも、0でない成分の数は相ごとに3・2・1・0の決まった値になる。"
+" `計算事例「構造相転移」 <https://example.quloud-"
+"platform.quemix.com/BaTiO3/phase_transition.html#batio3-phase-"
+"distributions>`_\\ も、Tiの変位の分布で、0からずれたピークをもつ軸の数を\\ :ref:`相の判定<heating-"
+"phase-indicators>`\\ に使っている。ただし、反対向きの分域が同じ領域に "
+"混じっていると、平均した成分は打ち消し合う。この指標は、一つの分域の中で平均した変位に使う。"
+msgstr ""
+"The number of nonzero polarization components in the last column can help"
+" identify the phase. As in \\ :ref:`families of equivalent directions "
+"<equivalent-directions>`\\ , operations of the cubic point group "
+":math:`m\\bar3m` permute polarization components and reverse their signs."
+" These operations can change which components are nonzero and what their "
+"signs are, but they leave the number of nonzero components unchanged. "
+"Thus, whichever domain from the next section is chosen, the number of "
+"nonzero components has a fixed value for each phase (3, 2, 1, or 0). The "
+"`Structural Phase Transition calculation example <https://example.quloud-"
+"platform.quemix.com/BaTiO3/phase_transition.html#batio3-phase-"
+"distributions>`_ \\ also uses the number of axes with peaks displaced "
+"from zero in the Ti displacement distribution \\ :ref:`to identify the "
+"phase <heating-phase-indicators>`\\ . However, if oppositely oriented "
+"domains are mixed within the same region, their components cancel on "
+"averaging. Apply this indicator to displacements averaged within a single"
+" domain."
+
+#: ../../solid/ferroelectricity.rst:208
+msgid ""
+"分極をもつ3つの相では、どれも格子が分極の方向に伸びている。正方晶では :math:`c>a`、直方晶では極性軸に沿う胞の辺が "
+"垂直な辺より長く（\\ :ref:`直方晶の胞との換算<pseudocubic-"
+"orthorhombic>`）、菱面体晶では擬立方胞の角が90°よりわずかに小さく（約89.8° [Kwei1993]_）、 "
+":math:`[111]` 方向に伸びた形になる。Merzは、正方晶の変形が自発分極の2乗に比例することを示した [Merz1949]_。 "
+"どの向きが最も低いエネルギーを与えるかは、立方晶の対称性が許す4次以上の項で決まる（式 :eq:`sm-cubic-quartic`）。"
+msgstr ""
+"In each of the three phases with polarization, the lattice is elongated "
+"along the polarization direction. In the tetragonal phase, :math:`c>a`. "
+"In the orthorhombic phase, the cell edge along the polar axis is longer "
+"than the perpendicular edge (see \\ :ref:`conversion to the orthorhombic "
+"cell <pseudocubic-orthorhombic>`). In the rhombohedral phase, the angles "
+"of the pseudocubic cell are slightly less than 90° (about 89.8° "
+"[Kwei1993]_), giving an elongation along :math:`[111]`. Merz showed that "
+"the tetragonal distortion is proportional to the square of the "
+"spontaneous polarization [Merz1949]_. Which direction gives the lowest "
+"energy is determined by the terms of fourth and higher order allowed by "
+"cubic symmetry (Equation :eq:`sm-cubic-quartic`)."
+
+#: ../../solid/ferroelectricity.rst:217
+msgid "分域と分域壁"
+msgstr "Domains and Domain Walls"
+
+#: ../../solid/ferroelectricity.rst:219
+msgid ""
+"電場やひずみがなく、結晶が立方晶の対称性を保つ条件では、分極が族の中のどの方向を向いてもエネルギーは等しい。立方晶の対称操作で移り合う向きは、:ref:`+Qと−Qの等価性"
+"<sm-inversion-equivalence>`\\ と同じ理由で、同じエネルギーをもつからである。 "
+"このエネルギーの等しい向きの数は、点群の位数（操作の数）から求められる。立方晶の点群 :math:`G=m\\bar3m` の48個の操作のうち、"
+" 選んだ分極の向きを変えない操作の集まりは、低温相の点群 :math:`F` になる。正方晶の :math:`[001]` を変えないのは、 "
+":math:`z` 軸のまわりの回転と、:math:`z` 軸を含む鏡映の8個（:math:`4mm`）である。:math:`G` の残りの操作は"
+" :math:`[001]` を別の向きへ移し、同じ向きへ移す操作は :math:`F` の位数だけある。したがって、向きの数は"
+msgstr ""
+"In the absence of electric field and strain, under conditions that "
+"preserve cubic symmetry, the energy is the same for all polarization "
+"directions in a family. Directions related by cubic symmetry operations "
+"have equal energies for the same reason that :ref:`+Q and −Q are "
+"equivalent <sm-inversion-equivalence>`\\ . The number of equal-energy "
+"directions follows from the orders (numbers of operations) of the point "
+"groups. Of the 48 operations of the cubic point group :math:`G=m\\bar3m`,"
+" those that leave the chosen polarization direction unchanged form the "
+"point group :math:`F` of the low-temperature phase. For the tetragonal "
+"direction :math:`[001]`, eight operations leave it unchanged: rotations "
+"about the :math:`z` axis and reflections in planes containing the "
+":math:`z` axis (:math:`4mm`). The remaining operations of :math:`G` take "
+":math:`[001]` to other directions, with as many operations yielding each "
+"direction as the order of :math:`F`. The number of directions is "
+"therefore"
+
+#: ../../solid/ferroelectricity.rst:225
+#, python-brace-format
+msgid "n=\\frac{|G|}{|F|}"
+msgstr "n=\\frac{|G|}{|F|}"
+
+#: ../../solid/ferroelectricity.rst:230
+msgid ""
+"で、正方晶 :math:`48/8=6`、直方晶 :math:`48/4=12`、菱面体晶 :math:`48/6=8` "
+"となり、:math:`\\langle100\\rangle`・ "
+":math:`\\langle110\\rangle`・:math:`\\langle111\\rangle` "
+"の族の方向の数に一致する（:numref:`fig-batio3-polar-directions`\\ "
+"の点の数）。Aizuは、このように対称性の高い相から生じる同等な状態を方位状態（orientation state）と呼び、強誘電体などを分類した"
+" [Aizu1970]_。"
+msgstr ""
+"This gives :math:`48/8=6` for the tetragonal phase, :math:`48/4=12` for "
+"the orthorhombic phase, and :math:`48/6=8` for the rhombohedral phase. "
+"These are the numbers of directions in the :math:`\\langle100\\rangle`, "
+":math:`\\langle110\\rangle`, and :math:`\\langle111\\rangle` families, "
+"respectively (the numbers of dots in :numref:`fig-batio3-polar-"
+"directions`\\ ). Aizu called these equivalent states arising from a "
+"higher-symmetry phase orientation states and used them to classify "
+"ferroelectrics and other materials [Aizu1970]_."
+
+#: ../../solid/ferroelectricity.rst:233
+msgid ""
+"どの向きもエネルギーが等しいので、電場をかけずに冷やした結晶では、場所ごとに異なる向きが選ばれうる。分極の向きがそろった領域を\\ "
+"**分域**\\ （ドメイン）、 その境界を\\ **分域壁**\\ と呼ぶ。:eq:`fe-domain-count` の :math:`n` "
+"は分域がとりうる向き（方位状態）の数で、実際に現れる分域の数や体積の割合は、 "
+"表面や電極の状態、応力、冷却の履歴などにも依存する。隣り合う分域の分極がなす角は、二つの方向ベクトルの内積から求まり、相によって決まった値をとる。"
+msgstr ""
+"Because the directions have equal energies, different regions of a "
+"crystal may choose different directions on cooling in zero field. A "
+"region with a uniform polarization direction is a \\ **domain**\\ , and "
+"the boundary is a \\ **domain wall**\\ . In Equation :eq:`fe-domain-"
+"count`, :math:`n` is the number of possible directions (orientation "
+"states) for a domain. The actual number and volume fractions of domains "
+"also depend on the surfaces and electrodes, stress, cooling history, and "
+"other factors. The angle between neighboring domains' polarizations "
+"follows from the dot product of their direction vectors and takes "
+"specific values for each phase."
+
+#: ../../solid/ferroelectricity.rst:237
+msgid "隣り合う分域の分極がなす角"
+msgstr "Angles between the polarizations of neighboring domains"
+
+#: ../../solid/ferroelectricity.rst:243
+msgid "分極の方位状態の数"
+msgstr "Number of polarization orientation states"
+
+#: ../../solid/ferroelectricity.rst:244
+msgid "分極がなす角"
+msgstr "Angles between polarizations"
+
+#: ../../solid/ferroelectricity.rst:245
+msgid "正方晶"
+msgstr "Tetragonal"
+
+#: ../../solid/ferroelectricity.rst:246
+msgid "6"
+msgstr "6"
+
+#: ../../solid/ferroelectricity.rst:247
+msgid "90°、180°"
+msgstr "90°, 180°"
+
+#: ../../solid/ferroelectricity.rst:248
+msgid "直方晶"
+msgstr "Orthorhombic"
+
+#: ../../solid/ferroelectricity.rst:249
+msgid "12"
+msgstr "12"
+
+#: ../../solid/ferroelectricity.rst:250
+msgid "60°、90°、120°、180°"
+msgstr "60°, 90°, 120°, 180°"
+
+#: ../../solid/ferroelectricity.rst:251
+msgid "菱面体晶"
+msgstr "Rhombohedral"
+
+#: ../../solid/ferroelectricity.rst:252
+msgid "8"
+msgstr "8"
+
+#: ../../solid/ferroelectricity.rst:253
+#, python-brace-format
+msgid "約71°（:math:`\\cos^{-1}(1/3)`）、約109°（:math:`\\cos^{-1}(-1/3)`）、180°"
+msgstr ""
+"About 71° (:math:`\\cos^{-1}(1/3)`), about 109° "
+"(:math:`\\cos^{-1}(-1/3)`), and 180°"
+
+#: ../../solid/ferroelectricity.rst:255
+msgid ""
+"180°の分域壁を挟む二つの分域は、分極の符号だけが異なり、格子の伸びる方向は同じである。 "
+"それ以外の分域壁では、格子が伸びる方向も変わる。正方晶の90°分域壁では、両側で :math:`c` 軸の向きが90°異なる。"
+msgstr ""
+"The two domains across a 180° domain wall differ only in the sign of "
+"their polarization and have the same direction of lattice elongation. "
+"Across other domain walls, the direction of elongation also changes. At a"
+" tetragonal 90° domain wall, the :math:`c` axis changes orientation by "
+"90° across the wall."
+
+#: ../../solid/ferroelectricity.rst:258
+#, python-brace-format
+msgid ""
+"分域ができる理由の一つは、表面に現れる電荷である。分極 :math:`\\boldsymbol P` の結晶の表面（外向きの法線 "
+":math:`\\boldsymbol n`）には、 面密度 :math:`\\boldsymbol P\\cdot\\boldsymbol n`"
+" の分極電荷が現れる。分極に垂直な板状の結晶で、表面の電荷を打ち消す電荷が外から 供給されないと、内部では電束密度 "
+":math:`D=\\varepsilon_0E+P` が0になり、:math:`E=-P/\\varepsilon_0` の電場が生じる "
+"（電子の分極による遮蔽は無視した）。:math:`P=0.26\\ \\mathrm{C/m^2}` なら "
+":math:`|E|\\simeq3\\times10^{10}\\ \\mathrm{V/m}` である。 電場のエネルギー密度 "
+":math:`\\varepsilon_0E^2/2=P^2/(2\\varepsilon_0)` は、化学式単位の体積（約64 Å\\ "
+":sup:`3`）あたり約1.5 eVで、 立方晶から極性の構造へ移って下がるエネルギー（転移温度の熱エネルギー程度 "
+"[CohenKrakauer1990]_）より桁違いに大きい。逆向きの分域が交互に並ぶか、電極や吸着物が表面の電荷を打ち消すと、この電場は小さくなる。"
+msgstr ""
+"One reason domains form is the charge that appears at the surface. For a "
+"crystal with polarization :math:`\\boldsymbol P`, a surface with outward "
+"normal :math:`\\boldsymbol n` has bound polarization charge per area "
+":math:`\\boldsymbol P\\cdot\\boldsymbol n`. In a plate with surfaces "
+"perpendicular to the polarization, if no external charges are supplied to"
+" compensate the surface charge, the electric displacement "
+":math:`D=\\varepsilon_0E+P` vanishes in the interior and an electric "
+"field :math:`E=-P/\\varepsilon_0` develops (neglecting screening by "
+"electronic polarization). For :math:`P=0.26\\ \\mathrm{C/m^2}`, "
+":math:`|E|\\simeq3\\times10^{10}\\ \\mathrm{V/m}`. The electric field "
+"energy density :math:`\\varepsilon_0E^2/2=P^2/(2\\varepsilon_0)` amounts "
+"to about 1.5 eV per formula-unit volume (about 64 Å\\ :sup:`3`), orders "
+"of magnitude larger than the energy gained on going from the cubic to the"
+" polar structure (on the order of the thermal energy at the transition "
+"temperature [CohenKrakauer1990]_). The field is reduced if oppositely "
+"oriented domains alternate or if electrodes or adsorbates compensate the "
+"surface charge."
+
+#: ../../solid/ferroelectricity.rst:265
+msgid ""
+"電場をかけると、電場の向きに近い分極をもつ分域が広がり、結晶全体の分極が反転する。Merzは、BaTiO\\ :sub:`3`\\ の単結晶で "
+"分極を反転させるとき、既存の180°分域壁が横に動くことはまれで、逆向きの薄い分域が多数生まれ、主に分極の方向へ伸びて "
+"反転が進むことを観察した。分域壁の厚さは格子定数の1〜数倍と見積もられている [Merz1954]_。"
+msgstr ""
+"When an electric field is applied, domains with polarization closer to "
+"the field direction grow, and the overall crystal polarization reverses. "
+"When reversing polarization in single-crystal BaTiO\\ :sub:`3`\\ , Merz "
+"observed that preexisting 180° domain walls rarely moved sideways. "
+"Instead, many thin domains with opposite polarization formed and grew "
+"mainly along the polarization direction as reversal progressed. The wall "
+"thickness is estimated at one to a few lattice constants [Merz1954]_."
+
+#: ../../solid/ferroelectricity.rst:269
+msgid ""
+"周期境界条件の小さな胞の計算では、胞の中で分極の向きが一つにそろい、一つの分域だけからなる結晶を表す。 "
+"分域壁を含む構造を調べるには、壁を収める大きさの超胞が要る。"
+msgstr ""
+"A calculation with periodic boundary conditions and a small cell "
+"represents a single-domain crystal with one polarization direction "
+"throughout the cell. To study a structure containing a domain wall, use a"
+" supercell large enough to accommodate the wall."
+
+#: ../../solid/ferroelectricity.rst:276
+msgid "説明用の事例：局所的なTiの変位と平均構造"
+msgstr "Worked Example: Local Ti Displacements and Average Structure"
+
+#: ../../solid/ferroelectricity.rst:278
+msgid ""
+"Bragg反射の回折で決まる構造は、空間と時間について平均した\\ **平均構造**\\ である。各単位胞の瞬間的な原子配置 "
+"（局所構造）は、散漫散乱、\\ :ref:`二体分布関数<radial-distribution-function>`\\ "
+"（PDF）、X線吸収微細構造（XAFS）などで調べる。BaTiO\\ :sub:`3`\\ では、 以下の測定が示すように、両者が一致しない。"
+msgstr ""
+"Bragg diffraction measures the \\ **average structure** \\ in space and "
+"time. Diffuse scattering, the \\ :ref:`pair distribution function "
+"<radial-distribution-function>` \\ (PDF), and X-ray absorption fine "
+"structure (XAFS), among other techniques, probe the instantaneous atomic "
+"configuration (local structure) of individual unit cells. In BaTiO\\ "
+":sub:`3`\\ , the two structures differ, as the following measurements "
+"show."
+
+#: ../../solid/ferroelectricity.rst:282
+msgid ""
+"二つの描像がある "
+"[Shi2018]_。変位型の描像では、Tiは各相の分極の向きに変位し、立方晶相では八面体の中心にいる。8サイト模型と呼ばれる秩序–無秩序型の描像では、どの相でもTiは八面体の中心から8つの"
+" :math:`\\langle111\\rangle` 方向の どれかにずれており、相ごとにその選び方の偏りが違う "
+"[Bersuker1966]_ [Comes1968]_。変位を :math:`(\\pm d,\\pm d,\\pm d)` と書くと、 "
+"菱面体晶相では全ての胞が同じ符号の組を選ぶ。直方晶相では2成分の符号がそろい、残る1成分の符号が胞ごとに "
+"ばらばらなので、その成分は平均すると0になり、平均の変位は :math:`\\langle110\\rangle` を向く。正方晶相では "
+"そろう成分が1つ、立方晶相では0個である。平均の変位の0でない成分の数3・2・1・0は、ここではそろった符号の数として現れ、 "
+"変位型の描像と同じ平均構造を与える。二つの描像は、局所構造で区別される。"
+msgstr ""
+"Two pictures describe the Ti displacements [Shi2018]_. In the displacive "
+"picture, Ti shifts in the polarization direction of each phase and is at "
+"the center of the octahedron in the cubic phase. In the order–disorder "
+"picture, called the eight-site model, Ti is displaced from the octahedron"
+" center in one of eight :math:`\\langle111\\rangle` directions in every "
+"phase, with a different preference among those directions in each phase "
+"[Bersuker1966]_ [Comes1968]_. Writing the displacement as :math:`(\\pm "
+"d,\\pm d,\\pm d)`, all cells in the rhombohedral phase choose the same "
+"combination of signs. In the orthorhombic phase, the signs of two "
+"components are aligned, but the sign of the third varies from cell to "
+"cell. That component averages to zero, so the mean displacement points "
+"along a :math:`\\langle110\\rangle` direction. In the tetragonal phase "
+"one component aligns, and in the cubic phase none do. The counts of "
+"nonzero mean displacement components (3, 2, 1, and 0) are the numbers of "
+"aligned signs in this picture, yielding the same average structures as "
+"the displacive picture. Local structure distinguishes the two pictures."
+
+#: ../../solid/ferroelectricity.rst:289
+msgid ""
+"Comèsらは、Tiの変位が鎖状に相関すると考えると説明できる散漫散乱を観測した [Comes1968]_ （鎖状にそろいやすい理由は\\ "
+":ref:`双極子どうしの相互作用<ferroelectric-instability-"
+"origin>`）。Sennらは、PDFの解析から、Tiの局所的な変位が既知のすべての相で菱面体晶的（:math:`\\langle111\\rangle`"
+" 方向に近い）であることを示した。 局所的な変位の相関だけを入れたモンテカルロ模型で相の順序を再現し、秩序–無秩序型の描像を支持しつつ、 "
+"ソフトモードの描像とも両立しうると述べている [Senn2016]_。XAFSでも、変位型と秩序–無秩序型の成分が共存すると報告されている "
+"[Stern2004]_。どちらの成分がどれだけ寄与するかの一般論は、\\ :ref:`変位型と秩序–無秩序型の相転移<displacive-"
+"order-disorder>`\\ にある。"
+msgstr ""
+"Comès and coauthors observed diffuse scattering that can be explained by "
+"chain-like correlations of Ti displacements [Comes1968]_ (the tendency to"
+" align in chains follows from \\ :ref:`dipole–dipole interactions "
+"<ferroelectric-instability-origin>`). Senn and coauthors used PDF "
+"analysis to show that the local Ti displacements are rhombohedral-like "
+"(close to :math:`\\langle111\\rangle` directions) in all known phases. A "
+"Monte Carlo model using only correlations between local displacements "
+"reproduced the phase sequence. They argued that this supports the "
+"order–disorder picture but is also compatible with the soft-mode picture "
+"[Senn2016]_. XAFS measurements also indicate that displacive and "
+"order–disorder components coexist [Stern2004]_. For a general discussion "
+"of their relative contributions, see \\ :ref:`displacive and "
+"order–disorder phase transitions <displacive-order-disorder>`\\ ."
+
+#: ../../solid/ferroelectricity.rst:295
+msgid ""
+"このことから、立方晶の平均構造 :math:`Pm\\bar3m` は、ある瞬間の原子配置ではない。有限温度の\\ :ref:`分子動力学法"
+"<molecular-dynamics>`\\ の "
+"スナップショットでは、立方晶相でもTiは中心からずれ、平均を取って初めて立方晶の対称性が現れる。0 Kの\\ :ref:`構造最適化"
+"<structure-optimization>`\\ で 対称性を課した立方晶は、極性の変位に対して不安定な\\ :ref:`鞍点の構造"
+"<phonon-batio3-example>`\\ である。0 "
+"Kの計算は、局所的な極性不安定性がなぜ生じるかを調べるのに向き、その変位が温度とともにどうそろい、 どう乱れるかは\\ :ref:`有限温度の計算"
+"<apparent-transition-temperature>`\\ で調べる。"
+msgstr ""
+"These results show that the cubic average structure :math:`Pm\\bar3m` is "
+"not an instantaneous atomic configuration. In snapshots from finite-"
+"temperature \\ :ref:`molecular dynamics <molecular-dynamics>`\\ , Ti is "
+"off-center even in the cubic phase. Cubic symmetry emerges only after "
+"averaging. In \\ :ref:`structure optimization <structure-optimization>` "
+"\\ at 0 K, the symmetry-constrained cubic structure is a \\ :ref:`saddle-"
+"point structure <phonon-batio3-example>` \\ unstable against polar "
+"displacements. Calculations at 0 K help explain why the local polar "
+"instability occurs. Use \\ :ref:`finite-temperature calculations "
+"<apparent-transition-temperature>` \\ to study how these displacements "
+"develop or lose alignment as temperature changes."
+
+#: ../../solid/ferroelectricity.rst:304
+msgid "構造最適化の結果を読むとき"
+msgstr "Interpreting Structure Optimization Results"
+
+#: ../../solid/ferroelectricity.rst:306
+msgid ""
+"立方晶構造と正方晶構造をそれぞれ計算し、全エネルギーや原子位置を比較すると、 "
+"どちらの構造が計算条件のもとで安定かを調べられる。原子位置の変化からは、 対称性が保たれているか、極性を生む変位が現れているかを確認できる。"
+msgstr ""
+"Calculating the cubic and tetragonal structures separately and comparing "
+"their total energies and atomic positions shows which structure is stable"
+" under the calculation conditions. Changes in the atomic positions show "
+"whether symmetry is preserved and whether displacements that produce "
+"polarity appear."
+
+#: ../../solid/ferroelectricity.rst:310
+msgid ""
+"ただし、ゼロ温度近似の\\ :ref:`構造最適化<structure-optimization>`\\ "
+"だけで、実験で観測される温度ごとの相転移を 再現したことにはならない。相転移温度や相の安定性には、有限温度での振動や "
+"エントロピーなども関わる。また、構造が極性を許すことと、電場で分極を反転 できることは別の性質である。"
+msgstr ""
+"However, \\ :ref:`structure optimization <structure-optimization>` \\ in "
+"the zero-temperature approximation alone does not reproduce the phase "
+"transitions observed experimentally as a function of temperature. Finite-"
+"temperature vibrations, entropy, and other effects contribute to "
+"transition temperatures and phase stability. A structure that allows "
+"polarity and the ability to reverse its polarization with an electric "
+"field are also distinct properties."
+
+#: ../../solid/ferroelectricity.rst:315
+msgid ""
+"イオンの部分電荷と変位の積を足す方法は、分極の直感的な見積もりには使えるが、 "
+"周期結晶の分極を厳密に評価するには電子状態を含む扱いが必要である（\\ :ref:`分極の評価<polarization-"
+"evaluation>`）。したがって、 構造図や :math:`c/a` のみから分極の値を断定しない。"
+msgstr ""
+"Summing products of ionic partial charges and displacements gives an "
+"intuitive estimate of the polarization, but a rigorous evaluation in a "
+"periodic crystal must include the electronic state (see \\ "
+":ref:`evaluation of polarization <polarization-evaluation>`). Therefore, "
+"do not infer a definite polarization value from a structure diagram or "
+"from :math:`c/a` alone."
+
+#: ../../solid/ferroelectricity.rst:323
+msgid "関連資料"
+msgstr "Related Materials"
+
+#: ../../solid/ferroelectricity.rst:325
+msgid ":ref:`格子と単位胞<lattice>`"
+msgstr ":ref:`Lattices and Unit Cells <lattice>`"
+
+#: ../../solid/ferroelectricity.rst:326
+msgid ":ref:`ブラベー格子と結晶系<unitcell>`"
+msgstr ":ref:`Bravais Lattices and Crystal Systems <unitcell>`"
+
+#: ../../solid/ferroelectricity.rst:327
+msgid ":ref:`ペロブスカイトの擬立方格子<pseudocubic-cell>`"
+msgstr ":ref:`Pseudocubic Lattice of Perovskites <pseudocubic-cell>`"
+
+#: ../../solid/ferroelectricity.rst:328
+msgid ":ref:`soft-mode`"
+msgstr ":ref:`Soft Modes and Structural Phase Transitions <soft-mode>`"
+
+#: ../../solid/ferroelectricity.rst:329
+msgid ":ref:`phonon`"
+msgstr ":ref:`Harmonic Approximation and Phonons <phonon>`"
+
+#: ../../solid/ferroelectricity.rst:330
+msgid ":ref:`ferroelectric-origin`"
+msgstr ""
+":ref:`Origin of the Ferroelectric Instability of BaTiO₃ <ferroelectric-"
+"origin>`"
+
+#: ../../solid/ferroelectricity.rst:336
+msgid "参考文献"
+msgstr "References"
+
+#: ../../solid/ferroelectricity.rst:338
+msgid ""
+"W. Zhong, D. Vanderbilt, and K. M. Rabe, “First-principles theory of "
+"ferroelectric phase transitions for perovskites: The case of BaTiO\\ "
+":sub:`3`,” *Physical Review B* **52**, 6301–6312 (1995), "
+"`doi:10.1103/PhysRevB.52.6301 "
+"<https://doi.org/10.1103/PhysRevB.52.6301>`_."
+msgstr ""
+"W. Zhong, D. Vanderbilt, and K. M. Rabe, “First-principles theory of "
+"ferroelectric phase transitions for perovskites: The case of BaTiO\\ "
+":sub:`3`,” *Physical Review B* **52**, 6301–6312 (1995), "
+"`doi:10.1103/PhysRevB.52.6301 "
+"<https://doi.org/10.1103/PhysRevB.52.6301>`_."
+
+#: ../../solid/ferroelectricity.rst:342
+msgid ""
+"C. L. Bull, C. J. Ridley, K. S. Knight, N. P. Funnell, and A. S. Gibbs, "
+"“Comprehensive determination of the high-pressure structural behaviour of"
+" BaTiO\\ :sub:`3`,” *Materials Advances* **2**, 6094–6103 (2021), "
+"`doi:10.1039/D1MA00651G <https://doi.org/10.1039/D1MA00651G>`_."
+msgstr ""
+"C. L. Bull, C. J. Ridley, K. S. Knight, N. P. Funnell, and A. S. Gibbs, "
+"“Comprehensive determination of the high-pressure structural behaviour of"
+" BaTiO\\ :sub:`3`,” *Materials Advances* **2**, 6094–6103 (2021), "
+"`doi:10.1039/D1MA00651G <https://doi.org/10.1039/D1MA00651G>`_."
+
+#: ../../solid/ferroelectricity.rst:346
+msgid ""
+"T. Nakatani, A. Yoshiasa, A. Nakatsuka, T. Hiratoko, T. Mashimo, M. "
+"Okube, and S. Sasaki, “Variable-temperature single-crystal X-ray "
+"diffraction study of tetragonal and cubic perovskite-type barium titanate"
+" phases,” *Acta Crystallographica Section B* **72**, 151–159 (2016), "
+"`doi:10.1107/S2052520615022544 "
+"<https://doi.org/10.1107/S2052520615022544>`_."
+msgstr ""
+"T. Nakatani, A. Yoshiasa, A. Nakatsuka, T. Hiratoko, T. Mashimo, M. "
+"Okube, and S. Sasaki, “Variable-temperature single-crystal X-ray "
+"diffraction study of tetragonal and cubic perovskite-type barium titanate"
+" phases,” *Acta Crystallographica Section B* **72**, 151–159 (2016), "
+"`doi:10.1107/S2052520615022544 "
+"<https://doi.org/10.1107/S2052520615022544>`_."
+
+#: ../../solid/ferroelectricity.rst:351
+msgid ""
+"W. J. Merz, “Double hysteresis loop of BaTiO\\ :sub:`3` at the Curie "
+"point,” *Physical Review* **91**, 513–517 (1953), "
+"`doi:10.1103/PhysRev.91.513 <https://doi.org/10.1103/PhysRev.91.513>`_."
+msgstr ""
+"W. J. Merz, “Double hysteresis loop of BaTiO\\ :sub:`3` at the Curie "
+"point,” *Physical Review* **91**, 513–517 (1953), "
+"`doi:10.1103/PhysRev.91.513 <https://doi.org/10.1103/PhysRev.91.513>`_."
+
+#: ../../solid/ferroelectricity.rst:354
+msgid ""
+"G. H. Kwei, A. C. Lawson, S. J. L. Billinge, and S.-W. Cheong, "
+"“Structures of the ferroelectric phases of barium titanate,” *Journal of "
+"Physical Chemistry* **97**, 2368–2377 (1993), `doi:10.1021/j100112a043 "
+"<https://doi.org/10.1021/j100112a043>`_."
+msgstr ""
+"G. H. Kwei, A. C. Lawson, S. J. L. Billinge, and S.-W. Cheong, "
+"“Structures of the ferroelectric phases of barium titanate,” *Journal of "
+"Physical Chemistry* **97**, 2368–2377 (1993), `doi:10.1021/j100112a043 "
+"<https://doi.org/10.1021/j100112a043>`_."
+
+#: ../../solid/ferroelectricity.rst:357
+msgid ""
+"C. Shi, S. J. L. Billinge, E. Puma, S. H. Bang, N. J. H. Bean, J.-C. de "
+"Sugny, R. G. Gambee, R. C. Haskell, A. Hightower, and T. C. Monson, "
+"“Barium titanate nanoparticles: Short-range lattice distortions with "
+"long-range cubic order,” *Physical Review B* **98**, 085421 (2018), "
+"`doi:10.1103/PhysRevB.98.085421 "
+"<https://doi.org/10.1103/PhysRevB.98.085421>`_."
+msgstr ""
+"C. Shi, S. J. L. Billinge, E. Puma, S. H. Bang, N. J. H. Bean, J.-C. de "
+"Sugny, R. G. Gambee, R. C. Haskell, A. Hightower, and T. C. Monson, "
+"“Barium titanate nanoparticles: Short-range lattice distortions with "
+"long-range cubic order,” *Physical Review B* **98**, 085421 (2018), "
+"`doi:10.1103/PhysRevB.98.085421 "
+"<https://doi.org/10.1103/PhysRevB.98.085421>`_."
+
+#: ../../solid/ferroelectricity.rst:361
+msgid ""
+"W. J. Merz, “The electric and optical behavior of BaTiO\\ :sub:`3` "
+"single-domain crystals,” *Physical Review* **76**, 1221–1225 (1949), "
+"`doi:10.1103/PhysRev.76.1221 <https://doi.org/10.1103/PhysRev.76.1221>`_."
+msgstr ""
+"W. J. Merz, “The electric and optical behavior of BaTiO\\ :sub:`3` "
+"single-domain crystals,” *Physical Review* **76**, 1221–1225 (1949), "
+"`doi:10.1103/PhysRev.76.1221 <https://doi.org/10.1103/PhysRev.76.1221>`_."
+
+#: ../../solid/ferroelectricity.rst:364
+msgid ""
+"K. Aizu, “Possible species of ferromagnetic, ferroelectric, and "
+"ferroelastic crystals,” *Physical Review B* **2**, 754–772 (1970), "
+"`doi:10.1103/PhysRevB.2.754 <https://doi.org/10.1103/PhysRevB.2.754>`_."
+msgstr ""
+"K. Aizu, “Possible species of ferromagnetic, ferroelectric, and "
+"ferroelastic crystals,” *Physical Review B* **2**, 754–772 (1970), "
+"`doi:10.1103/PhysRevB.2.754 <https://doi.org/10.1103/PhysRevB.2.754>`_."
+
+#: ../../solid/ferroelectricity.rst:367
+msgid ""
+"W. J. Merz, “Domain formation and domain wall motions in ferroelectric "
+"BaTiO\\ :sub:`3` single crystals,” *Physical Review* **95**, 690–698 "
+"(1954), `doi:10.1103/PhysRev.95.690 "
+"<https://doi.org/10.1103/PhysRev.95.690>`_."
+msgstr ""
+"W. J. Merz, “Domain formation and domain wall motions in ferroelectric "
+"BaTiO\\ :sub:`3` single crystals,” *Physical Review* **95**, 690–698 "
+"(1954), `doi:10.1103/PhysRev.95.690 "
+"<https://doi.org/10.1103/PhysRev.95.690>`_."
+
+#: ../../solid/ferroelectricity.rst:370
+msgid ""
+"I. B. Bersuker, “On the origin of ferroelectricity in perovskite-type "
+"crystals,” *Physics Letters* **20**, 589–590 (1966), "
+"`doi:10.1016/0031-9163(66)91127-9 "
+"<https://doi.org/10.1016/0031-9163(66)91127-9>`_."
+msgstr ""
+"I. B. Bersuker, “On the origin of ferroelectricity in perovskite-type "
+"crystals,” *Physics Letters* **20**, 589–590 (1966), "
+"`doi:10.1016/0031-9163(66)91127-9 "
+"<https://doi.org/10.1016/0031-9163(66)91127-9>`_."
+
+#: ../../solid/ferroelectricity.rst:373
+msgid ""
+"M. S. Senn, D. A. Keen, T. C. A. Lucas, J. A. Hriljac, and A. L. Goodwin,"
+" “Emergence of long-range order in BaTiO\\ :sub:`3` from local symmetry-"
+"breaking distortions,” *Physical Review Letters* **116**, 207602 (2016), "
+"`doi:10.1103/PhysRevLett.116.207602 "
+"<https://doi.org/10.1103/PhysRevLett.116.207602>`_."
+msgstr ""
+"M. S. Senn, D. A. Keen, T. C. A. Lucas, J. A. Hriljac, and A. L. Goodwin,"
+" “Emergence of long-range order in BaTiO\\ :sub:`3` from local symmetry-"
+"breaking distortions,” *Physical Review Letters* **116**, 207602 (2016), "
+"`doi:10.1103/PhysRevLett.116.207602 "
+"<https://doi.org/10.1103/PhysRevLett.116.207602>`_."
+

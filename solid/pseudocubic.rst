@@ -131,7 +131,7 @@
 空間群の設定による軸の名前の違い
 --------------------------------
 
-上の :math:`P_{\rm pc,orth}` は :math:`Amm2` の標準の設定を前提にしている。同じ空間群型（No. 38）は、軸の名前の付け方によって :math:`Amm2`、:math:`Bmm2`、:math:`B2mm`、:math:`C2mm`、:math:`Cm2m`、:math:`Am2m` とも書ける（International Tables for Crystallography, Vol. A (2006), `Table 4.3.2.1 <https://it.iucr.org/Ab/ch4o3v0001/table4o3o2o1.pdf>`__）。例えば :math:`C2mm` の設定では極性軸が :math:`a` 軸、擬立方胞の辺と同じ長さの軸が :math:`c` 軸になり、:math:`P` の列が入れ替わる。文献や構造ファイルの「:math:`b`」「:math:`c`」がどの物理的な方向の長さかは設定で変わるので、設定の違う文献の :math:`b` どうしを並べると、別の方向の長さを比べることになる。空間群の記号から擬立方胞との対応 :math:`P` を決めれば、同じ物理的な方向どうしを対応づけられる。
+上の :math:`P_{\rm pc,orth}` は :math:`Amm2` の標準の設定を前提にしている。同じ空間群型（No. 38）は、軸の名前の付け方によって :math:`Amm2`、:math:`Bmm2`、:math:`B2mm`、:math:`C2mm`、:math:`Cm2m`、:math:`Am2m` とも書ける（International Tables for Crystallography, Vol. A (2006), `Table 4.3.2.1 <https://it.iucr.org/Ab/ch4o3v0001/table4o3o2o1.pdf>`__）。例えば :math:`C2mm` の設定では極性軸が :math:`a` 軸、擬立方胞の辺と同じ長さの軸が :math:`c` 軸になり、:math:`P` の列が入れ替わる。文献や構造ファイルの「:math:`b`」「:math:`c`」がどの物理的な方向の長さかは設定で変わるので、設定の違う文献の :math:`b` どうしを並べると、別の方向の長さを比べることになりうる。空間群の記号から擬立方胞との対応 :math:`P` を決めれば、同じ物理的な方向どうしを対応づけられる。
 
 .. _pseudocubic-limits:
 

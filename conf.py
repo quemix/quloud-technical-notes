@@ -37,6 +37,8 @@ gettext_compact = False
 # 日本語の原文が少し変わった文は、訳し直すまで前の英訳を出す（英語のページに日本語の段落を混ぜない）。
 # 古い訳の残るページには english_edition が注記を出し、ビルドで警告する。
 gettext_allow_fuzzy_translations = True
+# コードブロックも翻訳の対象にし、英語版ではコメントを英語にする（日本語のコメントを含むのは固体物理の2つだけ。2026-11-28）。
+gettext_additional_targets = ['literal-block']
 
 numfig = True
 # 図表と式の番号は記事ごとに数える。機械学習・数学は巻→章→節→記事の3段なので3にする。
