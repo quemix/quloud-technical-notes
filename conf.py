@@ -22,9 +22,11 @@ sys.path.insert(0, os.path.abspath('_ext'))
 # cjk_linebreak: 日本語の文の途中で改行した原稿で、表示に空白が入らないようにする。
 # volume_numbering: 図表と式の番号を巻ごとに数え直す（巻をまたいで通し番号にならないようにする）。
 # english_edition: 英語版（locales/en/published.txt の記事）と日本語版を相互にリンクし、未訳の記事は原文への案内にする。
+# partner_links: 英語版で、計算事例へのリンクを計算事例の英語版へ向ける（英語版のあるページだけ）。
+# english_edition.py と partner_links.py は計算事例（quloud-examples）と同じファイルに保つ。
 extensions = [
     'sphinx.ext.mathjax', 'sphinx.ext.githubpages', 'cjk_linebreak', 'volume_numbering',
-    'english_edition',
+    'english_edition', 'partner_links',
 ]
 
 templates_path = ['_templates']
@@ -57,6 +59,11 @@ quloud_japanese_baseurl = 'https://technical-notes.quemix.com/'
 quloud_english_baseurl = quloud_japanese_baseurl + 'en/'
 # canonical のURLもここから作るので、英語版は /en/ を指す。
 html_baseurl = quloud_english_baseurl if language == 'en' else quloud_japanese_baseurl
+# 計算事例の英語版で公開しているページの一覧（partner_links）。
+quloud_examples_baseurl = 'https://example.quloud-platform.quemix.com/'
+quloud_partner_sites = {
+    quloud_examples_baseurl: quloud_examples_baseurl + 'en/published.json',
+}
 html_static_path = ['_static']
 html_css_files = ['custom.css', 'language-switcher.css']
 html_js_files = ['js/language-switcher.js']
@@ -69,10 +76,11 @@ html_theme_options = {
     'secondary_sidebar_items': ['page-toc'],
     'shorten_urls': False,
     # Link to the sister site; quloud-examples links back with 「技術ノート」.
+    # The English edition links to the English top page of the examples (published since 2026-11-28).
     'external_links': [
         {
             'name': 'Calculation Examples' if language == 'en' else '計算事例',
-            'url': 'https://example.quloud-platform.quemix.com/',
+            'url': quloud_examples_baseurl + ('en/' if language == 'en' else ''),
         },
     ],
     # Five volumes plus the external link; the default (5) would hide one under "More".
